@@ -3,21 +3,38 @@
 ## AllenYL Notebook
 
 - [SUMMARY](SUMMARY.md)
+
 - [README](README.md)
+
 - [常用連結](常用連結.md)
 
-## R 語言資料分析
+## 統計與資料分析
 
-- [R___語言資料分析](R___語言資料分析.md)
+- [R__快速上手](R__快速上手.md)
 
-## Python 機器學習
+## 機器學習
 
-- [Python___機器學習](Python___機器學習.md)
+- [Jupyter_Notebook__快速上手](Jupyter_Notebook__快速上手.md)
 
-## Javascript 練習
+- [Python__快速上手](Python__快速上手.md)
 
-- [Javascript___練習](Javascript___練習.md)
+- [Python__網頁爬蟲](Python__網頁爬蟲.md)
 
-## Markdown 練習
+## 深度學習
 
-- [Markdown___練習](Markdown___練習.md)
+- [深度學習理論](深度學習理論.md)
+
+- [Tensorflow__深度學習](Tensorflow__深度學習.md)
+
+## 其他
+
+- [AI__硬體介紹與環境設定](AI__硬體介紹與環境設定.md)
+
+- [Git__快速上手](Git__快速上手.md)
+
+- [Latex__快速上手](Latex__快速上手.md)
+
+- [Javascript__快速上手](Javascript__快速上手.md)
+
+- [Markdown__快速上手](Markdown__快速上手.md)
+

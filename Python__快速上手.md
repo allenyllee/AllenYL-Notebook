@@ -1,0 +1,329 @@
+# Python__快速上手
+
+<!-- toc --> 
+[toc]
+
+## Basic Tutorial
+* [Python Tutorial](https://www.tutorialspoint.com/python/index.htm)
+
+
+## API reference
+
+- [API Reference — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/api.html?highlight=dataframe#dataframe)
+- [API Reference — scikit-learn 0.19.1 documentation](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.datasets)
+    - [Choosing the right estimator — scikit-learn 0.19.1 documentation](http://scikit-learn.org/stable/tutorial/machine_learning_map/index.html)
+    - [Classifier comparison — scikit-learn 0.19.1 documentation](http://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html)
+    - [Comparing Python Clustering Algorithms — hdbscan 0.8.1 documentation](https://hdbscan.readthedocs.io/en/latest/comparing_clustering_algorithms.html)
+
+- [The Matplotlib API — Matplotlib 2.1.1 documentation](https://matplotlib.org/api/index.html)
+    - [The Pyplot API — Matplotlib 2.1.1 documentation](https://matplotlib.org/api/pyplot_summary.html)
+        - [Pyplot tutorial — Matplotlib 2.0.2 documentation](https://matplotlib.org/users/pyplot_tutorial.html)
+        - [Tight Layout guide — Matplotlib 2.0.2 documentation](https://matplotlib.org/users/tight_layout_guide.html)
+        - [A simple plot with a custom dashed line — Matplotlib 2.1.0 documentation](https://matplotlib.org/2.1.0/gallery/lines_bars_and_markers/line_demo_dash_control.html)
+        - [Line-style reference — Matplotlib 2.1.2 documentation](https://matplotlib.org/gallery/lines_bars_and_markers/line_styles_reference.html?highlight=line%20style%20reference)
+- [Routines — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/routines.html)
+    - [Index — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/genindex.html)
+
+- [SciPy — SciPy v1.0.0 Reference Guide](https://docs.scipy.org/doc/scipy-1.0.0/reference/)
+    - [Index — SciPy v1.0.0 Reference Guide](https://docs.scipy.org/doc/scipy-1.0.0/reference/genindex.html)
+- [The Python Standard Library — Python 3.3.7 documentation](https://docs.python.org/3.3/library/index.html)
+    - [Python Tutorial](https://www.tutorialspoint.com/python/index.htm)
+
+- [API Reference — graphviz 0.8.2 documentation](https://graphviz.readthedocs.io/en/stable/api.html)
+    - [User Guide — graphviz 0.8.2 documentation](https://graphviz.readthedocs.io/en/stable/manual.html)
+
+
+
+## Library 
+
+### Python Module
+
+- [8.11. pprint — Data pretty printer — Python 3.3.7 documentation](https://docs.python.org/3.3/library/pprint.html?highlight=pprint#module-pprint)
+    
+    - __pprint.pprint(_object_, _stream=None_, _indent=1_, _width=80_, _depth=None_)__
+        Prints the formatted representation of _object_ on _stream_, followed by a newline.
+
+- [6.2. re — Regular expression operations — Python 3.3.7 documentation](https://docs.python.org/3.3/library/re.html?highlight=re#re.compile)
+    - __re.compile(_pattern_, _flags=0_)[](https://docs.python.org/3.3/library/re.html?highlight=re#re.compile "Permalink to this definition")__
+        Compile a regular expression pattern into a regular expression object, which can be used for matching using its [match()](https://docs.python.org/3.3/library/re.html?highlight=re#re.match "re.match") and [search()](https://docs.python.org/3.3/library/re.html?highlight=re#re.search "re.search") methods, described below.
+
+
+
+### pyplot
+
+- [matplotlib.pyplot.imshow — Matplotlib 2.1.2 documentation](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.imshow.html#matplotlib.pyplot.imshow)
+
+    - 加上 interpolation='bicubic' 可以平滑化
+
+        before:
+
+        ```python=
+        plt.imshow(example_grad, cmap = 'rainbow') 
+        ```
+        ![](https://screenshotscdn.firefoxusercontent.com/images/5c21da21-13d8-4c4e-950e-20372715c4f1.png)
+
+        after:
+
+        ```python=
+        plt.imshow(example_grad, cmap = 'rainbow',  interpolation='bicubic') 
+        ```
+        ![](https://screenshotscdn.firefoxusercontent.com/images/b771dbf5-c3b0-4a37-b142-cd74a145f2c1.png)
+
+
+### numpy
+
+- [numpy.array — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.array.html#numpy.array)
+    Create an array.
+
+- [numpy.eye — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.eye.html#numpy.eye)
+    Return a 2-D array with ones on the diagonal and zeros elsewhere.
+
+- [numpy.ma.max — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.ma.max.html#numpy.ma.max)
+    Return the maximum along a given axis.
+
+- [numpy.nonzero — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.nonzero.html#numpy.nonzero)
+    Return the indices of the elements that are non-zero.
+
+- [numpy.ma.shape — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.ma.shape.html#numpy.ma.shape)
+    Return the shape of an array.
+
+- [numpy.arange — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.arange.html#numpy.arange)
+    Return evenly spaced values within a given interval.
+
+- [numpy.nditer — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.nditer.html#numpy.nditer)
+    Efficient multi-dimensional iterator object to iterate over arrays. To get started using this object, see the [_introductory guide to array iteration_](https://docs.scipy.org/doc/numpy-1.12.0/reference/arrays.nditer.html#arrays-nditer).
+- [numpy.ma.argmax — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.ma.argmax.html#numpy.ma.argmax)
+    Returns array of indices of the maximum values along the given axis. Masked values are treated as if they had the value fill_value.
+- [numpy.append — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.append.html#numpy.append)
+    Append values to the end of an array.
+
+
+### Pandas
+- [pandas.DataFrame.from_records — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.from_records.html#pandas.DataFrame.from_records)
+    Convert structured or record ndarray to DataFrame
+
+## FAQ
+
+
+### Changing column types
+
+* [numpy - Python Pandas - Changing some column types to categories - Stack Overflow](https://stackoverflow.com/questions/28910851/python-pandas-changing-some-column-types-to-categories)
+
+    __Solution1:__
+    
+    Sometimes, you just have to use a for-loop:
+
+    ```python=
+    for col in ['parks', 'playgrounds', 'sports', 'roading']:
+        public[col] = public[col].astype('category')
+    ```
+    
+    __Solution2:__
+    You can use the `pandas.DataFrame.apply` method along with a `lambda` expression to solve this. In your example you could use
+
+    ```python=
+    df[['parks', 'playgrounds', 'sports']].apply(lambda x: x.astype('category'))
+    ```
+
+    I don't know of a way to execute this inplace, so typically I'll end up with something like this:
+
+    ```python=
+    df[df.select_dtypes(['object']).columns] = df.select_dtypes(['object']).apply(lambda x: x.astype('category'))
+    ```
+
+    Obviously you can replace `.select_dtypes` with explicit column names if you don't want to select all of a certain datatype (although in your example it seems like you wanted all `object` types).
+
+
+### Oneline if-then-else
+
+- [python - Putting a simple if-then-else statement on one line - Stack Overflow](https://stackoverflow.com/questions/2802726/putting-a-simple-if-then-else-statement-on-one-line)
+
+    __Solution1:__
+    
+    That's more specifically a [ternary operator](https://en.wikipedia.org/wiki/%3F:#Python) expression than an if-then, here's the python syntax
+
+    ```python=
+    value_when_true if condition else value_when_false
+    ```
+
+    **Better Example:** (thanks [Mr. Burns](https://stackoverflow.com/users/253254/joshua-burns))
+
+    `'Yes' if fruit == 'Apple' else 'No'`
+
+    **Now with assignment and contrast with if syntax**
+
+    ```python=
+    fruit = 'Apple'
+    isApple = True if fruit == 'Apple' else False
+    ```
+
+    **vs**
+
+    ```python=
+    fruit = 'Apple'
+    isApple = False
+    if fruit == 'Apple' : isApple = True
+    ```
+
+    __Solution2:__
+    
+    General ternary syntax:
+
+    ```python=
+    value_true if <test> else value_false
+    ```
+
+    Another way can be:
+
+    ```python=
+    [value_false, value_true][<test>]
+    ```
+
+    e.g:
+
+    ```python=
+    count = [0,N+1][count==N]
+    ```
+
+    This evaluates both branches before choosing one. To only evaluate the chosen branch:
+
+    ```python=
+    [lambda: value_false, lambda: value_true][<test>]()
+    ```
+
+    e.g.:
+
+    ```python=
+    count = [lambda:0, lambda:N+1][count==N]()
+    ```
+
+- [python - One line if-condition-assignment - Stack Overflow](https://stackoverflow.com/questions/7872838/one-line-if-condition-assignment)
+
+    ```python=
+    num1 = 10 + 10*(someBoolValue == True)
+    ```
+
+- [python - How to implement the ReLU function in Numpy - Stack Overflow](https://stackoverflow.com/questions/32109319/how-to-implement-the-relu-function-in-numpy)
+
+    You can do it in much easier way and without numpy:
+
+    ```python=
+    def ReLU(x):
+        return x * (x > 0)
+
+    def dReLU(x):
+        return 1. * (x > 0)
+    ```
+
+### with...as...
+
+- [icodding愛程式: python 研究-with as 用法](https://icodding.blogspot.tw/2016/05/python-with-as.html)
+
+    有一些任務，可能事先需要設置，事後做清理工作。對於這種場景，Python的with語句提供了一種非常方便的處理方式。一個很好的例子是文件處理，你需要獲取一個文件句柄，從文件中讀取資料，然後關閉文件句柄。  
+
+    如果不用with語句，程式碼如下：  
+
+    ```python=
+        file = open("/tmp/foo.txt")  
+        data = file.read()  
+        file.close()  
+    ```
+    
+    這裡有兩個問題:  
+
+        一是可能忘記關閉文件句柄；  
+        二是文件讀取資料發生異常，沒有進行任何處理。  
+
+    下面是處理異常的加強版本：  
+
+    ```python=
+        try:  
+            f = open('xxx')  
+        except:  
+            print 'fail to open'  
+            exit(-1)  
+        try:  
+            do something  
+        except:  
+            do something  
+        finally:  
+             f.close()  
+    ```
+                    
+    雖然這段程式碼執行良好，但是太冗長了。  
+
+    這時候就是with一展身手的時候了。除了有更優雅的語法，with還可以很好的處理上下文環境產生的異常。  
+
+    下面是with版本的程式碼：  
+
+    ```python=
+        with open("/tmp/foo.txt") as file:  
+            data = file.read()  
+    ```
+    
+    with如何工作?  
+
+        緊跟with後面的語句被求值後，返回物件的 \_\_enter\_\_() 方法被呼叫，這個方法的返回值將被賦值給as後面的變數。  
+        當with後面的程式碼塊全部被執行完之後，將呼叫前面返回物件的 \_\_exit\_\_()方法。  
+
+    下面例子可以具體說明with如何工作：  
+
+    ```python=
+        #!/usr/bin/env python  
+        # with_example01.py  
+        class Sample:  
+            def \_\_enter\_\_(self):  
+                print "In \_\_enter\_\_()"  
+                return "Foo"  
+            def \_\_exit\_\_(self, type, value, trace):  
+                print "In \_\_exit\_\_()"  
+        def get_sample():  
+            return Sample()  
+        with get_sample() as sample:  
+            print "sample:", sample  
+    ```
+            
+    執行程式碼，輸出如下  
+
+    ```shell=
+        bash-3.2$ ./with_example01.py  
+        In \_\_enter\_\_()  
+        sample: Foo  
+        In \_\_exit\_\_()  
+    ```
+    
+    正如你看到的: 1\. \_\_enter\_\_()方法被執行 2. \_\_enter\_\_()方法返回的值 - 這個例子中是」Foo」，賦值給變數』sample' 3. 執行程式碼塊，列印變數」sample」的值為 「Foo」 4. \_\_exit\_\_()方法被呼叫 with真正強大之處是它可以處理異常。
+
+    上文說了 \_\_exit\_\_ 函數可以進行部分異常的處理，如果我們不在這個函數中處理異常，他會正常拋出，這時候我們可以這樣寫（python 2.7及以上版本，之前的版本參考使用contextlib.nested這個庫函數）：  
+
+    ```python=
+        try:  
+            with open( "a.txt" ) as f :  
+                do something  
+        except xxxError:  
+            do something about exception  
+    ```
+    
+    總之，with-as表達式極大的簡化了每次寫finally的工作，這對保持程式碼的優雅性是有極大幫助的。  
+
+    如果有多個項，我們可以這麼寫：  
+    
+    ```python=
+        with open("x.txt") as f1, open('xxx.txt') as f2:  
+            do something with f1,f2
+    ```
+
+- [What is the python keyword "with" used for? - Stack Overflow](https://stackoverflow.com/questions/1369526/what-is-the-python-keyword-with-used-for)
+
+    The `with` statement is a control-flow structure whose basic structure is:
+
+    ```python=
+    with expression [as variable]:
+        with-block
+    ```
+
+    The expression is evaluated, and it should result in an object that supports the context management protocol (that is, has `__enter__()` and `__exit__()` methods).
+
+
+---
+↩️ back to [SUMMARY](SUMMARY.md)

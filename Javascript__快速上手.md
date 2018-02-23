@@ -1,4 +1,7 @@
-# Javascript___練習
+# Javascript__快速上手
+
+<!-- toc --> 
+[toc]
 
 ## Useful Tool
 * 線上JavaScript編輯器
@@ -7,6 +10,20 @@
     * [JavaScript Cleaner - Free Online JS Beautifyer](https://html-cleaner.com/js/)
 * 線上 Bookmarklet 產生器
     * [Bookmarklet Creator with Script Includer - Peter Coles](https://mrcoles.com/bookmarklet/)
+* 線上 Regex 教學
+    * [RegexOne - Learn Regular Expressions - Lesson 1: An Introduction, and the ABCs](https://regexone.com/)
+* 線上執行 require() 從npm 取得module
+    * [RequireBin](http://requirebin.com/)
+    Welcome! require() some modules from npm (like you were using browserify)
+    and then hit Run Code to run your code on the right side.
+    Modules get downloaded from browserify-cdn and bundled in your browser.
+* 線上 npm 模組瀏覽器化
+    * [browserify/wzrd.in: browserify as a service.](https://github.com/browserify/wzrd.in)
+        -   The module gets pulled down from [npm](http://npmjs.org) and installed
+        -   The module gets [browserified](http://browserify.org) as a standalone bundle
+        -   The module gets sent to you, piping hot
+        -   The module gets cached so that you don't have to wait later on
+
 
 ## Reference
 
@@ -71,7 +88,384 @@
 
 * [eligrey/FileSaver.js: An HTML5 saveAs() FileSaver implementation](https://github.com/eligrey/FileSaver.js/)
 
+## Debug
 
+* [如何使用Visual Studio Code偵錯Node.js？ - 黑暗執行緒](http://blog.darkthread.net/post-2016-08-06-debug-nodejs-with-vscode.aspx)
+
+    點選最左側的偵錯（禁行蟲蟲）圖示(1)會切換到偵錯視窗，偵錯鈕(2)右側顯示目前沒有組態，別擔心，按下偵錯鈕就對了。
+
+    ![](http://www.darkthread.net/Photos/3530-5bd2-o.gif)
+
+    因為沒有組態，依VSCode跳出提示，選取環境清單選取「Node.js」：
+
+    ![](http://www.darkthread.net/Photos/3531-f188-o.gif)
+
+    點選Node.js後VSCode會自動建立launch.json範本，預設有「啟動」「附加」「Attach to process」三種組態，要做到如Visual Studio按F5開始測試，請修改"啟動"組態中的program屬性，改為要測試的js檔。
+
+    ![](http://www.darkthread.net/Photos/3532-7132-o.gif)
+
+    設好組態再按一次偵錯鈕，VSCode就會呼叫Node.js執行JS程式，餘下的操作對有Visual Studio或瀏覽器F12偵錯經驗的大家應不是問題，VSCode支援設定中斷點(1)，可以查看變數(2)、新増監看算式(3)、查詢呼叫堆疊（Callstack）(4)，當然也可以即時執行指令(5)。
+
+    ![](http://www.darkthread.net/Photos/3533-967e-o.gif)
+
+    另外，身為Visual Studio家族，Goto Definition、Fill All Reference、Rename、重排程式碼… 等經典功能一定不能少，在編輯區按右鍵可由選單查到快速鍵。
+
+    ![](http://www.darkthread.net/Photos/3535-3613-o.gif)
+
+    補充：如果要測試互動輸入，組態檔有個externalConsole要設為true，不然遇到sget等函式會等不到輸入發生逾時錯誤。
+
+* [Visual Studio Code 前端调试不完全指南 | 咀嚼之味](http://jerryzou.com/posts/vscode-debug-guide/)
+
+    1\. launch / attach
+    -------------------
+
+    要使用 vscode 的调试功能，首先就得配置 `.vscode/launch.json` 文件。以最简单的 Node 调试配置为例：
+
+    ```json
+    {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "node",
+                "request": "launch",
+                "name": "Launch",
+                "program": "${workspaceRoot}/index.js"
+            },
+            {
+                "type": "node",
+                "request": "attach",
+                "name": "Attach",
+                "port": 5858
+            }
+        ]
+    }
+    ```
+
+    其中最重要的参数是 `request` ，它的取值有两种 `launch` 和 `attach`。
+
+    -   **launch**模式：**由 vscode 来启动**一个独立的具有 debug 模式的程序
+    -   **attach**模式：附加于（也可以说“监听”）一个**已经启动的程序**（必须已经开启 Debug 模式）
+
+    2\. 调试前端代码
+    ----------
+
+    通过 vscode 调试前端代码主要依赖于一个插件：[Debugger for Chrome](https://github.com/Microsoft/vscode-chrome-debug)，该插件主要利用 [Chrome 所开放出来的接口](https://chromedevtools.github.io/devtools-protocol/) 来实现对其渲染的页面进行调试。可以通过 `Shift + Cmd + X` 打开插件中心，搜索对应插件后直接安装。安装完成并重新加载 vscode 后，可以直接点击调试按钮并创建新的启动配置。如果你之前已经创建过启动配置了，就可以直接打开 `.vscode/launch.json` 进行修改。
+
+    ![vscode-debug-chrome](http://jerryblog-image.b0.upaiyun.com/blog/posts/vscode-debug-chrome.png)
+
+    其中调试 Chrome 页面的配置如下所示：
+
+    ```json
+    {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "chrome",
+                "request": "launch",
+                "name": "启动一个独立的 Chrome 以调试 frontend",
+                "url": "http://localhost:8091/frontend",
+                "webRoot": "${workspaceRoot}/frontend"
+            }
+        ]
+    }
+    ```
+
+    如之前所述，通过第一个 launch 配置就能启动一个通过 vscode 调试的 Chrome。大家可以直接使用我组织好的项目 [zry656565/vscode-debug-sample](https://github.com/zry656565/vscode-debug-sample) 进行测试，测试方法在该项目的 README 里面写得很清楚了。简要步骤概括为：
+
+    1.  `npm run frontend`
+    2.  启动调试配置：“启动一个独立的 Chrome 以调试 frontend”
+    3.  在 `frontend/index.js` 中加断点
+    4.  访问 `http://localhost:8091/frontend/`
+
+    ### 延伸问题
+
+    使用 `launch` 模式调试前端代码存在一个问题，就是 vscode 会以新访客的身份打开一个新的 Chrome 进程，也就是说你**之前在 Chrome 上装的插件都没法在这个页面上生效**（如下图所示）。
+
+    ![vscode-debug-launch](http://jerryblog-image.b0.upaiyun.com/blog/posts/vscode-debug-launch.png)
+
+    在这种情况下 `attach` 模式就有它存在的意义了：对一个已经启动的 Chrome 进行监听调试。
+
+    ```json
+    {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "chrome",
+                "request": "attach",
+                "name": "监听一个已经启动调试模式的 Chrome",
+                "port": 9222,
+                "url": "http://localhost:8091/frontend",
+                "webRoot": "${workspaceRoot}/frontend"
+            }
+        ]
+    }
+    ```
+
+    其中 9222 是 Chrome 的调试模式推荐的端口，可以根据需要进行修改。不过目前我并没有成功实施这个设想，对此有兴趣的同学可以从下面这两个链接入手去研究一下：
+
+    -   [Chrome DevTools Protocol Viewer](https://chromedevtools.github.io/devtools-protocol/)
+    -   [Debugger for Chrome / Attach](https://github.com/Microsoft/vscode-chrome-debug/blob/master/README.md#attach)
+
+    有一部分遇到的问题可以直接在 Debugger for Chrome 的 FAQ 中得到解答。
+
+
+## NPM
+* [get npm](https://www.npmjs.com/get-npm?utm_source=house&utm_medium=homepage&utm_campaign=free%20orgs&utm_term=Install%20npm)
+    npm makes it easy for JavaScript developers to share and reuse code, and makes it easy to update the code that you’re sharing, so you can build amazing things.
+
+
+
+* [requiring npm modules in the browser console](https://gist.github.com/mathisonian/c325dbe02ea4d6880c4e)
+
+    [![demo gif](https://camo.githubusercontent.com/bf330eecd4a06ce86d32b6bd9e72a50d7b1ac31a/687474703a2f2f692e696d6775722e636f6d2f715675397335332e676966)](https://camo.githubusercontent.com/bf330eecd4a06ce86d32b6bd9e72a50d7b1ac31a/687474703a2f2f692e696d6775722e636f6d2f715675397335332e676966)
+
+    injecting the require() function
+    ================================
+
+    And finally, we have to inject the `require()` function into the browser. There is a script hosted on amazon s3 that properly defines the function: [https://s3.amazonaws.com/s3.mathisonian.com/javascripts/requirify-browser.js](https://s3.amazonaws.com/s3.mathisonian.com/javascripts/requirify-browser.js).
+
+    This script can be injected into the body of web pages using a chrome extension ([https://chrome.google.com/webstore/detail/requirify/gajpkncnknlljkhblhllcnnfjpbcmebm](https://chrome.google.com/webstore/detail/requirify/gajpkncnknlljkhblhllcnnfjpbcmebm)) or a simple javascript boomarklet.
+
+
+    ```javascript=
+    javascript:(function(){var body=document.getElementsByTagName('body')[0];var script=document.createElement('script');script.type='text/javascript';script.src='https://s3.amazonaws.com/s3.mathisonian.com/javascripts/requirify-browser.js';body.appendChild(script);})();
+
+    ```
+
+    is a bookmarklet containing the following code:
+
+    ```javascript=
+       var body= document.getElementsByTagName('body')[0];
+       var script= document.createElement('script');
+       script.type= 'text/javascript';
+       script.src= 'https://s3.amazonaws.com/s3.mathisonian.com/javascripts/requirify-browser.js';
+       body.appendChild(script);
+    ```
+    
+    update
+    ======
+
+    The script has been updated to interact directly with browserify-cdn, and now looks like this:
+
+    ```javascript=
+    var request = require('browser-request');
+
+    window.require = function(name, moduleName) {
+        _require = require;
+
+        if(!moduleName) {
+            moduleName = name;
+        }
+
+        console.log('Fetching ' + moduleName + '... just one second');
+        request('http://wzrd.in/bundle/' + moduleName + '@latest/', function(er, res, body) {
+
+            require = null;
+            eval(body);
+            window[name] = require(moduleName);
+            require = _require;
+            console.log('Finished getting ' + moduleName);
+        });
+    };
+
+    ```
+
+    > great ideas! but why not simple use the "bundle" version from [http://wzrd.in/](http://wzrd.in/) ?
+    > 
+    > For example: `<script src="http://wzrd.in/bundle/backbone@latest"></script>`
+    > 
+    > And then, simply: `Backbone = require('Backbone')` ?
+    > 
+
+
+    > Can you use require to load request module before it is defined? Not work for me. Instead, I use chrome built in function fetch to accomplish it. Also I change wzrd.in's schema from "http" to "https" to prevent "Mixed Content" problem.
+    > 
+    > ```
+    > window.require = function(name, moduleName) {
+    >     _require = require;
+    > 
+    >     if(!moduleName) {
+    >         moduleName = name;
+    >     }
+    > 
+    >     console.log('Fetching ' + moduleName + '... just one second');
+    >     fetch('https://wzrd.in/bundle/' + moduleName + '@latest/')
+    >         .then(response => response.text())
+    >         .then(body => {
+    >             require = null;
+    >             eval(body);
+    >             window[name] = require(moduleName);
+    >             require = _require;
+    >             console.log('Finished getting ' + moduleName);
+    >         });
+    > };
+    > 
+    > ```
+
+
+
+
+    
+### Library
+
+* [iriscouch/browser-request: Browser library compatible with Node.js request package](https://github.com/iriscouch/browser-request)
+
+    Fetch a resource:
+
+    ```javascript=
+    request('/some/resource.txt', function(er, response, body) {
+      if(er)
+        throw er;
+      console.log("I got: " + body);
+    })
+    ```
+
+* [Browserify](http://browserify.org/#install)
+    Browsers don't have the require method defined, but Node.js does. With Browserify you can write code that uses require in the same way that you would use it in Node.
+
+
+* [require.js - cdnjs.com - The best FOSS CDN for web related libraries to speed up your websites!](https://cdnjs.com/libraries/require.js/)
+
+    RequireJS is a JavaScript file and module loader. It is optimized for in-browser use, but it can be used in other JavaScript environments, like Rhino and Node
+
+* [prose/gatekeeper: Enables client-side applications to dance OAuth with GitHub.](https://github.com/prose/gatekeeper#setup-your-gatekeeper)
+
+    Because of some [security-related limitations](http://blog.vjeux.com/2012/javascript/github-oauth-login-browser-side.html), Github prevents you from implementing the OAuth Web Application Flow on a client-side only application.
+
+    This is a real bummer. So we built Gatekeeper, which is the missing piece you need in order to make it work.
+    
+* [maxogden/requirebin: write browser JavaScript programs using modules from NPM](https://github.com/maxogden/requirebin)
+
+
+
+
+
+### Execrise
+
+* [將big5 編碼的中文轉成url 可接受的格式輸出到瀏覽器 console - JSFiddle](https://jsfiddle.net/allenyllee/ccu2xtf1/)
+
+    ```javascript=
+    // Welcome! require() some modules from npm (like you were using browserify)
+    // and then hit Run Code to run your code on the right side.
+    // Modules get downloaded from browserify-cdn and bundled in your browser.
+
+    // =============
+    // 將big5 編碼的中文轉成url 可接受的格式輸出到瀏覽器 console
+    // =============
+
+    // =============
+    // bnoordhuis/node-iconv: node.js iconv bindings - text recoding for fun and profit!
+    // https://github.com/bnoordhuis/node-iconv
+    // =============
+    // 原本是用'iconv', 但是一直出現error
+    // stderr: Error: Cannot find module '../build/Release/iconv.node' from '/tmp/iconv118120-29969-m4a781/node_modules/iconv/lib'
+    // 在本機上rebuild 也無法解決，參考:
+    // error: Error: Cannot find module '../build/Debug/iconv.node' · Issue #167 · bnoordhuis/node-iconv
+    // https://github.com/bnoordhuis/node-iconv/issues/167
+    // 和
+    // require('iconv') fails · Issue #69 · bnoordhuis/node-iconv
+    // https://github.com/bnoordhuis/node-iconv/issues/69
+    // 試過很多方法都無法解決，只好改用'iconv-lite'
+    //
+    //var Iconv = require('iconv').Iconv;
+    //var iconv = new Iconv('utf8', 'BIG5');
+
+    // ============
+    // ashtuchkin/iconv-lite: Convert character encodings in pure javascript.
+    // https://github.com/ashtuchkin/iconv-lite
+    // ============
+    // 一開始瀏覽器 console 出現error: 
+    // iconv-lite warning: javascript files are loaded not with utf-8 encoding. See https://github.com/ashtuchkin/iconv-lite/wiki/Javascript-source-file-encodings for more info.
+    // 解法:
+    // add <meta charset="utf-8"> to the html file.
+    //
+    var iconv = require('iconv-lite');
+    var Buffer = require('buffer').Buffer
+
+    // Convert from an encoded buffer to js string.
+    str = iconv.decode(new Buffer([0x68, 0x65, 0x6c, 0x6c, 0x6f]), 'win1251');
+    console.log(str);
+
+    // Convert from js string to an encoded buffer.
+    buf = iconv.encode("Sample input string", 'win1251');
+    console.log(buf);
+
+    // 將utf-8 中文轉成big5
+    buf = iconv.encode("耶穌", 'big5');
+    console.log(buf);
+
+    // Check if encoding is supported
+    str2 = iconv.encodingExists("us-ascii")
+    console.log(str2);
+
+    // ==============
+    // javascript - how to get big5 urlencode in node.js? - Stack Overflow
+    // https://stackoverflow.com/questions/27621643/how-to-get-big5-urlencode-in-node-js
+    // ==============
+    // 此處將big5 編碼轉成url 可接受的格式
+    function big5_encode(chr) {
+        var rtn = "";
+        var buf = iconv.encode(chr, 'big5');
+        for(var i=0;i<buf.length;i+=2) {
+            rtn += '%' + buf[i].toString(16).toUpperCase();
+            rtn += ((buf[i+1] >= 65 && buf[i+1] <= 90)
+                ||(buf[i+1]>=97 && buf[i+1]<=122))
+                ? String.fromCharCode(buf[i+1])
+                : '%' + buf[i+1].toString(16).toUpperCase();
+        }
+        return rtn;
+    }
+
+    // 測試輸入
+    var chr = '十尢我'; // 結果應為 %A4Q%A4q%A7%DA
+    console.log(big5_encode(chr));
+
+    var chr = '耶穌'; // 結果應為 %ADC%BFq
+    console.log(big5_encode(chr));
+
+    ```
+
+
+### Trouble shooting
+
+* [Running Python on Windows for Node.js dependencies - Stack Overflow](https://stackoverflow.com/questions/15126050/running-python-on-windows-for-node-js-dependencies)
+
+    __symptom__
+    ```
+    gyp ERR! stack Error: Can't find Python executable "python", you can set the PYT
+    HON env variable.
+    ```
+    __solution__
+    
+    If you haven't got python installed along with all the node-gyp dependecies, simply execute:
+
+    ```
+    npm install --global --production windows-build-tools
+    ```
+
+    and then to install the package:
+
+    ```
+    npm install --global node-gyp
+    ```
+
+    once installed, you will have all the node-gyp dependencies downloaded, but you still need the environment variable. Validate Python is indeed found in the correct folder:
+
+    ```
+    C:\Users\ben\.windows-build-tools\python27\python.exe 
+    ```
+
+    _[Note - it uses python 2.7 not 3.x as it is not supported](https://github.com/nodejs/node-gyp)_
+
+    If it doesn't moan, go ahead and create your (user) environment variable:
+
+    ```
+    setx PYTHON "%USERPROFILE%\.windows-build-tools\python27\python.exe"
+    ```
+
+    restart cmd, and verify the variable exists via `set PYTHON` which should return the variable
+
+    Lastly re-apply `npm install <module>`
 
 
 

@@ -1,3 +1,4 @@
-# R___語言資料分析
+# R__快速上手
 
+---
 ↩️ back to [SUMMARY](SUMMARY.md)
