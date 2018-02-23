@@ -1,0 +1,16 @@
+{
+    "plugins": [
+        "katex",
+        "simple-page-toc",
+        "styled-blockquotes",
+        "splitter",
+        "expandable-chapters-interactive",
+        "scripts"
+    ],
+    "pluginsConfig": {
+        "simple-page-toc": {
+			"maxDepth": 3,
+			"skipFirstH1": true
+   		}
+    }
+}
