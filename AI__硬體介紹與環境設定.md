@@ -593,7 +593,6 @@
 
     When we initially benchmarked cloud-GPUs I was actually surprised to discover that **in general cloud-based GPUs are very slow.**
 
-
     If you were to buy one of these cards it would set you back about 5K$ — so if you live by the "if it’s expensive it must be good"-rule you would figure they would be awesome for deep learning, right?
 
     Well.. They’re not. **A Titan X Pascal which you can get for 1K$ will beat a Tesla K40/K80 any day!** What’s the deal with that?
@@ -605,11 +604,9 @@
 
     > On-premise: 1. Cloud: 0.
 
-
     ### Cloud vs on-premise: Cost
 
     One of our GPU servers costs approximately 8.5K\$ which includes 4x Titan X Pascals. An Amazon P2.xlarge instance with 1x Tesla K80 costs 0.9\$/hr. To compare on a GPU-basis let’s bump that up to 3.6\$/hr to get 4x Tesla K80.
-
 
     This means that **I could get 2361 computing hours (or approximately 100days of training) on the P2 instances before I reach the price of my on-premise GPU server.**
 
@@ -647,12 +644,9 @@
 
     If it’s your job to make sure the machine learning team stays effective you would want to keep training times as low as possible and I would say that in the 1.5 years we’ve been running on-premise GPU servers we might have had a total of 1–2 days downtime.
 
-
-
 - [What is best cloud solution for deep learning? - Quora](https://www.quora.com/What-is-best-cloud-solution-for-deep-learning)
 
     > Using a cloud service is a good choice for getting started. But note that building a local deep learning rig does become cost effective if you need to train models for 1500+ hours. See [Andrej Karpathy’s setup](https://twitter.com/karpathy/status/648256662554341377) if you want to give it a try.[name=Vedant Misra]
-
 
 - [The \$1700 great Deep Learning box: Assembly, setup and benchmarks](https://blog.slavv.com/the-1700-great-deep-learning-box-assembly-setup-and-benchmarks-148c5ebe6415)
 
@@ -661,7 +655,6 @@
     But eventually the model complexity grew and took longer to train. I’d often forget what I did differently on the model that had just completed its 2-day training. Nudged by the great experiences of the other folks on the [Fast.AI Forum](http://forums.fast.ai/), I decided to settle down and to get a dedicated DL box at home.
 
     __The most important reason was saving time while prototyping models — if they trained faster, the feedback time would be shorter.__ Thus it would be easier for my brain to connect the dots between the assumptions I had for the model and its results.
-
 
     __Then I wanted to save money — I was using Amazon Web Services (AWS), which offered P2 instances with Nvidia K80 GPUs. Lately, the AWS bills were around $60–70/month with a tendency to get larger. Also, it is expensive to store large datasets, like ImageNet.__
 
