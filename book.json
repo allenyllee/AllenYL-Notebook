@@ -1,7 +1,6 @@
 {
     "plugins": [
         "katex",
-        "-highlight", "prism", "prism-ASH",
         "simple-page-toc",
         "styled-blockquotes",
         "splitter",
