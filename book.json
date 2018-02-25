@@ -1,6 +1,7 @@
 {
     "plugins": [
         "katex",
+        "-highlight", "prism", "prism-ASH",
         "simple-page-toc",
         "styled-blockquotes",
         "splitter",
@@ -11,6 +12,11 @@
         "simple-page-toc": {
 			"maxDepth": 3,
 			"skipFirstH1": true
-   		}
+        },
+        "prism": {
+            "css": [
+              "syntax-highlighting/assets/css/prism/prism-base16-google.light.css"
+            ]
+        }
     }
 }
