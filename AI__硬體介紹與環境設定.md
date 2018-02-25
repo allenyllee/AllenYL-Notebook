@@ -1,10 +1,6 @@
 # AI__硬體介紹與環境設定
 
-
-
-
-
-## 我的深度學習專用機
+## 我的深度學習專用機 My Deep Learning Box
 
 - [原價屋估價](http://www.coolpc.com.tw/evaluate.php)
 
@@ -77,6 +73,9 @@
 
 ### GPU Choose
 
+- just considering...
+    1. floting point precision
+    2. memory size
 
 - [Which GPU(s) to Get for Deep Learning - Tim Dettmers](http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning/)
 
@@ -334,9 +333,63 @@
     > ```
     > [name=Florent DUGUET]
 
+### GPGPU
+
+- [一窩瘋「人工智慧晶片」前，你需要知道的幾件關於 GPGPU 的事 | TechNews 科技新報](https://technews.tw/2017/09/12/what-you-need-to-know-about-gpgpu/)
+
+## Environment Setup
+
+### Linux or Windows?
+
+### Nvidia Driver install
+
+### Use Docker Image
+
+- [floydhub/dl-docker: An all-in-one Docker image for deep learning. Contains all the popular DL frameworks (TensorFlow, Theano, Torch, Caffe, etc.)](https://github.com/floydhub/dl-docker)
+
+### How about TPU?
+
+- [谷歌这个大杀器要让英伟达慌了，实战评测：TPU相比GPU简直又快又省](https://zhuanlan.zhihu.com/p/33972503)
+- [脈動陣列- 因Google TPU獲得新生 - 幫趣](http://bangqu.com/1SD42k.html)
+
+### How about mobile/Embedded system
+
+- [嵌入式系統開發人員套件與模組 | NVIDIA Jetson|NVIDIA](http://www.nvidia.com.tw/object/embedded-systems-dev-kits-modules-tw.html)
+- [開發你的酷炫裝備 Jetson TX1使用指南 - 壹讀](https://read01.com/RR86nM.html)
+- [Nvidia Brings Computer Vision and Deep Learning to the Embedded World | Hackaday](https://hackaday.com/2015/11/10/nvidia-brings-computer-vision-and-deep-learning-to-the-embedded-world/)
+- [Arm會是AI進入尋常百姓家的關鍵推手？ - EE Times Taiwan 電子工程專輯網](https://www.eettaiwan.com/news/article/20180222NT03-Arm-Extends-AI-to-the-Masses?utm_source=EETT%20Article%20Alert&utm_medium=Email&utm_campaign=2018-02-23)
+- [高通首次推出AI引擎，打包所有軟硬件算力 - 幫趣](http://bangqu.com/zu312j.html)
+- [發掘 ARM GPU 的全部深度學習性能，TVM 優化帶來高達2倍性能提升 - 幫趣](http://bangqu.com/o9r51a.html)
+- [Machine learning on mobile: on the device or in the cloud?](http://machinethink.net/blog/machine-learning-device-or-cloud/)
+
 
 
 ## 雲端服務
+
+- [Compute Pricing Comparison: AWS vs Azure vs Google Cloud](https://www.simform.com/compute-pricing-comparison-aws-azure-googlecloud/)
+- [AWS vs Azure vs Google Cloud Pricing: Compute Instances](https://www.rightscale.com/blog/cloud-cost-analysis/aws-vs-azure-vs-google-cloud-pricing-compute-instances)
+- [FloydHub - Deep Learning Platform - Cloud GPU](https://www.floydhub.com/)
+- [How much does a GPU instance cost?：MLQuestions](https://www.reddit.com/r/MLQuestions/comments/5s0jnc/how_much_does_a_gpu_instance_cost/)
+
+
+- [GPU訓練機器學習模型哪家強？AWS、谷歌雲、IBM等6大平台對比 - iFuun](http://www.ifuun.com/a201802109938558/)
+    - [Machine learning mega-benchmark: GPU providers (part 2) | RaRe Technologies](https://rare-technologies.com/machine-learning-benchmarks-hardware-providers-gpu-part-2/)
+
+    ![Imgur](https://i.imgur.com/KVFNlFq.png)
+
+
+### Preempted vs On-demand
+
+
+### Amazon AWS
+
+- [open-guides/og-aws: 📙 Amazon Web Services — a practical guide](https://github.com/open-guides/og-aws#why-an-open-guide)
+
+- [Learning Machine Learning on the cheap: Persistent AWS Spot Instances](https://blog.slavv.com/learning-machine-learning-on-the-cheap-persistent-aws-spot-instances-668e7294b6d8)
+
+
+
+### Microsoft Azure
 
 ### Google Colaboratory
 
@@ -523,4 +576,96 @@
     GPU RAM Free: 566MB | Used: 10873MB | Util  95% | Total 11439MB
     ```
 
+### How about Decentrlized Frog Computing?
+
+- [Fog Computing Can Beat Amazon’s Cloud Computing Services On Price, Speed, And Convenience](https://blog.sonm.io/fog-computing-can-beat-amazons-cloud-computing-services-on-price-speed-and-convenience-5904d1dd14e8)
+- 
+
+## 該自己架還是使用雲端？
+
+- [GPU servers for machine learning startups: Cloud vs On-premise?](https://medium.com/@thereibel/gpu-servers-for-machine-learning-startups-cloud-vs-on-premise-9a9dedfcadc9)
+
+    1.  Performance
+    2.  Cost
+    3.  Operations
+
+    ### Cloud vs on-premise: Performance
+
+    When we initially benchmarked cloud-GPUs I was actually surprised to discover that **in general cloud-based GPUs are very slow.**
+
+
+    If you were to buy one of these cards it would set you back about 5K$ — so if you live by the "if it’s expensive it must be good"-rule you would figure they would be awesome for deep learning, right?
+
+    Well.. They’re not. **A Titan X Pascal which you can get for 1K$ will beat a Tesla K40/K80 any day!** What’s the deal with that?
+
+    > Titan: 15 seconds pr. batchsize 64   
+    > Tesla: 45 seconds pr. batchsize 32
+
+    Based on our experience there’s no doubt. On-Premise Titan-based GPU servers are way faster than cloud Tesla-based GPU servers.
+
+    > On-premise: 1. Cloud: 0.
+
+
+    ### Cloud vs on-premise: Cost
+
+    One of our GPU servers costs approximately 8.5K\$ which includes 4x Titan X Pascals. An Amazon P2.xlarge instance with 1x Tesla K80 costs 0.9\$/hr. To compare on a GPU-basis let’s bump that up to 3.6\$/hr to get 4x Tesla K80.
+
+
+    This means that **I could get 2361 computing hours (or approximately 100days of training) on the P2 instances before I reach the price of my on-premise GPU server.**
+
+    > After <100 days of training your on-premise GPU server will be cheaper.
+
+    But let’s not forget that the **Tesla K80s are 6x slower than the Titan’s**. This means that I need to wait 6x longer for the K80s to finish training the same job as the Titans.
+
+    Let’s say that we need to train a job that would take one week (168hours) to train on the on-premise server. Because the K80s have 6x lower computing efficiency this would take the K80s 1008 hours (168*6) resulting in a cost of 3.6K$ or **almost half the price of my on-premise server.**
+
+    > On-premise: 2. Cloud: 0
+
+    ### Cloud vs on-premise: Operations
+
+    Having your own servers at your office inherently comes with more operational issues:
+
+    -   Do we have the right drivers installed?
+    -   Coordinating updates
+    -   Network breakdowns
+    -   Wifi connectivity problems
+    -   Unscheduled reboots
+    -   Power outages
+    -   Equipment failure
+    -   Why doesn’t it respond?
+    -   No more disk space
+    -   Cable nightmares
+    -   etc..
+
+    If you’re using Amazon’s GPU servers you don’t need to worry about unscheduled reboots because Ubuntu decided to perform automatic updates, thereby killing all jobs on the machine.
+
+    Still, Cloud wins this one.
+
+    > On-premise: 2. Cloud: 1
+
+    ### Conclusion
+
+    If it’s your job to make sure the machine learning team stays effective you would want to keep training times as low as possible and I would say that in the 1.5 years we’ve been running on-premise GPU servers we might have had a total of 1–2 days downtime.
+
+
+
+- [What is best cloud solution for deep learning? - Quora](https://www.quora.com/What-is-best-cloud-solution-for-deep-learning)
+
+    > Using a cloud service is a good choice for getting started. But note that building a local deep learning rig does become cost effective if you need to train models for 1500+ hours. See [Andrej Karpathy’s setup](https://twitter.com/karpathy/status/648256662554341377) if you want to give it a try.[name=Vedant Misra]
+
+
+- [The \$1700 great Deep Learning box: Assembly, setup and benchmarks](https://blog.slavv.com/the-1700-great-deep-learning-box-assembly-setup-and-benchmarks-148c5ebe6415)
+
+    However, as time passed, the AWS bills steadily grew larger, even as I switched to [10x cheaper Spot instances](https://medium.com/slavv/learning-machine-learning-on-the-cheap-persistent-aws-spot-instances-668e7294b6d8). Also, I didn’t find myself training more than one model at a time. Instead, I’d go to lunch/workout/etc. while the model was training, and come back later with a clear head to check on it.
+
+    But eventually the model complexity grew and took longer to train. I’d often forget what I did differently on the model that had just completed its 2-day training. Nudged by the great experiences of the other folks on the [Fast.AI Forum](http://forums.fast.ai/), I decided to settle down and to get a dedicated DL box at home.
+
+    __The most important reason was saving time while prototyping models — if they trained faster, the feedback time would be shorter.__ Thus it would be easier for my brain to connect the dots between the assumptions I had for the model and its results.
+
+
+    __Then I wanted to save money — I was using Amazon Web Services (AWS), which offered P2 instances with Nvidia K80 GPUs. Lately, the AWS bills were around $60–70/month with a tendency to get larger. Also, it is expensive to store large datasets, like ImageNet.__
+
+    __A sensible budget for me would be about 2 years worth of my current compute spending. At $70/month for AWS, this put it at around $1700 for the whole thing.__
+    
+    
 
