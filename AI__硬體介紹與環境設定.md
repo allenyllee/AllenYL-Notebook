@@ -343,6 +343,90 @@
 
 ### Nvidia Driver install
 
+### Jupyter Notebook/Lab setup
+
+#### for Linux
+
+
+#### for Windows
+
+- [How to Install Tensorflow-GPU version with Jupyter (Windows 10) in 8 easy steps.](https://medium.com/@viveksingh.heritage/how-to-install-tensorflow-gpu-version-with-jupyter-windows-10-in-8-easy-steps-8797547028a4)
+
+
+##### Library
+- [Unofficial Windows Binaries for Python Extension Packages](https://www.lfd.uci.edu/~gohlke/pythonlibs/)
+
+- [aleju/imgaug: Image augmentation for machine learning experiments.](https://github.com/aleju/imgaug)
+
+
+##### Solved
+
+- [python - DLL load failed error when importing cv2 - Stack Overflow](https://stackoverflow.com/questions/43184887/dll-load-failed-error-when-importing-cv2)
+
+    > You can download the latest OpenCV 3.2.0 for Python 3.6 on Windows 32-bit or 64-bit machine, look for file starts with`opencv_python‑3.2.0‑cp36‑cp36m`, from this [unofficial site](http://www.lfd.uci.edu/~gohlke/pythonlibs/#opencv). Then type below command to install it:
+    > 
+    > -   `pip install opencv_python‑3.2.0‑cp36‑cp36m‑win32.whl` (32-bit version)
+    > -   `pip install opencv_python‑3.2.0‑cp36‑cp36m‑win_amd64.whl` (64-bit version)
+    > 
+    > I think it would be easier.
+
+- [python - Tensorflow GPU application crashes Jupyter notebook kernel - Stack Overflow](https://stackoverflow.com/questions/44851188/tensorflow-gpu-application-crashes-jupyter-notebook-kernel)
+
+    > One suggestion is to place the following snippet before you import tensorflow:
+    > 
+    > ```
+    > import os
+    > os.environ["CUDA_VISIBLE_DEVICES"]="-1"
+    > ```
+    > 
+    > **Added after @ Nicolas comment**
+    > 
+    > Yes this disables GPU! Which is not what is wanted.
+
+- [python - Error with pip install scikit-image - Stack Overflow](https://stackoverflow.com/questions/38608698/error-with-pip-install-scikit-image)
+
+    > install numpy first
+    > 
+    > ```
+    > pip install numpy
+    > ```
+    > 
+    > If you face installation issues for numpy, get the pre-built windows installers from [http://www.lfd.uci.edu/~gohlke/pythonlibs/](http://www.lfd.uci.edu/~gohlke/pythonlibs/) for your python version (python version is different from windows version).
+    > 
+    > numpy 32-bit: numpy-1.11.1+mkl-cp27-cp27m-win32.whl
+    > 
+    > numpy 64-bit: numpy-1.11.1+mkl-cp27-cp27m-win_amd64.whl
+    > 
+    > Later you require VC++ 9.0, then please get it from below link Microsoft Visual C++ 9.0 is required. Get it from [http://aka.ms/vcpython27](http://aka.ms/vcpython27)
+    > 
+    > Then install
+    > 
+    > ```
+    > pip install scikit-image
+    > ```
+    > 
+    > It will install below list before installing scikit-image
+    > 
+    > pyparsing, six, python-dateutil, pytz, cycler, matplotlib, scipy, decorator, networkx, pillow, toolz, dask
+    > 
+    > If it fails at installation of scipy, follow below steps: get the pre-built windows installers from [http://www.lfd.uci.edu/~gohlke/pythonlibs/](http://www.lfd.uci.edu/~gohlke/pythonlibs/) for your python version (python version is different from windows version).
+    > 
+    > Scipy 32-bit: scipy-0.18.0-cp27-cp27m-win32.whl
+    > 
+    > Scipy 64-bit: scipy-0.18.0-cp27-cp27m-win_amd64.whl
+    > 
+    > If it fails saying **whl is not supported wheel on this platform** , then upgrade pip using **python -m pip install --upgrade pip** and try installing scipy
+    > 
+    > Now try
+    > 
+    > ```
+    > pip install scikit-image
+    > ```
+    > 
+    > It should work like a charm.
+
+
+
 ### Use Docker Image
 
 - [floydhub/dl-docker: An all-in-one Docker image for deep learning. Contains all the popular DL frameworks (TensorFlow, Theano, Torch, Caffe, etc.)](https://github.com/floydhub/dl-docker)
@@ -585,10 +669,6 @@
 
 - [GPU servers for machine learning startups: Cloud vs On-premise?](https://medium.com/@thereibel/gpu-servers-for-machine-learning-startups-cloud-vs-on-premise-9a9dedfcadc9)
 
-    1.  Performance
-    2.  Cost
-    3.  Operations
-
     ### Cloud vs on-premise: Performance
 
     When we initially benchmarked cloud-GPUs I was actually surprised to discover that **in general cloud-based GPUs are very slow.**
@@ -619,9 +699,9 @@
     > On-premise: 2. Cloud: 0
 
     ### Cloud vs on-premise: Operations
-
+    
     Having your own servers at your office inherently comes with more operational issues:
-
+    
     -   Do we have the right drivers installed?
     -   Coordinating updates
     -   Network breakdowns

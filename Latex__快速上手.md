@@ -8,6 +8,7 @@
 * Math input
     * [Latex Math Symbols](http://web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html)
     * [Function Support in KaTeX](https://khan.github.io/KaTeX/function-support.html)
+    * [Symbols and Functions in KaTeX](https://utensil-site.github.io/available-in-katex/)
 
 ## Usage
 
@@ -16,18 +17,18 @@
     Try this:
 
     ```latex=
-    \begin{flalign*}
-        &|\vec a| = \sqrt{3^{2}+1^{2}} = \sqrt{10} & \\
+    \begin{aligned}
+        &|\vec a| = \sqrt{3^{2}+1^{2}} = \sqrt{10} &\\
         &|\vec b| = \sqrt{1^{2}+23^{2}} = \sqrt{530} &\\ 
         &\cos v = \frac{26}{\sqrt{10} \cdot \sqrt{530}} &\\
         &v = \cos^{-1} \left(\frac{26}{\sqrt{10} \cdot \sqrt{530}}\right) &\\
-    \end{flalign*}
+    \end{aligned}
 
     ```
     
     $$
     \begin{aligned}
-        &|\vec a| = \sqrt{3^{2}+1^{2}} = \sqrt{10} & \\
+        &|\vec a| = \sqrt{3^{2}+1^{2}} = \sqrt{10} &\\
         &|\vec b| = \sqrt{1^{2}+23^{2}} = \sqrt{530} &\\ 
         &\cos v = \frac{26}{\sqrt{10} \cdot \sqrt{530}} &\\
         &v = \cos^{-1} \left(\frac{26}{\sqrt{10} \cdot \sqrt{530}}\right) &\\

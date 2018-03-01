@@ -32,6 +32,35 @@
 - [API Reference — graphviz 0.8.2 documentation](https://graphviz.readthedocs.io/en/stable/api.html)
     - [User Guide — graphviz 0.8.2 documentation](https://graphviz.readthedocs.io/en/stable/manual.html)
 
+## Default Method
+
+
+### String Operation
+
+- [Python String replace() Method](https://www.tutorialspoint.com/python/string_replace.htm)
+    > The method **replace()** returns a copy of the string in which the occurrences of _old_ have been replaced with _new_, optionally restricting the number of replacements to _max_.
+
+- [Which is the preferred way to concatenate a string in Python? - Stack Overflow](https://stackoverflow.com/questions/12169839/which-is-the-preferred-way-to-concatenate-a-string-in-python)
+
+    > The _best_ way of appending a string to a string variable is to use `+` or `+=`. This is because it's readable and fast.
+
+- [Python join()方法 | 菜鸟教程](http://www.runoob.com/python/att-string-join.html)
+
+    > Python join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。
+    > 
+    > 以下实例展示了join()的使用方法：
+    > 
+    > ```python
+    > #!/usr/bin/python 
+    > str =   "-"; 
+    > seq =   ("a",   "b",   "c");   \# 字符串序列
+    > print str.join( seq );
+    > ```
+    > 
+    > 以上实例输出结果如下：
+    > ```shell
+    > a-b-c
+    > ```
 
 
 ## Library 
@@ -102,10 +131,16 @@
 - [pandas.DataFrame.from_records — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.from_records.html#pandas.DataFrame.from_records)
     Convert structured or record ndarray to DataFrame
 
+- [pandas.DataFrame.apply — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html)
+    Applies function along input axis of DataFrame.
+
+
+
+
 ## FAQ
 
 
-### Changing column types
+### Column/Row operation
 
 * [numpy - Python Pandas - Changing some column types to categories - Stack Overflow](https://stackoverflow.com/questions/28910851/python-pandas-changing-some-column-types-to-categories)
 
@@ -132,6 +167,26 @@
     ```
 
     Obviously you can replace `.select_dtypes` with explicit column names if you don't want to select all of a certain datatype (although in your example it seems like you wanted all `object` types).
+
+
+- [Combine two columns of text in dataframe in pandas/python - Stack Overflow](https://stackoverflow.com/questions/19377969/combine-two-columns-of-text-in-dataframe-in-pandas-python/19378497)
+
+    > ```python
+    > df = pd.DataFrame({'Year': ['2014', '2015'], 'quarter': ['q1', 'q2']})
+    > df['period'] = df[['Year', 'quarter']].apply(lambda x: ''.join(x), axis=1)
+    > ```
+    > 
+    > Yields this dataframe
+    > 
+    > ```shell
+    >    Year quarter  period
+    > 0  2014      q1  2014q1
+    > 1  2015      q2  2015q2
+    > ```
+    > 
+    > This method generalizes to an arbitrary number of string columns by replacing `df[['Year', 'quarter']]` with any column slice of your dataframe, e.g. `df.iloc[:,0:2].apply(lambda x: ''.join(x), axis=1)`.
+    > 
+    > You can check more information about apply() method [here](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html)
 
 
 ### Oneline if-then-else
@@ -323,6 +378,60 @@
     ```
 
     The expression is evaluated, and it should result in an object that supports the context management protocol (that is, has `__enter__()` and `__exit__()` methods).
+
+### get dicectory path
+
+- [python - Find current directory and file's directory - Stack Overflow](https://stackoverflow.com/questions/5137497/find-current-directory-and-files-directory)
+
+    > To get the full path to the directory a Python file is contained in, write this in that file:
+    > 
+    > ```python
+    > import os 
+    > dir_path = os.path.dirname(os.path.realpath(__file__))
+    > ```
+    > 
+    > (Note that the incantation above won't work if you've already used `os.chdir()` to change your current working directory, since the value of the `__file__` constant is relative to the current working directory and is not changed by an `os.chdir()` call.)
+    > 
+    > ---
+    > 
+    > To get the current working directory use
+    > 
+    > ```python
+    > import os
+    > cwd = os.getcwd()
+    > ```
+    > 
+    > ---
+    > 
+    > Documentation references for the modules, constants and functions used above:
+    > 
+    > -   The [`os`](https://docs.python.org/library/os.html) and [`os.path`](https://docs.python.org/library/os.path.html#module-os.path) modules.
+    > -   The [`__file__`](https://docs.python.org/reference/datamodel.html) constant
+    > -   [`os.path.realpath(path)`](https://docs.python.org/library/os.path.html#os.path.realpath) (returns _"the canonical path of the specified filename, eliminating any symbolic links encountered in the path"_)
+    > -   [`os.path.dirname(path)`](https://docs.python.org/library/os.path.html#os.path.dirname) (returns _"the directory name of pathname `path`"_)
+    > -   [`os.getcwd()`](https://docs.python.org/library/os.html#os.getcwd) (returns _"a string representing the current working directory"_)
+    > -   [`os.chdir(path)`](https://docs.python.org/library/os.html#os.chdir) (_"change the current working directory to `path`"_)
+
+
+### get command output
+
+- [Running shell command from Python and capturing the output - Stack Overflow](https://stackoverflow.com/questions/4760215/running-shell-command-from-python-and-capturing-the-output)
+
+    > This is a **tricky** but **super simple** solution which works in many situations:
+    > 
+    > ```python
+    > import os
+    > os.system('sample_cmd > tmp')
+    > print open('tmp', 'r').read()
+    > ```
+    > 
+    > A temporary file(here is tmp) is created with the output of the command and you can read from it your desired output.
+    > 
+    > Extra note from the comments: You can remove the tmp file in the case of one-time job. If you need to do this several times, there is no need to delete the tmp.
+    > 
+    > ```python
+    > os.remove('tmp')
+    > ```
 
 
 ---

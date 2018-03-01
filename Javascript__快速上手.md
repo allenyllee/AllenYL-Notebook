@@ -764,7 +764,36 @@
     javascript:(function()%7Bvar%20str%20%3D%20location.href%3Bvar%20pos%20%3D%20str.indexOf(%22https%253A%252F%252Fhackmd.io%252F%22)%3Bstr%20%3D%20str.slice(pos)%3Bstr%20%3D%20str.replace(%2F%25%2Fg%2C%20%22%22)%3Bvar%20iframe%20%3D%20document.getElementById(str)%3Bvar%20innerDoc%20%3D%20iframe.contentDocument%20%7C%7C%20iframe.contentWindow.document%3Bvar%20x%20%3D%20innerDoc.getElementsByClassName(%22ui-download-markdown%22)%3Bvar%20event%20%3D%20new%20CustomEvent('click'%2C%20%7B%20bubbles%3A%20true%2C%20cancelable%3A%20true%20%7D)%3Bx%5B1%5D.dispatchEvent(event)%7D)()
     ```
     
+* [If you open an pdf url of arxiv paper, then wants to jump to its abstract page, using this javascript as bookmarklet.](https://gist.github.com/allenyllee/0c90341680459203df6453b5d60d28f2)
     
+    ```javascript=
+    // ===================
+    // arxiv-pdf-to-abstract-url.js
+    // ===================
+
+    // Location href Property
+    // https://www.w3schools.com/jsref/prop\_loc\_href.asp
+    // 透過HTML DOM 的 Location Object 的 href Property 取得目前頁面的URL
+    // 假設原始 arxiv pdf url 為 "https://arxiv.org/pdf/1703.09137.pdf"
+    var str = location.href;
+    // JavaScript String Methods
+    // https://www.w3schools.com/js/js\_string\_methods.asp
+    // 移除網址最後的.pdf 得到 "https://arxiv.org/pdf/1703.09137"
+    str = str.replace(/\\.pdf/g, "");
+    // 將網址中的pdf 轉成 abs 得到 "https://arxiv.org/abs/1703.09137"
+    str = str.replace(/pdf/g, "abs");
+    // How to get the browser to navigate to URL in JavaScript - Stack Overflow
+    // https://stackoverflow.com/questions/1226714/how-to-get-the-browser-to-navigate-to-url-in-javascript
+    // 跳到abs 網址
+    location.href = str;
+    ```
+
+    __Bookmarklet__
+    ```javascript=
+    javascript:(function()%7Bvar%20str%20%3D%20location.href%3Bstr%20%3D%20str.replace(%2F%5C.pdf%2Fg%2C%20%22%22)%3Bstr%20%3D%20str.replace(%2Fpdf%2Fg%2C%20%22abs%22)%3Blocation.href%20%3D%20str%7D)()
+    ```
+
+
 
 ### __Example__
 * [KLVN/MediasiteDownloader: A Bookmarklet (Favelet) for your browser to simply download lectures from a SonicFoundry Mediasite website, that is often used by colleges and universities.](https://github.com/KLVN/MediasiteDownloader)

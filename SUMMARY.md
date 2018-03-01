@@ -8,6 +8,8 @@
 
 - [常用連結](常用連結.md)
 
+- [test](test.md)
+
 ## 統計與資料分析
 
 - [R__快速上手](R__快速上手.md)
@@ -37,4 +39,10 @@
 - [Javascript__快速上手](Javascript__快速上手.md)
 
 - [Markdown__快速上手](Markdown__快速上手.md)
+
+- [VSCode__快速上手](VSCode__快速上手.md)
+
+- [BlockChain__快速上手](BlockChain__快速上手.md)
+
+- [Windows__問題排解](Windows__問題排解.md)
 
