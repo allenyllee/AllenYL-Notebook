@@ -137,7 +137,17 @@
 
 
 
-## FAQ
+## Usage
+
+### Math 
+
+- [math - How do I do exponentiation in python? - Stack Overflow](https://stackoverflow.com/questions/30148740/how-do-i-do-exponentiation-in-python)
+
+    > `^` is the [xor](http://en.wikipedia.org/wiki/Exclusive_or) operator.
+    > 
+    > `**` is exponentiation.
+    > 
+    > `2**3 = 8`
 
 
 ### Column/Row operation
@@ -432,6 +442,88 @@
     > ```python
     > os.remove('tmp')
     > ```
+
+### Virtual environments
+
+- [Create virtual environments for python with conda](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/)
+
+    1\. Check conda is installed and in your PATH
+    ---------------------------------------------
+
+    1.  Open a terminal client.
+    2.  Enter `conda -V` into the terminal command line and press enter.
+    3.  If conda is installed you should see somehting like the following.
+
+    ```bash
+    $ conda -V
+    conda 3.7.0
+    ```
+
+    2\. Check conda is up to date
+    -----------------------------
+
+    1.  In the terminal client enter
+
+    ```bash
+    conda update conda
+    ```
+
+    2.  Upadate any packages if necessary by typing `y` to proceed.
+
+    3\. Create a virtual environment for your project
+    -------------------------------------------------
+
+    1.  In the terminal client enter the following where _yourenvname_ is the name you want to call your environment, and replace _x.x_ with the Python version you wish to use. (To see a list of available python versions first, type `conda search "^python$"` and press enter.)
+
+    ```bash
+    conda create -n yourenvname python=x.x anaconda
+    ```
+
+    2.  Press `y` to proceed. This will install the Python version and all the associated anaconda packaged libraries at “path\_to\_your\_anaconda\_location/anaconda/envs/yourenvname”
+
+    4\. Activate your virtual environment.
+    --------------------------------------
+
+    1.  To activate or switch into your virtual environment, simply type the following where _yourenvname_ is the name you gave to your environement at creation.
+
+    ```bash
+    source activate yourenvname
+    ```
+
+    2.  Activating a conda environment modifies the PATH and shell variables to point to the specific isolated Python set-up you created. The command prompt will change to indicate which conda environemnt you are currently in by prepending `(yourenvname)`. To see a list of all your environments, use the command `conda info -e`.
+
+    5\. Install additional Python packages to a virtual environment.
+    ----------------------------------------------------------------
+
+    1.  To install additional packages only to your virtual environment, enter the following command where _yourenvname_ is the name of your environemnt, and _\[package\]_ is the name of the package you wish to install. _Failure to specify “-n yourenvname” will install the package to the root Python installation._
+
+    ```bash
+    conda install -n yourenvname [package]
+    ```
+
+    6\. Deactivate your virtual environment.
+    ----------------------------------------
+
+    1.  To end a session in the current environment, enter the following. There is no need to specify the envname - which ever is currently active will be deactivated, and the PATH and shell variables will be returned to normal.
+
+    ```bash
+    source deactivate
+    ```
+
+    7\. Delete a no longer needed virtual environment
+    -------------------------------------------------
+
+    1.  To delete a conda environment, enter the following, where _yourenvname_ is the name of the environment you wish to delete.
+
+    ```bash
+    conda remove -n yourenvname -all
+    ```
+
+- [virtualenv - CondaValueError: Value error: prefix already exists: - Stack Overflow](https://stackoverflow.com/questions/40180652/condavalueerror-value-error-prefix-already-exists)
+
+    > simply deleted folder `C:\Program Files\Miniconda2\envs\ENV1\`
+
+
 
 
 ---

@@ -46,3 +46,9 @@
 
 - [Windows__問題排解](Windows__問題排解.md)
 
+- [Quantum_Computing](Quantum_Computing.md)
+
+- [Physics](Physics.md)
+
+- [Web_前後端](Web_前後端.md)
+

@@ -6,6 +6,9 @@
 
 ## Usage
 
+
+### Keyboard Shortcuts
+
 - [How do I comment out multiple lines in Jupyter Ipython notebook? - Stack Overflow](https://stackoverflow.com/questions/29885371/how-do-i-comment-out-multiple-lines-in-jupyter-ipython-notebook)
 
     > Ctrl \+ / works for me in Chrome browser in MS Windows
@@ -43,5 +46,15 @@
     ![](https://www.dataquest.io/blog/content/images/multi-merge.gif)
 
     _Merging multiple cells._
+
+
+### Restart Kernel (to release GPU memory)
+
+- [jupyter - Restart ipython Kernel with a command from a cell - Stack Overflow](https://stackoverflow.com/questions/37751120/restart-ipython-kernel-with-a-command-from-a-cell)
+
+    ```python
+    import os
+    os._exit(00)
+    ```
 
 
