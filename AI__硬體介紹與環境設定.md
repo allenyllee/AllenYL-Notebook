@@ -7,7 +7,7 @@
 
 - [原價屋估價](http://www.coolpc.com.tw/evaluate.php)
 
-- 主機：ASRock DeskMini250 GTX (__~\$46400__) [time=Oct 07, 2018]
+- 主機：ASRock DeskMini250 GTX (__~\$46400__)  [time=Oct 07, 2018]
     - 空機 (主機板+網卡) (__~\$13900__)
     - GPU：NVIDIA GTX1070 (MXM介面) (__~\$22500__)
     - CPU：Intel Pentium G4600 (3.6Ghz) (效能近i3-7100) (__~\$2150__)
