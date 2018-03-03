@@ -10,6 +10,3 @@
 
 lastest updated: 2018/02/19
 created: 2018/02/19
-
----
-↩️ back to [SUMMARY](SUMMARY.md)

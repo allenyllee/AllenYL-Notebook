@@ -98,6 +98,25 @@
         ```
         ![](https://screenshotscdn.firefoxusercontent.com/images/b771dbf5-c3b0-4a37-b142-cd74a145f2c1.png)
 
+- [matplotlib.pyplot.subplot — Matplotlib 2.1.1 documentation](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html#matplotlib.pyplot.subplot)
+
+    `plot_dict` 內容結構為 noise:axis 的字典, 其中 noise 為字典的 key 值, 而 axis 值作為 subplot 分割的 row, col, index。
+
+    倘若 row, col 和 index 皆可用單位數字表示，則可以用單個 3 位數字來指定。
+
+    ```python
+    # 指定圖表的大小 (寬, 高) 單位為英吋
+    rcParams['figure.figsize'] = 8, 4
+    # 1 row, 4 cols, 從左到右
+    plot_dict = { 1: 141, 9: 142, 18: 143, 1000: 144 }
+    linear_prediction(plot_dict)
+
+    # 指定圖表的大小 (寬, 高) 單位為英吋
+    rcParams['figure.figsize'] = 8, 10
+    # 2 rows, 2 cols, 從左至右，由上到下
+    plot_dict = { 1: 221, 9: 222, 18: 223, 1000: 224}
+    linear_prediction(plot_dict)
+    ```
 
 ### numpy
 
@@ -126,6 +145,28 @@
 - [numpy.append — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.append.html#numpy.append)
     Append values to the end of an array.
 
+- [numpy.reshape — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.reshape.html#numpy.reshape)
+    Gives a new shape to an array without changing its data.
+
+    ```python
+    >>> a = np.arange(6).reshape((3, 2))
+    >>> a
+    array([[0, 1],
+           [2, 3],
+           [4, 5]]) 
+    ```
+
+    ```python
+    >>> np.reshape(a, (2, 3)) # C-like index ordering
+    array([[0, 1, 2],
+           [3, 4, 5]])
+    ```
+
+- [numpy.ma.copy — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.ma.copy.html#numpy.ma.copy)
+    Return a copy of the array.
+
+
+
 
 ### Pandas
 - [pandas.DataFrame.from_records — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.from_records.html#pandas.DataFrame.from_records)
@@ -133,6 +174,54 @@
 
 - [pandas.DataFrame.apply — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html)
     Applies function along input axis of DataFrame.
+
+- [pandas.get_dummies — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.get_dummies.html)
+    Convert categorical variable into dummy/indicator variables
+
+    ```python
+    >>> import pandas as pd
+    >>> s = pd.Series(list('abca'))
+
+    >>> pd.get_dummies(s)
+
+       a  b  c
+    0  1  0  0
+    1  0  1  0
+    2  0  0  1
+    3  1  0  0
+    ```
+
+
+- [pandas.Series.str.contains — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.str.contains.html#pandas.Series.str.contains)
+    Return boolean Series/`array` whether given pattern/regex is contained in each string in the Series/Index.
+
+    ```python
+    index = pd.Series([True,False,True,False]) 
+    data = pd.DataFrame(['a','b_simpson','c','d_simpson'], columns=['col1'])
+
+    # 使用 Series 做 index，丟到 dataframe 會回傳 index 為 true 的項目
+    print(data[index])
+    ```
+
+    ```python
+      col1
+    0    a
+    2    c
+    ```
+
+    ```python
+    # 使用 str.contains 做 index，丟到 dataframe 會回傳 index 為 true 的項目
+    # 就是 col1 中包含 'simpson' 的項目
+    print(data[data.col1.str.contains('simpson')]) 
+    ```
+
+    ```python
+            col1
+    1  b_simpson
+    3  d_simpson
+    ```
+
+
 
 
 
@@ -148,6 +237,349 @@
     > `**` is exponentiation.
     > 
     > `2**3 = 8`
+
+
+
+### yield & Generator
+
+- [python yield 語法與 generator 物件介紹 - 程式的窩](http://blog.blackwhite.tw/2013/05/python-yield-generator.html)
+
+    事實上，yield 和 return 很像，只是當函數呼叫 return 時，該函數 call stack (python 中是 frame) 就會被清除，程式主導權回到呼叫該函數的手上。 而 yield 會把程式主導權交給呼叫該函數的手上，但是他不會把函數的 call stack 清除，因此下次呼叫時，可以從上次未執行的部分開始執行，而不是重新建立一個新 stack。  
+
+    ```python
+    def return_fun():
+        a = 1
+        b = 1
+        return a
+
+    print return_fun()
+    print return_fun()
+    ```
+
+    上面這段程式碼，每次呼叫 return_fun 時，都是從 a = 1 開始執行，然後遇到 return 就結束了。所以執行流程像這樣  
+
+
+    [![](http://2.bp.blogspot.com/-4xhZATG4L40/UYSkX4r6ulI/AAAAAAAAG1E/vNnwf0yRWTE/s1600/function+flow.png)](http://2.bp.blogspot.com/-4xhZATG4L40/UYSkX4r6ulI/AAAAAAAAG1E/vNnwf0yRWTE/s1600/function+flow.png)
+
+    當有函數裡面有用到 yield 這個關鍵字時，事情就變得很不一樣了。  
+
+
+    ```python
+    def yield_fun():
+        a = 1
+        b = 1
+        yield a
+    ```
+
+    ```python
+        yield b
+
+    print yield_fun()
+    ```
+
+    當你執行上面這段程式碼時，你會發現他回傳給你的居然是 generator 物件。那要怎麼執行 yield_fun 裡面的 code 呢? 答案是使用 generator 的 next 方法。  
+
+
+    ```python
+    def yield_fun():
+        a = 3
+        b = 2
+        yield a
+        c = 4
+        yield b
+
+    generator = yield_fun()
+    print generator.next()
+    print generator.next()
+    ```
+
+    當使用者第一次呼叫 generator 的  next 方法時，他會從 a = 3 開始執行，直到遇到 yield。python 會回傳 yield 後面接的東西(就像 return )，之後再把現在的 call stack( python 中是 frame)，儲存在 generator 的 gi_frame 屬性中。  
+
+    當使用者第二次呼叫 generator 的  next 方法時，他不會建立一個新的 call stack，而是從  generator 的 gi_frame 屬性中取出之前的 call stack。因此，程式會從 c = 4 開始執行(不是從 a = 3喔，如果是 function 的話，是從 a = 3 開始執行)。直到遇到 yield 或是 return 為止。遇到 yield 表示下次還可以再呼叫一次 next 方法。遇到 return 則表示 這個 generator 已經沒東西了。無法再呼叫 next 了。執行流程像這樣。  
+
+
+    [![](http://1.bp.blogspot.com/-BaSDSFqkAYQ/UYSqFQbDXlI/AAAAAAAAG1U/wBQg_tugBfE/s1600/yield+function.png)](http://1.bp.blogspot.com/-BaSDSFqkAYQ/UYSqFQbDXlI/AAAAAAAAG1U/wBQg_tugBfE/s1600/yield+function.png)
+
+    事實上， yield 除了可以把資料回傳給呼叫者外，他也可以從呼叫者接受資料。向下面的程式碼。  
+
+
+
+    ```python
+    def yield_fun():
+        a = 3
+        b = 2
+
+        b = yield a
+        yield b
+
+
+    generator = yield_fun()
+    print generator.next()
+    print generator.send(8)
+    ```
+
+    上面這段程式碼， yield 除了把 a 的值回傳給呼叫者外，他還會從呼叫者那邊接受一個值，把 b 的值指派成呼叫者給的參數。  
+
+    generator 打破函數執行完後， call stack 就會被清除的限制(因為 generator 把 call stack 存在 gi_frame 屬性，所以下次執行時，還知道之前的狀態)。
+
+
+- [python - What does the "yield" keyword do? - Stack Overflow](https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do?page=1&tab=active#tab-top)
+
+    > To understand what `yield` does, you must understand what _generators_ are. And before generators come _iterables_.
+    > 
+    > Iterables
+    > ---------
+    > 
+    > When you create a list, you can read its items one by one. Reading its items one by one is called iteration:
+    > 
+    > ```python
+    > >>> mylist = [1, 2, 3]
+    > >>> for i in mylist:
+    > ...    print(i)
+    > 1
+    > 2
+    > 3
+    > ```
+    > 
+    > `mylist` is an _iterable_. When you use a list comprehension, you create a list, and so an iterable:
+    > 
+    > ```python
+    > >>> mylist = [x*x for x in range(3)]
+    > >>> for i in mylist:
+    > ...    print(i)
+    > 0
+    > 1
+    > 4
+    > ```
+    > 
+    > Everything you can use "`for... in...`" on is an iterable; `lists`, `strings`, files...
+    > 
+    > These iterables are handy because you can read them as much as you wish, but you store all the values in memory and this is not always what you want when you have a lot of values.
+    > 
+    > Generators
+    > ----------
+    > 
+    > Generators are iterators, a kind of iterable **you can only iterate over once**. Generators do not store all the values in memory, **they generate the values on the fly**:
+    > 
+    > ```python
+    > >>> mygenerator = (x*x for x in range(3))
+    > >>> for i in mygenerator:
+    > ...    print(i)
+    > 0
+    > 1
+    > 4
+    > ```
+    > 
+    > It is just the same except you used `()` instead of `[]`. BUT, you **cannot** perform `for i in mygenerator` a second time since generators can only be used once: they calculate 0, then forget about it and calculate 1, and end calculating 4, one by one.
+    > 
+    > Yield
+    > -----
+    > 
+    > `yield` is a keyword that is used like `return`, except the function will return a generator.
+    > 
+    > ```python
+    > >>> def createGenerator():
+    > ...    mylist = range(3)
+    > ...    for i in mylist:
+    > ...        yield i*i
+    > ...
+    > >>> mygenerator = createGenerator() # create a generator
+    > >>> print(mygenerator) # mygenerator is an object!
+    > <generator object createGenerator at 0xb7555c34>
+    > >>> for i in mygenerator:
+    > ...     print(i)
+    > 0
+    > 1
+    > 4
+    > ```
+    > 
+    > Here it's a useless example, but it's handy when you know your function will return a huge set of values that you will only need to read once.
+    > 
+    > To master `yield`, you must understand that **when you call the function, the code you have written in the function body does not run.** The function only returns the generator object, this is a bit tricky :-)
+    > 
+    > Then, your code will be run each time the `for` uses the generator.
+    > 
+    > Now the hard part:
+    > 
+    > The first time the `for` calls the generator object created from your function, it will run the code in your function from the beginning until it hits `yield`, then it'll return the first value of the loop. Then, each other call will run the loop you have written in the function one more time, and return the next value, until there is no value to return.
+    > 
+    > The generator is considered empty once the function runs but does not hit `yield` anymore. It can be because the loop had come to an end, or because you do not satisfy an `"if/else"` anymore.
+    > 
+    > ---
+    > 
+    > Your code explained
+    > -------------------
+    > 
+    > Generator:
+    > 
+    > ```python
+    > # Here you create the method of the node object that will return the generator
+    > def _get_child_candidates(self, distance, min_dist, max_dist):
+    > 
+    >     # Here is the code that will be called each time you use the generator object:
+    > 
+    >     # If there is still a child of the node object on its left
+    >     # AND if distance is ok, return the next child
+    >     if self._leftchild and distance - max_dist < self._median:
+    >         yield self._leftchild
+    > 
+    >     # If there is still a child of the node object on its right
+    >     # AND if distance is ok, return the next child
+    >     if self._rightchild and distance + max_dist >= self._median:
+    >         yield self._rightchild
+    > 
+    >     # If the function arrives here, the generator will be considered empty
+    >     # there is no more than two values: the left and the right children
+    > ```
+    > 
+    > Caller:
+    > 
+    > ```python
+    > # Create an empty list and a list with the current object reference
+    > result, candidates = list(), [self]
+    > 
+    > # Loop on candidates (they contain only one element at the beginning)
+    > while candidates:
+    > 
+    >     # Get the last candidate and remove it from the list
+    >     node = candidates.pop()
+    > 
+    >     # Get the distance between obj and the candidate
+    >     distance = node._get_dist(obj)
+    > 
+    >     # If distance is ok, then you can fill the result
+    >     if distance <= max_dist and distance >= min_dist:
+    >         result.extend(node._values)
+    > 
+    >     # Add the children of the candidate in the candidates list
+    >     # so the loop will keep running until it will have looked
+    >     # at all the children of the children of the children, etc. of the candidate
+    >     candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))
+    > 
+    > return result
+    > ```
+    > 
+    > This code contains several smart parts:
+    > 
+    > -   The loop iterates on a list but the list expands while the loop is being iterated :-) It's a concise way to go through all these nested data even if it's a bit dangerous since you can end up with an infinite loop. In this case, `candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))` exhausts all the values of the generator, but `while` keeps creating new generator objects which will produce different values from the previous ones since it's not applied on the same node.
+    >     
+    > -   The `extend()` method is a list object method that expects an iterable and adds its values to the list.
+    >     
+    > 
+    > Usually we pass a list to it:
+    > 
+    > ```python
+    > >>> a = [1, 2]
+    > >>> b = [3, 4]
+    > >>> a.extend(b)
+    > >>> print(a)
+    > [1, 2, 3, 4]
+    > ```
+    > 
+    > But in your code it gets a generator, which is good because:
+    > 
+    > 1.  You don't need to read the values twice.
+    > 2.  You may have a lot of children and you don't want them all stored in memory.
+    > 
+    > And it works because Python does not care if the argument of a method is a list or not. Python expects iterables so it will work with strings, lists, tuples and generators! This is called duck typing and is one of the reason why Python is so cool. But this is another story, for another question...
+    > 
+    > You can stop here, or read a little bit to see an advanced use of a generator:
+    > 
+    > Controlling a generator exhaustion
+    > ----------------------------------
+    > 
+    > ```python
+    > >>> class Bank(): # let's create a bank, building ATMs
+    > ...    crisis = False
+    > ...    def create_atm(self):
+    > ...        while not self.crisis:
+    > ...            yield "$100"
+    > >>> hsbc = Bank() # when everything's ok the ATM gives you as much as you want
+    > >>> corner_street_atm = hsbc.create_atm()
+    > >>> print(corner_street_atm.next())
+    > $100
+    > >>> print(corner_street_atm.next())
+    > $100
+    > >>> print([corner_street_atm.next() for cash in range(5)])
+    > ['$100', '$100', '$100', '$100', '$100']
+    > >>> hsbc.crisis = True # crisis is coming, no more money!
+    > >>> print(corner_street_atm.next())
+    > <type 'exceptions.StopIteration'>
+    > >>> wall_street_atm = hsbc.create_atm() # it's even true for new ATMs
+    > >>> print(wall_street_atm.next())
+    > <type 'exceptions.StopIteration'>
+    > >>> hsbc.crisis = False # trouble is, even post-crisis the ATM remains empty
+    > >>> print(corner_street_atm.next())
+    > <type 'exceptions.StopIteration'>
+    > >>> brand_new_atm = hsbc.create_atm() # build a new one to get back in business
+    > >>> for cash in brand_new_atm:
+    > ...    print cash
+    > $100
+    > $100
+    > $100
+    > $100
+    > $100
+    > $100
+    > $100
+    > $100
+    > $100
+    > ...
+    > ```
+    > 
+    > **Note:** For Python3 use`print(corner_street_atm.__next__())` or `print(next(corner_street_atm))`
+    > 
+    > It can be useful for various things like controlling access to a resource.
+    > 
+    > Itertools, your best friend
+    > ---------------------------
+    > 
+    > The itertools module contains special functions to manipulate iterables. Ever wish to duplicate a generator? Chain two generators? Group values in a nested list with a one liner? `Map / Zip` without creating another list?
+    > 
+    > Then just `import itertools`.
+    > 
+    > An example? Let's see the possible orders of arrival for a 4 horse race:
+    > 
+    > ```python
+    > >>> horses = [1, 2, 3, 4]
+    > >>> races = itertools.permutations(horses)
+    > >>> print(races)
+    > <itertools.permutations object at 0xb754f1dc>
+    > >>> print(list(itertools.permutations(horses)))
+    > [(1, 2, 3, 4),
+    >  (1, 2, 4, 3),
+    >  (1, 3, 2, 4),
+    >  (1, 3, 4, 2),
+    >  (1, 4, 2, 3),
+    >  (1, 4, 3, 2),
+    >  (2, 1, 3, 4),
+    >  (2, 1, 4, 3),
+    >  (2, 3, 1, 4),
+    >  (2, 3, 4, 1),
+    >  (2, 4, 1, 3),
+    >  (2, 4, 3, 1),
+    >  (3, 1, 2, 4),
+    >  (3, 1, 4, 2),
+    >  (3, 2, 1, 4),
+    >  (3, 2, 4, 1),
+    >  (3, 4, 1, 2),
+    >  (3, 4, 2, 1),
+    >  (4, 1, 2, 3),
+    >  (4, 1, 3, 2),
+    >  (4, 2, 1, 3),
+    >  (4, 2, 3, 1),
+    >  (4, 3, 1, 2),
+    >  (4, 3, 2, 1)]
+    > ```
+    > 
+    > Understanding the inner mechanisms of iteration
+    > -----------------------------------------------
+    > 
+    > Iteration is a process implying iterables (implementing the `__iter__()` method) and iterators (implementing the `__next__()` method). Iterables are any objects you can get an iterator from. Iterators are objects that let you iterate on iterables.
+    > 
+    > More about it in this article about [how does the for loop work](http://effbot.org/zone/python-for-statement.htm).
+    > 
+
+
 
 
 ### Column/Row operation
@@ -526,5 +958,3 @@
 
 
 
----
-↩️ back to [SUMMARY](SUMMARY.md)

@@ -1,5 +1,8 @@
 # VSCode__快速上手
 
+<!-- toc --> 
+[toc]
+
 ## 即時預覽HTML
 
 - [Preview - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=searKing.preview-vscode)

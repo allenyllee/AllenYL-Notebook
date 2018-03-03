@@ -12,6 +12,3 @@
 
     > [Spaces are illegal in URLs](https://url.spec.whatwg.org/#url-writing).  
 [Encode it to `%20`](http://stackoverflow.com/questions/497908/is-a-url-allowed-to-contain-a-space)?
-
----
-↩️ back to [SUMMARY](SUMMARY.md)

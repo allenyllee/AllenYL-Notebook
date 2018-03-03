@@ -1,5 +1,9 @@
 # Tensorflow__深度學習
 
+<!-- toc --> 
+[toc]
+
+
 ## API Reference
 - [All symbols in TensorFlow  |  TensorFlow](https://www.tensorflow.org/api_docs/python/)
 
@@ -24,6 +28,23 @@
     Closes this session.
     Calling this method frees all resources associated with the session.
 
+- [tf.Dimension.value  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/Dimension#value)
+    The value of this dimension, or None if it is unknown.
+
+- [tf.argmax  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/argmax)
+    Returns the index with the largest value across axes of a tensor. (deprecated arguments)
+
+- [tf.truncated_normal  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/truncated_normal)
+    Outputs random values from a truncated normal distribution.
+
+- [tf.identity  |  TensorFlow](https://www.tensorflow.org/versions/r1.2/api_docs/python/tf/identity)
+    Return a tensor with the same shape and contents as the input tensor or value.
+    
+- [tf.nn.dropout  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/nn/dropout)
+    Computes dropout.
+    With probability `keep_prob`, outputs the input element scaled up by `1 / keep_prob`, otherwise outputs `0`. The scaling is so that the expected sum is unchanged.
+
+    
 
 ## GPU Usage
 
@@ -593,7 +614,59 @@ plt.legend(loc = 4)
 plt.show()
 ```
 
+#### Save Model
 
+- save model to disk
+
+    ```python
+    saver = tf.train.Saver()
+    saver.save(sess, "saved_models/model.ckpt")
+    ```
+    
+- print current loss
+
+    ```python
+    print(sess.run(loss, feed_dict={
+                input_data:x_batch,
+                y_true:y_batch
+            }))
+    ```
+
+- clean graph
+
+    ```python
+    tf.reset_default_graph()
+    tf.global_variables()
+    ```
+
+#### Load Model
+
+- load model 之前要先回到前面重建Graph，建好之後再call restore
+
+    ```python
+    #rerun the graph
+    # allenyllee: 要回到 step1 重建 Graph
+    sess = tf.Session()
+    saver = tf.train.Saver()
+    saver.restore(sess, "saved_models/model.ckpt")
+    ```
+
+- 檢查 global variable 是否一致
+
+    ```python
+    tf.global_variables()
+    ```
+
+- 檢查loss是否與先前一致
+
+    ```python
+    print(sess.run(loss, feed_dict={
+                input_data:x_batch,
+                y_true:y_batch
+            }))
+    ```
+        
+        
 
 ## CNN
 

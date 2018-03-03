@@ -765,7 +765,7 @@
     ```
     
 * [If you open an pdf url of arxiv paper, then wants to jump to its abstract page, using this javascript as bookmarklet.](https://gist.github.com/allenyllee/0c90341680459203df6453b5d60d28f2)
-    
+
     ```javascript=
     // ===================
     // arxiv-pdf-to-abstract-url.js
@@ -815,7 +815,3 @@
         }
     })();
     ```
-
-
----
-↩️ back to [SUMMARY](SUMMARY.md)
