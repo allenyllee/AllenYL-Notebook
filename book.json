@@ -1,6 +1,6 @@
 {
     "plugins": [
-        "katex-plus",
+        "katex-full",
         "simple-page-toc",
         "styled-blockquotes",
         "splitter",
