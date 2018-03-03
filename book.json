@@ -1,6 +1,6 @@
 {
     "plugins": [
-        "katex-full",
+        "katex-full@git+https://github.com/SamLau95/gitbook-plugin-katex-plus",
         "simple-page-toc",
         "styled-blockquotes",
         "splitter",
