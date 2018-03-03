@@ -7,14 +7,14 @@
 
 - [原價屋估價](http://www.coolpc.com.tw/evaluate.php)
 
-- 主機：ASRock DeskMini250 GTX (__~$46400__) [time=Oct 07, 2018]
-    - 空機 (主機板+網卡) (__~$13900__)
-    - GPU：NVIDIA GTX1070 (MXM介面) (__~$22500__)
-    - CPU：Intel Pentium G4600 (3.6Ghz) (效能近i3-7100) (__~$2150__)
-    - RAM：Crucial DDR4-2400 16G (__~$4400__)
-    - SSD：Plextor M8PeG 256G NVMe  (__~$3450__)
-    - HDD：Seagate 2T SATA (2.5inch) (__~$3450__)
-- 螢幕：LG 22MP58VQ-P 22型AH-IPS寬螢幕 (__~$2588__)
+- 主機：ASRock DeskMini250 GTX (__~\$46400__) [time=Oct 07, 2018]
+    - 空機 (主機板+網卡) (__~\$13900__)
+    - GPU：NVIDIA GTX1070 (MXM介面) (__~\$22500__)
+    - CPU：Intel Pentium G4600 (3.6Ghz) (效能近i3-7100) (__~\$2150__)
+    - RAM：Crucial DDR4-2400 16G (__~\$4400__)
+    - SSD：Plextor M8PeG 256G NVMe  (__~\$3450__)
+    - HDD：Seagate 2T SATA (2.5inch) (__~\$3450__)
+- 螢幕：LG 22MP58VQ-P 22型AH-IPS寬螢幕 (__~\$2588__)
 
 - ASRock DeskMini250 介紹
     - [Computex 2017：看ASRock把GTX 1080塞到小鋼砲電腦裡 (124873) - 癮科技](https://www.cool3c.com/article/124873)
@@ -105,7 +105,7 @@
 
     Other sources around the web support this claim. Here is a quote [from doc-ok in 2013](http://doc-ok.org/?p=304) ([permalink](https://perma.cc/GH7A-8UUX)).
 
-    > For comparison, an "entry-level" $700 Quadro 4000 is significantly slower than a $530 high-end GeForce GTX 680, at least according to my measurements using several Vrui applications, and the closest performance-equivalent to a GeForce GTX 680 I could find was a Quadro 6000 for a whopping $3660.
+    > For comparison, an "entry-level" \$700 Quadro 4000 is significantly slower than a \$530 high-end GeForce GTX 680, at least according to my measurements using several Vrui applications, and the closest performance-equivalent to a GeForce GTX 680 I could find was a Quadro 6000 for a whopping \$3660.
 
     Specific to ML, including deep learning, there is a [Kaggle forum discussion dedicated to this subject](https://www.kaggle.com/general/11332) (Dec 2014, [permalink](https://perma.cc/RBZ6-YX9F)), which goes over comparisons between the Quadro, GeForce, and Tesla series:
 
@@ -131,7 +131,7 @@
     
     > The best **double precision** performance per dollar is, by far, found with a Kepler based Titan or Titan Black, not a Maxwell or Pascal Titan X.  
     >
-    >　A Titan Black is about $500 on eBay (used) and gives you about 1700 DP gigaflops. A Titan is about $350 and gives about 1400 DP gigaflops.  
+    >　A Titan Black is about \$500 on eBay (used) and gives you about 1700 DP gigaflops. A Titan is about \$350 and gives about 1400 DP gigaflops.  
     >
     > Your Maxwell Titan X is only about 192 DP gigaflops, but has a tremendous single precision throughput of 6000 gigaflops. Pascal Titan X is 300 DP, 10000 SP.  
     >
@@ -676,9 +676,9 @@
 
     When we initially benchmarked cloud-GPUs I was actually surprised to discover that **in general cloud-based GPUs are very slow.**
 
-    If you were to buy one of these cards it would set you back about 5K$ — so if you live by the "if it’s expensive it must be good"-rule you would figure they would be awesome for deep learning, right?
+    If you were to buy one of these cards it would set you back about 5K\$ — so if you live by the "if it’s expensive it must be good"-rule you would figure they would be awesome for deep learning, right?
 
-    Well.. They’re not. **A Titan X Pascal which you can get for 1K$ will beat a Tesla K40/K80 any day!** What’s the deal with that?
+    Well.. They’re not. **A Titan X Pascal which you can get for 1K\$ will beat a Tesla K40/K80 any day!** What’s the deal with that?
 
     > Titan: 15 seconds pr. batchsize 64   
     > Tesla: 45 seconds pr. batchsize 32
@@ -697,7 +697,7 @@
 
     But let’s not forget that the **Tesla K80s are 6x slower than the Titan’s**. This means that I need to wait 6x longer for the K80s to finish training the same job as the Titans.
 
-    Let’s say that we need to train a job that would take one week (168hours) to train on the on-premise server. Because the K80s have 6x lower computing efficiency this would take the K80s 1008 hours (168*6) resulting in a cost of 3.6K$ or **almost half the price of my on-premise server.**
+    Let’s say that we need to train a job that would take one week (168hours) to train on the on-premise server. Because the K80s have 6x lower computing efficiency this would take the K80s 1008 hours (168*6) resulting in a cost of 3.6K\$ or **almost half the price of my on-premise server.**
 
     > On-premise: 2. Cloud: 0
 
@@ -739,9 +739,9 @@
 
     __The most important reason was saving time while prototyping models — if they trained faster, the feedback time would be shorter.__ Thus it would be easier for my brain to connect the dots between the assumptions I had for the model and its results.
 
-    __Then I wanted to save money — I was using Amazon Web Services (AWS), which offered P2 instances with Nvidia K80 GPUs. Lately, the AWS bills were around $60–70/month with a tendency to get larger. Also, it is expensive to store large datasets, like ImageNet.__
+    __Then I wanted to save money — I was using Amazon Web Services (AWS), which offered P2 instances with Nvidia K80 GPUs. Lately, the AWS bills were around \$60–70/month with a tendency to get larger. Also, it is expensive to store large datasets, like ImageNet.__
 
-    __A sensible budget for me would be about 2 years worth of my current compute spending. At $70/month for AWS, this put it at around $1700 for the whole thing.__
+    __A sensible budget for me would be about 2 years worth of my current compute spending. At \$70/month for AWS, this put it at around \$1700 for the whole thing.__
     
     
 
