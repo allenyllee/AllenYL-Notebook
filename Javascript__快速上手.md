@@ -3,6 +3,13 @@
 <!-- toc --> 
 [toc]
 
+
+
+
+
+
+
+
 ## Useful Tool
 * 線上JavaScript編輯器
     * [Dashboard - JSFiddle - Online JavaScript Editor - jQuery, Angular, Backbone, Underscore, Knockout, YUI](https://jsfiddle.net/user/dashboard/)
@@ -87,6 +94,10 @@
 ## Library
 
 * [eligrey/FileSaver.js: An HTML5 saveAs() FileSaver implementation](https://github.com/eligrey/FileSaver.js/)
+
+- [KaTeX - cdnjs.com - The best FOSS CDN for web related libraries to speed up your websites!](https://cdnjs.com/libraries/KaTeX/0.9.0-beta1)
+
+
 
 ## Debug
 
@@ -793,6 +804,8 @@
     javascript:(function()%7Bvar%20str%20%3D%20location.href%3Bstr%20%3D%20str.replace(%2F%5C.pdf%2Fg%2C%20%22%22)%3Bstr%20%3D%20str.replace(%2Fpdf%2Fg%2C%20%22abs%22)%3Blocation.href%20%3D%20str%7D)()
     ```
 
+  __Firefox Addon__
+  - [imurray/redirectify: Browser extension to redirect pages based on rules. Intended to stop the browser following links straight to the PDF of a paper, but instead to go first to the HTML index page for the paper.](https://github.com/imurray/redirectify)
 
 
 ### __Example__

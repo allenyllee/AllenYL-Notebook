@@ -1,7 +1,6 @@
 # [SUMMARY](SUMMARY.md)
 [//]: # ( # [SUMMARY](https://hackmd.io/EYVghiBmAMBs0FoCcBmSBjBAWdBTATAmLBgisegIzpLSggAcQA==?view)
 
-
 ## AllenYL Notebook
 
 - [SUMMARY](SUMMARY.md)
@@ -18,11 +17,14 @@
 - [AI__硬體介紹與環境設定](AI__硬體介紹與環境設定.md)
 [//]: # ( - [AI__硬體介紹與環境設定](https://hackmd.io/KwMwnAjBAcBMDGBaALBAJsFA2ARpghsMgMyJa6wQgLRoj5A=?view)
 
+- [Linux_Shell__快速上手](Linux_Shell__快速上手.md)
+[//]: # ( - [Linux_Shell__快速上手](https://hackmd.io/z-8u74PSQmmxfWoqhbz0Kg?view)
+
+- [Docker__快速上手](Docker__快速上手.md)
+[//]: # ( - [Docker__快速上手](https://hackmd.io/KYtTlzYrSrCi5rNem_qiIQ?view)
+
 - [Jupyter_Notebook__快速上手](Jupyter_Notebook__快速上手.md)
 [//]: # ( - [Jupyter_Notebook__快速上手](https://hackmd.io/GYExwNgFhBOBaAjAdhAZnlRBDBAONEAY3hAAYi8QYRtKog==?view)
-
-- [Python__快速上手](Python__快速上手.md)
-[//]: # ( - [Python__快速上手](https://hackmd.io/KzCGAZwFgEwNgLQE4CMBTYCoHYBmAjBfAZn12RWACYBjfcOK3GGoA===?view)
 
 ## 統計與資料分析
 
@@ -36,6 +38,9 @@
 
 - [機器學習理論](機器學習理論.md)
 [//]: # ( - [機器學習理論](https://hackmd.io/CYNgpgrALBBMsFoCcECMB2BV0DNgIEMCAOAYwWCjBFNnWGIGZYAjIA==?view)
+
+- [Python__快速上手](Python__快速上手.md)
+[//]: # ( - [Python__快速上手](https://hackmd.io/KzCGAZwFgEwNgLQE4CMBTYCoHYBmAjBfAZn12RWACYBjfcOK3GGoA===?view)
 
 - [Python__機器學習](Python__機器學習.md)
 [//]: # ( - [Python__機器學習](https://hackmd.io/EYQwrAbBwIwEwFoDGSAmwEBZOoGYOAlwGYFiB2ADggAZi5UBTGgTkaA=?view)
@@ -51,6 +56,9 @@
 - [Tensorflow__深度學習](Tensorflow__深度學習.md)
 [//]: # ( - [Tensorflow__深度學習](https://hackmd.io/GwBg7AZiCmIMwFoAmIBMAOBAWYBWLC6AhgMZELRGolxinQkBGEQA?view)
 
+- [Keras__深度學習](Keras__深度學習.md)
+[//]: # ( - [Keras__深度學習](https://hackmd.io/gVMx4JeHRWSvNSIC1v3WUQ?view)
+
 ## 專案管理、開發、文件撰寫
 
 - [Git__快速上手](Git__快速上手.md)
@@ -62,16 +70,67 @@
 - [Markdown__快速上手](Markdown__快速上手.md)
 [//]: # ( - [Markdown__快速上手](https://hackmd.io/IwIwJgTAnAhg7HAtAZjsgHIgLFgrEmAU2AAYUJcA2OAY0LCzDCiA?view)
 
-## 其他
+- [Regular_Expression__快速上手](Regular_Expression__快速上手.md)
+[//]: # ( - [Regular_Expression__快速上手](https://hackmd.io/MtW4sdSZSqCLzocQ3yIfFQ?view)
 
 - [Latex__快速上手](Latex__快速上手.md)
 [//]: # ( - [Latex__快速上手](https://hackmd.io/IYBhCZwFgdhBaAHAYwJzPlAzCY8BGWAJlvMMogKz4BsyRwW+RQA=?view)
 
+- [Scrum__敏捷開發](Scrum__敏捷開發.md)
+[//]: # ( - [Scrum__敏捷開發](https://hackmd.io/53CpT2fOQBO5iH7-6l_ozg?view)
+
+- [DevOps__產品維運](DevOps__產品維運.md)
+[//]: # ( - [DevOps__產品維運](https://hackmd.io/EpIkTIKjSbSgtjwPoxeU3g?view)
+
+## 嵌入式硬體開發
+
+- [BIOS__韌體開發](BIOS__韌體開發.md)
+[//]: # ( - [BIOS__韌體開發](https://hackmd.io/wuCSi592Q_S6iXKAFrGwGw?view)
+
+[SSD__韌體開發](SSD__韌體開發.md)
+[//]: # ( - [SSD__韌體開發](https://hackmd.io/5N-4xeE7RjyZBu7A4lwy8Q?view)
+
+- [Linux_Driver__開發](Linux_Driver__開發.md)
+[//]: # ( - [Linux_Driver__開發](https://hackmd.io/SQhzVHqoTa2XZWSUWwIe0A?view)
+
+- [Raspberry_Pi__開發](Raspberry_Pi__開發.md)
+[//]: # ( - [Raspberry_Pi__開發](https://hackmd.io/BCRlkWGgTfK_ZVNi5dv2Rg?view)
+
+- [ARM__架構](ARM__架構.md)
+[//]: # ( - [ARM__架構](https://hackmd.io/8fW0bMWvRA-4uCnVuaQ5LA?view)
+
+- [Intel_X86_X64__架構](Intel_X86_X64__架構.md)
+[//]: # ( - [Intel_X86_X64__架構](https://hackmd.io/MBEsuE_ORtOVcFhhI61QZQ?view)
+
+- [PCI_PCIE__架構](PCI_PCIE__架構.md)
+[//]: # ( - [PCI_PCIE__架構](https://hackmd.io/P51zpeD2RJOMTxG4VAq6qw?view)
+
+## 網路應用
+
 - [Javascript__快速上手](Javascript__快速上手.md)
 [//]: # ( - [Javascript__快速上手](https://hackmd.io/MYFgTAJgnAZmwFoCsMCMAGBJUUwDgGZcEA2EAQxgCMBTAqMAgpIA?view)
 
-- [BlockChain__快速上手](BlockChain__快速上手.md)
-[//]: # ( - [BlockChain__快速上手](https://hackmd.io/OwYwzADArAHATAQwLQQJwBYBmT0BMbBIyYCmARksBBAugIwBsUCUzQA=?view)
+- [BlockChain__應用](BlockChain__應用.md)
+[//]: # ( - [BlockChain__應用](https://hackmd.io/OwYwzADArAHATAQwLQQJwBYBmT0BMbBIyYCmARksBBAugIwBsUCUzQA=?view)
+
+- [Web__前後端](Web__前後端.md)
+[//]: # ( - [Web__前後端](https://hackmd.io/EwDgDAxmDMCcAmBaMBTAZhRAWe8uIENoxhEBWARngKwLLAHZ4AjBoA==?view)
+
+## 電腦圖學
+
+- [OpenGL__繪圖](OpenGL__繪圖.md)
+[//]: # ( - [OpenGL__繪圖](https://hackmd.io/mabMtVJkRfOYg5VhGd2cww?view)
+
+- [CUDA__快速上手](CUDA__快速上手.md)
+[//]: # ( - [CUDA__快速上手](https://hackmd.io/DsVkBwjrTju1JcYqXq8ktA?view)
+
+- [3D__物理引擎](3D__物理引擎.md)
+[//]: # ( - [3D__物理引擎](https://hackmd.io/HndCbLxrTZKyP_5e2JGhMw?view)
+
+## 其他
+
+- [英文筆記](英文筆記.md)
+[//]: # ( - [英文筆記](https://hackmd.io/kwMuJHt4Qdinvy4pT63xdg?view)
 
 - [Windows__問題排解](Windows__問題排解.md)
 [//]: # ( - [Windows__問題排解](https://hackmd.io/IwJgHApiECYMwFpgGNkE4EBYAMbFswDNkEYB2ZYAQxwCMqRk4g==?view)
@@ -81,7 +140,4 @@
 
 - [Physics](Physics.md)
 [//]: # ( - [Physics](https://hackmd.io/KwIwLAxgnApg7GAtAJhDAHIsUAMVECGYOwiIBFIOMAbAGYjBxA==?view)
-
-- [Web__前後端](Web__前後端.md)
-[//]: # ( - [Web__前後端](https://hackmd.io/EwDgDAxmDMCcAmBaMBTAZhRAWe8uIENoxhEBWARngKwLLAHZ4AjBoA==?view)
 

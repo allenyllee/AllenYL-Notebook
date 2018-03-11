@@ -350,6 +350,25 @@
 
 #### for Linux
 
+##### system information
+
+- cpu info
+    - [8 commands to check cpu information on Linux – BinaryTides](https://www.binarytides.com/linux-cpu-information/)
+    - top
+    - cat /proc/cpuinfo
+    - lscpu
+
+- memory info
+    - [5 commands to check memory usage on Linux – BinaryTides](https://www.binarytides.com/linux-command-check-memory-usage/)
+    - cat /proc/meminfo
+    - free -g (in GB)
+    - free -m (in MB)
+    - 
+
+- gpu info
+    - watch nvidia-smi
+
+
 
 #### for Windows
 
@@ -362,7 +381,7 @@
 - [aleju/imgaug: Image augmentation for machine learning experiments.](https://github.com/aleju/imgaug)
 
 
-##### Solved
+##### Troubleshooting
 
 - [python - DLL load failed error when importing cv2 - Stack Overflow](https://stackoverflow.com/questions/43184887/dll-load-failed-error-when-importing-cv2)
 

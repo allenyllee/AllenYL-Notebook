@@ -6,33 +6,27 @@
 ## Basic Tutorial
 * [Python Tutorial](https://www.tutorialspoint.com/python/index.htm)
 
+## Packages
 
-## API reference
+- [Python Extension Packages for Windows - Christoph Gohlke](https://www.lfd.uci.edu/~gohlke/pythonlibs/)
 
-- [API Reference — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/api.html?highlight=dataframe#dataframe)
-- [API Reference — scikit-learn 0.19.1 documentation](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.datasets)
-    - [Choosing the right estimator — scikit-learn 0.19.1 documentation](http://scikit-learn.org/stable/tutorial/machine_learning_map/index.html)
-    - [Classifier comparison — scikit-learn 0.19.1 documentation](http://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html)
-    - [Comparing Python Clustering Algorithms — hdbscan 0.8.1 documentation](https://hdbscan.readthedocs.io/en/latest/comparing_clustering_algorithms.html)
+## Usage
 
-- [The Matplotlib API — Matplotlib 2.1.1 documentation](https://matplotlib.org/api/index.html)
-    - [The Pyplot API — Matplotlib 2.1.1 documentation](https://matplotlib.org/api/pyplot_summary.html)
-        - [Pyplot tutorial — Matplotlib 2.0.2 documentation](https://matplotlib.org/users/pyplot_tutorial.html)
-        - [Tight Layout guide — Matplotlib 2.0.2 documentation](https://matplotlib.org/users/tight_layout_guide.html)
-        - [A simple plot with a custom dashed line — Matplotlib 2.1.0 documentation](https://matplotlib.org/2.1.0/gallery/lines_bars_and_markers/line_demo_dash_control.html)
-        - [Line-style reference — Matplotlib 2.1.2 documentation](https://matplotlib.org/gallery/lines_bars_and_markers/line_styles_reference.html?highlight=line%20style%20reference)
-- [Routines — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/routines.html)
-    - [Index — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/genindex.html)
+### Pretty Print
 
-- [SciPy — SciPy v1.0.0 Reference Guide](https://docs.scipy.org/doc/scipy-1.0.0/reference/)
-    - [Index — SciPy v1.0.0 Reference Guide](https://docs.scipy.org/doc/scipy-1.0.0/reference/genindex.html)
-- [The Python Standard Library — Python 3.3.7 documentation](https://docs.python.org/3.3/library/index.html)
-    - [Python Tutorial](https://www.tutorialspoint.com/python/index.htm)
+- [8.11. pprint — Data pretty printer — Python 3.3.7 documentation](https://docs.python.org/3.3/library/pprint.html?highlight=pprint#module-pprint)
+    
+    - __pprint.pprint(_object_, _stream=None_, _indent=1_, _width=80_, _depth=None_)__
+        Prints the formatted representation of _object_ on _stream_, followed by a newline.
 
-- [API Reference — graphviz 0.8.2 documentation](https://graphviz.readthedocs.io/en/stable/api.html)
-    - [User Guide — graphviz 0.8.2 documentation](https://graphviz.readthedocs.io/en/stable/manual.html)
+### Regular Expresion
 
-## Default Method
+- [6.2. re — Regular expression operations — Python 3.3.7 documentation](https://docs.python.org/3.3/library/re.html?highlight=re#re.compile)
+    - __re.compile(_pattern_, _flags=0_)[](https://docs.python.org/3.3/library/re.html?highlight=re#re.compile "Permalink to this definition")__
+        Compile a regular expression pattern into a regular expression object, which can be used for matching using its [match()](https://docs.python.org/3.3/library/re.html?highlight=re#re.match "re.match") and [search()](https://docs.python.org/3.3/library/re.html?highlight=re#re.search "re.search") methods, described below.
+
+
+
 
 
 ### String Operation
@@ -62,171 +56,6 @@
     > a-b-c
     > ```
 
-
-## Library 
-
-### Python Module
-
-- [8.11. pprint — Data pretty printer — Python 3.3.7 documentation](https://docs.python.org/3.3/library/pprint.html?highlight=pprint#module-pprint)
-    
-    - __pprint.pprint(_object_, _stream=None_, _indent=1_, _width=80_, _depth=None_)__
-        Prints the formatted representation of _object_ on _stream_, followed by a newline.
-
-- [6.2. re — Regular expression operations — Python 3.3.7 documentation](https://docs.python.org/3.3/library/re.html?highlight=re#re.compile)
-    - __re.compile(_pattern_, _flags=0_)[](https://docs.python.org/3.3/library/re.html?highlight=re#re.compile "Permalink to this definition")__
-        Compile a regular expression pattern into a regular expression object, which can be used for matching using its [match()](https://docs.python.org/3.3/library/re.html?highlight=re#re.match "re.match") and [search()](https://docs.python.org/3.3/library/re.html?highlight=re#re.search "re.search") methods, described below.
-
-
-
-### pyplot
-
-- [matplotlib.pyplot.imshow — Matplotlib 2.1.2 documentation](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.imshow.html#matplotlib.pyplot.imshow)
-
-    - 加上 interpolation='bicubic' 可以平滑化
-
-        before:
-
-        ```python=
-        plt.imshow(example_grad, cmap = 'rainbow') 
-        ```
-        ![](https://screenshotscdn.firefoxusercontent.com/images/5c21da21-13d8-4c4e-950e-20372715c4f1.png)
-
-        after:
-
-        ```python=
-        plt.imshow(example_grad, cmap = 'rainbow',  interpolation='bicubic') 
-        ```
-        ![](https://screenshotscdn.firefoxusercontent.com/images/b771dbf5-c3b0-4a37-b142-cd74a145f2c1.png)
-
-- [matplotlib.pyplot.subplot — Matplotlib 2.1.1 documentation](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html#matplotlib.pyplot.subplot)
-
-    `plot_dict` 內容結構為 noise:axis 的字典, 其中 noise 為字典的 key 值, 而 axis 值作為 subplot 分割的 row, col, index。
-
-    倘若 row, col 和 index 皆可用單位數字表示，則可以用單個 3 位數字來指定。
-
-    ```python
-    # 指定圖表的大小 (寬, 高) 單位為英吋
-    rcParams['figure.figsize'] = 8, 4
-    # 1 row, 4 cols, 從左到右
-    plot_dict = { 1: 141, 9: 142, 18: 143, 1000: 144 }
-    linear_prediction(plot_dict)
-
-    # 指定圖表的大小 (寬, 高) 單位為英吋
-    rcParams['figure.figsize'] = 8, 10
-    # 2 rows, 2 cols, 從左至右，由上到下
-    plot_dict = { 1: 221, 9: 222, 18: 223, 1000: 224}
-    linear_prediction(plot_dict)
-    ```
-
-### numpy
-
-- [numpy.array — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.array.html#numpy.array)
-    Create an array.
-
-- [numpy.eye — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.eye.html#numpy.eye)
-    Return a 2-D array with ones on the diagonal and zeros elsewhere.
-
-- [numpy.ma.max — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.ma.max.html#numpy.ma.max)
-    Return the maximum along a given axis.
-
-- [numpy.nonzero — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.nonzero.html#numpy.nonzero)
-    Return the indices of the elements that are non-zero.
-
-- [numpy.ma.shape — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.ma.shape.html#numpy.ma.shape)
-    Return the shape of an array.
-
-- [numpy.arange — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.arange.html#numpy.arange)
-    Return evenly spaced values within a given interval.
-
-- [numpy.nditer — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.nditer.html#numpy.nditer)
-    Efficient multi-dimensional iterator object to iterate over arrays. To get started using this object, see the [_introductory guide to array iteration_](https://docs.scipy.org/doc/numpy-1.12.0/reference/arrays.nditer.html#arrays-nditer).
-- [numpy.ma.argmax — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.ma.argmax.html#numpy.ma.argmax)
-    Returns array of indices of the maximum values along the given axis. Masked values are treated as if they had the value fill_value.
-- [numpy.append — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.append.html#numpy.append)
-    Append values to the end of an array.
-
-- [numpy.reshape — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.reshape.html#numpy.reshape)
-    Gives a new shape to an array without changing its data.
-
-    ```python
-    >>> a = np.arange(6).reshape((3, 2))
-    >>> a
-    array([[0, 1],
-           [2, 3],
-           [4, 5]]) 
-    ```
-
-    ```python
-    >>> np.reshape(a, (2, 3)) # C-like index ordering
-    array([[0, 1, 2],
-           [3, 4, 5]])
-    ```
-
-- [numpy.ma.copy — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.ma.copy.html#numpy.ma.copy)
-    Return a copy of the array.
-
-
-
-
-### Pandas
-- [pandas.DataFrame.from_records — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.from_records.html#pandas.DataFrame.from_records)
-    Convert structured or record ndarray to DataFrame
-
-- [pandas.DataFrame.apply — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html)
-    Applies function along input axis of DataFrame.
-
-- [pandas.get_dummies — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.get_dummies.html)
-    Convert categorical variable into dummy/indicator variables
-
-    ```python
-    >>> import pandas as pd
-    >>> s = pd.Series(list('abca'))
-
-    >>> pd.get_dummies(s)
-
-       a  b  c
-    0  1  0  0
-    1  0  1  0
-    2  0  0  1
-    3  1  0  0
-    ```
-
-
-- [pandas.Series.str.contains — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.str.contains.html#pandas.Series.str.contains)
-    Return boolean Series/`array` whether given pattern/regex is contained in each string in the Series/Index.
-
-    ```python
-    index = pd.Series([True,False,True,False]) 
-    data = pd.DataFrame(['a','b_simpson','c','d_simpson'], columns=['col1'])
-
-    # 使用 Series 做 index，丟到 dataframe 會回傳 index 為 true 的項目
-    print(data[index])
-    ```
-
-    ```python
-      col1
-    0    a
-    2    c
-    ```
-
-    ```python
-    # 使用 str.contains 做 index，丟到 dataframe 會回傳 index 為 true 的項目
-    # 就是 col1 中包含 'simpson' 的項目
-    print(data[data.col1.str.contains('simpson')]) 
-    ```
-
-    ```python
-            col1
-    1  b_simpson
-    3  d_simpson
-    ```
-
-
-
-
-
-
-## Usage
 
 ### Math 
 
@@ -875,6 +704,147 @@
     > os.remove('tmp')
     > ```
 
+### get running Kernel path
+
+- [python - Jupyter notebook xgboost import - Stack Overflow](https://stackoverflow.com/questions/44856105/jupyter-notebook-xgboost-import)
+
+    > Running a shell escape `!pip3` doesn't guarantee that it will install in the kernel you are running. Try:
+    > 
+    > ```
+    > import sys
+    > print(sys.base_prefix)
+    > ```
+    > 
+    > and see if this matches either of your terminal pythons. You should be able to run `<base_prefix>/bin/pip install <package>` to ensure it is in the right `site-packages`.
+    > 
+    > You can also look at which `python` your kernel is running by looking in `kernel.json` most likely in `~/Library/Jupyter/kernels/<kernel>/kernel.json`.
+    > 
+    > Note: you can also programmatically install packages with:
+    > 
+    > ```
+    > import pip
+    > pip.main(['install', '<package>'])
+    > ```
+    > 
+    > which will force it to be in the right `site-packages` for your kernel.
+    > 
+
+
+### indexing & slicing
+
+- [list - Understanding Python's slice notation - Stack Overflow](https://stackoverflow.com/questions/509211/understanding-pythons-slice-notation)
+
+    > It's pretty simple really:
+    > 
+    > ```
+    > a[start:end] # items start through end-1
+    > a[start:]    # items start through the rest of the array
+    > a[:end]      # items from the beginning through end-1
+    > a[:]         # a copy of the whole array
+    > ```
+    > 
+    > There is also the `step` value, which can be used with any of the above:
+    > 
+    > ```
+    > a[start:end:step] # start through not past end, by step
+    > ```
+    > 
+    > The key point to remember is that the `:end` value represents the first value that is _not_ in the selected slice. So, the difference beween `end` and `start` is the number of elements selected (if `step` is 1, the default).
+    > 
+    > The other feature is that `start` or `end` may be a _negative_ number, which means it counts from the end of the array instead of the beginning. So:
+    > 
+    > ```
+    > a[-1]    # last item in the array
+    > a[-2:]   # last two items in the array
+    > a[:-2]   # everything except the last two items
+    > ```
+    > 
+    > Python is kind to the programmer if there are fewer items than you ask for. For example, if you ask for `a[:-2]` and `a` only contains one element, you get an empty list instead of an error. Sometimes you would prefer the error, so you have to be aware that this may happen.
+
+    > and a\[::-1\] to reverse a string. – [Christopher Mahan](https://stackoverflow.com/users/479/christopher-mahan "5,181 reputation") [Feb 3 '09 at 23:54](https://stackoverflow.com/questions/509211/understanding-pythons-slice-notation#comment323779_509295)
+
+    > Also can be important that `[:]` returns a [`shallow copy`](http://docs.python.org/2/library/copy.html) of a list. it means that every slice notation returns a list which have new address in memory, but its elements would have same addresses that elements of source list have. – [Gill Bates](https://stackoverflow.com/users/1818608/gill-bates "1,959 reputation") [Dec 30 '12 at 17:07](https://stackoverflow.com/questions/509211/understanding-pythons-slice-notation#comment19491969_509295)
+
+ - [Python list error: [::-1] step on [:-1] slice - Stack Overflow](https://stackoverflow.com/questions/41430791/python-list-error-1-step-on-1-slice)
+
+    > **The first `-1` in `a[:-1:-1]` doesn't mean what you think it does.**
+    > 
+    > In slicing, negative start/end indices are not interpreted literally. Instead, they are used to conveniently refer to the end of the list (i.e. they are relative to `len(a)`). This happens irrespectively of the direction of the slicing.
+    > 
+    > This means that
+    > 
+    > ```
+    > a[:-1:-1]
+    > ```
+    > 
+    > is equivalent to
+    > 
+    > ```
+    > a[:len(a)-1:-1]
+    > ```
+    > 
+    > When omitted during reverse slicing, the start index defaults to `len(a)-1`, making the above equivalent to
+    > 
+    > ```
+    > a[len(a)-1:len(a)-1:-1]
+    > ```
+    > 
+    > This always gives an empty list, since the start and end indices are the same and the end index is exclusive.
+    > 
+    > To slice in reverse up to, and including, the zeroth element you can use any of the following notations:
+    > 
+    > ```
+    > >>> a[::-1]
+    > [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+    > >>> a[:None:-1]
+    > [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+    > >>> a[:-len(a)-1:-1]
+    > [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+    > ```
+    > 
+
+### One-line for loop
+
+- [Python Single Line For Loops - Treehouse Blog](http://blog.teamtreehouse.com/python-single-line-loops)
+    ```python
+    doubled = [thing for thing in list_of_things]
+    ```
+
+### unpack list
+
+- [Unpack a list in Python? - Stack Overflow](https://stackoverflow.com/questions/3480184/unpack-a-list-in-python)
+    
+    > ```python
+    > my_list = ['red', 'blue', 'orange']
+    > function_that_needs_strings('red', 'blue', 'orange') # works!
+    > function_that_needs_strings(my_list) # breaks!
+    > ```
+
+    > ```python
+    > function_that_needs_strings(*my_list) # works!
+    > ```
+    > 
+    > [You can read all about it here.](https://docs.python.org/2/tutorial/controlflow.html#unpacking-argument-lists)
+
+- [Homunculus: Unpacking "some" list elements in Python](https://anothercomputingblog.blogspot.tw/2010/05/functional-unpacking-style.html)
+
+    __Catch-all unpacking in Python 3.x__
+    
+    ```python
+    list = \[1, 2, 3, 4\]
+    a, b, *rest = list
+    ```
+    
+    __Catch-all unpacking in Python 2.x__
+
+    ```python
+    list = [1, 2, 3, 4]
+    (a, b), rest = list[:2], list[2:] # The first and second elements are in
+    ```
+
+
+## Anaconda
+
 ### Virtual environments
 
 - [Create virtual environments for python with conda](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/)
@@ -955,6 +925,24 @@
 
     > simply deleted folder `C:\Program Files\Miniconda2\envs\ENV1\`
 
+### clean packages
 
+- [conda clean — Conda documentation](https://conda.io/docs/commands/conda-clean.html)
+
+    ```shell
+    conda clean
+    ```
+
+
+## Troubleshooting
+
+- [[問題] python讀檔時不認得中文字？ - 看板 Python - 批踢踢實業坊](https://www.ptt.cc/bbs/Python/M.1412756706.A.390.html)
+
+    Symptom:
+    `UnicodeDecodeError: 'cp950' codec can't decode byte 0xe6 in position 6: illegal multibyte sequence`
+    
+    Solution:
+    指定open的 encoding 為 utf8
+    `f = open('test.txt', encoding = 'utf8')`
 
 

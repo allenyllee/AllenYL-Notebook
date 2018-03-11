@@ -46,160 +46,115 @@
 
     
 
-## GPU Usage
+- [tf.Session  |  TensorFlow](https://www.tensorflow.org/versions/r1.1/api_docs/python/tf/Session#run)
+    - run
+        Runs operations and evaluates tensors in `fetches`.
 
-- [Using GPUs  |  TensorFlow](https://www.tensorflow.org/programmers_guide/using_gpu#allowing_gpu_memory_growth)
+### RNN
 
-    Logging Device placement
-    ------------------------
+- [tf.contrib.rnn.BasicRNNCell  |  TensorFlow](https://www.tensorflow.org/versions/r1.0/api_docs/python/tf/contrib/rnn/BasicRNNCell)
+    - zero_state(batch_size, dtype)
+        Return zero-filled state tensor(s).
 
-    To find out which devices your operations and tensors are assigned to, create the session with `log_device_placement` configuration option set to `True`.
+- [tf.truncated_normal  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/truncated_normal)
+    Outputs random values from a truncated normal distribution.
 
-    ```python
-    # Creates a graph.
-    a = tf.constant([1.0,   2.0,   3.0,   4.0,   5.0,   6.0], shape=[2,   3], name='a')
-    b = tf.constant([1.0,   2.0,   3.0,   4.0,   5.0,   6.0], shape=[3,   2], name='b')
-    c = tf.matmul(a, b)  
-    # Creates a session with log_device_placement set to True.
-    sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))  
-    # Runs the op.  
-    print(sess.run(c))  
-    ```
+    The generated values follow a normal distribution with specified mean and standard deviation, except that values whose magnitude is more than 2 standard deviations from the mean are dropped and re-picked.
+    
+- [tf.gradients  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/gradients)
+    Constructs symbolic derivatives of sum of `ys` w.r.t. x in `xs`.
 
-    Manual device placement
-    -----------------------
+- [tf.trainable_variables  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/trainable_variables)
+    Returns all variables created with `trainable=True`.
 
-    If you would like a particular operation to run on a device of your choice instead of what's automatically selected for you, you can use `with tf.device` to create a device context such that all the operations within that context will have the same device assignment.
+    When passed `trainable=True`, the `Variable()` constructor automatically adds new variables to the graph collection `GraphKeys.TRAINABLE_VARIABLES`. This convenience function returns the contents of that collection.
 
-    ```python
-    # Creates a graph.  
-    with tf.device('/cpu:0'):
-        a = tf.constant([1.0,   2.0,   3.0,   4.0,   5.0,   6.0], shape=[2,   3], name='a')
-        b = tf.constant([1.0,   2.0,   3.0,   4.0,   5.0,   6.0], shape=[3,   2], name='b')
-    c = tf.matmul(a, b)  
-    # Creates a session with log_device_placement set to True.
-    sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))  
-    # Runs the op.  
-    print(sess.run(c))  
-    ```
+- [tf.clip_by_global_norm  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/clip_by_global_norm)
+    Clips values of multiple tensors by the ratio of the sum of their norms.
 
-    Allowing GPU memory growth
-    --------------------------
+    To perform the clipping, the values `t_list[i]` are set to:
 
-    By default, TensorFlow maps nearly all of the GPU memory of all GPUs (subject to [`CUDA_VISIBLE_DEVICES`](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#env-vars)) visible to the process. This is done to more efficiently use the relatively precious GPU memory resources on the devices by reducing [memory fragmentation](https://en.wikipedia.org/wiki/Fragmentation_(computing)).
+    `t_list[i]   * clip_norm / max(global_norm, clip_norm)  
+    `
 
-    In some cases it is desirable for the process to only allocate a subset of the available memory, or to only grow the memory usage as is needed by the process. TensorFlow provides two Config options on the Session to control this.
+    where:
 
-    The first is the `allow_growth` option, which attempts to allocate only as much GPU memory based on runtime allocations: it starts out allocating very little memory, and as Sessions get run and more GPU memory is needed, we extend the GPU memory region needed by the TensorFlow process. Note that we do not release memory, since that can lead to even worse memory fragmentation. To turn this option on, set the option in the ConfigProto by:
+    `global_norm = sqrt(sum([l2norm(t)**2   for t in t_list]))  
+    `
 
-    ```python
-    config = tf.ConfigProto()  
-    config.gpu_options.allow_growth =   True
-    session = tf.Session(config=config,   ...)  
-    ```
+- [tf.train.GradientDescentOptimizer  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/train/GradientDescentOptimizer)
+    - apply_gradients
+        Apply gradients to variables.
 
-    The second method is the `per_process_gpu_memory_fraction` option, which determines the fraction of the overall amount of memory that each visible GPU should be allocated. For example, you can tell TensorFlow to only allocate 40% of the total memory of each GPU by:
+- [tf.nn.dynamic_rnn  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/nn/dynamic_rnn)
+    Creates a recurrent neural network specified by RNNCell `cell`.
 
-    ```python
-    config = tf.ConfigProto()  
-    config.gpu_options.per_process_gpu_memory_fraction =   0.4
-    session = tf.Session(config=config,   ...)  
-    ```
+    Performs fully dynamic unrolling of `inputs`.
 
-    This is useful if you want to truly bound the amount of GPU memory available to the TensorFlow process.
+    - [Analysis of the output from tf.nn.dynamic_rnn tensorflow function - Stack Overflow](https://stackoverflow.com/questions/44162432/analysis-of-the-output-from-tf-nn-dynamic-rnn-tensorflow-function)
 
-    Using multiple GPUs
-    -------------------
-
-    If you would like to run TensorFlow on multiple GPUs, you can construct your model in a multi-tower fashion where each tower is assigned to a different GPU. For example:
-
-    ```python
-    # Creates a graph.
-    c =   []  
-    for d in   ['/device:GPU:2',   '/device:GPU:3']: 
-        with tf.device(d):
-            a = tf.constant([1.0,   2.0,   3.0,   4.0,   5.0,   6.0], shape=[2,   3])
-            b = tf.constant([1.0,   2.0,   3.0,   4.0,   5.0,   6.0], shape=[3,   2])  
-        c.append(tf.matmul(a, b))  
-
-    with tf.device('/cpu:0'):
-        sum = tf.add_n(c)  
-    # Creates a session with log_device_placement set to True.
-    sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))  
-    # Runs the op.  
-    print(sess.run(sum))  
-    ```
-
-- [Release GPU memory after computation · Issue #1578 · tensorflow/tensorflow](https://github.com/tensorflow/tensorflow/issues/1578)
-
-    ```python
-    config = tf.ConfigProto()
-    config.gpu_options.allow_growth=True
-    sess = tf.Session(config=config)
-    ```
-
-- [InternalError: Blas GEMM launch failed · Issue #11812 · tensorflow/tensorflow](https://github.com/tensorflow/tensorflow/issues/11812)
-
-> If multiple TensorFlow processes are used, either [`per_process_gpu_memory_fraction`](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/core/protobuf/config.proto#L21) or [`allow_growth`](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/core/protobuf/config.proto#L40) should be passed to the TensorFlow Session in a `ConfigProto` to prevent one process from using all the GPU memory. Preferably, multiple TensorFlow processes wouldn't be used at the same time.
-> [name=reedwm]
-
-> Try 'Shutdown' the running notebooks which uses your GPU. Restart the kernel.  
-> Run the code again.. This time it should work.
-> [name=jidhu-mohan]
-
-> To be clear, tensorflow will try (by default) to consume all available GPUs. It cannot be run with other programs also active. Closing. Feel free to reopen if this is actually another problem.
-> [name=drpngx]
+        > [`tf.dynamic_rnn`](https://www.tensorflow.org/api_docs/python/tf/nn/dynamic_rnn) provides two outputs, `outputs` and `state`.
+        > 
+        > -   `outputs` contains the output of the RNN cell at every time instant. Assuming the default `time_major == False`, let's say you have an input composed of 10 examples with 7 time steps each and a feature vector of size 5 for every time step. Then your input would be 10x7x5 (`batch_size`x`max_time`x`features`). Now you give this as an input to a RNN cell with output size 15. Conceptually, each time step of each example is input to the RNN, and you would get a 15-long vector for each of those. So that is what `outputs` contains, a tensor in this case of size 10x7x15 (`batch_size`x`max_time`x`cell.output_size`) with the output of the RNN cell at each time step. If you are only interested in the last output of the cell, you can just slice the time dimension to pick just the last element (e.g. `outputs[:, -1, :]`).
+        > -   `state` contains the state of the RNN after processing all the inputs. Note that, unlike `outputs`, this doesn't contain information about every time step, but only about the last one (that is, the state _after_ the last one). Depending on your case, the state may or may not be useful. For example, if you have very long sequences, you may not want/be able to processes them in a single batch, and you may need to split them into several subsequences. If you ignore the `state`, then whenever you give a new subsequence it will be as if you are beginning a new one; if you remember the state, however (e.g. outputting it or storing it in a variable), you can feed it back later (through the `initial_state` parameter of `tf.nn.dynamic_rnn`) in order to correctly keep track of the state of the RNN, and only reset it to the initial state (generally all zeros) after you have completed the whole sequences. The shape of `state` can vary depending on the RNN cell that you are using, but, in general, you have some state for each of the examples (one or more tensors with size `batch_size`x`state_size`, where `state_size` depends on the cell type and size).
 
 
 
-## Debug Log
+- [tf.nn.embedding_lookup  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/nn/embedding_lookup)
+    Looks up `ids` in a list of embedding tensors.
 
-- [Tensorflow documentation's example code on "Logging Device Placement" doesn't print out anything - Stack Overflow](https://stackoverflow.com/questions/39677168/tensorflow-documentations-example-code-on-logging-device-placement-doesnt-pr)
 
-    > For Jupyter (and other) users, there is a recently-added feature that makes it possible to read back the device placement when you make a [`Session.run()`](https://www.tensorflow.org/versions/r0.10/api_docs/python/client.html#Session.run) call and print it in your notebook.
+
+
+### logit
+
+- [neural network - What is the meaning of the word logits in TensorFlow? - Stack Overflow](https://stackoverflow.com/questions/41455101/what-is-the-meaning-of-the-word-logits-in-tensorflow)
+
+    > **Logit** is a function that maps probabilities `[0, 1]` to `[-inf, +inf]`.
+    > 
+    > **Softmax** is a function that maps `[-inf, +inf]` to `[0, 1]` similar as Sigmoid. But Softmax also normalizes the sum of the values(output vector) to be 1.
+    > 
+    > **Tensorflow "with logit"**: It means that you are applying a softmax function to logit numbers to normalize it. The input_vector/logit is not normalized and can scale from \[-inf, inf\].
+    > 
+    > This normalization is used for multiclass classification problems. And for multilabel classification problems sigmoid normalization is used i.e. `tf.nn.sigmoid_cross_entropy_with_logits`
+
+
+    > [Logit](https://en.wikipedia.org/wiki/Logit) is a function that maps probabilities (`[0, 1]`) to R (`(-inf, inf)`)
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/zto5q.png)](https://i.stack.imgur.com/zto5q.png)
+    > 
+    > Probability of 0.5 corresponds to a logit of 0. Negative logit correspond to probabilities less than 0.5, positive to > 0.5.
+    > 
+
+
+- [python - What's the difference between softmax and softmax_cross_entropy_with_logits? - Stack Overflow](https://stackoverflow.com/questions/34240703/whats-the-difference-between-softmax-and-softmax-cross-entropy-with-logits)
+
+    > Logits simply means that the function operates on the unscaled output of earlier layers and that the relative scale to understand the units is linear. It means, in particular, the sum of the inputs may not equal 1, that the values are _not_ probabilities (you might have an input of 5).
+    > 
+    > `tf.nn.softmax` produces just the result of applying the [softmax function](https://en.wikipedia.org/wiki/Softmax_function) to an input tensor. The softmax "squishes" the inputs so that sum(input) = 1; it's a way of normalizing. The shape of output of a softmax is the same as the input - it just normalizes the values. The outputs of softmax _can_ be interpreted as probabilities.
     > 
     > ```
-    > # Creates a graph.
-    > a = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[2, 3], name='a')
-    > b = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[3, 2], name='b')
-    > c = tf.matmul(a, b)
-    > # Creates a session with log_device_placement set to True.
-    > sess = tf.Session()
-    > 
-    > # Runs the op.
-    > options = tf.RunOptions(output_partition_graphs=True)
-    > metadata = tf.RunMetadata()
-    > c_val = sess.run(c, options=options, run_metadata=metadata)
-    > 
-    > print metadata.partition_graphs
-    > 
+    > a = tf.constant(np.array([[.1, .3, .5, .9]]))
+    > print s.run(tf.nn.softmax(a))
+    > [[ 0.16838508  0.205666    0.25120102  0.37474789]]
     > ```
     > 
-    > The `metadata.partition_graphs` contains the actual nodes of the graph that executed, partitioned by device. The partitions aren't explicitly labeled with the device they represent, but every `NodeDef` in the graph has its `device` field set.
-    > [name=mrry]
+    > In contrast, `tf.nn.softmax_cross_entropy_with_logits` computes the cross entropy of the result after applying the softmax function (but it does it all together in a more mathematically careful way). It's similar to the result of:
+    > 
+    > ```
+    > sm = tf.nn.softmax(x)
+    > ce = cross_entropy(sm)
+    > ```
+    > 
+    > If you want to do optimization to minimize the cross entropy, AND you're softmaxing after your last layer, you should use `tf.nn.softmax_cross_entropy_with_logits` instead of doing it yourself, because it covers numerically unstable corner cases in the mathematically right way. Otherwise, you'll end up hacking it by adding little epsilons here and there.
 
-    > just use `print metadata` instead of `print metadata.partition_graphs`. You'll see its a set of objects, you can view each by indices, like `print metadata.partition_graphs[0]` – [name=Udayraj Deshmukh]
 
-    > Unfortunately Jupyter doesn't see the C++ error stdout messages that the device placement logging uses. There's a longer thread on the problem here:
-    > 
-    > [https://github.com/nteract/hydrogen/issues/209](https://github.com/nteract/hydrogen/issues/209)
-    > 
-    > There's no easy workaround that I know of, other than running your script outside of Jupyter.
-    > [name=Pete Warden]
 
-- [tensorflow - What do the options in ConfigProto like allow_soft_placement and log_device_placement mean? - Stack Overflow](https://stackoverflow.com/questions/44873273/what-do-the-options-in-configproto-like-allow-soft-placement-and-log-device-plac)
+    
+## Solve Math problem
 
-    > In addition to comments in [tensorflow/core/protobuf/config.proto](https://github.com/tensorflow/tensorflow/blob/r1.2/tensorflow/core/protobuf/config.proto) ([allow\_soft\_placement](https://github.com/tensorflow/tensorflow/blob/r1.2/tensorflow/core/protobuf/config.proto#L248), [log\_device\_placement](https://github.com/tensorflow/tensorflow/blob/r1.2/tensorflow/core/protobuf/config.proto#L251)) it is also explained in TF's [using GPUs tutorial](https://www.tensorflow.org/tutorials/using_gpu).
-    > 
-    > > To find out which devices your operations and tensors are assigned to, create the session with `log_device_placement` configuration option set to True.
-    > 
-    > Which is helpful for debugging. For each of the nodes of your graph, you will see the device it was assigned to.
-    > 
-    > ---
-    > 
-    > > If you would like TensorFlow to automatically choose an existing and supported device to run the operations in case the specified one doesn't exist, you can set `allow_soft_placement` to True in the configuration option when creating the session.
-    > 
-    > Which will help you if you accidentally manually specified the wrong device or a device which does not support a particular op. This is useful if you write a code which can be executed in environments you do not know. You still can provide useful defaults, but in the case of failure a graceful fallback.
+- [一个利用Tensorflow求解几何问题的例子 - naughty的个人页面](https://my.oschina.net/taogang/blog/1627590?from=20180304)
+
 
 
 ## DNN
@@ -409,43 +364,181 @@ import tensorflow as tf
 #### Load data and do some pre-processing
 
 
-We use MNIST HERE (with sklearn 8x8 version rather than use tensorflow 28x28 version)
+- We use MNIST HERE (with sklearn 8x8 version rather than use tensorflow 28x28 version)
 
-```python
-from sklearn.datasets import load_digits
-# load data
-digits = load_digits()
-x_, y_ = digits.data, digits.target
+    ```python
+    from sklearn.datasets import load_digits
+    # load data
+    digits = load_digits()
+    x_, y_ = digits.data, digits.target
 
-# do data pre-processing
-x_ = x_ / x_.max()
+    # do data pre-processing
+    x_ = x_ / x_.max()
 
-y_one_hot = np.zeros((len(y_), 10))
-y_one_hot[np.arange(len(y_)), y_] = 1
-```
+    y_one_hot = np.zeros((len(y_), 10))
+    y_one_hot[np.arange(len(y_)), y_] = 1
+    ```
 
 #### split your data into training and validation sets
 
-```python
-x_train, x_test, y_train, y_test = train_test_split(x_, 
-                                                    y_one_hot, 
-                                                    test_size = 0.05, 
-                                                    stratify  = y_)
+- use train_test_split
 
-x_train, x_valid, y_train, y_valid = train_test_split(x_train, 
-                                                      y_train, 
-                                                      test_size = 1.0 - FLAGS.train_ratio,
-                                                      stratify = y_train.argmax(axis = 1))
-print("training set data dimension")
-print(x_train.shape)
-print(y_train.shape)
-print("-----------")
-print("training set: %i" % len(x_train))
-print("validation set: %i" % len(x_valid))
-print("testing set: %i" % len(x_test))
-```
+    ```python
+    from sklearn.model_selection import train_test_split
+
+    x_train, x_test, y_train, y_test = train_test_split(x_, 
+                                                        y_one_hot, 
+                                                        test_size = 0.05, 
+                                                        stratify  = y_)
+
+    x_train, x_valid, y_train, y_valid = train_test_split(x_train, 
+                                                          y_train, 
+                                                          test_size = 1.0 - FLAGS.train_ratio,
+                                                          stratify = y_train.argmax(axis = 1))
+    print("training set data dimension")
+    print(x_train.shape)
+    print(y_train.shape)
+    print("-----------")
+    print("training set: %i" % len(x_train))
+    print("validation set: %i" % len(x_valid))
+    print("testing set: %i" % len(x_test))
+    ```
+
+- use custom defined generator
+
+    ```python
+    from sklearn.utils import shuffle 
+
+    def simpson_train_batch_generator(x, y, bs, shape):
+        x_train = np.array([]).reshape((0, shape))
+        y_train = np.array([]).reshape((0, y.shape[1]))
+        while True:
+            new_ind = shuffle(range(len(x)))
+            x = x.take(new_ind)
+            y = np.take(y, new_ind, axis=0)
+            for i in range(len(x)):
+                dir_img = '/data/examples/simpson_preproc/' + x.img.iloc[i]
+                img = cv2.imread(dir_img, 0)
+                img = cv2.resize(img, (50,50))
+                x_train = np.row_stack([x_train, img.flatten()])
+                y_train = np.row_stack([y_train, y[i]])
+                if x_train.shape[0] == bs:
+                    x_batch = x_train.copy()
+                    x_batch /= 255.
+                    y_batch = y_train.copy()
+                    x_train = np.array([]).reshape((0 ,shape))
+                    y_train = np.array([]).reshape((0 ,y.shape[1]))        
+                    yield x_batch, y_batch # allenlylee: yield 語法，類似 return，但回傳值後不會清除 call stack，
+                                           # 當下一次執行 generator.next() 時，就會從這裏的下一行開始執行
+    ```
+
+
+
 
 #### build the network
+
+- step 1: define placeholder
+
+    without Regularization:
+
+    ```python
+    #### define placeholder ####
+    input_data = tf.placeholder(dtype=tf.float32, 
+                               shape=[None, img.shape[0]],
+                               name='input_data')
+
+    y_true = tf.placeholder(dtype=tf.float32, 
+                            shape=[None, y_train.shape[1]],
+                            name='y_true')
+    ```
+
+    with Regularization:
+    
+    ```python
+    l2 = tf.placeholder(dtype=tf.float32, name = 'l2_regulizers')
+    ```
+
+- step 2: create variables and operations
+
+    without Regularization:
+
+    ```python
+    #### define variables(weight/bias) ####
+    x1 = tf.layers.dense(input_data, 256, activation=tf.nn.relu, name='hidden1')
+    x2 = tf.layers.dense(x1, 256, activation=tf.nn.relu, name='hidden2')
+    x3 = tf.layers.dense(x2, 128, activation=tf.nn.relu, name='hidden3')
+    x4 = tf.layers.dense(x3, 128, activation=tf.nn.relu, name='hidden4')
+    x5 = tf.layers.dense(x4, 64, activation=tf.nn.relu, name='hidden5')
+    x6 = tf.layers.dense(x5, 64, activation=tf.nn.relu, name='hidden6')
+    out = tf.layers.dense(x6, y_train.shape[1], name='output')
+
+    y_pred = out
+    ```
+
+    with Regularization:
+
+    ```python
+    #### define variables(weight/bias) ####
+    x1 = tf.layers.dense(input_data, 
+                         256, 
+                         activation=tf.nn.relu, 
+                         name='hidden1', 
+                         kernel_regularizer=tf.contrib.layers.l2_regularizer(scale=l2))
+    x2 = tf.layers.dense(x1, 
+                         128, 
+                         activation=tf.nn.relu, 
+                         name='hidden2',
+                         kernel_regularizer=tf.contrib.layers.l2_regularizer(scale=l2))
+    x3 = tf.layers.dense(x2, 
+                         64, 
+                         activation=tf.nn.relu, 
+                         name='hidden3',
+                         kernel_regularizer=tf.contrib.layers.l2_regularizer(scale=l2))
+    out = tf.layers.dense(x3, y_train.shape[1], name='output')
+
+    y_pred = tf.nn.softmax(out)
+    ```
+
+- step 3: define loss function and calculate loss
+
+    without Regularization:
+
+    ```python
+    #### calculate loss ####
+    loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y_true, logits=y_pred))
+    #loss = tf.reduce_mean(tf.square(y_pred-y_true)) # MSE
+    ```
+
+    with Regularization:
+
+    ```python
+    #### calculate loss ####
+    cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y_true, logits=out))
+
+    #### optimize variables ####
+    opt = tf.train.AdamOptimizer(learning_rate=0.001)
+
+    reg = tf.get_collection(tf.GraphKeys.REGULARIZATION_LOSSES)
+    loss = cross_entropy + tf.reduce_sum(reg)
+    update = opt.minimize(loss)
+    ```
+
+
+- step 4: define optimizer and define variables update operations
+
+    ```python
+    #### optimize variables ####
+    #opt = tf.train.GradientDescentOptimizer(learning_rate=0.001)
+    opt = tf.train.AdamOptimizer(learning_rate=0.001)
+
+    update = opt.minimize(loss)
+    ```
+
+- check global variables (optional)
+
+    ```python
+    tf.global_variables() ## 檢查 graph 裏的 global variables
+    ```
 
 - with low-level tensor elements
 
@@ -557,7 +650,83 @@ print("testing set: %i" % len(x_test))
         train_step = tf.train.AdamOptimizer(learning_rate=FLAGS.lr).minimize(loss)
     ```
 
-#### Train the model and collect the performance
+#### run session
+
+- step 1: run global variables initialization
+
+```python
+#### init ####
+init = tf.global_variables_initializer()
+
+sess = tf.Session()
+sess.run(init)
+```
+
+- step 2: run session to update the variables
+
+    without Regularization:
+    
+    ```python
+    from tqdm import tqdm_notebook
+    from sklearn.metrics import accuracy_score
+
+    epoch = 100
+    bs = 32
+    update_per_epoch = 100
+
+    tr_loss = list()
+    tr_acc = list()
+    train_gen = simpson_train_batch_generator(x_train_list, y_train, bs, img.shape[0])
+
+    print('start modelling!')
+
+    for i in range(epoch):
+
+        #### calculate training loss & update variables ####
+        training_loss = 0
+        training_acc = 0
+        bar = tqdm_notebook(range(update_per_epoch))
+
+        for j in bar:
+
+            x_batch, y_batch = next(train_gen)
+
+            tr_pred, training_loss_batch, _ = sess.run([y_pred, loss, update], feed_dict={
+                input_data:x_batch,
+                y_true:y_batch
+            })
+
+            training_loss += training_loss_batch
+
+            training_acc_batch = accuracy_score(np.argmax(y_batch, axis=1), np.argmax(tr_pred, axis=1))
+            training_acc += training_acc_batch
+
+            if j % 5 == 0:
+                bar.set_description('loss: %.4g' % training_loss_batch)
+
+        training_loss /= update_per_epoch
+        training_acc /= update_per_epoch
+
+        tr_loss.append(training_loss)
+        tr_acc.append(training_acc)
+
+        print('epoch {epochs}: training loss {training_loss}'.format(
+                epochs=(i+1), 
+                training_loss=training_loss))
+    ```
+
+    with Regularization:
+
+    ```python
+    for l2_iter in [0.0, 0.5, 0.05, 0.005, 0.0005]:
+    
+        tr_pred, training_loss_batch, _ = sess.run([y_pred, loss, update], feed_dict={
+        input_data:x_batch,
+        y_true:y_batch,
+        l2: l2_iter})
+    ```
+
+- Train the model and collect the performance
 
 ```python
 train_loss_list, valid_loss_list = [], []
@@ -614,6 +783,21 @@ plt.legend(loc = 4)
 plt.show()
 ```
 
+#### plot model training result
+
+```python
+plt.figure(1)
+plt.subplot(121)
+plt.plot(range(len(tr_loss)), tr_loss, label='training')
+plt.title('Loss')
+plt.legend(loc='best')
+plt.subplot(122)
+plt.plot(range(len(tr_acc)), tr_acc, label='training')
+plt.title('Accuracy')
+```
+
+
+
 #### Save Model
 
 - save model to disk
@@ -666,22 +850,146 @@ plt.show()
             }))
     ```
         
-        
+### DNN 訓練建議
 
+#### 選擇 Loss Function
+
+- Classification 常用 cross-entropy 當作 loss function
+
+- Regression 則常用 MSE 當作 loss function
+
+- 一般不會用 classification error 來做 loss function , 因為他沒辦法有效衡量模型的好壞
+
+#### 如何選擇 Activation Function
+
+- Sigmoid, Tanh, Softsign
+    - Vanishing gradient problem
+    原因 : input 被壓縮到一個相對很小的 output range 
+    結果 : 很大的 input 變化只能產生很小的 output 變化
+            ➔ Gradient 小 ➔ 無法有效地學習
+    特別不適用於深的深度學習模型
+
+- ReLU
+
+    當輸入 x 都小於 0，ReLU 就不再更新 
+    df/dx = 0 if x < 0.
+    可能因為 Learning rate 大 或是 batch size 小 
+
+- 其他
+    - Softplus
+    - Leaky ReLU (tf.nn.leaky_relu)
+    - ELU (tf.nn.elu)
+    - SeLU (tf.nn.selu)
+
+- Hidden layers 
+    - 通常會用 ReLU
+
+- Output layer
+    - Regression 
+        常用 linear 
+    - Classification 
+        Output layer 常用 softmax
+
+#### 選擇 Learning Rate
+
+- 大多要試試看才知道，通常不會大於 0.1
+- 一次調一個數量級 
+    0.1 ➔ 0.01 ➔ 0.001
+
+#### 選擇 Optimizers
+
+- SGD - tf.train.GradientDescentOptimizer  
+- Momentum - tf.train.MomentumOptimizer  
+- Adagrad - tf.train.AdagradOptimizer  
+- RMSprop - tf.train.RMSPropOptimizer  
+- Adam - tf.train.AdamOptimizer
+
+### 避免 Overfitting
+
+#### Regularization
+
+- 限制 weights 的大小讓 output 曲線比較平滑
+
+    怎麼限制 weights 的大小呢？ 
+    加入目標函數中，一起優化 
+    - α 是用來調整 regularization 的比重 
+    - 避免顧此失彼 (降低 weights 的大小而犧牲模型準確性)
+
+    L1 norm 
+        - Sum of absolute values 
+
+    L2 norm 
+        - Root mean square of absolute values
+
+#### Early Stopping
+
+- 假如能早點停下來就好了
+
+    ![](https://screenshotscdn.firefoxusercontent.com/images/a69f1a06-09f4-4c8c-bb37-d70e7683241a.png)
+
+        
+#### Dropout
+
+- What is Dropout?  
+    - 原本為 neurons 跟 neurons 之間為 fully connected  
+    - 在訓練過程中，隨機拿掉一些連結 (weight 設為0)
+
+- 會造成 training performance 變差 
+    - 用全部的 neurons 原本可以做到 
+    - 只用某部分的 neurons 只能做到 
+    - Error 變大 ➔ 各 neuron 修正較多 ➔ 各 neuron 有機會做得越好
+
+- 不要一開始就加入 Dropout
+    - Dropout 會讓 training performance 變差
+    - Dropout 是在避免 overfitting
+
+![](https://screenshotscdn.firefoxusercontent.com/images/be407fed-ace8-49d5-8997-8f2351a31d90.png)
+        
+        
 ## CNN
 
+影像問題，優先考慮 CNN
 
+
+### CNN in tensorflow
+
+- normalize for data
+
+    ```python
+    x = (x - np.min(x)) / np.max(x)
+    ```
+
+- One-hot encode for label
+
+    ```python
+    y = np.eye(10,dtype=int)[x]
+    ```
+
+- import tensorflow
+
+    ```python
+    import tensorflow as tf
+    ```
 
 - Create place holder
 
-    ```python=
+    ```python
+    # data x
     shpae_t = np.append(None,image_shape) # image_shape with batch size set to None
     placeholder_t = tf.placeholder(tf.float32, shape=shpae_t, name="x") # Name the TensorFlow placeholder "x" 
+    
+    # label y
+    shpae_t = np.append(None,n_classes) # n_classes with batch size set to None
+    placeholder_t = tf.placeholder(tf.float32, shape=shpae_t, name="y")
+
+    # dropout keep probability
+    shpae_t = None
+    placeholder_t = tf.placeholder(tf.float32, shape=shpae_t, name="keep_prob")
     ```
 
 - Convolution and Max Pooling Layer
 
-    ```python=
+    ```python
     # convolution layer with input "x_tensor", number of filters (outputs) "conv_num_outputs", 
     # kernel_size "conv_ksize", strides "conv_strides", padding "same", activation function "tf.nn.relu"
     conv_layer = tf.layers.conv2d(inputs=x_tensor, filters=conv_num_outputs, kernel_size=conv_ksize, 
@@ -694,35 +1002,478 @@ plt.show()
     ```
     
 - Flatten Layer
-    ```python=
+    ```python
     # flatten of x_tensor
     flatten_layer = tf.layers.flatten(inputs=x_tensor)
     ```
+    
 - Fully-Connected Layer
 
-    ```python=
+    ```python
     # fully-connected layer with inputs "x_tensor", units (number of output) "num_outputs"
     # activation function "tf.nn.relu"
     dense_layer = tf.layers.dense(inputs=x_tensor, units=num_outputs, activation=tf.nn.relu)
     ```
 
+- dropout
+
+    ```python
+    dense_layer = tf.nn.dropout(dense_layer, keep_prob=keep_prob)
+    ```
+
 - Outpur layer
 
-    ```python=
+    ```python
     # output layer with inputs "x_tensor", units (number of output) "num_outputs"
     # linear activation function 
     output_layer = tf.layers.dense(inputs=x_tensor, units=num_outputs)
     ```
     
+- Build the Neural Network 
+
+    ```python
+    # Remove previous weights, bias, inputs, etc..
+    tf.reset_default_graph()
+
+    # Inputs
+    x = neural_net_image_input((32, 32, 3))
+    y = neural_net_label_input(10)
+    keep_prob = neural_net_keep_prob_input()
+
+    # Model 的 outpur (注意！這時候還沒有經過 softmax function，這些 output 的值通常稱為 logits)
+    logits = conv_net(x, keep_prob)
+
+    # Name logits Tensor, so that is can be loaded from disk after training
+    logits = tf.identity(logits, name='logits')
+
+    # Loss and Optimizer
+    # 此時透過 softmax_cross_entropy_with_logits 將 model output 的值經過 softmax，再與我們的 label 計算 cross-entropy
+    cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=y))
+    optimizer = tf.train.AdamOptimizer().minimize(cost)
+
+    # Accuracy
+    correct_pred = tf.equal(tf.argmax(logits, 1), tf.argmax(y, 1))
+    accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32), name='accuracy')
+    ```
+
+- train network
+
+    ```python
+    session.run(optimizer, feed_dict={x: feature_batch, 
+                                      y: label_batch, 
+                                      keep_prob: keep_probability})
+    ```
+
+- save model
+
+    ```python
+    # Save Model
+    saver = tf.train.Saver()
+    save_path = saver.save(sess, save_model_path)
+    ```
+
+- load model
+
+    ```python
+    # Load model
+    loader = tf.train.import_meta_graph(save_model_path + '.meta')
+    loader.restore(sess, save_model_path)
+
+    # Get Tensors from loaded model
+    loaded_x = loaded_graph.get_tensor_by_name('x:0')
+    loaded_y = loaded_graph.get_tensor_by_name('y:0')
+    loaded_keep_prob = loaded_graph.get_tensor_by_name('keep_prob:0')
+    loaded_logits = loaded_graph.get_tensor_by_name('logits:0')
+    loaded_acc = loaded_graph.get_tensor_by_name('accuracy:0')
+    ```
+
+- get testing accuracy
+
+    ```python
+    for train_feature_batch, train_label_batch in helper.batch_features_labels(test_features, test_labels, batch_size):
+        test_batch_acc_total += sess.run(
+            loaded_acc,
+            feed_dict={loaded_x: train_feature_batch, loaded_y: train_label_batch, loaded_keep_prob: 1.0})
+        test_batch_count += 1
+
+    print('Testing Accuracy: {}\n'.format(test_batch_acc_total/test_batch_count))
+    ```
+
+### CNN in Karas
+
+- load data
+
+    ```python
+    # this function is provided from the official site
+    from keras.datasets import cifar10
+    # read train/test data
+    (x_train, y_train), (x_test, y_test) = cifar10.load_data()
+    # check the data shape
+    print("x_train shape:", x_train.shape)
+    print("numbers of training smaples:", x_train.shape[0])
+    print("numbers of testing smaples:", x_test.shape[0])
+    ```
+
+- show images
+
+    ```python
+    import matplotlib.pyplot as plt
+    %matplotlib inline
+    # show the first image of training data
+    plt.imshow(x_train[0])
+    # show the first image of testing data
+    plt.imshow(x_test[0])
+    ```
+
+- build CNN model
+
+    ```python
+    from keras.models import Sequential
+    from keras.layers import Dense, Dropout, Activation, Flatten
+    from keras.layers import Conv2D, MaxPooling2D
+
+    # declare sequential model
+    model = Sequential()
+
+    # CNN part
+    model.add(Conv2D(64, (3, 3), padding='same',
+                     input_shape=x_train.shape[1:]))
+    model.add(Activation('relu'))
+    model.add(Conv2D(128, (3, 3)))
+    model.add(Activation('relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.25))
+
+    # DNN part
+    model.add(Flatten())
+    model.add(Dense(512))
+    model.add(Activation('relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(num_classes))
+    model.add(Activation('softmax'))
+    ```
+
+- check model parameter
+
+    ```python
+    print(model.summary())
+    ```
+    
+    - 第一層為 3\*3 卷積，32 個 filter，作用在3個顏色通道，最後再加上32個 bias => 共 3\*3\*32\*3+32 個參數
+
+    - 第二層為 3\*3 卷積，32 個 filter，作用在上一層 32 個 feature map，最後再加上32個 bias => 共 3\*3\*32\*32+32 個參數
+
+    - DNN 第一層的輸入為 CNN 最後輸出攤平成一維向量，共7200維，輸出512個神經元，加上512個 bias => 共7200\*512+512 個參數
+    ![](https://screenshotscdn.firefoxusercontent.com/images/03f5292b-23bd-4548-9c1a-4acad0412d68.png)
+
+- Model Compilation
+
+    ```python
+    # initiate Adam optimizer
+    opt = keras.optimizers.Adam()
+
+    # Let's train the model using Adam
+    model.compile(loss='categorical_crossentropy',
+                  optimizer=opt,
+                  metrics=['accuracy'])
+    ```
+
+- training
+
+    ```python
+    # define batch size and # of epoch
+    batch_size = 32 # or 64 or 128
+    epoch = 10
+    # [2] validation data comes from testing data
+    model_history = model.fit(x_train, y_train,
+    batch_size=batch_size, epochs=epoch, shuffle=True,
+    validation_data=(x_test, y_test))
+    ```
+- set model path
+
+    ```python
+    import os
+    save_dir = os.path.join(os.getcwd(), 'saved_models')
+    model_name = 'keras_cifar10_trained_model.h5'
+
+    if not os.path.isdir(save_dir):
+        os.makedirs(save_dir)
+
+    model_path = os.path.join(save_dir, model_name)
+    ```
+- save model
+
+    ```python
+    # saving model
+    model.save(model_path)
+    del model
+    ```
+
+- callback (Checkpoint + Earlystopping)
+
+    ```python
+    from keras.callbacks import EarlyStopping, ModelCheckpoint
+
+    checkpoint = ModelCheckpoint(model_path, monitor='val_loss', save_best_only=True, verbose=1)
+    earlystop = EarlyStopping(monitor='val_loss', patience=5, verbose=1)
+
+    model.fit(x_train, y_train,
+        callbacks=[checkpoint, earlystop])
+    ```
+
+- Data augmentation
+
+    ```python
+    from keras.preprocessing.image import ImageDataGenerator
+
+    # This will do preprocessing and realtime data augmentation:
+    datagen = ImageDataGenerator(
+        rotation_range=30,  # randomly rotate images in the range (degrees, 0 to 180)
+        width_shift_range=0.1,  # randomly shift images horizontally (fraction of total width)
+        height_shift_range=0.1,  # randomly shift images vertically (fraction of total height)
+        horizontal_flip=True,  # randomly flip images
+        vertical_flip=False)  # randomly flip images
+
+    model.fit_generator(datagen.flow(x_train, y_train))
+    ```
+
+- training (with dada generater)
+
+    ```python
+    # Fit the model on the batches generated by datagen.flow().
+    model_history = model.fit_generator(
+        datagen.flow(x_train, y_train, batch_size=batch_size),
+        epochs=epochs,
+        validation_data=(x_test, y_test),
+        workers=4,
+        callbacks=[checkpoint, earlystop])
+    ```
+
+- load model
+
+    ```python
+    # loading our save model
+    from keras.models import load_model
+    print("Loading trained model")
+    model = load_model(model_path)
+    ```
+    
+- prediction
+
+    ```python
+    # prediction
+    y_pred = model.predict_classes(x_test, batch_size, verbose=0)
+    ```
+
+- plot training history
+
+    ```python
+    training_loss = model_history.history['loss']
+    val_loss = model_history.history['val_loss']
+
+    plt.plot(training_loss, label="training_loss")
+    plt.plot(val_loss, label="validation_loss")
+    plt.xlabel("Epochs")
+    plt.ylabel("Loss")
+    plt.title("Learning Curve")
+    plt.legend(loc='best')
+    plt.show()
+    ```
+
+### CNN 架構建議
+
+- 建議使用 3x3 的 filters size
+- filters 數量應該要越來越多 64 > 128 > 256
+- 盡量別做太多的 Maxpooling 以免丟失過多訊息
+- 使用 Data-augmentation 增加資料量
+- 使用 Earlystop 避免 Overfitting
+- 若嚴重 Overfitting 可嘗試 dropout, L2 regularization
 
 
 
-## FAQ
+## Troubleshooting
 
+### General
 - [tensorflow - what does x = tf.placeholder(tf.float32, [None, 784]) means? - Stack Overflow](https://stackoverflow.com/questions/39305174/what-does-x-tf-placeholdertf-float32-none-784-means)
 
     From the tutorial: [Deep MNIST for Experts](https://www.tensorflow.org/versions/r0.10/tutorials/mnist/pros/index.html)
 
     > Here we assign it a shape of \[None, 784\], where 784 is the dimensionality of a single flattened 28 by 28 pixel MNIST image, and **None indicates that the first dimension, corresponding to the batch size, can be of any size**.
 
+### GPU Usage
 
+- [Using GPUs  |  TensorFlow](https://www.tensorflow.org/programmers_guide/using_gpu#allowing_gpu_memory_growth)
+
+    Logging Device placement
+    ------------------------
+
+    To find out which devices your operations and tensors are assigned to, create the session with `log_device_placement` configuration option set to `True`.
+
+    ```python
+    # Creates a graph.
+    a = tf.constant([1.0,   2.0,   3.0,   4.0,   5.0,   6.0], shape=[2,   3], name='a')
+    b = tf.constant([1.0,   2.0,   3.0,   4.0,   5.0,   6.0], shape=[3,   2], name='b')
+    c = tf.matmul(a, b)  
+    # Creates a session with log_device_placement set to True.
+    sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))  
+    # Runs the op.  
+    print(sess.run(c))  
+    ```
+
+    Manual device placement
+    -----------------------
+
+    If you would like a particular operation to run on a device of your choice instead of what's automatically selected for you, you can use `with tf.device` to create a device context such that all the operations within that context will have the same device assignment.
+
+    ```python
+    # Creates a graph.  
+    with tf.device('/cpu:0'):
+        a = tf.constant([1.0,   2.0,   3.0,   4.0,   5.0,   6.0], shape=[2,   3], name='a')
+        b = tf.constant([1.0,   2.0,   3.0,   4.0,   5.0,   6.0], shape=[3,   2], name='b')
+    c = tf.matmul(a, b)  
+    # Creates a session with log_device_placement set to True.
+    sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))  
+    # Runs the op.  
+    print(sess.run(c))  
+    ```
+
+    Allowing GPU memory growth
+    --------------------------
+
+    By default, TensorFlow maps nearly all of the GPU memory of all GPUs (subject to [`CUDA_VISIBLE_DEVICES`](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#env-vars)) visible to the process. This is done to more efficiently use the relatively precious GPU memory resources on the devices by reducing [memory fragmentation](https://en.wikipedia.org/wiki/Fragmentation_(computing)).
+
+    In some cases it is desirable for the process to only allocate a subset of the available memory, or to only grow the memory usage as is needed by the process. TensorFlow provides two Config options on the Session to control this.
+
+    The first is the `allow_growth` option, which attempts to allocate only as much GPU memory based on runtime allocations: it starts out allocating very little memory, and as Sessions get run and more GPU memory is needed, we extend the GPU memory region needed by the TensorFlow process. Note that we do not release memory, since that can lead to even worse memory fragmentation. To turn this option on, set the option in the ConfigProto by:
+
+    ```python
+    config = tf.ConfigProto()  
+    config.gpu_options.allow_growth =   True
+    session = tf.Session(config=config,   ...)  
+    ```
+
+    The second method is the `per_process_gpu_memory_fraction` option, which determines the fraction of the overall amount of memory that each visible GPU should be allocated. For example, you can tell TensorFlow to only allocate 40% of the total memory of each GPU by:
+
+    ```python
+    config = tf.ConfigProto()  
+    config.gpu_options.per_process_gpu_memory_fraction =   0.4
+    session = tf.Session(config=config,   ...)  
+    ```
+
+    This is useful if you want to truly bound the amount of GPU memory available to the TensorFlow process.
+
+    Using multiple GPUs
+    -------------------
+
+    If you would like to run TensorFlow on multiple GPUs, you can construct your model in a multi-tower fashion where each tower is assigned to a different GPU. For example:
+
+    ```python
+    # Creates a graph.
+    c =   []  
+    for d in   ['/device:GPU:2',   '/device:GPU:3']: 
+        with tf.device(d):
+            a = tf.constant([1.0,   2.0,   3.0,   4.0,   5.0,   6.0], shape=[2,   3])
+            b = tf.constant([1.0,   2.0,   3.0,   4.0,   5.0,   6.0], shape=[3,   2])  
+        c.append(tf.matmul(a, b))  
+
+    with tf.device('/cpu:0'):
+        sum = tf.add_n(c)  
+    # Creates a session with log_device_placement set to True.
+    sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))  
+    # Runs the op.  
+    print(sess.run(sum))  
+    ```
+
+- [Release GPU memory after computation · Issue #1578 · tensorflow/tensorflow](https://github.com/tensorflow/tensorflow/issues/1578)
+
+    ```python
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth=True
+    sess = tf.Session(config=config)
+    ```
+
+- [InternalError: Blas GEMM launch failed · Issue #11812 · tensorflow/tensorflow](https://github.com/tensorflow/tensorflow/issues/11812)
+
+    > Make sure you have no other processes using the GPU running. Run `nvidia-smi` to check this.
+
+    > If multiple TensorFlow processes are used, either [`per_process_gpu_memory_fraction`](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/core/protobuf/config.proto#L21) or [`allow_growth`](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/core/protobuf/config.proto#L40) should be passed to the TensorFlow Session in a `ConfigProto` to prevent one process from using all the GPU memory. Preferably, multiple TensorFlow processes wouldn't be used at the same time.
+    > [name=reedwm]
+
+    > Try 'Shutdown' the running notebooks which uses your GPU. Restart the kernel.  
+    > Run the code again.. This time it should work.
+    > [name=jidhu-mohan]
+
+    > To be clear, tensorflow will try (by default) to consume all available GPUs. It cannot be run with other programs also active. Closing. Feel free to reopen if this is actually another problem.
+    > [name=drpngx]
+
+
+- [Jupyter notebook Tensorflow GPU Memory 釋放 - 掃文資訊](https://hk.saowen.com/a/744613901932b8b210f4841dbfafb7a505c102ca9d2dc1e693accfe9ad829a0a)
+
+    Jupyter notebook 每次運行完tensorflow的進程，佔着顯存不釋放。而又因為tensorflow是默認申請可使用的全部顯存，就會使得後續進程難以運行。暫時還沒有找到在jupyter notebook裏面自動釋放顯存的方法，但是我們可以做的是通過指定config為使用的顯存按需自動增長，這樣可以避免大多數的問題。代碼如下:
+
+    ```python
+    gpu_no = '0' # or '1'
+    os.environ["CUDA_VISIBLE_DEVICES"] = gpu_no
+
+    # 定義TensorFlow配置
+    config = tf.ConfigProto()
+
+    # 配置GPU內存分配方式，按需增長，很關鍵
+    config.gpu_options.allow_growth = True
+
+    # 配置可使用的顯存比例
+    config.gpu_options.per_process_gpu_memory_fraction = 0.1
+
+    # 在創建session的時候把config作為參數傳進去
+    sess = tf.InteractiveSession(config = config)
+    ```
+
+
+### Debug Log
+
+- [Tensorflow documentation's example code on "Logging Device Placement" doesn't print out anything - Stack Overflow](https://stackoverflow.com/questions/39677168/tensorflow-documentations-example-code-on-logging-device-placement-doesnt-pr)
+
+    > For Jupyter (and other) users, there is a recently-added feature that makes it possible to read back the device placement when you make a [`Session.run()`](https://www.tensorflow.org/versions/r0.10/api_docs/python/client.html#Session.run) call and print it in your notebook.
+    > 
+    > ```
+    > # Creates a graph.
+    > a = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[2, 3], name='a')
+    > b = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[3, 2], name='b')
+    > c = tf.matmul(a, b)
+    > # Creates a session with log_device_placement set to True.
+    > sess = tf.Session()
+    > 
+    > # Runs the op.
+    > options = tf.RunOptions(output_partition_graphs=True)
+    > metadata = tf.RunMetadata()
+    > c_val = sess.run(c, options=options, run_metadata=metadata)
+    > 
+    > print metadata.partition_graphs
+    > 
+    > ```
+    > 
+    > The `metadata.partition_graphs` contains the actual nodes of the graph that executed, partitioned by device. The partitions aren't explicitly labeled with the device they represent, but every `NodeDef` in the graph has its `device` field set.
+    > [name=mrry]
+
+    > just use `print metadata` instead of `print metadata.partition_graphs`. You'll see its a set of objects, you can view each by indices, like `print metadata.partition_graphs[0]` – [name=Udayraj Deshmukh]
+
+    > Unfortunately Jupyter doesn't see the C++ error stdout messages that the device placement logging uses. There's a longer thread on the problem here:
+    > 
+    > [https://github.com/nteract/hydrogen/issues/209](https://github.com/nteract/hydrogen/issues/209)
+    > 
+    > There's no easy workaround that I know of, other than running your script outside of Jupyter.
+    > [name=Pete Warden]
+
+- [tensorflow - What do the options in ConfigProto like allow_soft_placement and log_device_placement mean? - Stack Overflow](https://stackoverflow.com/questions/44873273/what-do-the-options-in-configproto-like-allow-soft-placement-and-log-device-plac)
+
+    > In addition to comments in [tensorflow/core/protobuf/config.proto](https://github.com/tensorflow/tensorflow/blob/r1.2/tensorflow/core/protobuf/config.proto) ([allow\_soft\_placement](https://github.com/tensorflow/tensorflow/blob/r1.2/tensorflow/core/protobuf/config.proto#L248), [log\_device\_placement](https://github.com/tensorflow/tensorflow/blob/r1.2/tensorflow/core/protobuf/config.proto#L251)) it is also explained in TF's [using GPUs tutorial](https://www.tensorflow.org/tutorials/using_gpu).
+    > 
+    > > To find out which devices your operations and tensors are assigned to, create the session with `log_device_placement` configuration option set to True.
+    > 
+    > Which is helpful for debugging. For each of the nodes of your graph, you will see the device it was assigned to.
+    > 
+    > ---
+    > 
+    > > If you would like TensorFlow to automatically choose an existing and supported device to run the operations in case the specified one doesn't exist, you can set `allow_soft_placement` to True in the configuration option when creating the session.
+    > 
+    > Which will help you if you accidentally manually specified the wrong device or a device which does not support a particular op. This is useful if you write a code which can be executed in environments you do not know. You still can provide useful defaults, but in the case of failure a graceful fallback.
