@@ -494,10 +494,40 @@
 - [Download](https://graphviz.gitlab.io/download/)
 
 
+## PCA
+
+- [PCA(主成分分析)python实现 - 简书](https://www.jianshu.com/p/4528aaa6dc48)
 
 
 ## XGBoost
 
+- [XGBoost 与 Boosted Tree – 我爱计算机](http://www.52cs.org/?p=429)
+
+- [Complete Guide to Parameter Tuning in XGBoost (with codes in Python)](https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/)
+- 
+
+## Hierarchical Clustering
+
+- [利用 SciPy 实现层次聚类 - Haojun's Blog](https://haojunsui.github.io/2016/07/16/scipy-hac/)
+
+
+## Kaggle
+
+
+- [Data Science London + Scikit-learn | Kaggle](https://www.kaggle.com/c/data-science-london-scikit-learn)
+
+- [House Prices: Advanced Regression Techniques | Kaggle](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
+
+- [Heritage Health Prize | Kaggle](https://www.kaggle.com/c/hhp#milestone-winners)
+
+- [Stacked Regressions : Top 4% on LeaderBoard | Kaggle](https://www.kaggle.com/serigne/stacked-regressions-top-4-on-leaderboard)
+
+
+
+## Model Tuning
+
+- [Scanning hyperspace: how to tune machine learning models | Cambridge Coding Academy](https://cambridgecoding.wordpress.com/2016/04/03/scanning-hyperspace-how-to-tune-machine-learning-models/)
+- 
 
 ## Trubleshooting
 

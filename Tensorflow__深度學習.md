@@ -1290,6 +1290,16 @@ plt.title('Accuracy')
 - 若嚴重 Overfitting 可嘗試 dropout, L2 regularization
 
 
+## Callback function
+
+- [deep-learning-experiments/cat_dog_tf_v4_AddCallBacks.ipynb at master · vashineyu/deep-learning-experiments](https://github.com/vashineyu/deep-learning-experiments/blob/master/Tut_cats-dogs/cat_dog_tf_v4_AddCallBacks.ipynb)
+- 
+
+## Visualizing TensorFlow
+
+- [Visualizing TensorFlow Graphs in Jupyter Notebooks](https://blog.jakuba.net/2017/05/30/tensorflow-visualization.html)
+
+- [Simple way to visualize a TensorFlow graph in Jupyter? - Stack Overflow](https://stackoverflow.com/questions/38189119/simple-way-to-visualize-a-tensorflow-graph-in-jupyter)
 
 ## Troubleshooting
 

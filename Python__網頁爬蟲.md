@@ -16,6 +16,9 @@
 
 * [afunTW/ptt-web-crawler: PTT 網路版爬蟲](https://github.com/afunTW/ptt-web-crawler)
 
+- [afunTW/Python-Crawling-Tutorial: Python crawling tutorial](https://github.com/afunTW/Python-Crawling-Tutorial)
+
+- [afunTW/Test-Crawling-Website: Using Bootstrap Template as demo page](https://github.com/afunTW/Test-Crawling-Website)
 
 ## HTTP Basic
 * [HTTP request methods - HTTP | MDN](https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Methods)
