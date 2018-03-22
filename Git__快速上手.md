@@ -92,6 +92,127 @@
 
     ![](https://screenshotscdn.firefoxusercontent.com/images/62e93de3-6188-47b3-8cfe-06ca742f846a.png)
 
+
+## 如何解決衝突
+
+- [Resolving a merge conflict using the command line - User Documentation](https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/)
+
+    > ### Competing line change merge conflicts
+    > 
+    > 
+    > 1.  Open Git Bash.
+    >     
+    > 2.  Navigate into the local Git repository that has the merge conflict.
+    > 
+    >     ```shell
+    >     cd _REPOSITORY-NAME_
+    >     ```
+    >     
+    > 3.  Generate a list of the files affected by the merge conflict. In this example, the file _styleguide.md_ has a merge conflict.
+    >     
+    >     ```shell
+    >     git status
+    >     # On branch branch-b
+    >     # You have unmerged paths.
+    >     #   (fix conflicts and run "git commit")
+    >     #
+    >     # Unmerged paths:
+    >     #   (use "git add ..." to mark resolution)
+    >     #
+    >     # both modified:      styleguide.md
+    >     #
+    >     # no changes added to commit (use "git add" and/or "git commit -a")
+    >     ```
+    >     
+    > 4.  Open your favorite text editor, such as [Atom](https://atom.io/), and navigate to the file that has merge conflicts.
+    >     
+    > 5.  To see the beginning of the merge conflict in your file, search the file for the conflict marker `<<<<<<<`. When you open the file in your text editor, you'll see the changes from the HEAD or base branch after the line `<<<<<<< HEAD`. Next, you'll see `=======`, which divides your changes from the changes in the other branch, followed by `>>>>>>> BRANCH-NAME`. In this example, one person wrote "open an issue" in the base or HEAD branch and another person wrote "ask your question in IRC" in the compare branch or `branch-a`.
+    >     
+    >     ```
+    >     If you have questions, please
+    >     <<<<<<< HEAD
+    >     open an issue
+    >     =======
+    >     ask your question in IRC.
+    >     >>>>>>> branch-a
+    >     ```
+    >     
+    > 6.  Decide if you want to keep only your branch's changes, keep only the other branch's changes, or make a brand new change, which may incorporate changes from both branches. Delete the conflict markers `<<<<<<<`, `=======`, `>>>>>>>` and make the changes you want in the final merge. In this example, both changes are incorporated into the final merge:
+    >     
+    >     ```
+    >     If you have questions, please open an issue or ask in our IRC channel if it's more urgent.
+    >     ```
+    >     
+    > 7.  Add or stage your changes.
+    >     
+    >     ```shell
+    >     git add .
+    >     ```
+    >     
+    > 8.  Commit your changes with a comment.
+    >     
+    >     ```shell
+    >     git commit -m "Resolved merge conflict by incorporating both suggestions."
+    >     ```
+    > 
+    > 
+    > ### Removed file merge conflicts
+    > 
+    > To resolve a merge conflict caused by competing changes to a file, where a person deletes a file in one branch and another person edits the same file, you must choose whether to delete or keep the removed file in a new commit.
+    > 
+    > For example, if you edited a file, such as _README.md_, and another person removed the same file in another branch in the same Git repository, you'll get a merge conflict error when you try to merge these branches. You must resolve this merge conflict with a new commit before you can merge these branches.
+    > 
+    > 1.  Open Git Bash.
+    >     
+    > 2.  Navigate into the local Git repository that has the merge conflict.
+    >     ```shell
+    >     cd _REPOSITORY-NAME_
+    >     ```
+    > 3.  Generate a list of the files affected by the merge conflict. In this example, the file _README.md_ has a merge conflict.
+    >     ```shell
+    >     git status
+    >     # On branch master
+    >     # Your branch and 'origin/master' have diverged,
+    >     # and have 1 and 2 different commits each, respectively.
+    >     #  (use "git pull" to merge the remote branch into yours)
+    >     # You have unmerged paths.
+    >     #  (fix conflicts and run "git commit")
+    >     #
+    >     # Unmerged paths:
+    >     #  (use "git add/rm ..." as appropriate to mark resolution)
+    >     #
+    >     #  deleted by us:   README.md
+    >     #
+    >     # no changes added to commit (use "git add" and/or "git commit -a")
+    >     ```
+    > 4.  Open your favorite text editor, such as [Atom](https://atom.io/), and navigate to the file that has merge conflicts.
+    >     
+    > 5.  Decide if you want keep the removed file. You may want to view the latest changes made to the removed file in your text editor.
+    >     
+    >     To add the removed file back to your repository:
+    >     ```shell
+    >     git add README.md
+    >     ```
+    >     To remove this file from your repository:
+    >     ```shell
+    >     git rm README.md
+    >     README.md: needs merge
+    >     rm 'README.md'
+    >     ```
+    > 6.  Commit your changes with a comment.
+    >     ```shell
+    >     git commit -m "Resolved merge conflict by keeping README.md file."
+    >     [branch-d 6f89e49] Merge branch 'branch-c' into branch-d
+    >     ```
+
+## 如何清除目錄中的 untracked file
+
+- 有時目錄中會出現未加入版本控管的檔案，下 `git status` 會以紅字表示。出於某些因素，例如想要合併的分支會改到這些檔案，因而造成衝突，此時如果確定這些檔案都是不要的，想把目錄清乾淨，可以先下 `git clean -n` 顯示那些檔案將移除，再下 `git clean -f` 確定將檔案移除。
+
+    ![](https://screenshotscdn.firefoxusercontent.com/images/e9958f21-4fe1-4599-932f-d6281ac87b75.png)
+    - [branch - How to remove local (untracked) files from the current Git working tree? - Stack Overflow](https://stackoverflow.com/questions/61212/how-to-remove-local-untracked-files-from-the-current-git-working-tree)
+
+
 ## 拆分工作建立分支 branch，避免與主分支打架
 
 ## 將其他分支的工作 merge 到自己的分支
@@ -110,6 +231,13 @@
         > 
         > When you want to start keeping track again  
         > `git update-index --no-assume-unchanged path/to/file`
+
+    - 如果出現 "fatal unable to mark file"，有可能是路徑、大小寫或斜線(/)反斜線(\\)問題，建議輸入路徑時，用tab 鍵自動完成，輸入檔案完整名稱，不要使用萬用字元如：(\*)。
+        - [git update-index --assume-unchanged returns "fatal unable to mark file" - Stack Overflow](https://stackoverflow.com/questions/12920652/git-update-index-assume-unchanged-returns-fatal-unable-to-mark-file)
+
+    - 隱藏項目的資訊被存在 index 裡面，通常你不能改它。如果要列出所有被隱藏的檔案，可下 `git ls-files -v | grep '^h'` 或 `git ls-files -v | grep '^[[:lower:]]'` ，因為隱藏項目印出來開頭是小寫。
+        - [git - Can I get a list of files marked --assume-unchanged? - Stack Overflow](https://stackoverflow.com/questions/2363197/can-i-get-a-list-of-files-marked-assume-unchanged)
+        - [Where does "git update-index --assume-unchanged file" actually save this information to? - Stack Overflow](https://stackoverflow.com/questions/7115012/where-does-git-update-index-assume-unchanged-file-actually-save-this-informa)
 
 - 有些檔案你想將之從版本控管中移除，讓其他人也看不到，使用 `git rm --cached`
 
@@ -189,5 +317,30 @@
     > Another update: `git lfs pull` is now the correct command, as of Git LFS v0.6.0. `fetch` will download the files, but `pull` updates them in the working directory.
 
     如果已經確定安裝 git-lfs，先 checkout 到另外一個 branch，再切回來 ，這樣應該會自動下載
+
+- [git merge fails refusing to lose untracked file - Stack Overflow](https://stackoverflow.com/questions/32996747/git-merge-fails-refusing-to-lose-untracked-file)
+    __Qusetion__
+    > I am trying to merge a repository on the master. I am getting the following error.
+    > 
+    > ```
+    > error: refusing to lose untracked file at 'config/database.yml'
+    > 
+    > ```
+    > 
+    > git status gives me
+    > 
+    > ```
+    > deleted by us:   config/database.yml
+    > 
+    > ```
+    > 
+    > How can I resolve that ?
+    > 
+
+    __Solution__
+    > From what you're describing, the `database.yml` file just shouldn't be in your repository anymore.
+    > 
+    > Perform `git rm --cached config/database.yml` to remove it from Git, then attempt your merge once more.
+
 
 

@@ -9,11 +9,8 @@
 
 - [tf.placeholder  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/placeholder)
 
-- [Module: tf.layers  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers)
-    - [tf.layers.conv2d  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers/conv2d)
-    - [tf.layers.max_pooling2d  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers/max_pooling2d)
-    - [tf.layers.flatten  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers/flatten)
-    - [tf.layers.dense  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers/dense)
+
+
 
 - [tf.matmul  |  TensorFlow](https://www.tensorflow.org/versions/master/api_docs/python/tf/matmul)
     Multiplies matrix `a` by matrix `b`, producing `a` \* `b`.
@@ -47,8 +44,27 @@
     
 
 - [tf.Session  |  TensorFlow](https://www.tensorflow.org/versions/r1.1/api_docs/python/tf/Session#run)
-    - run
+    - __run__
         Runs operations and evaluates tensors in `fetches`.
+
+### Layers
+
+- [Module: tf.layers  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers)
+    - [tf.layers.conv2d  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers/conv2d)
+    - [tf.layers.max_pooling2d  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers/max_pooling2d)
+    - [tf.layers.flatten  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers/flatten)
+    - [tf.layers.dense  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers/dense)
+
+
+### Optimizer
+
+- [tf.train.RMSPropOptimizer  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/train/RMSPropOptimizer)
+    - __minimize__
+      Add operations to minimize `loss` by updating `var_list`.
+
+
+
+
 
 ### RNN
 
@@ -1309,6 +1325,41 @@ plt.title('Accuracy')
     From the tutorial: [Deep MNIST for Experts](https://www.tensorflow.org/versions/r0.10/tutorials/mnist/pros/index.html)
 
     > Here we assign it a shape of \[None, 784\], where 784 is the dimensionality of a single flattened 28 by 28 pixel MNIST image, and **None indicates that the first dimension, corresponding to the batch size, can be of any size**.
+
+- [python - How to find which version of TensorFlow is installed in my system? - Stack Overflow](https://stackoverflow.com/questions/38549253/how-to-find-which-version-of-tensorflow-is-installed-in-my-system)
+
+    ```python
+    import tensorflow as tf
+    print(tf.VERSION)
+    ```
+    or
+
+    ```python
+    import tensorflow as tf
+    tf.__version__
+    ```
+
+- [Object detection using GPU on Windows is about 5 times slower than on Ubuntu · Issue #1942 · tensorflow/models](https://github.com/tensorflow/models/issues/1942)
+
+    > Funny thing, I compiled tensorflow myself with GPU support on Windows using cmake as described here:  
+    > [https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/cmake](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/cmake)  
+    > and now it's working with the same performance as on Ubuntu!
+    > 
+    > So it looks like the problem is that the windows wheels (tensorflow-gpu) distributed by Google are not correctly compiled to fully utilize the GPU on Windows... !?
+
+- [GPU is detected but training starts on the CPU · Issue #3366 · tensorflow/models](https://github.com/tensorflow/models/issues/3366)
+
+    > I have installed the tensorflow-gpu 1.5 or 1.6.rc0 in accompany with Cuda-9.0 and CuDNN-7.0.5  
+    > When I start training using `train.py`, it detects the GPU, but it starts the training on the CPU and CPU load is 100%. The GPU memory gets filled and its core clocks increases but it does not show any consistent load on the cores.
+    > 
+    > **Platform:** Windows10-x64  
+    > **CUDA:** Cuda-9.0.176.1 and CuDNN-7.0.5 - GTX 1060 6G GPU  
+    > **Tested by these Tensorflow versions:** 1.5 and 1.6-rc0 (both shows a similar behavior). Installed through pip (`pip install tensorflow-gpu`)
+    > 
+    > Training command: (it starts training but with this behavior)
+    > 
+    > `python train.py --logtostderr --train_dir=results/train --peline_config_path=weight/ssd_inception_v2_coco.config`
+
 
 ### GPU Usage
 

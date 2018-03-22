@@ -142,6 +142,190 @@
 - [numpy.argsort — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.argsort.html#numpy.argsort)
     Returns the indices that would sort an array.
 
+- [numpy.ravel — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.ravel.html#numpy.ravel)
+    Return a contiguous flattened array.
+
+- [numpy.vstack — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.vstack.html#numpy.vstack)
+    Stack arrays in sequence vertically (row wise).
+
+    ```python
+    >>> a = np.array([1, 2, 3])
+    >>> b = np.array([2, 3, 4])
+    >>> np.vstack((a,b))
+    array([[1, 2, 3],
+           [2, 3, 4]])
+    ```
+
+- [numpy.zeros_like — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.zeros_like.html#numpy.zeros_like)
+    Return an array of zeros with the same shape and type as a given array.
+
+```python
+>>> x = np.arange(6)
+>>> x = x.reshape((2, 3))
+>>> x
+array([[0, 1, 2],
+       [3, 4, 5]])
+>>> np.zeros_like(x)
+array([[0, 0, 0],
+       [0, 0, 0]])
+```
+
+- [Indexing — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/arrays.indexing.html)
+    - __numpy.newaxis__
+    The [newaxis](https://docs.scipy.org/doc/numpy-1.12.0/reference/arrays.indexing.html#numpy.newaxis "numpy.newaxis") object can be used in all slicing operations to create an axis of length one. [newaxis](https://docs.scipy.org/doc/numpy-1.12.0/reference/arrays.indexing.html#numpy.newaxis "numpy.newaxis") is an alias for ‘None’, and ‘None’ can be used in place of this with the same result.
+       - [python - How does numpy.newaxis work and when to use it? - Stack Overflow](https://stackoverflow.com/questions/29241056/how-does-numpy-newaxis-work-and-when-to-use-it)
+            > Simply put, the [`newaxis`](https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html#numpy.newaxis) is used to **_increase the dimension_** of the existing array by _one more dimension_, when used _once_. Thus,
+            > 
+            > -   **1D** array will become **2D** array
+            >     
+            > -   **2D** array will become **3D** array
+            >     
+            > -   **3D** array will become **4D** array
+            >     
+            > 
+            > and so on.. Here is an illustration.
+            > 
+            > [![newaxis canva visualization](https://i.stack.imgur.com/zkMBy.png)](https://i.stack.imgur.com/zkMBy.png)
+            > 
+            > ---
+            > 
+            > **Scenario-1**: [`np.newaxis`](https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html#numpy.newaxis) might come in handy when you want to _explicitly_ convert an 1D array to either a _row vector_ or a _column vector_, as depicted in the above picture.
+            > 
+            > **Example:**
+            > 
+            > ```
+            > # 1D array
+            > In [7]: arr = np.arange(4)
+            > In [8]: arr.shape
+            > Out[8]: (4,)
+            > 
+            > # make it as row vector by inserting an axis along first dimension
+            > In [9]: row_vec = arr[np.newaxis, :]
+            > In [10]: row_vec.shape
+            > Out[10]: (1, 4)
+            > 
+            > # make it as column vector by inserting an axis along second dimension
+            > In [11]: col_vec = arr[:, np.newaxis]
+            > In [12]: col_vec.shape
+            > Out[12]: (4, 1)
+            > ```
+            > 
+            > ---
+            > 
+            > **Scenario-2**: When we want to make use of [numpy broadcasting](https://docs.scipy.org/doc/numpy-1.13.0/user/basics.broadcasting.html) as part of some operation, for instance while doing _addition_ of some arrays.
+            > 
+            > **Example:**
+            > 
+            > Let's say you want to add the following two arrays:
+            > 
+            > ```
+            >  x1 = np.array([1, 2, 3, 4, 5])
+            >  x2 = np.array([5, 4, 3])
+            > ```
+            > 
+            > If you try to add these just like that, NumPy will raise the following `ValueError` :
+            > 
+            > ```
+            > ValueError: operands could not be broadcast together with shapes (5,) (3,)
+            > ```
+            > 
+            > In this situation, you can use [`np.newaxis`](https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html#numpy.newaxis) to increase the dimension of one of the arrays so that NumPy can [broadcast](https://docs.scipy.org/doc/numpy-1.13.0/user/basics.broadcasting.html).
+            > 
+            > ```
+            > In [2]: x1_new = x1[:, np.newaxis]
+            > # now, the shape of x1_new is (5, 1)
+            > # array([[1],
+            > #        [2],
+            > #        [3],
+            > #        [4],
+            > #        [5]])
+            > ```
+            > 
+            > Now, add:
+            > 
+            > ```
+            > In [3]: x1_new + x2
+            > Out[3]:
+            > array([[ 6,  5,  4],
+            >        [ 7,  6,  5],
+            >        [ 8,  7,  6],
+            >        [ 9,  8,  7],
+            >        [10,  9,  8]])
+            > ```
+            > 
+            > ---
+            > 
+            > Alternatively, you can also add new axis to the array `x2`:
+            > 
+            > ```
+            > In [6]: x2_new = x2[:, np.newaxis]
+            > In [7]: x2_new     # shape is (3, 1)
+            > Out[7]: 
+            > array([[5],
+            >        [4],
+            >        [3]])
+            > ```
+            > 
+            > Now, add:
+            > 
+            > ```
+            > In [8]: x1 + x2_new
+            > Out[8]: 
+            > array([[ 6,  7,  8,  9, 10],
+            >        [ 5,  6,  7,  8,  9],
+            >        [ 4,  5,  6,  7,  8]])
+            > ```
+            > 
+            > **Note**: Observe that we get the same result in both cases (but one being the transpose of the other).
+            > 
+            > ---
+            > 
+            > **Scenario-3**: This is similar to scenario-1. But, you can use [`np.newaxis`](https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html#numpy.newaxis) more than once to _promote_ the array to higher dimensions.
+            > 
+            > **Example:**
+            > 
+            > ```
+            > In [124]: arr = np.arange(5*5).reshape(5,5)
+            > 
+            > In [125]: arr.shape
+            > Out[125]: (5, 5)
+            > 
+            > # promoting 2D array to a 5D array
+            > In [126]: arr_5D = arr[np.newaxis, ..., np.newaxis, np.newaxis]
+            > 
+            > In [127]: arr_5D.shape
+            > Out[127]: (1, 5, 5, 1, 1)
+            > ```
+            >
+            > **More background on [np.newaxis](https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html#numpy.newaxis) vs [np.reshape](https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.reshape.html)**
+            > 
+            > [`newaxis`](https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html#numpy.newaxis) is also called as a pseudo-index that allows the temporary addition of an axis into a multiarray.
+            > 
+            > [`np.newaxis`](https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html#numpy.newaxis) uses the slicing operator to recreate the array while [`np.reshape`](https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.reshape.html) reshapes the array to the desired layout (assuming that the dimensions match; And this is **_must_** for a [`reshape`](https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.reshape.html) to happen).
+            > 
+            > **Example**
+            > 
+            > ```
+            > In [13]: A = np.ones((3,4,5,6))
+            > In [14]: B = np.ones((4,6))
+            > In [15]: (A + B[:, np.newaxis, :]).shape
+            > Out[15]: (3, 4, 5, 6)
+            > ```
+            > 
+            > In the above example, we inserted a temporary axis between the first and second axes of `B` (to use broadcasting). A missing axis is filled-in here using [`np.newaxis`](https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html#numpy.newaxis) to make the [broadcasting](https://docs.scipy.org/doc/numpy-1.13.0/user/basics.broadcasting.html) operation work.
+            > 
+            > ---
+            > 
+            > **_General Tip_**: You can also use `None` in place of [`np.newaxis`](https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html#numpy.newaxis); These are in fact the [same objects](https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.expand_dims.html).
+            > 
+            > ```
+            > In [13]: np.newaxis is None
+            > Out[13]: True
+            > ```
+            > 
+            > P.S. Also see this great answer: [newaxis vs reshape to add dimensions](https://stackoverflow.com/a/28385957)
+            > 
+
 #### Sorting
 
 - [python - Efficiently sorting a numpy array in descending order? - Stack Overflow](https://stackoverflow.com/questions/26984414/efficiently-sorting-a-numpy-array-in-descending-order)

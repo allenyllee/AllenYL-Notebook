@@ -58,7 +58,40 @@
     ```
 
 
+### Using git bash in jupyter noteobok on Windows
 
+- [Using git bash in jupyter noteobok on Windows – Konpat Ta Preechakul – Medium](https://medium.com/@konpat/using-git-bash-in-jupyter-noteobok-on-windows-c88d2c3c7b07)
 
+    > Since [https://github.com/jupyter/notebook/pull/3087](https://github.com/jupyter/notebook/pull/3087) (notebook version 5.3.0), there is a support for terminal on Windows!
+    > 
+    > So if you have notebook version 5.3.0 or better installed (check by `jupyter notebook --version` ), you can new “terminal” in your menu!
+    > 
+    > The default shell is “powershell.exe”, but you can change it in `.jupyter/jupyter_notebook_config.py`
+    > 
+    > The following is a config to use **Git Bash**:
+    > 
+    >
+    > ```
+    > c.NotebookApp.terminado_settings = {  
+    >     'shell_command': \['C:\\\Program Files\\\Git\\\bin\\\bash.exe'\]  
+    > }
+    > ```
+    > Restart your notebook and see the change!
+    > 
 
+### Flush output in Jupyter notebook
+- [python - Flush output in for loop in Jupyter notebook - Stack Overflow](https://stackoverflow.com/questions/43150097/flush-output-in-for-loop-in-jupyter-notebook)
 
+    > 
+    > ```
+    > #Try this:
+    > import sys
+    > import time
+    > 
+    > for i in range (10):  
+    >     sys.stdout.write('\r'+str(i))
+    >     time.sleep(0.5)
+    > ```
+    > 
+    > __'\\r' will print at the beginning of the line__
+    > 

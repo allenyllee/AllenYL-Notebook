@@ -7,7 +7,7 @@
 
 - [原價屋估價](http://www.coolpc.com.tw/evaluate.php)
 
-- 主機：ASRock DeskMini250 GTX (__~\$46400__) [time=Oct 07, 2018]
+- 主機：ASRock DeskMini250 GTX (__~\$46400__) [time=Oct 07, 2017]
     - 空機 (主機板+網卡) (__~\$13900__)
     - GPU：NVIDIA GTX1070 (MXM介面) (__~\$22500__)
     - CPU：Intel Pentium G4600 (3.6Ghz) (效能近i3-7100) (__~\$2150__)
@@ -153,6 +153,8 @@
     > 
     > Update (6/7/2016): It appears that FP16 is working way slower than FP32 in NVIDIA’s 1080. You can read more here: [https://devtalk.nvidia.com/defau...](https://devtalk.nvidia.com/default/topic/934562/cuda-programming-and-performance/nvidia-pascal-geforce-gtx-1080-amp-gtx-1070/post/4889687/) [name=Siddharth Mohan]
 
+    > The 1080 has indeed the 16-bit support but these instructions are 1/64th slower than the 32-bits’s
+    > [name=Djébril Mokaddem]
 
     > Nvidia's marketing material claims that GTX 1080 has 10TFlops performance as compared to GTX 980 Ti at 7TFlops performance. Titan X is equivalent to a GTX 980 Ti however with 12GB of memory instead of 4-6GB of memory. So, in comparison, GTX 1080 has higher compute capability but with less memory (i.e. 8GB). The price however for a GTX 1080 (~6oo USD) is much lower than a Titan X (~1,000 USD). The Titan X prices however could drop when the GTX 1080 is released.
     > 
@@ -236,7 +238,157 @@
 
 - [Tutorial on Hardware Architectures for Deep Neural Networks](http://eyeriss.mit.edu/tutorial.html)
 
+### GPU architecture
+
+- [GPU: nvidia architecture comparison(1. Fermi 2.Kepler 3. Maxwell 4. Pascal 5. Tesla) | LinkedIn](https://www.linkedin.com/pulse/gpu-nvidia-architecture-comparison1-fermi-2kepler-3-maxwell-chi/)
+
+    > ### Fermi GPU:
+    > 
+    > Released in 2010, NVIDIA engineers set out to design a new GPU architecture. The architecture defines a GPU's building blocks, how they're connected, and how they work.
+    > 
+    > Named after the Italian nuclear physicist Enrico Fermi, Fermi is to incorporate full geometry processing to the GPU, enabling a key DirectX 11 technique called tessellation with displacement mapping.
+    > 
+    > ### Kepler GPU:
+    > 
+    > Released in 2012, NVIDIA unveiled its plans to join the cloud gaming space. They’re developed specifically for the GRID and efficient in HPC setup. It has Graphics Processing Clusters (or GPCs), each of which contained a raster engine and four Streaming Multiprocessor (or SM) units. GPU Boost for automatic overclocking.
+    > 
+    > ### Maxwell GPU:
+    > 
+    > Released in 2014, Maxwell-based GPU has new Dynamic Super Resolution (or DSR) that’s designed to put 4K-quality content on lower-resolution screens. Maximum Ram will 12gb (Titan X or Quadro M6000) whereas Pascal 32GB of video memory. Quad SLI in Maxwell upto 4 Graphics card whereas Pascal upto 8 Graphics Card.
+    > 
+    > ### Pascal GPU:
+    > 
+    > Released in 2016, Pascal is designed for the best scalability and Pascal will be priced at a premium because it is a more expensive product as HBM2 and NVLink included.
+    > 
+    > HBM2 for Bandwidth and NVLink to improve unified virtual addressing scheme across the GPUs and between CPUs and GPUs. So it has capable of allowing data to move 5% to 12% faster across CPUs and GPUs compared to PCI-Express.
+    > 
+    > ### Conclusion:
+    > 
+    > Even after a new technology is introduced, sometimes the old one can be had at a much cheaper price and therefore continues to be a good price/performer since there is no end of life.
+    > 
+    > 25 Times More Performance from Fermi to Kepler GPU
+    > 
+    > 35 Times More Performance from Kepler to Maxwell GPU
+    > 
+    > 10 Times More performance from Maxwell to Pascal GPU
+    > 
+    > Also, when compare the three generations of Graphics card on their raw performance alone, the Pascal does better than the Kepler or Maxwell cards .
+    > 
+    > 
+    >| Architecture | Fermi | Kepler |  Maxwell | Pascal  | Volta |
+    >|--            |--     |--      |--        |--       |--     |
+    >| GPU Design   | SM    | SMX    | SMM      | SMP Max ||
+    >|VRAM|1.5GB GDDR5|6GB GDDR5|12 GB GDDR5|16/32 GB HBM2|12GB HBM2|
+    >|Max Bandwidth|192 GB/s|336 GB/s|336 GB/s|1 TB/s|652.8GB/s|
+    > 
+    > 
+    > NVIDIA Volta GPUs, successors to Pascal Architecture.
+
+
+
+
+### VRAM
+
+- [memory - How do I calculate video RAM requirements? - Super User](https://superuser.com/questions/256932/how-do-i-calculate-video-ram-requirements)
+
+    > A graphics card actually requires relatively little memory to function as a simple framebuffer (2D graphics) device:
+    > 
+    > For example - the framebuffer requirements for 1920x1080 in 32 bit colour would be:
+    > 
+    > -   1920 x 1080 = 2073600 pixels
+    > -   2073600 x 32 = 66355200 bits
+    > -   66355200 / 8 = 8294400 bytes
+    > -   8294400 / 1024 = 8100 kilobytes
+    > -   8100 / 1024 = 7.91015625 megabytes
+    > 
+    > So even at that high resolution an 8MB card would be able to display an image.
+    > 
+    > You can double, or even triple that amount if you are using double or triple buffering (display one image while rendering another then switch to that new image while you render a third, etc).
+    > 
+    > All the rest of the memory is used when the card is working with 3D graphics to store internal copies (and transformed copies) of textures for rendering. The more memory you have the more and higher resolution textures the card can hold internally, so it won't need to be repeatedly sent the same textures over and over again by the gaming engine.
+    > 
+    > So basically the more memory you have the better it will be for 3D gaming.
+    > 
+
+- [How much VRAM do you really need at 1080p, 1440p and 4K?](https://www.tweaktown.com/tweakipedia/89/much-vram-need-1080p-1440p-4k/index.html)
+
+    > Results
+    > ---------
+    > 
+    > **1080p**: At 1920x1080, we're seeing an average of around 1.5GB to 2GB of VRAM being used, with GTA V blowing all the way out to 3.7GB, and Shadow of Mordor getting there with 3.3GB. Still, 1080p is quite tame on the framebuffer.
+    > 
+    > **1440p**: Moving up to 2560x1440, we see GTA V consume 3.9GB of VRAM while Shadow of Mordor uses 3.5GB. Thief begins to crawl up there with 2.9GB of VRAM, while Battlefield 4 on the Ultra preset (minus AA) is only consuming 2.2GB of VRAM and is one of the best looking games out right now.
+    > 
+    > **4K**: As for what games or tests use the most VRAM, we see that it's a tie between Thief and GTA V, both using 4.3GB of VRAM, while Shadow of Mordor isn't far behind with 3.9GB being used - all at 4K. Battlefield 4 only uses 3GB of VRAM, which is quite surprising.
+    > 
+    > Final Thoughts
+    > --------------
+    > 
+    > Surprised? Probably. 4GB of VRAM is more than enough for most video cards today, even at 4K. We haven't taken into account any anti-aliasing, as we're going to follow through with another article that looks at 1080p, 1440p and 4K with 4xAA enabled to see how much AA strains the framebuffer in these titles. But in all my years of using PCs, I barely use AA. AA is a personal preference. I'd rather have high framerates on my 120-144Hz screens, but anti-aliasing really helps at 1080p and below.
+    > 
+
+
+- [How much VRAM do you need at 1080p, 1440p and 4K with AA enabled?](https://www.tweaktown.com/tweakipedia/90/much-vram-need-1080p-1440p-4k-aa-enabled/index.html)
+
+    > Results
+    > ---------
+    > 
+    > **1080p**: Far Cry 4 actually doesn't perform too badly at all at 1080p, but with AA enabled you're going to need 3GB+. When it comes to The Witcher 3, HBAO+ doesn't do too much at all to VRAM consumption. Battlefield 4 consumes another 20% VRAM or so at 1080p with AA enabled while Metro: Last Light uses another 30% or so - up to 1.3GB of VRAM.
+    > 
+    > Shadow of Mordor really loves its VRAM, with 4.7GB of VRAM being used at just 1080p with AA enabled, up from the 3.3GB used without AA. GTA V doesn't use much more VRAM with AA enabled at 1080p, while Tomb Raider uses another 180MB of VRAM for a total of 1.5GB at 1080p.
+    > 
+    > **1440p**: 2560x1440 is where the VRAM begins to get stressed out, starting with Heaven using 1.6GB compared to 819MB - a 100% increase in VRAM consumption. But Far Cry 4 is where the fun starts, with 3.7GB used, up from 2.8GB without AA. The Witcher 3 again doesn't consume much more at all, you don't notice any difference between 2168MB and 2197MB being used.
+    > 
+    > Battlefield 4 jumps up from 1.9GB to nearly 2.3GB at 1440p with AA applied, while Metro: Last Light uses another 200MB+ of VRAM at 1440p with AA enabled. Shadow of Mordor uses just under 5GB of VRAM at 1440p with AO enabled. Grand Theft Auto V uses much more VRAM at 1440p with AA enabled, jumping up from 3.9GB to nearly 4.6GB of VRAM.
+    > 
+    > **4K**: This is why you're here once again, to see 4K results with AA enabled. Starting with Heaven, which leaps from 1.3GB to a huge 3GB of VRAM consumption with AA enabled. Far Cry 4 uses a huge 5.7GB at 4K with AA enabled, a large jump from the 3.7GB without AA enabled.
+    > 
+    > Ambient Occlusion enabled in The Witcher 3 sees the game using another 200MB of VRAM, while Battlefield 4 uses nearly 3GB of VRAM with AA enabled versus 2.3GB without AA. Metro: Last Light consumes just over 2GB of VRAM with AA enabled, versus the 1.6GB used without AA.
+    > 
+    > Shadow of Mordor really enjoys the VRAM at 4K with AO enabled, jumping from 3.9GB to 5.4GB while GTA V absolutely leaps up from its 4.3GB to a huge 6.4GB of VRAM consumption with AA enabled at 4K.
+    > 
+    > **8K**: Bonus round! I ran Shadow of Mordor at 4K with 200% super sampling, which renders the game at 7680x4320, or 8K. At 8K, Shadow of Mordor consumes a mammoth, VRAM-busting 8.4GB of VRAM.
+    > 
+    > Battlefield 4 on the other hand, I could run with AA enabled, and disabled. At 7680x4320 without AA, Battlefield 4 was using 5.2GB of VRAM, while 4xAA enabled saw this skyrocket to a huge 7.5GB of VRAM.
+    > 
+    > Final Thoughts
+    > --------------
+    > 
+    > Our first article really gave us a great look at just how much VRAM you need in games, where we honestly weren't surprised that you don't really need 4GB of VRAM or more. With AA applied - and some people really do love using AA - those numbers really start to climb above 6GB in some games, like Shadow of Mordor, or GTA V.
+    > 
+    > We aren't even maxing out the anti-aliasing settings, as you can force NVIDIA or AMD settings to much higher settings, but that is overkill, isn't it? For some it won't be, so if that's something you want to see us do, please do let us know. For now, we've shown you just how much the maxed out in-game settings can do with AA (or AO in SoM) can cause games to consume much more VRAM.
+    > 
+    > One of the more interesting tests was quickly running Middle-earth: Shadow of Mordor at 8K, which consumes a gigantic 8.4GB of VRAM. 8K is the future of gaming, and while it is many years away, if today's games are using 8GB of VRAM, what will the games of tomorrow consume?
+    > 
+    > You might think that VRAM consumption isn't something to worry about, or "I don't need more than 4-6GB" - and while that applies to most of the games today - it will definitely change in the future. 8K will use 8GB+ of VRAM in the future, but by next year I think we'll begin to see video cards with 24GB of VRAM (Titan 2, I'm looking at you).
+
+- [Hardware choices: VRAM and PCIe bandwidth：deeplearning](https://www.reddit.com/r/deeplearning/comments/5fohlp/hardware_choices_vram_and_pcie_bandwidth/)
+
+    > Generally 8gb will be enough for vision tasks because reducing the batch size on a CNN reduces the memory requirements ~linearly. That means you can use a small batch size and train large networks and get good results (though you might have to reduce your learning rate for small batch sizes). I believe the memory requirements for RNN's aren't affected much by the batch size (parameters take the most ram here) so the more VRAM the better.
+    > 
+    > Tim's blog post claims that CPU power doesn't really matter, but in my experience that's not really true at all. You're going to do a lot of data processing, maybe even online while training. Depending on how complex this processing is, it might make the CPU the bottleneck.
+    > 
+    > The other option is to add a third GPU to run your monitors. This will cause you to have an 8x, 4x, 4x pcie lane split, and I think that could hurt you.
+
+- [caffe-yolo/multigpu.md at master · yeahkun/caffe-yolo](https://github.com/yeahkun/caffe-yolo/blob/master/docs/multigpu.md)
+
+    > Performance is **heavily** dependent on the PCIe topology of the system, the configuration of the neural network you are training, and the speed of each of the layers. 
+    > 
+    > In general, scaling on 2 GPUs tends to be ~1.8X on average for networks like AlexNet, CaffeNet, VGG, GoogleNet. 4 GPUs begins to have falloff in scaling.
+
+
 ### GPU to SSD DMA
+
+- [NVIDIA GPUDirect | NVIDIA Developer](https://developer.nvidia.com/gpudirect)
+
+    > ![](https://developer.nvidia.com/sites/default/files/akamai/cuda/images/GPUDirect_v2.0_p2p_coms.png)
+    > 
+    > Using GPUDirect, multiple GPUs, third party network adapters, solid-state drives (SSDs) and other devices can directly read and write CUDA host and device memory, eliminating unnecessary memory copies, dramatically lowering CPU overhead, and reducing latency, resulting in significant performance improvements in data transfer times for applications running on NVIDIA Tesla™ and Quadro™ products
+
+- [GPUDirect RDMA :: CUDA Toolkit Documentation](http://docs.nvidia.com/cuda/gpudirect-rdma/index.html)
+
+    > ![](http://docs.nvidia.com/cuda/gpudirect-rdma/graphics/gpudirect-rdma-within-linux-device-driver-model.png)
+
 
 - [PostgreSQL 上，直接將 SSD 的內容送到 GPU 上，加速讀取速度 – Gea-Suan Lin's BLOG](https://blog.gslin.org/archives/2016/09/23/6863/postgresql-%E4%B8%8A%EF%BC%8C%E7%9B%B4%E6%8E%A5%E5%B0%87-ssd-%E7%9A%84%E5%85%A7%E5%AE%B9%E9%80%81%E5%88%B0-gpu-%E4%B8%8A%EF%BC%8C%E5%8A%A0%E9%80%9F%E8%AE%80%E5%8F%96%E9%80%9F%E5%BA%A6/)
     -  [GpuScan and SSD-To-GPU Direct DMA | Hacker News](https://news.ycombinator.com/item?id=12524405)
@@ -336,9 +488,69 @@
     > ```
     > [name=Florent DUGUET]
 
+
+### GPU on Embedded system
+
+- [csarron/emdl: Embedded and mobile deep learning research resources](https://github.com/csarron/emdl)
+
+- [Deep Learning on ARM Platforms - SFO17-509](https://www.slideshare.net/linaroorg/deep-learning-on-arm-platforms-sfo17509)
+
+- [Tegra - Wikiwand](https://www.wikiwand.com/en/Tegra)
+
+- [極度強悍的 SoC 處理器，NVIDIA Tegra X1 內部功能與架構預覽 | TechNews 科技新報](http://technews.tw/2015/01/06/nvidia-tegra-x1-soc-architecture-preview/)
+
+### 開發版
+
+- [Nvidia Jetson - Wikiwand](https://www.wikiwand.com/en/Nvidia_Jetson)
+
+- [Everything You Need To Know About The NVIDIA Jetson TX1 Performance - Phoronix](https://www.phoronix.com/scan.php?page=article&item=nvidia-jtx1-perf&num=1)
+
 ### GPGPU
 
 - [一窩瘋「人工智慧晶片」前，你需要知道的幾件關於 GPGPU 的事 | TechNews 科技新報](https://technews.tw/2017/09/12/what-you-need-to-know-about-gpgpu/)
+
+### FPGA
+
+- [IT Robotics Lab: SoC FPGA 嵌入式系統晶片?](http://blog.ittraining.com.tw/2017/09/soc-fpga.html)
+
+    > __Why SoC FPGA?__
+    > 
+    > 目前嵌入式系統晶片開發人員必須面對激烈的市場挑戰，被要求更高的單位功耗性能/運算效能、更低的時延以及更短的開發週期來滿足各種的市場需求，因此基於FPGA的SoC已成為最流行且可行的解決方案。簡單來說,就是在FPGA可程式邏輯晶片嵌入了一個「硬核」處理器系統-- SoC (包含了ARM處理器、記憶體控制器、I/O週邊)，在Intel (Altera)把這個SoC稱作是HPS (Hard Processor System) 。  
+    > 
+    > 在SoC FPGA 架構下可以彈性的設計，單純使用ARM SoC、僅單獨使用FPGA或兩者一起使用。當兩者一起用時, FPGA可以作為ARM週邊的角色，針對大量且須經複雜運算的資料,如數據資料、影像訊號、聲音訊號等，可利用FPGA 硬體並行運算能力設計演算法追求最佳效能。因此，利用SoC FPGA 架構所設計的嵌入式平台，不僅可以突顯了產品優勢，在價格和性能上都可以達到最優，更重要的是產品能夠及時上市。  
+    > 
+    > HPS是屬於hard core 方式, 也可以選擇使用 soft core 的方式. 就是用Intel 自己的CPU--NiosII, 但用Soft core的方式, 就會消秏到原本FPGA的邏輯匣。
+    > 
+    > HPS 和 FPGA 有自己的Bus系統, HPS 的ARM 是 AXI Bus , FPGA 是 Avalon Bus, , 故需要設計一個Bridge 讓兩邊系統能夠溝通。 
+    > 
+    > 
+    > [![](https://2.bp.blogspot.com/-fymgzrA3_cw/Wb0soE0nadI/AAAAAAAAFt4/oWsMGb96pskUICJnLjazLA4Nqi_Zpv3ggCLcBGAs/s640/DE0-Nano1.png)](https://2.bp.blogspot.com/-fymgzrA3_cw/Wb0soE0nadI/AAAAAAAAFt4/oWsMGb96pskUICJnLjazLA4Nqi_Zpv3ggCLcBGAs/s1600/DE0-Nano1.png)
+    > 
+
+
+### Google TPU
+
+- [Google’s AI Processor’s (TPU) Heart Throbbing Inspiration](https://medium.com/intuitionmachine/googles-ai-processor-is-inspired-by-the-heart-d0f01b72defe)
+
+- [An in-depth look at Google’s first Tensor Processing Unit (TPU) | Google Cloud Big Data and Machine Learning Blog  |  Google Cloud](https://cloud.google.com/blog/big-data/2017/05/an-in-depth-look-at-googles-first-tensor-processing-unit-tpu)
+
+###### tags: `systolic`
+- [download;jsessionid=EA259B539AA3B7DCB8D2C11D1397C767 - 1982-kung-why-systolic-architecture.pdf](http://www.eecs.harvard.edu/~htk/publication/1982-kung-why-systolic-architecture.pdf)
+
+- [Should We All Embrace Systolic Arrays? | LinkedIn](https://www.linkedin.com/pulse/should-we-all-embrace-systolic-arrays-chien-ping-lu/?trk=mp-reader-card)
+
+
+### compiler
+- [nGraph: A New Open Source Compiler for Deep Learning Systems - Intel AI](https://ai.intel.com/ngraph-a-new-open-source-compiler-for-deep-learning-systems/?)
+
+    > We are pleased to announce the open sourcing of nGraph, a framework-neutral Deep Neural Network (DNN) model compiler that can target a variety of devices. With nGraph, data scientists can focus on data science rather than worrying about how to adapt their DNN models to train and run efficiently on different devices. Continue reading below for highlights of our engineering challenges and design decisions, and see [GitHub](https://github.com/NervanaSystems/ngraph), our [documentation](http://ngraph.nervanasys.com/index.html/), and our [SysML paper](https://arxiv.org/abs/1801.08058) for additional details.
+    > 
+    > ![](http://simplecore.intel.com/nervana/wp-content/uploads/sites/53/2018/03/Picture1-2-300x168.png)
+    > 
+    > _Figure 1 –_ nGraph ecosystem_._
+    > 
+    > We currently support TensorFlow*, MXNet*, and neon directly through nGraph. CNTK*, PyTorch*, and Caffe2* are supported indirectly through ONNX. Users can run these frameworks on several devices: Intel Architecture, GPU, and Intel Nervana Neural Network Processor (NNP). Support for future devices/frameworks in our roadmap is faded.
+
 
 ## Environment Setup
 
@@ -449,9 +661,10 @@
 
 
 
-### Use Docker Image
+### Docker for Deep Learning
 
 - [floydhub/dl-docker: An all-in-one Docker image for deep learning. Contains all the popular DL frameworks (TensorFlow, Theano, Torch, Caffe, etc.)](https://github.com/floydhub/dl-docker)
+- [ufoym/deepo: A series of Docker images (and their generator) that allows you to quickly set up your deep learning research environment.](https://github.com/ufoym/deepo)
 
 ### How about TPU?
 
@@ -473,15 +686,29 @@
 ## 雲端服務
 
 - [Compute Pricing Comparison: AWS vs Azure vs Google Cloud](https://www.simform.com/compute-pricing-comparison-aws-azure-googlecloud/)
-- [AWS vs Azure vs Google Cloud Pricing: Compute Instances](https://www.rightscale.com/blog/cloud-cost-analysis/aws-vs-azure-vs-google-cloud-pricing-compute-instances)
+
+- [AWS vs Paperspace vs FloydHub : Choosing your cloud GPU partner](https://medium.com/@rupak.thakur/aws-vs-paperspace-vs-floydhub-choosing-your-cloud-gpu-partner-350150606b39)
 - [FloydHub - Deep Learning Platform - Cloud GPU](https://www.floydhub.com/)
+- [Is it a good idea to use FloydHub or other cloud services to train deep models? - Quora](https://www.quora.com/Is-it-a-good-idea-to-use-FloydHub-or-other-cloud-services-to-train-deep-models)
+
 - [How much does a GPU instance cost?：MLQuestions](https://www.reddit.com/r/MLQuestions/comments/5s0jnc/how_much_does_a_gpu_instance_cost/)
 
 
 - [GPU訓練機器學習模型哪家強？AWS、谷歌雲、IBM等6大平台對比 - iFuun](http://www.ifuun.com/a201802109938558/)
     - [Machine learning mega-benchmark: GPU providers (part 2) | RaRe Technologies](https://rare-technologies.com/machine-learning-benchmarks-hardware-providers-gpu-part-2/)
 
-    ![Imgur](https://i.imgur.com/KVFNlFq.png)
+    > ![Imgur](https://i.imgur.com/KVFNlFq.png)
+
+
+    > -   Paperspace appears to be one step ahead with regards to performance and costs. This is especially true for occasional/infrequent users who just wish to experiment with deep learning techniques (similar conclusion in [another benchmark](https://medium.com/initialized-capital/benchmarking-tensorflow-performance-and-cost-across-different-gpu-options-69bd85fe5d58)).
+    > -   Dedicated servers (like the ones provided by LeaderGPU) and bare metal servers (such as Hetzner) are suitable for users considering heavy-duty long term employment of these resources (doh). Note though that since they are less flexible in the matter of customizing the servers, make sure that your task is highly CPU/GPU intensive to truly benefit from the pricing.
+    > -   Newer players like Paperspace and LeaderGPU shouldn’t be dismissed, as they can aid in cutting a major chunk of the costs. Enterprises can be averse to switching providers because of the associated inertia and switching costs, but these smaller platforms are definitely worth considering.
+    > -   AWS and GCE can be terrific options for someone looking for integration with their other services (AI integrations – Amazon’s Rekognition, Google’s Cloud AI).
+    > -   Unless you plan to run a task that will take days to complete, sticking to a lower end single-GPU instance is the best bargain (see also [here](http://minimaxir.com/2017/11/benchmark-gpus/)).
+    > -   Higher-end GPUs are significantly faster but actually have worse ROI. You should opt for these only when a short training time (lower R&D cycle latency) is more important than the hardware costs.
+    > 
+
+
 
 
 ### Preempted vs On-demand

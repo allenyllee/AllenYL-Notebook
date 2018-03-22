@@ -946,3 +946,31 @@
     `f = open('test.txt', encoding = 'utf8')`
 
 
+- [python - img = Image.open(fp) AttributeError: class Image has no attribute 'open' - Stack Overflow](https://stackoverflow.com/questions/10748822/img-image-openfp-attributeerror-class-image-has-no-attribute-open)
+
+    > You have a namespace conflict. One of your import statements is masking `PIL.Image` (which is a module, not a class) with some class named `Image`.
+    > 
+    > Instead of ...
+    > 
+    > ```
+    > from PIL import Image
+    > ```
+    > 
+    > try ...
+    > 
+    > ```
+    > import PIL.Image
+    > ```
+    > 
+    > then later in your code...
+    > 
+    > ```
+    > fp = open("/pdf-ex/downloadwin7.png","rb")
+    > img = PIL.Image.open(fp)
+    > img.show()
+    > ```
+    > 
+    > When working with a LOT of imports, beware of namespace conflicts. I'm generally very wary of `from some_module import *` statements.
+    > 
+    > Good luck with your project and happy coding.
+    > 

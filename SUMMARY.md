@@ -70,6 +70,9 @@
 - [Markdown__快速上手](Markdown__快速上手.md)
 [//]: # ( - [Markdown__快速上手](https://hackmd.io/IwIwJgTAnAhg7HAtAZjsgHIgLFgrEmAU2AAYUJcA2OAY0LCzDCiA?view)
 
+- [Gitbook__筆記](Gitbook__筆記.md)
+[//]: # ( - [Gitbook__筆記](https://hackmd.io/956PgKn0Qku4FgBCcucoBQ?view)
+
 - [Regular_Expression__快速上手](Regular_Expression__快速上手.md)
 [//]: # ( - [Regular_Expression__快速上手](https://hackmd.io/MtW4sdSZSqCLzocQ3yIfFQ?view)
 
@@ -118,8 +121,8 @@
 
 ## 電腦圖學
 
-- [OpenGL__繪圖](OpenGL__繪圖.md)
-[//]: # ( - [OpenGL__繪圖](https://hackmd.io/mabMtVJkRfOYg5VhGd2cww?view)
+- [Computer_Graphics__電腦圖學](Computer_Graphics__電腦圖學.md)
+[//]: # ( - [Computer_Graphics__電腦圖學](https://hackmd.io/mabMtVJkRfOYg5VhGd2cww?view)
 
 - [CUDA__快速上手](CUDA__快速上手.md)
 [//]: # ( - [CUDA__快速上手](https://hackmd.io/DsVkBwjrTju1JcYqXq8ktA?view)
