@@ -1,5 +1,8 @@
 # Keras__深度學習
 
+<!-- toc --> 
+[toc]
+
 ## API reference
 
 - [Sequential - Keras Documentation](https://keras.io/models/sequential/)
@@ -16,9 +19,203 @@
 - [Metrics - Keras Documentation](https://faroit.github.io/keras-docs/1.1.1/metrics/)
 
 
-## tutorial
+## Tutorial
 
 - [Guide to the Sequential model - Keras Documentation](https://keras.io/getting-started/sequential-model-guide/#compilation)
+
+- [陳雲濤的部落格: Keras 學習筆記](https://violin-tao.blogspot.tw/2017/05/keras.html)
+
+### RNN
+
+#### 用RNN 預測 sin波型
+- [RNN Regressor 循环神经网络 - Keras | 莫烦Python](https://morvanzhou.github.io/tutorials/machine-learning/keras/2-5-RNN-LSTM-Regressor/)
+
+- [tensorflow - predict sinus with keras feed forward neural network - Data Science Stack Exchange](https://datascience.stackexchange.com/questions/19365/predict-sinus-with-keras-feed-forward-neural-network)
+
+    > Accuracy is a metric meant for classification problems, look at the mean squared error instead. Your network is too small for a highly fluctuating function that you want to learn, if you divide your x by a smaller amount it would be easier to learn. Second of all, adding another layer and having an identity activation at the end will help quite a bit. Also taking batches bigger than 1 will make the gradient more stable. With a 1000 epochs I get to 0.00167 as mean squared error.
+    > 
+    > ```
+    > x = np.arange(200).reshape(-1,1) / 50
+    > y = np.sin(x)
+    > 
+    > model = Sequential([
+    > Dense(40, input_shape=(1,)),
+    > Activation('sigmoid'),
+    > Dense(12),
+    > Activation('sigmoid'),
+    > Dense(1)
+    >     ])
+    > 
+    > model.compile(loss='mean_squared_error', optimizer='SGD', metrics=['mean_squared_error'])
+    > 
+    > for i in range(40):
+    >     model.fit(x, y, nb_epoch=25, batch_size=8, verbose=0)
+    >     predictions = model.predict(x)
+    >     print(np.mean(np.square(predictions - y)))
+    > 
+    > ```
+    > 
+    > The biggest issue is that the signal in your original small dataset is very difficult to learn, you can see this when you plot it, it will just collapse to the mean.
+
+    > Keep in mind that the **Accuracy** measure is measuring whether the values are _Exactly The Same_. I.e. it is a classification measure, whereas approximating a sin curve is much better suited for measurement as a regression problem.
+    > 
+    > That said:
+    > 
+    > In evaluating the network's performance, what is the network actually doing? Let's take the network and perform a little visual analysis on its performance:
+    > 
+    > ```
+    > import matplotlib.pyplot as plt
+    > preds = model.predict(x)
+    > plt.plot(x, y, 'b', x, preds, 'r--')
+    > plt.ylabel('Y / Predicted Value')
+    > plt.xlabel('X Value')
+    > plt.show()
+    > 
+    > ```
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/e0acv.png)](https://i.stack.imgur.com/e0acv.png)
+    > 
+    > Hmm. The model seems to be minimizing error by simply getting closer and closer to guessing 0 for every value, rather than approximating the function. There are several hypotheses here to explain this. One is that the network is not complex enough to model the function. In order to test this, let's simplify the function- that is, let's bring the range down to one sine cycle:
+    > 
+    > ```
+    > x = np.arange(0, math.pi*2, 0.1)
+    > y = np.sin(x)
+    > 
+    > ```
+    > 
+    > And try to train the network again:
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/8HA7X.png)](https://i.stack.imgur.com/8HA7X.png)
+    > 
+    > Not wonderful, but a better fit, certainly.
+    > 
+    > How about with **100 epochs** instead of 10?
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/0Q6eS.png)](https://i.stack.imgur.com/0Q6eS.png)
+    > 
+    > How about with **1000 epochs**?
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/Wk7qL.png)](https://i.stack.imgur.com/Wk7qL.png)
+    > 
+    > This is, of course, very interesting. After 1000 epochs, our networks is able to roughly approximate the downward curve from 1:0 (π /2  
+    > 
+    > : π   ) of the sine response, but not the initial upward curve 0:1 (0:π /2  ) or the region in which the function is negative (π   :2π   
+    > 
+    > ).
+    > 
+    > This result begs the question- what will it look like after **10000 epochs**?
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/sxf00.png)](https://i.stack.imgur.com/sxf00.png)
+    > 
+    > Not significantly better. It looks like we'll have to change the architecture of the network (more layers, more neurons, and/or different activation functions) to improve beyond this point.
+    > 
+    > To inform this architecture change, let's take a look at the sigmoid activation function:
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/pp6kl.png)](https://i.stack.imgur.com/pp6kl.png)
+    > 
+    > Uh-oh. The value of this sigmoid function can only ever be in the range 0:1, and the range of the sin function is -1:1.
+    > 
+    > To correct this, let's just normalize the sin response between 0 and 1:
+    > 
+    > ```
+    > y = (np.sin(x)+1)/2 
+    > 
+    > ```
+    > 
+    > Now, the network performs much better than before after 1000 epochs:
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/X0Nrk.png)](https://i.stack.imgur.com/X0Nrk.png)
+    > 
+    > And 10000:
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/IxcxR.png)](https://i.stack.imgur.com/IxcxR.png)
+    > 
+    > After 100000 epochs, it's roughly perfect:
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/dmbZb.png)](https://i.stack.imgur.com/dmbZb.png)
+    > 
+    > Even still, this advancement doesn't help much on the larger sin range (after 1000 epochs):
+    > 
+    > ```
+    > x = np.arange(0, 100, 1)
+    > y = (np.sin(x)+1)/2 
+    > 
+    > ```
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/6smI5.png)](https://i.stack.imgur.com/6smI5.png)
+    > 
+    > If we, however, take the model trained on a single sin curve and further train it on the larger range, we begin to see progress after 1000 epochs:
+    > 
+    > ```
+    > x = np.arange(0, 100, .1)
+    > y = (np.sin(x)+1)/2 
+    > 
+    > model_copy = model
+    > model_copy.fit(x, y, epochs=1000, batch_size=8, verbose=0)
+    > model_copy_preds = model_copy.predict(x)
+    > 
+    > ```
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/UW8H2.png)](https://i.stack.imgur.com/UW8H2.png)
+    > 
+    > And more so after 10000 epochs:[![enter image description here](https://i.stack.imgur.com/cmQjw.png)](https://i.stack.imgur.com/cmQjw.png)
+    > 
+    > And more so, well into the third repetition after 100000 epochs:
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/zDPgJ.png)](https://i.stack.imgur.com/zDPgJ.png)
+    > 
+    > So, with careful training, our network with a single layer of sigmoid activations appears to be learning to generalize the sin curve. Further investigation could find a limit to that generalization, certainly.
+    > 
+    > For reproduction:
+    > 
+    > ```
+    > import numpy as np
+    > from keras.layers import Dense
+    > from keras.models import Sequential
+    > import matplotlib.pyplot as plt
+    > import math
+    > 
+    > x = np.arange(0, math.pi*2, .1)
+    > y = (np.sin(x)+1)/2 
+    > 
+    > model = Sequential([
+    >     Dense(10, input_shape=(1,)),
+    >     Activation('sigmoid'),
+    >     Dense(1)
+    > ])
+    > 
+    > model.compile(loss='mean_squared_error', optimizer='SGD', metrics=['mean_squared_error'])
+    > model.fit(x, y, epochs=100000, batch_size=8, verbose=0)
+    > 
+    > preds = model.predict(x)
+    > 
+    > plt.plot(x, y, 'b', x, preds, 'r--')
+    > plt.ylabel('Y / Predicted Value')
+    > plt.xlabel('X Value')
+    > plt.show()
+    > 
+    > x = np.arange(0, 100, .1)
+    > y = (np.sin(x)+1)/2 
+    > 
+    > model_copy = model
+    > model_copy.fit(x, y, epochs=10000, batch_size=8, verbose=0)
+    > model_copy_preds = model_copy.predict(x)
+    > 
+    > plt.plot(x, y, 'b', x, model_copy_preds, 'r--')
+    > plt.ylabel('Y / Predicted Value')
+    > plt.xlabel('X Value')
+    > plt.show()
+    > 
+    > ```
+    > 
+
+- [python - Approximating sine function with Neural Network and ReLU (Keras) - Stack Overflow](https://stackoverflow.com/questions/44716415/approximating-sine-function-with-neural-network-and-relu-keras)
+
+    > Two things here:
+    > 
+    > 1.  Your network is really shallow and small. Having only 4 neurons with `relu` makes a case when a couple of this neurons are completely saturated highly possible. This is probably why your network result looks like that. Try `he_normal` or `he_uniform` as initializer to overcome that.
+    > 2.  In my opinion your network is too small for this task. I would definitely increase both depth and width of your network by intdoucing more neurons and layers to your network. In case of `sigmoid` which has a similiar shape to a `sin` function this might work fine - but in case of `relu` you really need a bigger network.
+
 
 
 ## Usage
@@ -262,3 +459,43 @@
     >     return K.max(K.abs(y_pred - y_true), axis=-1)
     > ```
     > 
+
+### GPU Usage
+
+- [python - Can I run Keras model on gpu? - Stack Overflow](https://stackoverflow.com/questions/45662253/can-i-run-keras-model-on-gpu)
+
+    > Yes you can run keras models on GPU. Few things you will have to check first.
+    > 
+    > 1.  your system has GPU (Nvidia. As AMD doesn't work yet)
+    > 2.  You have installed the GPU version of tensorflow
+    > 3.  You have installed CUDA [installation instructions](https://www.tensorflow.org/install/install_linux)
+    > 4.  Verify that tensorflow is running with GPU [check if GPU is working](https://stackoverflow.com/questions/38009682/how-to-tell-if-tensorflow-is-using-gpu-acceleration-from-inside-python-shell)
+    > 
+    > `sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))`
+    > 
+    > OR
+    > 
+    > `from tensorflow.python.client import device_lib`
+    > 
+    > `print(device_lib.list_local_devices())`
+    > 
+    > output will be something like this:
+    > 
+    > ```
+    > [
+    >   name: "/cpu:0"device_type: "CPU",
+    >   name: "/gpu:0"device_type: "GPU"
+    > ]
+    > ```
+    > 
+    > Once all this is done your model will run on GPU:
+    > 
+    > To Check if keras(>=2.1.1) is using GPU:
+    > 
+    > ```
+    > from keras import backend as K
+    > K.tensorflow_backend._get_available_gpus()
+    > ```
+    > 
+    > All the best.
+

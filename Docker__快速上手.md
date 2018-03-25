@@ -727,6 +727,35 @@
 - [douban/tfmesos: Tensorflow in Docker on Mesos #tfmesos #tensorflow #mesos](https://github.com/douban/tfmesos)
 
 
+- [Training Your Custom Model with the DC/OS TensorFlow package - Mesosphere](https://mesosphere.com/blog/tensorflow-custom-model/)
+
+- [Distributed TensorFlow with GPU Support on Mesosphere DC/OS](https://mesosphere.com/blog/tensorflow-gpu-support-deep-learning/)
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/vsyU9R3y7VA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    > ### Benefits of running Distributed TensorFlow on DC/OS
+    > 
+    > The new beta release of TensorFlow on DC/OS helps solve each of the problems outlined above and more. Specifically it helps to:
+    > 
+    > 1.  **Simplify the deployment of distributed TensorFlow:** Deploying a distributed TensorFlow cluster with all of its components on any infrastructure, whether it’s baremetal, virtual or public cloud is as simple as passing a JSON file to a single CLI command. Updating and tweaking parameters to fine-tune and optimize becomes trivial.
+    > 2.  **Share infrastructure across teams:** DC/OS allows multiple teams to share the infrastructure and launch multiple TensorFlow jobs while maintaining complete resource isolation. Once a TensorFlow job is done, capacity is released and made available to other teams.
+    > 3.  **Deploy different TensorFlow versions on the same cluster:** As with many DC/OS services, you can easily deploy multiple instances of a services, each with a different version, on the same cluster. This means that when a new version of TensorFlow is released, one team can take advantage of the latest features and capabilities without running the risk of breaking another team’s code.
+    > 4.  **Allocate GPUs dynamically:** GPUs greatly increase the speed of deep learning models, especially during training. However, GPUs are precious resources that must be efficiently utilized. Since DC/OS automatically detects all GPUs on a cluster, [GPU-based scheduling](https://mesosphere.com/blog/accelerating-machine-learning-with-gpus-and-dcos/) can be used to allow TensorFlow to request all or some of the GPU resources on a per job basis (similar to requesting CPU, memory, and disk resources). Once the job is complete, the GPU resources are released and made available to other jobs.
+    > 5.  **Focus on model development, not deployment:** DC/OS separates the model development from the cluster configuration by eliminating the need to manually introduce a ClusterSpec in the model code. Instead, the person deploying the TensorFlow package specifies the properties of the various workers and parameter servers they would like their model to run with, and the package generates a unique ClusterSpec for it at deploy-time. Under the hood the package finds a set of machines to run each worker / parameter server on, populates a ClusterSpec with the appropriate values, starts each parameter server and worker task, and passes it the generated ClusterSpec. The developer simply writes his code expecting this object to be populated, and the package takes care of the rest.The figure below shows a JSON snippet that can be used to deploy a TensorFlow package from the DC/OS CLI with a mix of CPU and GPU workers.![It's easy to deploy distributed TensorFlow on DC/OS using the CLI.](https://mesosphere.com/wp-content/uploads/2017/10/tensorflow-dcos-7.png?v2)
+    >     
+    >     The command to launch TensorFlow with this config would be:
+    >     
+    >     dcos package install beta-tensorflow --options=<path/to/config.json>
+    >     
+    >     The package can also be deployed from the DC/OS service catalog by specifying these parameters in the UI.
+    >     
+    > 6.  **Automate failure recovery:** The TensorFlow package is written using the DC/OS SDK and leverages built-in resiliency features including automatic restart so that failed tasks effectively self-heal.
+    > 7.  **Deploy job configuration parameters securely at runtime:** The DC/OS secrets service dynamically deploys credentials and confidential configuration options to each TensorFlow instance at runtime. Operators can easily add credentials to access confidential information or specific configuration URLs without exposing them in the model code.
+    > 
+    > 
+
+
+
 ## HyperPilot
 - [容器叢集效能成新議題，HyperPilot開源釋出，要靠機器學習自動優化容器叢集 | iThome](https://www.ithome.com.tw/news/121876)
 

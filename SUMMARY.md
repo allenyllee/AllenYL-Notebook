@@ -132,8 +132,14 @@
 
 ## 其他
 
+- [Java__筆記](Java__筆記.md)
+[//]: # ( - [Java__筆記](https://hackmd.io/DOojSGYJTIamBsKK2NfTKQ?view)
+
 - [英文筆記](英文筆記.md)
 [//]: # ( - [英文筆記](https://hackmd.io/kwMuJHt4Qdinvy4pT63xdg?view)
+
+- [簡報技巧](簡報技巧.md)
+[//]: # ( - [簡報技巧](https://hackmd.io/UNk-euRoSq28UK9Bpr6-kQ?view)
 
 - [Windows__問題排解](Windows__問題排解.md)
 [//]: # ( - [Windows__問題排解](https://hackmd.io/IwJgHApiECYMwFpgGNkE4EBYAMbFswDNkEYB2ZYAQxwCMqRk4g==?view)

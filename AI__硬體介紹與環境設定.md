@@ -284,7 +284,7 @@
     > 
     > NVIDIA Volta GPUs, successors to Pascal Architecture.
 
-
+- [Inside Volta: The World’s Most Advanced Data Center GPU | NVIDIA Developer Blog](https://devblogs.nvidia.com/inside-volta/?ncid=so-lin-vt-13919)
 
 
 ### VRAM
@@ -532,12 +532,54 @@
 
 - [Google’s AI Processor’s (TPU) Heart Throbbing Inspiration](https://medium.com/intuitionmachine/googles-ai-processor-is-inspired-by-the-heart-d0f01b72defe)
 
+    > ![](https://cdn-images-1.medium.com/max/1200/1*mvGhZQdd91h21ZCG7DMqVg.png)
+
+    > 256 x 256 8bit multiply-add computational units. That’s a grand total of 65,536 processors capable of cranking out 92 trillion operations per second!
+
+    > ![](https://cdn-images-1.medium.com/max/1200/1*249Jc-YR3s_QqUtSsDTjQw.png)
+
+
 - [An in-depth look at Google’s first Tensor Processing Unit (TPU) | Google Cloud Big Data and Machine Learning Blog  |  Google Cloud](https://cloud.google.com/blog/big-data/2017/05/an-in-depth-look-at-googles-first-tensor-processing-unit-tpu)
+
+    > TPU delivered 15–30X higher performance and 30–80X higher performance-per-watt than contemporary CPUs and GPUs.
+
+
+    > The TPU ASIC is built on a 28nm process, runs at 700MHz and consumes 40W when running. Because we needed to deploy the TPU to Google's existing servers as fast as possible, we chose to package the processor as an external accelerator card that fits into an SATA hard disk slot for drop-in installation. The TPU is connected to its host via a PCIe Gen3 x16 bus that provides 12.5GB/s of effective bandwidth.
+
+
+
+
+- [【Hot Chips 29】淺談 Google 的 TPU | TechNews 科技新報](https://technews.tw/2018/01/02/about-google-tpu/)
+
+- [詳解Google第二代TPU，既能推理又能訓練，性能霸道 | Google I/O 2017 - 每日頭條](https://kknews.cc/tech/p55no6j.html)
+
+    > 首先開發出新的晶片並不能保證Google成功，要使用TPU 2.0，開發者要學習一種構建和運行神經網絡的新方法。它不僅僅是一個新的晶片，TPU 2.0也是專門為TensorFlow設計。雖然Tensorflow是開源軟體，但也有許多研究人員使用Torch和Caffe等類似的軟體。新硬體需要新的軟體優化，這需要不少時間。
+    > 
+    > 在Google推出TPU 2.0的幾周之前，Facebook的AI研究主管Yann LeCun質疑稱，市場可能不需要新的AI專用晶片，因為研究者已經對使用GPU所需的工具非常熟悉了。新的硬體意味著新的生態系統。
+    > 
+    > 另外，Google雲服務的成功不僅取決於晶片的速度，以及使用的容易程度，還要考慮成本。所以，如果Google以比現有GPU服務更低的成本提供TPU服務，會得到更廣泛的用戶基礎。
+    > 
+    > Google自己當然會使用新TPU系統，但也會將它的能力開放給其它公司使用。Google表示，不會將晶片直接出售，而是會通過其新的雲服務（年底前公布）提供，任何開發者都可以使用新處理器帶來的計算能力。
+    > 
+    > Google也重申了其對開源模式的承諾，表示會向同意發布研究結果的研究人員提供TPU資源，甚至可能開原始碼。他甚至呼籲開發者加入TensorFlow Research Cloud計劃，它會免費提供一組1000台TPU。
+    > 
+    > 新TPU的速度優勢肯定會吸引到不少研究人員，畢竟AI研究要在大量硬體上廣泛試錯。就此而言，Google願意免費提供計算資源對全世界的AI研究者來說都是有好處的，當然，這對Google來說也是有好處的。
+
+- [dean-nips17.pdf](http://learningsys.org/nips17/assets/slides/dean-nips17.pdf)
+
+
+
 
 ###### tags: `systolic`
 - [download;jsessionid=EA259B539AA3B7DCB8D2C11D1397C767 - 1982-kung-why-systolic-architecture.pdf](http://www.eecs.harvard.edu/~htk/publication/1982-kung-why-systolic-architecture.pdf)
 
 - [Should We All Embrace Systolic Arrays? | LinkedIn](https://www.linkedin.com/pulse/should-we-all-embrace-systolic-arrays-chien-ping-lu/?trk=mp-reader-card)
+
+- [Instruction systolic array (ISA) - Matrix multiplication](http://www.iti.fh-flensburg.de/lang/papers/isa/isa2.htm)
+
+    ![](https://media.giphy.com/media/8vZUh9LrkN4llUUxaN/giphy.gif)
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/sJltBQ4MOHA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 ### compiler

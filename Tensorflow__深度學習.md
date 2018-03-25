@@ -5,12 +5,10 @@
 
 
 ## API Reference
+
 - [All symbols in TensorFlow  |  TensorFlow](https://www.tensorflow.org/api_docs/python/)
 
 - [tf.placeholder  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/placeholder)
-
-
-
 
 - [tf.matmul  |  TensorFlow](https://www.tensorflow.org/versions/master/api_docs/python/tf/matmul)
     Multiplies matrix `a` by matrix `b`, producing `a` \* `b`.
@@ -46,6 +44,92 @@
 - [tf.Session  |  TensorFlow](https://www.tensorflow.org/versions/r1.1/api_docs/python/tf/Session#run)
     - __run__
         Runs operations and evaluates tensors in `fetches`.
+
+### Variable
+
+- [tf.get_variable  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/get_variable)
+
+    >Gets an existing variable with these parameters or create a new one.
+
+- [python - List of tensor names in graph in Tensorflow - Stack Overflow](https://stackoverflow.com/questions/35336648/list-of-tensor-names-in-graph-in-tensorflow/35337827)
+
+    > To answer your first question, `sess.graph.get_operations()` gives you a list of operations. For an op, `op.name` gives you the name and `op.values()` gives you a list of tensors it produces (in the inception-v3 model, all tensor names are the op name with a ":0" appended to it, so `pool_3:0` is the tensor produced by the final pooling op.)
+    > 
+
+- [python - In Tensorflow, get the names of all the Tensors in a graph - Stack Overflow](https://stackoverflow.com/questions/36883949/in-tensorflow-get-the-names-of-all-the-tensors-in-a-graph)
+
+    > You can do
+    > 
+    > ```
+    > [n.name for n in tf.get_default_graph().as_graph_def().node]
+    > ```
+    > 
+    > Also, if you are prototyping in an IPython notebook, you can show the graph directly in notebook, see `show_graph` function in Alexander's Deep Dream [notebook](http://nbviewer.jupyter.org/github/tensorflow/tensorflow/blob/master/tensorflow/examples/tutorials/deepdream/deepdream.ipynb)
+
+
+- [DeepDreaming with TensorFlow](https://nbviewer.jupyter.org/github/tensorflow/tensorflow/blob/master/tensorflow/examples/tutorials/deepdream/deepdream.ipynb#deepdream)
+
+    ```python
+    from IPython.display import display, HTML
+
+    def show_graph(graph_def, max_const_size=32):
+        """Visualize TensorFlow graph."""
+        if hasattr(graph_def, 'as_graph_def'):
+            graph_def = graph_def.as_graph_def()
+        strip_def = strip_consts(graph_def, max_const_size=max_const_size)
+        code = """
+            <script>
+              function load() {{
+                document.getElementById("{id}").pbtxt = {data};
+              }}
+            </script>
+            <link rel="import" href="https://tensorboard.appspot.com/tf-graph-basic.build.html" onload=load()>
+            <div style="height:600px">
+              <tf-graph-basic id="{id}"></tf-graph-basic>
+            </div>
+        """.format(data=repr(str(strip_def)), id='graph'+str(np.random.rand()))
+
+        iframe = """
+            <iframe seamless style="width:800px;height:620px;border:0" srcdoc="{}"></iframe>
+        """.format(code.replace('"', '&quot;'))
+        display(HTML(iframe))
+
+
+    # Visualizing the network graph. Be sure expand the "mixed" nodes to see their 
+    # internal structure. We are going to visualize "Conv2D" nodes.
+    tmp_def = rename_nodes(graph_def, lambda s:"/".join(s.split('_',1)))
+    show_graph(tmp_def)
+    ```
+
+- [python - How to print the value of a Tensor object in TensorFlow? - Stack Overflow](https://stackoverflow.com/questions/33633370/how-to-print-the-value-of-a-tensor-object-in-tensorflow)
+
+    > While other answers are correct that you cannot print the value until you evaluate the graph, they do not talk about one easy way of actually printing a value inside the graph, once you evaluate it.
+    > 
+    > The easiest way to see a value of a tensor whenever the graph is evaluated (using `run` or `eval`) is to use the [`Print`](https://www.tensorflow.org/versions/master/api_docs/python/control_flow_ops.html#Print) operation as in this example:
+    > 
+    > ```python
+    > # Initialize session
+    > import tensorflow as tf
+    > sess = tf.InteractiveSession()
+    > 
+    > # Some tensor we want to print the value of
+    > a = tf.constant([1.0, 3.0])
+    > 
+    > # Add print operation
+    > a = tf.Print(a, [a], message="This is a: ")
+    > 
+    > # Add more elements of the graph using a
+    > b = tf.add(a, a)
+    > ```
+    > 
+    > Now, whenever we evaluate the whole graph, e.g. using `b.eval()`, we get:
+    > 
+    > ```python
+    > I tensorflow/core/kernels/logging_ops.cc:79] This is a: [1 3]
+    > ```
+    > 
+
+
 
 ### Layers
 
@@ -164,7 +248,212 @@
     > 
     > If you want to do optimization to minimize the cross entropy, AND you're softmaxing after your last layer, you should use `tf.nn.softmax_cross_entropy_with_logits` instead of doing it yourself, because it covers numerically unstable corner cases in the mathematically right way. Otherwise, you'll end up hacking it by adding little epsilons here and there.
 
+### Graph
 
+- [tf.GraphKeys  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/GraphKeys)
+
+    > Standard names to use for graph collections.
+    > 
+    > The standard library uses various well-known names to collect and retrieve values associated with a graph. For example, the `tf.Optimizer` subclasses default to optimizing the variables collected under `tf.GraphKeys.TRAINABLE_VARIABLES` if none is specified, but it is also possible to pass an explicit list of variables.
+
+- [tf.control_dependencies  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/control_dependencies)
+
+    > Returns:
+    > 
+    > A context manager that specifies control dependencies for all operations constructed within the context.
+
+- [python - TensorFlow saving into/loading a graph from a file - Stack Overflow](https://stackoverflow.com/questions/38947658/tensorflow-saving-into-loading-a-graph-from-a-file)
+
+    > There are many ways to approach the problem of saving a model in TensorFlow, which can make it a bit confusing. Taking each of your sub-questions in turn:
+    > 
+    > 1.  The checkpoint files (produced e.g. by calling [`saver.save()`](https://www.tensorflow.org/versions/r0.10/api_docs/python/state_ops.html#Saver.save) on a [`tf.train.Saver`](https://www.tensorflow.org/versions/r0.10/api_docs/python/state_ops.html#Saver) object) contain only the weights, and any other variables defined in the same program. To use them in another program, you must re-create the associated graph structure (e.g. by running code to build it again, or calling [`tf.import_graph_def()`](https://www.tensorflow.org/versions/r0.10/api_docs/python/framework.html#import_graph_def)), which tells TensorFlow what to do with those weights. Note that calling `saver.save()` also produces a file containing a [`MetaGraphDef`](https://www.tensorflow.org/versions/r0.10/how_tos/meta_graph/index.html), which contains a graph and details of how to associate the weights from a checkpoint with that graph. See [the tutorial](https://www.tensorflow.org/versions/r0.10/how_tos/meta_graph/index.html) for more details.
+    >     
+    > 2.  [`tf.train.write_graph()`](https://www.tensorflow.org/versions/r0.10/api_docs/python/train.html#write_graph) only writes the graph structure; not the weights.
+    >     
+    > 3.  Bazel is unrelated to reading or writing TensorFlow graphs. (Perhaps I misunderstand your question: feel free to clarify it in a comment.)
+    >     
+    > 4.  A frozen graph can be loaded using [`tf.import_graph_def()`](https://www.tensorflow.org/versions/r0.10/api_docs/python/framework.html#import_graph_def). In this case, the weights are (typically) embedded in the graph, so you don't need to load a separate checkpoint.
+    >     
+    > 5.  The main change would be to update the names of the tensor(s) that are fed into the model, and the names of the tensor(s) that are fetched from the model. In the TensorFlow Android demo, this would correspond to the `inputName` and `outputName` strings that are passed to [`TensorFlowClassifier.initializeTensorFlow()`](https://github.com/tensorflow/tensorflow/blob/d67ce6c449fabb3bebccd85815d9d291f114e6e4/tensorflow/examples/android/src/org/tensorflow/demo/TensorFlowClassifier.java#L34).
+    >     
+    > 6.  The `GraphDef` is the program structure, which typically does not change through the training process. The checkpoint is a snapshot of the state of a training process, which typically changes at every step of the training process. As a result, TensorFlow uses different storage formats for these types of data, and the low-level API provides different ways to save and load them. Higher-level libraries, such as the [`MetaGraphDef`](https://www.tensorflow.org/versions/r0.10/how_tos/meta_graph/index.html) libraries, [Keras](https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model), and [skflow](https://github.com/tensorflow/skflow#saving--restoring-models) build on these mechanisms to provide more convenient ways to save and restore an entire model.
+    > 
+
+
+
+
+### CNN
+
+- [tf.nn.conv2d  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/nn/conv2d)
+
+    > Computes a 2-D convolution given 4-D `input` and `filter` tensors.
+
+
+- [tf.nn.conv2d_transpose  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/nn/conv2d_transpose)
+
+    > The transpose of `conv2d`.
+    > 
+    > This operation is sometimes called "deconvolution" after [Deconvolutional Networks](http://www.matthewzeiler.com/pubs/cvpr2010/cvpr2010.pdf), but is actually the transpose (gradient) of `conv2d` rather than an actual deconvolution.
+
+## Tutorial
+
+- [Tensorflow学习笔记2：About Session, Graph, Operation and Tensor - lienhua34 - 博客园](https://www.cnblogs.com/lienhua34/p/5998853.html)
+
+    > 简介
+    > ==
+    > 
+    > 上一篇笔记：[Tensorflow学习笔记1：Get Started](http://www.cnblogs.com/lienhua34/p/5998375.html) 我们谈到Tensorflow是基于图（Graph）的计算系统。而图的节点则是由操作（Operation）来构成的，而图的各个节点之间则是由张量（Tensor）作为边来连接在一起的。所以Tensorflow的计算过程就是一个Tensor流图。Tensorflow的图则是必须在一个Session中来计算。这篇笔记来大致介绍一下Session、Graph、Operation和Tensor。
+    > 
+    > Session
+    > =======
+    > 
+    > [Session](http://www.tensorfly.cn/tfdoc/api_docs/python/client.html)提供了Operation执行和Tensor求值的环境。如下面所示，
+    > 
+    > 
+    > ```python
+    > import tensorflow as tf # Build a graph.
+    > a = tf.constant([1.0, 2.0])
+    > b = tf.constant([3.0, 4.0])
+    > c = a * b # Launch the graph in a session.
+    > sess = tf.Session() # Evaluate the tensor 'c'.
+    > print sess.run(c)
+    > sess.close() # result: [3., 8.]
+    > ```
+    > 一个Session可能会拥有一些资源，例如Variable或者Queue。当我们不再需要该session的时候，需要将这些资源进行释放。有两种方式，
+    > 
+    > 1.  调用session.close()方法；
+    > 2.  使用with tf.Session()创建上下文（Context）来执行，当上下文退出时自动释放。
+    > 
+    > 上面的例子可以写成,
+    > 
+    > 
+    > ```python
+    > import tensorflow as tf # Build a graph.
+    > a = tf.constant([1.0, 2.0])
+    > b = tf.constant([3.0, 4.0])
+    > c = a * b
+    > 
+    > with tf.Session() as sess: print sess.run(c)
+    > ```
+    > 
+    > 
+    > Session类的构造函数如下所示：
+    > 
+    > > tf.Session.\_\_init\_\_(target='', graph=None, config=None)
+    > 
+    > 如果在创建Session时没有指定Graph，则该Session会加载默认Graph。如果在一个进程中创建了多个Graph，则需要创建不同的Session来加载每个Graph，而每个Graph则可以加载在多个Session中进行计算。
+    > 
+    > 执行Operation或者求值Tensor有两种方式：
+    > 
+    > 1.  调用Session.run()方法： 该方法的定义如下所示，参数fetches便是一个或者多个Operation或者Tensor。
+    >     
+    >     > tf.Session.run(fetches, feed_dict=None)
+    >     
+    > 2.  调用Operation.run()或则Tensor.eval()方法： 这两个方法都接收参数session，用于指定在哪个session中计算。但该参数是可选的，默认为None，此时表示在进程默认session中计算。
+    >     
+    > 
+    > 那如何设置一个Session为默认的Session呢？有两种方式：
+    > 
+    > 1\. 在with语句中定义的Session，在该上下文中便成为默认session；上面的例子可以修改成：
+    > 
+    > 
+    > ```python
+    > import tensorflow as tf # Build a graph.
+    > a = tf.constant([1.0, 2.0])
+    > b = tf.constant([3.0, 4.0])
+    > c = a * b
+    > 
+    > with tf.Session(): print c.eval()
+    > ```
+    > 
+    > 
+    > 2\. 在with语句中调用Session.as_default()方法。 上面的例子可以修改成：
+    > 
+    > 
+    > ```python
+    > import tensorflow as tf # Build a graph.
+    > a = tf.constant([1.0, 2.0])
+    > b = tf.constant([3.0, 4.0])
+    > c = a * b
+    > sess = tf.Session()
+    > with sess.as_default(): print c.eval()
+    > sess.close()
+    > ```
+    > 
+    > 
+    > Graph
+    > =====
+    > 
+    > Tensorflow中使用[tf.Graph](http://www.tensorfly.cn/tfdoc/api_docs/python/framework.html#Graph)类表示可计算的图。图是由操作Operation和张量Tensor来构成，其中Operation表示图的节点（即计算单元），而Tensor则表示图的边（即Operation之间流动的数据单元）。
+    > 
+    > > tf.Graph.\_\_init\_\_()
+    > > 
+    > > 创建一个新的空Graph
+    > 
+    > 在Tensorflow中，始终存在一个默认的Graph。如果要将Operation添加到默认Graph中，只需要调用定义Operation的函数（例如tf.add()）。如果我们需要定义多个Graph，则需要在with语句中调用Graph.as_default()方法将某个graph设置成默认Graph，于是with语句块中调用的Operation或Tensor将会添加到该Graph中。
+    > 
+    > 例如，
+    > 
+    > 
+    > ```python
+    > import tensorflow as tf
+    > g1 = tf.Graph()
+    > with g1.as_default():
+    >     c1 = tf.constant([1.0])
+    > with tf.Graph().as_default() as g2:
+    >     c2 = tf.constant([2.0])
+    > 
+    > with tf.Session(graph=g1) as sess1: print sess1.run(c1)
+    > with tf.Session(graph=g2) as sess2: print sess2.run(c2) # result: # [ 1.0 ] # [ 2.0 ]
+    > ```
+    > 
+    > 
+    > 如果将上面例子的sess1.run(c1)和sess2.run(c2)中的c1和c2交换一下位置，运行会报错。因为sess1加载的g1中没有c2这个Tensor，同样地，sess2加载的g2中也没有c1这个Tensor。
+    > 
+    > Operation
+    > =========
+    > 
+    > 一个[Operation](http://www.tensorfly.cn/tfdoc/api_docs/python/framework.html#Operation)就是Tensorflow Graph中的一个计算节点。其接收零个或者多个Tensor对象作为输入，然后产生零个或者多个Tensor对象作为输出。Operation对象的创建是通过直接调用Python operation方法（例如tf.matmul()）或者Graph.create_op()。
+    > 
+    > 例如`c = tf.matmul(a, b)`表示创建了一个类型为MatMul的Operation，该Operation接收Tensor a和Tensor b作为输入，而产生Tensor c作为输出。
+    > 
+    > 当一个Graph加载到一个Session中，则可以调用Session.run(op)来执行op，或者调用op.run()来执行（op.run()是tf.get\_default\_session().run()的缩写）。
+    > 
+    > Tensor
+    > ======
+    > 
+    > [Tensor](http://www.tensorfly.cn/tfdoc/api_docs/python/framework.html#Tensor)表示的是Operation的输出结果。不过，Tensor只是一个符号句柄，其并没有保存Operation输出结果的值。通过调用Session.run(tensor)或者tensor.eval()方可获取该Tensor的值。
+    > 
+    > [](https://github.com/lienhua34/notes/blob/master/tensorflow/2.about_session_graph_operation_tensor.md#关于tensorflow的图计算过程)关于Tensorflow的图计算过程
+    > ============================================================================================================================================
+    > 
+    > 我们通过下面的代码来看一下Tensorflow的图计算过程：
+    > 
+    > 
+    > ```python
+    > import tensorflow as tf
+    > a = tf.constant(1)
+    > b = tf.constant(2)
+    > c = tf.constant(3)
+    > d = tf.constant(4)
+    > add1 = tf.add(a, b)
+    > mul1 = tf.mul(b, c)
+    > add2 = tf.add(c, d)
+    > output = tf.add(add1, mul1)
+    > with tf.Session() as sess: print sess.run(output) 
+    > # result: 9
+    > ```
+    > 
+    > 
+    > 上面的代码构成的Graph如下图所示，
+    > 
+    >  [![graph_compute_flow](https://github.com/lienhua34/notes/raw/master/tensorflow/asserts/graph_compute_flow.jpg)](https://github.com/lienhua34/notes/blob/master/tensorflow/asserts/graph_compute_flow.jpg)
+    > 
+    > 当Session加载Graph的时候，Graph里面的计算节点都不会被触发执行。当运行sess.run(output)的时候，会沿着指定的Tensor output来进图路径往回触发相对应的节点进行计算（图中红色线表示的那部分）。当我们需要output的值时，触发Operation tf.add(add1, mul1)被执行，而该节点则需要Tensor add1和Tensor mul1的值，则往回触发Operation tf.add(a, b)和Operation tf.mul(b, c)。以此类推。
+    > 
+    > 所以在计算Graph时，并不一定是Graph中的所有节点都被计算了，而是指定的计算节点或者该节点的输出结果被需要时。
+    > 
+    > (done)
 
     
 ## Solve Math problem
@@ -1317,6 +1606,37 @@ plt.title('Accuracy')
 
 - [Simple way to visualize a TensorFlow graph in Jupyter? - Stack Overflow](https://stackoverflow.com/questions/38189119/simple-way-to-visualize-a-tensorflow-graph-in-jupyter)
 
+
+- [TensorBoard: Graph Visualization  |  TensorFlow](https://www.tensorflow.org/programmers_guide/graph_viz)
+
+    > TensorFlow computation graphs are powerful but complicated. The graph visualization can help you understand and debug them. Here's an example of the visualization at work.
+
+
+
+## Object Detection
+
+- [Tensorflow Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection)
+
+    > The TensorFlow Object Detection API is an open source framework built on top of TensorFlow that makes it easy to construct, train and deploy object detection models.
+
+
+- [Tensorflow detection model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md)
+
+    > We provide a collection of detection models pre-trained on the [COCO dataset](http://mscoco.org), the [Kitti dataset](http://www.cvlibs.net/datasets/kitti/), and the [Open Images dataset](https://github.com/openimages/dataset).
+
+- [Object Detection Demo](https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb)
+
+### Oxford-IIIT Pets Dataset
+
+- [Quick Start: Distributed Training on the Oxford-IIIT Pets Dataset on Google Cloud](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md)
+
+    > This page is a walkthrough for training an object detector using the Tensorflow Object Detection API. In this tutorial, we'll be training on the Oxford-IIIT Pets dataset to build a system to detect various breeds of cats and dogs. The output of the detector will look like the following:
+    > 
+    > [![](https://github.com/tensorflow/models/raw/master/research/object_detection/g3doc/img/oxford_pet.png)](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/img/oxford_pet.png)
+
+
+
+
 ## Troubleshooting
 
 ### General
@@ -1488,6 +1808,104 @@ plt.title('Accuracy')
     # 在創建session的時候把config作為參數傳進去
     sess = tf.InteractiveSession(config = config)
     ```
+
+- [TensorFlow 與 Keras 指定 NVIDIA GPU 顯示卡與記憶體用量教學 - G. T. Wang](https://blog.gtwang.org/programming/tensorflow-keras-specify-gpu-and-memory-tutorial/)
+
+    > 在 TensorFlow 或 Keras 中使用 NVIDIA 的 GPU 做運算時，預設會把整台機器上所有的 GPU 卡都獨佔下來，而且不管實際需要多少顯示卡的記憶體，每張卡的記憶體都會被佔滿，以下介紹如何調整設定，讓多張顯示卡可以分給多個程式或多人使用。  
+    > 
+    > 指定 GPU 顯示卡
+    > ----------
+    > 
+    > 若要只使用特定的 GPU 卡，可以使用 `CUDA_VISIBLE_DEVICES` 這個環境變數來設定，它的值代表 CUDA 程式可以使用的 GPU 卡編號（從 `0` 開始），例如只讓 CUDA 程式使用第一張 GPU 卡：
+    > ```shell
+    > # 只讓 CUDA 程式使用第一張 GPU 卡
+    > export CUDA_VISIBLE_DEVICES=0
+    > python my_script.py
+    > ```
+    > 這樣當 `my_script.py` 這個 Python 程式在執行時，就只會用到機器上的第一張 GPU 卡。若要指定多張 GPU 卡，則以逗號分隔：
+    > ```shell
+    > # 讓 CUDA 程式使用第一張與第三張 GPU 卡
+    > export CUDA_VISIBLE_DEVICES=0,2
+    > python my_script.py
+    > ```
+    > 如果自己會用的 GPU 卡都是固定的，我們可以將 `CUDA_VISIBLE_DEVICES` 的設定寫在 `~/.bashrc` 中，在登入 Linux 系統時就自動設定好。而如果要讓不同的程式用不同的 GPU 卡計算，分散計算量的話，可以在執行程式時直接以 `CUDA_VISIBLE_DEVICES` 指定：
+    > ```shell
+    > # 使用第一張 GPU 卡
+    > CUDA_VISIBLE_DEVICES=0 python my_script1.py
+    > 
+    > # 使用第二張與第三張 GPU 卡
+    > CUDA_VISIBLE_DEVICES=1,2 python my_script2.py
+    > ```
+    > 另外還有一種方式是直接在 Python 程式中更改 `CUDA_VISIBLE_DEVICES` 這個環境變數，此種方式的原理也是一樣的，只是這樣可以把 GPU 卡的指定邏輯寫在 Python 程式中：
+    > ```python
+    > import os
+    > 
+    > # 使用第一張與第三張 GPU 卡
+    > os.environ["CUDA_VISIBLE_DEVICES"] = "0,2"
+    > ```
+    > 指定 GPU 顯示卡記憶體用量上限
+    > -----------------
+    > 
+    > 若在 TensorFlow 中，我們可以使用 `tf.GPUOptions` 來調整程式佔用的 GPU 記憶體：
+    > ```python
+    > import tensorflow as tf
+    > W = tf.constant([1.0, 2.0, 3.0, 4.0], shape=[2, 2], name='W')
+    > x = tf.constant([1.3, 2.4], shape=[2, 1], name='x')
+    > y = tf.matmul(W, x)
+    > 
+    > # 只使用 30% 的 GPU 記憶體
+    > gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.3)
+    > sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+    > print(sess.run(y))
+    > ```
+    > 在以 TensorFlow 為 backend 的 Keras 程式中，我們可以透過以下的設定方式來指定 GPU 記憶體的佔用量：
+    > ```python
+    > import tensorflow as tf
+    > 
+    > # 只使用 30% 的 GPU 記憶體
+    > gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.3)
+    > sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+    > 
+    > # 設定 Keras 使用的 TensorFlow Session
+    > tf.keras.backend.set_session(sess)
+    > 
+    > # 使用 Keras 建立模型
+    > # ...
+    > ```
+    > 自動增長 GPU 記憶體用量
+    > --------------
+    > 
+    > 直接設定 GPU 記憶體的用量可以確保程式不會吃掉過多的記憶體，但是如果程式遇到真的需要更大的記憶體時，就會因為記憶體不足而產生 `ResourceExhaustedError`，比較折衷的做法是採用自動增長 GPU 記憶體用量的方式，讓程式需要多少記憶體就拿多少，剩下的才留給別人：
+    > ```python
+    > import tensorflow as tf
+    > W = tf.constant([1.0, 2.0, 3.0, 4.0], shape=[2, 2], name='W')
+    > x = tf.constant([1.3, 2.4], shape=[2, 1], name='x')
+    > y = tf.matmul(W, x)
+    > 
+    > # 自動增長 GPU 記憶體用量
+    > gpu_options = tf.GPUOptions(allow_growth=True)
+    > sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+    > print(sess.run(y))
+    > ```
+    > 在 Keras 的部分也是一樣的做法：
+    > ```python
+    > import tensorflow as tf
+    > 
+    > # 自動增長 GPU 記憶體用量
+    > gpu_options = tf.GPUOptions(allow_growth=True)
+    > sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+    > 
+    > # 設定 Keras 使用的 Session
+    > tf.keras.backend.set_session(sess)
+    > 
+    > # 使用 Keras 建立模型
+    > # ...
+    > ```
+    > 參考資料：[Kevin Chan’s blog](https://applenob.github.io/tf_7.html)、[csdn](http://blog.csdn.net/sinat_26917383/article/details/75633754)、[StackOverflow](https://stackoverflow.com/questions/40690598/can-keras-with-tensorflow-backend-be-forced-to-use-cpu-or-gpu-at-will/42750563#42750563)
+    > 
+
+
+
 
 
 ### Debug Log
