@@ -69,6 +69,7 @@
 
 - [DeepDreaming with TensorFlow](https://nbviewer.jupyter.org/github/tensorflow/tensorflow/blob/master/tensorflow/examples/tutorials/deepdream/deepdream.ipynb#deepdream)
 
+    {% raw %}
     ```python
     from IPython.display import display, HTML
 
@@ -100,6 +101,7 @@
     tmp_def = rename_nodes(graph_def, lambda s:"/".join(s.split('_',1)))
     show_graph(tmp_def)
     ```
+    {% endraw %}
 
 - [python - How to print the value of a Tensor object in TensorFlow? - Stack Overflow](https://stackoverflow.com/questions/33633370/how-to-print-the-value-of-a-tensor-object-in-tensorflow)
 
