@@ -9,6 +9,51 @@
 
 - keras.layers
     - [Core Layers - Keras Documentation](https://keras.io/layers/core/)
+    
+        > ### Dense
+        > 
+        > ```
+        > keras.layers.Dense(units, activation=None, use_bias=True, kernel_initializer='glorot_uniform', bias_initializer='zeros', kernel_regularizer=None, bias_regularizer=None, activity_regularizer=None, kernel_constraint=None, bias_constraint=None)
+        > ```
+        > 
+        > Just your regular densely-connected NN layer.
+
+
+        > ### Dropout
+        > 
+        > ```
+        > keras.layers.Dropout(rate, noise_shape=None, seed=None)
+        > 
+        > ```
+        > 
+        > Applies Dropout to the input.
+
+
+        > ### Flatten
+        > 
+        > ```
+        > keras.layers.Flatten()
+        > 
+        > ```
+        > 
+        > Flattens the input. Does not affect the batch size.
+
+        __example__
+        > flat = Flatten()(conv4)
+        > 
+        > dense1 = Dense(units=256, activation='relu' )(flat)
+        > dense1 = Dropout(0.5)(dense1)
+        > 
+        > dense1 = Dense(units=256, activation='relu')(dense1)
+        > dense1 = Dropout(0.5)(dense1)
+        > 
+        > dense3 = Dense(y_train.shape[1], activation='softmax')(dense1)
+        > 
+        > model = Model(inputs=inputs, outputs=dense3)
+
+
+
+
 
 - [Losses - Keras Documentation](https://keras.io/losses/#available-loss-functions)
 
@@ -18,6 +63,187 @@
 
 - [Metrics - Keras Documentation](https://faroit.github.io/keras-docs/1.1.1/metrics/)
 
+### split train & test data
+
+- [Split train data into training and validation when using ImageDataGenerator and model.fit_generator · Issue #5862 · keras-team/keras](https://github.com/keras-team/keras/issues/5862)
+
+    > It's very simple, split your data set indices when they are read e.g., with glob  
+    > train\_samples, validation\_samples = train\_test\_split(Image\_List, test\_size=0.2)  
+    > and then feed train sample to train generator and test sample to validation generator.
+
+### Model functional API
+
+- [Model (functional API) - Keras Documentation](https://keras.io/models/model/)
+
+    > In the functional API, given some input tensor(s) and output tensor(s), you can instantiate a `Model` via:
+    > 
+    > ```
+    > from keras.models import Model
+    > from keras.layers import Input, Dense
+    > 
+    > a = Input(shape=(32,))
+    > b = Dense(32)(a)
+    > model = Model(inputs=a, outputs=b)
+    > ```
+    > 
+    > This model will include all layers required in the computation of `b` given `a`.
+    > 
+    > In the case of multi-input or multi-output models, you can use lists as well:
+    > 
+    > ```
+    > model = Model(inputs=[a1, a2], outputs=[b1, b2, b3])
+    > ```
+
+
+
+
+### ImageDataGenerator
+
+- [Image Preprocessing - Keras Documentation](https://keras.io/preprocessing/image/)
+
+    > ```
+    > keras.preprocessing.image.ImageDataGenerator(featurewise_center=False, samplewise_center=False, featurewise_std_normalization=False, samplewise_std_normalization=False, zca_whitening=False, zca_epsilon=1e-06, rotation_range=0.0, width_shift_range=0.0, height_shift_range=0.0, brightness_range=None, shear_range=0.0, zoom_range=0.0, channel_shift_range=0.0, fill_mode='nearest', cval=0.0, horizontal_flip=False, vertical_flip=False, rescale=None, preprocessing_function=None, data_format=None, validation_split=0.0)
+    > ```
+    > 
+    > Generate batches of tensor image data with real-time data augmentation. The data will be looped over (in batches).
+
+
+    > **Examples**
+    > 
+    > Example of using `.flow(x, y)`:
+    > 
+    > ```
+    > (x_train, y_train), (x_test, y_test) = cifar10.load_data()
+    > y_train = np_utils.to_categorical(y_train, num_classes)
+    > y_test = np_utils.to_categorical(y_test, num_classes)
+    > 
+    > datagen = ImageDataGenerator(
+    >     featurewise_center=True,
+    >     featurewise_std_normalization=True,
+    >     rotation_range=20,
+    >     width_shift_range=0.2,
+    >     height_shift_range=0.2,
+    >     horizontal_flip=True)
+    > 
+    > # compute quantities required for featurewise normalization
+    > # (std, mean, and principal components if ZCA whitening is applied)
+    > datagen.fit(x_train)
+    > 
+    > # fits the model on batches with real-time data augmentation:
+    > model.fit_generator(datagen.flow(x_train, y_train, batch_size=32),
+    >                     steps_per_epoch=len(x_train) / 32, epochs=epochs)
+    > 
+    > # here's a more "manual" example
+    > for e in range(epochs):
+    >     print('Epoch', e)
+    >     batches = 0
+    >     for x_batch, y_batch in datagen.flow(x_train, y_train, batch_size=32):
+    >         model.fit(x_batch, y_batch)
+    >         batches += 1
+    >         if batches >= len(x_train) / 32:
+    >             # we need to break the loop by hand because
+    >             # the generator loops indefinitely
+    >             break
+    > 
+    > ```
+
+    > Example of using `.flow_from_directory(directory)`:
+    > 
+    > ```
+    > train_datagen = ImageDataGenerator(
+    >         rescale=1./255,
+    >         shear_range=0.2,
+    >         zoom_range=0.2,
+    >         horizontal_flip=True)
+    > 
+    > test_datagen = ImageDataGenerator(rescale=1./255)
+    > 
+    > train_generator = train_datagen.flow_from_directory(
+    >         'data/train',
+    >         target_size=(150, 150),
+    >         batch_size=32,
+    >         class_mode='binary')
+    > 
+    > validation_generator = test_datagen.flow_from_directory(
+    >         'data/validation',
+    >         target_size=(150, 150),
+    >         batch_size=32,
+    >         class_mode='binary')
+    > 
+    > model.fit_generator(
+    >         train_generator,
+    >         steps_per_epoch=2000,
+    >         epochs=50,
+    >         validation_data=validation_generator,
+    >         validation_steps=800)
+    > 
+    > ```
+    > 
+
+
+
+
+### Callbacks
+
+- [Callbacks - Keras Documentation](https://keras.io/callbacks/#earlystopping)
+
+    > ### EarlyStopping
+    > 
+    > ```
+    > keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=0, patience=0, verbose=0, mode='auto')
+    > ```
+    > 
+    > Stop training when a monitored quantity has stopped improving.
+    > 
+
+
+    > ### ModelCheckpoint
+    > 
+    > ```python
+    > keras.callbacks.ModelCheckpoint(filepath, monitor='val_loss', verbose=0, save_best_only=False, save_weights_only=False, mode='auto', period=1)
+    > ```
+    > 
+    > Save the model after every epoch.
+
+    > ### Example: model checkpoints
+    > 
+    > ```python
+    > from keras.callbacks import ModelCheckpoint
+    > 
+    > model = Sequential()
+    > model.add(Dense(10, input_dim=784, kernel_initializer='uniform'))
+    > model.add(Activation('softmax'))
+    > model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
+    > 
+    > '''
+    > saves the model weights after each epoch if the validation loss decreased
+    > '''
+    > checkpointer = ModelCheckpoint(filepath='/tmp/weights.hdf5', verbose=1, save_best_only=True)
+    > model.fit(x_train, y_train, batch_size=128, epochs=20, verbose=0, validation_data=(X_test, Y_test), callbacks=[checkpointer])
+    >```
+
+
+
+### pre-trained model
+
+- [pre-trained model Applications - Keras Documentation](https://keras.io/applications/)
+
+    > Documentation for individual models
+    > ===================================
+    > 
+    > | Model | Size | Top-1 Accuracy | Top-5 Accuracy | Parameters | Depth |
+    > | --- | --: | --: | --: | --: | --: |
+    > | [Xception](https://keras.io/applications/#xception) | 88 MB | 0.790 | 0.945 | 22,910,480 | 126 |
+    > | [VGG16](https://keras.io/applications/#vgg16) | 528 MB | 0.715 | 0.901 | 138,357,544 | 23 |
+    > | [VGG19](https://keras.io/applications/#vgg19) | 549 MB | 0.727 | 0.910 | 143,667,240 | 26 |
+    > | [ResNet50](https://keras.io/applications/#resnet50) | 99 MB | 0.759 | 0.929 | 25,636,712 | 168 |
+    > | [InceptionV3](https://keras.io/applications/#inceptionv3) | 92 MB | 0.788 | 0.944 | 23,851,784 | 159 |
+    > | [InceptionResNetV2](https://keras.io/applications/#inceptionresnetv2) | 215 MB | 0.804 | 0.953 | 55,873,736 | 572 |
+    > | [MobileNet](https://keras.io/applications/#mobilenet) | 17 MB | 0.665 | 0.871 | 4,253,864 | 88 |
+    > | [DenseNet121](https://keras.io/applications/#densenet) | 33 MB | 0.745 | 0.918 | 8,062,504 | 121 |
+    > | [DenseNet169](https://keras.io/applications/#densenet) | 57 MB | 0.759 | 0.928 | 14,307,880 | 169 |
+    > | [DenseNet201](https://keras.io/applications/#densenet) | 80 MB | 0.770 | 0.933 | 20,242,984 | 201 |
+    > 
 
 ## Tutorial
 

@@ -1,12 +1,93 @@
 # Docker__快速上手
 
+<!-- toc --> 
+[toc]
+
 ## What is docker
+
+-   Docker 是一種輕量級的作業系統虛擬化解決方案，其所創造出的虛擬環境又稱為容器(container)。
+    
+-   傳統的虛擬化技術，如VirtureBox等，主要是用軟體虛擬出一整套硬體，然後在其上運行一套完整的OS。可想而知，運行效率相當低落。
+    
+-   Docker的創新在於想到: 既然原本就有OS 了，為何不好好利用呢？由於Linux OS 不同版本間的 kernel 是可以共用的，只要在上面實作一層虛擬 API，應用程式看起來就好像跑在不同機器上了呢！
+
+![](https://screenshotscdn.firefoxusercontent.com/images/d6bb2271-9180-449a-960f-c14bd3c0adcc.png)
+
+
+### docker command
 
 - [什麼是 Docker · 《Docker —— 從入門到實踐》正體中文版](https://philipzheng.gitbooks.io/docker_practice/content/introduction/what.html)
 
 - [什么是 Docker · Docker —— 从入门到实践](https://yeasy.gitbooks.io/docker_practice/content/introduction/what.html)
 
+#### 操作容器
+    
+-   docker run ubuntu:14.04 /bin/echo 'Hello world'
+    
+-   docker run -t -i ubuntu:14.04 /bin/bash #交互模式
+    
+-   docker run ubuntu:17.10 /bin/sh -c "while true; do echo hello world; sleep 1; done" #後台模式
+    
+-   docker container ls #列出容器
+    
+-   docker exec -i \[container_id\] bash #進入容器
+    
+-   docker container stop \[container_id\] #終止容器
+    
+-   docker container rm \[container_name\] #刪除容器
+    
 
+#### 操作鏡像
+    
+-   在 Dockerfile 文件所在目录执行：docker build -t \[image_name\]:\[tag\] . #製作鏡像
+    
+-   docker pull \[image\]:\[tag\] #從Dockerhub拉取鏡像
+
+
+### Container Architecture
+
+- [Architecting Containers Part 1: Why Understanding User Space vs. Kernel Space Matters – Red Hat Enterprise Linux Blog](https://rhelblog.redhat.com/2015/07/29/architecting-containers-part-1-user-space-vs-kernel-space/)
+
+    > before diving head-first into a discussion about the architecture and deployment of containers in a production environment, there are three important things that developers, architects, and systems administrators, need to know :
+    > 
+    > 1.  All applications, inclusive of containerized applications, rely on the underlying kernel
+    > 2.  The kernel provides an API to these applications via system calls
+    > 3.  Versioning of this API matters as it’s the “glue” that ensures deterministic communication between the user space and kernel space
+    > 
+    > While containers are sometimes treated like virtual machines, it is important to note, unlike virtual machines, the kernel is the only layer of abstraction between programs and the resources they need access to. Let’s see why.
+    > 
+    > All processes make system calls:
+    > 
+    > [![User Space vs. Kernel Space - Simple User Space](https://rhelblog.files.wordpress.com/2015/07/user-space-vs-kernel-space-simple-user-space.png?w=640&h=253)](https://rhelblog.files.wordpress.com/2015/07/user-space-vs-kernel-space-simple-user-space.png) As containers are processes, they also make system calls:
+    > 
+    > [![User Space vs. Kernel Space - Simple Container](https://rhelblog.files.wordpress.com/2015/07/user-space-vs-kernel-space-simple-container.png?w=640&h=253)](https://rhelblog.files.wordpress.com/2015/07/user-space-vs-kernel-space-simple-container.png)
+    > 
+    > OK, so you understand what a process is, and that containers are processes, but what about the files and programs that live inside a container image? These files and programs make up what is known as [user space](http://www.linfo.org/user_space.html). When a container is started, a program is loaded into memory from the container image. Once the program in the container is running, it still needs to make system calls into [kernel space](http://www.linfo.org/kernel_space.html). The ability for the user space and kernel space to communicate in a deterministic fashion is critical.
+
+### Container Perfomance
+
+- [What is the runtime performance cost of a Docker container - Stack Overflow](https://stackoverflow.com/questions/21889053/what-is-the-runtime-performance-cost-of-a-docker-container)
+
+    > [Here](http://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf) is an excellent 2014 IBM research paper titled "An Updated Performance Comparison of Virtual Machines and Linux Containers" by Felter et al. that provides a comparison between bare metal, KVM, and Docker containers. **The general result is that Docker is nearly identical to Native performance and faster than KVM in every category.**
+    > 
+    > The exception to this is Docker's NAT - if you use port mapping (e.g. `docker run -p 8080:8080`) then you can expect a minor hit in latency, as shown below. However, you can now use the host network stack (e.g. `docker run --net=host`) when launching a Docker container, which will perform identically to the `Native` column (as shown in the Redis latency results lower down).
+    > 
+    > ![Docker NAT overhead](https://i.stack.imgur.com/4yRh1m.png)
+    > 
+    > 
+    > 
+    > Taking a look at Disk IO:
+    > 
+    > ![IO docker vs kvm vs native](https://i.stack.imgur.com/2Ftytm.png)
+    > 
+    > Now looking at CPU overhead:
+    > 
+    > ![docker cpu overhead](https://i.stack.imgur.com/wZZH6m.png)
+    > 
+    > Now some examples of memory (read the paper for details, memory can be extra tricky)
+    > 
+    > ![docker memory comparison](https://i.stack.imgur.com/aHPVkm.png)
+    > 
 
 
 ## Docker swarm vs. Kubernetes vs. Mesos vs. Amazon ECS
@@ -752,6 +833,31 @@
     > 6.  **Automate failure recovery:** The TensorFlow package is written using the DC/OS SDK and leverages built-in resiliency features including automatic restart so that failed tasks effectively self-heal.
     > 7.  **Deploy job configuration parameters securely at runtime:** The DC/OS secrets service dynamically deploys credentials and confidential configuration options to each TensorFlow instance at runtime. Operators can easily add credentials to access confidential information or specific configuration URLs without exposing them in the model code.
     > 
+    > 
+
+
+- [Day1: 使用Apache Mesos的目的為何？ - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天](https://ithelp.ithome.com.tw/articles/10184643)
+
+    > **它能幫助我們做到哪些事情？**
+    > 
+    > ![http://ithelp.ithome.com.tw/upload/images/20161201/20103456RrxGTPlpbk.png](http://ithelp.ithome.com.tw/upload/images/20161201/20103456RrxGTPlpbk.png)
+    > 
+    > 上圖是一個在傳統部署service最簡單的架構，如有四台機器有2台是部署Tomcat Service另外2台是Jetty Service，在部署這些service上系統管理者必須要清礎的知道哪些server上有哪些Service，並且要了解到每台server上的資源，如果這時有新的需求如要在加入一台新的Jetty Service，這時系統管理員會在這四台機器中選擇一台資源使用率較低的server進行部署。之後host1有可能因為硬體故障導致Tomcat Service無法啟動，而大家只能連到host2有可能導致流量過大而造成host2記憶體不夠而當機，一連串的惡性循環而造成系統管理員過累工作效率降低，而下圖改用Apache Mesos的架構來解決此問題：  
+    > ![http://ithelp.ithome.com.tw/upload/images/20161201/20103456XODssn8JE9.png](http://ithelp.ithome.com.tw/upload/images/20161201/20103456XODssn8JE9.png)
+    > 
+    > 改成Apache Mesos架構會如上圖，Mesos詳細的架構在未來還會繼續介紹，以上圖來說在建構Tomcat Service和Jetty Service的操作是透過Mesos Framework如Marathon的方式，我們只要透過restful的方式把寫好的json設定傳到Marathon就可以執行啟動service，json的設定檔內容如下，Marathon Framework也在未來會做介紹，現在只是簡單demo mesos對我們使用上的方便性。
+    > 
+    > **能夠使我們得到哪些好處呢？**
+    > 
+    > ![http://ithelp.ithome.com.tw/upload/images/20161201/20103456lZY8QVdJ2Q.png](http://ithelp.ithome.com.tw/upload/images/20161201/20103456lZY8QVdJ2Q.png)
+    > 
+    > 執行restful的指令如下：
+    > 
+    > ```
+    > curl -X POST -H "Content-type: application/json" http://172.17.0.4:8080/v2/apps -d @Tomcat.json
+    > ```
+    > 
+    > 上面的json設定可以設定tomcat service要執行在2台的server上，如果有一台的service被砍掉或當掉會在其它的server上啟動service、可以設定要在哪幾台特定的server上執行service、另外也可以去指定service需要多少的資源(如：CPU core數、記憶體大小)…等等的功能，這些在未來都會做介紹，在部署server上只要把設定檔寫好就可以快速的把service啟動起來，讓我們的工作效率增加也期望讓我們在部署service和管理整個cluster的資源更加的自動化。
     > 
 
 

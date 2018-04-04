@@ -12,6 +12,60 @@
 
 ## Usage
 
+### if or not
+
+- [Python simple if or logic statement - Stack Overflow](https://stackoverflow.com/questions/7141208/python-simple-if-or-logic-statement)
+
+    > If `key` isn't an `int` or `float` but a `str`ing, you need to convert it to an `int` first by doing
+    > 
+    > ```
+    > key = int(key)
+    > ```
+    > 
+    > or to a `float` by doing
+    > 
+    > ```
+    > key = float(key)
+    > ```
+    > 
+    > Otherwise, what you have in your question should work, but
+    > 
+    > ```
+    > if (key < 1) or (key > 34):
+    > ```
+    > 
+    > or
+    > 
+    > ```
+    > if not (1 <= key <= 34):
+    > ```
+    > 
+    > would be a bit clearer.
+
+
+### Sort
+
+- [Sw@y's Notes: [Python]如何在Python排序(Python Sorting)](https://swaywang.blogspot.tw/2012/05/pythonpythonpython-sorting.html)
+
+    > Python提供兩種內建排序的function分別是sort()和sorted()  
+    > 這兩個function都可以用來排序一個list  
+    > 差別在於sorted()會回傳一個排序好新的list  
+    > sort()會直接修改原始的list並排序完成  
+    > 以下是一個範例:  
+    > ```python
+    > >>> a = [2, 4, 3, 5, 1]
+    > >>> sorted(a)
+    > [1, 2, 3, 4, 5]
+    > >>> a
+    > [2, 4, 3, 5, 1]
+    > >>> a.sort()
+    > >>> print a
+    > [1, 2, 3, 4, 5]
+    > ```
+    > 從以上範例可以知道，如果你確定原始的list不需要保留下來的話，可以使用sort()來排序  
+    > 如果要保留原本的list，就用sorted()來產生一個排序好的新list
+
+
 ### Pretty Print
 
 - [8.11. pprint — Data pretty printer — Python 3.3.7 documentation](https://docs.python.org/3.3/library/pprint.html?highlight=pprint#module-pprint)
@@ -803,6 +857,48 @@
     > ```
     > 
 
+
+### Split
+
+- [Python split()方法 | 菜鸟教程](http://www.runoob.com/python/att-string-split.html)
+
+    > 描述
+    > --
+    > 
+    > Python split()通过指定分隔符对字符串进行切片，如果参数num 有指定值，则仅分隔 num 个子字符串
+    > 
+    > 语法
+    > --
+    > 
+    > split()方法语法：
+    > 
+    > str.split(str="", num=string.count(str)).
+    > 
+    > 参数
+    > --
+    > 
+    > -   str -- 分隔符，默认为所有的空字符，包括空格、换行(\\n)、制表符(\\t)等。
+    > -   num -- 分割次数。
+    > 
+    > 返回值
+    > ---
+    > 
+    > 返回分割后的字符串列表。
+    > 
+    > 实例
+    > --
+    > 
+    > 以下实例展示了split()函数的使用方法：
+    > ```shell
+    > #!/usr/bin/python str =   "Line1-abcdef \nLine2-abc \nLine4-abcd";   print str.split(   );   print str.split(' ',   1   );
+    > ```
+    > 以上实例输出结果如下：
+    > ```python
+    > ['Line1-abcdef',   'Line2-abc',   'Line4-abcd']   ['Line1-abcdef',   '\nLine2-abc \nLine4-abcd']
+    > ```
+    > 
+
+
 ### One-line for loop
 
 - [Python Single Line For Loops - Treehouse Blog](http://blog.teamtreehouse.com/python-single-line-loops)
@@ -841,6 +937,84 @@
     list = [1, 2, 3, 4]
     (a, b), rest = list[:2], list[2:] # The first and second elements are in
     ```
+
+
+### list directory
+
+- [filesystems - Directory listing in Python - Stack Overflow](https://stackoverflow.com/questions/120656/directory-listing-in-python)
+
+    > This is a way to traverse every file and directory in a directory tree:
+    > 
+    > ```
+    > import os
+    > 
+    > for dirname, dirnames, filenames in os.walk('.'):
+    >     # print path to all subdirectories first.
+    >     for subdirname in dirnames:
+    >         print(os.path.join(dirname, subdirname))
+    > 
+    >     # print path to all filenames.
+    >     for filename in filenames:
+    >         print(os.path.join(dirname, filename))
+    > 
+    >     # Advanced usage:
+    >     # editing the 'dirnames' list will stop os.walk() from recursing into there.
+    >     if '.git' in dirnames:
+    >         # don't go into any .git directories.
+    >         dirnames.remove('.git')
+    > ```
+    > 
+
+- [python - How do I list all files of a directory? - Stack Overflow](https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory)
+
+    > I prefer using the [`glob`](https://docs.python.org/library/glob.html) module, as it does pattern matching and expansion.
+    > 
+    > ```
+    > import glob
+    > print(glob.glob("/home/adam/*.txt"))
+    > ```
+    > 
+    > Will return a list with the queried files:
+    > 
+    > ```
+    > ['/home/adam/file1.txt', '/home/adam/file2.txt', .... ]
+    > ```
+    > 
+
+
+    > [`os.listdir()`](https://docs.python.org/2/library/os.html#os.listdir "os.listdir") will get you everything that's in a directory - files and directories.
+    > 
+    > If you want _just_ files, you could either filter this down using [`os.path`](https://docs.python.org/2/library/os.path.html#module-os.path):
+    > 
+    > ```
+    > from os import listdir
+    > from os.path import isfile, join
+    > onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+    > ```
+    > 
+    > or you could use [`os.walk()`](https://docs.python.org/2/library/os.html#os.walk "os.walk") which will yield two lists for each directory it visits - splitting into files and dirs for you. If you only want the top directory you can just break the first time it yields
+    > 
+    > ```
+    > from os import walk
+    > 
+    > f = []
+    > for (dirpath, dirnames, filenames) in walk(mypath):
+    >     f.extend(filenames)
+    >     break
+    > ```
+    > 
+    > And lastly, as that example shows, adding one list to another you can either use [`.extend()`](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) or
+    > 
+    > ```
+    > >>> q = [1, 2, 3]
+    > >>> w = [4, 5, 6]
+    > >>> q = q + w
+    > >>> q
+    > [1, 2, 3, 4, 5, 6]
+    > ```
+    > 
+    > Personally, I prefer `.extend()`
+    > 
 
 
 ## Anaconda
@@ -973,4 +1147,42 @@
     > When working with a LOT of imports, beware of namespace conflicts. I'm generally very wary of `from some_module import *` statements.
     > 
     > Good luck with your project and happy coding.
+    > 
+
+
+### Python ValueError: too many values to unpack
+
+- [Python ValueError: too many values to unpack - Stack Overflow](https://stackoverflow.com/questions/7053551/python-valueerror-too-many-values-to-unpack)
+
+    > ```
+    > for k, m in self.materials.items():
+    > ```
+    > 
+    > example:
+    > 
+    > ```
+    > miles_dict = {'Monday':1, 'Tuesday':2.3, 'Wednesday':3.5, 'Thursday':0.9}
+    > for k, v in miles_dict.items():
+    >     print("%s: %s" % (k, v))
+    > ```
+    > 
+
+- [ValueError: too many values to unpack - 乐居 - ITeye博客](http://leonzhan.iteye.com/blog/1720315)
+
+    > too many values to unpack  
+    >   
+    > 这种错误是指一个tuple值赋给一个tuple变量时，变量个数不够造成的。如：  
+    > a, b = (1, 2, 3)
+    > 
+    > for example: if ditc_a is dict, following code will get this error
+    > 
+    > for key, value in ditc_a:
+    > 
+    >     ...
+    > 
+    > Correct:
+    > 
+    > for key, value in ditc_a.items():
+    > 
+    >     ...
     > 

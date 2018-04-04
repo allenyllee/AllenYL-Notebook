@@ -286,6 +286,63 @@
 
 - [Inside Volta: The World’s Most Advanced Data Center GPU | NVIDIA Developer Blog](https://devblogs.nvidia.com/inside-volta/?ncid=so-lin-vt-13919)
 
+- [FP16 Throughput on GP104: Good for Compatibility (and Not Much Else) - The NVIDIA GeForce GTX 1080 & GTX 1070 Founders Editions Review: Kicking Off the FinFET Generation](https://www.anandtech.com/show/10325/the-nvidia-geforce-gtx-1080-and-1070-founders-edition-review/5)
+
+    > Pascal introduces a new type of FP32 CUDA core that supports a form of FP16 execution where two FP16 operations are run through the CUDA core at once (vec2). This core, which for clarity I’m going to call an FP16x2 core, allows the GPU to process 1 FP32 or 2 FP16 operations per clock cycle, essentially doubling FP16 performance relative to an identically configured Maxwell or Kepler GPU.
+    > 
+    > 
+    > ![](https://images.anandtech.com/doci/10325/FP16x2_575px.png)
+    > 
+    > Now there are several special cases here due to the use of vec2 – packing together operations is not the same as having native FP16 CUDA cores – but in a nutshell NVIDIA can pack together FP16 operations as long as they’re the same operation, e.g. both FP16s are undergoing addition, multiplication, etc.
+    > 
+    > Pascal isn’t just faster than Maxwell overall, but when it comes to FP16 operations on the FP16x2 core, Pascal is a **lot** faster, with theoretical throughput over similar Maxwell GPUs increasing by over three-fold thanks to the combination of overall speed improvements and double speed FP16 execution.
+    > 
+    > GeForce GTX 1080, on the other hand, is **not** faster at FP16. In fact it’s downright slow. For their consumer cards, NVIDIA has severely limited FP16 CUDA performance. GTX 1080’s FP16 instruction rate is 1/128th its FP32 instruction rate, or after you factor in vec2 packing, the resulting theoretical performance (in FLOPs) is 1/64th the FP32 rate, or about 138 GFLOPs.
+    > 
+    > As it turns out, when it comes to FP16 NVIDIA has made another significant divergence between the HPC-focused GP100, and the consumer-focused GP104. On GP100, these FP16x2 cores are used throughout the GPU as both the GPU’s primarily FP32 core and primary FP16 core. However on GP104, NVIDIA has retained the old FP32 cores.
+    > 
+    > The lack of a significant number of FP16x2 cores is why GP104’s FP16 CUDA performance is so low as listed above. There is only 1 FP16x2 core for every 128 FP32 cores.
+    > 
+    > FP64 has been treated as a Tesla feature since the beginning, and consumer parts have either shipped with a very small number of FP64 CUDA cores for binary compatibility purposes, or when a GeForce card uses an HPC-class GPU, FP64 performance is artificially restricted.
+    > 
+    > However in the case of FP64, performance has never been slower than 1/32, whereas with FP16 we’re looking at a much slower 1/128 instruction rate.
+    > 
+    > ![](https://screenshotscdn.firefoxusercontent.com/images/2a3517ba-a92f-4a90-b312-5b88bee58d1a.png)
+    > 
+    > Overall I’m not surprised that NVIDIA limited the FP16 performance of the GTX 1080 – albeit by a new record – as they clearly consider faster FP16 performance a feature that can be monetized under Tesla.
+    > 
+    > At the same time NVIDIA has still yet to disclose the dGPUs used with the DRIVE PX 2 module, where again fast FP16 support is useful for neural network inference.
+    > 
+    > 
+
+
+
+### NVLink
+
+- [NVLink - Wikiwand](https://www.wikiwand.com/en/NVLink)
+
+    > Performance[](https://en.wikipedia.org/w/index.php?title=NVLink&action=edit&section=2)
+    > --------------------------------------------------------------------------------------
+    > 
+    > The following table shows a comparison of relevant bus parameters for real world semiconductors that all offer NVLink as one of their options:
+    > 
+    > | Semiconductor | Interconnect | Transmission  Technology  Rate (per lane) | Lanes per  Sub-Link  (out + in) | Sub-Link Data Rate  (per data direction) | Sub-Link  Count | Total Data Rate  (out + in) | Total  Lanes  (out + in) | Total  Data Rate  (out + in) |
+    > | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+    > | Nvidia P100[\[3\]](https://www.wikiwand.com/en/NVLink#citenote3) | PCIe 3.0 |  8 GT/s | 16 + 16 **Ⓑ** | 128 Gbit/s = 16 GByte/s | 1 |  16 +  16 GByte/s[\[4\]](https://www.wikiwand.com/en/NVLink#citenote4) | 32 **Ⓒ** |  32 GByte/s |
+    > | [IBM Power9](https://www.wikiwand.com/en/POWER9#I.2FO "POWER9")[\[5\]](https://www.wikiwand.com/en/NVLink#citenote5) | PCIe 4.0 | 16 GT/s | 16 + 16 **Ⓑ** | 256 Gbit/s = 32 GByte/s | 3 |  96 +  96 GByte/s | 48 | 192 GByte/s |
+    > | Nvidia P100 | NVLink 1.0 | 20 GT/s |  8 +  8 **Ⓐ** | 160 Gbit/s = 20 GByte/s | 4 |  80 +  80 GByte/s | 64 | 160 GByte/s |
+    > | [IBM Power8+](https://www.wikiwand.com/en/POWER8#POWER8_with_NVLink "POWER8") | NVLink 1.0 | 20 GT/s |  8 +  8 **Ⓐ** | 160 Gbit/s = 20 GByte/s | 4 |  80 +  80 GByte/s | 64 | 160 GByte/s |
+    > | Nvidia V100 | NVLink 2.0 | 25 GT/s |  8 +  8 **Ⓐ** | 200 Gbit/s = 25 GByte/s | 6[\[6\]](https://www.wikiwand.com/en/NVLink#citenote6) | 150 + 150 GByte/s | 96 | 300 GByte/s |
+    > | [IBM Power9](https://www.wikiwand.com/en/POWER9#I.2FO "POWER9")[\[7\]](https://www.wikiwand.com/en/NVLink#citenote7) | NVLink 2.0  (BlueLink ports) | 25 GT/s |  8 +  8 **Ⓐ** | 200 Gbit/s = 25 GByte/s | 6 | 150 + 150 GByte/s | 96 | 300 GByte/s |
+    > 
+    > 
+
+- [GTC2018：Nvidia全面升級AI軟硬體 - EE Times Taiwan 電子工程專輯網](https://www.eettaiwan.com/news/article/20180328NT01-Nvidia-Taps-Memory-Switch-for-AI?utm_source=EETT%20Article%20Alert&utm_medium=Email&utm_campaign=2018-03-29)
+
+    > 為了超越Nvidia，英特爾計劃在明年量產支援12組100Gbit/s鏈路的Nervana晶片，而Nvidia Volta則支援6個25Gbit/s NVLinks。Nervana晶片支援非同相記憶體，可在打造加速器叢集(包括環狀網路)時提供更大的靈活性，但在編程時將會更加困難。
+    > 
+    > 為了簡化編碼作業，英特爾宣佈開放其Ngraph編譯器，目的在於來自第三方AI架構(如Google TensorFlow)的軟體轉變為可在英特爾Xeon、Nervana及其FPGA晶片上執行的程式碼。
+
 
 ### VRAM
 

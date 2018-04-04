@@ -70,6 +70,16 @@
     > 如果谷歌正在研究的72量子比特的量子计算机能够比我们最强大的超级计算机更快地运行任何算法，那么量子霸权时代将会到来。对此，谷歌也表示：“我们乐观但同时也是谨慎地认为，利用Bristlecone可以实现量子霸权”。
 
 
+## Topological quantum computer
+
+- [【重磅】微软量子计算重大突破：量子系统或存在天使粒子，一个稳定的量子比特强过 1 万个](https://zhuanlan.zhihu.com/p/35065555)
+
+    - [Quantized Majorana conductance | Nature](https://www.nature.com/articles/nature26142)
+
+- [發現馬約拉納費米子存在證據，微軟在構建量子電腦上又邁出一步 | TechNews 科技新報](https://technews.tw/2018/03/30/microsoft-and-majorana-fermion/)
+
+
+
 ## Quantum Programming
 
 - [搶先Google、IBM一步，微軟推出秘密武器「Q#」，要讓量子電腦遍地開花｜數位時代](https://www.bnext.com.tw/article/47393/microsoft-releases-quantum-computing-development-kit-preview)

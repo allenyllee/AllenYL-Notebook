@@ -59,6 +59,12 @@
 - [Keras__深度學習](Keras__深度學習.md)
 [//]: # ( - [Keras__深度學習](https://hackmd.io/gVMx4JeHRWSvNSIC1v3WUQ?view)
 
+- [資料分析誤區](資料分析誤區.md)
+[//]: # ( - [資料分析誤區](https://hackmd.io/ZqWWRedoQ3S6KPpfsAN-KA?view)
+
+- [NLP__資料收集](NLP__資料收集.md)
+[//]: # ( - [NLP__資料收集](https://hackmd.io/TDJoxAJwQsKbJ6YVwraSQw?view)
+
 ## 專案管理、開發、文件撰寫
 
 - [Git__快速上手](Git__快速上手.md)
@@ -118,6 +124,9 @@
 
 - [Web__前後端](Web__前後端.md)
 [//]: # ( - [Web__前後端](https://hackmd.io/EwDgDAxmDMCcAmBaMBTAZhRAWe8uIENoxhEBWARngKwLLAHZ4AjBoA==?view)
+
+- [Networking__網路設定](Networking__網路設定.md)
+[//]: # ( - [Networking__網路設定](https://hackmd.io/OcId0ZCyQfOmOPUvzFThUw?view)
 
 ## 電腦圖學
 

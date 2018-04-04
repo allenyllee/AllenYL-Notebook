@@ -23,6 +23,10 @@
     > 
     - [Announcing Microsoft DirectX Raytracing! – DirectX Developer Blog](https://blogs.msdn.microsoft.com/directx/2018/03/19/announcing-microsoft-directx-raytracing/)
 
+- [What's the Difference Between Ray Tracing, Rasterization? | NVIDIA Blog](https://blogs.nvidia.com/blog/2018/03/19/whats-difference-between-ray-tracing-rasterization/)
+
+
+
 
 ## GPU Rendering process
 
@@ -43,3 +47,4 @@
 
 - [How a GPU Works](https://www.cs.cmu.edu/afs/cs/academic/class/15462-f11/www/lec_slides/lec19.pdf)
 
+    ![](https://screenshotscdn.firefoxusercontent.com/images/66d590a0-f112-4f68-9e6b-0a5840ef6025.png)

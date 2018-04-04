@@ -1,6 +1,321 @@
 # Linux_Shell__快速上手
 
+<!-- toc --> 
+[toc]
+
 ## bash
+
+### Keyboard Shortcut
+
+- [Why does Ctrl + V not paste in Bash (Linux shell)? - Super User](https://superuser.com/questions/421463/why-does-ctrl-v-not-paste-in-bash-linux-shell)
+
+    > `Ctrl+Ins` to copy and `Shift+Ins` to paste
+
+
+
+### zip, unzip
+
+- [GNU / Linux 各種壓縮與解壓縮指令 | 凍仁的筆記](http://note.drx.tw/2008/04/command.html)
+
+    > ### .tar (僅打包，無壓縮)
+    > 
+    > -   套件名稱：[tar](apt://tar "使用 AptURL 安裝。")。
+    > -   打包：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar cvf _FileName.tar DirName_
+    >     ```
+    > -   解包：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar xvf _FileName.tar_
+    >     ```
+    > 
+    >   
+    > 
+    > ### .gz
+    > 
+    > -   套件名稱：[gzip](apt://gzip "使用 AptURL 安裝。")。
+    > -   壓縮  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ gzip _FileName_
+    >     ```
+    > -   解壓縮 1：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ gunzip _FileName.gz_
+    >     ```
+    > -   解壓縮 2：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ gzip -d _FileName.gz_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### .tar.gz
+    > 
+    > -   套件名稱：[gzip](apt://gzip "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar zcvf _FileName.tar.gz DirName_
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar zxvf _FileName.tar.gz_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### bz
+    > 
+    > -   壓縮：unkown。
+    > -   解壓縮 1：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ bzip2 -d _FileName.bz_
+    >     ```
+    > -   解壓縮 2：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ bunzip2 _FileName.bz_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### .tar.bz
+    > 
+    > -   壓縮：unkown。
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar jxvf _FileName.tar.bz_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### .bz2
+    > 
+    > -   套件名稱：[bzip2](apt://bzip2 "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ bzip2 -z _FileName_
+    >     ```
+    > -   解壓縮 1：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ bzip2 -d _FileName.bz2_
+    >     ```
+    > -   解壓縮 2：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ bunzip2 _FileName.bz2_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### .tar.bz2
+    > 
+    > -   套件名稱：[bzip2](apt://bzip2 "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar jcvf _FileName.tar.bz2 DirName_
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar jxvf _FileName.tar.bz2_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### .xz
+    > 
+    > -   套件名稱：[xz-utils](apt://xz-utils,xz-lzma "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ xz -z _FileName_
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ xz -d _FileName.xz_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### .tar.xz
+    > 
+    > -   套件名稱：[xz-utils](apt://xz-utils,xz-lzma "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar Jcvf _FileName.tar.xz DirName_
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar Jxvf _FileName.tar.xz_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### .Z
+    > 
+    > -   壓縮：compress _FileName_
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ uncompress _FileName.Z_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### .tar.Z
+    > 
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar Zcvf _FileName.tar.Z DirName_
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar Zxvf _FileName.tar.Z_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### .tgz
+    > 
+    > -   套件名稱：[gzip](apt://gzip "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar zcvf _FileName.tgz FileName_
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar zxvf _FileName.tgz_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### .tar.tgz
+    > 
+    > -   套件名稱：[gzip](apt://gzip "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar zcvf _FileName.tar.tgz FileName_
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar zxvf _FileName.tar.tgz_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### .7z
+    > 
+    > -   套件名稱：[p7zip-full](apt://p7zip-full "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ 7z a _FileName.7z FileName_
+    >     ```
+    > -   使用密碼 (PASSWORD) 壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ 7z a _FileName.7z FileName_ -p_PASSWORD_
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ 7z x _FileName.7z_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### .zip
+    > 
+    > -   套件名稱：[zip](apt://zip "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ zip _FileName.zip DirName_
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ unzip _FileName.zip_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### .rar
+    > 
+    > -   套件名稱：[rar](apt://rar "使用 AptURL 安裝。"), [unrar](apt://unrar "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ rar a _FileName.rar DirName_
+    >     ```
+    > -   解壓縮 1：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ rar e _FileName.rar_
+    >     ```
+    > -   解壓縮 2：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ unrar e _FileName.rar_
+    >     ```
+    > -   解壓縮 3：在指定目錄內解壓縮。  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ rar x _FileName.rar DirName_
+    >     ```
+    > 
+    >   
+    > [](http://note.drx.tw/2008/04/command.html)  
+    > 
+    > ### .lha
+    > 
+    > -   套件名稱：[lha](apt://lha "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ lha -a _FileName.lha FileName_
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ lha -e _FileName.lha_
+    >     ```
+    > 
 
 ### sort
 

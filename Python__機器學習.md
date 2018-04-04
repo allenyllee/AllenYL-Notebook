@@ -70,6 +70,22 @@
     plot_dict = { 1: 221, 9: 222, 18: 223, 1000: 224}
     linear_prediction(plot_dict)
     ```
+    
+#### 在for loop中畫圖
+
+- [python - Display numpy array in a for loop using matplotlib imshow - Stack Overflow](https://stackoverflow.com/questions/25812905/display-numpy-array-in-a-for-loop-using-matplotlib-imshow)
+
+    > `imshow(a)` will plot the values of the array a as pixel values, but it won't display the plot. To view the image after each iteration of the for loop, you need to add `show()`.
+
+    > ```
+    > a = np.array([[1,2,3],[4,5,6],[7,8,9]])
+    > 
+    > for t in range(0,10):
+    >     imshow(a)
+    >     show()
+    > ```
+
+
 
 ### numpy
 
@@ -88,13 +104,38 @@
 - [numpy.ma.shape — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.ma.shape.html#numpy.ma.shape)
     Return the shape of an array.
 
-- [numpy.arange — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.arange.html#numpy.arange)
-    Return evenly spaced values within a given interval.
+
 
 - [numpy.nditer — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.nditer.html#numpy.nditer)
     Efficient multi-dimensional iterator object to iterate over arrays. To get started using this object, see the [_introductory guide to array iteration_](https://docs.scipy.org/doc/numpy-1.12.0/reference/arrays.nditer.html#arrays-nditer).
+
+#### get indices of max argument
+
+- [numpy.arange — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.arange.html#numpy.arange)
+    Return evenly spaced values within a given interval.
+
 - [numpy.ma.argmax — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.ma.argmax.html#numpy.ma.argmax)
     Returns array of indices of the maximum values along the given axis. Masked values are treated as if they had the value fill_value.
+    
+    > Examples
+    > ```python
+    > >>> a = np.arange(6).reshape(2,3)
+    > >>> a
+    > array([[0, 1, 2],
+    >  [3, 4, 5]])
+    > >>> np.argmax(a)
+    > 5
+    > >>> np.argmax(a, axis=0)
+    > array([1, 1, 1])
+    > >>> np.argmax(a, axis=1)
+    > array([2, 2])
+    > ```
+    > 
+    
+    
+    
+    
+    
 - [numpy.append — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.append.html#numpy.append)
     Append values to the end of an array.
 
@@ -452,6 +493,86 @@ array([[0, 0, 0],
     > 
 
 
+#### one-hot
+
+- [python - How to convert 2d numpy array into binary indicator matrix for max value - Stack Overflow](https://stackoverflow.com/questions/36153638/how-to-convert-2d-numpy-array-into-binary-indicator-matrix-for-max-value)
+
+    > Here's one way:
+    > 
+    > ```
+    > In [112]: a
+    > Out[112]: 
+    > array([[ 0.2,  0.3,  0.5],
+    >        [ 0.7,  0.1,  0.1]])
+    > 
+    > In [113]: a == a.max(axis=1, keepdims=True)
+    > Out[113]: 
+    > array([[False, False,  True],
+    >        [ True, False, False]], dtype=bool)
+    > 
+    > In [114]: (a == a.max(axis=1, keepdims=True)).astype(int)
+    > Out[114]: 
+    > array([[0, 0, 1],
+    >        [1, 0, 0]])
+    > ```
+    > 
+    > (But this will give a True value for _each_ occurrence of the maximum in a row. See Divakar's answer for a nice way to select just the first occurrence of the maximum.)
+
+    > In case of ties (two or more elements being the highest one in a row), where you want to select only one, here's one approach to do so with [`np.argmax`](http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.argmax.html) and [`broadcasting`](http://docs.scipy.org/doc/numpy-1.10.1/user/basics.broadcasting.html) -
+    > 
+    > ```
+    > (A.argmax(1)[:,None] == np.arange(A.shape[1])).astype(int)
+    > ```
+    > 
+    > Sample run -
+    > 
+    > ```
+    > In [296]: A
+    > Out[296]: 
+    > array([[ 0.2,  0.3,  0.5],
+    >        [ 0.5,  0.5,  0. ]])
+    > 
+    > In [297]: (A.argmax(1)[:,None] == np.arange(A.shape[1])).astype(int)
+    > Out[297]: 
+    > array([[0, 0, 1],
+    >        [1, 0, 0]])
+    > ```
+    > [name=Divakar]
+
+
+
+### Scipy
+
+#### 處理outlier
+- [scipy.stats.rankdata — SciPy v0.16.1 Reference Guide](https://docs.scipy.org/doc/scipy-0.16.0/reference/generated/scipy.stats.rankdata.html)
+
+    > Assign ranks to data, dealing with ties appropriately.
+    > 
+    > Examples
+    > 
+    > ```python
+    > >>> from scipy.stats import rankdata
+    > >>> rankdata([0, 2, 3, 2])
+    > array([ 1. ,  2.5,  4. ,  2.5])
+    > >>> rankdata([0, 2, 3, 2], method='min')
+    > array([ 1.,  2.,  4.,  2.])
+    > >>> rankdata([0, 2, 3, 2], method='max')
+    > array([ 1.,  3.,  4.,  3.])
+    > >>> rankdata([0, 2, 3, 2], method='dense')
+    > array([ 1.,  2.,  3.,  2.])
+    > >>> rankdata([0, 2, 3, 2], method='ordinal')
+    > array([ 1.,  2.,  4.,  3.])
+    > ```
+    > 
+
+
+- [scipy.stats.boxcox — SciPy v0.19.0 Reference Guide](https://docs.scipy.org/doc/scipy-0.19.0/reference/generated/scipy.stats.boxcox.html)
+
+    > Return a positive dataset transformed by a Box-Cox power transformation.
+
+
+
+
 
 ### Pandas
 - [pandas.DataFrame.from_records — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.from_records.html#pandas.DataFrame.from_records)
@@ -460,22 +581,8 @@ array([[0, 0, 0],
 - [pandas.DataFrame.apply — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html)
     Applies function along input axis of DataFrame.
 
-- [pandas.get_dummies — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.get_dummies.html)
-    Convert categorical variable into dummy/indicator variables
 
-    ```python
-    >>> import pandas as pd
-    >>> s = pd.Series(list('abca'))
-
-    >>> pd.get_dummies(s)
-
-       a  b  c
-    0  1  0  0
-    1  0  1  0
-    2  0  0  1
-    3  1  0  0
-    ```
-
+#### indexing
 
 - [pandas.Series.str.contains — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.str.contains.html#pandas.Series.str.contains)
     Return boolean Series/`array` whether given pattern/regex is contained in each string in the Series/Index.
@@ -506,6 +613,8 @@ array([[0, 0, 0],
     3  d_simpson
     ```
 
+
+
 - [pandas.DataFrame.iloc — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.iloc.html#pandas.DataFrame.iloc)
     Purely integer-location based indexing for selection by position.
 
@@ -514,6 +623,43 @@ array([[0, 0, 0],
     df.iloc[:5,-4:] # allenyllee: 顯示頭5列(row)，從第-4欄(倒數第四欄)開始列出到最後一欄
     ```
     ![](https://screenshotscdn.firefoxusercontent.com/images/552381c8-fd9c-423b-b11a-198ccd119b6c.png)
+
+- [python - How to select the last column of dataframe - Stack Overflow](https://stackoverflow.com/questions/40144769/how-to-select-the-last-column-of-dataframe)
+
+    > Use iloc and select all rows (`:`) against the last column (`-1`):
+    > 
+    > ```
+    > df.iloc[:,-1]
+    > ```
+
+
+#### remove column
+
+- [Delete column from pandas DataFrame using python del - Stack Overflow](https://stackoverflow.com/questions/13411544/delete-column-from-pandas-dataframe-using-python-del)
+
+    > The best way to do this in pandas is to use [`drop`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop.html):
+    > 
+    > ```
+    > df = df.drop('column_name', 1)
+    > ```
+    > 
+    > where `1` is the _axis_ number (`0` for rows and `1` for columns.)
+    > 
+    > To delete the column without having to reassign `df` you can do:
+    > 
+    > ```
+    > df.drop('column_name', axis=1, inplace=True)
+    > ```
+    > 
+    > Finally, to drop by column _number_ instead of by column _label_, try this to delete, e.g. the 1st, 2nd and 4th columns:
+    > 
+    > ```
+    > df.drop(df.columns[[0, 1, 3]], axis=1)  # df.columns is zero-based pd.Index 
+    > ```
+    > 
+
+
+#### correlation
 
 - [pandas.DataFrame.corr — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.corr.html#pandas.DataFrame.corr)
     Compute pairwise correlation of columns, excluding NA/null values
@@ -525,9 +671,302 @@ array([[0, 0, 0],
     ![](https://screenshotscdn.firefoxusercontent.com/images/542f5956-ea44-4751-a8be-b1a3936c8a14.png)
     
     
+#### append
 
+- [python - Formatting dataframe in appending - Stack Overflow](https://stackoverflow.com/questions/33346904/formatting-dataframe-in-appending)
 
+    > You need to change one column name, so `append` can detect hat you want to do:
+    > 
+    > ```
+    > data2.columns = ["a"]
+    > ```
+    > 
+    > or
+    > 
+    > ```
+    > data1.columns = ["b"]
+    > ```
+    > 
+    > And then, after using `data2.columns = ["a"]`:
+    > 
+    > ```
+    > all_data = data1.append(data2, ignore_index=True)
+    > all_data
+    >    a
+    > 0  a
+    > 1  b
+    > 2  c
+    > 3  d
+    > 4  e
+    > 5  f
+    > 6  g
+    > 7  h
+    > 8  i
+    > 9  j
+    > ```
+    > 
+    > And here you have your column named after the column's name of data1, which you can rename if you want:
+    > 
+    > ```
+    > all_data.columns = ["Foo"]
+    > ```
 
+#### one-hot & reversing one-hot
+
+- [pandas.get_dummies — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.get_dummies.html)
+    Convert categorical variable into dummy/indicator variables
+
+    ```python
+    >>> import pandas as pd
+    >>> s = pd.Series(list('abca'))
+
+    >>> pd.get_dummies(s)
+
+       a  b  c
+    0  1  0  0
+    1  0  1  0
+    2  0  0  1
+    3  1  0  0
+    ```
+
+- [python - Reversing 'one-hot' encoding in Pandas - Stack Overflow](https://stackoverflow.com/questions/38334296/reversing-one-hot-encoding-in-pandas)
+
+    > **UPDATE:** i think [ayhan](https://stackoverflow.com/questions/38334296/reversing-one-hot-encoding-in-pandas/38334528?noredirect=1#comment64090931_38334528) is right and it should be:
+    > 
+    > ```
+    > df.idxmax(axis=1)
+    > ```
+    > 
+    > Demo:
+    > 
+    > ```
+    > In [40]: s = pd.Series(['dog', 'cat', 'dog', 'bird', 'fox', 'dog'])
+    > 
+    > In [41]: s
+    > Out[41]:
+    > 0     dog
+    > 1     cat
+    > 2     dog
+    > 3    bird
+    > 4     fox
+    > 5     dog
+    > dtype: object
+    > 
+    > In [42]: pd.get_dummies(s)
+    > Out[42]:
+    >    bird  cat  dog  fox
+    > 0   0.0  0.0  1.0  0.0
+    > 1   0.0  1.0  0.0  0.0
+    > 2   0.0  0.0  1.0  0.0
+    > 3   1.0  0.0  0.0  0.0
+    > 4   0.0  0.0  0.0  1.0
+    > 5   0.0  0.0  1.0  0.0
+    > 
+    > In [43]: pd.get_dummies(s).idxmax(1)
+    > Out[43]:
+    > 0     dog
+    > 1     cat
+    > 2     dog
+    > 3    bird
+    > 4     fox
+    > 5     dog
+    > dtype: object
+    > ```
+
+#### column assignment
+
+- [Adding new column to existing DataFrame in Python pandas - Stack Overflow](https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas)
+
+    > A pandas dataframe is implemented as an ordered dict of columns.
+    > 
+    > This means that the `__getitem__` `[]` can not only be used to get a certain column, but `__setitem__` `[] =` can be used to assign a new column.
+    > 
+    > For example, this dataframe can have a column added to it by simply using the `[]` accessor
+    > 
+    > ```
+    >     size      name color
+    > 0    big      rose   red
+    > 1  small    violet  blue
+    > 2  small     tulip   red
+    > 3  small  harebell  blue
+    > 
+    > df['protected'] = ['no', 'no', 'no', 'yes']
+    > 
+    >     size      name color protected
+    > 0    big      rose   red        no
+    > 1  small    violet  blue        no
+    > 2  small     tulip   red        no
+    > 3  small  harebell  blue       yes
+    > ```
+    > 
+    > Note that this works even if the index of the dataframe is off.
+    > 
+    > ```
+    > df.index = [3,2,1,0]
+    > df['protected'] = ['no', 'no', 'no', 'yes']
+    >     size      name color protected
+    > 3    big      rose   red        no
+    > 2  small    violet  blue        no
+    > 1  small     tulip   red        no
+    > 0  small  harebell  blue       yes
+    > ```
+    > 
+    > ### \[\]= is the way to go, but watch out!
+    > 
+    > However, if you have a `pd.Series` and try to assign it to a dataframe where the indexes are off, you will run in to trouble. See example:
+    > 
+    > ```
+    > df['protected'] = pd.Series(['no', 'no', 'no', 'yes'])
+    >     size      name color protected
+    > 3    big      rose   red       yes
+    > 2  small    violet  blue        no
+    > 1  small     tulip   red        no
+    > 0  small  harebell  blue        no
+    > ```
+    > 
+    > This is because a `pd.Series` by default has an index enumerated from 0 to n. And the pandas `[] =` method **tries** _to be "smart"_
+    > 
+
+#### adding rows
+
+- [python - add one row in a pandas.DataFrame - Stack Overflow](https://stackoverflow.com/questions/10715965/add-one-row-in-a-pandas-dataframe)
+
+    ```python
+    mycolumns = ['A', 'B']
+    df = pd.DataFrame(columns=mycolumns)
+    rows = [[1,2],[3,4],[5,6]]
+    for row in rows:
+        df.loc[len(df)] = row
+    ```
+
+#### select rows
+
+- [python - Select rows from a DataFrame based on values in a column in pandas - Stack Overflow](https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas)
+
+    > To select rows whose column value equals a scalar, `some_value`, use `==`:
+    > 
+    > ```
+    > df.loc[df['column_name'] == some_value]
+    > ```
+    > 
+    > To select rows whose column value is in an iterable, `some_values`, use `isin`:
+    > 
+    > ```
+    > df.loc[df['column_name'].isin(some_values)]
+    > ```
+    > 
+    > Combine multiple conditions with `&`:
+    > 
+    > ```
+    > df.loc[(df['column_name'] == some_value) & df['other_column'].isin(some_values)]
+    > ```
+    > 
+    > ---
+    > 
+    > To select rows whose column value _does not equal_ `some_value`, use `!=`:
+    > 
+    > ```
+    > df.loc[df['column_name'] != some_value]
+    > ```
+    > 
+    > `isin` returns a boolean Series, so to select rows whose value is _not_ in `some_values`, negate the boolean Series using `~`:
+    > 
+    > ```
+    > df.loc[~df['column_name'].isin(some_values)]
+    > ```
+    > 
+    > ---
+    > 
+    > For example,
+    > 
+    > ```
+    > import pandas as pd
+    > import numpy as np
+    > df = pd.DataFrame({'A': 'foo bar foo bar foo bar foo foo'.split(),
+    >                    'B': 'one one two three two two one three'.split(),
+    >                    'C': np.arange(8), 'D': np.arange(8) * 2})
+    > print(df)
+    > #      A      B  C   D
+    > # 0  foo    one  0   0
+    > # 1  bar    one  1   2
+    > # 2  foo    two  2   4
+    > # 3  bar  three  3   6
+    > # 4  foo    two  4   8
+    > # 5  bar    two  5  10
+    > # 6  foo    one  6  12
+    > # 7  foo  three  7  14
+    > 
+    > print(df.loc[df['A'] == 'foo'])
+    > ```
+    > 
+    > yields
+    > 
+    > ```
+    >      A      B  C   D
+    > 0  foo    one  0   0
+    > 2  foo    two  2   4
+    > 4  foo    two  4   8
+    > 6  foo    one  6  12
+    > 7  foo  three  7  14
+    > ```
+    > 
+    > ---
+    > 
+    > If you have multiple values you want to include, put them in a list (or more generally, any iterable) and use `isin`:
+    > 
+    > ```
+    > print(df.loc[df['B'].isin(['one','three'])])
+    > ```
+    > 
+    > yields
+    > 
+    > ```
+    >      A      B  C   D
+    > 0  foo    one  0   0
+    > 1  bar    one  1   2
+    > 3  bar  three  3   6
+    > 6  foo    one  6  12
+    > 7  foo  three  7  14
+    > ```
+    > 
+    > ---
+    > 
+    > Note, however, that if you wish to do this many times, it is more efficient to make an index first, and then use `df.loc`:
+    > 
+    > ```
+    > df = df.set_index(['B'])
+    > print(df.loc['one'])
+    > ```
+    > 
+    > yields
+    > 
+    > ```
+    >        A  C   D
+    > B              
+    > one  foo  0   0
+    > one  bar  1   2
+    > one  foo  6  12
+    > ```
+    > 
+    > or, to include multiple values from the index use `df.index.isin`:
+    > 
+    > ```
+    > df.loc[df.index.isin(['one','two'])]
+    > ```
+    > 
+    > yields
+    > 
+    > ```
+    >        A  C   D
+    > B              
+    > one  foo  0   0
+    > one  bar  1   2
+    > two  foo  2   4
+    > two  foo  4   8
+    > two  bar  5  10
+    > one  foo  6  12
+    > ```
+    > 
 
 
 ### scikit-learn
@@ -606,7 +1045,30 @@ array([[0, 0, 0],
     > 
 
 
+#### score matrics
+
+- [sklearn.metrics.roc_auc_score — scikit-learn 0.19.1 documentation](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score)
+
+    > Compute Area Under the Receiver Operating Characteristic Curve (ROC AUC) from prediction scores.
+
+    > Examples
+    > 
+    > ```python
+    > >>> import numpy as np
+    > >>> from sklearn.metrics import roc_auc_score
+    > >>> y_true = np.array([0, 0, 1, 1])
+    > >>> y_scores = np.array([0.1, 0.4, 0.35, 0.8])
+    > >>> roc_auc_score(y_true, y_scores)
+    > 0.75
+    > ```
+
+
+
 ### jieba 結巴 中文斷詞
+
+- [Python中文分词 jieba 十五分钟入门与进阶 - CSDN博客](https://blog.csdn.net/fontthrone/article/details/72782499)
+- [结巴中文分词的用法 - 简书](https://www.jianshu.com/p/e8b5d01ca073)
+- 
 
 - [fxsjy/jieba: 结巴中文分词](https://github.com/fxsjy/jieba)
 
@@ -688,7 +1150,62 @@ array([[0, 0, 0],
 - [XGBoost 与 Boosted Tree – 我爱计算机](http://www.52cs.org/?p=429)
 
 - [Complete Guide to Parameter Tuning in XGBoost (with codes in Python)](https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/)
-- 
+
+### Leaf Encoding
+
+- [predicting-clicks-facebook.pdf](http://quinonero.net/Publications/predicting-clicks-facebook.pdf)
+
+- [Python API Reference — xgboost 0.7 documentation](https://xgboost.readthedocs.io/en/latest/python/python_api.html#module-xgboost.sklearn)
+
+    ![](https://screenshotscdn.firefoxusercontent.com/images/4eb1256c-81e9-4c91-af15-d5325f57f5c8.png)
+
+### Save model & load model
+
+- [How to Save Gradient Boosting Models with XGBoost in Python - Machine Learning Mastery](https://machinelearningmastery.com/save-gradient-boosting-models-xgboost-python/)
+
+    > Serialize Your XGBoost Model with Pickle
+    > ----------------------------------------
+    > 
+    > Pickle is the standard way of serializing objects in Python.
+    > 
+    > You can use the [Python pickle API](https://docs.python.org/2/library/pickle.html) to serialize your machine learning algorithms and save the serialized format to a file, for example:
+
+
+    > ```python
+    > # Train XGBoost model, save to file using pickle, load and make predictions
+    > from numpy import loadtxt
+    > import xgboost
+    > import pickle
+    > from sklearn import model_selection
+    > from sklearn.metrics import accuracy_score
+    > # load data
+    > dataset = loadtxt('pima-indians-diabetes.csv', delimiter=",")
+    > # split data into X and y
+    > X = dataset[:,0:8]
+    > Y = dataset[:,8]
+    > # split data into train and test sets
+    > seed = 7
+    > test_size = 0.33
+    > X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, Y, test_size=test_size, random_state=seed)
+    > # fit model no training data
+    > model = xgboost.XGBClassifier()
+    > model.fit(X_train, y_train)
+    > # save model to file
+    > pickle.dump(model, open("pima.pickle.dat", "wb"))
+    > 
+    > # some time later...
+    > 
+    > # load model from file
+    > loaded_model = pickle.load(open("pima.pickle.dat", "rb"))
+    > # make predictions for test data
+    > y_pred = loaded_model.predict(X_test)
+    > predictions = [round(value) for value in y_pred]
+    > # evaluate predictions
+    > accuracy = accuracy_score(y_test, predictions)
+    > print("Accuracy: %.2f%%" % (accuracy * 100.0))
+    > ```
+
+
 
 ## CatBoost
 
