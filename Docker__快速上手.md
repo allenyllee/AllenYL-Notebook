@@ -90,6 +90,18 @@
     > 
 
 
+## install docker
+
+
+### install docker in bash on windows
+
+- [Running Docker containers on Bash on Windows - Jayway](https://blog.jayway.com/2017/04/19/running-docker-on-bash-on-windows/)
+
+- [Installing the Docker client on Windows Subsystem for Linux (Ubuntu)](https://medium.com/@sebagomez/installing-the-docker-client-on-ubuntus-windows-subsystem-for-linux-612b392a44c4)
+
+- [Can you run Docker natively on the new Windows 10 (Ubuntu) bash userspace? - Server Fault](https://serverfault.com/questions/767994/can-you-run-docker-natively-on-the-new-windows-10-ubuntu-bash-userspace#_=_)
+
+
 ## Docker swarm vs. Kubernetes vs. Mesos vs. Amazon ECS
 
 

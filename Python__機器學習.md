@@ -632,6 +632,10 @@ array([[0, 0, 0],
     > df.iloc[:,-1]
     > ```
 
+- [iloc, loc, and ix for data selection in Python Pandas | Shane Lynn](https://www.shanelynn.ie/select-pandas-dataframe-rows-and-columns-using-iloc-loc-and-ix/)
+
+    ![](https://shanelynnwebsite-mid9n9g1q9y8tt.netdna-ssl.com/wp-content/uploads/2016/10/Pandas-selections-and-indexing-1024x731.png)
+
 
 #### remove column
 
@@ -968,6 +972,67 @@ array([[0, 0, 0],
     > ```
     > 
 
+#### NaN & None
+
+- [Python 中 NaN 和 None 的详细比较 - Python - 伯乐在线](http://python.jobbole.com/87266/)
+
+    > __None vs NaN要点总结__
+    > 
+    > 1. 在pandas中， 如果其他的数据都是数值类型， pandas会把None自动替换成NaN, 甚至能将s[s.isnull()]= None,和s.replace(NaN, None)操作的效果无效化。 这时需要用where函数才能进行替换。
+    > 
+    > 2. None能够直接被导入数据库作为空值处理， 包含NaN的数据导入时会报错。
+    > 
+    > 3. numpy和pandas的很多函数能处理NaN，但是如果遇到None就会报错。
+    > 
+    > 4. None和NaN都不能被pandas的groupby函数处理，包含None或者NaN的组都会被忽略。
+    > 
+    > 等值性比较的总结:（True表示被判定为相等）
+    > 
+    > ||None对None |	NaN对NaN |	None对NaN|
+    > |--|--|--|--|--|
+    > |单值 |	True |	False |	False|
+    > |tuple(整体) |	True |	True |	False|
+    > |np.array(逐个) |	True |	False |	False|
+    > |Series(逐个) |	False |	False |	False|
+    > |assert_equals| 	True |	True |	False|
+    > |Series.equals |	True |	True |	True|
+    > |merge |	True |	True |	True|
+    > 
+    > 由于等值性比较方面，None和NaN在各场景下表现不太一致，相对来说None表现的更稳定。
+    > 
+    > 为了不给自己惹不必要的麻烦和额外的记忆负担。 实践中，建议遵循以下三个原则即可
+    > 
+    > - 在用pandas和numpy处理数据阶段将None,NaN统一处理成NaN,以便支持更多的函数。
+    > 
+    > - 如果要判断Series,numpy.array整体的等值性，用专门的Series.equals,numpy.array函数去处理，不要自己用==判断 *
+    > 
+    > - 如果要将数据导入数据库，将NaN替换成None
+    > 
+
+- [null object in Python? - Stack Overflow](https://stackoverflow.com/questions/3289601/null-object-in-python)
+
+
+    > In Python, the 'null' object is the singleton None.
+    > 
+    > The best way to check things for "Noneness" is to use the identity operator, is:
+    > ```python
+    > if foo is None:
+    >     ...
+    > ```
+    > 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### scikit-learn
 - [sklearn.preprocessing.MinMaxScaler — scikit-learn 0.19.1 documentation](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)
@@ -1238,6 +1303,14 @@ array([[0, 0, 0],
 - [Scanning hyperspace: how to tune machine learning models | Cambridge Coding Academy](https://cambridgecoding.wordpress.com/2016/04/03/scanning-hyperspace-how-to-tune-machine-learning-models/)
 - 
 
+
+## Vectorize
+
+- [Speeding up your code (2): vectorizing the loops with Numpy](https://hackernoon.com/speeding-up-your-code-2-vectorizing-the-loops-with-numpy-e380e939bed3)
+
+
+
+
 ## Trubleshooting
 
 - [Win10下XGBoost安装方法(本地python3.5和anaconda版) | Code my word](https://denotepython.github.io/2017/03/11/install-xgboost/)
@@ -1261,9 +1334,6 @@ array([[0, 0, 0],
     Installing collected packages: xgboost
     Successfully installed xgboost-0.6
     ```
-
-
-
 
 
 

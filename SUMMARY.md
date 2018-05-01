@@ -23,6 +23,9 @@
 - [Docker__快速上手](Docker__快速上手.md)
 [//]: # ( - [Docker__快速上手](https://hackmd.io/KYtTlzYrSrCi5rNem_qiIQ?view)
 
+- [Docker_ZOO](Docker_ZOO.md)
+[//]: # ( - [Docker_ZOO](https://hackmd.io/AJmwKqCmQOGIk_x7Z4WxWQ#)
+
 - [Jupyter_Notebook__快速上手](Jupyter_Notebook__快速上手.md)
 [//]: # ( - [Jupyter_Notebook__快速上手](https://hackmd.io/GYExwNgFhBOBaAjAdhAZnlRBDBAONEAY3hAAYi8QYRtKog==?view)
 
@@ -33,6 +36,10 @@
 
 - [R__快速上手](R__快速上手.md)
 [//]: # ( - [R__快速上手](https://hackmd.io/GwMwhsAMCMCsCcBaEBjARgDkQFgEwUQzXmkVjWknwBMYUQ0g?view)
+
+- [資料可視化](資料可視化.md)
+[//]: # ( - [資料可視化](https://hackmd.io/X5_1Wm72SB22_vwAsKXv-g?view)
+
 
 ## 機器學習
 
@@ -65,6 +72,9 @@
 - [NLP__資料收集](NLP__資料收集.md)
 [//]: # ( - [NLP__資料收集](https://hackmd.io/TDJoxAJwQsKbJ6YVwraSQw?view)
 
+- [Computer_Vision__資料收集](Computer_Vision__資料收集.md)
+[//]: # ( - [Computer_Vision__資料收集](https://hackmd.io/WsJRhO7LSCqdeq-FCSN4TQ?view)
+
 ## 專案管理、開發、文件撰寫
 
 - [Git__快速上手](Git__快速上手.md)
@@ -92,6 +102,9 @@
 [//]: # ( - [DevOps__產品維運](https://hackmd.io/EpIkTIKjSbSgtjwPoxeU3g?view)
 
 ## 嵌入式硬體開發
+
+- [Embedded_System__開發](Embedded_System__開發.md)
+[//]: # ( - [Embedded_System__開發](https://hackmd.io/xo80QhJoQu-vWSmYoNKH3g?view)
 
 - [BIOS__韌體開發](BIOS__韌體開發.md)
 [//]: # ( - [BIOS__韌體開發](https://hackmd.io/wuCSi592Q_S6iXKAFrGwGw?view)
@@ -128,6 +141,12 @@
 - [Networking__網路設定](Networking__網路設定.md)
 [//]: # ( - [Networking__網路設定](https://hackmd.io/OcId0ZCyQfOmOPUvzFThUw?view)
 
+- [系統設計](系統設計.md)
+[//]: # ( - [系統設計](https://hackmd.io/7IPDYQNkS_a6k2kPSp5E9A?view)
+
+- [VPN__架設](VPN__架設.md)
+[//]: # ( - [VPN__架設](https://hackmd.io/iglwBvACRqetmtSNLqnbQA?view)
+
 ## 電腦圖學
 
 - [Computer_Graphics__電腦圖學](Computer_Graphics__電腦圖學.md)
@@ -141,6 +160,9 @@
 
 ## 其他
 
+- [外地生活](外地生活.md)
+[//]: # ( - [外地生活](https://hackmd.io/d5nAveuQTmOkkEpk-vh8XA?view)
+
 - [Java__筆記](Java__筆記.md)
 [//]: # ( - [Java__筆記](https://hackmd.io/DOojSGYJTIamBsKK2NfTKQ?view)
 
@@ -150,8 +172,14 @@
 - [簡報技巧](簡報技巧.md)
 [//]: # ( - [簡報技巧](https://hackmd.io/UNk-euRoSq28UK9Bpr6-kQ?view)
 
+- [Medium__寫作技巧](Medium__寫作技巧.md)
+[//]: # ( - [Medium__寫作技巧](https://hackmd.io/tDKA66MATf2SlcKp2C1tqQ?view)
+
 - [Windows__問題排解](Windows__問題排解.md)
 [//]: # ( - [Windows__問題排解](https://hackmd.io/IwJgHApiECYMwFpgGNkE4EBYAMbFswDNkEYB2ZYAQxwCMqRk4g==?view)
+
+- [Linux__問題排解](Linux__問題排解.md)
+[//]: # ( - [Linux__問題排解](https://hackmd.io/pdlu6ODdQS6UswsNraP--A?view)
 
 - [Quantum_Computing](Quantum_Computing.md)
 [//]: # ( - [Quantum_Computing](https://hackmd.io/IwEwTADGAcDGCcBaApgQ3sRAWARhZiqEwAzIiDibMAKwgDs80JYQA===?view)

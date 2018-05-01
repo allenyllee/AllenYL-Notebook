@@ -3,6 +3,11 @@
 <!-- toc --> 
 [toc]
 
+## 常用連結
+
+- [FileHippo.com - Download Free Software](https://filehippo.com/zh/)
+
+## 磁碟空間清理
 
 - [清理Windows.edb文件释放C盘空间(原创) - 瑞恩多芬 - 博客园](https://www.cnblogs.com/bison1989/archive/2011/11/09/2243703.html)
 
@@ -20,3 +25,15 @@
     -   請點選或按一下 \[**進階**\]。
     -   點選或按一下 \[**索引設定**\] 索引標籤中的 \[**重建**\]。
     -   點選或按一下\[**確定**\]以確認。
+
+## 軟體安裝問題
+
+- [Can't Update Evernote, Evernote.msi missing - Evernote for Windows - Evernote User Forum](https://discussion.evernote.com/topic/100267-cant-update-evernote-evernotemsi-missing/)
+
+    >  I have the same problem every time I try to update Evernote—**update will crash because of msi file missing.** For the last update I searched the forums and eventually made it work.
+    > 
+    > For this one, the problem was still there. I tired uninstalling it only to find out I have now Evernote 6.2.4 and Evernote 6.1.2 both installed. I was able to uninstall the newer version, but the old version is still there, **can not be uninstalled due to missing MSI**, I can not install or run Evernote because of the same MSI that seems to be corrupt. Can you plese give me a solution that would fix this permanently? 
+    > 
+    > ---
+    > Hi. It's been suggested before that the way out of that corner is to reinstall 6.1.2 so as to 'correct' the installation,  then uninstall it completely and install the current version.  [Evernote 6.1.2 installer](http://filehippo.com/download_evernote/68286/)
+    > 

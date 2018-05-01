@@ -10,6 +10,13 @@
 
 - [Python Extension Packages for Windows - Christoph Gohlke](https://www.lfd.uci.edu/~gohlke/pythonlibs/)
 
+### Pexpect
+
+- [Pexpect version 4.5 — Pexpect 4.5 documentation](https://pexpect.readthedocs.io/en/stable/)
+
+
+
+
 ## Usage
 
 ### if or not
@@ -1016,6 +1023,12 @@
     > Personally, I prefer `.extend()`
     > 
 
+### read file
+
+- [python中的三个读read(),readline()和readlines() - CSDN博客](https://blog.csdn.net/werm520/article/details/6898473)
+
+    >.readline() 和 .readlines()之间的差异是后者一次读取整个文件，象 .read()一样。.readlines()自动将文件内容分析成一个行的列表，该列表可以由 Python 的 for... in ... 结构进行处理。另一方面，.readline()每次只读取一行，通常比 .readlines()慢得多。仅当没有足够内存可以一次读取整个文件时，才应该使用.readline()。
+
 
 ## Anaconda
 
@@ -1186,3 +1199,9 @@
     > 
     >     ...
     > 
+
+
+
+
+
+

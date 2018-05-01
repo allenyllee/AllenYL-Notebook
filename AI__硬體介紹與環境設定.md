@@ -939,6 +939,23 @@
 
     You would see **app folder content** and don’t need to add **drive/app** all the time anymore.
 
+    __11. How to Restart Google Colab?__
+
+    In order to restart (or reset) your virtual machine, simply run:
+
+    `!kill -9 -1`
+
+    __12. How to Add Form to Google Colab?__
+
+    In order not to change hyperparameters every time in your code, you can simply add form to Google Colab.
+
+    ![](https://cdn-images-1.medium.com/max/1000/1*Cy19qeGZzgllJrtAqOH4OQ.png)
+
+    For instance, I added form which contain learning_rate variable and optimizer string.
+ 
+    ![](https://cdn-images-1.medium.com/max/1000/1*kGvfrNrRHwfv1jWtguufkg.png)
+
+
 - [sys.path different in Jupyter and Python - how to import own modules in Jupyter? - Stack Overflow](https://stackoverflow.com/questions/34976803/sys-path-different-in-jupyter-and-python-how-to-import-own-modules-in-jupyter)
 
     Here is what I do on my projects in jupyter notebook,
@@ -955,6 +972,24 @@
     %load_ext autoreload
     %autoreload 2
     ```
+
+- [python - How can access Uploaded File in Google colab - Stack Overflow](https://stackoverflow.com/questions/48485255/how-can-access-uploaded-file-in-google-colab)
+
+    > Here's an adjustment to your snippet that will save any uploaded file in the current directory using the uploaded file name.
+    > ```python
+    > from google.colab import files
+    > uploaded = files.upload()
+    > 
+    > for name, data in uploaded.items():
+    >   with open(name, 'wb') as f:
+    >     f.write(data)
+    >     print ('saved file', name)
+    > ```
+    > 
+
+- [External data: Drive, Sheets, and Cloud Storage - Colaboratory](https://colab.research.google.com/notebook#fileId=/v2/external/notebooks/io.ipynb&scrollTo=s6nDq8Nk7aPN)
+
+
 
 
 - [python - from ... import OR import ... as for modules - Stack Overflow](https://stackoverflow.com/questions/22245711/from-import-or-import-as-for-modules)
@@ -1007,6 +1042,34 @@
     Gen RAM Free: 11.6 GB  | Proc size: 666.0 MB
     GPU RAM Free: 566MB | Used: 10873MB | Util  95% | Total 11439MB
     ```
+
+- [Google Colaboratory gets disconnected after 10-15 minutes.：learnmachinelearning](https://www.reddit.com/r/learnmachinelearning/comments/88ywbo/google_colaboratory_gets_disconnected_after_1015/)
+
+    > 1. Yeah.. that environment definitely looks like the reason of your problem
+    > 2. Here are some useful things I used in my last colabs: https://colab.research.google.com/drive/1P2AmVHPmDccstO0BiGu2uGAG0vTx444b
+    > 
+    > About how to reload your saved checkpoint, there are lot of documentation about it around, I use something similar to this:
+    > 
+    > ```python
+    > saver = tf.train.Saver() ckpt = tf.train.latest_checkpoint('./MODEL/encoder/') if (ckpt): print (ckpt) saver.restore(sess, ckpt) start_step = int(ckpt.split('-')[1])
+    > ```
+    > 
+
+- [Does Google Colab stay connected when I close my browser? - Stack Overflow](https://stackoverflow.com/questions/49062628/does-google-colab-stay-connected-when-i-close-my-browser)
+
+    > 1. The current cell will continue executing once you close your browser, but the outputs will not end up in the notebook in Drive. (If you were to reconnect before your VM were considered idle and deleted, any values you'd computed would still be available in your kernel.)
+    > 
+    > 2. Distinct users are always assigned to distinct backends, so they'd have to install the libraries themselves. (This is one reason we encourage keeping library setup/config in the notebook.)
+
+- [amazon redshift - Can I run Google colaboratory locally? - Stack Overflow](https://stackoverflow.com/questions/47316383/can-i-run-google-colaboratory-locally)
+
+    > Colab now supports execution with local backends! You can get started by following these instructions: https://research.google.com/colaboratory/local-runtimes.html
+    > 
+    > By default, Colab stores all code cell outputs in Google Drive. If your local connection will access sensitive data and you would like to omit these, you can select "Omit code cell output when saving this notebook" when connecting to your local runtime.
+
+- [python - Answer "yes" to terminal on Google Colaboratory - Stack Overflow](https://stackoverflow.com/questions/48709520/answer-yes-to-terminal-on-google-colaboratory)
+
+    >Or script typing "yes" using something like https://pexpect.readthedocs.io/en/stable/
 
 ### How about Decentrlized Frog Computing?
 
