@@ -75,6 +75,9 @@
 - [Computer_Vision__資料收集](Computer_Vision__資料收集.md)
 [//]: # ( - [Computer_Vision__資料收集](https://hackmd.io/WsJRhO7LSCqdeq-FCSN4TQ?view)
 
+- [GPU__加速](GPU__加速.md)
+[//]: # ( - [GPU__加速](https://hackmd.io/WsHAO8-MTQGLgeXQI5wngA?view)
+
 ## 專案管理、開發、文件撰寫
 
 - [Git__快速上手](Git__快速上手.md)
@@ -159,6 +162,9 @@
 [//]: # ( - [3D__物理引擎](https://hackmd.io/HndCbLxrTZKyP_5e2JGhMw?view)
 
 ## 其他
+
+- [Parallel_Programming](Parallel_Programming.md)
+[//]: # ( - [Parallel_Programming](https://hackmd.io/uP-jb9ozQviJJbwcPqEGBA?view)
 
 - [外地生活](外地生活.md)
 [//]: # ( - [外地生活](https://hackmd.io/d5nAveuQTmOkkEpk-vh8XA?view)

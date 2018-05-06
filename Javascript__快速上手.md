@@ -1,7 +1,7 @@
 # Javascript__快速上手
 
-<!-- toc --> 
 [toc]
+<!-- toc --> 
 
 
 

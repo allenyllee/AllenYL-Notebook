@@ -1,5 +1,8 @@
 # Computer_Graphics__電腦圖學
 
+[toc]
+<!-- toc --> 
+
 - [Microsoft 發表 DirectX 12 Raytracing API 功能集 DXR，標準化光追蹤步驟 | T客邦 - 我只推薦好東西](https://www.techbang.com/posts/57408-microsoft-publishes-the-directx-raytracing-api-feature-set-dxr-standard-light-tracing-steps)
 
     > 若要瞭解光追蹤的成像原理，我們先來理解目前絕大部分 3D 遊戲畫面是如何繪製的。由於即時遊戲畫面需要每秒提供 30 張～60 張以上的畫面更新速率，因而需要 1 種相當有效率且易於平行運算的作業方式，Rasterization 光柵化就是目前 3D 遊戲的基礎。

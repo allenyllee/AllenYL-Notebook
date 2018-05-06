@@ -1,7 +1,15 @@
 # BlockChain__應用
 
-<!-- toc --> 
 [toc]
+<!-- toc --> 
+
+## BlockChain Guide
+
+- [The authoritative guide to blockchain development – freeCodeCamp](https://medium.freecodecamp.org/the-authoritative-guide-to-blockchain-development-855ab65b58bc)
+
+- [Programming Cryptocurrencies and Blockchains (Book Edition)](https://yukimotopress.github.io/blockchains)
+
+
 
 ## How Blockchain work
 

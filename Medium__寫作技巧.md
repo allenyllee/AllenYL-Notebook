@@ -1,5 +1,8 @@
 # Medium__寫作技巧
 
+[toc]
+<!-- toc --> 
+
 - [How to display code blocks in Medium – freeCodeCamp](https://medium.freecodecamp.org/how-to-add-code-to-medium-and-get-syntax-highlighting-d699761a5883)
 
     > #### Medium has a hidden shortcut that will turn text plain text…

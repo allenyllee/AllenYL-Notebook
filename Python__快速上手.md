@@ -1,7 +1,7 @@
 # Python__快速上手
 
-<!-- toc --> 
 [toc]
+<!-- toc --> 
 
 ## Basic Tutorial
 * [Python Tutorial](https://www.tutorialspoint.com/python/index.htm)

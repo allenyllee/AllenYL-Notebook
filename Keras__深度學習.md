@@ -1,7 +1,7 @@
 # Keras__深度學習
 
-<!-- toc --> 
 [toc]
+<!-- toc --> 
 
 ## API reference
 

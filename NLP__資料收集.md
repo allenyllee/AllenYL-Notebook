@@ -253,6 +253,21 @@ Parameters:
 - [Introduction to Conditional Random Fields](http://blog.echen.me/2012/01/03/introduction-to-conditional-random-fields/)
 
 
+## attention model
+
+- [tensorflow/nmt: TensorFlow Neural Machine Translation Tutorial](https://github.com/tensorflow/nmt)
+
+- [Attention Is All You Need：基於注意力機制的機器翻譯模型 – Youngmi huang – Medium](https://medium.com/@cyeninesky3/attention-is-all-you-need-%E5%9F%BA%E6%96%BC%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A9%9F%E5%88%B6%E7%9A%84%E6%A9%9F%E5%99%A8%E7%BF%BB%E8%AD%AF%E6%A8%A1%E5%9E%8B-dcc12d251449)
+
+- [[1706.03762] Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+
+- [Kyubyong/transformer: A TensorFlow Implementation of the Transformer: Attention Is All You Need](https://github.com/Kyubyong/transformer)
+
+
+## Entropy
+
+- [最大熵模型 (MaxEnt) 實踐短字詞分類 – PyLadies Taiwan – Medium](https://medium.com/pyladies-taiwan/%E6%9C%80%E5%A4%A7%E7%86%B5%E6%A8%A1%E5%9E%8B-maxent-%E5%AF%A6%E8%B8%90%E7%9F%AD%E5%AD%97%E8%A9%9E%E5%88%86%E9%A1%9E-b925665d9082)
+
 
 
 

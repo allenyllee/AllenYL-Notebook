@@ -1,7 +1,7 @@
 # AI__硬體介紹與環境設定
 
-<!-- toc --> 
 [toc]
+<!-- toc --> 
 
 ## 我的深度學習專用機 My Deep Learning Box
 

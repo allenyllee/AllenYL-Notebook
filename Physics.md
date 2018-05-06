@@ -1,5 +1,5 @@
 # Physics
 
-<!-- toc --> 
 [toc]
+<!-- toc --> 
 

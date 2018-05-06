@@ -1,7 +1,7 @@
 # VSCode__快速上手
 
-<!-- toc --> 
 [toc]
+<!-- toc --> 
 
 ## 即時預覽HTML
 

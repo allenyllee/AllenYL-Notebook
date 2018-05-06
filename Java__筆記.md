@@ -1,5 +1,8 @@
 # Java__筆記
 
+[toc]
+<!-- toc --> 
+
 ## Java applet
 
 - [Running legacy Java applets without a browser or security exceptions (Windows)：sysadmin](https://www.reddit.com/r/sysadmin/comments/69m2ol/running_legacy_java_applets_without_a_browser_or/)

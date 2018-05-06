@@ -1,7 +1,7 @@
 # Git__快速上手
 
-<!-- toc --> 
 [toc]
+<!-- toc --> 
 
 
 
@@ -341,6 +341,23 @@
     > From what you're describing, the `database.yml` file just shouldn't be in your repository anymore.
     > 
     > Perform `git rm --cached config/database.yml` to remove it from Git, then attempt your merge once more.
+
+
+- [The remote end hung up unexpectedly while git cloning - Stack Overflow](https://stackoverflow.com/questions/6842687/the-remote-end-hung-up-unexpectedly-while-git-cloning)
+
+    > Quick solution:
+    > 
+    > With this kind of error, I usually start by raising the postBuffer size by:
+    > ```shell
+    > git config --global http.postBuffer 524288000
+    > ```
+    > (some comments below report having to double the value):
+    > ```shell
+    > git config --global http.postBuffer 1048576000
+    > ```
+    > 
+
+
 
 ## 使用技巧
 
