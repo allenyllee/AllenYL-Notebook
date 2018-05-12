@@ -55,10 +55,19 @@
 - [Python__網頁爬蟲](Python__網頁爬蟲.md)
 [//]: # ( - [Python__網頁爬蟲](https://hackmd.io/IYVgnAbATAxlDMBaAHMARgBkQFnjAjCgKYhqIwTREBm8wEajQA==?view)
 
+- [機器學習題庫1](機器學習題庫1.md)
+[//]: # ( - [機器學習題庫1](https://hackmd.io/ePvL0TD_QzGpe_JkBT0DkQ?view)
+
+- [機器學習題庫2](機器學習題庫2.md)
+[//]: # ( - [機器學習題庫2](https://hackmd.io/6JNaM5M3St-N083zCYMR7A?view)
+
 ## 深度學習
 
 - [深度學習理論](深度學習理論.md)
 [//]: # ( - [深度學習理論](https://hackmd.io/CwTgrAJgjGBmYFozAMwocApsAhgkADBCEgEYTABsOKAxrVMAUA==?view)
+
+- [深度學習框架](深度學習框架.md)
+[//]: # ( - [深度學習框架](https://hackmd.io/3iCInJPWSluU0QsoUXe8uA?view)
 
 - [Tensorflow__深度學習](Tensorflow__深度學習.md)
 [//]: # ( - [Tensorflow__深度學習](https://hackmd.io/GwBg7AZiCmIMwFoAmIBMAOBAWYBWLC6AhgMZELRGolxinQkBGEQA?view)
@@ -150,6 +159,9 @@
 - [VPN__架設](VPN__架設.md)
 [//]: # ( - [VPN__架設](https://hackmd.io/iglwBvACRqetmtSNLqnbQA?view)
 
+- [Web__框架](Web__框架.md)
+[//]: # ( - [Web__框架](https://hackmd.io/85TU0yDRSDCHbSOdeQ9RMw?view)
+
 ## 電腦圖學
 
 - [Computer_Graphics__電腦圖學](Computer_Graphics__電腦圖學.md)
@@ -163,8 +175,20 @@
 
 ## 其他
 
+- [LeetCode__筆記](LeetCode__筆記.md)
+[//]: # ( - [LeetCode__筆記](https://hackmd.io/GwLX_E4LTPqP5L67rPi0FQ?view)
+
+- [C_Cpp__語言筆記](C_Cpp__語言筆記.md)
+[//]: # ( - [C_Cpp__語言筆記](https://hackmd.io/N9XlYh7dRKuZX07jcJrx4A?view)
+
+- [Rust_語言筆記](Rust_語言筆記.md)
+[//]: # ( - [Rust_語言筆記](https://hackmd.io/kjYKZ_l5S3-PT8-BvnGffA?view)
+
 - [Parallel_Programming](Parallel_Programming.md)
 [//]: # ( - [Parallel_Programming](https://hackmd.io/uP-jb9ozQviJJbwcPqEGBA?view)
+
+- [面試準備](面試準備.md)
+[//]: # ( - [面試準備](https://hackmd.io/2APloEA9ThOtKoSPp_QX7A?view)
 
 - [外地生活](外地生活.md)
 [//]: # ( - [外地生活](https://hackmd.io/d5nAveuQTmOkkEpk-vh8XA?view)

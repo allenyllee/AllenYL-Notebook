@@ -17,11 +17,98 @@
 
 - [Bitcoin by analogy](https://www.ybrikman.com/writing/2014/04/24/bitcoin-by-analogy/)
 
-## USDT
+
+
+
+## Ethereum
+
+### Smart Contract
+
+- [什麼是智能合約(Smart Contract)? | 蓋索林 Gasolin](https://blog.gasolin.idv.tw/2017/09/02/what-is-smart-contract/)
+
+- [learning-blockchain/smart-contracts.md at master · OSE-Lab/learning-blockchain](https://github.com/OSE-Lab/learning-blockchain/blob/master/ethereum/smart-contracts.md)
+
+
+### Fog Computing
+
+- [什麼是雲計算、霧計算、霾計算、邊緣計算和認知計算 - 每日頭條](https://kknews.cc/zh-tw/tech/5mjoq33.html)
+
+    > **雲計算**
+    > 
+    > ![](https://i2.kknews.cc/SIG=26d3shd/1o8500038574p166s4r5.jpg)
+    > 
+    > 雲計算是一種利用網際網路實現隨時隨地、按需、便捷地使用共享計算設施、存儲設備、應用程式等資源的計算模式。
+    > 
+    > 雲計算系統由雲平台、雲存儲、雲終端、雲安全四個基本部分組成。雲平台作為提供雲計算服務的基礎，管理著數量巨大的CPU、存儲器、交換機等大量硬體資源，以虛擬化的技術來來整合一個數據中心或多個數據中心的資源，屏蔽不同底層設備的差異性，以一種透明的方式向用戶提供計算環境、開發平台、軟體應用等在內的多種服務。
+    > 
+    > 通常情況下，雲平台從用戶的角度可分為公有雲、私有雲、混合雲等。
+    > 
+    > 公有云：第三方提供商為用戶提供服務的雲平台，用戶可通過網際網路訪問公有雲。
+    > 
+    > 私有云：為一個用戶單獨使用而組建的，對數據存儲量、處理量、安全性要求高。
+    > 
+    > 混合云：是結合了公有雲和私有雲的優點而組建的。
+    > 
+    > 再者，通過從提供服務的層次可分為基礎設施即服務（Iaas）、平台即服務（Paas）和軟體即服務（Saas）。
+    > 
+    > **霧計算**
+    > 
+    > ![](https://i2.kknews.cc/SIG=2m8td7q/1o870003849n30r949q7.jpg)
+    > 
+    > 相比於雲計算的高高在上和遙不可及，霧計算更為貼近地面，就在你我身邊。我們知道，將數據從雲端導入和導出實際上比人們想像的要更為複雜，由於接入設備越來越多，在傳輸數據、獲取信息時，帶寬就顯得不夠用了，這就為霧計算的產生提供了空間。
+    > 
+    > 霧計算的概念在2011年被人提出，並非是些性能強大的伺服器，而是由性能較弱、更為分散的各種功能計算機組成，滲入電器、工廠、汽車、街燈及人們生活中的各種物品。霧計算是介於雲計算和個人計算之間的，是半虛擬化的服務計算架構模型，強調數量，不管單個計算節點能力多麼弱都要發揮作用。
+    > 
+    > 霧計算有幾個明顯特徵：低延時、位置感知、廣泛的地理分布、適應移動性的應用，支持更多的邊緣節點。這些特徵使得移動業務部署更加方便，滿足更廣泛的節點接入。
+    > 
+    > 與雲計算相比，霧計算所採用的架構更呈分布式，更接近網絡邊緣。霧計算將數據、數據處理和應用程式集中在網絡邊緣的設備中，而不像雲計算那樣將它們幾乎全部保存在雲中。數據的存儲及處理更依賴本地設備，而非伺服器。所以，雲計算是新一代的集中式計算，而霧計算是新一代的分布式計算，符合網際網路的「去中心化」特徵。
+    > 
+    > **霾計算**
+    > 
+    > ![](https://i2.kknews.cc/SIG=1tn5ppl/1o8400039538q2858293.jpg)
+    > 
+    > 當然，無論是「雲」還是「霧」，都不想成為「霾」，但是這個問題卻事實存在著，如果得不到慎重的預防以及妥善的解決，那麼「霾計算」就來了。
+    > 
+    > 霾計算指的是什麼呢？這裡你可以理解為比較差勁的雲計算或霧計算，因為這兩者雖然概念先進，但也不是沒有缺點。第一，隱私與安全。現在的網際網路世界，遭黑客攻擊簡直就是家常便飯的事，因此客戶的隱私數據很容易泄漏。第二，網絡延遲或者中斷。雲計算都是通過網際網路遠程訪問的，雖然現在網速提高很快，但和區域網相比，速度還是有所延遲的，雖然在延時方面霧計算稍微好點，但如果網絡中斷，無論雲計算或者是霧計算，服務都無法訪問。第三，帶寬會耗費預算，廠商按流量收費有時會超出預算、應用軟體性能不夠穩定，數據可能不值得放在雲上，規模過大難以擴展，缺乏人力資本等都是造成霾計算的根源所在。
+    > 
+    > **邊緣計算**
+    > 
+    > ![](https://i1.kknews.cc/SIG=2cq47eq/1o820003n1nn4n1sq272.jpg)
+    > 
+    > 邊緣計算指在靠近物或數據源頭的網絡邊緣側，融合網絡、計算、存儲、應用核心能力的開放平台，就近提供邊緣智能服務，滿足行業數字化在敏捷連接、實時業務、數據優化、應用智能、安全與隱私保護等方面的關鍵需求。到這裡，您是否覺得邊緣計算和霧計算有些相似呢？
+    > 
+    > 一般而言，霧計算和邊緣計算的區別在於，霧計算更具有層次性和平坦的架構，其中幾個層次形成網絡，而邊緣計算依賴於不構成網絡的單獨節點。霧計算在節點之間具有廣泛的對等互連能力，邊緣計算在孤島中運行其節點，需要通過雲實現對等流量傳輸。
+    > 
+    > 那麼，邊緣計算和雲計算又有何區別？這兩者都是處理大數據的計算運行方式。但不同的是，這一次，數據不用再傳到遙遠的雲端，在邊緣側就能解決，更適合實時的數據分析和智能化處理，也更加高效而且安全。
+    > 
+    > 如果說物聯網的核心是讓每個物體智能連接、運行，那麼邊緣計算就是通過數據分析處理，實現物與物之間傳感、交互和控制。「邊緣計算」作為一種將計算、網絡、存儲能力從雲延伸到物聯網網絡邊緣的架構，遵循「業務應用在邊緣，管理在雲端」的模式。
+    > 
+    > **認知計算**
+    > 
+    > ![](https://i1.kknews.cc/SIG=2o3uust/1o7s0006nsnsrn860n10.jpg)
+    > 
+    > 認知計算包含了信息分析、自然語言處理和機器學習領域的大量技術創新，能夠助力決策者從大量非結構化數據中揭示非凡的洞察。認知系統能夠以對人類而言更加自然的方式與人類交互，專門獲取海量的不同類型的數據，根據信息進行推論。
+    > 
+    > 認知計算的一個目標是讓計算機系統能夠像人的大腦一樣學習、思考，並做出正確的決策。人腦與電腦各有所長，認知計算系統可以成為一個很好的輔助性工具，配合人類進行工作，解決人腦所不擅長解決的一些問題。
+    > 
+    > 傳統的計算技術是定量的，並著重於精度和序列等級，而認知計算則試圖解決生物系統中的不精確、不確定和部分真實的問題，以實現不同程度的感知、記憶、學習、語言、思維和問題解決等過程。
+    > 
+    > 目前隨著科學技術的發展以及大數據時代的到來，如何實現類似人腦的認知與判斷，發現新的關聯和模式，從而做出正確的決策，顯得尤為重要，這給認知計算技術的發展帶來了新的機遇和挑戰。
+    > 
+    > 
+  
+
+## Ethereum Token
+
+- [A beginner’s guide to Ethereum tokens – The Coinbase Blog](https://blog.coinbase.com/a-beginners-guide-to-ethereum-tokens-fbd5611fe30b)
+
+### USDT
 
 - [Tether (USDT) $1.00 (0.23%) | CoinMarketCap](https://coinmarketcap.com/currencies/tether/)
 
 - [Tether USD (USDT) ERC20 Token Tracker](https://etherscan.io/token/0xdac17f958d2ee523a2206206994597c13d831ec7)
+
+- [Tether – Tether & Ethfinex collaborate on development of ERC20 Tether tokens](https://tether.to/tether-ethfinex-collaborate-on-development-of-erc20-tether-tokens/)
 
 - [Transparency | Tether](https://wallet.tether.to/transparency)
 
@@ -133,90 +220,7 @@
 
 
 
-
-## Ethereum
-
-### Smart Contract
-
-- [什麼是智能合約(Smart Contract)? | 蓋索林 Gasolin](https://blog.gasolin.idv.tw/2017/09/02/what-is-smart-contract/)
-
-- [learning-blockchain/smart-contracts.md at master · OSE-Lab/learning-blockchain](https://github.com/OSE-Lab/learning-blockchain/blob/master/ethereum/smart-contracts.md)
-
-
-### Fog Computing
-
-- [什麼是雲計算、霧計算、霾計算、邊緣計算和認知計算 - 每日頭條](https://kknews.cc/zh-tw/tech/5mjoq33.html)
-
-    > **雲計算**
-    > 
-    > ![](https://i2.kknews.cc/SIG=26d3shd/1o8500038574p166s4r5.jpg)
-    > 
-    > 雲計算是一種利用網際網路實現隨時隨地、按需、便捷地使用共享計算設施、存儲設備、應用程式等資源的計算模式。
-    > 
-    > 雲計算系統由雲平台、雲存儲、雲終端、雲安全四個基本部分組成。雲平台作為提供雲計算服務的基礎，管理著數量巨大的CPU、存儲器、交換機等大量硬體資源，以虛擬化的技術來來整合一個數據中心或多個數據中心的資源，屏蔽不同底層設備的差異性，以一種透明的方式向用戶提供計算環境、開發平台、軟體應用等在內的多種服務。
-    > 
-    > 通常情況下，雲平台從用戶的角度可分為公有雲、私有雲、混合雲等。
-    > 
-    > 公有云：第三方提供商為用戶提供服務的雲平台，用戶可通過網際網路訪問公有雲。
-    > 
-    > 私有云：為一個用戶單獨使用而組建的，對數據存儲量、處理量、安全性要求高。
-    > 
-    > 混合云：是結合了公有雲和私有雲的優點而組建的。
-    > 
-    > 再者，通過從提供服務的層次可分為基礎設施即服務（Iaas）、平台即服務（Paas）和軟體即服務（Saas）。
-    > 
-    > **霧計算**
-    > 
-    > ![](https://i2.kknews.cc/SIG=2m8td7q/1o870003849n30r949q7.jpg)
-    > 
-    > 相比於雲計算的高高在上和遙不可及，霧計算更為貼近地面，就在你我身邊。我們知道，將數據從雲端導入和導出實際上比人們想像的要更為複雜，由於接入設備越來越多，在傳輸數據、獲取信息時，帶寬就顯得不夠用了，這就為霧計算的產生提供了空間。
-    > 
-    > 霧計算的概念在2011年被人提出，並非是些性能強大的伺服器，而是由性能較弱、更為分散的各種功能計算機組成，滲入電器、工廠、汽車、街燈及人們生活中的各種物品。霧計算是介於雲計算和個人計算之間的，是半虛擬化的服務計算架構模型，強調數量，不管單個計算節點能力多麼弱都要發揮作用。
-    > 
-    > 霧計算有幾個明顯特徵：低延時、位置感知、廣泛的地理分布、適應移動性的應用，支持更多的邊緣節點。這些特徵使得移動業務部署更加方便，滿足更廣泛的節點接入。
-    > 
-    > 與雲計算相比，霧計算所採用的架構更呈分布式，更接近網絡邊緣。霧計算將數據、數據處理和應用程式集中在網絡邊緣的設備中，而不像雲計算那樣將它們幾乎全部保存在雲中。數據的存儲及處理更依賴本地設備，而非伺服器。所以，雲計算是新一代的集中式計算，而霧計算是新一代的分布式計算，符合網際網路的「去中心化」特徵。
-    > 
-    > **霾計算**
-    > 
-    > ![](https://i2.kknews.cc/SIG=1tn5ppl/1o8400039538q2858293.jpg)
-    > 
-    > 當然，無論是「雲」還是「霧」，都不想成為「霾」，但是這個問題卻事實存在著，如果得不到慎重的預防以及妥善的解決，那麼「霾計算」就來了。
-    > 
-    > 霾計算指的是什麼呢？這裡你可以理解為比較差勁的雲計算或霧計算，因為這兩者雖然概念先進，但也不是沒有缺點。第一，隱私與安全。現在的網際網路世界，遭黑客攻擊簡直就是家常便飯的事，因此客戶的隱私數據很容易泄漏。第二，網絡延遲或者中斷。雲計算都是通過網際網路遠程訪問的，雖然現在網速提高很快，但和區域網相比，速度還是有所延遲的，雖然在延時方面霧計算稍微好點，但如果網絡中斷，無論雲計算或者是霧計算，服務都無法訪問。第三，帶寬會耗費預算，廠商按流量收費有時會超出預算、應用軟體性能不夠穩定，數據可能不值得放在雲上，規模過大難以擴展，缺乏人力資本等都是造成霾計算的根源所在。
-    > 
-    > **邊緣計算**
-    > 
-    > ![](https://i1.kknews.cc/SIG=2cq47eq/1o820003n1nn4n1sq272.jpg)
-    > 
-    > 邊緣計算指在靠近物或數據源頭的網絡邊緣側，融合網絡、計算、存儲、應用核心能力的開放平台，就近提供邊緣智能服務，滿足行業數字化在敏捷連接、實時業務、數據優化、應用智能、安全與隱私保護等方面的關鍵需求。到這裡，您是否覺得邊緣計算和霧計算有些相似呢？
-    > 
-    > 一般而言，霧計算和邊緣計算的區別在於，霧計算更具有層次性和平坦的架構，其中幾個層次形成網絡，而邊緣計算依賴於不構成網絡的單獨節點。霧計算在節點之間具有廣泛的對等互連能力，邊緣計算在孤島中運行其節點，需要通過雲實現對等流量傳輸。
-    > 
-    > 那麼，邊緣計算和雲計算又有何區別？這兩者都是處理大數據的計算運行方式。但不同的是，這一次，數據不用再傳到遙遠的雲端，在邊緣側就能解決，更適合實時的數據分析和智能化處理，也更加高效而且安全。
-    > 
-    > 如果說物聯網的核心是讓每個物體智能連接、運行，那麼邊緣計算就是通過數據分析處理，實現物與物之間傳感、交互和控制。「邊緣計算」作為一種將計算、網絡、存儲能力從雲延伸到物聯網網絡邊緣的架構，遵循「業務應用在邊緣，管理在雲端」的模式。
-    > 
-    > **認知計算**
-    > 
-    > ![](https://i1.kknews.cc/SIG=2o3uust/1o7s0006nsnsrn860n10.jpg)
-    > 
-    > 認知計算包含了信息分析、自然語言處理和機器學習領域的大量技術創新，能夠助力決策者從大量非結構化數據中揭示非凡的洞察。認知系統能夠以對人類而言更加自然的方式與人類交互，專門獲取海量的不同類型的數據，根據信息進行推論。
-    > 
-    > 認知計算的一個目標是讓計算機系統能夠像人的大腦一樣學習、思考，並做出正確的決策。人腦與電腦各有所長，認知計算系統可以成為一個很好的輔助性工具，配合人類進行工作，解決人腦所不擅長解決的一些問題。
-    > 
-    > 傳統的計算技術是定量的，並著重於精度和序列等級，而認知計算則試圖解決生物系統中的不精確、不確定和部分真實的問題，以實現不同程度的感知、記憶、學習、語言、思維和問題解決等過程。
-    > 
-    > 目前隨著科學技術的發展以及大數據時代的到來，如何實現類似人腦的認知與判斷，發現新的關聯和模式，從而做出正確的決策，顯得尤為重要，這給認知計算技術的發展帶來了新的機遇和挑戰。
-    > 
-    > 
-  
-
-
-
-
-
-## SONM
+### SONM
 
 - [How to Setup and Test the SONM MVP – The Merkle](https://themerkle.com/how-to-setup-and-test-the-sonm-mvp/)
 - [Machine Learning on SONM is now live! – SONM](https://blog.sonm.io/machine-learning-on-sonm-is-now-live-f91f996da057)
@@ -227,7 +231,7 @@
 
 
 
-## HODL
+### HODL
 
 - [Hodl: cryptocurrency index fund](https://hodlfund.io/)
 
@@ -245,6 +249,101 @@
 - [Introducing GitToken – gittoken – Medium](https://medium.com/gittoken/applying-ethereum-tokens-to-open-source-software-development-ae9262c965a2)
 
 - [Introducing GitToken: Using Ethereum Tokens to Incentivize Open Source Software Development：ethereum](https://www.reddit.com/r/ethereum/comments/71ei3u/introducing_gittoken_using_ethereum_tokens_to/)
+
+
+## Application
+
+### how to create a token pegged to usd
+
+- [[CREATE] New Tether (Like) Cryptocurrency 🔧](https://bitcointalk.org/index.php?topic=2635725.0)
+
+- [Why experts are worried about Tether, a dollar-pegged cryptocurrency | Ars Technica](https://arstechnica.com/tech-policy/2018/02/tether-says-its-cryptocurrency-is-worth-2-billion-but-its-audit-failed/)
+
+- [Cryptocurrencies pegged to $ (and other fiat) — Steemit](https://steemit.com/money/@ropaga/cryptocurrencies-pegged-to-usd-and-other-fiat)
+
+    > CONCLUSIONS
+    > Tether is by far the most stable cryptocurrency, but the comapny declines responsability to convert the token and it is vulnerable to legal issues.
+    > 
+    > bitUSD is the most stable decentralized coin so it is likely the safest.
+    > 
+    > Nubits is not the most stable cryptocurrency, but it offers interesting interests by parking. Investing in Nushares is more risky but it has more potential profits.
+
+
+- [erc 20 - ERC20 pegged to Fiat - Ethereum Stack Exchange](https://ethereum.stackexchange.com/questions/24793/erc20-pegged-to-fiat?newreg=c48d7181985f4fc081efd3ee2fd6e0f9)
+
+    > For our presale at Etherparty, we peg our tokens at $0.10 each, and accept ETH for the sale. How we did it: record the price of Ether from the Coinmarketcap api at the time of your transaction initiation, and then can calculate the dollar value of the Ethereum sent from that. You can then send back the appropriate amount of tokens.
+
+- [【BitShares筆記】今天來好好了解bitUSD — Steemit](https://steemit.com/cn/@ygern/bitshares-bitusd)
+
+- [Can somebody explain BitUSD please? Thanks：BitShares](https://www.reddit.com/r/BitShares/comments/6684x1/can_somebody_explain_bitusd_please_thanks/)
+
+    > It's a smart contract:
+    > 
+    > 1. Someone can create 1 bitUSD by locking in $2.25 worth of BTS or more.
+    > 2. He can sell it or give it to you
+    > 3. You can force the contract to exchange that bitUSD back to $1 worth of BTS. In that case the creator gets what's left over of his collateral.
+    > 4. In order to avoid losses, the creator will offer to buy that bitUSD from you for more than $1 worth of BTS. That's what makes the peg.
+    > 
+    > Markets however don't react in real time, so the value of bitUSD fluctuates. Usually the more stable BTS is, the closer the peg. There's no mechanism to force the price, because that would be brittle, as you can see from what happened with Nubits. Because the peg is soft, it allows assets like bitGOLD and BTWTY to be sold way above face value. The face value acts more like a lower bound to the price.
+    > 
+    > So in short, you can always convert your bitASSETS to an equivalent value in BTS - and usually more.
+    > 
+    > 
+
+- [Is it possible to build a dollar-pegged token on Ethereum, thus avoiding the solvency questions facing Tether?：ethereum](https://www.reddit.com/r/ethereum/comments/6xu0i3/is_it_possible_to_build_a_dollarpegged_token_on/)
+
+- [contract development - ERC20 token pegged to Bitcoin using atomic swaps - Ethereum Stack Exchange](https://ethereum.stackexchange.com/questions/39795/erc20-token-pegged-to-bitcoin-using-atomic-swaps)
+
+- [solidity - Is it possible to create new token at specific amount of USD Dollars? - Ethereum Stack Exchange](https://ethereum.stackexchange.com/questions/18997/is-it-possible-to-create-new-token-at-specific-amount-of-usd-dollars)
+
+    > Firstly, you can't exactly do this, because static value cannot be assigned to something with variable value. You can tether a token to the price, but the actual cost of converting the token to fiat will always be included in the exchange. If the Ethereum network ceases to exist, those tokens will also become worthless. This is also a risk that will always be priced into the token.
+    > 
+    > So while it is possible to tether something, it is impossible to peg it exactly. It's still a derivative product. Any number of derivative products can be created to mitigate risk, including tethered tokens, but there is always a price to be paid for reducing variance. The more volatile the underlying asset, the more you will pay to reduce exchange risk.
+    > 
+    > If you are looking to for the technical aspects of doing this, please start with Vitalik's SchellingCoin article. https://blog.ethereum.org/2014/03/28/schellingcoin-a-minimal-trust-universal-data-feed/
+    > 
+    > There is more than one strategy for doing a tether, and there are compromises to be made no matter which contract you write.
+
+
+### Smart contract
+
+- [blockchain - How to create a token smart contract that sends tokens after recieving payment in ether? - Ethereum Stack Exchange](https://ethereum.stackexchange.com/questions/23591/how-to-create-a-token-smart-contract-that-sends-tokens-after-recieving-payment-i)
+
+
+
+    > I guess this is what you are looking for
+    > 
+    > ```eth
+    > uint256 public totalSupply;// total no of tokens in supply
+    > uint remaining;
+    > uint price;
+    > mapping (address => uint) investors //it maps no of tokens given to each address
+    > 
+    > function token(uint _totalSupply) //constructor
+    > {
+    >     totalSupply = _totalSupply;//set initial no of tokens in supply
+    >     remaining = 0;
+    > }
+    > 
+    > function ()  payable// called when ether is send
+    > {
+    >     assert(remaining < totalSupply);
+    >     uint noOfTokens = div(msg.value,price); // calculate no of tokens to be issued depending on the price and ether send
+    >     assert(noOfTokens < sub(totalSupply,remaining)); //no of tokens available should be greater than the one to be issued
+    >     add(investors[msg.sender],noOfTokens);
+    >     remaining = add(remaining,noOfTokens);
+    >     transfer(msg.sender, noOfTokens);
+    > 
+    > }
+    > 
+    > function setPrice(uint _price)
+    > { //  price need to be set maually as it cannot be done via ethereum network
+    >     price = _price;
+    > }
+    > ```
+    > 
+    > I have included open-zepplin safe math for sub and div. While creating an ICO, remember to include all the secrurity checks, give the description about the token so that you can monitor the token easily using block explorer. You need to dynamically set price as .5 USD price is an approximate one and ethereum does not support decimal values.
+    > 
 
 
 ## Blockchain & AI

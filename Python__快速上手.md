@@ -4,7 +4,17 @@
 <!-- toc --> 
 
 ## Basic Tutorial
-* [Python Tutorial](https://www.tutorialspoint.com/python/index.htm)
+- [Python Tutorial](https://www.tutorialspoint.com/python/index.htm)
+
+- [Python Tutorial: Passing Arguments](https://www.python-course.eu/python3_passing_arguments.php)
+
+- [Python Tutorial: Output with Print](https://www.python-course.eu/python3_print.php)
+
+
+## math function
+
+- [Python sqrt() 函数 | 菜鸟教程](http://www.runoob.com/python/func-number-sqrt.html)
+
 
 ## Packages
 
@@ -18,6 +28,31 @@
 
 
 ## Usage
+
+### turn range to list
+
+- [Python 3 turn range to a list - Stack Overflow](https://stackoverflow.com/questions/11480042/python-3-turn-range-to-a-list)
+
+    > In Pythons <= 3.4 you can, as others suggested, use list(range(10)) in order to make a list out of a range (In general, any iterable).
+    > 
+    > Another alternative, introduced in Python 3.5 with its unpacking generalizations, is by using * in a list literal []:
+    > 
+    > ```python
+    > >>> r = range(10)
+    > >>> l = [*r]
+    > >>> print(l)
+    > [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    > ```
+    > 
+    > ---
+    > 
+    > You really shouldn't need to use the numbers 1-1000 in a list. But if for some reason you really do need these numbers, then you could do:
+    > 
+    > ```python
+    > [i for i in range(1, 1001)]
+    > ```
+    > 
+
 
 ### if or not
 
