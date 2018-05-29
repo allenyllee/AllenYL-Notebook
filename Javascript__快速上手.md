@@ -733,6 +733,16 @@
 
 ### __Exercise__
 
+* [allenyllee/HackMD-Book-Exporter-JS: This is a bookmarklet which was created to export all pages from HackMD listed in the Book mode sidebar.](https://github.com/allenyllee/HackMD-Book-Exporter-JS)
+
+    > This is a bookmarklet which was created to export all pages from HackMD listed in the Book mode sidebar.
+    > 
+    > 1.  Using [RawGit](https://rawgit.com/) to serve my **HackMD\_Book\_Exporter.js** with URL [https://rawgit.com/allenyllee/HackMD-Book-Exporter-JS/master/HackMD\_Book\_Exporter.js](https://rawgit.com/allenyllee/HackMD-Book-Exporter-JS/master/HackMD_Book_Exporter.js)
+    >     
+    > 2.  Using [Bookmarkify.it](https://bookmarkify.it/) to create bookmarklet which just include **HackMD\_Book\_Exporter.js** from [https://rawgit.com/allenyllee/HackMD-Book-Exporter-JS/master/HackMD\_Book\_Exporter.js](https://rawgit.com/allenyllee/HackMD-Book-Exporter-JS/master/HackMD_Book_Exporter.js)
+    >     
+    > 3.  Click Here to get the bookmarklet ➡️: [https://bookmarkify.it/8624](https://bookmarkify.it/8624)
+
 * [HackMD markdown file download bookmarklet](https://gist.github.com/allenyllee/2f5dfd1984d2278e9a483958d9c6d974)
 
     ```javascript=

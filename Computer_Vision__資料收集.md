@@ -26,3 +26,19 @@
 
 - [Loc2Vec: Learning location embeddings with triplet-loss networks | Sentiance](http://www.sentiance.com/2018/05/03/loc2vec-learning-location-embeddings-w-triplet-loss-networks/)
 
+
+
+## 圖片壓縮
+
+- [體積減半畫質翻倍，他用TensorFlow實現了這個圖像極度壓縮模型 - 幫趣](http://bangqu.com/u62hD2.html)
+
+    - [[1804.02958] Generative Adversarial Networks for Extreme Learned Image Compression](https://arxiv.org/abs/1804.02958)
+    - [Justin-Tan/generative-compression: TensorFlow Implementation of Generative Adversarial Networks for Extreme Learned Image Compression](https://github.com/Justin-Tan/generative-compression)
+
+
+## 圖片去噪/低亮度
+
+- [無需額外硬件，全卷積網絡讓機器學習學會夜視能力 - 幫趣](http://bangqu.com/l1KYa5.html)
+
+    - [[1805.01934] Learning to See in the Dark](https://arxiv.org/abs/1805.01934)
+

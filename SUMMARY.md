@@ -12,7 +12,13 @@
 - [常用連結](常用連結.md)
 [//]: # ( - [常用連結](https://hackmd.io/CwUwRgJgnAhgDARgLRwOwDMBsTgCY5hJTDDLoDGcIAHJlJltVEA=?view)
 
-## AI 環境設定
+- [面試準備](面試準備.md)
+[//]: # ( - [面試準備](https://hackmd.io/2APloEA9ThOtKoSPp_QX7A?view)
+
+- [外地生活](外地生活.md)
+[//]: # ( - [外地生活](https://hackmd.io/d5nAveuQTmOkkEpk-vh8XA?view)
+
+## 開發環境設定
 
 - [AI__硬體介紹與環境設定](AI__硬體介紹與環境設定.md)
 [//]: # ( - [AI__硬體介紹與環境設定](https://hackmd.io/KwMwnAjBAcBMDGBaALBAJsFA2ARpghsMgMyJa6wQgLRoj5A=?view)
@@ -83,6 +89,18 @@
 
 - [Computer_Vision__資料收集](Computer_Vision__資料收集.md)
 [//]: # ( - [Computer_Vision__資料收集](https://hackmd.io/WsJRhO7LSCqdeq-FCSN4TQ?view)
+
+- [Reinforcement_Learning__資料蒐集](Reinforcement_Learning__資料蒐集.md)
+[//]: # ( - [Reinforcement_Learning__資料蒐集](https://hackmd.io/96pmv8CfQqWV2KqIxHhBNg?view)
+
+- [Deep_Hash_Sort__資料蒐集](Deep_Hash_Sort__資料蒐集.md)
+[//]: # ( - [Deep_Hash_Sort__資料蒐集](https://hackmd.io/_59a3X85TZ2wiSNo1sYamw?view)
+
+- [Audio_Processing__資料收集](Audio_Processing__資料收集.md)
+[//]: # ( - [Audio_Processing__資料收集](https://hackmd.io/jW86HzUcRYuoy9IUqvbffw?view)
+
+- [GAN__資料收集](GAN__資料收集.md)
+[//]: # ( - [GAN__資料收集](https://hackmd.io/_MG5AUeRQ4WHtHOYdGd5rw?view)
 
 - [GPU__加速](GPU__加速.md)
 [//]: # ( - [GPU__加速](https://hackmd.io/WsHAO8-MTQGLgeXQI5wngA?view)
@@ -173,7 +191,8 @@
 - [3D__物理引擎](3D__物理引擎.md)
 [//]: # ( - [3D__物理引擎](https://hackmd.io/HndCbLxrTZKyP_5e2JGhMw?view)
 
-## 其他
+
+## 程式語言
 
 - [LeetCode__筆記](LeetCode__筆記.md)
 [//]: # ( - [LeetCode__筆記](https://hackmd.io/GwLX_E4LTPqP5L67rPi0FQ?view)
@@ -181,20 +200,36 @@
 - [C_Cpp__語言筆記](C_Cpp__語言筆記.md)
 [//]: # ( - [C_Cpp__語言筆記](https://hackmd.io/N9XlYh7dRKuZX07jcJrx4A?view)
 
+- [Java__筆記](Java__筆記.md)
+[//]: # ( - [Java__筆記](https://hackmd.io/DOojSGYJTIamBsKK2NfTKQ?view)
+
 - [Rust_語言筆記](Rust_語言筆記.md)
 [//]: # ( - [Rust_語言筆記](https://hackmd.io/kjYKZ_l5S3-PT8-BvnGffA?view)
 
 - [Parallel_Programming](Parallel_Programming.md)
 [//]: # ( - [Parallel_Programming](https://hackmd.io/uP-jb9ozQviJJbwcPqEGBA?view)
 
-- [面試準備](面試準備.md)
-[//]: # ( - [面試準備](https://hackmd.io/2APloEA9ThOtKoSPp_QX7A?view)
+- [Quantum_Computing](Quantum_Computing.md)
+[//]: # ( - [Quantum_Computing](https://hackmd.io/IwEwTADGAcDGCcBaApgQ3sRAWARhZiqEwAzIiDibMAKwgDs80JYQA===?view)
 
-- [外地生活](外地生活.md)
-[//]: # ( - [外地生活](https://hackmd.io/d5nAveuQTmOkkEpk-vh8XA?view)
+## 問題排解
 
-- [Java__筆記](Java__筆記.md)
-[//]: # ( - [Java__筆記](https://hackmd.io/DOojSGYJTIamBsKK2NfTKQ?view)
+- [Firefox__筆記](Firefox__筆記.md)
+[//]: # ( - [Firefox__筆記](https://hackmd.io/6dRLEtf2QFe0RDqjoSy9UQ?view)
+
+- [Windows__問題排解](Windows__問題排解.md)
+[//]: # ( - [Windows__問題排解](https://hackmd.io/IwJgHApiECYMwFpgGNkE4EBYAMbFswDNkEYB2ZYAQxwCMqRk4g==?view)
+
+- [Linux__問題排解](Linux__問題排解.md)
+[//]: # ( - [Linux__問題排解](https://hackmd.io/pdlu6ODdQS6UswsNraP--A?view)
+
+## 其他
+
+- [數學筆記](數學筆記.md)
+[//]: # ( - [數學筆記](https://hackmd.io/NfJ7WgaHQhSwzXh8k8Lm2g?view)
+
+- [Physics](Physics.md)
+[//]: # ( - [Physics](https://hackmd.io/KwIwLAxgnApg7GAtAJhDAHIsUAMVECGYOwiIBFIOMAbAGYjBxA==?view)
 
 - [英文筆記](英文筆記.md)
 [//]: # ( - [英文筆記](https://hackmd.io/kwMuJHt4Qdinvy4pT63xdg?view)
@@ -205,15 +240,7 @@
 - [Medium__寫作技巧](Medium__寫作技巧.md)
 [//]: # ( - [Medium__寫作技巧](https://hackmd.io/tDKA66MATf2SlcKp2C1tqQ?view)
 
-- [Windows__問題排解](Windows__問題排解.md)
-[//]: # ( - [Windows__問題排解](https://hackmd.io/IwJgHApiECYMwFpgGNkE4EBYAMbFswDNkEYB2ZYAQxwCMqRk4g==?view)
 
-- [Linux__問題排解](Linux__問題排解.md)
-[//]: # ( - [Linux__問題排解](https://hackmd.io/pdlu6ODdQS6UswsNraP--A?view)
 
-- [Quantum_Computing](Quantum_Computing.md)
-[//]: # ( - [Quantum_Computing](https://hackmd.io/IwEwTADGAcDGCcBaApgQ3sRAWARhZiqEwAzIiDibMAKwgDs80JYQA===?view)
 
-- [Physics](Physics.md)
-[//]: # ( - [Physics](https://hackmd.io/KwIwLAxgnApg7GAtAJhDAHIsUAMVECGYOwiIBFIOMAbAGYjBxA==?view)
 

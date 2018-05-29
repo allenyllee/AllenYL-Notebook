@@ -274,7 +274,9 @@ Parameters:
 ## Models
 - [DeepMind丨深度學習最新生成記憶模型，遠超RNN的GTMM](http://www.bigdatafinance.tw/index.php/tech/557-deepmind-rnn-gtmm)
 
+### RNN+CNN
 
+- [Representing Language with Recurrent and Convolutional Layers: An Authorship Attribution Example](https://hergott.github.io/language-representation-rnn-cnn/)
 
 
 ## 新聞

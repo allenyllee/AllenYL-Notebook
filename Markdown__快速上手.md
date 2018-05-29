@@ -5,6 +5,10 @@
 
 ## Usage
 
+### Paste to Markdown
+
+- [Paste to Markdown](https://euangoddard.github.io/clipboard2markdown/)
+
 ### File Path, URL
 
 ###### tags: `whitespace`

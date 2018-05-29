@@ -6,9 +6,20 @@
 ## Basic Tutorial
 - [Python Tutorial](https://www.tutorialspoint.com/python/index.htm)
 
+- [Python Example](https://www.programcreek.com/python/)
+
 - [Python Tutorial: Passing Arguments](https://www.python-course.eu/python3_passing_arguments.php)
 
 - [Python Tutorial: Output with Print](https://www.python-course.eu/python3_print.php)
+
+
+
+
+## Style Guide for Python Code
+
+- [PEP 8 -- Style Guide for Python Code | Python.org](https://www.python.org/dev/peps/pep-0008/#function-names)
+
+
 
 
 ## math function
@@ -24,7 +35,84 @@
 
 - [Pexpect version 4.5 — Pexpect 4.5 documentation](https://pexpect.readthedocs.io/en/stable/)
 
+### 靜態型別檢查
 
+#### Pyre
+
+- [Facebook 推出了 Python 靜態型別檢查工具 – Pyre | Soft & Share](https://softnshare.com/2018/05/14/facebookpyretool/)
+
+    > 由於 [Python](https://softnshare.com/tag/pythonlang/) 並不是一個編譯式程式語言，這也代表你要發現程式中的型別錯誤問題只能透過幾種方式來檢查這種因為型別使用不當所產生的 runtime 錯誤問題
+    > 
+    > -   撰寫 unit test
+    > -   code review
+    > -   靜態型別檢查工具
+    > 
+    > Facebook 推出的 Pyre 就是靜態型別檢查工具，**可以得知 Facebook 內部也大量在使用 Python 程式語言開發專案，也遇到這種惱人的型別檢查問題**
+    > 
+    > Facebook 釋出這麼棒的開源工具，當然要馬上安裝來使用看看，但是在使用上卻遇到問題，Pyre 並沒有像官方網站的展示影片一樣回傳 python 程式碼中的型別錯誤訊息，花了一些時間仔細看了文件，找到了問題發生原因，以下是我的整理筆記，希望大家都可以順利使用這個自動化工具，讓自己的生產力與專案品質大增
+    > 
+    > 安裝 Pyre 
+    > --------
+    > 
+    > 安裝 Pyre 很簡單使用 pip 套件管理工具安裝就可以了
+    > 
+    > ```shell
+    > pip install pyre-check
+    > ```
+    > 
+    > 使用 Pyre
+    > -------
+    > 
+    > 先建立一個測試目錄 testpy，到這個目錄寫一個回傳錯誤型別的 python 程式
+    > 
+    > ```python
+    > def foo() -> int
+    >     return 'string' # 應該要回傳 int 型別才對
+    > ```
+    > 
+    > 進入 testpy 目錄，執行 pyre check
+    > 
+    > ![pyrecheck.jpg](https://i1.wp.com/softnshare.com/wp-content/uploads/2018/05/pyrecheck.jpg?resize=770%2C78&ssl=1)
+    > 
+    > 這時候 pyre 就會幫你檢查目錄中的所有 python 程式碼，並告訴你那些程式碼有型別使用錯誤的狀況
+    > 
+    > 要注意的是 pyre check 會全部將你的 source code 做一次檢查，在每日的專案開發上，一個目錄中有上百個 python 程式碼檔案時，這會很沒效率，**還好 pyre 有支援 incremental mode**
+    > 
+    > Pyre 的 **incremental mode** 依靠 Watchman 來獲取關於檔案系統變化的通知。如果沒有安裝 Watchman ，**incremental mode 就無法正常使用**
+    > 
+    > Pyre 官網上的 pyre 展示就是使用 incremental mode，但是要使用 incremental mode 之前，你必須先安裝 Watchman ，並啟動 Watchman ，這部分沒有做，你就無法像影片中那樣優雅地使用 pyre
+    > 
+    > 安裝 Watchman
+    > -----------
+    > 
+    > Watchman 也是 Facebook 釋出的開源工具，是一個檔案系統的監控工具，有支援 Windows/Linux/Mac ，安裝可參考 [Watchman 官方的安裝網頁](https://facebook.github.io/watchman/docs/install.html)
+    > 
+    > 使用 Pyre incremental mode
+    > ------------------------
+    > 
+    > 1\. 進入剛剛建立的 testpy 目錄，執行 pyre init
+    > 
+    > ```shell
+    > cd testpy
+    > pyre init
+    > ```
+    > 
+    > ![watchman](https://i2.wp.com/softnshare.com/wp-content/uploads/2018/05/watchman.jpg?resize=770%2C125&ssl=1)
+    > 
+    > pyre init 會問你是否要初始化 Watchman 的設定，default 是 yes ，按下 enter 就可以了
+    > 
+    > 執行 Watchman 
+    > ------------
+    > 
+    > 在 testpy 目錄中執行
+    > 
+    > ```shell
+    > watchman watch .
+    > ```
+    > 
+    > 這代表要讓 watchman 監控 testpy 目錄中任何檔案的變動
+    > 
+    > 這時候只要你在 testpy 目錄中修改的任何程式碼，然後只要輸入 pyre 就會幫你做型別使用錯誤檢查，而且是使用 incremental mode ，會比使用 pyre check 快很多
 
 
 ## Usage

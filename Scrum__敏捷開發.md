@@ -58,3 +58,9 @@
     > 
     > Scrum 的架構適合一個產品配合1-3個開發團隊。如果一個產品需要更多人~打群架~，有兩套基礎於Scrum 的終極陣法，一套是同樣以人為本的 [LeSS（Large Scale Scrum）](http://less.works/)，另一套是加入流程控制的[SAFe（Scaled Agile Framework）](http://www.scaledagileframework.com/)，可以[參考 LeSS 和 SAFe 的比較](http://www.slideshare.net/gosei/xp2015-scaling-agility-explored-less-safe-comparison)，和[兩者運用組織權力的差異](http://gosei.fi/scaling-agility-or-bureaucracy/)。
     > 
+
+
+## Scrum 的缺點
+
+- [Why Scrum is the Wrong Way to Build Software – Adam Ard – Medium](https://medium.com/@ard_adam/why-scrum-is-the-wrong-way-to-build-software-99d8994409e5)
+

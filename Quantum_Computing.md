@@ -210,3 +210,10 @@
         > 
         > 量子计算可解决专业的科学问题，如分子建模、高温超导体的产生、药物建模和测试、分子的选择以及有机电池的制造。对于看视频或写Word文档等一般用途的任务，它并不是最佳选择。
 
+## Quantum Memory
+
+- [How can you tell if a quantum memory is really quantum?](https://phys.org/news/2018-05-quantum-memory.html)
+
+    > Conventional protocols for testing for space-like correlations often use two characters, Alice as the sender and Bob as the receiver of quantum states. But since quantum memories involve time-like correlations, the protocol needs only a single character, whom the researchers call Abby, to act as both the sender and receiver at different times. In the test proposed in the new study, by comparing the relative frequencies of the signals that Abby sends and receives, it is possible to estimate the time-like entanglement and therefore certify that a quantum memory can store quantum information.
+    > 
+    > 
