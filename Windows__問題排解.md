@@ -37,3 +37,9 @@
     > ---
     > Hi. It's been suggested before that the way out of that corner is to reinstall 6.1.2 so as to 'correct' the installation,  then uninstall it completely and install the current version.  [Evernote 6.1.2 installer](http://filehippo.com/download_evernote/68286/)
     > 
+
+## Realtek HD Audio Manager missing
+
+- [Realtek HD Audio Manager missing. - Realtek - Apps General Discussion](http://www.tomsguide.com/answers/id-3486617/realtek-audio-manager-missing.html)
+
+    > You have to download drivers from your motherboards manufacturer. "several sources" means several drivers and they are probably conflicting to take control of the audio device. Uninstall current drivers first before installing new ones. Also under device manager, click "show hidden devices" under view and uninstall duplicate audio devices.

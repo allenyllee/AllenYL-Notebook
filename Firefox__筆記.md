@@ -34,3 +34,9 @@
     > 
 
 
+## Disable content security policy
+
+- [javascript - How to override content security policy while including script in browser JS console? - Stack Overflow](https://stackoverflow.com/questions/27323631/how-to-override-content-security-policy-while-including-script-in-browser-js-con)
+
+    > You can turn off the CSP for your entire browser in Firefox by disabling security.csp.enable in the about:config menu.
+    > 

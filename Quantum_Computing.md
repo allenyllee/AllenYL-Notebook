@@ -217,3 +217,29 @@
     > Conventional protocols for testing for space-like correlations often use two characters, Alice as the sender and Bob as the receiver of quantum states. But since quantum memories involve time-like correlations, the protocol needs only a single character, whom the researchers call Abby, to act as both the sender and receiver at different times. In the test proposed in the new study, by comparing the relative frequencies of the signals that Abby sends and receives, it is possible to estimate the time-like entanglement and therefore certify that a quantum memory can store quantum information.
     > 
     > 
+
+## Quantum computation
+
+- [New quantum computer design to predict molecule properties](https://phys.org/news/2018-05-quantum-molecule-properties.html)
+
+## Quantum imformation transfer
+
+- [Transferring quantum information using sound](https://phys.org/news/2018-06-quantum_1.html)
+
+    > As the research team has now been able to show using simulation calculations, any number of these quanta can be linked together in the diamond rod via phonons. The individual silicon atoms are switched on and off using microwaves. During this process, they emit or absorb phonons. This creates a quantum entanglement of the silicon defects, thus allowing quantum information to be transferred.
+
+## Quantum Physics
+
+### Hardy's Paradox
+
+- [Classical Physics and Quantum Physics Can't Come to Terms on Hardy's Paradox](https://edgylabs.com/new-quantum-probability-rule-offers-novel-perspective-of-wave-function-collapse)
+
+    > This experiment was first known as Hardy’s paradox. Some argue that it’s not a paradox per se, like say the Einstein-Podolsky-Rosen paradox. In many ways, it’s more of a theorem.
+    > 
+    > In the Universe, when matter and antimatter meet, particles and antiparticles annihilate one another through a flow of energy in the form of gamma radiation.
+    > 
+    > Hardy, however, showed that it’s theoretically possible that sometimes (in 6 to 9 percent of cases) when there’s no observer, matter and antimatter can interact and survive the encounter – classical physics cannot allow this.
+
+    - [[1709.09812] Generalized Hardy's Paradox](https://arxiv.org/abs/1709.09812
+    
+    

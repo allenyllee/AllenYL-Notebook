@@ -18,6 +18,12 @@
 
 - [「Deep Learning」V-Net - CSDN博客](https://blog.csdn.net/dgyuanshaofeng/article/details/78161987)
 
+### NiftyNet
+
+- [niftynet](http://niftynet.io/)
+
+    >An open source convolutional neural networks platform for medical image analysis and image-guided therapy
+
 
 
 
@@ -41,4 +47,17 @@
 - [無需額外硬件，全卷積網絡讓機器學習學會夜視能力 - 幫趣](http://bangqu.com/l1KYa5.html)
 
     - [[1805.01934] Learning to See in the Dark](https://arxiv.org/abs/1805.01934)
+
+## 文字辨識(OCR)
+
+- [Deep Learning based Text Recognition (OCR) using Tesseract and OpenCV | Learn OpenCV](https://www.learnopencv.com/deep-learning-based-text-recognition-ocr-using-tesseract-and-opencv/)
+
+    > In today’s post, we will learn how to recognize text in images using an open source tool called Tesseract and OpenCV. The method of extracting text from images is also called Optical Character Recognition (OCR) or sometimes simply text recognition.
+    > 
+
+## 3D 重建
+
+### 2018
+
+- [Neural scene representation and rendering | DeepMind](https://deepmind.com/blog/neural-scene-representation-and-rendering/)
 

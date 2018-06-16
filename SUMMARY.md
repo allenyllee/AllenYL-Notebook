@@ -93,14 +93,23 @@
 - [Reinforcement_Learning__資料蒐集](Reinforcement_Learning__資料蒐集.md)
 [//]: # ( - [Reinforcement_Learning__資料蒐集](https://hackmd.io/96pmv8CfQqWV2KqIxHhBNg?view)
 
+- [Motion_Modeling__資料蒐集](Motion_Modeling__資料蒐集.md)
+[//]: # ( - [Motion_Modeling__資料蒐集](https://hackmd.io/g-dTzu57RY6rjydgIgCJUg?view)
+
 - [Deep_Hash_Sort__資料蒐集](Deep_Hash_Sort__資料蒐集.md)
 [//]: # ( - [Deep_Hash_Sort__資料蒐集](https://hackmd.io/_59a3X85TZ2wiSNo1sYamw?view)
 
 - [Audio_Processing__資料收集](Audio_Processing__資料收集.md)
 [//]: # ( - [Audio_Processing__資料收集](https://hackmd.io/jW86HzUcRYuoy9IUqvbffw?view)
 
+- [XAI__資料蒐集](XAI__資料蒐集.md)
+[//]: # ( - [XAI__資料蒐集](https://hackmd.io/h_Jh86ILTo6HtSZ1LZqWDw?view)
+
 - [GAN__資料收集](GAN__資料收集.md)
 [//]: # ( - [GAN__資料收集](https://hackmd.io/_MG5AUeRQ4WHtHOYdGd5rw?view)
+
+- [AI__法律_資料收集](AI__法律_資料收集.md)
+[//]: # ( - [AI__法律_資料收集](https://hackmd.io/I5yOrLhYRVq1zN24UB5G5w?view)
 
 - [GPU__加速](GPU__加速.md)
 [//]: # ( - [GPU__加速](https://hackmd.io/WsHAO8-MTQGLgeXQI5wngA?view)
@@ -159,8 +168,14 @@
 
 ## 網路應用
 
+- [Xpath__快速上手](Xpath__快速上手.md)
+[//]: # ( - [Xpath__快速上手](https://hackmd.io/HhNqaYU0RZOVoFdvCtkjog?view)
+
 - [Javascript__快速上手](Javascript__快速上手.md)
 [//]: # ( - [Javascript__快速上手](https://hackmd.io/MYFgTAJgnAZmwFoCsMCMAGBJUUwDgGZcEA2EAQxgCMBTAqMAgpIA?view)
+
+- [google_app_script__應用](google_app_script__應用.md)
+[//]: # ( - [google_app_script__應用](https://hackmd.io/xC_II_jmQNmv4PnBoMG-Gw?view)
 
 - [BlockChain__應用](BlockChain__應用.md)
 [//]: # ( - [BlockChain__應用](https://hackmd.io/OwYwzADArAHATAQwLQQJwBYBmT0BMbBIyYCmARksBBAugIwBsUCUzQA=?view)

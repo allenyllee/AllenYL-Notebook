@@ -29,9 +29,9 @@
     - [User Guide — graphviz 0.8.2 documentation](https://graphviz.readthedocs.io/en/stable/manual.html)
 
 
-## Library 
 
-### pyplot
+
+## pyplot
 
 - [matplotlib.pyplot.imshow — Matplotlib 2.1.2 documentation](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.imshow.html#matplotlib.pyplot.imshow)
 
@@ -71,7 +71,7 @@
     linear_prediction(plot_dict)
     ```
     
-#### 在for loop中畫圖
+### 在for loop中畫圖
 
 - [python - Display numpy array in a for loop using matplotlib imshow - Stack Overflow](https://stackoverflow.com/questions/25812905/display-numpy-array-in-a-for-loop-using-matplotlib-imshow)
 
@@ -87,7 +87,7 @@
 
 
 
-### numpy
+## numpy
 
 - [numpy.array — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.array.html#numpy.array)
     Create an array.
@@ -109,7 +109,7 @@
 - [numpy.nditer — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.nditer.html#numpy.nditer)
     Efficient multi-dimensional iterator object to iterate over arrays. To get started using this object, see the [_introductory guide to array iteration_](https://docs.scipy.org/doc/numpy-1.12.0/reference/arrays.nditer.html#arrays-nditer).
 
-#### get indices of max argument
+### get indices of max argument
 
 - [numpy.arange — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.arange.html#numpy.arange)
     Return evenly spaced values within a given interval.
@@ -367,7 +367,7 @@ array([[0, 0, 0],
             > P.S. Also see this great answer: [newaxis vs reshape to add dimensions](https://stackoverflow.com/a/28385957)
             > 
 
-#### Sorting
+### Sorting
 
 - [python - Efficiently sorting a numpy array in descending order? - Stack Overflow](https://stackoverflow.com/questions/26984414/efficiently-sorting-a-numpy-array-in-descending-order)
     
@@ -403,7 +403,7 @@ array([[0, 0, 0],
     > 100000 loops, best of 3: 3.91 µs per loop
     > ```
 
-#### get index of element
+### get index of element
 
 - [python - Index of element in NumPy array - Stack Overflow](https://stackoverflow.com/questions/18079029/index-of-element-in-numpy-array)
 
@@ -443,7 +443,7 @@ array([[0, 0, 0],
     > #(array([ 3,  4,  5,  8,  9, 10]),)
     > ```
 
-#### indexing & slicing
+### indexing & slicing
 
 - [Numpy 笔记(二): 多维数组的切片(slicing)和索引(indexing) · ZMonster's Blog](http://www.zmonster.me/2016/03/09/numpy-slicing-and-indexing.html)
 
@@ -493,7 +493,7 @@ array([[0, 0, 0],
     > 
 
 
-#### one-hot
+### one-hot
 
 - [python - How to convert 2d numpy array into binary indicator matrix for max value - Stack Overflow](https://stackoverflow.com/questions/36153638/how-to-convert-2d-numpy-array-into-binary-indicator-matrix-for-max-value)
 
@@ -539,11 +539,116 @@ array([[0, 0, 0],
     > ```
     > [name=Divakar]
 
+### Einstein Summation
+
+- [爱因斯坦求和约定 - Wikiwand](https://www.wikiwand.com/zh/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6%E6%B1%82%E5%92%8C%E7%BA%A6%E5%AE%9A)
+
+    > 愛因斯坦標記法的基本點子是餘向量與向量可以形成純量：
+    > 
+    > $$     y=c_{1}x^{1}+c_{2}x^{2}+c_{3}x^{3}+\cdots +c_{n}x^{n}
+    > $$
+    > 
+    > 通常會將這寫為求和公式形式：
+    > 
+    > $$
+    >     y=\sum _{i=1}^{n}c_{i}x^{i}
+    > $$
+    > 
+    > 在基底變換之下，純量保持不變。當基底改變時，一個向量的線性變換可以用矩陣來描述，而餘向量的線性變換則需用其逆矩陣來描述。這樣的設計為的是要保證，不論基底為何，伴隨餘向量的線性函數（即上述總和）保持不變。由於只有總和不變，而總和所涉及的每一個項目都有可能會改變，所以，愛因斯坦提出了這標記法，重複標號表示總和，不需要用到求和符號：
+    > 
+    > $$
+    >     y=c_{i}x^{i}
+    > $$
+    > 
+    > 採用愛因斯坦標記法，餘向量都是以下標來標記，而向量都是以上標來標記。標號的位置具有特別意義。請不要將上標與指數混淆在一起，大多數涉及的方程式都是線性，不超過變數的一次方。在方程式裏，單獨項目內的標號變數最多只會出現兩次，假若多於兩次，或出現任何其它例外，則都必須特別加以說明，才不會造成含意混淆不清。
+
+    > __一般運算__
+    > 
+    > 矩陣$A$的第$m$橫排，第$n$豎排的元素，以前標記為$A_{mn}$；現在改標記為$A_{n}^{m}$各種一般運算都可以用愛因斯坦標記法來表示如下：
+    > 
+    > __內積__
+    > 
+    > 給予向量$\mathbf {a}$和餘向量$\boldsymbol {\alpha }$，其向量和餘向量的內積為純量：
+    > 
+    > $$
+    >     \mathbf {a}\cdot \boldsymbol \alpha =a^{i}\alpha _{i}
+    > $$
+    > 
+    > __向量乘以矩陣__
+    > 
+    > 給予矩陣$A$和向量$\mathbf {a}$，它們的乘積是向量$\mathbf {b}$：
+    > 
+    > $$
+    >     b^{i}=A_{j}^{i}a^{j}
+    > $$
+    > 
+    > 類似地，矩陣$A$的轉置矩陣$B=A^\mathrm {T}$，其與餘向量$\boldsymbol {\alpha }$的乘積是餘向量$\boldsymbol {\beta }$：
+    > 
+    > $$
+    >     \beta _{j}=B_{j}^{i}\alpha _{i}=\alpha _{i}B_{j}^{i}
+    > $$
+    > 
+    > __矩陣乘法__
+    > 
+    > 矩陣乘法表示為
+    > 
+    > $$
+    >     C_{k}^{i}=A_{j}^{i}\,B_{k}^{j}\,\!。
+    > $$
+    > 
+    > 這公式等價於較冗長的普通標記法：
+    > 
+    > $$
+    >     C_{ik}={(AB)}_{ik}=\sum _{j=1}^{N}A_{ij}B_{jk}
+    > $$
+    > 
+    > __跡__
+    > 
+    > 給予一個方塊矩陣$A_{j}^{i}$，總和所有上標與下標相同的元素$A_{i}^{i}$，可以得到這矩陣的跡$t$：
+    > 
+    > $$
+    >     t=A_{i}^{i}\,\!。
+    > $$
+    > 
+    > __外積__
+    > 
+    > $M$維向量$\mathbf {a}$和$N$維餘向量$\boldsymbol {\alpha }$的外積是一個$M×N$矩陣$A$：
+    > 
+    > $$
+    >     A=\mathbf {a}\boldsymbol {\alpha }
+    > $$
+    > 
+    > 採用愛因斯坦標記式，上述方程式可以表示為
+    > 
+    > $$
+    >     A_{j}^{i}=a^{i}\alpha _{j}
+    > $$
+    > 
+    > 由於$i$和$j$代表兩個不同的標號，在這案例，值域分別為$M$和$N$，外積不會除去這兩個標號，而使這兩個標號變成了新矩陣$A$的標號。
+    > 
 
 
-### Scipy
+- [Einstein Summation in Numpy | Olexa Bilaniuk's IFT6266H16 Course Blog](https://obilaniu6266h16.wordpress.com/2016/02/04/einstein-summation-in-numpy/)
 
-#### 處理outlier
+    >In Python’s Numpy library lives an extremely general, but little-known and used, function called einsum() that performs summation according to Einstein’s summation convention. In this tutorial article, we demystify einsum().
+
+    > Its advantages over such things as matrix multiplication are that it liberates its user from having to think about:
+    > 
+    > * The correct order in which to supply the argument tensors
+    > * The correct transpositions to apply to the argument tensors
+    > * Ensuring that the correct tensor dimensions are lined up with one another
+    > * The correct transposition to apply to the resulting tensor
+    > 
+    > The only things it requires are knowledge of:
+    > 
+    > * Along which dimensions to compute (inner/element-wise/outer) products.
+    > * The desired output shape.
+    > 
+
+
+## Scipy
+
+### 處理outlier
 - [scipy.stats.rankdata — SciPy v0.16.1 Reference Guide](https://docs.scipy.org/doc/scipy-0.16.0/reference/generated/scipy.stats.rankdata.html)
 
     > Assign ranks to data, dealing with ties appropriately.
@@ -574,7 +679,7 @@ array([[0, 0, 0],
 
 
 
-### Pandas
+## Pandas
 - [pandas.DataFrame.from_records — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.from_records.html#pandas.DataFrame.from_records)
     Convert structured or record ndarray to DataFrame
 
@@ -582,7 +687,7 @@ array([[0, 0, 0],
     Applies function along input axis of DataFrame.
 
 
-#### indexing
+### indexing
 
 - [pandas.Series.str.contains — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.str.contains.html#pandas.Series.str.contains)
     Return boolean Series/`array` whether given pattern/regex is contained in each string in the Series/Index.
@@ -637,7 +742,7 @@ array([[0, 0, 0],
     ![](https://shanelynnwebsite-mid9n9g1q9y8tt.netdna-ssl.com/wp-content/uploads/2016/10/Pandas-selections-and-indexing-1024x731.png)
 
 
-#### remove column
+### remove column
 
 - [Delete column from pandas DataFrame using python del - Stack Overflow](https://stackoverflow.com/questions/13411544/delete-column-from-pandas-dataframe-using-python-del)
 
@@ -663,7 +768,7 @@ array([[0, 0, 0],
     > 
 
 
-#### correlation
+### correlation
 
 - [pandas.DataFrame.corr — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.corr.html#pandas.DataFrame.corr)
     Compute pairwise correlation of columns, excluding NA/null values
@@ -675,7 +780,7 @@ array([[0, 0, 0],
     ![](https://screenshotscdn.firefoxusercontent.com/images/542f5956-ea44-4751-a8be-b1a3936c8a14.png)
     
     
-#### append
+### append
 
 - [python - Formatting dataframe in appending - Stack Overflow](https://stackoverflow.com/questions/33346904/formatting-dataframe-in-appending)
 
@@ -715,7 +820,7 @@ array([[0, 0, 0],
     > all_data.columns = ["Foo"]
     > ```
 
-#### one-hot & reversing one-hot
+### one-hot & reversing one-hot
 
 - [pandas.get_dummies — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.get_dummies.html)
     Convert categorical variable into dummy/indicator variables
@@ -777,7 +882,7 @@ array([[0, 0, 0],
     > dtype: object
     > ```
 
-#### column assignment
+### column assignment
 
 - [Adding new column to existing DataFrame in Python pandas - Stack Overflow](https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas)
 
@@ -831,7 +936,7 @@ array([[0, 0, 0],
     > This is because a `pd.Series` by default has an index enumerated from 0 to n. And the pandas `[] =` method **tries** _to be "smart"_
     > 
 
-#### adding rows
+### adding rows
 
 - [python - add one row in a pandas.DataFrame - Stack Overflow](https://stackoverflow.com/questions/10715965/add-one-row-in-a-pandas-dataframe)
 
@@ -843,7 +948,7 @@ array([[0, 0, 0],
         df.loc[len(df)] = row
     ```
 
-#### select rows
+### select rows
 
 - [python - Select rows from a DataFrame based on values in a column in pandas - Stack Overflow](https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas)
 
@@ -972,7 +1077,7 @@ array([[0, 0, 0],
     > ```
     > 
 
-#### NaN & None
+### NaN & None
 
 - [Python 中 NaN 和 None 的详细比较 - Python - 伯乐在线](http://python.jobbole.com/87266/)
 
@@ -1034,7 +1139,7 @@ array([[0, 0, 0],
 
 
 
-### scikit-learn
+## scikit-learn
 - [sklearn.preprocessing.MinMaxScaler — scikit-learn 0.19.1 documentation](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)
     Transforms features by scaling each feature to a given range.
 
@@ -1110,7 +1215,7 @@ array([[0, 0, 0],
     > 
 
 
-#### score matrics
+### score matrics
 
 - [sklearn.metrics.roc_auc_score — scikit-learn 0.19.1 documentation](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score)
 
@@ -1129,7 +1234,7 @@ array([[0, 0, 0],
 
 
 
-### jieba 結巴 中文斷詞
+## jieba 結巴 中文斷詞
 
 - [Python中文分词 jieba 十五分钟入门与进阶 - CSDN博客](https://blog.csdn.net/fontthrone/article/details/72782499)
 - [结巴中文分词的用法 - 简书](https://www.jianshu.com/p/e8b5d01ca073)
@@ -1194,29 +1299,31 @@ array([[0, 0, 0],
     | un | 未知词 | 不可识别词及用户自定义词组。取英文Unkonwn首两个字母。(非北大标准，CSW分词中定义) |
 
 
-### gensim
+## gensim
 
 - [gensim: models.word2vec – Deep learning with word2vec](https://radimrehurek.com/gensim/models/word2vec.html)
 
 
 
-### Graphviz
+## Graphviz
 
 - [Download](https://graphviz.gitlab.io/download/)
 
 
-## PCA
+## Machine Learning Algorithm
+
+### PCA
 
 - [PCA(主成分分析)python实现 - 简书](https://www.jianshu.com/p/4528aaa6dc48)
 
 
-## XGBoost
+### XGBoost
 
 - [XGBoost 与 Boosted Tree – 我爱计算机](http://www.52cs.org/?p=429)
 
 - [Complete Guide to Parameter Tuning in XGBoost (with codes in Python)](https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/)
 
-### Leaf Encoding
+#### Leaf Encoding
 
 - [predicting-clicks-facebook.pdf](http://quinonero.net/Publications/predicting-clicks-facebook.pdf)
 
@@ -1224,7 +1331,7 @@ array([[0, 0, 0],
 
     ![](https://screenshotscdn.firefoxusercontent.com/images/4eb1256c-81e9-4c91-af15-d5325f57f5c8.png)
 
-### Save model & load model
+#### Save model & load model
 
 - [How to Save Gradient Boosting Models with XGBoost in Python - Machine Learning Mastery](https://machinelearningmastery.com/save-gradient-boosting-models-xgboost-python/)
 
@@ -1272,7 +1379,7 @@ array([[0, 0, 0],
 
 
 
-## CatBoost
+### CatBoost
 
 - [CatBoost — Transforming categorical features to numerical features — Yandex Technologies](https://tech.yandex.com/catboost/doc/dg/concepts/algorithm-main-stages_cat-to-numberic-docpage/)
 
@@ -1280,7 +1387,7 @@ array([[0, 0, 0],
 
 
 
-## Hierarchical Clustering
+### Hierarchical Clustering
 
 - [利用 SciPy 实现层次聚类 - Haojun's Blog](https://haojunsui.github.io/2016/07/16/scipy-hac/)
 
