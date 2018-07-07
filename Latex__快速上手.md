@@ -118,6 +118,7 @@
     > A\ cross-reference\ to\ equation  \eqref{eq:5.23}.
     > $$
     > ```
+    > ```
     > $$
     > 1+1=2 \tag{5.23}
     > $$
@@ -125,7 +126,8 @@
     > $$
     > A\ cross-reference\ to\ equation  \eqref{eq:5.23}.
     > $$
-    > 
+    > ```
+    >
     > ---
     > 
     > ![](https://i.stack.imgur.com/ZFVDZ.png)
