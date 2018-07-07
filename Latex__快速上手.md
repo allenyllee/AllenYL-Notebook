@@ -84,5 +84,57 @@
     >
     > ![](https://screenshotscdn.firefoxusercontent.com/images/318030fd-3063-4b41-a38a-65542ffd9990.png)
 
+## symbol
+
+### arrow
+- [LaTEX Arrow Symbols](http://garsia.math.yorku.ca/MPWP/LATEXmath/node9.html)
+
+    ![](http://garsia.math.yorku.ca/MPWP/LATEXmath/arrow1.gif)
+
+### bar, overline
+
+- [stacking symbols - The \bar and \overline commands - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/22100/the-bar-and-overline-commands)
+
+    > 
+    > ```latex
+    > $\bar{\mathbb{R}}$ 
+    > $\overbar{\mathbb{R}}$ 
+    > $\overline{\mathbb{R}}$
+    > ``` 
+    > 
+    > $\bar{\mathbb{R}}$ 
+    > `$\overbar{\mathbb{R}}$`
+    > $\overline{\mathbb{R}}$
+    > 
+    > ![](https://i.stack.imgur.com/kN66B.png)
+
+
+### 方程式標號 numbering
+
+- [numbering - How can you number equations manually? - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/212559/how-can-you-number-equations-manually)
+
+    > ```
+    > $$
+    > 1+1=2 \tag{5.23}
+    > $$
+    > 
+    > $$
+    > A\ cross-reference\ to\ equation  \eqref{eq:5.23}.
+    > $$
+    > ```
+    > 
+    > $$
+    > 1+1=2 \tag{5.23}
+    > $$
+    > ```
+    > $$
+    > A\ cross-reference\ to\ equation  \eqref{eq:5.23}.
+    > $$
+    > ```
+    >
+    > ---
+    > 
+    > ![](https://i.stack.imgur.com/ZFVDZ.png)
+
 
 
