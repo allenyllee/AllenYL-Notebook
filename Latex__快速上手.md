@@ -109,32 +109,7 @@
     > ![](https://i.stack.imgur.com/kN66B.png)
 
 
-### 方程式標號 numbering
 
-- [numbering - How can you number equations manually? - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/212559/how-can-you-number-equations-manually)
-
-    > ```
-    > $$
-    > 1+1=2 \tag{5.23}
-    > $$
-    > 
-    > $$
-    > A\ cross-reference\ to\ equation  \eqref{eq:5.23}.
-    > $$
-    > ```
-    > 
-    > $$
-    > 1+1=2 \tag{5.23}
-    > $$
-    > ```
-    > $$
-    > A\ cross-reference\ to\ equation  \eqref{eq:5.23}.
-    > $$
-    > ```
-    >
-    > ---
-    > 
-    > ![](https://i.stack.imgur.com/ZFVDZ.png)
 
 
 
