@@ -685,11 +685,11 @@ Natthawut Kertkeidkachorn, Ryutaro Ichise](https://aaai.org/ocs/index.php/WS/AAA
     > 一个 GN block 包含三个 "update" 函数 $\phi$ ，以及三个 "aggregation" 函数 $\rho$ ：
     > 
     > $$
-    > \begin{align}
+    > \begin{aligned}
     > \textbf{e}'_k&=\phi^e(\textbf{e}_k,\textbf{v}_{r_k},\textbf{v}_{s_k},\textbf{u})&  \bar{\textbf{e}}'_i=\rho^{e \rightarrow v}(E'_i) & \\
     > \textbf{v}'_i&=\phi^v(\bar{\textbf{e}}'_i,\textbf{v}_i,\textbf{u})&\bar{\textbf{e}}'=\rho^{e \rightarrow u}(E')& \tag{1} \\
     > \textbf{u}'&=\phi^u(\bar{\textbf{e}}',\bar{\textbf{v}}',\textbf{u})&\bar{\textbf{v}}'=\rho^{v \rightarrow u}(V')&
-    > \end{align}
+    > \end{aligned}
     > $$
     > 
     > 
