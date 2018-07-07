@@ -99,8 +99,9 @@
     > $\overbar{\mathbb{R}}$ 
     > $\overline{\mathbb{R}}$
     > ``` 
-    >
+    > ```
     > $\bar{\mathbb{R}}$ $\overbar{\mathbb{R}}$ $\overline{\mathbb{R}}$
+    > ```
     > ![](https://i.stack.imgur.com/kN66B.png)
 
 
