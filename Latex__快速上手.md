@@ -49,5 +49,40 @@
     > The `&` sign separates two columns, so an `&` at the beginning of a line means that the line starts with a blank column.
 
 
+### 對齊多欄方程式
+
+- [LaTeX技巧207：使用align环境输入多行公式的技巧_LaTeX_Fun_新浪博客](http://blog.sina.com.cn/s/blog_5e16f1770100gror.html)
+
+    > ```
+    > This example has three column-pairs.
+    > $$
+    > \begin{aligned}
+    >     x    &= y      & X  &= Y  &
+    >       a  &= b+c               \tag{8}\\
+    >     x'   &= y'     & X' &= Y' &
+    >       a' &= b                 \tag{9}\\
+    >   x + x' &= y + y'            &
+    >   X + X' &= Y + Y' & a'b &= c'b \tag{10}
+    > \end{aligned}
+    > $$
+    > ```
+    > 
+    > This example has three column-pairs.
+    > $$
+    > \begin{aligned}
+    >     x    &= y      & X  &= Y  &
+    >       a  &= b+c               \tag{8}\\
+    >     x'   &= y'     & X' &= Y' &
+    >       a' &= b                 \tag{9}\\
+    >   x + x' &= y + y'            &
+    >   X + X' &= Y + Y' & a'b &= c'b \tag{10}
+    > \end{aligned}
+    > $$
+    > 
+    > 
+    > ---
+    >
+    > ![](https://screenshotscdn.firefoxusercontent.com/images/318030fd-3063-4b41-a38a-65542ffd9990.png)
+
 
 
