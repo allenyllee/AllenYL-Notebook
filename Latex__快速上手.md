@@ -91,22 +91,7 @@
 
     ![](http://garsia.math.yorku.ca/MPWP/LATEXmath/arrow1.gif)
 
-### bar, overline
 
-- [stacking symbols - The \bar and \overline commands - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/22100/the-bar-and-overline-commands)
-
-    > 
-    > ```latex
-    > $\bar{\mathbb{R}}$ 
-    > $\overbar{\mathbb{R}}$ 
-    > $\overline{\mathbb{R}}$
-    > ``` 
-    > 
-    > $\bar{\mathbb{R}}$ 
-    > `$\overbar{\mathbb{R}}$`
-    > $\overline{\mathbb{R}}$
-    > 
-    > ![](https://i.stack.imgur.com/kN66B.png)
 
 
 
