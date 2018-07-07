@@ -30,7 +30,7 @@
     > \end{aligned}
     > 
     > ```
-    > 
+    > ```
     > $$
     > \begin{aligned}
     >     &|\vec a| = \sqrt{3^{2}+1^{2}} = \sqrt{10} &\\
@@ -39,7 +39,7 @@
     >     &v = \cos^{-1} \left(\frac{26}{\sqrt{10} \cdot \sqrt{530}}\right) &\\
     > \end{aligned}
     > $$
-    > 
+    > ```
     > ---
     > 
     > ![](https://screenshotscdn.firefoxusercontent.com/images/1a4c8de1-ed89-4ce7-92e2-19a63172d701.png)
