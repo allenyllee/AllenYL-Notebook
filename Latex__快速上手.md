@@ -32,12 +32,10 @@
     > ```
     > 
     > $$
-    > \begin{array}
-    >     &|\vec a| = \sqrt{3^{2}+1^{2}} = \sqrt{10} &\\
-    >     &|\vec b| = \sqrt{1^{2}+23^{2}} = \sqrt{530} &\\ 
-    >     &\cos v = \frac{26}{\sqrt{10} \cdot \sqrt{530}} &\\
-    >     &v = \cos^{-1} \left(\frac{26}{\sqrt{10} \cdot \sqrt{530}}\right) &\\
-    > \end{array}
+    > \begin{aligned}
+    >     &|\vec a| = \sqrt{3^{2}+1^{2}} = \sqrt{10} \\
+    >     &|\vec b| = \sqrt{1^{2}+23^{2}} = \sqrt{530}
+    > \end{aligned}
     > $$
     > 
     > ---
