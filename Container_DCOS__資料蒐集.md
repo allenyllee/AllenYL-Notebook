@@ -1,4 +1,4 @@
-# Docker__快速上手
+# Container_DCOS__資料蒐集
 
 [toc]
 <!-- toc --> 
@@ -258,7 +258,15 @@
 
 - [twtrubiks/docker-swarm-tutorial: Docker Swarm 基本教學 - 從無到有 Docker-Swarm-Beginners-Guide📝](https://github.com/twtrubiks/docker-swarm-tutorial)
 
+
 ## Mesos
+
+### app store
+
+- [DC/OS Service Catalog](http://universe.dcos.io/#/packages)
+
+
+### architecture
 
 - [Mesosphere釋出開源資料中心作業系統DC/OS，誓言讓資料中心管理像使用個人電腦 | iThome](https://www.ithome.com.tw/news/105437)
 
@@ -872,9 +880,300 @@
     > 上面的json設定可以設定tomcat service要執行在2台的server上，如果有一台的service被砍掉或當掉會在其它的server上啟動service、可以設定要在哪幾台特定的server上執行service、另外也可以去指定service需要多少的資源(如：CPU core數、記憶體大小)…等等的功能，這些在未來都會做介紹，在部署server上只要把設定檔寫好就可以快速的把service啟動起來，讓我們的工作效率增加也期望讓我們在部署service和管理整個cluster的資源更加的自動化。
     > 
 
+### Kubernetes on DC/OS 
 
+- [Announcing: Kubernetes on DC/OS - Mesosphere](https://mesosphere.com/blog/kubernetes-dcos/)
+
+    > <iframe width="560" height="315" src="https://www.youtube.com/embed/F1-UEIG7u5g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    > 
+    > ![](https://mesosphere.com/wp-content/uploads/2017/08/mesosphere-dcos-kubernetes.png)
+    > 
+    > Easy Kubernetes Operations on DC/OS
+    > -----------------------------------
+    > 
+    > Kubernetes on top of Mesos through DC/OS allows our customers to deploy the popular container orchestrator on top of [a powerful distributed systems platform](https://mesosphere.com/why-mesos/). With this unique architectural approach, **Mesosphere DC/OS can provide an experience like the public cloud providers' container engines** within our customers' data centers or across hybrid cloud.
+    > 
+    > Within this, we are making Kubernetes on DC/OS **highly available and secure by default**, and plan to **support non-disruptive, rolling upgrades**.
+    > 
+    > In this "managed Kubernetes" model, Mesosphere DC/OS will allow you to **run multiple Kubernetes clusters (of different versions) alongside each other**. This allows for not just distinct production clusters (e.g., for different departments, users, apps, etc.), but also means you will be able to run dev and production side by side on the same infrastructure. **Kubernetes clusters running on DC/OS deploy in just a few minutes** from the Universe and can be scaled up elastically to add capacity.
+    > 
+    > 
+    > Containers and Data Services, United
+    > ------------------------------------
+    > 
+    > If a customer chooses to run Kubernetes without DC/OS, they typically run data services as a siloed application separate from their Kubernetes deployment. In this model, there is no out-of-the-box automation or coordination between the different parts of the application. That means that a customer needs to "DIY" any automation for monitoring, failover, scaling, adding storage volumes, and more. While this more manual process might work for some, we believe that it's additional effort that can easily be avoided.
+    > 
+    > Running Kubernetes on DC/OS allows you to run different types of workloads (more explicitly, both the stateless and stateful components that make up most modern applications) on the same infrastructure. [This is already why customers choose to run DC/OS](https://mesosphere.com/resources/dcos-speeds-verizons-modern-application-development/), and we will bring this unique capability to the Kubernetes community.
+    > 
+    > On DC/OS, users can connect to data services from containers running on Kubernetes and vice versa. Running Kubernetes on top of Mesosphere DC/OS means **customers get to use the container orchestrator they want, but immediately benefit from automated operations for the data services** that back most containerized applications.
+    > 
+    > ---
+    > 
+    > **Try this initial release of Kubernetes on DC/OS for yourself today, and help us improve the product to suit you**. Existing DC/OS users can [install Kubernetes by following these instructions](https://github.com/mesosphere/dcos-kubernetes-quickstart). If you are not already a DC/OS user, [here's how to get started](https://dcos.io/docs/1.10/tutorials/dcos-101/). Once you are up and running, please [share your feedback with us here](http://chat.dcos.io/). Please note that we will be releasing regular updates to this beta over the next few months as we work towards general availability.
+    > 
+
+- [Kubernetes on Mesos](http://www.inwinstack.com/zh/2017/12/08/kubernetes-on-mesos/)
+
+    > Kubernetes 是一個基於容器技術的分散式架構解決方案，並且是 Google 十幾年大規模使用容器技術的經驗累積的成果。因此，在今年七月 Mesosphere 宣布與 Google 合作，將 Kubernetes 結合 Mesos，讓使用者能夠使用 Kubernetes 與其他一流的 datacenter 服務(例如：Hadoop、Spark 以及 Chronos)一起使用。這允許 Kubernetes 應用程式同時與其他類型的應用程式在同一組伺服器中一起執行，而 Mesos 可以確保資源被公平的分配且隔離每個應用程式。
+    > 
+    > Kubernetes-Mesos 目前屬於 alpha 階段，仍然還在開發中，並不建議使用在生產環境。
+    > 
+    > **Kubernetes-Mesos 架構**
+    > -----------------------
+    > 
+    > Apache Mesos 叢集是由一個或多個 Master 與一個或多個 Slave 所組成，而 Kubernetes-Mesos(K8sm) 為一個 Mesos Framework 且執行在 Mesos 之上。K8sm 提供了兩個元件且連接了 Mesos 與 Kubernetes：
+    > 
+    > 1.Scheduler：整合了 Kubernetes scheduling API 以及 Mesos scheduler runtime。
+    > 
+    > 2.Executor：整合了 Kubernetes kubelet 服務與 Mesos executor runtime。
+    > 
+    > 當一個 pod 建立透過 Kubernetes 時，K8sm scheduler 會建立一個相關的 Mesos task 並將其排入佇列進行調度，在依照 pod/task 所需要的資源，將其分配至適合的節點之上，接著 pod/task 將會被啟動並交由 executor。當 executor 啟動 pod/task 時，會透過 kubelet 註冊 pod 並開始由 kubelet 管理 pod 的生命週期。
+    > 
+    > ![Kubernetes on Mesos](http://www.inwinstack.com/wp-content/uploads/2017/12/SiAhxQB.png)
+    > 
+    > **安裝 Kubernetes on Mesos**
+    > --------------------------
+    > 
+    > 本文將引導您在 Mesos 叢集上安裝 Kubernetes。它提供逐步引導將 Kubernetes 新增到 Mesos 叢集中，並執行第一個 nginx web server 的 pod。
+    > 
+    > **事前準備**
+    > 
+    > 準備一個 Mesos 叢集環境
+    > 
+    > 叢集中選擇一台作為 Kubernetes master 節點，且需要以下套件：
+    > 
+    > Go(Go 語言安裝版本請參考:[Kubernetes Development Guide](https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#go))
+    > 
+    > make (例如：build-essential)
+    > 
+    > 每台節點都需要安裝 Docker
+    > 
+    > 您可將 Kubernetes-Mesos 部署至與 Mesos Master 同一節點，也可以在不同節點。
+    > 
+    > **部署 Kubernetes-Mesos**
+    > 
+    > 首先，先選擇一台您要安裝 Kubernetes-Mesos 的節點，並 build Kubernetes-Mesos：
+    > 
+    > 
+    > ```shell
+    > $ git clone https://github.com/kubernetes-incubator/kube-mesos-framework
+    > 
+    > $ cd kube-mesos-framework
+    > 
+    > $ make
+    > ```
+    > 
+    > 設定一些環境變數：
+    > 
+    > 
+    > ```shell
+    > $ export KUBERNETES_MASTER_IP=172.22.132.22
+    > $ export KUBERNETES_MASTER=http://${KUBERNETES_MASTER_IP}:8888
+    > ```
+    > 
+    > **部署 etcd**
+    > 
+    > 啟動 etcd 並且驗證他們是否執行：
+    > 
+    > 
+    > 
+    > ```shell
+    > $ docker run -d --hostname$(uname -n) --name etcd \
+    > -p 4001:4001 -p 7001:7001 quay.io/coreos/etcd:v2.2.1 \
+    > --listen-client-urls http://0.0.0.0:4001 \
+    > --advertise-client-urls http://${KUBERNETES_MASTER_IP}:4001
+    > ```
+    > 
+    > ```shell
+    > $ docker ps
+    > 
+    > CONTAINER ID        IMAGE                        COMMAND                  CREATED             STATUS              PORTS                                                           NAMES
+    > 
+    > e2afe13e2319        quay.io/coreos/etcd:v2.2.1 "/etcd --listen-cl..."   3 days ago          Up 3 days           0.0.0.0:4001->4001/tcp, 2379-2380/tcp, 0.0.0.0:7001->7001/tcp   etcd
+    > ```
+    > 
+    > 
+    > 以下方法也是個不錯方法，來測試你的 etc 是否正常運作：
+    > 
+    > 
+    > 
+    > ```shell
+    > $ curl -L http://${KUBERNETES_MASTER_IP}:4001/v2/keys/
+    > ```
+    > 
+    > 
+    > 如果連線正常，您將會看到 etcd 的輸出結果在 console 上。
+    > 
+    > **啟動 Kubernetes-Mesos 服務**
+    > 
+    > 更新您的 PATH，能更容易執行 Kubernetes-Mesos binaries：
+    > 
+    > 
+    > ```shell
+    > $ export PATH="$(pwd)/_output/local/go/bin:$PATH"
+    > ```
+    > 
+    > 
+    > 確定您的 Mesos Master，而這取決於 Mesos 的安裝方式，可能是 host:port 像是 mesos-master:5050 或者是 ZooKeeper URL 像是 zk://zookeeper:2181/mesos：
+    > 
+    > 
+    > 
+    > ```shell
+    > $ export MESOS_MASTER="<host:port or zk://url>"
+    > ```
+    > 
+    > 
+    > 而為了讓 Kubernetes 能夠在 Mesos Master 變更時還能正常運作，建議在生產環境中使用 ZooKeeper URL。
+    > 
+    > 建立一個 cloud config 名為 mesos-cloud.conf 在當前目錄，並輸入以下內容：
+    > 
+    > 
+    > 
+    > ```shell
+    > $ cat <<EOF >mesos-cloud.conf
+    > 
+    > [mesos-cloud]
+    > mesos-master        = ${MESOS_MASTER}
+    > 
+    > EOF
+    > ```
+    > 
+    > 
+    > 現在，啟動 kubernetes-mesos API server、controller manager 以及 scheduler 在 master 節點：
+    > 
+    > 
+    > 
+    > ```shell
+    > 
+    > 
+    > $ km apiserver \
+    > --address=${KUBERNETES_MASTER_IP} \
+    > --etcd-servers=http://${KUBERNETES_MASTER_IP}:4001 \
+    > --service-cluster-ip-range=10.10.10.0/24 \
+    > --port=8888 \
+    > --cloud-provider=mesos \
+    > --cloud-config=mesos-cloud.conf \
+    > --secure-port=0 \
+    > --v=1 >apiserver.log 2>&1 &
+    > 
+    > $ km controller-manager \
+    > --master=${KUBERNETES_MASTER} \
+    > --cloud-provider=mesos \
+    > --cloud-config=./mesos-cloud.conf  \
+    > --v=1 >controller.log 2>&1 &
+    > 
+    > $ km scheduler \
+    > --address=${KUBERNETES_MASTER_IP} \
+    > --mesos-master=${MESOS_MASTER} \
+    > --etcd-servers=http://${KUBERNETES_MASTER_IP}:4001 \
+    > --mesos-user=root \
+    > --api-servers=${KUBERNETES_MASTER} \
+    > --cluster-dns=10.10.10.10 \
+    > --cluster-domain=cluster.local \
+    > --v=2 >scheduler.log 2>&1 &
+    > 
+    > ```
+    > 
+    > 
+    > 這些服務都會跑在背景，如果當 logout 時想要終止掉：
+    > 
+    > 
+    > 
+    > ```shell
+    > $ disown -a
+    > ```
+    > 
+    > 
+    > **驗證 KM 服務**
+    > 
+    > 透過 kubectl 與 kubernetes-mesos framework 互動：
+    > 
+    > 
+    > 
+    > ```shell
+    > $ kubectl get pods
+    > 
+    > NAME      READY     STATUS    RESTARTS   AGEs`
+    > ```
+    > 
+    > 
+    > 
+    > ```shell
+    > $ kubectl get services
+    > 
+    > NAME             TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)     AGE
+    > k8sm-scheduler   ClusterIP   10.10.10.158   <none>        10251/TCP   2d
+    > kubernetes       ClusterIP   10.10.10.1     <none>        443/TCP     3d
+    > ```
+    > 
+    > 
+    > 
+    > ![Kubernetes on Mesos](http://www.inwinstack.com/wp-content/uploads/2017/12/vHxMFJX.png)
+    > 
+    > **執行一個 POD**
+    > ------------
+    > 
+    > 建立並編輯一個 pod 的 yaml 檔：
+    > 
+    > 
+    > 
+    > ```shell
+    > 
+    > $ cat <<EOPOD >nginx.yaml
+    > 
+    > apiVersion: v1
+    > kind: Pod
+    > metadata:
+    > name: nginx
+    > spec:
+    > containers:
+    > - name: nginx
+    > image: nginx
+    > ports:
+    > - containerPort: 80
+    > 
+    > EOPOD
+    > 
+    > ```
+    > 
+    > 
+    > 使用 kubectl 來建立 nginx pod:
+    > 
+    >  
+    > ```shell
+    > $ kubectl create -f ./nginx.yaml
+    > 
+    > pod "nginx" created
+    > ```
+    > 
+    > 
+    > 使用 kubectl 觀察 pod 的狀態：
+    > 
+    > 
+    > ```shell
+    > 
+    > $ kubectl get pods
+    > 
+    > NAME      READY     STATUS    RESTARTS   AGE
+    > nginx     1/1       Running   0          8m
+    > ```
+    > 
+    > 
+    > ![Kubernetes on Mesos](http://www.inwinstack.com/wp-content/uploads/2017/12/agtCyu7.png)
+    > 
+    > **參考資料**
+    > --------
+    > 
+    > 1.[Kubernetes Docs -- Kubernetes on Mesos](https://kubernetes.io/docs/getting-started-guides/mesos/)
+    > 
+    > 2.[Kubernetes incubator Github](https://github.com/kubernetes-incubator/kube-mesos-framework)
+    > 
+    > 3.[Mesosphere Github](https://github.com/mesosphere/kubernetes-mesos/tree/master)
+    > 
+    > 撰文： 白凱仁 迎棧科技軟體工程師
 
 ## HyperPilot
+
 - [容器叢集效能成新議題，HyperPilot開源釋出，要靠機器學習自動優化容器叢集 | iThome](https://www.ithome.com.tw/news/121876)
 
     > 藉助容器叢集，來支援大數據或機器學習分析所需的大型叢集，已是資料科學家常用的方法之一，但想要自己在雲端部署Docker容器叢集，第一個挑戰就是，要怎麼租用VM，才能省錢又能符合需要的效能？得同時考量VM規格、容器配置和應用程式的配置需求等多項複雜變因，來衡量成本，往往得靠資深的雲端架構師才有能力拿捏得當。
@@ -885,5 +1184,19 @@
     > 
     > Timothy Chen率領的團隊也開發了新的Heracles 效能評估演算法，可供容器叢集控制器使用，來動態調整配置給應用程式的資源，根據Timothy Chen釋出的測試例子，可將一個Spark分析叢集的效能利用率提高2～3倍。
 
+
+
 - [Hyperpilot open sourced 100% of its products – Timothy Chen – Medium](https://medium.com/@tnachen/hyperpilot-open-sourced-100-of-its-products-18d0e018fe45)
+
+## 服務發現工具
+
+- [服务发现：Zookeeper vs etcd vs Consul - DockOne.io](http://dockone.io/article/667)
+    - [Service Discovery: Zookeeper vs etcd vs Consul | Technology Conversations](https://technologyconversations.com/2015/09/08/service-discovery-zookeeper-vs-etcd-vs-consul/)
+
+
+### zookeeper
+
+### etcd
+
+### Consul
 

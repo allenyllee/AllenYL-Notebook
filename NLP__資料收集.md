@@ -19,6 +19,17 @@
     - [Lecture 1 | Natural Language Processing with Deep Learning - YouTube](https://www.youtube.com/watch?v=OQQ-W_63UgQ&list=PLqdrfNEc5QnuV9RwUAhoJcoQvu4Q46Lja)
 
 
+## 信息熵
+
+### 最小熵原理
+
+- [从无监督构建词库看「最小熵原理」，套路是如何炼成的](https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247488802&idx=1&sn=eb35229374ee283d5c54d58ae277b9f0&chksm=96e9caa2a19e43b4f624eac3d56532cb9dc7ca017c9e0eaf96387e20e5f985e37da833fbddfd&scene=21#wechat_redirect)
+
+- [再談最小熵原理：「飛象過河」之句模版和語言結構 | 附開源NLP庫 - 幫趣](http://bangqu.com/8E2536.html#utm_source=Facebook_PicSee&utm_medium=Social)
+
+
+
+
 
 ## DEMO
 
@@ -205,41 +216,7 @@ Parameters:
 
 - [Understanding Convolutional Neural Networks for NLP – WildML](http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/)
 
-## 語意向量
-
-### TF-IDF
-
-- [tf–idf - Wikiwand](https://www.wikiwand.com/en/Tf%E2%80%93idf)
-
-- [[文件探勘] TF-IDF 演算法：快速計算單字與文章的關聯 – David's Perspective](https://taweihuang.hpd.io/2017/03/01/tfidf/)
-
-    > ### BoW (Bag of Words) 與詞彙數量-文件矩陣
-    > 
-    > 假設現在有 ![D](https://s0.wp.com/latex.php?latex=D&bg=ffffff&fg=000&s=0 "D") 篇文件 (document)，而所有文件中總共使用了 ![~T~](https://s0.wp.com/latex.php?latex=%7ET%7E&bg=ffffff&fg=000&s=0 "~T~") 個詞彙 (term)，我們就可以將文章轉換成以下類型的矩陣，其中第一欄第一列的「12」代表的是「文件 1」 中出現了12個「文字 1」。如此一來，我們可以用 ![[12,~0,~3,~\cdots,~2]](https://s0.wp.com/latex.php?latex=%5B12%2C%7E0%2C%7E3%2C%7E%5Ccdots%2C%7E2%5D&bg=ffffff&fg=000&s=0 "[12,~0,~3,~\cdots,~2]") 這個向量來代表「文件 1」，同理也可用「文件 D」也可以用 ![[0,~2,~8,~\cdots,~0]](https://s0.wp.com/latex.php?latex=%5B0%2C%7E2%2C%7E8%2C%7E%5Ccdots%2C%7E0%5D&bg=ffffff&fg=000&s=0 "[0,~2,~8,~\cdots,~0]") 來表示。
-    > 
-    > ![圖片1](https://taweihuang.hpd.io/wp-content/uploads/2017/03/圖片1.png)
-    > 
-    > 這樣的方法就是「BoW (Bag of Word)演算法」，這種方法雖然很簡單，但有2個主要的問題 ─ 一是每篇文章的總字數不一樣，比如說文字 2在文件 2中出現9次，在文件 D中卻只出現2次，這樣是否代表文字 2 對文件 2 比較重要，對文件 D 比較不重要呢？答案是否定的，說不定文件2有10000個字，而文件D只有50個字，如此一來文字2應該對文件D比較重要才對。
-    > 
-    > 另一個問題是，時常重複出現的慣用詞彙對一個文件的影響很大。比如說，上圖中的文字 3在每個文件中都出現好多次，可能是「the」之類的常用字，如此一來「文件 D」的向量就會被  the 這個字所主導，但 the 這個字其實沒什麼特別的意義。
-    > 
-    > 為了處理以上兩個問題，歷史悠久但非常好用的 TF-IDF演算法就被發明出來了。
-    > 
-    > ### TF-IDF 演算法
-    > 
-    > TF-IDF 演算法包含了兩個部分：**詞頻**（term frequency，TF）跟**逆向文件頻率**（inverse document frequency，IDF）。詞頻指的是某一個給定的詞語在該文件中出現的頻率，第 ![t](https://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0 "t")個詞出現在第 ![~d~](https://s0.wp.com/latex.php?latex=%7Ed%7E&bg=ffffff&fg=000&s=0 "~d~") 篇文件的頻率記做 ![~tf_{t,d}~](https://s0.wp.com/latex.php?latex=%7Etf_%7Bt%2Cd%7D%7E&bg=ffffff&fg=000&s=0 "~tf_{t,d}~")，舉例來說，如果文件 1 總共有100個字，而第 1 個字在文件 1 出現的次數是12次，因此![~tf_{1,1}=12/100~](https://s0.wp.com/latex.php?latex=%7Etf_%7B1%2C1%7D%3D12%2F100%7E&bg=ffffff&fg=000&s=0 "~tf_{1,1}=12/100~")，如此一來，我們就可以針對上述的第一個問題進行修正，以頻率而不是次數來看待文字的重要性，讓文章與文章之間比較有可比較性。
-    > 
-    > 而逆向文件頻率則是用來處理常用字的問題。假設詞彙 ![t](https://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0 "t") 總共在 ![d_t](https://s0.wp.com/latex.php?latex=d_t&bg=ffffff&fg=000&s=0 "d_t") 篇文章中出現過，則詞彙 ![t](https://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0 "t") 的 IDF 定義成 ![~idf_t = \log\left(\frac{D}{d_t}\right)~](https://s0.wp.com/latex.php?latex=%7Eidf_t+%3D+%5Clog%5Cleft%28%5Cfrac%7BD%7D%7Bd_t%7D%5Cright%29%7E&bg=ffffff&fg=000&s=0 "~idf_t = \log\left(\frac{D}{d_t}\right)~")。比如說，假設文字 1 總共出現在 25 篇不同的文件，則 ![~~idf_1 = \log\left(\frac{D}{25}\right)~~](https://s0.wp.com/latex.php?latex=%7E%7Eidf_1+%3D+%5Clog%5Cleft%28%5Cfrac%7BD%7D%7B25%7D%5Cright%29%7E%7E&bg=ffffff&fg=000&s=0 "~~idf_1 = \log\left(\frac{D}{25}\right)~~")。如果詞彙 ![t](https://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0 "t")在非常多篇文章中都出現過，就代表 ![~d_t~](https://s0.wp.com/latex.php?latex=%7Ed_t%7E&bg=ffffff&fg=000&s=0 "~d_t~") 很大，此時![~idf_t~](https://s0.wp.com/latex.php?latex=%7Eidf_t%7E&bg=ffffff&fg=000&s=0 "~idf_t~") 就會比較小。
-    > 
-    > 而一個字對於一篇文件重要性的分數 (score) 就可以透過TF與IDF兩個指標計算出來，我們將第 ![t](https://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0 "t")個詞彙對於第 ![~d~](https://s0.wp.com/latex.php?latex=%7Ed%7E&bg=ffffff&fg=000&s=0 "~d~") 篇文件的TF-IDF權重定義為 ![~w_{t,d} =  tf_{t,d} \times  idf_t ~](https://s0.wp.com/latex.php?latex=%7Ew_%7Bt%2Cd%7D+%3D%C2%A0+tf_%7Bt%2Cd%7D+%5Ctimes+%C2%A0idf_t+%7E&bg=ffffff&fg=000&s=0 "~w_{t,d} =  tf_{t,d} \times  idf_t ~")。如此一來，當詞彙 ![~t~](https://s0.wp.com/latex.php?latex=%7Et%7E&bg=ffffff&fg=000&s=0 "~t~") 很常出現在文件  ![~d~](https://s0.wp.com/latex.php?latex=%7Ed%7E&bg=ffffff&fg=000&s=0 "~d~") 時，他的 ![~tf_{t,d} ~](https://s0.wp.com/latex.php?latex=%7Etf_%7Bt%2Cd%7D+%7E&bg=ffffff&fg=000&s=0 "~tf_{t,d} ~") 就會比較大，而如果詞彙![~~ t](https://s0.wp.com/latex.php?latex=%7E%7Et&bg=ffffff&fg=000&s=0 "~~t") 也很少出現在其他篇文章，則 ![~idf_t~](https://s0.wp.com/latex.php?latex=%7Eidf_t%7E&bg=ffffff&fg=000&s=0 "~idf_t~") 也會比較大，使 ![~w_{t,d}~](https://s0.wp.com/latex.php?latex=%7Ew_%7Bt%2Cd%7D%7E&bg=ffffff&fg=000&s=0 "~w_{t,d}~")整體來說比較大，也就是說詞彙![~t~](https://s0.wp.com/latex.php?latex=%7Et%7E&bg=ffffff&fg=000&s=0 "~t~") 對於文件  ![~d~](https://s0.wp.com/latex.php?latex=%7Ed%7E&bg=ffffff&fg=000&s=0 "~d~") 來說是很重要的。如此一來，我們就可以計算出 TF-IDF 矩陣，如下圖所示。
-    > 
-    > ![圖片1](https://taweihuang.hpd.io/wp-content/uploads/2017/03/圖片1-1.png)
-    > 
-    > 另一方面， TF-IDF 時常被用來作資訊檢索 (information retrieval)，比如說，給定一串指令 (query)「文字 1 + 文字 3 + 不在現有詞彙裡面的文字」，則這串指令跟第 ![d](https://s0.wp.com/latex.php?latex=d&bg=ffffff&fg=000&s=0 "d") 的關聯分數就可以定義文 ![tf_{1,d} + tf_{3,d} ](https://s0.wp.com/latex.php?latex=tf_%7B1%2Cd%7D+%2B+tf_%7B3%2Cd%7D%C2%A0&bg=ffffff&fg=000&s=0 "tf_{1,d} + tf_{3,d} ")。
-    > 
-    > ### 大鼻是怎麼用 TF-IDF？
-    > 
-    > TF-IDF 常被我用在3個地方，一個是作為 baseline model的特徵 (feature)，比如說作文件分類 (text classification) 時，我就會把 tf 跟 idf 都當作文件的特徵(所以一篇文章總夠會有 ![2T](https://s0.wp.com/latex.php?latex=2T&bg=ffffff&fg=000&s=0 "2T")個特徵)，去跑分類模型，作為 baseline。有時候我會把一個詞彙對於每篇的文章的 tf-idf 值當作該詞彙的特徵，去跑文字的分群。還有一個是大鼻好友ㄐㄓ告訴我的妙招，就是如果我們想要用word2vec得出來的詞向量去表示一個文件的話，可以用tf-idf的值當作權重，再把該文件中每個詞向量用tf-idf當作權重加起來，效果也很不錯喔！
+## 詞向量
 
 
 ### word2Vec
@@ -281,8 +258,188 @@ Parameters:
     > 
 
 
+### fastText
+
+- [Word vectors for 157 languages · fastText](https://fasttext.cc/docs/en/crawl-vectors.html)
+
+- [fastText，智慧與美貌並重的文本分類及向量化工具 - 幫趣](http://bangqu.com/749a22.html#utm_source=Facebook_PicSee&utm_medium=Social)
+
+    > 簡單介紹一下fastText的主要作者，這位高顏值的Facebook科學家Tomas Mikolov小哥。他2012年到2014年就職於Google，隨後跳到了Facebook至今。
+    >  
+    > 他名揚天下的，主要是以下三篇重要論文：
+    > 
+    > 1.Efficient Estimation of WordRepresentation in Vector Space, 2013 —— 這篇是word2vec的開蒙之作；
+    > 
+    > 2.Distributed Representations ofSentences and Documents, 2014 —— 這篇將詞向量的思想擴展到了段落和文檔上；
+    > 
+    > 3.Enriching Word Vectors withSubword Information, 2016 —— 這篇和fastText相關，引入了詞內的n-gram信息，豐富了詞向量的語義。
+    > 
+    > fastText能夠做到效果好，速度快，主要依靠兩個祕密武器：一是利用了詞內的n-gram信息(subword n-gram information)，二是用到了層次化Softmax迴歸(Hierarchical Softmax)的訓練trick。我們分別介紹一下。
+    > 
+    > 
+    > __Subword n-gramlnformation__
+    > 
+    > 在fastText的工作之前，大部分的文本向量化的工作，都是以詞彙表中的獨立單詞作爲基本單元來進行訓練學習的。這種想法非常自然，但也會帶來如下的問題：
+    > 
+    > · 低頻詞、罕見詞，由於在語料中本身出現的次數就少，得不到足夠的訓練，效果不佳；
+    > 
+    > · 未登錄詞，如果出現了一些在詞典中都沒有出現過的詞，或者帶有某些拼寫錯誤的詞，傳統模型更加無能爲力。
+    > 
+    > fastText引入了subword n-gram的概念來解決詞形變化(morphology)的問題。直觀上，它將一個單詞打散到字符級別，並且利用字符級別的n-gram信息來捕捉字符間的順序關係，希望能夠以此豐富單詞內部更細微的語義。我們知道，西方語言文字常常通過前綴、後綴、字根來構詞，漢語也有單字表義的傳統，所以這樣的做法聽起來還是有一定的道理。
+    > 
+    > 舉個例子。對於一個單詞「google」，爲了表達單詞前後邊界，我們加入<>兩個字符，即變形爲「 」。假設我們希望抽取所有的tri-gram信息，可以得到如下集合：G = { }。在實踐中，我們往往會同時提取單詞的多種n-gram信息，如2/3/4/5-gram。這樣，原始的一個單詞google，就被一個字符級別的n-gram集合所表達。
+    > 
+    > 在訓練過程中，每個n-gram都會對應訓練一個向量，而原來完整單詞的詞向量就由它對應的所有n-gram的向量求和得到。所有的單詞向量以及字符級別的n-gram向量會同時相加求平均作爲訓練模型的輸入。
+    > 
+    > 從實驗效果來看，subword n-gram信息的加入，不但解決了低頻詞未登錄詞的表達的問題，而且對於最終任務精度一般會有幾個百分點的提升。唯一的問題就是由於需要估計的參數多，模型可能會比較膨脹。不過，Facebook也提供了幾點壓縮模型的建議：
+    > 
+    > · 採用hash-trick。由於n-gram原始的空間太大，可以用某種hash函數將其映射到固定大小的buckets中去，從而實現內存可控；
+    > 
+    > · 採用quantize命令，對生成的模型進行參數量化和壓縮；
+    > 
+    > · 減小最終向量的維度。
+    > 
+    > __Hierarchical Softmax__
+    > 
+    > 另一個效率優化的點是所謂的層次化Softmax。
+    > 
+    > Softmax大家都比較熟悉，它是邏輯迴歸(logisticregression)在多分類任務上的推廣，是我們訓練的神經網絡中的最後一層。一般地，Softmax以隱藏層的輸出h爲輸入，經過線性和指數變換後，再進行全局的歸一化處理，找到概率最大的輸出項。當詞彙數量V較大時（一般會到幾十萬量級），Softmax計算代價很大，是O(V)量級。
+    > 
+    > 層次化的Softmax的思想實質上是將一個全局多分類的問題，轉化成爲了若干個二元分類問題，從而將計算複雜度從O(V)降到O(logV)。
+    > 
+    > 每個二元分類問題，由一個基本的邏輯迴歸單元來實現。如下圖所示，從根結點開始，每個中間結點（標記成灰色）都是一個邏輯迴歸單元，根據它的輸出來選擇下一步是向左走還是向右走。下圖示例中實際上走了一條「左-左-右」的路線，從而找到單詞w₂。而最終輸出單詞w₂的概率，等於中間若干邏輯迴歸單元輸出概率的連乘積。
+    > 
+    > ![](http://i2.bangqu.com/j/news/20180606/749a22152825763470852j19.png)
+    > 
+    >  ![](http://i2.bangqu.com/j/news/20180606/749a221528257635684823ER.png)
+    > 
+    > 至此，我們還剩下兩個問題，一是如何構造每個邏輯迴歸單元的輸入，另一個是如何建立這棵用於判斷的樹形結構。
+    > 
+    > __fastText和傳統CBOW模型對比__
+    > 
+    > 這裏假設你對word2vec的CBOW模型比較熟悉，我們來小結一下CBOW和fastText的訓練過程有什麼不同。下面兩張圖分別對應CBOW和fastText的網絡結構圖。
+    > 
+    > 兩者的不同主要體現在如下幾個方面：
+    > 
+    > · 輸入層：CBOW的輸入是目標單詞的上下文並進行one-hot編碼，fastText的輸入是多個單詞embedding向量，並將單詞的字符級別的n-gram向量作爲額外的特徵；
+    > 
+    > · 從輸入層到隱藏層，CBOW會將上下文單詞向量疊加起來並經過一次矩陣乘法（線性變化）並應用激活函數，而fastText省略了這一過程，直接將embedding過的向量特徵求和取平均；
+    > 
+    > · 輸出層，一般的CBOW模型會採用Softmax作爲輸出，而fastText則採用了Hierarchical Softmax，大大降低了模型訓練時間；
+    > 
+    > · CBOW的輸出是目標詞彙，fastText的輸出是文檔對應的類標。
+    > 
+
+
+
+### ELMo
+
+- [[1802.05365] Deep contextualized word representations](https://arxiv.org/abs/1802.05365)
+
+
+
+
+
+
+
 
 ## 文章向量
+
+### 概觀
+
+- [當前最好的詞句嵌入技術概覽：從無監督學習到監督、多任務學習 - 幫趣](http://bangqu.com/59R436.html#utm_source=Facebook_PicSee&utm_medium=Social)
+
+    - [📚The Current Best of Universal Word Embeddings and Sentence Embeddings](https://medium.com/huggingface/universal-word-sentence-embeddings-ce48ddc8fc3a)
+
+    > FastText 相對於原始的 word2vec 向量最主要的提升是它引入了 n 元字符（n-gram），這使得對沒有在訓練數據中出現的單詞（詞彙表外的單詞）計算單詞的表徵成爲了可能。
+    >     
+    > ---
+    >     
+    > 深度上下文單詞表徵（ELMo）在很大的程度上提高了目前最先進的詞嵌入模型的性能。它們由 Allen 人工智能研究所研發，並將在 6 月初的 NAACL 2018 （ https://arxiv.org/abs/1802.05365 ） 中展示。
+    > 
+    > ELMo 模型會爲每一個單詞分配一個表徵，該表徵是它們所屬的整個語料庫中的句子的一個函數。詞嵌入將從一個兩層的雙向語言模型（LM）的內部狀態中計算出來，因此該模型被命名爲「ELMo」： Embeddings from Language Models（E 代表「嵌入」，LM 代表「語言模型」）。
+    > 
+    > ELMo 模型的特點：
+    > 
+    > - ELMo 模型的輸入是字符而不是單詞。因此，它們可以利用子詞單元的優勢來計算有意義的單詞表示，即使這些單詞可能在詞彙表之外（就像 FastText 一樣）。
+    > 
+    > - ELMo 是在雙向語言模型中的一些層上的激勵函數的串接。一個語言模型的不同層會對一個單詞的不同類型的信息進行編碼（例如，詞性標註（Part-Of-Speech tagging）由雙向 LSTM（biLSTM）的較低層很好地預測，而詞義排歧則由較高層更好地進行編碼）。將所有的層串接起來使得自由組合各種不同的單詞表徵成爲了可能，從而在下游任務中得到更好的模型性能。
+    > 
+    > ---
+    > 
+    > 在這個領域有一個廣泛的共識（ http://arxiv.org/abs/1805.01070 ） ，那就是：直接對句子的詞嵌入取平均（所謂的詞袋模型（Bag-of-Word，BoW））這樣簡單的方法可以爲許多下游任務提供一個很強大的對比基線。
+    > 
+    > Arora 等人在 ICLR 2017 上提出了「A Simple but Tough-to-Beat Baseline for Sentence Embeddings」 （ https://openreview.net/forum?id=SyK00v5xx ） ，這是一個很好的能夠被用於計算這個基線（BoW）的算法，算法的大致描述如下：選擇一個流行的詞嵌入方法，通過詞向量的線性的加權組合對一個句子進行編碼，並且刪除共有的部分（刪除它們的第一個主成分上的投影）。
+    > 
+    > ---
+    > 
+    > 除了簡單的詞向量平均，第一個主要的提議是使用無監督學習訓練目標，這項工作是起始於 Jamie Kiros 和他的同事們在 2015 年提出的「Skip-thought vectors」（ https://arxiv.org/abs/1506.06726 ） 。
+    > 
+    > 「Skip-thoughts vector」是一個典型的學習無監督句子嵌入的案例。它可以被認爲相當於爲詞嵌入而開發的「skip-gram」模型的句子向量，我們在這裏試圖預測一個給定的句子周圍的句子，而不是預測一個單詞周圍的其他單詞。該模型由一個基於循環神經網絡的編碼器—解碼器結構組成，研究者通過訓練這個模型從當前句子中重構周圍的句子。
+    > 
+    > Skip-Thoughts 的論文中最令人感興趣的觀點是一種詞彙表擴展方案：Kiros 等人通過在他們的循環神經網絡詞嵌入空間和一個更大的詞嵌入空間（例如，word2vec）之間學習一種線性變換來處理訓練過程中沒有出現的單詞。
+    > 
+    > 「Quick-thoughts vectors」（ https://openreview.net/forum?id=rJvJXZb0W ） 是研究人員最近對「Skip-thoughts vectors」的一個改進，它在今年的 ICLR 上被提出。在這項工作中，在給定前一個句子的條件下預測下一個句子的任務被重新定義爲了一個分類問題：研究人員將一個用於在衆多候選者中選出下一個句子的分類器代替瞭解碼器。它可以被解釋爲對生成問題的一個判別化的近似。
+    > 
+    > 該模型的運行速度是它的優點之一（與 Skip-thoughts 模型屬於同一個數量級），使其成爲利用海量數據集的一個具有競爭力的解決方案。
+    > 
+    > ![](http://i2.bangqu.com/j/news/20180606/59R4361528261210081r28S2.png)*「Quick-thoughts」分類任務示意圖。分類器需要從一組句子嵌入中選出下一個句子。圖片來自 Logeswaran 等人所著的「An efficient framework for learning sentence representations」。*
+    > 
+    > ---
+    > 
+    > 在很長一段時間內，人們認爲監督學習技術比無監督學習技術得到的句子嵌入的質量要低一些。然而，這種假說最近被推翻了，這要部分歸功於「InferSent」（ https://arxiv.org/abs/1705.02364 ） 的提出。
+    > 
+    > InferSent 具有非常簡單的架構，這使得它成爲了一種非常有趣的模型。它使用 Sentence Natural Language Inference（NLI）數據集（該數據集包含 570,000 對帶標籤的句子，它們被分成了三類：中立、矛盾以及蘊含）訓練一個位於句子編碼器頂層的分類器。兩個句子使用同一個編碼器進行編碼，而分類器則是使用通過兩個句子嵌入構建的一對句子表徵訓練的。Conneau 等人採用了一個通過最大池化操作實現的雙向 LSTM 作爲編碼器。
+    > 
+    > ![](http://i2.bangqu.com/j/news/20180606/59R4361528261211217433N2.png)
+    > 
+    > 
+    > ---
+    >
+    > 在 ICLR 2018 上發表的描述 MILA 和微軟蒙特利爾研究院的工作的論文《Learning General Purpose Distributed Sentence Representation via Large Scale Multi-Task Learning》（ https://arxiv.org/abs/1804.00079 ）中，Subramanian 等人觀察到，爲了能夠在各種各樣的任務中泛化句子表徵，很有必要將一個句子的多個層面的信息進行編碼。
+    > 
+    > 因此，這篇文章的作者利用了一個一對多的多任務學習框架，通過在不同的任務之間進行切換去學習一個通用的句子嵌入。被選中的 6 個任務（對於下一個/上一個句子的 Skip-thoughts 預測、神經機器翻譯、組別解析（constituency parsing），以及神經語言推理）共享相同的由一個雙向門控循環單元得到的句子嵌入。實驗表明，在增添了一個多語言神經機器翻譯任務時，句法屬性能夠被更好地學習到，句子長度和詞序能夠通過一個句法分析任務學習到，並且訓練一個神經語言推理能夠編碼語法信息。
+    > 
+    > 谷歌在 2018 年初發布的的通用句子編碼器（ https://arxiv.org/abs/1803.11175 ）也使用了同樣的方法。他們的編碼器使用一個在各種各樣的數據源和各種各樣的任務上訓練的轉換網絡，旨在動態地適應各類自然語言理解任務。該模型的一個預訓練好的版本可以在 TensorFlow 獲得。
+
+
+### TF-IDF
+
+- [tf–idf - Wikiwand](https://www.wikiwand.com/en/Tf%E2%80%93idf)
+
+- [[文件探勘] TF-IDF 演算法：快速計算單字與文章的關聯 – David's Perspective](https://taweihuang.hpd.io/2017/03/01/tfidf/)
+
+    > ### BoW (Bag of Words) 與詞彙數量-文件矩陣
+    > 
+    > 假設現在有 ![D](https://s0.wp.com/latex.php?latex=D&bg=ffffff&fg=000&s=0 "D") 篇文件 (document)，而所有文件中總共使用了 ![~T~](https://s0.wp.com/latex.php?latex=%7ET%7E&bg=ffffff&fg=000&s=0 "~T~") 個詞彙 (term)，我們就可以將文章轉換成以下類型的矩陣，其中第一欄第一列的「12」代表的是「文件 1」 中出現了12個「文字 1」。如此一來，我們可以用 ![[12,~0,~3,~\cdots,~2]](https://s0.wp.com/latex.php?latex=%5B12%2C%7E0%2C%7E3%2C%7E%5Ccdots%2C%7E2%5D&bg=ffffff&fg=000&s=0 "[12,~0,~3,~\cdots,~2]") 這個向量來代表「文件 1」，同理也可用「文件 D」也可以用 ![[0,~2,~8,~\cdots,~0]](https://s0.wp.com/latex.php?latex=%5B0%2C%7E2%2C%7E8%2C%7E%5Ccdots%2C%7E0%5D&bg=ffffff&fg=000&s=0 "[0,~2,~8,~\cdots,~0]") 來表示。
+    > 
+    > ![圖片1](https://taweihuang.hpd.io/wp-content/uploads/2017/03/圖片1.png)
+    > 
+    > 這樣的方法就是「BoW (Bag of Word)演算法」，這種方法雖然很簡單，但有2個主要的問題 ─ 一是每篇文章的總字數不一樣，比如說文字 2在文件 2中出現9次，在文件 D中卻只出現2次，這樣是否代表文字 2 對文件 2 比較重要，對文件 D 比較不重要呢？答案是否定的，說不定文件2有10000個字，而文件D只有50個字，如此一來文字2應該對文件D比較重要才對。
+    > 
+    > 另一個問題是，時常重複出現的慣用詞彙對一個文件的影響很大。比如說，上圖中的文字 3在每個文件中都出現好多次，可能是「the」之類的常用字，如此一來「文件 D」的向量就會被  the 這個字所主導，但 the 這個字其實沒什麼特別的意義。
+    > 
+    > 為了處理以上兩個問題，歷史悠久但非常好用的 TF-IDF演算法就被發明出來了。
+    > 
+    > ### TF-IDF 演算法
+    > 
+    > TF-IDF 演算法包含了兩個部分：**詞頻**（term frequency，TF）跟**逆向文件頻率**（inverse document frequency，IDF）。詞頻指的是某一個給定的詞語在該文件中出現的頻率，第 ![t](https://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0 "t")個詞出現在第 ![~d~](https://s0.wp.com/latex.php?latex=%7Ed%7E&bg=ffffff&fg=000&s=0 "~d~") 篇文件的頻率記做 ![~tf_{t,d}~](https://s0.wp.com/latex.php?latex=%7Etf_%7Bt%2Cd%7D%7E&bg=ffffff&fg=000&s=0 "~tf_{t,d}~")，舉例來說，如果文件 1 總共有100個字，而第 1 個字在文件 1 出現的次數是12次，因此![~tf_{1,1}=12/100~](https://s0.wp.com/latex.php?latex=%7Etf_%7B1%2C1%7D%3D12%2F100%7E&bg=ffffff&fg=000&s=0 "~tf_{1,1}=12/100~")，如此一來，我們就可以針對上述的第一個問題進行修正，以頻率而不是次數來看待文字的重要性，讓文章與文章之間比較有可比較性。
+    > 
+    > 而逆向文件頻率則是用來處理常用字的問題。假設詞彙 ![t](https://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0 "t") 總共在 ![d_t](https://s0.wp.com/latex.php?latex=d_t&bg=ffffff&fg=000&s=0 "d_t") 篇文章中出現過，則詞彙 ![t](https://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0 "t") 的 IDF 定義成 ![~idf_t = \log\left(\frac{D}{d_t}\right)~](https://s0.wp.com/latex.php?latex=%7Eidf_t+%3D+%5Clog%5Cleft%28%5Cfrac%7BD%7D%7Bd_t%7D%5Cright%29%7E&bg=ffffff&fg=000&s=0 "~idf_t = \log\left(\frac{D}{d_t}\right)~")。比如說，假設文字 1 總共出現在 25 篇不同的文件，則 ![~~idf_1 = \log\left(\frac{D}{25}\right)~~](https://s0.wp.com/latex.php?latex=%7E%7Eidf_1+%3D+%5Clog%5Cleft%28%5Cfrac%7BD%7D%7B25%7D%5Cright%29%7E%7E&bg=ffffff&fg=000&s=0 "~~idf_1 = \log\left(\frac{D}{25}\right)~~")。如果詞彙 ![t](https://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0 "t")在非常多篇文章中都出現過，就代表 ![~d_t~](https://s0.wp.com/latex.php?latex=%7Ed_t%7E&bg=ffffff&fg=000&s=0 "~d_t~") 很大，此時![~idf_t~](https://s0.wp.com/latex.php?latex=%7Eidf_t%7E&bg=ffffff&fg=000&s=0 "~idf_t~") 就會比較小。
+    > 
+    > 而一個字對於一篇文件重要性的分數 (score) 就可以透過TF與IDF兩個指標計算出來，我們將第 ![t](https://s0.wp.com/latex.php?latex=t&bg=ffffff&fg=000&s=0 "t")個詞彙對於第 ![~d~](https://s0.wp.com/latex.php?latex=%7Ed%7E&bg=ffffff&fg=000&s=0 "~d~") 篇文件的TF-IDF權重定義為 ![~w_{t,d} =  tf_{t,d} \times  idf_t ~](https://s0.wp.com/latex.php?latex=%7Ew_%7Bt%2Cd%7D+%3D%C2%A0+tf_%7Bt%2Cd%7D+%5Ctimes+%C2%A0idf_t+%7E&bg=ffffff&fg=000&s=0 "~w_{t,d} =  tf_{t,d} \times  idf_t ~")。如此一來，當詞彙 ![~t~](https://s0.wp.com/latex.php?latex=%7Et%7E&bg=ffffff&fg=000&s=0 "~t~") 很常出現在文件  ![~d~](https://s0.wp.com/latex.php?latex=%7Ed%7E&bg=ffffff&fg=000&s=0 "~d~") 時，他的 ![~tf_{t,d} ~](https://s0.wp.com/latex.php?latex=%7Etf_%7Bt%2Cd%7D+%7E&bg=ffffff&fg=000&s=0 "~tf_{t,d} ~") 就會比較大，而如果詞彙![~~ t](https://s0.wp.com/latex.php?latex=%7E%7Et&bg=ffffff&fg=000&s=0 "~~t") 也很少出現在其他篇文章，則 ![~idf_t~](https://s0.wp.com/latex.php?latex=%7Eidf_t%7E&bg=ffffff&fg=000&s=0 "~idf_t~") 也會比較大，使 ![~w_{t,d}~](https://s0.wp.com/latex.php?latex=%7Ew_%7Bt%2Cd%7D%7E&bg=ffffff&fg=000&s=0 "~w_{t,d}~")整體來說比較大，也就是說詞彙![~t~](https://s0.wp.com/latex.php?latex=%7Et%7E&bg=ffffff&fg=000&s=0 "~t~") 對於文件  ![~d~](https://s0.wp.com/latex.php?latex=%7Ed%7E&bg=ffffff&fg=000&s=0 "~d~") 來說是很重要的。如此一來，我們就可以計算出 TF-IDF 矩陣，如下圖所示。
+    > 
+    > ![圖片1](https://taweihuang.hpd.io/wp-content/uploads/2017/03/圖片1-1.png)
+    > 
+    > 另一方面， TF-IDF 時常被用來作資訊檢索 (information retrieval)，比如說，給定一串指令 (query)「文字 1 + 文字 3 + 不在現有詞彙裡面的文字」，則這串指令跟第 ![d](https://s0.wp.com/latex.php?latex=d&bg=ffffff&fg=000&s=0 "d") 的關聯分數就可以定義文 ![tf_{1,d} + tf_{3,d} ](https://s0.wp.com/latex.php?latex=tf_%7B1%2Cd%7D+%2B+tf_%7B3%2Cd%7D%C2%A0&bg=ffffff&fg=000&s=0 "tf_{1,d} + tf_{3,d} ")。
+    > 
+    > ### 大鼻是怎麼用 TF-IDF？
+    > 
+    > TF-IDF 常被我用在3個地方，一個是作為 baseline model的特徵 (feature)，比如說作文件分類 (text classification) 時，我就會把 tf 跟 idf 都當作文件的特徵(所以一篇文章總夠會有 ![2T](https://s0.wp.com/latex.php?latex=2T&bg=ffffff&fg=000&s=0 "2T")個特徵)，去跑分類模型，作為 baseline。有時候我會把一個詞彙對於每篇的文章的 tf-idf 值當作該詞彙的特徵，去跑文字的分群。還有一個是大鼻好友ㄐㄓ告訴我的妙招，就是如果我們想要用word2vec得出來的詞向量去表示一個文件的話，可以用tf-idf的值當作權重，再把該文件中每個詞向量用tf-idf當作權重加起來，效果也很不錯喔！
+
+
+
+
 
 
 ### Doc2Vec
@@ -365,6 +522,25 @@ Parameters:
 - [How does doc2vec represent feature vector of a document? Can anyone explain mathematically how the process is done? - Quora](https://www.quora.com/How-does-doc2vec-represent-feature-vector-of-a-document-Can-anyone-explain-mathematically-how-the-process-is-done)
 
 - [jhlau/doc2vec: Python scripts for training/testing paragraph vectors](https://github.com/jhlau/doc2vec)
+
+
+### TreeRNN(TreeLSTM)
+
+- [[1503.00075] Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks](https://arxiv.org/abs/1503.00075)
+
+
+- [基于TreeLSTM的情感分析](https://zhuanlan.zhihu.com/p/35252733)
+
+
+
+### Tree-Based CNN
+
+- [[1409.5718] Convolutional Neural Networks over Tree Structures for Programming Language Processing](https://arxiv.org/abs/1409.5718)
+
+- [[1504.01106] Discriminative Neural Sentence Modeling by Tree-Based Convolution](https://arxiv.org/abs/1504.01106)
+
+- [[1512.08422] Natural Language Inference by Tree-Based Convolution and Heuristic Matching](https://arxiv.org/abs/1512.08422)
+
 
 
 ### Neural Bag-of-Ngrams
@@ -497,6 +673,111 @@ Parameters:
     > ![](https://pic3.zhimg.com/80/v2-cb699c1869f91223cffe3d77cc524f79_hd.jpg)
 
 
+## 語句解析
+
+### Bi-LSTM-CRF
+
+- [[1508.01991] Bidirectional LSTM-CRF Models for Sequence Tagging](https://arxiv.org/abs/1508.01991)
+
+- [词法分析之Bi-LSTM-CRF框架 - CSDN博客](https://blog.csdn.net/qrlhl/article/details/78561342)
+
+
+
+
+### Stack-augmented Parser-Interpreter Neural Network (SPINN)
+
+- [[1603.06021] A Fast Unified Model for Parsing and Sentence Understanding](https://arxiv.org/abs/1603.06021)
+
+- [Recursive Neural Networks with PyTorch | NVIDIA Developer Blog](https://devblogs.nvidia.com/recursive-neural-networks-pytorch/)
+
+    - [如何用PyTorch實現遞歸神經網絡？ - 壹讀](https://read01.com/kdQym4.html)
+
+    > The dataset comes with machine-generated syntactic parse trees, which group the words in each sentence into phrases and clauses that all have independent meaning and are each composed of two words or sub-phrases. Many linguists believe that humans understand language by combining meanings in a hierarchical way as described by trees like these, so it might be worth trying to build a neural network that works the same way. Here’s an example of a sentence from the dataset, with its parse tree represented by nested parentheses:
+    > 
+    > ```
+    >     ( ( The church ) ( ( has ( cracks ( in ( the ceiling ) ) ) ) . ) )
+    > ```
+    > 
+    > One way to encode this sentence using a neural network that takes the parse tree into account would be to build a neural network layer Reduce that combines pairs of words (represented by word embeddings like [GloVe](http://nlp.stanford.edu/projects/glove/)) and/or phrases, then apply this layer recursively, taking the result of the last Reduce operation as the encoding of the sentence:
+    > 
+    > ```
+    > X = Reduce(“the”, “ceiling”)
+    > Y = Reduce(“in”, X)
+    > ... etc.
+    > ```
+    > 
+    > But what if I want the network to work in an even more humanlike way, reading from left to right and maintaining sentence context while still combining phrases using the parse tree? Or, what if I want to train a network to construct its own parse tree as it reads the sentence, based on the words it sees? Here’s the same parse tree written a slightly different way:
+    > 
+    > ```
+    >     The church ) has cracks in the ceiling ) ) ) ) . ) )
+    > ```
+    > 
+    > Or a third way, again equivalent:
+    > 
+    > ```
+    > WORDS:  The church   has cracks in the ceiling         .
+    > PARSES: S   S      R S   S      S  S   S       R R R R S R R
+    > ```
+    > 
+    > All I did was remove open parentheses, then tag words with “S” for “shift” and replace close parentheses with “R” for “reduce.” But now the information can be read from left to right as a set of instructions for manipulating a stack and a stack-like buffer, with exactly the same results as the recursive method described above:
+    > 
+    > 1.  Place the words into the buffer.
+    > 2.  Pop “The” from the front of the buffer and push it onto stack, followed by “church”.
+    > 3.  Pop top two stack values, apply Reduce, then push the result back to the stack.
+    > 4.  Pop “has” from buffer and push to stack, then “cracks”, then “in”, then “the”, then “ceiling”.
+    > 5.  Repeat four times: pop top two stack values, apply Reduce, then push the result.
+    > 6.  Pop “.” from buffer and push onto stack.
+    > 7.  Repeat two times: pop top two stack values, apply Reduce, then push the result.
+    > 8.  Pop the remaining stack value and return it as the sentence encoding.
+    > 
+    > I also want to maintain sentence context to take into account information about the parts of the sentence the system has already read when performing Reduce operations on later parts of the sentence. So I’ll replace the two-argument `Reduce` function with a three-argument function that takes a left child phrase, a right child phrase, and the current sentence context state. This state is created by a second neural network layer, a recurrent unit called the `Tracker`. The `Tracker` produces a new state at every step of the stack manipulation (i.e., after reading each word or close parenthesis) given the current sentence context state, the top entry *b* in the buffer, and the top two entries *s1*, *s2* in the stack:
+    > 
+    > ```
+    > context\[t+1\] = Tracker(context\[t\], b, s1, s2)
+    > ```
+    > 
+
+### SLING
+
+- [google/sling: SLING - A natural language frame semantics parser](https://github.com/google/sling)
+
+- [自然語言理解技術大進展！免斷詞，Google語意框架剖析器SLING能自動找出語句架構 | iThome](https://www.ithome.com.tw/news/118415)
+
+    > [Google最近開源釋出實驗性的語意框架剖析器（Parsing）SLING，](https://research.googleblog.com/2017/11/sling-natural-language-frame-semantic.html)有別於以往用斷詞的方式，SLING不需要靠人工的方式標註語句，而是可以透過語意框架（Frame Semantic Parsing）的方式自動抽取出文字所要描述的語意結構，再以語意框架圖（Semantic frame graph）的方式呈現，Google研究團隊表示，SLING是透過Tensorflow和Dragnn訓練過的標註語料庫，這是自然語言理解技術的一大進展，語意分析不再靠斷詞，而是從語言意義層面，自動標註出語句的結構。
+    > 
+    > SLING是採用一個特定用途的遞歸神經網路（Recurrent neural network，RNN）模型，在該框架圖上，透過輸入文字的遞增編輯動作，來計算輸出值，也就是說，該框架圖因為靈活的特性，可以擷取多個語意任務，SLING的語意剖析器只用了輸入詞句來訓練，沒有採用額外的生成的標註，像是語句相依性分析產生的標註。
+    > 
+    > ![](https://s4.itho.me/sites/default/files/images/sling.png)
+    > 
+    > 大部分的自然語言理解系統都是採用一種分析流程，從詞性標註 （Part-of-speech tagging），到透過語句相依性分析（Dependency parsing）來計算輸入的文字語意。這種模型較容易將不同的方析階段模組化，但是往往也導致一個問題，一旦產生錯誤將會影響整個模型的預測。
+    > 
+    > SLING輸出的語意框架圖可以直接擷取使用者感興趣的語意標示（Semantic annotation），也能避免系統流程中的設計缺陷，還能避免不必要的計算。
+    > 
+    > 舉例來說，傳統的自然語言理解系統會先執行語句相依性分析的工作，最後才會執行指代消解（Coreference resolution），指代消解是將指定代名詞還原為被替換的名詞，來避免重要的字詞因被替換為指定代名詞，而在計算權重時降低的問題，如果語句相依性分析過程若有錯誤，將會連帶影響最終輸出的結果。
+    > 
+    > ### 語意框架剖析的機制
+    > 
+    > 語意框架代表語句的意義，也是一個描述，每個描述都被稱為一個框架，該框架可被視為知識或是意義的單元，也包含了與其相關的概念或是框架的相互關係。SLING將每個框架組織成一個Slot的清單，每個Slot都有自己的角色或是名稱，以及代表的值，該代表值可以是個字詞的原意，或是與其他框架的連結。
+    > 
+    > 例如，Many people now claim to have predicted Black Monday這句話，SLING先辨識語句的實體、測量值和其他概念，實體像是人物、地點，事件，測量值像是時間、距離，其他概念則包含動詞，接著，將這些辨識出來的字詞分類到正確的語意角色，當作輸入值，因此，SLING會先將people視為人物框架、predicted是動詞類別框架、Black Monday是事件框架，predicted這個動詞表示為PREDICT-01框架，PREDICT-01框架與預測的主詞Slot有相互關係，因此，PREDICT-01與PERSON框架連接，除此之外，PREDICT-01框架也與被預測的受詞有相互關係，與Black Monday的EVENT框架連接。
+    > 
+    > ![](https://s4.itho.me/sites/default/files/images/%E7%AF%84%E4%BE%8B.PNG)
+    > 
+    > Google研究團隊認為，SLING透過語意框架，來訓練並優化遞歸神經網路。神經網路在隱藏層中學習到的知識，可以取代了人工標註特徵。
+    > 
+    > 該語意剖析器的輸入是以雙向長短記憶單元（Bi-directional LSTMs）演算法為基礎的轉換語意框架剖析方法，使用Transition Based Recurrent Unit (TBRU)來輸出，結合成一個訓練過的模型，只需要文字標註當作輸入，經過轉換系統，輸出語意框架圖形，不需要中間產生的標註（Intervening symbolic representation）。
+    > 
+    > 輸出層的文字在輸出後，還會經過轉換系統（Transition system），再重新進入輸入層，其中，轉換系統的一項關鍵機制是採用了固定大小的框架來記錄字詞對上下文預測的重要程度，也就是說，該框架是用來表示最近提及，或是在語句中被增強的關鍵字。Google研究團隊發現，透過這個簡單的機制，在擷取大量語意框架的關聯上，效率提升有非常多。
+    > 
+    > 目前，Google的研究團隊表示，SLING是研究語意剖析的實驗，Google已在Github將SLING開源釋出，提供開發人員預先訓練完成的語意剖析模型，可應用於知識萃取、解析複雜引用（Resolving complex references），以及對話理解等工作，未來，Google將會持續擴增SLING的功能。
+
+## 文法改錯
+
+### DeepFix
+
+- [DeepFix: Fixing Common C Language Errors by Deep Learning - 13921](https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/download/14603/13921)
+
+
 
 
 ## auto tagging
@@ -530,24 +811,6 @@ Parameters:
 - [nlp - How to auto-tag content, algorithms and suggestions needed - Stack Overflow](https://stackoverflow.com/questions/6039238/how-to-auto-tag-content-algorithms-and-suggestions-needed)
 
 
-
-## seq2seq
-
-- [从Encoder到Decoder实现Seq2Seq模型](https://zhuanlan.zhihu.com/p/27608348)
-
-- [Neural Machine Translation (seq2seq) Tutorial  |  TensorFlow](https://www.tensorflow.org/tutorials/seq2seq)
-
-- [深度学习笔记——Word2vec和Doc2vec训练实例以及参数解读 - CSDN博客](https://blog.csdn.net/mpk_no1/article/details/72510655)
-
-- [序列到序列的语言翻译模型代码(tensorflow)解析 - grt1st博客](https://www.grt1st.cn/posts/seq2seq-code/)
-
-- [用seq2seq with attention实现中文歌词生成](https://zhuanlan.zhihu.com/p/25280463)
-
-- [tensorflow代码全解析 -3- seq2seq 自动生成文本 - 简书](https://www.jianshu.com/p/9766b317ffa4)
-
-- [從零開始的 Sequence to Sequence | 雷德麥的藏書閣](https://zake7749.github.io/2017/09/28/Sequence-to-Sequence-tutorial/)
-
-- [教電腦寫作：AI球評——Seq2seq模型應用筆記(PyTorch + Python3) – Yi-Hsiang Kao – Medium](https://medium.com/@gau820827/%E6%95%99%E9%9B%BB%E8%85%A6%E5%AF%AB%E4%BD%9C-ai%E7%90%83%E8%A9%95-seq2seq%E6%A8%A1%E5%9E%8B%E6%87%89%E7%94%A8%E7%AD%86%E8%A8%98-pytorch-python3-31e853573dd0)
 
 
 ## Chinese Character Embeddings
@@ -589,44 +852,6 @@ Parameters:
 
 - [Representing Language with Recurrent and Convolutional Layers: An Authorship Attribution Example](https://hergott.github.io/language-representation-rnn-cnn/)
 
-## 語意解析
-
-
-
-### SLING
-
-- [google/sling: SLING - A natural language frame semantics parser](https://github.com/google/sling)
-
-- [自然語言理解技術大進展！免斷詞，Google語意框架剖析器SLING能自動找出語句架構 | iThome](https://www.ithome.com.tw/news/118415)
-
-    > [Google最近開源釋出實驗性的語意框架剖析器（Parsing）SLING，](https://research.googleblog.com/2017/11/sling-natural-language-frame-semantic.html)有別於以往用斷詞的方式，SLING不需要靠人工的方式標註語句，而是可以透過語意框架（Frame Semantic Parsing）的方式自動抽取出文字所要描述的語意結構，再以語意框架圖（Semantic frame graph）的方式呈現，Google研究團隊表示，SLING是透過Tensorflow和Dragnn訓練過的標註語料庫，這是自然語言理解技術的一大進展，語意分析不再靠斷詞，而是從語言意義層面，自動標註出語句的結構。
-    > 
-    > SLING是採用一個特定用途的遞歸神經網路（Recurrent neural network，RNN）模型，在該框架圖上，透過輸入文字的遞增編輯動作，來計算輸出值，也就是說，該框架圖因為靈活的特性，可以擷取多個語意任務，SLING的語意剖析器只用了輸入詞句來訓練，沒有採用額外的生成的標註，像是語句相依性分析產生的標註。
-    > 
-    > ![](https://s4.itho.me/sites/default/files/images/sling.png)
-    > 
-    > 大部分的自然語言理解系統都是採用一種分析流程，從詞性標註 （Part-of-speech tagging），到透過語句相依性分析（Dependency parsing）來計算輸入的文字語意。這種模型較容易將不同的方析階段模組化，但是往往也導致一個問題，一旦產生錯誤將會影響整個模型的預測。
-    > 
-    > SLING輸出的語意框架圖可以直接擷取使用者感興趣的語意標示（Semantic annotation），也能避免系統流程中的設計缺陷，還能避免不必要的計算。
-    > 
-    > 舉例來說，傳統的自然語言理解系統會先執行語句相依性分析的工作，最後才會執行指代消解（Coreference resolution），指代消解是將指定代名詞還原為被替換的名詞，來避免重要的字詞因被替換為指定代名詞，而在計算權重時降低的問題，如果語句相依性分析過程若有錯誤，將會連帶影響最終輸出的結果。
-    > 
-    > ### 語意框架剖析的機制
-    > 
-    > 語意框架代表語句的意義，也是一個描述，每個描述都被稱為一個框架，該框架可被視為知識或是意義的單元，也包含了與其相關的概念或是框架的相互關係。SLING將每個框架組織成一個Slot的清單，每個Slot都有自己的角色或是名稱，以及代表的值，該代表值可以是個字詞的原意，或是與其他框架的連結。
-    > 
-    > 例如，Many people now claim to have predicted Black Monday這句話，SLING先辨識語句的實體、測量值和其他概念，實體像是人物、地點，事件，測量值像是時間、距離，其他概念則包含動詞，接著，將這些辨識出來的字詞分類到正確的語意角色，當作輸入值，因此，SLING會先將people視為人物框架、predicted是動詞類別框架、Black Monday是事件框架，predicted這個動詞表示為PREDICT-01框架，PREDICT-01框架與預測的主詞Slot有相互關係，因此，PREDICT-01與PERSON框架連接，除此之外，PREDICT-01框架也與被預測的受詞有相互關係，與Black Monday的EVENT框架連接。
-    > 
-    > ![](https://s4.itho.me/sites/default/files/images/%E7%AF%84%E4%BE%8B.PNG)
-    > 
-    > Google研究團隊認為，SLING透過語意框架，來訓練並優化遞歸神經網路。神經網路在隱藏層中學習到的知識，可以取代了人工標註特徵。
-    > 
-    > 該語意剖析器的輸入是以雙向長短記憶單元（Bi-directional LSTMs）演算法為基礎的轉換語意框架剖析方法，使用Transition Based Recurrent Unit (TBRU)來輸出，結合成一個訓練過的模型，只需要文字標註當作輸入，經過轉換系統，輸出語意框架圖形，不需要中間產生的標註（Intervening symbolic representation）。
-    > 
-    > 輸出層的文字在輸出後，還會經過轉換系統（Transition system），再重新進入輸入層，其中，轉換系統的一項關鍵機制是採用了固定大小的框架來記錄字詞對上下文預測的重要程度，也就是說，該框架是用來表示最近提及，或是在語句中被增強的關鍵字。Google研究團隊發現，透過這個簡單的機制，在擷取大量語意框架的關聯上，效率提升有非常多。
-    > 
-    > 目前，Google的研究團隊表示，SLING是研究語意剖析的實驗，Google已在Github將SLING開源釋出，提供開發人員預先訓練完成的語意剖析模型，可應用於知識萃取、解析複雜引用（Resolving complex references），以及對話理解等工作，未來，Google將會持續擴增SLING的功能。
-
 
 
 
@@ -657,9 +882,27 @@ Parameters:
 
 ## 機器翻譯
 
-### 監督式
+### seq2seq
 
-#### attention model
+- [从Encoder到Decoder实现Seq2Seq模型](https://zhuanlan.zhihu.com/p/27608348)
+
+- [Neural Machine Translation (seq2seq) Tutorial  |  TensorFlow](https://www.tensorflow.org/tutorials/seq2seq)
+
+- [深度学习笔记——Word2vec和Doc2vec训练实例以及参数解读 - CSDN博客](https://blog.csdn.net/mpk_no1/article/details/72510655)
+
+- [序列到序列的语言翻译模型代码(tensorflow)解析 - grt1st博客](https://www.grt1st.cn/posts/seq2seq-code/)
+
+- [用seq2seq with attention实现中文歌词生成](https://zhuanlan.zhihu.com/p/25280463)
+
+- [tensorflow代码全解析 -3- seq2seq 自动生成文本 - 简书](https://www.jianshu.com/p/9766b317ffa4)
+
+- [從零開始的 Sequence to Sequence | 雷德麥的藏書閣](https://zake7749.github.io/2017/09/28/Sequence-to-Sequence-tutorial/)
+
+- [教電腦寫作：AI球評——Seq2seq模型應用筆記(PyTorch + Python3) – Yi-Hsiang Kao – Medium](https://medium.com/@gau820827/%E6%95%99%E9%9B%BB%E8%85%A6%E5%AF%AB%E4%BD%9C-ai%E7%90%83%E8%A9%95-seq2seq%E6%A8%A1%E5%9E%8B%E6%87%89%E7%94%A8%E7%AD%86%E8%A8%98-pytorch-python3-31e853573dd0)
+
+
+
+### attention model
 
 - [tensorflow/nmt: TensorFlow Neural Machine Translation Tutorial](https://github.com/tensorflow/nmt)
 
@@ -677,83 +920,10 @@ Parameters:
 
 
 
-#### fastText
-
-- [Word vectors for 157 languages · fastText](https://fasttext.cc/docs/en/crawl-vectors.html)
-
-- [fastText，智慧與美貌並重的文本分類及向量化工具 - 幫趣](http://bangqu.com/749a22.html#utm_source=Facebook_PicSee&utm_medium=Social)
-
-    > 簡單介紹一下fastText的主要作者，這位高顏值的Facebook科學家Tomas Mikolov小哥。他2012年到2014年就職於Google，隨後跳到了Facebook至今。
-    >  
-    > 他名揚天下的，主要是以下三篇重要論文：
-    > 
-    > 1.Efficient Estimation of WordRepresentation in Vector Space, 2013 —— 這篇是word2vec的開蒙之作；
-    > 
-    > 2.Distributed Representations ofSentences and Documents, 2014 —— 這篇將詞向量的思想擴展到了段落和文檔上；
-    > 
-    > 3.Enriching Word Vectors withSubword Information, 2016 —— 這篇和fastText相關，引入了詞內的n-gram信息，豐富了詞向量的語義。
-    > 
-    > fastText能夠做到效果好，速度快，主要依靠兩個祕密武器：一是利用了詞內的n-gram信息(subword n-gram information)，二是用到了層次化Softmax迴歸(Hierarchical Softmax)的訓練trick。我們分別介紹一下。
-    > 
-    > 
-    > __Subword n-gramlnformation__
-    > 
-    > 在fastText的工作之前，大部分的文本向量化的工作，都是以詞彙表中的獨立單詞作爲基本單元來進行訓練學習的。這種想法非常自然，但也會帶來如下的問題：
-    > 
-    > · 低頻詞、罕見詞，由於在語料中本身出現的次數就少，得不到足夠的訓練，效果不佳；
-    > 
-    > · 未登錄詞，如果出現了一些在詞典中都沒有出現過的詞，或者帶有某些拼寫錯誤的詞，傳統模型更加無能爲力。
-    > 
-    > fastText引入了subword n-gram的概念來解決詞形變化(morphology)的問題。直觀上，它將一個單詞打散到字符級別，並且利用字符級別的n-gram信息來捕捉字符間的順序關係，希望能夠以此豐富單詞內部更細微的語義。我們知道，西方語言文字常常通過前綴、後綴、字根來構詞，漢語也有單字表義的傳統，所以這樣的做法聽起來還是有一定的道理。
-    > 
-    > 舉個例子。對於一個單詞「google」，爲了表達單詞前後邊界，我們加入<>兩個字符，即變形爲「 」。假設我們希望抽取所有的tri-gram信息，可以得到如下集合：G = { }。在實踐中，我們往往會同時提取單詞的多種n-gram信息，如2/3/4/5-gram。這樣，原始的一個單詞google，就被一個字符級別的n-gram集合所表達。
-    > 
-    > 在訓練過程中，每個n-gram都會對應訓練一個向量，而原來完整單詞的詞向量就由它對應的所有n-gram的向量求和得到。所有的單詞向量以及字符級別的n-gram向量會同時相加求平均作爲訓練模型的輸入。
-    > 
-    > 從實驗效果來看，subword n-gram信息的加入，不但解決了低頻詞未登錄詞的表達的問題，而且對於最終任務精度一般會有幾個百分點的提升。唯一的問題就是由於需要估計的參數多，模型可能會比較膨脹。不過，Facebook也提供了幾點壓縮模型的建議：
-    > 
-    > · 採用hash-trick。由於n-gram原始的空間太大，可以用某種hash函數將其映射到固定大小的buckets中去，從而實現內存可控；
-    > 
-    > · 採用quantize命令，對生成的模型進行參數量化和壓縮；
-    > 
-    > · 減小最終向量的維度。
-    > 
-    > __Hierarchical Softmax__
-    > 
-    > 另一個效率優化的點是所謂的層次化Softmax。
-    > 
-    > Softmax大家都比較熟悉，它是邏輯迴歸(logisticregression)在多分類任務上的推廣，是我們訓練的神經網絡中的最後一層。一般地，Softmax以隱藏層的輸出h爲輸入，經過線性和指數變換後，再進行全局的歸一化處理，找到概率最大的輸出項。當詞彙數量V較大時（一般會到幾十萬量級），Softmax計算代價很大，是O(V)量級。
-    > 
-    > 層次化的Softmax的思想實質上是將一個全局多分類的問題，轉化成爲了若干個二元分類問題，從而將計算複雜度從O(V)降到O(logV)。
-    > 
-    > 每個二元分類問題，由一個基本的邏輯迴歸單元來實現。如下圖所示，從根結點開始，每個中間結點（標記成灰色）都是一個邏輯迴歸單元，根據它的輸出來選擇下一步是向左走還是向右走。下圖示例中實際上走了一條「左-左-右」的路線，從而找到單詞w₂。而最終輸出單詞w₂的概率，等於中間若干邏輯迴歸單元輸出概率的連乘積。
-    > 
-    > ![](http://i2.bangqu.com/j/news/20180606/749a22152825763470852j19.png)
-    > 
-    >  ![](http://i2.bangqu.com/j/news/20180606/749a221528257635684823ER.png)
-    > 
-    > 至此，我們還剩下兩個問題，一是如何構造每個邏輯迴歸單元的輸入，另一個是如何建立這棵用於判斷的樹形結構。
-    > 
-    > __fastText和傳統CBOW模型對比__
-    > 
-    > 這裏假設你對word2vec的CBOW模型比較熟悉，我們來小結一下CBOW和fastText的訓練過程有什麼不同。下面兩張圖分別對應CBOW和fastText的網絡結構圖。
-    > 
-    > 兩者的不同主要體現在如下幾個方面：
-    > 
-    > · 輸入層：CBOW的輸入是目標單詞的上下文並進行one-hot編碼，fastText的輸入是多個單詞embedding向量，並將單詞的字符級別的n-gram向量作爲額外的特徵；
-    > 
-    > · 從輸入層到隱藏層，CBOW會將上下文單詞向量疊加起來並經過一次矩陣乘法（線性變化）並應用激活函數，而fastText省略了這一過程，直接將embedding過的向量特徵求和取平均；
-    > 
-    > · 輸出層，一般的CBOW模型會採用Softmax作爲輸出，而fastText則採用了Hierarchical Softmax，大大降低了模型訓練時間；
-    > 
-    > · CBOW的輸出是目標詞彙，fastText的輸出是文檔對應的類標。
-    > 
 
 
 
-### 無監督
-
-#### UNSUPERVISED MACHINE TRANSLATION 
+### UNSUPERVISED MACHINE TRANSLATION 
 
 - [《UNSUPERVISED MACHINE TRANSLATION USING MONOLINGUAL CORPORA ONLY》阅读笔记](https://zhuanlan.zhihu.com/p/32375955)
 
@@ -768,7 +938,7 @@ Parameters:
     > 兩篇論文之間唯一可以直接比較的結果是從以包含了3000萬句子的英法文本資料庫中進行的翻譯，兩個系統都在雙語評估替補評分（用來衡量翻譯的準確性）上的得分都在15分左右 。這個數字還比不上谷歌翻譯。谷歌翻譯使用有監督的方法，在同類測試上的得分是40多左右，人類水平是50分左右。但是，這些方法都比詞對詞的翻譯要好。
 
 
-#### CipherGAN
+### CipherGAN
 
 - [无平行文本照样破解密码，CipherGAN有望提升机器翻译水平](https://zhuanlan.zhihu.com/p/33672256)
 
@@ -788,56 +958,71 @@ Parameters:
 - [机器这次击败人之后，争论一直没平息 | SQuAD风云](https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247493419&idx=1&sn=73425fec04482f14f6b9b7316e425e63&chksm=e8d05059dfa7d94fc1457a36d4f62cb1b8a057ce18388fbad448aa6b53f4dbb1299cfd697724&scene=21#wechat_redirect)
 
 
-SQuAD被称为行业公认的机器阅读理解顶级水平测试，可以理解为机器阅读理解领域的ImageNet。它们同样出自斯坦福，同样是一个数据集，搭配一个竞争激烈的竞赛。
-
-这个竞赛基于SQuAD问答数据集，考察两个指标：EM和F1。
-
-EM是指精确匹配，也就是模型给出的答案与标准答案一模一样；F1，是根据模型给出的答案和标准答案之间的重合度计算出来的，也就是结合了召回率和精确率。
-
-目前阿里、微软团队并列第一，其中EM得分微软（r-net+融合模型）更高，F1得分阿里（SLQA+融合模型）更高。但是他们在EM成绩上都击败了“人类表现”。
-
----
-
-2016年，斯坦福大学从维基百科上随机选取了536篇文章，随后采用众包的方式，由人类阅读这些文章后，提出问题并人工标注出答案，构成了包含10万多个问题的阅读理解数据集SQuAD。
-
-对于这样一个数据集，以色列巴伊兰大学的著名NLP研究者Yoav Goldberg的评价是太局限（restricted）了。
-
-
-早在好几个月之前，AI在SQuAD上接近人类得分的时候，Goldberg就专门写了个PPT，把SQuAD批判了一番。
-
-![](http://mmbiz.qpic.cn/mmbiz_jpg/YicUhk5aAGtD6fFYcb6DzyJFYv9qXbIXrhnSnicBCVRib5QEQ9QvplO5Jb1gicibv4xfnK4VOlxMTBImGVvcnuAlibPQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1)
-
-他列举了SQuAD的三大不足：
-
--   受限于可以选择span来回答的问题；
-
--   需要在给定的段落里寻找答案；
-
--   段落里保证有答案。
-
-对于这些不足，DeepMind前不久发布的[NarrativeQA论文](http://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247492423&idx=2&sn=c02f90e09a49c5c41d7aac3472573b94&chksm=e8d05435dfa7dd235aeb66aae46bc619f3cb6940d88b5d00b34204c3e38757f48480de2c6f6f&scene=21#wechat_redirect)做了更详细的说明。
-
----
-
-他们认为，由于SQuAD问题的答案必须是给定段落中的内容，这就导致很多评估阅读理解能力应该用到的合情合理的问题，根本没法问。
-
-同时，这种简单的答案通过文档表面的信号就能提取出来，对于无法用文中短语来回答、或者需要用文中几个不连续短语来回答的问题，SQuAD训练出来的模型无法泛化。
-
-另外，SQuAD虽然问题很多，但其实用到的文章又少又短，这就限制了整个数据集词汇和话题的多样性。
-
-因此，SQuAD上表现不错的模型，如果要用到更复杂的问题上，可扩展性和适用性都很成问题。
-
+    > SQuAD被称为行业公认的机器阅读理解顶级水平测试，可以理解为机器阅读理解领域的ImageNet。它们同样出自斯坦福，同样是一个数据集，搭配一个竞争激烈的竞赛。
+    > 
+    > 这个竞赛基于SQuAD问答数据集，考察两个指标：EM和F1。
+    > 
+    > EM是指精确匹配，也就是模型给出的答案与标准答案一模一样；F1，是根据模型给出的答案和标准答案之间的重合度计算出来的，也就是结合了召回率和精确率。
+    > 
+    > 目前阿里、微软团队并列第一，其中EM得分微软（r-net+融合模型）更高，F1得分阿里（SLQA+融合模型）更高。但是他们在EM成绩上都击败了“人类表现”。
+    > 
+    > ---
+    > 
+    > 2016年，斯坦福大学从维基百科上随机选取了536篇文章，随后采用众包的方式，由人类阅读这些文章后，提出问题并人工标注出答案，构成了包含10万多个问题的阅读理解数据集SQuAD。
+    > 
+    > 对于这样一个数据集，以色列巴伊兰大学的著名NLP研究者Yoav Goldberg的评价是太局限（restricted）了。
+    > 
+    > 
+    > 早在好几个月之前，AI在SQuAD上接近人类得分的时候，Goldberg就专门写了个PPT，把SQuAD批判了一番。
+    > 
+    > ![](http://mmbiz.qpic.cn/mmbiz_jpg/YicUhk5aAGtD6fFYcb6DzyJFYv9qXbIXrhnSnicBCVRib5QEQ9QvplO5Jb1gicibv4xfnK4VOlxMTBImGVvcnuAlibPQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1)
+    > 
+    > 他列举了SQuAD的三大不足：
+    > 
+    > -   受限于可以选择span来回答的问题；
+    > 
+    > -   需要在给定的段落里寻找答案；
+    > 
+    > -   段落里保证有答案。
+    > 
+    > 对于这些不足，DeepMind前不久发布的[NarrativeQA论文](http://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247492423&idx=2&sn=c02f90e09a49c5c41d7aac3472573b94&chksm=e8d05435dfa7dd235aeb66aae46bc619f3cb6940d88b5d00b34204c3e38757f48480de2c6f6f&scene=21#wechat_redirect)做了更详细的说明。
+    > 
+    > ---
+    > 
+    > 他们认为，由于SQuAD问题的答案必须是给定段落中的内容，这就导致很多评估阅读理解能力应该用到的合情合理的问题，根本没法问。
+    > 
+    > 同时，这种简单的答案通过文档表面的信号就能提取出来，对于无法用文中短语来回答、或者需要用文中几个不连续短语来回答的问题，SQuAD训练出来的模型无法泛化。
+    > 
+    > 另外，SQuAD虽然问题很多，但其实用到的文章又少又短，这就限制了整个数据集词汇和话题的多样性。
+    > 
+    > 因此，SQuAD上表现不错的模型，如果要用到更复杂的问题上，可扩展性和适用性都很成问题。
+    > 
 
 ## 文章分類器
 
 
-### 垃圾郵件
+### 垃圾郵件偵測
+
+- [How To Build a Simple Spam-Detecting Machine Learning Classifier](https://hackernoon.com/how-to-build-a-simple-spam-detecting-machine-learning-classifier-4471fe6b816e)
 
 - [Spam detection using neural networks in Python – Emergent // Future – Medium](https://medium.com/emergent-future/spam-detection-using-neural-networks-in-python-9b2b2a062272)
+
+
+- [Spam Classification | Kaggle](https://www.kaggle.com/benvozza/spam-classification/notebook)
+
+- [[1606.01042] Machine Learning for E-mail Spam Filtering: Review,Techniques and Trends](https://arxiv.org/abs/1606.01042)
+
+
 
 #### dataset
 
 - [UCI Machine Learning Repository: Spambase Data Set](https://archive.ics.uci.edu/ml/datasets/Spambase)
+
+- [SMS Spam Collection Dataset | Kaggle](https://www.kaggle.com/uciml/sms-spam-collection-dataset/kernels)
+
+- [Fraudulent E-mail Corpus | Kaggle](https://www.kaggle.com/rtatman/fraudulent-email-corpus/data)
+
+
 
 ## 機器摘要
 
@@ -850,20 +1035,26 @@ EM是指精确匹配，也就是模型给出的答案与标准答案一模一样
     - [[1705.04304] A Deep Reinforced Model for Abstractive Summarization](https://arxiv.org/abs/1705.04304)
 
 
-## 法律文件NLP
+## 文字生成
 
-- [如何找判決 – 一起讀判決](https://casebf.com/2018/01/16/case_search/)
+- [Neural text generation – Phrasee – Medium](https://medium.com/phrasee/neural-text-generation-generating-text-using-conditional-language-models-a37b69c7cd4b)
 
-- [裁判書查詢](http://jirs.judicial.gov.tw/FJUD/FJUDQRY01M_1.aspx)
+### google smart compose
 
-- [lawsnote.com/](https://lawsnote.com/)
+- [未來Email將預測你的心思自動寫完？Google大腦首席工程師在官方部落格詳細介紹了原理 - INSIDE 硬塞的網路趨勢觀察](https://www.inside.com.tw/2018/06/20/smart-compose)
 
-- [KWIC 關鍵字](http://www.taiwanlii.ccu.edu.tw/lawstd_keywordspicker/)
+    - [Google AI Blog: Smart Compose: Using Neural Networks to Help Write Emails](https://ai.googleblog.com/2018/05/smart-compose-using-neural-networks-to.html)
 
-- [台灣法律資訊中心 Taiwan Legal Information Institute](http://www.taiwanlii.ccu.edu.tw/Tool.php)
 
-### 判決書 dataset
+    > Google 的方法是包含利用額外語境的一個方法，該方法是將問題轉換成一個序列到序列（seq2seq）的機器翻譯任務，其中源序列是郵件主題和上封郵件正文（假設存在上封郵件）的串聯，使用者正在寫的郵件是目標序列。儘管該方法在預測品質上表現良好，但它的延遲要比 Google 嚴苛的延遲標準超出了好幾個量級
+    > 
+    > 為了提高預測品質， Google 將一個 RNN-LM 神經網路與一個 BoW 模型結合起來，結合後的模型在速度上比 seq2seq 模型要快，且只輕微犧牲了預測品質。在該混合演算法中， Google 通過把詞嵌套們平均分配在每個區域內，來對郵件主題和此前的郵件內容進行編碼。隨後 Google 將這些平均分配後的嵌套連接在一起，並在每次執行解碼步驟時將它們提供給目標序列 RNN-LM，過程如下面的模型圖解。
+    > 
+    >  Smart Compose RNN-LM 模型架構。將郵件主題和此前郵件訊息進行編碼，採用的方法是將它們的詞嵌套平均分配在每一個區域內。隨後，平均後的嵌套會在每次執行解碼步驟時提供給目標序列 RNN-LM。
+    > 
+    > ![](https://i0.wp.com/www.inside.com.tw/wp-content/uploads/2018/06/model3.png?resize=640%2C236)
+    > 
 
-- [jrf_data - g0v.hackpad.tw](https://g0v.hackpad.tw/jrf_data-BlLdzEsImuv)
+
 
 

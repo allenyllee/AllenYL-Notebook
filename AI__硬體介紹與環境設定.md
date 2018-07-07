@@ -1076,7 +1076,7 @@
 - [Fog Computing Can Beat Amazon’s Cloud Computing Services On Price, Speed, And Convenience](https://blog.sonm.io/fog-computing-can-beat-amazons-cloud-computing-services-on-price-speed-and-convenience-5904d1dd14e8)
 - 
 
-## 該自己架還是使用雲端？
+### 該自己架還是使用雲端？
 
 - [GPU servers for machine learning startups: Cloud vs On-premise?](https://medium.com/@thereibel/gpu-servers-for-machine-learning-startups-cloud-vs-on-premise-9a9dedfcadc9)
 
@@ -1150,6 +1150,5 @@
     __Then I wanted to save money — I was using Amazon Web Services (AWS), which offered P2 instances with Nvidia K80 GPUs. Lately, the AWS bills were around \$60–70/month with a tendency to get larger. Also, it is expensive to store large datasets, like ImageNet.__
 
     __A sensible budget for me would be about 2 years worth of my current compute spending. At \$70/month for AWS, this put it at around \$1700 for the whole thing.__
-    
     
 

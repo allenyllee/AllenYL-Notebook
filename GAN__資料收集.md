@@ -1,5 +1,214 @@
 # GAN__資料收集
 
+[toc]
+<!-- toc --> 
+
+## 圖片生成
+
+### VAE
+
+- [Variational Autoencoders Explained](http://kvfrans.com/variational-autoencoders-explained/)
+    
+    - [[1312.6114] Auto-Encoding Variational Bayes](https://arxiv.org/abs/1312.6114)
+    
+    - [VAE(Variational Autoencoder)的原理 - Shiyu_Huang - 博客园](https://www.cnblogs.com/huangshiyu13/p/6209016.html)
+
+    > In an autoencoder, we add in another component that takes in the original images and encodes them into vectors for us. The deconvolutional layers then "decode" the vectors back to the original images.
+    > 
+    > ![](http://kvfrans.com/content/images/2016/08/autoenc.jpg)
+    > 
+    > We've finally reached a stage where our model has some hint of a practical use. We can train our network on as many images as we want. If we save the encoded vector of an image, we can reconstruct it later by passing it into the decoder portion. What we have is the standard autoencoder.
+    > 
+    > However, we're trying to build a generative model here, not just a fuzzy data structure that can "memorize" images. We can't generate anything yet, since we don't know how to create latent vectors other than encoding them from images.
+    >
+    > ---
+    > 
+    > We let the network decide this itself. For our loss term, we sum up two separate losses: the generative loss, which is a mean squared error that measures how accurately the network reconstructed the images, and a latent loss, which is the KL divergence that measures how closely the latent variables match a unit gaussian.
+    > 
+    > ```
+    > generation_loss = mean(square(generated_image - real_image))
+    > latent_loss = KL-Divergence(latent_variable, unit_gaussian)
+    > loss = generation_loss + latent_loss
+    > ```
+    > 
+    > In order to optimize the KL divergence, we need to apply a simple reparameterization trick: instead of the encoder generating a vector of real values, it will generate a vector of means and a vector of standard deviations.
+    > 
+    > ---
+    > 
+    > ![](http://kvfrans.com/content/images/2016/08/vae.jpg)
+    > 
+    > Let's say you were given a bunch of pairs of real numbers between [0, 10], along with a name. For example, 5.43 means apple, and 5.44 means banana. When someone gives you the number 5.43, you know for sure they are talking about an apple. We can essentially encode infinite information this way, since there's no limit on how many different real numbers we can have between [0, 10].
+    > 
+    > However, what if there was a gaussian noise of one added every time someone tried to tell you a number? Now when you receive the number 5.43, the original number could have been anywhere around [4.4 ~ 6.4], so the other person could just as well have meant banana (5.44).
+    > 
+    > The greater standard deviation on the noise added, the less information we can pass using that one variable.
+    > 
+    > Now we can apply this same logic to the latent variable passed between the encoder and decoder. The more efficiently we can encode the original image, the higher we can raise the standard deviation on our gaussian until it reaches one.
+
+
+
+### CVE-GAN
+
+- [漫談生成模型，從AE到CVAE-GAN - 幫趣](http://bangqu.com/7yE1f6.html#utm_source=Facebook_PicSee&utm_medium=Social)
+    - [[1703.10155v1] CVAE-GAN: Fine-Grained Image Generation through Asymmetric Training](https://arxiv.org/abs/1703.10155v1)
+
+    > 它有 4 大組件，對應到 4 個神經網絡，互爲補充，互相促進： 
+    > 
+    > *   E：編碼器（Encoder），輸入圖像 x，輸出編碼 z。
+    > 
+    >     如果還給定了類別 c，那麼生成的 z 就會質量更高，即更隨機，因爲可移除c中已包含的信息。
+    > 
+    > -   G：生成器（Generator）。輸入編碼 z，輸出圖像 x。
+    > 
+    >     如果還給定了類別 c，那麼就會生成屬於類別 c 的圖像。
+    > 
+    > -   C：分類器（Classifier）。輸入圖像 x，輸出所屬類別 c。這是我們的老朋友。
+    > 
+    > -   D：辨別器（Discriminator）。輸入圖像 x，判斷它的真實度。
+    > 
+    > 
+    > 我們先看如果只使用部分組件會是怎樣。首先是 CVAE，如下圖所示：
+    > 
+    > ![](http://i2.bangqu.com/j/news/20180612/7yE1f615287833141444NYmU.png)
+    > 
+    > 然後是 CGAN，其中 y 代表對於真實度的判別，如下圖所示： 
+    > 
+    > ![](http://i2.bangqu.com/j/news/20180612/7yE1f615287833149608p5TH.png)
+    > 
+    > 它們的效果如下圖所示。
+    > 
+    > ![](http://i2.bangqu.com/j/news/20180612/7yE1f61528783315326X13z5.png)
+    > 
+    > 可見： 
+    > 
+    > -   CVAE 生成的圖像中規中矩，但是模糊。
+    > 
+    > -   CGAN 生成的圖像清晰，但有時會有明顯錯誤。
+    > 
+    > 所以 AE 和 GAN 的方法剛好是互補。 
+    > 
+    > CVAE-GAN 的架構如下圖所示：
+    > 
+    > ![](http://i2.bangqu.com/j/news/20180612/7yE1f61528783317230u9w9y.png)
+    > 
+    > 其中的 G 有 3 個主要目標： 
+    > 
+    > -   對於從 x 生成的 z，G 應能還原出接近 x 的 x'（像素上的接近）。這來自 AE 的思想。
+    > 
+    > -   G 生成的圖像應可由 D 鑑別爲屬於真實圖像。這來自 GAN 的思想。
+    > 
+    > -   G 生成的圖像應可由 C 鑑別爲屬於 c 類別。這與 InfoGAN 的思想有些相似。
+    > 
+    > 最終得到的 z 可相當好地刻畫圖像。例如，同樣的 z 在不同 c 下的效果如下圖所示。
+    > 
+    > ![](http://i2.bangqu.com/j/news/20180612/7yE1f61528783317884d633g.png)
+    > 
+    > 這裏的不同 c，代表不同的明星。相同的 z，代表其他的一切語義特徵（如表情，角度，光照等等）都一模一樣。
+    > 
+    > 於是，通過保持 z，改變 c，可輕鬆實現真實的換臉效果，如下圖所示。
+    > 
+    > ![](http://i2.bangqu.com/j/news/20180612/7yE1f6152878331967516B73.png)
+    > 
+    > CVAE-GAN 在語義插值上的效果也很出色，如下圖所示。
+    > 
+    > ![](http://i2.bangqu.com/j/news/20180612/7yE1f6152878332247033Vla.png)
+    > 
+    > 由於 CVAE-GAN 生成的樣本質量很高，還可用於增強訓練樣本集，使其他模型（如圖像分類網絡）得到更好的效果。
+
+
+### SAGAN 自注意生成式對抗網絡
+
+- [帶自注意力機制的生成對抗網絡，實現效果怎樣？ - 幫趣](http://bangqu.com/8833oT.html#utm_source=Facebook_PicSee&utm_medium=Social)
+
+    > 在這個實現中，自注意機制會應用到生成器和鑑別器的兩個網絡層。像素級的自注意力會增加 GPU 資源的調度成本，且每個像素有不同的注意力掩碼。Titan X GPU 大概可選擇的批量大小爲 8，你可能需要減少自注意力模塊的數量來減少內存消耗。
+    > 
+    > ![](http://i2.bangqu.com/j/news/20180606/8833oT1528261215554cR2q2.png)
+    > 
+    > 
+
+
+### VQ-VAE (Neural Discrete Representation Learning)
+
+- [[1711.00937] Neural Discrete Representation Learning](https://arxiv.org/abs/1711.00937)
+
+- [優拓 Paper Note ep.16: Neural Discrete Representation Learning](https://blog.yoctol.com/%E5%84%AA%E6%8B%93-paper-note-ep-16-neural-discrete-representation-learning-601d80f7f9ff)
+
+    > 其中最中心的思想為 VQ-VAE (Vector Quantization-Variational Auto-Encoder)，最重要的一部份是 Vector Quantization，這樣的做法主要是為了解決所謂的 Posterior Collapse，避免在 Decoder 太強的情況下導致所得到的 Latents 是無用的，同時也能夠讓 Variance 不要太大。
+    > 
+    > 整體的模型圖如下：
+    > 
+    > ![](https://cdn-images-1.medium.com/max/2000/1*qyyhTBejuVXejVnA4BUwtQ.png)
+    > 
+    > 其中最重要的是 Embedding Space，將整體的 Latent Space 作為 K-way 分類，限定 Embedding Space 中僅有 k 個 Representation Vector。此為 Vector Quatization 的中心思想。
+    > 
+    > 舉例來說，我們可以將一張圖壓縮為許多的 Latent Class 的組合，像是上圖中下方即為其中一例，過 CNN Encoder 後再比較 Z(x) 與哪類 Embedding 較為接近，就轉換為該類 Embedding，依據則為下列方程式：
+    > 
+    > ![](https://cdn-images-1.medium.com/max/1600/0*MHdNg7oKXsT6TyYF.png)
+    > 
+    > ![](https://cdn-images-1.medium.com/max/1600/0*mDH_BkddkGK9WbbN.png)
+    > 
+    > 而其 Loss Function 為：
+    > 
+    > ![](https://cdn-images-1.medium.com/max/1600/0*DhHI4JBum108cTwj.png)
+    > 
+    > 第一項為 Reconstruction Loss，在做 Error Backpropagation 的時候傳到 Decoder Input 時就將其 Gradient 複製到 Encoder output，再繼續做 Back Propagation。
+    > 
+    > 第二項為 Error Backpropagate on Embedding Space，會將該類型的 Embedding e 拉近 Encoder Output Z(x)。
+    > 
+    > 第三項為 Commitment Loss，其用意為讓 Z(x) 能夠真正影響 Embedding Space，讓其訓練速度能夠跟上 Encoder Parameter 的訓練速度。
+    > 
+    > 
+    > ---
+    > 
+    > 註：
+    > 1.  在 [論文連結](https://arxiv.org/pdf/1711.00937.pdf) 中有許多圖片的例子可以參考。
+    > 2.  在 [範例參考](https://avdnoord.github.io/homepage/vqvae/) 中也有許多人聲的例子，能夠做到不錯的人聲轉換。
+    > 
+
+
+## 異常偵測
+
+- [[1805.12511] Cyberattack Detection using Deep Generative Models with Variational Inference](https://arxiv.org/abs/1805.12511)
+
+    > ![](https://screenshotscdn.firefoxusercontent.com/images/26a3753d-b194-4233-a6ec-9f8df472989b.png) 
+
+## 對抗樣本
+
+- [對抗樣本的基本原理 - 幫趣](http://bangqu.com/5292n6.html#utm_source=Facebook_PicSee&utm_medium=Social)
+
+    > 在原理上介紹對抗樣本，以經典的二分類問題爲例，機器學習模型通過在樣本上訓練，學習出一個分割平面，在分割平面的一側的點都被識別爲類別一，在分割平面的另外一側的點都被識別爲類別二。
+    > 
+    > ![對抗樣本的基本原理](http://i2.bangqu.com/lf1/news/20180601/5b10cf2ee3682.png)
+    > 
+    > 生成攻擊樣本時，我們通過某種算法，針對指定的樣本計算出一個變化量，該樣本經過修改後，從人類的感覺無法辨識，但是卻可以讓該樣本跨越分割平面，導致機器學習模型的判定結果改變。
+    > 
+    > ![對抗樣本的基本原理](http://i2.bangqu.com/lf1/news/20180601/5b10cf3a03ee8.png)
+    > 
+    > 如何高效的生成對抗樣本，且讓人類感官難以察覺，正是對抗樣本生成算法研究領域的熱點。
+
+
+- [[1612.06299] Simple Black-Box Adversarial Perturbations for Deep Networks](https://arxiv.org/abs/1612.06299)
+
+
+
+
+## Mode colapse
+
+- [整體 or 局部？用全新幾何角度構建 GAN 模型 - 幫趣](http://bangqu.com/2bx137.html#utm_source=Facebook_PicSee&utm_medium=Social)
+
+    > ### 從幾何角度研究 Mode collapse 問題
+    > 
+    > 當然，從幾何和流型參數化的角度還可以給出對 GAN 更深入的理解，比如對 mode collapse 問題。在 GAN 的相關研究中，mode collapse 是一個被廣泛關注的問題。有很多相關的論文在從不同角度來研究和解決這個問題。
+    > 
+    > 而基於 Localized GAN 所揭示的幾何方法，我們可以從流型局部崩潰的角度來**解釋和避免 GAN 的 mode collapse**。具體來說，給定了一個 z，當 z 發生變化的時候，對應的 G(z) 沒有變化，那麼在這個局部，GAN 就發生了 mode collapse，也就是不能產生不斷連續變化的樣本。這個現象從幾何上來看，就是對應的流型在這個局部點處，沿着不同的切向量方向不再有變化。換言之，所有切向量不再彼此相互獨立--某些切向量要麼消失，要麼相互之間變得線性相關，從而導致流型的維度在局部出現缺陷（dimension deficient）。
+    > 
+    > 爲了解決這個問題，最直接的是我們可以給流型的切向量加上一個正交約束 (Orthonormal constraint)，從而避免這種局部的維度缺陷。下圖是在 CelebA 數據集上得到的結果。可以看到，通過對不同的切向量加上正交化的約束，我們可以在不同參數方向上成功地得到不同的變化。
+    > 
+    > ![整體 or 局部？阿里 CVPR 論文用全新幾何角度構建 GAN 模型](http://i2.bangqu.com/lf1/news/20180606/5b0625c47435b.png)
+    > 
+    > 上圖：在給定輸入圖像的局部座標系下對人臉的不同屬性進行編輯。
+
+
 ## 醫療
 
 - [GAN打一個響指，假牙就設計好了（上臨牀測試ing - 幫趣](http://bangqu.com/9uu241.html)
@@ -158,3 +367,10 @@
     > 最后GAN这一块进展很多，同时以上提到的几篇重要工作的一二作，貌似都在知乎上，对他们致以崇高的敬意。
     > 
     > 以上。
+    > 
+
+
+
+
+
+

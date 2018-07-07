@@ -26,8 +26,8 @@
 - [Linux_Shell__快速上手](Linux_Shell__快速上手.md)
 [//]: # ( - [Linux_Shell__快速上手](https://hackmd.io/z-8u74PSQmmxfWoqhbz0Kg?view)
 
-- [Docker__快速上手](Docker__快速上手.md)
-[//]: # ( - [Docker__快速上手](https://hackmd.io/KYtTlzYrSrCi5rNem_qiIQ?view)
+- [Container_DCOS__資料蒐集](Container_DCOS__資料蒐集.md)
+[//]: # ( - [Container_DCOS__資料蒐集](https://hackmd.io/KYtTlzYrSrCi5rNem_qiIQ?view)
 
 - [Docker_ZOO](Docker_ZOO.md)
 [//]: # ( - [Docker_ZOO](https://hackmd.io/AJmwKqCmQOGIk_x7Z4WxWQ#)
@@ -67,6 +67,10 @@
 - [機器學習題庫2](機器學習題庫2.md)
 [//]: # ( - [機器學習題庫2](https://hackmd.io/6JNaM5M3St-N083zCYMR7A?view)
 
+- [Kaggle__競賽](Kaggle__競賽.md)
+[//]: # ( - [Kaggle__競賽](https://hackmd.io/GCbU3ULvSJCxcizCjKx7zg?view)
+
+
 ## 深度學習
 
 - [深度學習理論](深度學習理論.md)
@@ -86,6 +90,15 @@
 
 - [NLP__資料收集](NLP__資料收集.md)
 [//]: # ( - [NLP__資料收集](https://hackmd.io/TDJoxAJwQsKbJ6YVwraSQw?view)
+
+- [Knowledge_Graph__資料蒐集](Knowledge_Graph__資料蒐集.md)
+[//]: # ( - [Knowledge_Graph__資料蒐集](https://hackmd.io/ZXz_vEcRRbSbu-AxTQhqdA?view)
+
+- [Neural_Attention__資料蒐集](Neural_Attention__資料蒐集.md)
+[//]: # ( - [Neural_Attention__資料蒐集](https://hackmd.io/OcDzLYX6Qv-WTX_S955jCA?view)
+
+- [Time_Series_prediction__資料蒐集](Time_Series_prediction__資料蒐集.md)
+[//]: # ( - [Time_Series_prediction__資料蒐集](https://hackmd.io/Jj4_HqLOTw-QnEMwb5sMyA?view)
 
 - [Computer_Vision__資料收集](Computer_Vision__資料收集.md)
 [//]: # ( - [Computer_Vision__資料收集](https://hackmd.io/WsJRhO7LSCqdeq-FCSN4TQ?view)
@@ -113,6 +126,48 @@
 
 - [GPU__加速](GPU__加速.md)
 [//]: # ( - [GPU__加速](https://hackmd.io/WsHAO8-MTQGLgeXQI5wngA?view)
+
+- [神經網路模型_加速_壓縮](神經網路模型_加速_壓縮.md)
+[//]: # ( - [神經網路模型_加速_壓縮](https://hackmd.io/XghRZFdCS5WyEurS_k0wJw?view)
+
+
+
+
+## 網路應用
+
+- [DataBase__筆記](DataBase__筆記.md)
+[//]: # ( - [DataBase__筆記](https://hackmd.io/RfjJd6YKRC2zr49fR2nYsQ?view)
+
+- [Spark__快速上手](Spark__快速上手.md)
+[//]: # ( - [Spark__快速上手](https://hackmd.io/oA4qZ2JNSXyncAfd4LvHag?view)
+
+- [Xpath__快速上手](Xpath__快速上手.md)
+[//]: # ( - [Xpath__快速上手](https://hackmd.io/HhNqaYU0RZOVoFdvCtkjog?view)
+
+- [Javascript__快速上手](Javascript__快速上手.md)
+[//]: # ( - [Javascript__快速上手](https://hackmd.io/MYFgTAJgnAZmwFoCsMCMAGBJUUwDgGZcEA2EAQxgCMBTAqMAgpIA?view)
+
+- [google_app_script__應用](google_app_script__應用.md)
+[//]: # ( - [google_app_script__應用](https://hackmd.io/xC_II_jmQNmv4PnBoMG-Gw?view)
+
+- [BlockChain__應用](BlockChain__應用.md)
+[//]: # ( - [BlockChain__應用](https://hackmd.io/OwYwzADArAHATAQwLQQJwBYBmT0BMbBIyYCmARksBBAugIwBsUCUzQA=?view)
+
+- [Web__前後端](Web__前後端.md)
+[//]: # ( - [Web__前後端](https://hackmd.io/EwDgDAxmDMCcAmBaMBTAZhRAWe8uIENoxhEBWARngKwLLAHZ4AjBoA==?view)
+
+- [Networking__網路設定](Networking__網路設定.md)
+[//]: # ( - [Networking__網路設定](https://hackmd.io/OcId0ZCyQfOmOPUvzFThUw?view)
+
+- [系統設計](系統設計.md)
+[//]: # ( - [系統設計](https://hackmd.io/7IPDYQNkS_a6k2kPSp5E9A?view)
+
+- [VPN__架設](VPN__架設.md)
+[//]: # ( - [VPN__架設](https://hackmd.io/iglwBvACRqetmtSNLqnbQA?view)
+
+- [Web__框架](Web__框架.md)
+[//]: # ( - [Web__框架](https://hackmd.io/85TU0yDRSDCHbSOdeQ9RMw?view)
+
 
 ## 專案管理、開發、文件撰寫
 
@@ -166,34 +221,6 @@
 - [PCI_PCIE__架構](PCI_PCIE__架構.md)
 [//]: # ( - [PCI_PCIE__架構](https://hackmd.io/P51zpeD2RJOMTxG4VAq6qw?view)
 
-## 網路應用
-
-- [Xpath__快速上手](Xpath__快速上手.md)
-[//]: # ( - [Xpath__快速上手](https://hackmd.io/HhNqaYU0RZOVoFdvCtkjog?view)
-
-- [Javascript__快速上手](Javascript__快速上手.md)
-[//]: # ( - [Javascript__快速上手](https://hackmd.io/MYFgTAJgnAZmwFoCsMCMAGBJUUwDgGZcEA2EAQxgCMBTAqMAgpIA?view)
-
-- [google_app_script__應用](google_app_script__應用.md)
-[//]: # ( - [google_app_script__應用](https://hackmd.io/xC_II_jmQNmv4PnBoMG-Gw?view)
-
-- [BlockChain__應用](BlockChain__應用.md)
-[//]: # ( - [BlockChain__應用](https://hackmd.io/OwYwzADArAHATAQwLQQJwBYBmT0BMbBIyYCmARksBBAugIwBsUCUzQA=?view)
-
-- [Web__前後端](Web__前後端.md)
-[//]: # ( - [Web__前後端](https://hackmd.io/EwDgDAxmDMCcAmBaMBTAZhRAWe8uIENoxhEBWARngKwLLAHZ4AjBoA==?view)
-
-- [Networking__網路設定](Networking__網路設定.md)
-[//]: # ( - [Networking__網路設定](https://hackmd.io/OcId0ZCyQfOmOPUvzFThUw?view)
-
-- [系統設計](系統設計.md)
-[//]: # ( - [系統設計](https://hackmd.io/7IPDYQNkS_a6k2kPSp5E9A?view)
-
-- [VPN__架設](VPN__架設.md)
-[//]: # ( - [VPN__架設](https://hackmd.io/iglwBvACRqetmtSNLqnbQA?view)
-
-- [Web__框架](Web__框架.md)
-[//]: # ( - [Web__框架](https://hackmd.io/85TU0yDRSDCHbSOdeQ9RMw?view)
 
 ## 電腦圖學
 
@@ -218,6 +245,9 @@
 - [Java__筆記](Java__筆記.md)
 [//]: # ( - [Java__筆記](https://hackmd.io/DOojSGYJTIamBsKK2NfTKQ?view)
 
+
+
+
 - [Rust_語言筆記](Rust_語言筆記.md)
 [//]: # ( - [Rust_語言筆記](https://hackmd.io/kjYKZ_l5S3-PT8-BvnGffA?view)
 
@@ -226,6 +256,10 @@
 
 - [Quantum_Computing](Quantum_Computing.md)
 [//]: # ( - [Quantum_Computing](https://hackmd.io/IwEwTADGAcDGCcBaApgQ3sRAWARhZiqEwAzIiDibMAKwgDs80JYQA===?view)
+
+- [Design_Patterns__資料蒐集](Design_Patterns__資料蒐集.md)
+[//]: # ( - [Design_Patterns__資料蒐集](https://hackmd.io/KGzlogtoQPmXNYoi21F0aQ?view)
+
 
 ## 問題排解
 
@@ -238,7 +272,13 @@
 - [Linux__問題排解](Linux__問題排解.md)
 [//]: # ( - [Linux__問題排解](https://hackmd.io/pdlu6ODdQS6UswsNraP--A?view)
 
+- [老舊電腦_問題排解](老舊電腦_問題排解.md)
+[//]: # ( - [老舊電腦_問題排解](https://hackmd.io/B7s5FMz-Q7WYtnbWrwqwYA?view)
+
 ## 其他
+
+- [Excel__筆記](Excel__筆記.md)
+[//]: # ( - [Excel__筆記](https://hackmd.io/xA2eZ_RuSCiZ19H4nll0KA?view)
 
 - [數學筆記](數學筆記.md)
 [//]: # ( - [數學筆記](https://hackmd.io/NfJ7WgaHQhSwzXh8k8Lm2g?view)

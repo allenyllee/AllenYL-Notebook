@@ -27,6 +27,12 @@
 
     It may also be prudent to insert a blank line before and after this type of comments, because some Markdown parsers may not like link definitions brushing up against regular text.
 
+### newline
+
+- [newline - How to write one new line in Bitbucket markdown? - Stack Overflow](https://stackoverflow.com/questions/22385334/how-to-write-one-new-line-in-bitbucket-markdown)
+
+    > When you do want to insert a `<br />` break tag using Markdown, you **end a line with two or more spaces, then type `return` or `Enter`**.
+
 ## 編輯器
 
 - [marktext/marktext: 📝Next generation markdown editor, running on platforms of MacOS Windows and Linux.](https://github.com/marktext/marktext)

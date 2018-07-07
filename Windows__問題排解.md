@@ -43,3 +43,40 @@
 - [Realtek HD Audio Manager missing. - Realtek - Apps General Discussion](http://www.tomsguide.com/answers/id-3486617/realtek-audio-manager-missing.html)
 
     > You have to download drivers from your motherboards manufacturer. "several sources" means several drivers and they are probably conflicting to take control of the audio device. Uninstall current drivers first before installing new ones. Also under device manager, click "show hidden devices" under view and uninstall duplicate audio devices.
+
+## Disable Flashing Taskbar buttons or icons on Windows taskbar
+
+- [Disable Flashing Taskbar buttons or icons in Windows 10/8/7](https://www.thewindowsclub.com/disable-flashing-taskbar-buttons-windows)
+
+    > Notifications in Windows are present to draw your attention to programs or areas that require your immediate attention. While this helps in resolving issues quickly it can annoy some. Especially the taskbar icons or buttons which flash, once the program is opened or there is a change in the program. Its icon shows up on the taskbar and begin flashing, becoming golden yellow. It will flash **7 times**, after which it will continue to throb gently. In this post, we will see how you can **disable the flashing of taskbar buttons or icons** or **change the count** for the number of times it can flash.
+    > 
+    > Disable Flashing Taskbar buttons
+    > --------------------------------
+    > 
+    > Open the Windows Registry, by typing *regedit* in Run box. It's the [Windows Registry](https://www.thewindowsclub.com/windows-registry-basics) that stores configuration information about many important parts of Windows operating system. By editing it, you can tune Windows to behave the way you want it. However, modifying the Windows Registry can cause serious problems to your system, so make sure you know what you're doing and create a system restore point first before proceeding further.
+    > 
+    > ![regedit](https://thewindowsclub-thewindowsclubco.netdna-ssl.com/wp-content/uploads/2015/06/regedit1.png)
+    > 
+    > Locate and then click the subkey that holds the registry item or items that you want to change. For this, browse the following path:
+    > 
+    > HKEY_CURRENT_USER\Control Panel\Desktop
+    > 
+    > ![Desktop](https://thewindowsclub-thewindowsclubco.netdna-ssl.com/wp-content/uploads/2015/06/Desktop-600x344.png)
+    > 
+    > Double-click the **ForegroundFlashCount** entry and change the Value data field to **0**. The default on my Windows 8.1 computer is 7 in Hexadecimal.
+    > 
+    > ![value](https://thewindowsclub-thewindowsclubco.netdna-ssl.com/wp-content/uploads/2015/06/value.png)
+    > 
+    > > ForegroundFlashCount specifies the number of times the taskbar button flashes to notify the user that the system has activated a background window. ForegroundLockTimeout specifies the time, following user input, during which the system keeps applications from moving into the foreground. If the time elapsed since the last user input exceeds the value of the ForegroundLockTimeout entry, the window will automatically be brought to the foreground.
+    > 
+    > So, you may want to also ensure that value of **ForegroundLockTimeout** is set to **0**. The default on my Windows 8.1 computer is 30d40 in Hexadecimal.
+    > 
+    > ![Disable Flashing Taskbar buttons](https://thewindowsclub-thewindowsclubco.netdna-ssl.com/wp-content/uploads/2015/06/foreground-flashcount1-600x326.png "Disable Flashing Taskbar buttons")
+    > 
+    > After having done this, restart Windows and you should no longer see any flashing icon in the taskbar on your Windows 8.1 computer.
+    > 
+    > ### Change the number of time Taskbar button flashes
+    > 
+    > If you want to Change the number of time Taskbar button flashes, then you can change the value of ForegroundFlashCount from the default 7, to a number **between 1 and 6**, and restart your computer.
+    > 
+

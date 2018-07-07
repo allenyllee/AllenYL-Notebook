@@ -1,5 +1,48 @@
 # AI__法律_資料收集
 
+## 判決查詢
+
+### 台灣
+- [裁判書查詢](http://jirs.judicial.gov.tw/FJUD/FJUDQRY01M_1.aspx)
+
+### 中國
+- [首页 - 中国裁判文书网](http://wenshu.court.gov.cn/Index)
+
+
+## 裁判書/判決書 資料集
+
+- [司法院裁判書open data](http://210.69.124.88/)
+
+- [查詢資料集: 裁判書 | 政府資料開放平臺](https://data.gov.tw/datasets/search?qs=%E8%A3%81%E5%88%A4%E6%9B%B8)
+
+- [司法院各級法院裁判書-應刪除裁判書資訊 | 政府資料開放平臺](https://data.gov.tw/dataset/45475)
+
+- [司法院裁判書開放API | 政府資料開放平臺](https://data.gov.tw/dataset/63205)
+
+- [jrf_data - g0v.hackpad.tw](https://g0v.hackpad.tw/jrf_data-BlLdzEsImuv)
+
+## 法律條文 資料集
+
+- [中文法規_法律資料檔下載 | 政府資料開放平臺](https://data.gov.tw/dataset/18289)
+
+- [中文法規_命令資料檔下載 | 政府資料開放平臺](https://data.gov.tw/dataset/18290)
+
+- [英譯法規_法律資料檔下載 | 政府資料開放平臺](https://data.gov.tw/dataset/18293)
+
+- [英譯法規_命令資料檔下載 | 政府資料開放平臺](https://data.gov.tw/dataset/18294)
+
+## 法律專有名詞
+- [KWIC 關鍵字](http://www.taiwanlii.ccu.edu.tw/lawstd_keywordspicker/)
+
+- [台灣法律資訊中心 Taiwan Legal Information Institute](http://www.taiwanlii.ccu.edu.tw/Tool.php)
+
+## 法律文件NLP
+
+- [如何找判決 – 一起讀判決](https://casebf.com/2018/01/16/case_search/)
+
+- [lawsnote.com/](https://lawsnote.com/)
+
+
 ## AI 在法律的應用
 
 - [史丹佛大學等名校的 AI 打敗律師群，故事要從 30 年前說起 | TechNews 科技新報](http://technews.tw/2018/03/02/an-ai-just-beat-top-lawyers/)

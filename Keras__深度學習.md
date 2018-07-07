@@ -181,6 +181,26 @@
     > 
 
 
+- [Split train data into training and validation when using ImageDataGenerator and model.fit_generator · Issue #5862 · keras-team/keras](https://github.com/keras-team/keras/issues/5862#issuecomment-397976696)
+
+    > I just found this in the documentation given [here](https://keras.io/preprocessing/image/).
+    > 
+    > You have to specify `validation_split` in the `ImageDataGenerator` and specify `subset` for each generator as shown below:
+    > 
+    > ```
+    > from keras.preprocessing.image import ImageDataGenerator
+    > 
+    > data_generator = ImageDataGenerator(rescale=1./255, validation_split=0.33)
+    > 
+    > train_generator = data_generator.flow_from_directory(TRAINING_DIR, target_size=(IMAGE_SIZE, IMAGE_SIZE), shuffle=True, seed=13,
+    >                                                      class_mode='categorical', batch_size=BATCH_SIZE, subset="training")
+    > 
+    > validation_generator = data_generator.flow_from_directory(TRAINING_DIR, target_size=(IMAGE_SIZE, IMAGE_SIZE), shuffle=True, seed=13,
+    >                                                      class_mode='categorical', batch_size=BATCH_SIZE, subset="validation")
+    > 
+    > ```
+
+
 
 
 ### Callbacks

@@ -297,6 +297,15 @@
     > 
     > This operation is sometimes called "deconvolution" after [Deconvolutional Networks](http://www.matthewzeiler.com/pubs/cvpr2010/cvpr2010.pdf), but is actually the transpose (gradient) of `conv2d` rather than an actual deconvolution.
 
+
+## Tools
+
+### TensorEditor
+
+- [TensorEditor ：一個小白都能快速玩轉的神經網絡搭建工具 - 幫趣](http://bangqu.com/l53yr4.html#utm_source=Facebook_PicSee&utm_medium=Social)
+
+
+
 ## Tutorial
 
 - [Tensorflow学习笔记2：About Session, Graph, Operation and Tensor - lienhua34 - 博客园](https://www.cnblogs.com/lienhua34/p/5998853.html)

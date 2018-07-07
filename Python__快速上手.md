@@ -3,15 +3,50 @@
 [toc]
 <!-- toc --> 
 
-## Basic Tutorial
+## Tutorial
 - [Python Tutorial](https://www.tutorialspoint.com/python/index.htm)
 
 - [Python Example](https://www.programcreek.com/python/)
 
+### Recursive Functions
+
+- [Python Tutorial: Recursive Functions](https://www.python-course.eu/python3_recursive_functions.php)
+
+### Passing Arguments
+
 - [Python Tutorial: Passing Arguments](https://www.python-course.eu/python3_passing_arguments.php)
+
+### Output with Print
 
 - [Python Tutorial: Output with Print](https://www.python-course.eu/python3_print.php)
 
+### Object Oriented Programming
+
+- [Python Tutorial: Object Oriented Programming](https://www.python-course.eu/python3_object_oriented_programming.php)
+
+### File Management
+
+- [Python Tutorial: File Management](https://www.python-course.eu/python3_file_management.php)
+
+### Properties vs. getters and setters
+
+- [Python Tutorial: Properties vs. getters and setters](https://www.python-course.eu/python3_properties.php)
+
+### Modular Programming and Modules
+
+- [Python Tutorial: Modular Programming and Modules](https://www.python-course.eu/python3_modules_and_modular_programming.php)
+
+### Generators
+
+- [Python Tutorial: Generators](https://www.python-course.eu/python3_generators.php)
+
+### Functions
+
+- [Python Tutorial: Functions](https://www.python-course.eu/python3_functions.php)
+
+### Iterators and Iterables
+
+- [Python Tutorial: A Tutorial](https://www.python-course.eu/python3_iterable_iterator.php)
 
 
 

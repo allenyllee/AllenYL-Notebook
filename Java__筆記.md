@@ -3,6 +3,17 @@
 [toc]
 <!-- toc --> 
 
+## tutorial
+
+- [專欄文章：Java Tutorial](https://openhome.cc/Gossip/CodeData/JavaTutorial/)
+
+- [Java tutorial: Learn Java Programming with examples](https://beginnersbook.com/java-tutorial-for-beginners-with-examples/)
+
+- [Java Tutorial](https://www.tutorialspoint.com/java/index.htm)
+
+
+
+
 ## Java applet
 
 - [Running legacy Java applets without a browser or security exceptions (Windows)：sysadmin](https://www.reddit.com/r/sysadmin/comments/69m2ol/running_legacy_java_applets_without_a_browser_or/)

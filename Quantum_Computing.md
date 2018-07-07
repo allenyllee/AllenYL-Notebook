@@ -3,6 +3,32 @@
 [toc]
 <!-- toc --> 
 
+## Quantum Programming
+
+- [搶先Google、IBM一步，微軟推出秘密武器「Q#」，要讓量子電腦遍地開花｜數位時代](https://www.bnext.com.tw/article/47393/microsoft-releases-quantum-computing-development-kit-preview)
+
+    > 量子運算程式語言「Q#」誕生
+    > --------------
+    > 
+    > 達成九月在Ignite開發者大會上的目標，微軟在本周宣布推出量子運算程式語言的Preview （預覽版）開發包，號稱可以降低商用量子計算技術的出錯率、增加穩定性，並加快量子運算走向商業化的速度。
+    > 
+    > 這款開發包，有一個叫「Q#」的程式語言，可以協助開發者為量子電腦開發軟體，以及一台整合在微軟開發工具套件系列Visual Studio中的量子電腦模擬器「Q# library」，個人用戶最多可以模擬30個邏輯量子位能問題、企業客戶則可以模擬超過40個量子位能的計算問題，讓開發人員可以在一般電腦上利用Azure雲端服務測試量子電腦軟體，提供全套式的解決方案。
+
+
+
+### Microsoft Q#
+
+- [Quantum Development Kit | Microsoft](https://www.microsoft.com/en-us/quantum/development-kit)
+
+- [Write a quantum program | Microsoft Docs](https://docs.microsoft.com/zh-tw/quantum/quantum-writeaquantumprogram?view=qsharp-preview&tabs=tabid-vs2017)
+
+
+
+
+
+
+
+
 ## Quantum Chip
 
 - [CES 2018: Intel's 49-Qubit Chip Shoots for Quantum Supremacy - IEEE Spectrum](https://spectrum.ieee.org/tech-talk/computing/hardware/intels-49qubit-chip-aims-for-quantum-supremacy)
@@ -79,17 +105,6 @@
 - [發現馬約拉納費米子存在證據，微軟在構建量子電腦上又邁出一步 | TechNews 科技新報](https://technews.tw/2018/03/30/microsoft-and-majorana-fermion/)
 
 
-
-## Quantum Programming
-
-- [搶先Google、IBM一步，微軟推出秘密武器「Q#」，要讓量子電腦遍地開花｜數位時代](https://www.bnext.com.tw/article/47393/microsoft-releases-quantum-computing-development-kit-preview)
-
-    > 量子運算程式語言「Q#」誕生
-    > --------------
-    > 
-    > 達成九月在Ignite開發者大會上的目標，微軟在本周宣布推出量子運算程式語言的Preview （預覽版）開發包，號稱可以降低商用量子計算技術的出錯率、增加穩定性，並加快量子運算走向商業化的速度。
-    > 
-    > 這款開發包，有一個叫「Q#」的程式語言，可以協助開發者為量子電腦開發軟體，以及一台整合在微軟開發工具套件系列Visual Studio中的量子電腦模擬器「Q# library」，個人用戶最多可以模擬30個邏輯量子位能問題、企業客戶則可以模擬超過40個量子位能的計算問題，讓開發人員可以在一般電腦上利用Azure雲端服務測試量子電腦軟體，提供全套式的解決方案。
 
 
 
