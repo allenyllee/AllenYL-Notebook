@@ -65,6 +65,7 @@
     > \end{aligned}
     > $$
     > ```
+    > ```
     > This example has three column-pairs.
     > $$
     > \begin{aligned}
@@ -76,6 +77,7 @@
     >   X + X' &= Y + Y' & a'b &= c'b \tag{10}
     > \end{aligned}
     > $$
+    > ```
     > 
     > ---
     > ![](https://screenshotscdn.firefoxusercontent.com/images/318030fd-3063-4b41-a38a-65542ffd9990.png)
