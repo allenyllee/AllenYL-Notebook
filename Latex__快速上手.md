@@ -69,14 +69,14 @@
     > 
     > This example has three column-pairs.
     > $$
-    > \begin{aligned}
+    > \begin{array}
     >     x    &= y      & X  &= Y  &
     >       a  &= b+c               \tag{8}\\
     >     x'   &= y'     & X' &= Y' &
     >       a' &= b                 \tag{9}\\
     >   x + x' &= y + y'            &
     >   X + X' &= Y + Y' & a'b &= c'b \tag{10}
-    > \end{aligned}
+    > \end{array}
     > $$
     > 
     > 
