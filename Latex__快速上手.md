@@ -22,20 +22,22 @@
     > Try this:
     > 
     > ```latex=
-    > \begin{aligned}
+    > \begin{align*}
     >     &|\vec a| = \sqrt{3^{2}+1^{2}} = \sqrt{10} &\\
     >     &|\vec b| = \sqrt{1^{2}+23^{2}} = \sqrt{530} &\\ 
     >     &\cos v = \frac{26}{\sqrt{10} \cdot \sqrt{530}} &\\
     >     &v = \cos^{-1} \left(\frac{26}{\sqrt{10} \cdot \sqrt{530}}\right) &\\
-    > \end{aligned}
+    > \end{align*}
     > 
     > ```
     > 
     > $$
-    > \begin{aligned}
-    >     &|\vec a| = \sqrt{3^{2}+1^{2}} = \sqrt{10} \\
-    >     &|\vec b| = \sqrt{1^{2}+23^{2}} = \sqrt{530}
-    > \end{aligned}
+    > \begin{align*}
+    >     &|\vec a| = \sqrt{3^{2}+1^{2}} = \sqrt{10} &\\
+    >     &|\vec b| = \sqrt{1^{2}+23^{2}} = \sqrt{530} &\\ 
+    >     &\cos v = \frac{26}{\sqrt{10} \cdot \sqrt{530}} &\\
+    >     &v = \cos^{-1} \left(\frac{26}{\sqrt{10} \cdot \sqrt{530}}\right) &\\
+    > \end{align*}
     > $$
     > 
     > ---
@@ -46,12 +48,102 @@
     > 
     > The `&` sign separates two columns, so an `&` at the beginning of a line means that the line starts with a blank column.
 
+### 對齊多欄方程式
+
+- [LaTeX技巧207：使用align环境输入多行公式的技巧_LaTeX_Fun_新浪博客](http://blog.sina.com.cn/s/blog_5e16f1770100gror.html)
+
+    > ```
+    > This example has three column-pairs.
+    > $$
+    > \begin{align*}
+    >     x    &= y      & X  &= Y  &
+    >       a  &= b+c               \tag{8}\\
+    >     x'   &= y'     & X' &= Y' &
+    >       a' &= b                 \tag{9}\\
+    >   x + x' &= y + y'            &
+    >   X + X' &= Y + Y' & a'b &= c'b \tag{10}
+    > \end{align*}
+    > $$
+    > ```
+    > 
+    > This example has three column-pairs.
+    > $$
+    > \begin{align*}
+    >     x    &= y      & X  &= Y  &
+    >       a  &= b+c               \tag{8}\\
+    >     x'   &= y'     & X' &= Y' &
+    >       a' &= b                 \tag{9}\\
+    >   x + x' &= y + y'            &
+    >   X + X' &= Y + Y' & a'b &= c'b \tag{10}
+    > \end{align*}
+    > $$
+    > 
+    > ---
+    > ![](https://screenshotscdn.firefoxusercontent.com/images/318030fd-3063-4b41-a38a-65542ffd9990.png)
 
 
 
+## symbol
+
+### arrow
+- [LaTEX Arrow Symbols](http://garsia.math.yorku.ca/MPWP/LATEXmath/node9.html)
+
+    ![](http://garsia.math.yorku.ca/MPWP/LATEXmath/arrow1.gif)
+
+### bar, overline
+
+- [stacking symbols - The \bar and \overline commands - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/22100/the-bar-and-overline-commands)
+
+    > 
+    > ```latex
+    > $$
+    > \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+    > $$
+    > 
+    > $\bar{\mathbb{R}}$ 
+    > $\overbar{\mathbb{R}}$ 
+    > $\overline{\mathbb{R}}$
+    > ``` 
+    > $$
+    > \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+    > $$
+    > 
+    > $\bar{\mathbb{R}}$ $\overbar{\mathbb{R}}$ $\overline{\mathbb{R}}$
+    > ![](https://i.stack.imgur.com/kN66B.png)
 
 
+### 方程式標號 numbering
 
+- [numbering - How can you number equations manually? - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/212559/how-can-you-number-equations-manually)
 
+    > ```
+    > $$
+    > 1+1=2 \tag{5.23} 
+    > $$
+    > 
+    > $$
+    > 2+2=4 \tag{5.24} \label{eq:5.24}
+    > $$
+    > 
+    > $$
+    > A\ cross-reference\ to\ equation  \eqref{eq:5.24}.
+    > $$
+    > ```
+    > 
+    > $$
+    > 1+1=2 \tag{5.23} 
+    > $$
+    > 
+    > $$
+    > 2+2=4 \tag{5.24} \label{eq:5.24}
+    > $$
+    > 
+    > $$
+    > A\ cross-reference\ to\ equation  \eqref{eq:5.24}.
+    > $$
+    > 
+    > ---
+    > 
+    > ![](https://i.stack.imgur.com/ZFVDZ.png)
 
 
