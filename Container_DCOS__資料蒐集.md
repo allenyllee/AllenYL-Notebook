@@ -3,7 +3,21 @@
 [toc]
 <!-- toc --> 
 
-## What is docker
+## containers comparison
+
+- [Docker vs Singularity vs Shifter in an HPC environment | Geek Yap Yap Yap](https://geekyap.blogspot.com/2016/11/docker-vs-singularity-vs-shifter-in-hpc.html)
+
+    > #### Oveview of VM vs Docker vs Singularity
+    > 
+    > [![container vs vm stack diagram from GMK keynote slide deck](https://tin6150.github.io/psg/fig/vm_vs_container.png)](http://www.hpcadvisorycouncil.com/events/2017/stanford-workshop/pdf/GMKurtzer_Singularity_Keynote_Tuesday_02072017.pdf#43)  
+    > Source: [Greg Kurtzer keynote at HPC Advisory Council 2017 @ Stanford](http://www.hpcadvisorycouncil.com/events/2017/stanford-workshop/pdf/GMKurtzer_Singularity_Keynote_Tuesday_02072017.pdf#43)
+    > 
+
+
+
+## docker
+
+### What is docker
 
 -   Docker 是一種輕量級的作業系統虛擬化解決方案，其所創造出的虛擬環境又稱為容器(container)。
     
@@ -14,37 +28,10 @@
 ![](https://screenshotscdn.firefoxusercontent.com/images/d6bb2271-9180-449a-960f-c14bd3c0adcc.png)
 
 
-### docker command
-
-- [什麼是 Docker · 《Docker —— 從入門到實踐》正體中文版](https://philipzheng.gitbooks.io/docker_practice/content/introduction/what.html)
-
-- [什么是 Docker · Docker —— 从入门到实践](https://yeasy.gitbooks.io/docker_practice/content/introduction/what.html)
-
-#### 操作容器
-    
--   docker run ubuntu:14.04 /bin/echo 'Hello world'
-    
--   docker run -t -i ubuntu:14.04 /bin/bash #交互模式
-    
--   docker run ubuntu:17.10 /bin/sh -c "while true; do echo hello world; sleep 1; done" #後台模式
-    
--   docker container ls #列出容器
-    
--   docker exec -i \[container_id\] bash #進入容器
-    
--   docker container stop \[container_id\] #終止容器
-    
--   docker container rm \[container_name\] #刪除容器
-    
-
-#### 操作鏡像
-    
--   在 Dockerfile 文件所在目录执行：docker build -t \[image_name\]:\[tag\] . #製作鏡像
-    
--   docker pull \[image\]:\[tag\] #從Dockerhub拉取鏡像
 
 
-### Container Architecture
+
+## Container Architecture
 
 - [Architecting Containers Part 1: Why Understanding User Space vs. Kernel Space Matters – Red Hat Enterprise Linux Blog](https://rhelblog.redhat.com/2015/07/29/architecting-containers-part-1-user-space-vs-kernel-space/)
 
@@ -64,7 +51,7 @@
     > 
     > OK, so you understand what a process is, and that containers are processes, but what about the files and programs that live inside a container image? These files and programs make up what is known as [user space](http://www.linfo.org/user_space.html). When a container is started, a program is loaded into memory from the container image. Once the program in the container is running, it still needs to make system calls into [kernel space](http://www.linfo.org/kernel_space.html). The ability for the user space and kernel space to communicate in a deterministic fashion is critical.
 
-### Container Perfomance
+## Container Perfomance
 
 - [What is the runtime performance cost of a Docker container - Stack Overflow](https://stackoverflow.com/questions/21889053/what-is-the-runtime-performance-cost-of-a-docker-container)
 
@@ -88,18 +75,6 @@
     > 
     > ![docker memory comparison](https://i.stack.imgur.com/aHPVkm.png)
     > 
-
-
-## install docker
-
-
-### install docker in bash on windows
-
-- [Running Docker containers on Bash on Windows - Jayway](https://blog.jayway.com/2017/04/19/running-docker-on-bash-on-windows/)
-
-- [Installing the Docker client on Windows Subsystem for Linux (Ubuntu)](https://medium.com/@sebagomez/installing-the-docker-client-on-ubuntus-windows-subsystem-for-linux-612b392a44c4)
-
-- [Can you run Docker natively on the new Windows 10 (Ubuntu) bash userspace? - Server Fault](https://serverfault.com/questions/767994/can-you-run-docker-natively-on-the-new-windows-10-ubuntu-bash-userspace#_=_)
 
 
 ## Docker swarm vs. Kubernetes vs. Mesos vs. Amazon ECS

@@ -1,5 +1,15 @@
 # Reinforcement_Learning__資料蒐集
 
+[toc]
+<!-- toc --> 
+
+## Books
+
+### Reinforcement Learning: An Introduction
+- [Sutton & Barto Book: Reinforcement Learning: An Introduction](http://incompleteideas.net/book/the-book-2nd.html)
+    - [ShangtongZhang/reinforcement-learning-an-introduction: Python Implementation of Reinforcement Learning: An Introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
+
+
 
 ## Q Learning
 

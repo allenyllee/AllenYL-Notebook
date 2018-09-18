@@ -4,6 +4,12 @@
 <!-- toc --> 
 
 
+## Reference
+
+- [LaTeX - Wikibooks, open books for an open world](https://en.wikibooks.org/wiki/LaTeX)
+
+
+
 ## Useful Tool
 * Math input
     * [Latex Math Symbols](http://web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html)
@@ -81,37 +87,6 @@
     > ---
     > ![](https://screenshotscdn.firefoxusercontent.com/images/318030fd-3063-4b41-a38a-65542ffd9990.png)
 
-
-
-## symbol
-
-### arrow
-- [LaTEX Arrow Symbols](http://garsia.math.yorku.ca/MPWP/LATEXmath/node9.html)
-
-    ![](http://garsia.math.yorku.ca/MPWP/LATEXmath/arrow1.gif)
-
-### bar, overline
-
-- [stacking symbols - The \bar and \overline commands - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/22100/the-bar-and-overline-commands)
-
-    > 
-    > ```latex
-    > $$
-    > \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
-    > $$
-    > 
-    > $\bar{\mathbb{R}}$ 
-    > $\overbar{\mathbb{R}}$ 
-    > $\overline{\mathbb{R}}$
-    > ``` 
-    > $$
-    > \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
-    > $$
-    > 
-    > $\bar{\mathbb{R}}$ $\overbar{\mathbb{R}}$ $\overline{\mathbb{R}}$
-    > ![](https://i.stack.imgur.com/kN66B.png)
-
-
 ### 方程式標號 numbering
 
 - [numbering - How can you number equations manually? - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/212559/how-can-you-number-equations-manually)
@@ -145,5 +120,76 @@
     > ---
     > 
     > ![](https://i.stack.imgur.com/ZFVDZ.png)
+
+### align and align*
+
+- [LaTeX/Advanced Mathematics - Wikibooks, open books for an open world](https://en.wikibooks.org/wiki/LaTeX/Advanced_Mathematics#align_and_align.2A)
+
+    > The align and align* environments, available through the amsmath package, are used for arranging equations of multiple lines. As with matrices and tables, \\ specifies a line break, and & is used to indicate the point at which the lines should be aligned.
+    > 
+    > The align* environment is used like the displaymath or equation* environment:
+    > 
+    > ```latex=
+    > \begin{align*}
+    >  f(x) &= (x+a)(x+b) \\
+    >       &= x^2 + (a+b)x + ab
+    > \end{align*}
+    > ```
+    > 
+    > $$
+    > \begin{align*}
+    >  f(x) &= (x+a)(x+b) \\
+    >       &= x^2 + (a+b)x + ab
+    > \end{align*}
+    > $$
+    > 
+    > ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/05e4336a5cf9dfec390fb4e531249b6a545e3971)
+    > 
+    > Note that the align environment must not be nested inside an equation (or similar) environment. Instead, align is a replacement for such environments; the contents inside an align are automatically placed in math mode.
+    > 
+    > align* suppresses numbering. To force numbering on a specific line, use the \tag{...} command before the line break.
+    > 
+    > align is similar, but automatically numbers each line like the equation environment. Individual lines may be referred to by placing a \label{...} before the line break. The \nonumber or \notag command can be used to suppress the number for a given line:
+    > 
+    > ```latex=
+    > \begin{align}
+    >  f(x) &= x^4 + 7x^3 + 2x^2 \nonumber \\
+    >       &\qquad {} + 10x + 12
+    > \end{align}
+    > ```
+    > 
+    > ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/7369945ec986b2e6fb819409dbd260058a622c91)
+    > 
+
+## symbol
+
+### arrow
+- [LaTEX Arrow Symbols](http://garsia.math.yorku.ca/MPWP/LATEXmath/node9.html)
+
+    ![](http://garsia.math.yorku.ca/MPWP/LATEXmath/arrow1.gif)
+
+### bar, overline
+
+- [stacking symbols - The \bar and \overline commands - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/22100/the-bar-and-overline-commands)
+
+    > 
+    > ```latex
+    > $$
+    > \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+    > $$
+    > 
+    > $\bar{\mathbb{R}}$ 
+    > $\overbar{\mathbb{R}}$ 
+    > $\overline{\mathbb{R}}$
+    > ``` 
+    > $$
+    > \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+    > $$
+    > 
+    > $\bar{\mathbb{R}}$ $\overbar{\mathbb{R}}$ $\overline{\mathbb{R}}$
+    > ![](https://i.stack.imgur.com/kN66B.png)
+
+
+
 
 

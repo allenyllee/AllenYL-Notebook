@@ -1,4 +1,4 @@
-# GAN__資料收集
+# Generative_Model__資料收集
 
 [toc]
 <!-- toc --> 
@@ -165,6 +165,331 @@
     > 2.  在 [範例參考](https://avdnoord.github.io/homepage/vqvae/) 中也有許多人聲的例子，能夠做到不錯的人聲轉換。
     > 
 
+### UNIT
+
+- [UNIT 介紹 — Unsupervised Image-to-Image Translation – xiao sean – Medium](https://medium.com/@xiaosean5408/unit-%E4%BB%8B%E7%B4%B9-unsupervised-image-to-image-translation-1f9dc2a17cdd)
+
+    > 我們可以先看一下 [Two Minute Papers](https://www.youtube.com/watch?v=dqxqbvyOnMY&feature=youtu.be)當中如何的介紹他。
+    > 
+    > 作者有將程式碼釋出 [Github](https://github.com/mingyuliutw/UNIT)：
+    > 
+    > > *請注意，目前版本的實作可能會和論文的有出入，要將branch切去version_02*
+    > 
+    > ### 成果圖
+    > 
+    > ![](https://cdn-images-1.medium.com/max/1200/1*hCooeJFioz4JDZjOsNppRw.png)
+    > 
+    > ![](https://cdn-images-1.medium.com/max/1200/1*jrI0vYc9InlvIiAjTdL1sw.png)
+    > 
+    > ### 簡介
+    > 
+    > 本文是在說圖片的風格轉換（style transfer），如貓轉成狗，
+    > 
+    > 這幾年風格轉換（style transfer)在GAN領域中算是很火紅的話題，
+    > 
+    > 大概從2015年紅到現在，相關的論文不少，有興趣的可以自己理解。
+    > 
+    > ### 概念
+    > 
+    > ### Unsupervised
+    > 
+    > 標題為：Unsupervised Image-to-Image Translation
+    > 
+    > 這邊的Unsupervised的概念如下
+    > 
+    > -   將兩個不同的dataset的圖片一起訓練， 例如：貓和狗
+    > -   以往都是成對的資料輸入，以手勢來說，就是兩個人都比同樣的手勢，而這篇論文是可以不用成對的輸入。
+    > 
+    > ### Latent Space
+    > 
+    > 此paper的核心概念為Latent Space(共同特徵)。
+    > 
+    > 假如我們輸入的dataset是貓和狗，
+    > 
+    > 他們其實會有一些共同的特徵，如眼睛、鼻子、嘴巴、耳朵。
+    > 
+    > 我們的目標是希望可以學會這些特徵，
+    > 
+    > 如我們輸入大眼睛的狗狗，可以生成出大眼睛的貓咪照片
+    > 
+    > 架構如下
+    > 
+    > ![](https://cdn-images-1.medium.com/max/1200/1*M1_BU7alWKfOk_x-Mj8jGQ.png)
+    > 
+    > 如上圖我們可以看到
+    > 
+    > -   2個encoder(下方稱作 Encoder-A, Encoder-B)
+    > -   latent space(中間灰色部分)
+    > -   2個decoder(下方稱作 Decoder-A, Decoder-B)
+    > -   2個discriminator
+    > 
+    > 作者很貼心的幫我們列出每個model的結合，如Encoder + Decoder(Generator) = VAE。
+    > 
+    > ![](https://cdn-images-1.medium.com/max/1200/1*eRcdtlI_EytNnNGC0UbuRg.png)
+    > 
+    > 這部分就屬於歷史演進了，有興趣的可以去研究GAN的進展。
+    > 
+    > 大家都是站在巨人的肩膀上做研究。
+    > 
+
+
+### On Unifying Deep Generative Models
+
+- [[1706.00550] On Unifying Deep Generative Models](https://arxiv.org/abs/1706.00550)
+
+- [(2 封私信 / 82 条消息)如何评价 On Unifying Deep Generative Models 这篇 paper? - 知乎](https://www.zhihu.com/question/60697472)
+
+    > 
+    > 回复评论里的提问：关于我们的工作与最近"试图统一VAE和GAN"工作比如 "[Adversarial Variational Bayes: Unifying Variational Autoencoders and Generative Adversarial Networks](https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1701.04722.pdf)" 的关系：
+    > 
+    > [我们的论文（最近做了大的更新）](https://link.zhihu.com/?target=https%3A//arxiv.org/pdf/1706.00550.pdf)里有讨论这些工作（see section 6）。Generally，这些论文提出了新的结合VAE和GAN的deep generative models (DGMs)，因此这里的"unifying"指combine两种model变成一个joint model。而我们则是试图对这些DGM models and algorithms建立一个统一的视角("unified view")，发现他们之间的关系，而不是设计新的model instance.
+    > 
+    > Specifically, 这篇Adversarial Variational Bayes主要是用implicit distribution作为VAE的inference model （而标准的VAE是assume 一个explicit inference distribution，比如Gaussian）。为了learn这个implicit distribution, 论文用了adversarial loss (因为implicit distribution不支持likelihood evaluation, 传统的reconstruction loss不适用)。最近类似的工作还有很多，比如我们论文里已经cite的[26,36,49,54], 大体思想都是用implicit distribution作为inference model。这些工作可以看做是我们提出的统一视角的一个特例，具体的说(专有名词太多就用英文写了)：
+    > 
+    > Briefly, these works are instances of the general idea proposed in our paper, i.e., **symmetric modeling of generation and inference** (section 6) --- we can apply implicit distributions and adversarial loss for *generation* (i.e., GANs). Symmetrically, we can apply implicit distributions and adversarial loss for *inference* with exact the same formulation, which are essentially what these works do. For example, if we let z be the observed data and x the latent code, InfoGAN is exactly a VAE with implicit distribution as its inference model.
+    > 
+    > The idea of symmetric view of generation and inference is one of the key insights of our work. It helps reveal the connections between GANs and ADA, as well as the resemblance of GANs to variational inference.
+    > 
+    > ===============分割线以下为原答案===========
+    > 
+    > 谢谢关注我们的工作。我们会对论文初稿继续改进，对不足之处也欢迎大家指正和交流。
+    > 
+    > 这个工作里我们的目标不是提出新的模型，而是希望对deep generative model （DGM）的几类基本方法重新formulate，揭示他们间的关系，建立统一的interpretation。统一的框架主要有两个好处：
+    > 
+    > （1）对已有模型以及种类繁多的变种有更好或者新的理解，把握算法演进的脉络；
+    > 
+    > （2）促进 后续研究中，各个本来相互独立的DGM研究方向的融合。期待论文提出的分析框架能促进后续更多的DGM算法/模型的提出。
+    > 
+    > 对于（1），论文的主要结论是: GANs 和 VAEs 大体上是在minimize 不同方向的KL Divergence。 *Roughly speaking*, 对优化generator P来说，GANs 做 min_{P} KL(P||Q)，VAEs 做 min_{P} KL(Q||P)。由此带来一些insights:
+    > 
+    > 1) GAN 的这个形式和贝叶斯推断的variational inference类似：把P看做inference model，Q看做posterior。因此我们是在用*inference*来解释*generation*。这一点在论文最后的discussion section有更具体的讨论。
+    > 
+    > 2) 优化两个方向的KL，正好和经典的wake sleep算法的两个phase对应。GAN可以看做sleep phase的extension，VAE可以看做wake phase的extension。
+    > 
+    > 3) 根据KL的不对称性质，GANs优化的KL(P||Q)决定了GANs倾向于miss mode，而VAEs倾向于cover mode。这点在之前的一些论文 e.g. [1][29],也有涉及。
+    > 
+    > 对于（2）,我们举了两个例子，来说明各种加强VAEs的方法能直接应用在GANs上来提高GANs，反之，之前用来提高GANs的方法也能用来提高VAEs。前者，我们从importance weighted VAEs出发可以很轻松推导出importance weighted GANs；后者，我们将GANs的对抗机制直接复制到VAEs上。实验基本没调过参数，不过对base model基本都有提高。
+
+
+
+### Glow
+
+- [[1807.03039] Glow: Generative Flow with Invertible 1x1 Convolutions](https://arxiv.org/abs/1807.03039)
+    - [下一個GAN？OpenAI提出可逆生成模型Glow - 幫趣](http://bangqu.com/nNcD1K.html#utm_source=Facebook_PicSee&utm_medium=Social)
+    - [Glow: Better Reversible Generative Models](https://blog.openai.com/glow/)
+    - [[D] Glow: Better Reversible Generative Models：MachineLearning](https://www.reddit.com/r/MachineLearning/comments/8xe5lx/d_glow_better_reversible_generative_models/)
+
+
+
+
+
+## 動作合成
+
+### Synthesizing Images of Humans in Unseen Poses
+
+- [只需一張照片，運動視頻分分鐘僞造出來 | MIT新算法 - 幫趣](http://bangqu.com/o64789.html)
+
+    > 將源圖像和它對應的2D姿勢信息，以及目標姿勢輸入到這個模型中，它就能合成出一張輸出圖像，把源圖像上的人物形象和目標姿勢結合在一起。
+    > 
+    > ![](http://i2.bangqu.com/liang/news/20180624/v2-610ea5c421549009d23e203874b1cc6c.jpg)
+    > 
+    > 這個方法的精髓，就在於把這個艱鉅的大任務分成四塊簡單的、模塊化的子任務，大概如下圖所示：
+    > 
+    > ![](http://i2.bangqu.com/liang/news/20180624/v2-9918a32aa0bd9bf16c94fdc1de943cca.jpg)
+    > 
+    > 製造新姿勢的流程分五步。
+    > 
+    > 第一步得**表示姿勢**，研究人員將2D的姿勢Ps和Pt表示成3D形式RH×W×J，其中H代表輸入圖像的高度，W代表寬度，每個J通道都包含一個以不同節點(x,y)爲中心的高斯凸起。這種方法能快速利用姿態輸入的空間特性，而不僅僅是個扁平、密集的表示。
+    > 
+    > 表示完動作後，就需要對圖像整體大局進行**原圖分割**，爲合成動作做準備了。
+    > 
+    > 運動時身體每個部分軌跡不同通常會分段仿射運動場出現，通過將原圖Is分割成前景層和背景層，並將前景的身體部位分割成頭、上臂、下臂、大腿、小腿和軀幹等部分，基於UNet-style架構將原圖分割。
+    > 
+    > 之後進行**前景空間變形**，將這些被拆分的身體重新組合起來。
+    > 
+    > ![](http://i2.bangqu.com/liang/news/20180624/v2-63974e2c09e6c375cd5974eed97009c8.jpg)
+    > 
+    > 之後進行**前景合成**，將轉換後的主體部分合並，進一步細化外觀。下圖顯示了這個階段的Mask Mt(第3列)和yfg(第4列)的幾個輸出示例。
+    > 
+    > ![](http://i2.bangqu.com/liang/news/20180624/v2-7b2ba05c1b01640201dad24b7179af6e.jpg)
+    > 
+    > 可以看出，即使一開始是很誇張的姿勢，合成出效果看起來也很真實。可惜的是，高爾夫球杆、網球拍等持有物，在合成後不會被保留。
+    > 
+    > 此時，完事具備，就差背景了。**背景合成**也就是填補前景動作中開始被遮擋的部分，如上圖第五列所示~
+    > 
+
+
+
+## 風格變換/跨域生成
+
+- [论文阅读：Learning to Discover Cross-Domain Relations with Generative Adversarial Networks - CSDN博客](https://blog.csdn.net/u010886794/article/details/78141357)
+
+
+    > 一、目的
+    > ====
+    > 
+    > 
+    >    提出一个基于GAN的网络框架来学习发现跨域关系（cross-domain relation），把寻找这种关系变成了用一种风格的图片生成另一种风格。
+    > 
+    > 
+    >    下面是论文列举的手提包生成鞋、鞋生成手提包的示意图。
+    > 
+    > 
+    > 
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930112138190?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 二、模型
+    > ====
+    > 
+    > 
+    > GAB表示域A到域B的生成器，GBA表示域B到域A的生成器。为了找到有意义的对应关系，需要将这个映射限制成一对一映射，意思就是说，GAB和GBA应该是刚好相反的映射。对于所有的A里面的真实样本xA，GAB(xA)都要在B里面，对于GBA(xB)也一样。
+    > 
+    > 
+    > 
+    > 标准的GAN模型
+    > --------
+    > 
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930112318303?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 
+    >   图中xA、xB分别表示A里面和B里面的真实样本，xAB表示真实样本xA经生成器GAB生成的样本。
+    > 
+    > 
+    > 
+    > 标准的GAN模型很容易发生模式崩溃。
+    > 
+    > 带有重建损失的GAN模型
+    > ------------
+    > 
+    > 
+    > 基于前面所提出的一对一映射，对于所有的A里面的真实样本xA，GAB(xA)都要在B里面，这相当于要满足GBA(GAB(xA))=xA这个条件，但是这个条件很难优化，于是改为最小化距离d(GBA(GAB(xA)),xA)，这个d可以是L1，L2等等的度量函数。
+    > 
+    >    于是，标准的GAN模型就被改成了这样：
+    > 
+    > 
+    > 
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930113008663?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 
+    > 生成器的损失函数如下：
+    > 
+    > 
+    > 
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930113030561?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)\
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930113710519?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 
+    > 生成器GAB收到两个损失，一个是重建损失(reconstruction loss),描述经过两个生成器之后的重建效果与原始真实样本的差距，另外一个是原始GAN的生成损失，表示GAB生成的样本来自B的逼真性。
+    > 
+    > 判别器的损失如下：
+    > 
+    > 
+    > 
+    > ![](https://img-blog.csdn.net/20170930113735946?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)\
+    > D表示相应域的判别器。
+    > 
+    > 
+    > 相对于原始的GAN模型，这里的重建约束虽然迫使重建样本与原始的一样，但是这仍然会导致类似的模式崩溃问题。
+    > 
+    > 
+    > 
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930113245062?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 
+    >  (a)是我们理想的映射，一对一的；(b)是原始GAN的结果，A中的多个模式映射到了B中的一个模式，就是模式崩溃的情况；(c)是加入了重建损失的GAN，A中两个模式的数据都映射到了B中的一个模式，而B中一个模式的数据只能映射到A中这两个模式中的一个。重建损失使得模型在(c)中的两个状态之间震荡，而并不能解决模式崩溃问题。
+    >  
+    >  个人的理解是，当A的数据放进去一起训练，由于不管是放进哪一个模式，GAB都会产生B中对应的一个模式,而GBA再生成的时候，当生成A中的第一个模式，和第二个模式就不像了，于是接下来重建损失会使得GBA再生成的数据往第二个模式靠拢，但是又不像A里面的第一个模式了，于是模型在这两者之间来回震荡，导致无法收敛。
+    > 
+    > 
+    > 
+    > DiscoGAN
+    > --------
+    > 
+    > 
+    > 为了解决模式崩溃的问题，就要使得不管是GAB还是GBA，不同模式生成出来的就应该是不同的，于是很自然地想到了对称结构，就是再加一个反过来的生成网络，迫使A和B中的数据一一对应。
+    > 
+    > 
+    > 
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930113405293?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 
+    > 模型中包含两个生成器GAB，这两个GAB是一样的，还有两个生成器GBA，这两个也是一样的。这样就实现了一对一的映射。
+    > 
+    > 
+    > 
+    > 损失函数如下：\
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930113429136?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 记号和结构
+    > -----
+    > 
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930113320552?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 三、实验
+    > ====
+    > 
+    > toy实验
+    > -----
+    > 
+    > 
+    >  首先为了证明所提出的这种对称模型对于模式崩溃问题的良好性能，做了一个演示实验。A和B中的数据都是二维的，真实样本都取自混合高斯模型。用3个线性层和一个ReLU激活层作为生成器，判别器用5个线性层，每层后面接一个ReLU层，最后再接一个sigmoid层将输出限定在[0,1]之间。
+    > 
+    > 
+    > 
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930113901118?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 
+    >  彩色背景表示判别器的输出值，"x"表示B种不同的模式。(a)标示了10个目标模式和最初的转换结果；(b)是标准的GAN迭代40000次的结果；(c)是加入重建损失的网络迭代40000次的结果；(d)是文章提出的DiscoGAN迭代40000次后的结果。
+    >  
+    >  标准GAN的许多不同颜色的转换点都位于B相同的模式下，海蓝和浅蓝色的点离得很近，橙色和绿色的点也在一起，多种颜色的点（A中的多种模式）都映射到B的同一种模式下。带有重建损失的GAN的模式崩溃问题已经不那么严重了，但是海蓝、绿色和浅蓝色的点仍然会在少数几个模式上重叠。
+    >  
+    >  标准的GAN和带有重建损失的GAN都没有覆盖B中的所有模式，DiscoGAN将A中的样本转换为B中有边界不重叠的区域，避免了模式崩溃，并且产生的B样本覆盖了所有10种模式，因此这个映射是双射，从A转换的样本也把B的鉴别器个骗过了。
+    > 
+    > 
+    > 
+    > 转换实验
+    > ----
+    > 
+    > 汽车到汽车\
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930114118152?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 人脸到人脸\
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930114135424?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 性别转换\
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930114150286?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 头发颜色转换\
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930114207996?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 是否戴眼镜转换\
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930114219828?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 先转换性别，再转换头发颜色\
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930114239195?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 头发颜色、性别来回转\
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930114250751?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 椅子到汽车，汽车到人脸\
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930114302229?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 轮廓和图像互转\
+    > ![这里写图片描述](https://img-blog.csdn.net/20170930114315234?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg4Njc5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+    > 
+    > 附录
+    > ==
+    > 
+    > 论文链接\
+    > <https://arxiv.org/pdf/1703.05192.pdf>\
+    > 论文相关博客\
+    > <http://blog.csdn.net/u011636567/article/details/72678625>\
+    > 代码地址\
+    > 官方代码：<https://github.com/SKTBrain/DiscoGAN>\
+    > 其他代码：<https://github.com/carpedm20/DiscoGAN-pytorch>\
+    > Tensorflow简洁版本：<https://github.com/ChunyuanLI/DiscoGAN>
+    > 
+
 
 ## 異常偵測
 
@@ -191,8 +516,9 @@
 
 
 
+## GAN
 
-## Mode colapse
+### Mode colapse
 
 - [整體 or 局部？用全新幾何角度構建 GAN 模型 - 幫趣](http://bangqu.com/2bx137.html#utm_source=Facebook_PicSee&utm_medium=Social)
 
@@ -370,6 +696,10 @@
     > 
 
 
+
+## Generate Functions 
+
+- [[1807.04106] VFunc: a Deep Generative Model for Functions](https://arxiv.org/abs/1807.04106)
 
 
 

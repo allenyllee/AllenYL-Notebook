@@ -16,6 +16,10 @@
 
 - [What is the best way to learn CUDA? - Quora](https://www.quora.com/What-is-the-best-way-to-learn-CUDA)
 
+- [阅读英文CUDA编程手册100天|GPU开发园地（developers）|GPU世界论坛 - Powered by GPUS!](http://bbs.gpuworld.cn/forum-93-1.html)
+
+
+
 
 ## CUDA Samples
 

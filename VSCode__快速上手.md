@@ -15,3 +15,14 @@
 
 - [vscode-reveal - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=evilz.vscode-reveal)
 
+## Vscode更新之后rg.exe占用cpu过高
+
+- [Vscode更新之后rg.exe占用cpu过高 - 晓晨Master - 博客园](https://www.cnblogs.com/stulzq/p/8387977.html)
+
+    > 文件->首选项->搜索"search.followSymlinks"改为false
+    > 
+    > ![](https://images2017.cnblogs.com/blog/668104/201801/668104-20180131000845640-1864712670.png)
+    > 
+    > <https://www.zhihu.com/question/67317040>
+    > 
+

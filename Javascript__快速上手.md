@@ -96,6 +96,11 @@
 
 - [百小僧/LayX: Layx 网页弹窗最佳选择.](https://gitee.com/monksoul/LayX?from=20180506)
 
+### Webcam QRCode Scanner
+
+- [schmich/instascan: HTML5 QR code scanner using your webcam](https://github.com/schmich/instascan)
+
+    > Real-time webcam-driven HTML5 QR code scanner. [Try the live demo](https://schmich.github.io/instascan/).
 
 
 ## Debug
@@ -836,4 +841,38 @@
             location.href = page + "?usehtml5=true";
         }
     })();
+    ```
+
+
+## Math
+
+- [KaTeX \tag hack - JSFiddle](https://jsfiddle.net/allenyllee/476z1vsf/)
+
+    - [on 30 Apr 2017](https://github.com/Khan/KaTeX/issues/663#issuecomment-298220123)
+
+    ```javascript=
+    var tex = document.getElementById('tex');
+
+    katex.render(tex.textContent, tex, {
+      displayMode: true,
+      throwOnError: false,
+      macros: {
+        '\\tag': '\\pod\\text'
+      }
+    });
+
+
+    var eqno = document.querySelectorAll(".katex span > span.mspace.quad");
+    for (var i = 0; i < eqno.length; ++i) {
+      if (eqno[i].parentNode.className)
+        continue;
+      var quad = eqno[i];
+      var span = quad.parentNode;
+      var text = span.nextSibling;
+      var pare = text.nextSibling;
+      span.removeChild(quad);
+      span.appendChild(text);
+      span.appendChild(pare);
+      span.className = 'eqno';
+    }
     ```

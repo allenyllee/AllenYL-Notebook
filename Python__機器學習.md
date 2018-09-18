@@ -3,7 +3,17 @@
 [toc]
 <!-- toc --> 
 
-## API reference
+# python2 to python 3
+
+- [How to update your scikit-learn code for 2018](https://www.dataschool.io/how-to-update-your-scikit-learn-code-for-2018/)
+
+# scikit learn videos
+
+- [justmarkham/scikit-learn-videos: Jupyter notebooks from the scikit-learn video series](https://github.com/justmarkham/scikit-learn-videos)
+
+
+
+# API reference
 
 - [API Reference — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/api.html?highlight=dataframe#dataframe)
 - [API Reference — scikit-learn 0.19.1 documentation](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.datasets)
@@ -31,7 +41,7 @@
 
 
 
-## pyplot
+# pyplot
 
 - [matplotlib.pyplot.imshow — Matplotlib 2.1.2 documentation](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.imshow.html#matplotlib.pyplot.imshow)
 
@@ -71,7 +81,7 @@
     linear_prediction(plot_dict)
     ```
     
-### 在for loop中畫圖
+## 在for loop中畫圖
 
 - [python - Display numpy array in a for loop using matplotlib imshow - Stack Overflow](https://stackoverflow.com/questions/25812905/display-numpy-array-in-a-for-loop-using-matplotlib-imshow)
 
@@ -87,7 +97,7 @@
 
 
 
-## numpy
+# numpy
 
 - [numpy.array — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.array.html#numpy.array)
     Create an array.
@@ -109,7 +119,53 @@
 - [numpy.nditer — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.nditer.html#numpy.nditer)
     Efficient multi-dimensional iterator object to iterate over arrays. To get started using this object, see the [_introductory guide to array iteration_](https://docs.scipy.org/doc/numpy-1.12.0/reference/arrays.nditer.html#arrays-nditer).
 
-### get indices of max argument
+## Check Version
+
+- [python - How do I check which version of NumPy I'm using? - Stack Overflow](https://stackoverflow.com/questions/1520234/how-do-i-check-which-version-of-numpy-im-using)
+
+    > 
+    > ```py
+    > >> import numpy
+    > >> print numpy.__version__
+    > ```
+    > 
+    > This is the API we numpy developers will support. numpy.version.version is an implementation detail that should not be relied upon. – Robert Kern Oct 6 '09 at 0:18
+    > 
+    > ---
+    > 
+    > If you're using ***NumPy from the Anaconda distribution***, then you can just do:
+    > 
+    > ```py
+    > $ conda list | grep numpy
+    > numpy     1.11.3     py35_0
+    > ```
+    > 
+    > This gives the `Python` version as well.
+    > 
+    > ---
+    > 
+    > We can use `pip freeze` to get any Python package version without opening the Python shell.
+    > 
+    > ```py
+    > pip freeze | grep 'numpy'
+    > ```
+    > 
+    > That only works if you installed numpy via pip, not via brew or apt-get, for example.
+    > 
+    > ---
+    > 
+    > Run:
+    > 
+    > ```py
+    > pip list
+    > ```
+    > 
+    > Should generate a list of packages.
+    > 
+    > 
+
+
+## get indices of max argument
 
 - [numpy.arange — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.arange.html#numpy.arange)
     Return evenly spaced values within a given interval.
@@ -367,7 +423,7 @@ array([[0, 0, 0],
             > P.S. Also see this great answer: [newaxis vs reshape to add dimensions](https://stackoverflow.com/a/28385957)
             > 
 
-### Sorting
+## Sorting
 
 - [python - Efficiently sorting a numpy array in descending order? - Stack Overflow](https://stackoverflow.com/questions/26984414/efficiently-sorting-a-numpy-array-in-descending-order)
     
@@ -403,7 +459,7 @@ array([[0, 0, 0],
     > 100000 loops, best of 3: 3.91 µs per loop
     > ```
 
-### get index of element
+## get index of element
 
 - [python - Index of element in NumPy array - Stack Overflow](https://stackoverflow.com/questions/18079029/index-of-element-in-numpy-array)
 
@@ -443,7 +499,7 @@ array([[0, 0, 0],
     > #(array([ 3,  4,  5,  8,  9, 10]),)
     > ```
 
-### indexing & slicing
+## indexing & slicing
 
 - [Numpy 笔记(二): 多维数组的切片(slicing)和索引(indexing) · ZMonster's Blog](http://www.zmonster.me/2016/03/09/numpy-slicing-and-indexing.html)
 
@@ -493,7 +549,7 @@ array([[0, 0, 0],
     > 
 
 
-### one-hot
+## one-hot
 
 - [python - How to convert 2d numpy array into binary indicator matrix for max value - Stack Overflow](https://stackoverflow.com/questions/36153638/how-to-convert-2d-numpy-array-into-binary-indicator-matrix-for-max-value)
 
@@ -539,7 +595,7 @@ array([[0, 0, 0],
     > ```
     > [name=Divakar]
 
-### Einstein Summation
+## Einstein Summation
 
 - [爱因斯坦求和约定 - Wikiwand](https://www.wikiwand.com/zh/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6%E6%B1%82%E5%92%8C%E7%BA%A6%E5%AE%9A)
 
@@ -645,10 +701,29 @@ array([[0, 0, 0],
     > * The desired output shape.
     > 
 
+## Troubleshooting
 
-## Scipy
+### RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility
 
-### 處理outlier
+- [python - RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility - Stack Overflow](https://stackoverflow.com/questions/40845304/runtimewarning-numpy-dtype-size-changed-may-indicate-binary-incompatibility)
+
+    > It's the issue of new numpy version (1.15.0)
+    > 
+    > You can downgrade numpy and this problem will be fixed:
+    > ```
+    > sudo pip uninstall numpy
+    > sudo pip install numpy==1.14.5
+    > ```
+    > 
+    > > Finally numpy 1.15.1 version is released so the warning issues are fixed.
+    > > ```
+    > > sudo pip install numpy==1.15.1
+    > > ```
+
+
+# Scipy
+
+## 處理outlier
 - [scipy.stats.rankdata — SciPy v0.16.1 Reference Guide](https://docs.scipy.org/doc/scipy-0.16.0/reference/generated/scipy.stats.rankdata.html)
 
     > Assign ranks to data, dealing with ties appropriately.
@@ -679,7 +754,7 @@ array([[0, 0, 0],
 
 
 
-## Pandas
+# Pandas
 - [pandas.DataFrame.from_records — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.from_records.html#pandas.DataFrame.from_records)
     Convert structured or record ndarray to DataFrame
 
@@ -687,7 +762,7 @@ array([[0, 0, 0],
     Applies function along input axis of DataFrame.
 
 
-### indexing
+## indexing
 
 - [pandas.Series.str.contains — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.str.contains.html#pandas.Series.str.contains)
     Return boolean Series/`array` whether given pattern/regex is contained in each string in the Series/Index.
@@ -742,7 +817,7 @@ array([[0, 0, 0],
     ![](https://shanelynnwebsite-mid9n9g1q9y8tt.netdna-ssl.com/wp-content/uploads/2016/10/Pandas-selections-and-indexing-1024x731.png)
 
 
-### remove column
+## remove column
 
 - [Delete column from pandas DataFrame using python del - Stack Overflow](https://stackoverflow.com/questions/13411544/delete-column-from-pandas-dataframe-using-python-del)
 
@@ -768,7 +843,7 @@ array([[0, 0, 0],
     > 
 
 
-### correlation
+## correlation
 
 - [pandas.DataFrame.corr — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.corr.html#pandas.DataFrame.corr)
     Compute pairwise correlation of columns, excluding NA/null values
@@ -780,47 +855,8 @@ array([[0, 0, 0],
     ![](https://screenshotscdn.firefoxusercontent.com/images/542f5956-ea44-4751-a8be-b1a3936c8a14.png)
     
     
-### append
 
-- [python - Formatting dataframe in appending - Stack Overflow](https://stackoverflow.com/questions/33346904/formatting-dataframe-in-appending)
-
-    > You need to change one column name, so `append` can detect hat you want to do:
-    > 
-    > ```
-    > data2.columns = ["a"]
-    > ```
-    > 
-    > or
-    > 
-    > ```
-    > data1.columns = ["b"]
-    > ```
-    > 
-    > And then, after using `data2.columns = ["a"]`:
-    > 
-    > ```
-    > all_data = data1.append(data2, ignore_index=True)
-    > all_data
-    >    a
-    > 0  a
-    > 1  b
-    > 2  c
-    > 3  d
-    > 4  e
-    > 5  f
-    > 6  g
-    > 7  h
-    > 8  i
-    > 9  j
-    > ```
-    > 
-    > And here you have your column named after the column's name of data1, which you can rename if you want:
-    > 
-    > ```
-    > all_data.columns = ["Foo"]
-    > ```
-
-### one-hot & reversing one-hot
+## one-hot & reversing one-hot
 
 - [pandas.get_dummies — pandas 0.22.0 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.get_dummies.html)
     Convert categorical variable into dummy/indicator variables
@@ -882,7 +918,7 @@ array([[0, 0, 0],
     > dtype: object
     > ```
 
-### column assignment
+## column assignment
 
 - [Adding new column to existing DataFrame in Python pandas - Stack Overflow](https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas)
 
@@ -936,7 +972,7 @@ array([[0, 0, 0],
     > This is because a `pd.Series` by default has an index enumerated from 0 to n. And the pandas `[] =` method **tries** _to be "smart"_
     > 
 
-### adding rows
+## adding rows
 
 - [python - add one row in a pandas.DataFrame - Stack Overflow](https://stackoverflow.com/questions/10715965/add-one-row-in-a-pandas-dataframe)
 
@@ -948,7 +984,7 @@ array([[0, 0, 0],
         df.loc[len(df)] = row
     ```
 
-### select rows
+## select rows
 
 - [python - Select rows from a DataFrame based on values in a column in pandas - Stack Overflow](https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas)
 
@@ -1077,7 +1113,10 @@ array([[0, 0, 0],
     > ```
     > 
 
-### NaN & None
+
+
+
+## NaN & None
 
 - [Python 中 NaN 和 None 的详细比较 - Python - 伯乐在线](http://python.jobbole.com/87266/)
 
@@ -1127,19 +1166,237 @@ array([[0, 0, 0],
     > 
 
 
+## print pandas DataFrame without index
+
+- [python - How to print pandas DataFrame without index - Stack Overflow](https://stackoverflow.com/questions/24644656/how-to-print-pandas-dataframe-without-index)
+
+    > ```py
+    > print df.to_string(index=False)
+    > ```
+
+
+## Remove name of Row Index
+
+- [python - Remove Row Index dataframe pandas - Stack Overflow](https://stackoverflow.com/questions/43716402/remove-row-index-dataframe-pandas)
+
+    > `FACTOR` is the name of the index - you shouldn't worry about it - it doesn't affect your data:
+    > 
+    > ```py
+    > In [78]: df
+    > Out[78]:
+    >               DATE  REVENUE  COST  POSITION
+    > FACTOR
+    > 10      2017/01/01     1000   900        10
+    > 11      2017/01/01      900   700         9
+    > 12      2017/01/01     1100   800         7
+    > 
+    > In [79]: df.index.name
+    > Out[79]: 'FACTOR'
+    > ```
+    > 
+    > If you want to rename it or to get rid of it (preserving the index values) you can use [DataFrame.rename_axis()](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.rename_axis.html) method:
+    > 
+    > ```py
+    > In [80]: df = df.rename_axis(None)
+    > 
+    > In [81]: df
+    > Out[81]:
+    >           DATE  REVENUE  COST  POSITION
+    > 10  2017/01/01     1000   900        10
+    > 11  2017/01/01      900   700         9
+    > 12  2017/01/01     1100   800         7
+    > 
+    > In [82]: df.index.name is None
+    > Out[82]: True
+    > ```
+    > 
+
+## batch process all the values of Dataframe
+
+- [python - pandas how to batch process all the values - Stack Overflow](https://stackoverflow.com/questions/32840905/pandas-how-to-batch-process-all-the-values)
+
+    > You can call [`apply`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html#pandas.DataFrame.apply) with a lambda that calls the vectorise [`str`](http://pandas.pydata.org/pandas-docs/stable/api.html#string-handling) methods to slice your strings:
+    > 
+    > ```python
+    > In [136]:
+    > df = pd.DataFrame({'a':['asdas','asdasdsadas','123124'],'b':['554653645','546456453634','uyiyasdhnfjnas']})
+    > df
+    > 
+    > Out[136]:
+    >              a               b
+    > 0        asdas       554653645
+    > 1  asdasdsadas    546456453634
+    > 2       123124  uyiyasdhnfjnas
+    > 
+    > In [138]:
+    > df.apply(lambda x: x.str[:4])
+    > 
+    > Out[138]:
+    >       a     b
+    > 0  asda  5546
+    > 1  asda  5464
+    > 2  1231  uyiy
+    > ```
+
+## dataframe operation
+
+### append
+
+- [python - Formatting dataframe in appending - Stack Overflow](https://stackoverflow.com/questions/33346904/formatting-dataframe-in-appending)
+
+    > You need to change one column name, so `append` can detect hat you want to do:
+    > 
+    > ```
+    > data2.columns = ["a"]
+    > ```
+    > 
+    > or
+    > 
+    > ```
+    > data1.columns = ["b"]
+    > ```
+    > 
+    > And then, after using `data2.columns = ["a"]`:
+    > 
+    > ```
+    > all_data = data1.append(data2, ignore_index=True)
+    > all_data
+    >    a
+    > 0  a
+    > 1  b
+    > 2  c
+    > 3  d
+    > 4  e
+    > 5  f
+    > 6  g
+    > 7  h
+    > 8  i
+    > 9  j
+    > ```
+    > 
+    > And here you have your column named after the column's name of data1, which you can rename if you want:
+    > 
+    > ```
+    > all_data.columns = ["Foo"]
+    > ```
+
+
+## file oerpation
+
+### read_excel(), to_execl()
+
+- [pandas.read_excel — pandas 0.23.4 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_excel.html)
+```
+>>> pd.read_excel('tmp.xlsx')
+```
+
+### to_csv()
+
+- [pandas.DataFrame.to_csv — pandas 0.23.4 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_csv.html#)
+
+- [python - Pandas writing dataframe to CSV file - Stack Overflow](https://stackoverflow.com/questions/16923281/pandas-writing-dataframe-to-csv-file)
+
+    > To delimit by a tab you can use the `sep` argument of [`to_csv`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_csv.html):
+    > 
+    > ```
+    > df.to_csv(file_name, sep='\t')
+    > ```
+    > 
+    > To use a specific encoding (e.g. 'utf-8') use the `encoding` argument:
+    > 
+    > ```
+    > df.to_csv(file_name, sep='\t', encoding='utf-8')
+    > ```
+
+## data operation
+
+### random sample
+
+- [pandas.DataFrame.sample — pandas 0.23.4 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sample.html)
+
+    > 
+    > 3 random elements from the `Series`:
+    > 
+    > ```py
+    > >>> s.sample(n=3)
+    > ```
+    > ---
+    > 
+    > And a random 10% of the `DataFrame` with replacement:
+    > 
+    > ```py
+    > >>> df.sample(frac=0.1, replace=True)
+    > ```
+    > ---
+    > 
+    > You can use *random state* for reproducibility:
+    > 
+    > ```py
+    > >>> df.sample(random_state=1)
+    > ```
+    > 
+
+## batch operation
+
+### apply with axis
+
+- [pandas.DataFrame.apply — pandas 0.23.4 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html)
+
+    > ```py
+    > df[["filename","ID"]].apply(lambda x: copy2(x[0], save_dir+x[1]+'.json'), axis=1)
+    > ```
+
+### apply a function with arguments
+
+- [python pandas: apply a function with arguments to a series - Stack Overflow](https://stackoverflow.com/questions/12182744/python-pandas-apply-a-function-with-arguments-to-a-series)
+
+    > Let's created a normal function with two arguments to control the min and max values we want in our Series.
+    > 
+    > ```python
+    > def between(x, low, high):
+    >     return x >= low and x =< high
+    > ```
+    > 
+    > We can replicate the output of the first function by passing unnamed arguments to `args`:
+    > 
+    > ```python
+    > s.apply(between, args=(3,6))
+    > ```
+    > 
+    > Or we can use the named arguments
+    > 
+    > ```python
+    > s.apply(between, low=3, high=6)
+    > ```
+    > 
+    > Or even a combination of both
+    > 
+    > ```python
+    > s.apply(between, args=(3,), high=6)
+    > ```
+    > 
+    > ---
+    > 
+    > The documentation explains this clearly. The apply method accepts a python function which should have a single parameter. If you want to pass more parameters you should use `functools.partial` as suggested by Joel Cornett in his comment.
+    > 
+    > An example:
+    > 
+    > ```python
+    > >>> import functools
+    > >>> import operator
+    > >>> add_3 = functools.partial(operator.add,3)
+    > >>> add_3(2)
+    > 5
+    > >>> add_3(7)
+    > 10
+    > ```
+    > 
+    > You can also pass keyword arguments using `partial`.
 
 
 
 
-
-
-
-
-
-
-
-
-## scikit-learn
+# scikit-learn
 - [sklearn.preprocessing.MinMaxScaler — scikit-learn 0.19.1 documentation](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)
     Transforms features by scaling each feature to a given range.
 
@@ -1215,7 +1472,7 @@ array([[0, 0, 0],
     > 
 
 
-### score matrics
+## score matrics
 
 - [sklearn.metrics.roc_auc_score — scikit-learn 0.19.1 documentation](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score)
 
@@ -1232,9 +1489,46 @@ array([[0, 0, 0],
     > 0.75
     > ```
 
+## one-hot encode
+
+- [sklearn.preprocessing.OneHotEncoder — scikit-learn 0.19.2 documentation](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html)
+
+    > Examples
+    > 
+    > Given a dataset with three features and four samples, we let the encoder find the maximum value per feature and transform the data to a binary one-hot encoding.
+    > 
+    > 
+    > ```python
+    > >>> from sklearn.preprocessing import OneHotEncoder
+    > >>> enc = OneHotEncoder()
+    > >>> enc.fit([[0, 0, 3], [1, 1, 0], [0, 2, 1], [1, 0, 2]])
+    > OneHotEncoder(categorical_features='all', dtype=<... 'numpy.float64'>,
+    >  handle_unknown='error', n_values='auto', sparse=True)
+    > >>> enc.n_values_
+    > # 從左到右，
+    > # 第一個feature 有2個值(0,1)
+    > # 第二個feature 有3個值(0,1,2)
+    > # 第三個feature 有4個值(0,1,2,3)
+    > array([2, 3, 4])
+    > >>> enc.feature_indices_
+    > # 從左到右，
+    > # 第一個feature轉成one-hot後使用的index為0,1 [0,2]
+    > # 第二個feature轉成one-hot後使用的index為2,3,4 [2,5]
+    > # 第三個feature轉成one-hot後使用的index為5,6,7,8 [5,9]
+    > array([0, 2, 5, 9])
+    > >>> enc.transform([[0, 1, 1]]).toarray()
+    > # 從左到右，
+    > # 第一個feature 為0 轉成one-hot後為[1,0]
+    > # 第二個feature 為1 轉成one-hot後為[0,1,0]
+    > # 第三個feature 為1 轉成one-hot後為[0,1,0,0]
+    > # 合起來便是[[1,0],[0,1,0],[0,1,0,0]]
+    > array([[ 1.,  0.,  0.,  1.,  0.,  0.,  1.,  0.,  0.]])
+    > ```
 
 
-## jieba 結巴 中文斷詞
+
+
+# jieba 結巴 中文斷詞
 
 - [Python中文分词 jieba 十五分钟入门与进阶 - CSDN博客](https://blog.csdn.net/fontthrone/article/details/72782499)
 - [结巴中文分词的用法 - 简书](https://www.jianshu.com/p/e8b5d01ca073)
@@ -1299,31 +1593,110 @@ array([[0, 0, 0],
     | un | 未知词 | 不可识别词及用户自定义词组。取英文Unkonwn首两个字母。(非北大标准，CSW分词中定义) |
 
 
-## gensim
+# gensim
 
 - [gensim: models.word2vec – Deep learning with word2vec](https://radimrehurek.com/gensim/models/word2vec.html)
 
 
 
-## Graphviz
+# Graphviz
 
 - [Download](https://graphviz.gitlab.io/download/)
 
 
-## Machine Learning Algorithm
+# Machine Learning Algorithm
 
-### PCA
+## PCA
 
 - [PCA(主成分分析)python实现 - 简书](https://www.jianshu.com/p/4528aaa6dc48)
 
 
-### XGBoost
+## XGBoost
 
 - [XGBoost 与 Boosted Tree – 我爱计算机](http://www.52cs.org/?p=429)
 
 - [Complete Guide to Parameter Tuning in XGBoost (with codes in Python)](https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/)
 
-#### Leaf Encoding
+- [[1603.02754] XGBoost: A Scalable Tree Boosting System](https://arxiv.org/abs/1603.02754)
+
+
+
+### Mathematics Behind XGBoost
+
+- [Unveiling Mathematics Behind XGBoost](https://www.kdnuggets.com/2018/08/unveiling-mathematics-behind-xgboost.html)
+
+    > ### **Curious case of John and Emily**
+    > ![](https://cdn-images-1.medium.com/max/720/1*mWtNfyZwXju3-tZfRFYcng.jpeg)
+    > 
+    > John and Emily embarked on an adventure to pluck apples from the tree located at the lowest point of the mountain. While Emily is a smart and adventurous girl, John is a bit cautious and sluggish. However, only John can climb tree and pluck apples. We will see how they achieve their goal.\
+    > ![](https://cdn-images-1.medium.com/max/720/1*LA8TV-PCjh1on6MQ1LxOVw.jpeg)
+    > 
+    > John and Emily start at point 'a' on the mountain and tree is located at point 'g'. There are two ways they can reach point 'g':
+    > 
+    > 1\. Emily calculates the slope of the curve at point 'a'; if the slope is positive, they move in the opposite direction or else in the same direction. However, slope gives direction but doesn't tell how much they need to move in that direction. Therefore, Emily decides to take small step and repeat the process, so they don't end up at the wrong point. While the direction of the step is controlled by the negative gradient, the magnitude of the step is controlled by the learning rate. If the magnitude is either too high or too low, they may end up at a wrong point or take way too long to reach to point 'g'.\
+    > ![](https://cdn-images-1.medium.com/max/720/1*wQXYeg4Jrvb-4a3Nz4SP7w.jpeg)
+    > 
+    > John is skeptical about this approach and doesn't want to walk more if by chance they end up at the wrong point. So Emily comes up with a new approach:
+    > 
+    > 2\. Emily suggests that she will first go to next potential points and calculate the value of the loss function at those points. She keeps a note of the value of the function at all those points, and she will signal John to come to that point where the value is least. John loved this approach as he will never end up at a wrong point. However, poor Emily need to explore all points in her neighborhood and calculate the value of the function at all those points. The beauty of XGBoost is it intelligently tackles both these problems.
+    > 
+    > Please be advised I may use function/base learner/tree interchangeably.
+    > 
+    > ### **Gradient Boosting**
+    > Many implementations of Gradient Boosting follow approach 1 to minimize the objective function. At every iteration, we fit a base learner to the negative gradient of the loss function and multiply our prediction with a constant and add it to the value from previous iteration.
+    > 
+    > ![](https://cdn-images-1.medium.com/max/720/1*Ghv8bGUk0zzYfUouEJYuyw.png)\
+    > [Source: Wikipedia](https://en.wikipedia.org/wiki/Gradient_boosting)
+    > 
+    > The intuition is by fitting a base learner to the negative gradient at each iteration is essentially performing gradient descent on the loss function. The negative gradients are often called as pseudo residuals, as they indirectly help us to minimize the objective function.
+    > 
+    > ### **XGBoost**
+    > It was a result of research by Tianqi Chen, Ph.D. student at University of Washington. XGBoost is an ensemble additive model that is composed of several base learners.\
+    > ![](https://cdn-images-1.medium.com/max/720/1*hyVH1RhJaDkDksy7_f4Ocw.jpeg)
+    > 
+    > How should we chose a function at each iteration? we chose a function that minimizes the overall loss.\
+    > ![](https://cdn-images-1.medium.com/max/720/1*pzR03dxcSOhn2tnKtAXo3A.jpeg)
+    > 
+    > In the gradient boosting algorithm stated above, we obtained f~t~(x~i~) at each iteration by fitting a base learner to the negative gradient of loss function with respect to previous iteration's value. In XGBoost, we explore several base learners or functions and pick a function that minimizes the loss (Emily's second approach). As I stated above, there are two problems with this approach:\
+    > 1\. exploring different base learners\
+    > 2\. calculating the value of the loss function for all those base learners.
+    > 
+    > XGBoost uses Taylor series to approximate the value of the loss function for a base learner f~t~(x~i~), thus, reducing the load on Emily to calculate the exact loss for different possible base learners.\
+    > ![](https://cdn-images-1.medium.com/max/720/1*TZDFiZ8EaBUbv8POwgAwcQ.jpeg)
+    > 
+    > It only uses expansion up to second order derivative assuming this level of approximation would be suffice. The first term 'C' is constant irrespective of any f~t~(x~i~) we pick. 'g~i~' is the first order derivative of loss at previous iteration with respect predictions at previous iteration. 'h~i~' is the second order derivative of loss at previous iteration with respect to predictions at previous iteration. Therefore, Emily can calculate 'g~i~' and 'f~i~' before starting exploring different base learners, as it will be just a matter of multiplications thereafter. Plug and play, isn't it?
+    > 
+    > So XGBoost has reduced one of the burdens on Emily. Still we have a problem of exploring different base learners.\
+    > ![](https://cdn-images-1.medium.com/max/720/1*Sku1s6Y2NYyh71scMy8fSA.jpeg)
+    > 
+    > Assume Emily fixed a base learner ft that has 'K' leaf nodes. Let I~j~ be the set of instances belonging to node 'j' and 'w~j~' be the prediction for that node. So for an instance 'i' belonging to I~j~, f~t~(x~i~)=w~j~. Therefore, we obtained equation 3 from equation 2 by substituting f~t~(x~i~) with respective predictions. After substituting the predictions, we can take the derivative of loss function with respect to each leaf node's weight, to get an optimal weight.\
+    > ![](https://cdn-images-1.medium.com/max/720/1*-tt8E0OzV2O2pKH6v5wMuQ.jpeg)
+    > 
+    > Substituting the optimal weights back into equation 3 gives equation 4. However, this is the optimal loss for a fixed tree structure. There will be several hundreds of possible trees.
+    > 
+    > Let's formulate the current position of Emily. She now knows how to ease the burden of computing loss using Taylor expansion. She knows for a fixed tree structure what should be the optimal weights in the leaf node. The only thing that is still a concern is how to explore all different possible tree structures.\
+    > ![](https://cdn-images-1.medium.com/max/720/1*De1hXISG0y_7iL6OhxrJIw.jpeg)
+    > 
+    > Instead of exploring all possible tree structures, XGBoost greedily builds a tree. The split that results in maximum loss reduction is chosen. In the above picture, the tree starts at Node 'I'. Based on some split criteria, the node is divided into left and right branches. So some instances fall in left node and other instances fall in right leaf node. Now, we can calculate the reduction in loss and pick the split that causes best reduction in loss.
+    > 
+    > But still Emily has one more problem. How to chose the split criteria? XGBoost uses different tricks to come up with different split points like histogram, exact, etc. I will not be dealing with that part, as this article has already grown in size.\
+    > **Bullet Points to Remember**
+    > 
+    > 1.  While Gradient Boosting follows negative gradients to optimize the loss function, XGBoost uses Taylor expansion to calculate the value of the loss function for different base learners. Here is the best video on the internet that explains [Taylor expansion](https://www.youtube.com/watch?v=3d6DsjIBzJ4&t=447s).
+    > 2.  XGBoost doesn't explore all possible tree structures but builds a tree greedily.
+    > 3.  XGBoost's regularization term penalizes building complex tree with several leaf nodes.
+    > 4.  XGBoost has several other tricks under its sleeve like Column subsampling, shrinkage, splitting criteria, etc. I highly recommend continue reading the original paper [here](https://arxiv.org/pdf/1603.02754.pdf).
+    > 
+    > You can view the complete derivation [here](https://drive.google.com/open?id=1CmNhi-7pZFnCEOJ9g7LQXwuIwom0ZN_D).
+    > 
+    > Read my other article on PCA [here](https://www.linkedin.com/pulse/eigendecomposition-singular-value-decomposition-ajit-samudrala/).\
+    > **Bio: [Ajit Samudrala](https://www.linkedin.com/in/ajitsamudrala/)** is an aspiring Data Scientist and Data Science intern at SiriusXM.
+    > 
+    > [Original](https://medium.com/@samudralaajit/unveiling-mathematics-behind-xgboost-c7f1b8201e2a). Reposted with permission.
+    > 
+
+
+### Leaf Encoding
 
 - [predicting-clicks-facebook.pdf](http://quinonero.net/Publications/predicting-clicks-facebook.pdf)
 
@@ -1331,7 +1704,7 @@ array([[0, 0, 0],
 
     ![](https://screenshotscdn.firefoxusercontent.com/images/4eb1256c-81e9-4c91-af15-d5325f57f5c8.png)
 
-#### Save model & load model
+### Save model & load model
 
 - [How to Save Gradient Boosting Models with XGBoost in Python - Machine Learning Mastery](https://machinelearningmastery.com/save-gradient-boosting-models-xgboost-python/)
 
@@ -1379,7 +1752,7 @@ array([[0, 0, 0],
 
 
 
-### CatBoost
+## CatBoost
 
 - [CatBoost — Transforming categorical features to numerical features — Yandex Technologies](https://tech.yandex.com/catboost/doc/dg/concepts/algorithm-main-stages_cat-to-numberic-docpage/)
 
@@ -1387,12 +1760,12 @@ array([[0, 0, 0],
 
 
 
-### Hierarchical Clustering
+## Hierarchical Clustering
 
 - [利用 SciPy 实现层次聚类 - Haojun's Blog](https://haojunsui.github.io/2016/07/16/scipy-hac/)
 
 
-## Kaggle
+# Kaggle
 
 
 - [Data Science London + Scikit-learn | Kaggle](https://www.kaggle.com/c/data-science-london-scikit-learn)
@@ -1405,20 +1778,20 @@ array([[0, 0, 0],
 
 
 
-## Model Tuning
+# Model Tuning
 
 - [Scanning hyperspace: how to tune machine learning models | Cambridge Coding Academy](https://cambridgecoding.wordpress.com/2016/04/03/scanning-hyperspace-how-to-tune-machine-learning-models/)
 - 
 
 
-## Vectorize
+# Vectorize
 
 - [Speeding up your code (2): vectorizing the loops with Numpy](https://hackernoon.com/speeding-up-your-code-2-vectorizing-the-loops-with-numpy-e380e939bed3)
 
 
 
 
-## Trubleshooting
+# Trubleshooting
 
 - [Win10下XGBoost安装方法(本地python3.5和anaconda版) | Code my word](https://denotepython.github.io/2017/03/11/install-xgboost/)
 

@@ -1,13 +1,24 @@
-# Regular_Expression__快速上手
+# Regular_Expression__筆記
 
 [toc]
 <!-- toc --> 
 
 
 ## Tools
+
+### Regex tester
 - [Online regex tester and debugger: PHP, PCRE, Python, Golang and JavaScript](https://regex101.com/)
 
+### Generate Regex from Examples
+- [Automatic Generation of Text Extraction Patterns from Examples](http://regex.inginf.units.it/)
+
+### Unicode table
+
+- [CJK Unified Ideographs - Unicode® character table](https://unicode-table.com/en/blocks/cjk-unified-ideographs/)
+
 ## Usage
+
+### 數字、字母、空白
 
 ```
 \d 數字 [0-9] 
@@ -17,6 +28,80 @@
 \s 空白字元 [ \r\t\n\f] 
 \S 非空白字元 [^ \r\t\n\f]
 ```
+
+### 中日韓、全形符號、全形數字
+
+- [Get Unicode by Regular Expression @ 程式設計 - JAVA :: 隨意窩 Xuite日誌](http://blog.xuite.net/chocopie0226/programerJava/224245060-Get+Unicode+by+Regular+Expression)
+    > 
+    > 
+    > ```
+    > [\u0800-\u4E00]   (日文)
+    > [\u4E00-\u9fa5]    (中文)
+    > [\u9fa5-\uFFFF]    (韓文或其他)
+    > [\u0080-\uFFFF]   中日韓3byte以上的字符
+    > [\uFF00-\uFFFF]   全形符號
+    > [\uFE30-\uFFA0]   全形字母數字
+    > [^\uFF00-\uFFFF] 全形字
+    > [^\x00-\xff] 全形字
+    > ```
+    > ---
+    > 
+    > [Unicode 5.0 的列表](http://www.unicode.org/Public/5.0.0/ucd/Blocks.txt)
+    > 
+    > 這個表裡面列出了統一碼區塊名和相對應的 Unicode 區段，而其中的「CJK Unified Ideographs」就是我們的中文字區段(看名稱，應該包含日文、簡體、韓文)，而在 RegEx 中，可以透過「\p」來指定這個統一碼區塊名，透過指定它，找出相對應的文字範圍，Java 就是這樣做的。 要能夠擷取出 Unicode，常見的作法有兩種：
+    > 
+    > 1. 使用 \u 來指定 Unicode 的碼
+    > 
+    >     ```
+    >     EX:[\u4E00-\u9fa5]
+    >     ```
+    > 2. 使用 \x 來指定 Unicode 的碼
+    > 
+    >     ```
+    >     EX:[\x{2460}-\x{2468}]
+    >     ```
+    > 
+
+- [java - Regex for matching multilingual numbers not detecting Chinese numbers - Stack Overflow](https://stackoverflow.com/questions/32523130/regex-for-matching-multilingual-numbers-not-detecting-chinese-numbers)
+
+    > If that is only a Chinese issue, you can use the approach I suggested. Also, here is [a nice resource on Chinese numbers](http://www.mandarintools.com/numbers.html). Acc. to that page, the Chinese numbers can be matched with `[\\p{N}零一二三四五六七八九十百千萬億万亿壹貳叄肆伍陸柒捌玖拾佰仟贰叁陆]`. -- [Wiktor Stribiżew](https://stackoverflow.com/users/3832970/wiktor-stribi%c5%bcew "282,165 reputation") [Sep 11 '15 at 13:39](https://stackoverflow.com/questions/32523130/regex-for-matching-multilingual-numbers-not-detecting-chinese-numbers#comment52907493_32523130)
+
+
+### Greedy and non-Greedy
+
+- [.net - RegEx: Smallest possible match or nongreedy match - Stack Overflow](https://stackoverflow.com/questions/1919982/regex-smallest-possible-match-or-nongreedy-match)
+
+
+- [regex - What do 'lazy' and 'greedy' mean in the context of regular expressions? - Stack Overflow](https://stackoverflow.com/questions/2301285/what-do-lazy-and-greedy-mean-in-the-context-of-regular-expressions)
+
+
+    > ```
+    > +-------------------+-----------------+------------------------------+
+    > | Greedy quantifier | Lazy quantifier |        Description           |
+    > +-------------------+-----------------+------------------------------+
+    > | *                 | *?              | Star Quantifier: 0 or more   |
+    > | +                 | +?              | Plus Quantifier: 1 or more   |
+    > | ?                 | ??              | Optional Quantifier: 0 or 1  |
+    > | {n}               | {n}?            | Quantifier: exactly n        |
+    > | {n,}              | {n,}?           | Quantifier: n or more        |
+    > | {n,m}             | {n,m}?          | Quantifier: between n and m  |
+    > +-------------------+-----------------+------------------------------+
+    > ```
+    > 
+    > > Add a ? to a quantifier to make it ungreedy i.e lazy.
+    > 
+    > **Example:**\
+    > test string : *stackoverflow*\
+    > *greedy reg expression* : [`s.*o`](http://regexr.com/3glo4) output: **stackoverflo**w\
+    > *lazy reg expression* : [`s.*?o`](http://regexr.com/3glo7) output: **stacko**verflow
+    > 
+    > ---
+    > 
+    > @BreakingBenjamin: no ?? is not equivalent to ?, when it has a choice to either return 0 or 1 occurrence, it will pick the 0 (lazy) alternative. To see the difference, compare `re.match('(f)?(.*)', 'food').groups()` to `re.match('(f)??(.*)', 'food').groups()`. In the latter, `(f)??` will not match the leading 'f' even though it could. Hence the 'f' will get matched by the second '.*' capture group. I'm sure you can construct an example with '{n}?' too. Admittedly these two are very-rarely-used. -- [smci](https://stackoverflow.com/users/202229/smci "13,632 reputation") [Nov 16 '17 at 0:42](https://stackoverflow.com/questions/2301285/what-do-lazy-and-greedy-mean-in-the-context-of-regular-expressions#comment81590562_34806154)
+    > 
+
+### h3
+
 
 - [regex - Regular Expression "Matching" vs "Capturing" - Stack Overflow](https://stackoverflow.com/questions/21200514/regular-expression-matching-vs-capturing)
 
@@ -141,6 +226,31 @@
     > I'm looking for a general solution that would work for any regx without re-writing the whole regex.
 
 
+## What does '\K' mean
+
+- [bash - What does '\K' mean in this regex? - Stack Overflow](https://stackoverflow.com/questions/33573920/what-does-k-mean-in-this-regex)
+
+    > Since not all regex flavors support lookbehind, Perl introduced the `\K`. In general when you have:
+    > 
+    > ```
+    > a\Kb
+    > ```
+    > 
+    > When "b" is matched, `\K` tells the engine to pretend that the match attempt started at this position.
+    > 
+    > In your example, you want to pretend that the match attempt started at what appears after the ""access_token":" text.
+    > 
+    > This example will better demonstrate the `\K` usage:
+    > 
+    > ```
+    > ~$ echo 'hello world' | grep -oP 'hello \K(world)'
+    > world
+    > ~$ echo 'hello world' | grep -oP 'hello (world)'
+    > hello world
+    > ```
+
+
+
 ## 練習解說
 
 - https://regex101.com/r/oK6iB8/17
@@ -206,47 +316,47 @@
 
         ![](https://screenshotscdn.firefoxusercontent.com/images/c75fa1cc-ed49-4271-b9ed-7497eef72997.png)
 
-    3. `(?:[^"]*")` : 沒有出現 `"` 的字串群組後加上一個`"`
+    2. `(?:[^"]*")` : 沒有出現 `"` 的字串群組後加上一個`"`
 
         ![](https://screenshotscdn.firefoxusercontent.com/images/6bb63220-f48e-40c4-a88e-c4da49c681b5.png)
 
-    4. `(?:[^"]*"){2}` : 取上述模式重複兩次
+    3. `(?:[^"]*"){2}` : 取上述模式重複兩次
 
         ![](https://screenshotscdn.firefoxusercontent.com/images/f332fff4-802c-47b2-9cf5-0b1bf3066f4f.png)
 
-    5. `(?:(?:[^"]*"){2})` : 將上述模式變成群組。如此，每一群組中就包含了兩個 `"` (雙引號)，能夠選出被兩個雙引號包含的詞。
+    4. `(?:(?:[^"]*"){2})` : 將上述模式變成群組。如此，每一群組中就包含了兩個 `"` (雙引號)，能夠選出被兩個雙引號包含的詞。
 
-    6. `(?:(?:[^"]*"){2})[^"]` : 上述群組後接一個非`"` 字元
+    5. `(?:(?:[^"]*"){2})[^"]` : 上述群組後接一個非`"` 字元
 
         ![](https://screenshotscdn.firefoxusercontent.com/images/a23cdcda-505f-4bcc-964e-fa7536c4f5e8.png)
 
-    7. `(?:(?:[^"]*"){2})[^"]*` : 上述群組後接多個非`"` 字元。如此選擇邊界就移到下個群組的`"` 之前。
+    6. `(?:(?:[^"]*"){2})[^"]*` : 上述群組後接多個非`"` 字元。如此選擇邊界就移到下個群組的`"` 之前。
 
         ![](https://screenshotscdn.firefoxusercontent.com/images/697f35ed-5ee6-4c94-b94b-b0d9b7dd61ab.png)
 
-    8. `(?=(?:(?:[^"]*"){2})[^"]*)"` : 上述樣式出現的群組中，選擇其中的`"`
+    7. `(?=(?:(?:[^"]*"){2})[^"]*)"` : 上述樣式出現的群組中，選擇其中的`"`
 
         ![](https://screenshotscdn.firefoxusercontent.com/images/9ad954d3-2a3f-46e9-b045-405f5161fcd3.png)
 
-    9. `(?=(?:(?:[^"]*"){2})[^"]*)"[^"]` : 從上述選中的`"` 開始，往前增加一個非`"` 字元
+    8. `(?=(?:(?:[^"]*"){2})[^"]*)"[^"]` : 從上述選中的`"` 開始，往前增加一個非`"` 字元
 
         ![](https://screenshotscdn.firefoxusercontent.com/images/6144656a-3f4d-44f6-b3b6-ed4f1ecec25a.png)
 
-    10. `(?=(?:(?:[^"]*"){2})[^"]*)"[^"]+` : 從上述選中的`"` 開始，往前增加多個非`"` 字元
+    9. `(?=(?:(?:[^"]*"){2})[^"]*)"[^"]+` : 從上述選中的`"` 開始，往前增加多個非`"` 字元
 
         ![](https://screenshotscdn.firefoxusercontent.com/images/70ba93ba-abf8-4d72-97c8-ee837eb061d4.png)
 
-    11. `(?=(?:(?:[^"]*"){2})[^"]*)"[^"]+"` : 上述樣式後接一個`"`。如此，就把一對雙引號跟其中包含的詞都選出來了。
+    10. `(?=(?:(?:[^"]*"){2})[^"]*)"[^"]+"` : 上述樣式後接一個`"`。如此，就把一對雙引號跟其中包含的詞都選出來了。
 
         ![](https://screenshotscdn.firefoxusercontent.com/images/38165765-9e52-48b4-9e9f-bc4f21f110a0.png)
 
-    12. `(?=(?:(?:[^"]*"){2})[^"]*)"(?=[^"]* )[^"]+"` : 從上述樣式中，加上條件 `(?=[^"]* )` 在兩個引號之間，希望能選到中間至少包含一個空格的字串，但是結果卻選到另外一群.....
+    11. `(?=(?:(?:[^"]*"){2})[^"]*)"(?=[^"]* )[^"]+"` : 從上述樣式中，加上條件 `(?=[^"]* )` 在兩個引號之間，希望能選到中間至少包含一個空格的字串，但是結果卻選到另外一群.....
 
         ![](https://screenshotscdn.firefoxusercontent.com/images/45e9a868-c7bd-457a-82d0-ec891e0121bd.png)
 
 
 
-    13. `(?=(?:(?:[^"]*"){2}){6}[^"]*)"(?=[^"]* )[^"]+"` : 之所以出現上述問題，是因為預設總是從前面開始搜尋樣式，一有符合的就挑出來，但有可能因為前面沒有符合樣式的字串，就跳過一個雙引號，直接跟下一個雙引號match，結果就抓錯了...。
+    12. `(?=(?:(?:[^"]*"){2}){6}[^"]*)"(?=[^"]* )[^"]+"` : 之所以出現上述問題，是因為預設總是從前面開始搜尋樣式，一有符合的就挑出來，但有可能因為前面沒有符合樣式的字串，就跳過一個雙引號，直接跟下一個雙引號match，結果就抓錯了...。
 
         為了解決這個問題，先把第一組改成符合的字串，然後在 `(?:(?:[^"]*"){2})` 這個樣式後面接上一個重複出現次數`{6}`，表示必須重複出現該樣式6次才會被選取。可以看到符合的只有第一組雙引號括起來的字串：
 
@@ -257,7 +367,7 @@
         ![](https://screenshotscdn.firefoxusercontent.com/images/2cdc4b3d-1361-4c67-af83-f0d5a7c952f1.png)
 
 
-    14. `(?=(?:(?:[^"]*"){2}){5}[^"]*$)"(?=[^"]* )[^"]+"` : 因此，藉由在 `(?:(?:[^"]*"){2}){5}[^"]*` 後面接上 `$` ，表示符合的樣式後面必須接上文章結尾，來限制第一組被選中的情況，如此就可以只選出第二組。
+    13. `(?=(?:(?:[^"]*"){2}){5}[^"]*$)"(?=[^"]* )[^"]+"` : 因此，藉由在 `(?:(?:[^"]*"){2}){5}[^"]*` 後面接上 `$` ，表示符合的樣式後面必須接上文章結尾，來限制第一組被選中的情況，如此就可以只選出第二組。
 
         ![](https://screenshotscdn.firefoxusercontent.com/images/7185d5b0-8ce5-4ee5-876d-b2e6eec7ed37.png)
 

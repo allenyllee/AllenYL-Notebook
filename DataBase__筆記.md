@@ -1,5 +1,11 @@
 # DataBase__筆記
 
+[toc]
+<!-- toc --> 
+
+
+# Introduction
+
 ## RDBMS vs. NoSQL
 
 - [邁向王者的旅途: [筆記] RDBMS v.s. NoSQL](https://shininglionking.blogspot.com/2018/04/rdbms-vs-nosql.html)
@@ -10,7 +16,8 @@
     > **RDBMS (Relational Database Management System)**\
     > 關聯式資料庫在意的是資料之間的關聯性，也因此在設計關聯式資料庫時**綱要 (Schema)** 就顯得非常重要。因為這關係的是你要如何設計你的資料表 (像是要擁有那些欄位)、資料表之間的關聯性如何設計，接著就可以透過 SQL (structural language) 在不同資料表之間利用他們的關聯性組合 / 過濾出你要的資訊。
     > 
-    > 基於上述的特徵，**RDBMS 有一件事情非常重要：正規化 (normalization)**。藉由正規化避免不同資料表儲存了重複的資訊，如此一來在資料更新時可以 DB 中有重複的資料沒有同時被更新。不過也正因為這件事，綱要的設計就變得更重要，因為這時綱要的設計牽涉到的不只是正規化的問題，該怎麼更新、儲存資料到資料表就跟你的綱要有密切的關連性。\
+    > 基於上述的特徵， **RDBMS 有一件事情非常重要：正規化 (normalization)** 。藉由正規化避免不同資料表儲存了重複的資訊，如此一來在資料更新時可以 DB 中有重複的資料沒有同時被更新。不過也正因為這件事，綱要的設計就變得更重要，因為這時綱要的設計牽涉到的不只是正規化的問題，該怎麼更新、儲存資料到資料表就跟你的綱要有密切的關連性。
+    > 
     > 從上面的說明應該足以了解綱要的設計對於 RDBMS 的重要性，不過這同時也引出了一個問題：**如果一開始的綱要設計不良，使用一段時間後才想要變更怎麼辦**? 嗯，通常這就是一件大工程，因為第一件事情是要把所有的資料表變更成新的綱要架構，資料量大的時候這很費工；另一件事情就是所有用到這個 DB 的程式也都要更新修改，因此這也是一件大工程。
     > 
     > RDBMS 的另一個問題也是從綱要 & 正規化來的。想想看現今網路應用的資料量會有多龐大 (像是 FB 或 google 在處理的資料量)，這些資料絕對不可能只讓一台主機去處理，一定會分散在許多主機。當 RDBMS 的資料表分散在不同主機時，想要取得某個查詢的結果或者是要更新資料時會變得相當麻煩：因為你可能會需要從主機 A 的資料表 X 去跟主機 B 的資料表 Y 先利用關鍵字找出你有興趣的資料區間，接著再這把這些資料統合成你要的結果。如果資料量又更多時，問題也不會因為僅僅多加幾台主機就能緩解，因為如何維護著這些資料表的關聯性也會是一大挑戰。所以**就結論而言，在分散式系統的環境下 RDBMS 的優勢就難以發揮了**。這些都是導致後來提出 NoSQL 的契機。
@@ -89,11 +96,16 @@
     > 
     > It is impossible for a distributed data store to provide more than two out of the above three guarantees.
     > 
-    > CAP 特別針對的是分散式的儲存環境 (所以就是 NoSQL DB 最常被應用的環境)。而且根據這個理論會發現不可能同時提供三個保證，因此目前 NoSQL 通常是提供 2 個，至於是哪 2 個就要看設計者了。不過要說 MongoDB 提供了哪兩個...根據[這一篇](https://stackoverflow.com/questions/11292215/where-does-mongodb-stand-in-the-cap-theorem?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)來看似乎可以根據你的設定有所改變。\
+    > CAP 特別針對的是分散式的儲存環境 (所以就是 NoSQL DB 最常被應用的環境)。而且根據這個理論會發現不可能同時提供三個保證，因此目前 NoSQL 通常是提供 2 個，至於是哪 2 個就要看設計者了。不過要說 MongoDB 提供了哪兩個...根據[這一篇](https://stackoverflow.com/questions/11292215/where-does-mongodb-stand-in-the-cap-theorem?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)來看似乎可以根據你的設定有所改變。
+    > 
     > 這邊要特別注意的是提供 CAP 的保證根提供 ACID 的保證是兩回事，ACID 就算不會全部提供也不代表都不會有，像是 MongoDB 就有提供 [Read Isolation 跟 Consistency](https://docs.mongodb.com/manual/core/read-isolation-consistency-recency/) 的保證，而且 MongoDB 也是會[依據情況提供 Atomicity 的保證](https://docs.mongodb.com/manual/core/write-operations-atomicity/)的。
     > 
 
-## SQL
+
+
+# SQL
+
+## Introduction
 
 - [閃開！讓專業的來：SQL 與 NoSQL - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天](https://ithelp.ithome.com.tw/articles/10187443)
 
@@ -168,7 +180,12 @@
     > 有興趣的朋友可以到[codecademy](https://www.codecademy.com/learn/learn-sql)去練習，或者是參考我個人強力推薦的一系列教學：[MySQL 超新手入門](http://www.codedata.com.tw/database/mysql-tutorial-getting-started/)。
 
 
-## NoSQL
+## PostgreSQL
+
+
+# NoSQL
+
+## Introduction
 
 - [閃開！讓專業的來：SQL 與 NoSQL - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天](https://ithelp.ithome.com.tw/articles/10187443)
 
@@ -238,7 +255,17 @@
     > SQL 跟 NoSQL 並不是互斥的概念，你可以在你的系統裡面用 SQL 類的資料庫系統儲存文章、評論，同時也用 NoSQL 類的資料庫來搜集使用者資訊。這些本來就是根據你的業務不同而定的。最慘的是那種根本不知道為什麼要用的，或者是盲目追求潮流的。再強調一遍，你要根據你的業務來選擇適合的技術棧。沒有最好的技術棧，只有最適合自己的。就算 NoSQL 聽起來比較潮，但是適合用 SQL 的地方，就乖乖用 SQL 就好。
     > 
 
+
+
+## List Of NoSQL Databases
+- [NOSQL Databases](http://nosql-database.org/)
+
+
+## Doucment Database
+
 ### MongoDB
+
+## Graph Database
 
 ### Neo4j
 

@@ -1,5 +1,10 @@
 # Neural_Attention__資料蒐集
 
+[toc]
+<!-- toc --> 
+
+
+## Workshop
 - [Reasoning, Attention, Memory (RAM) NIPS Workshop 2015](http://www.thespermwhale.com/jaseweston/ram/)
 
 
@@ -257,6 +262,16 @@
     > 
     > [Alex Graves, Greg Wayne, Ivo Danihelka. Neural Turing Machines. 2014](http://arxiv.org/abs/1410.5401)
     > 
+
+
+### Implementing Neural Turing Machines
+
+- [[1807.08518] Implementing Neural Turing Machines](https://arxiv.org/abs/1807.08518)
+
+    > Neural Turing Machines (NTMs) are an instance of Memory Augmented Neural Networks, a new class of recurrent neural networks which decouple computation from memory by introducing an external memory unit. NTMs have demonstrated superior performance over Long Short-Term Memory Cells in several sequence learning tasks. A number of open source implementations of NTMs exist but are unstable during training and/or fail to replicate the reported performance of NTMs. This paper presents the details of our successful implementation of a NTM. Our implementation learns to solve three sequential learning tasks from the original NTM paper. We find that the choice of memory contents initialization scheme is crucial in successfully implementing a NTM. Networks with memory contents initialized to small constant values converge on average 2 times faster than the next best memory contents initialization scheme.
+    > 
+
+
 
 ## Memory Networks
 

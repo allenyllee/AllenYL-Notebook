@@ -5,6 +5,9 @@
 
 ## Quantum Programming
 
+
+### Microsoft Q#
+
 - [搶先Google、IBM一步，微軟推出秘密武器「Q#」，要讓量子電腦遍地開花｜數位時代](https://www.bnext.com.tw/article/47393/microsoft-releases-quantum-computing-development-kit-preview)
 
     > 量子運算程式語言「Q#」誕生
@@ -14,14 +17,27 @@
     > 
     > 這款開發包，有一個叫「Q#」的程式語言，可以協助開發者為量子電腦開發軟體，以及一台整合在微軟開發工具套件系列Visual Studio中的量子電腦模擬器「Q# library」，個人用戶最多可以模擬30個邏輯量子位能問題、企業客戶則可以模擬超過40個量子位能的計算問題，讓開發人員可以在一般電腦上利用Azure雲端服務測試量子電腦軟體，提供全套式的解決方案。
 
-
-
-### Microsoft Q#
-
 - [Quantum Development Kit | Microsoft](https://www.microsoft.com/en-us/quantum/development-kit)
 
 - [Write a quantum program | Microsoft Docs](https://docs.microsoft.com/zh-tw/quantum/quantum-writeaquantumprogram?view=qsharp-preview&tabs=tabid-vs2017)
 
+
+
+### Programming exercises for Q# 
+
+- [微软开源 Quantum Katas，领先的量子编程解决方案 - 开源中国](https://www.oschina.net/news/98322/microsoft-opensource-quantum-katas?from=20180729)
+
+    - [Microsoft/QuantumKatas: Programming exercises for learning Q# and quantum computing](https://github.com/Microsoft/QuantumKatas)
+
+    > 到目前为止，该项目主要涵盖以下主题：
+    > 
+    > -   **基本量子计算门（Basic quantum computing gates）**：专注于量子计算中使用的主要单量子比特和多量子比特门的任务。
+    > 
+    > -   **叠加（Superposition）**： 专注于在一个或多个量子比特上准备某个叠加状态的任务。
+    > 
+    > -   **测量（Measurements）**：专注于使用测量来区分量子态的任务。
+    > 
+    > -   **Deutsch--Jozsa 算法（Deutsch--Jozsa algorithm**）：专注于编写实现经典函数的量子的任务，以及 Bernstein-Vazirani 和 Deutsch-Jozsa 算法。
 
 
 
@@ -237,11 +253,39 @@
 
 - [New quantum computer design to predict molecule properties](https://phys.org/news/2018-05-quantum-molecule-properties.html)
 
-## Quantum imformation transfer
+
+## Quantum Algorithm
+
+- [Parrondo's paradox with a three-sided coin](https://phys.org/news/2018-07-parrondo-paradox-three-sided-coin.html)
+
+    ![](https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/2018/parrondosgame.jpg) 
+
+
+
+## Quantum information transfer
 
 - [Transferring quantum information using sound](https://phys.org/news/2018-06-quantum_1.html)
 
     > As the research team has now been able to show using simulation calculations, any number of these quanta can be linked together in the diamond rod via phonons. The individual silicon atoms are switched on and off using microwaves. During this process, they emit or absorb phonons. This creates a quantum entanglement of the silicon defects, thus allowing quantum information to be transferred.
+
+### Deterministic teleportation of a quantum gate between two logical qubits
+
+- [耶魯實現量子門的隱形傳輸，模塊化量子計算的關鍵進展 - 幫趣](http://bangqu.com/v7H6Uq.html?utm_source=Facebook_PicSee)
+
+    - [[1801.05283] Deterministic teleportation of a quantum gate between two logical qubits](https://arxiv.org/abs/1801.05283)
+
+    > 這種架構中的模塊彼此之間具有自然隔離，通過更大系統減少不必要的相互作用。然而，根據研究人員的說法，這種隔離也使得在模塊之間執行運算成爲一個明顯的挑戰。量子門傳輸是實現模塊間運算的一種方式。
+    > 
+    > Chou 表示，「我們的工作首次展示了這種協議，其中經典通信實時發生，允許我們實現『確定性』運算，每次都能執行期望的運算。」
+    > 
+    > ![](http://i2.bangqu.com/j/news/20180909/v7H6Uq1536472822555kiXXC.png)*圖 1：模塊化架構和傳輸 CNOT 門的構造。*
+    > 
+    > 實用量子計算機的計算速度將能超越當前超級計算機幾個數量級。耶魯大學的研究人員站在了開發首個實用量子計算機的前沿，用超導線路完成了量子計算的開創性工作。
+    > 
+    > 量子計算是通過稱爲量子比特的相互作用來完成的，這種數據容易出錯。在實驗量子系統中，「邏輯」量子比特由「輔助」量子比特監控，以便立即檢測和糾正錯誤。Schoelkopf 表示，「我們的實驗第一次演示了邏輯量子比特之間的兩比特運算。這是使用可糾錯量子比特進行量子信息處理的里程碑。」
+
+
+
 
 ## Quantum Physics
 
@@ -258,3 +302,16 @@
     - [[1709.09812] Generalized Hardy's Paradox](https://arxiv.org/abs/1709.09812
     
     
+    
+### Quantum 'Maxwell's demon'
+
+- [Researchers find quantum 'Maxwell's demon' may give up information to extract work](https://phys.org/news/2018-07-quantum-maxwell-demon.html)
+
+    > To get information, even using the weak observation method, the researchers still had to take a peek at the particle, which meant they needed light. So they sent some photons in, and observed the photons that came back.
+    > 
+    > "But the demon misses some photons," Murch said. "It only gets about half. The other half are lost." But—and this is the key—even though the researchers didn't see the other half of the photons, those photons still interacted with the system, which means they still had an effect on it. The researchers had no way of knowing what that effect was.
+    > 
+    > They took a weak measurement and got some information, but because of quantum backaction, they might end up knowing less than they did before the measurement. On the balance, that's negative information.
+    > 
+    > 
+    > Read more at: https://phys.org/news/2018-07-quantum-maxwell-demon.html#jCp
