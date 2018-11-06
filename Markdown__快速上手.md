@@ -66,9 +66,9 @@
     > 
     > ## _formatted_ **heading** with [a](link)
     > 
-    > ---
-    > {{standard 3-backtick code block omitted from here due to escaping issues}}
-    > ---
+    > ```
+    > code block
+    > ```
     > 
     > Collapsible until here.
     > </p></details>
