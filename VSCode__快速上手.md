@@ -3,6 +3,11 @@
 [toc]
 <!-- toc --> 
 
+## plugins
+
+- [viatsko/awesome-vscode: 🎨 A curated list of delightful VS Code packages and resources.](https://github.com/viatsko/awesome-vscode)
+
+
 ## 即時預覽HTML
 
 - [Preview - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=searKing.preview-vscode)

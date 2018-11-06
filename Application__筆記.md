@@ -136,6 +136,13 @@ userid: 226242
 * display the number of tabs in the line on the paused button badge
 ```
 
+### Tree Style Tabs
+
+```
+同個釘選分頁開啟的分頁自動群組
+```
+
+
 
 ## appearence
 
@@ -558,3 +565,18 @@ userid: 226242
     > [name=Ya-Lun Li]
     > 
 
+# XDM
+
+## Xtreme Download Manager / Discussion / XDM Bug Report:XDM Not opening error an older version already running
+
+- [Xtreme Download Manager / Discussion / XDM Bug Report:XDM Not opening error an older version already running](https://sourceforge.net/p/xdman/discussion/xdmbug/thread/699935ae/)
+
+    > Exit XDM from File->Exit
+    > Please press Win+R to open run dialog.
+    > Paste this: %userprofile%\.xdman
+    > press enter to open that directory
+    > There will be file called: downloads.txt
+    > delete the file
+    > Open XDM.
+    > 
+    > Warning: this will remove all download entries

@@ -103,6 +103,33 @@
     > 
 
 
+### Timing (%timeit, %%timeit)
+
+- [[译]27 个Jupyter Notebook的小提示与技巧 - Focus on ML & DM](http://liuchengxu.org/pelican-blog/jupyter-notebook-tips.html)
+
+    > #### 11\. Jupyter Magic - Timing
+    > 
+    > 对于计时有两个十分有用的魔法命令：`%%time` 和 `%timeit`. 如果你有些代码运行地十分缓慢，而你想确定是否问题出在这里，这两个命令将会非常方便。
+    > 
+    > -   `%%time` 将会给出cell的代码运行一次所花费的时间。
+    > ```
+    > %%time
+    > import time
+    > for _ in range(1000):
+    >     time.sleep(0.01)# sleep for 0.01 seconds
+    > ```
+    > CPU times: user 196 ms, sys: 21.4 ms, total: 217 ms
+    > Wall time: 11.6 s
+    > 
+    > -   `%timeit` 使用Python的timeit模块，它将会执行一个语句100，000次(默认情况下)，然后给出运行最快3次的平均值。
+    > ```
+    > import numpy
+    > %timeit numpy.random.normal(size=100)
+    > ```
+    > The slowest run took 46.45 times longer than the fastest. This could mean that an intermediate result is being cached.
+    > 100000 loops, best of 3: 6.26 µs per loop
+
+
 ## Tutorial
 
 - [Jupyter Notebook 快速入门（上）| 编程派 | Coding Python](http://codingpy.com/article/getting-started-with-jupyter-notebook-part-1/)

@@ -206,6 +206,13 @@
     > [![Disable Reopen My Apps](https://i.stack.imgur.com/rVgzn.jpg)](https://i.stack.imgur.com/rVgzn.jpg)
     > 
 
+## Prevent Hard Disk from going to Sleep
+
+- [NoSleepHD v2.0 by Ashutosh Agarwal](https://archive.codeplex.com/?p=nosleephd)
+
+- [Prevent Hard Disk from going to Sleep in Windows 10/8/7](https://www.thewindowsclub.com/prevent-hard-drive-going-sleep-windows)
+
+
 
 
 ## ssh
@@ -263,4 +270,513 @@
     > 4.  Switch back to Developer mode, if desired.
     > 
 
+
+# disk and filesystem
+
+## List Drives using Command Prompt and PowerShell
+
+- [List Drives using Command Prompt and PowerShell](https://www.thewindowsclub.com/list-drives-using-command-prompt-powershell-windows)
+
+    > ### List Drives using Command Prompt
+    > 
+    > If you need to simply list the drives, you may use **[WMIC](https://www.thewindowsclub.com/wmi-commands-on-windows-7)**.  Windows Management Instrumentation (WMI) is the infrastructure for management data and operations on Windows-based operating systems.
+    > 
+    > Open a command prompt, and type the following command:
+    > 
+    > wmic logicaldisk get name
+    > 
+    > Press Enter and you will see the list of Drives.
+    > 
+    > You can also use the following parameter:
+    > 
+    > wmic logicaldisk get caption
+    > 
+    > ![List Drives in Command Prompt 2](https://thewindowsclub-thewindowsclubco.netdna-ssl.com/wp-content/uploads/2015/08/List-Drives-in-Command-Prompt-2-600x384.jpg)
+    > 
+    > Using the following will display Device ID and volume name as well:
+    > 
+    > wmic logicaldisk get deviceid, volumename, description
+    > 
+    > Windows also includes an additional command-line tool for file, system and disk management, called **[Fsutil](https://www.thewindowsclub.com/disk-management-tool-windows)**. This utility helps you lits files, change the short name of a file, find files by SID's (Security Identifier) and perform other complex tasks.  You can also use *fsutil* to display drives. Use the following command:
+    > 
+    > fsutil fsinfo drives
+    > 
+    > It will show mapped drives too.
+    > 
+    > You can also use [**diskpart**](https://www.thewindowsclub.com/disk-management-tool-windows) to get a list of drives along with some more details. The  Diskpart utility can do everything that the Disk Management console can do, and more! It's invaluable for script writers or anyone who simply prefers working at a command prompt.
+    > 
+    > Open CMD and type *diskpart*. Next use the following command:
+    > 
+    > list volume
+    > 
+    > ![List Drives in Command Prompt](https://thewindowsclub-thewindowsclubco.netdna-ssl.com/wp-content/uploads/2015/08/List-Drives-in-Command-Prompt-1-600x318.jpg)
+    > 
+    > You will see that the console display the Volume number and letter, label, formatting type, partition type, size, status and other information.
+    > 
+    > ### List Drives using PowerShell
+    > 
+    > To display drives using PowerShell, type *powershell* in the same CMD windows and hit Enter. This will open a PowerShell window.
+    > 
+    > Now use the following command:
+    > 
+    > get-psdrive -psprovider filesystem
+    > 
+    > ![List Drives in powershell](https://thewindowsclub-thewindowsclubco.netdna-ssl.com/wp-content/uploads/2015/08/List-Drives-in-powershell-3-600x318.jpg)
+    > 
+
+- [windows - List every \Device\Harddiskvolume.? - Super User](https://superuser.com/questions/1058217/list-every-device-harddiskvolume)
+
+
+    > Found a powershell script that lists the mounted volumes:
+    > 
+    > ```powershell
+    > # Biuild System Assembly in order to call Kernel32:QueryDosDevice.
+    >    $DynAssembly = New-Object System.Reflection.AssemblyName('SysUtils')
+    >    $AssemblyBuilder = [AppDomain]::CurrentDomain.DefineDynamicAssembly($DynAssembly, [Reflection.Emit.AssemblyBuilderAccess]::Run)
+    >    $ModuleBuilder = $AssemblyBuilder.DefineDynamicModule('SysUtils', $False)
+    > 
+    >    # Define [Kernel32]::QueryDosDevice method
+    >    $TypeBuilder = $ModuleBuilder.DefineType('Kernel32', 'Public, Class')
+    >    $PInvokeMethod = $TypeBuilder.DefinePInvokeMethod('QueryDosDevice', 'kernel32.dll', ([Reflection.MethodAttributes]::Public -bor [Reflection.MethodAttributes]::Static), [Reflection.CallingConventions]::Standard, [UInt32], [Type[]]@([String], [Text.StringBuilder], [UInt32]), [Runtime.InteropServices.CallingConvention]::Winapi, [Runtime.InteropServices.CharSet]::Auto)
+    >    $DllImportConstructor = [Runtime.InteropServices.DllImportAttribute].GetConstructor(@([String]))
+    >    $SetLastError = [Runtime.InteropServices.DllImportAttribute].GetField('SetLastError')
+    >    $SetLastErrorCustomAttribute = New-Object Reflection.Emit.CustomAttributeBuilder($DllImportConstructor, @('kernel32.dll'), [Reflection.FieldInfo[]]@($SetLastError), @($true))
+    >    $PInvokeMethod.SetCustomAttribute($SetLastErrorCustomAttribute)
+    >    $Kernel32 = $TypeBuilder.CreateType()
+    > 
+    >    $Max = 65536
+    >    $StringBuilder = New-Object System.Text.StringBuilder($Max)
+    > 
+    >    Get-WmiObject Win32_Volume | ? { $_.DriveLetter } | % {
+    >        $ReturnLength = $Kernel32::QueryDosDevice($_.DriveLetter, $StringBuilder, $Max)
+    > 
+    >        if ($ReturnLength)
+    >        {
+    >            $DriveMapping = @{
+    >                DriveLetter = $_.DriveLetter
+    >                DevicePath = $StringBuilder.ToString()
+    >            }
+    > 
+    >            New-Object PSObject -Property $DriveMapping
+    >        }
+    >    }
+    > 
+    > ```
+    > 
+    > Source: <http://www.morgantechspace.com/2014/11/Get-Volume-Path-from-Drive-Name-using-Powershell.html>
+    > 
+    > Output looks like this:
+    > 
+    > ```
+    > DevicePath               DriveLetter
+    > ----------               -----------
+    > \Device\HarddiskVolume2  F:
+    > \Device\HarddiskVolume7  J:
+    > \Device\HarddiskVolume10 D:
+    > \Device\HarddiskVolume12 E:
+    > \Device\HarddiskVolume5  C:
+    > 
+    > ```
+    > 
+
+- [Get Volume Path from Drive Name using Powershell script](https://www.morgantechspace.com/2014/11/Get-Volume-Path-from-Drive-Name-using-Powershell.html)
+
+    > Get Device Path from Device Name (Drive Letter) using Powershell script
+    > =======================================================================
+    > 
+    > The below script displays **Device Path** for the given **Device Name**(Derive letter). The device name(drive letter) cannot have a trailing backslash; for example, use "**C:**", not "**C:\**". Follow the below steps to get volume path from drive letter.
+    > 
+    >    1. Copy the below [Powershell](http://www.morgantechspace.com/search/label/Powershell) script and paste in Notepad file.\
+    >    2. Save As the Notepad file with the extension **.ps1** like **Get-DevicePath-from-DeviceName.ps1**
+    > 
+    > **Powershell Script**: [Download Get-DevicePath-from-DeviceName.ps1](http://sourceforge.net/projects/morgansource/files/Powershell/SystemInfo/Get-DevicePath-from-DeviceName.ps1/download)
+    > ```powershell
+    > $driveLetter = Read-Host "Enter Drive Letter:"
+    > Write-Host " "
+    > $DynAssembly = New-Object System.Reflection.AssemblyName('SysUtils')
+    > $AssemblyBuilder = [AppDomain]::CurrentDomain.DefineDynamicAssembly($DynAssembly, [Reflection.Emit.AssemblyBuilderAccess]::Run)
+    > $ModuleBuilder = $AssemblyBuilder.DefineDynamicModule('SysUtils', $False)
+    >  
+    > # Define [Kernel32]::QueryDosDevice method
+    > $TypeBuilder = $ModuleBuilder.DefineType('Kernel32', 'Public, Class')
+    > $PInvokeMethod = $TypeBuilder.DefinePInvokeMethod('QueryDosDevice', 'kernel32.dll', ([Reflection.MethodAttributes]::Public -bor [Reflection.MethodAttributes]::Static), [Reflection.CallingConventions]::Standard, [UInt32], [Type[]]@([String], [Text.StringBuilder], [UInt32]), [Runtime.InteropServices.CallingConvention]::Winapi, [Runtime.InteropServices.CharSet]::Auto)
+    > $DllImportConstructor = [Runtime.InteropServices.DllImportAttribute].GetConstructor(@([String]))
+    > $SetLastError = [Runtime.InteropServices.DllImportAttribute].GetField('SetLastError')
+    > $SetLastErrorCustomAttribute = New-Object Reflection.Emit.CustomAttributeBuilder($DllImportConstructor, @('kernel32.dll'), [Reflection.FieldInfo[]]@($SetLastError), @($true))
+    > $PInvokeMethod.SetCustomAttribute($SetLastErrorCustomAttribute)
+    > $Kernel32 = $TypeBuilder.CreateType()
+    >  
+    > $Max = 65536
+    > $StringBuilder = New-Object System.Text.StringBuilder($Max)
+    > $ReturnLength = $Kernel32::QueryDosDevice($driveLetter, $StringBuilder, $Max)
+    >  
+    >  if ($ReturnLength)
+    >  {
+    >      Write-Host "Device Path: "$StringBuilder.ToString()
+    >   }
+    >   else
+    >   {
+    >       Write-Host "Device Path: not found"
+    >   }
+    > Write-Host " "
+    > ```
+    > 
+    >    3. Now run the script file **Get-DevicePath-from-DeviceName.ps1** from [Powershell](http://www.morgantechspace.com/search/label/Powershell), and give the Drive letter as argument which you want to get device path.
+    > 
+    > [![Get Volume Path from Drive Name using Powershell script](https://1.bp.blogspot.com/-eMioNnOMwXM/VGJdsGSjUzI/AAAAAAAABXo/RV0jAmSOjrc/s320/Get-Device-Path-from-Device-Name.png)](https://1.bp.blogspot.com/-eMioNnOMwXM/VGJdsGSjUzI/AAAAAAAABXo/RV0jAmSOjrc/s1600/Get-Device-Path-from-Device-Name.png)
+    > 
+
+
+## create 1G zeroed sparse file in windows
+
+- [fsutil - How to create 1G zeroed sparse file in windows? - Super User](https://superuser.com/questions/314310/how-to-create-1g-zeroed-sparse-file-in-windows)
+
+
+    > ```
+    > FSUtil File CreateNew temp 0x100000
+    > FSUtil Sparse SetFlag temp
+    > FSUtil Sparse SetRange temp 0 0x100000
+    > ```
+
+## mount raw(dd) HDD image on Windows
+
+- [3 Ways to Mount a RAW Image in Windows](http://www.hackingarticles.in/3-ways-mount-raw-image-windows/)
+
+    > In Forensic, to investigate a hard drive or disks we always make a forensic image. A Forensic Image is a forensically sound and complete copy of a hard drive or other digital media, generally intended for use as evidence. Copies include unallocated space, slack space, and boot record.  Many computer forensic programs, especially the all-in-one suites, use their own file formats to store information. These images are stored in a format of RAW file or AFF or E01.
+    > 
+    > **RAW Image Format: This** format is a RAW bit-by-bit copy of the original. It is often accompanied by Meta data stored in separate formats. This Image Format is most common used and is read by every Forensic tool in the industry.
+    > 
+    > Once the RAW image is created, it can't be read unless it is mounted by a tool. Mount is the process that will take the raw logical image and mount it onto a specified directory of choice to be able to examine the contents of that image. The image has to include be a recognizable file system as a partition. This makes invocation of the command interesting as the raw image is a physical disk image and not a specific partition of a file system.
+    > 
+    > Mount an image for a read-only view that leverages to see the content of the image exactly as the user saw it on the original drive.
+    > 
+    > There are various methods to mount a RAW file. But before we learn how to mount our RAW files, just have look on your my computer so that you can have a idea about how many drives you have before mounting a RAW file. For instance, following is the image of my computer of my PC:
+    > 
+    > ![](https://i2.wp.com/3.bp.blogspot.com/-CcidtOfCSao/V7M07hECrQI/AAAAAAAANIQ/2-fgVh1LqE4c4ViITXe0lec4VlJuLkuEQCLcB/s1600/1.png?w=687&ssl=1)
+    > 
+    > Now, Let us have a look on these methods :
+    > 
+    > **Forensic Tool Kit Imager**
+    > 
+    > FTK Imager (version -- 3.4.2) is tool introduced by Access Data which is used to preview data. It is also an imaging tool that lets us acquire in a forensically sound way. FTK helps us to create forensic images, Mount an image for a read-only view, Create hashes of files, etc and right now we will focus on its Mount function. To mount a RAW image file via FTK, first of all download FTK from --> <http://accessdata.com/product-download/digital-forensics/ftk-imager-version-3.4.2>
+    > 
+    > Now that FTK is downloaded and installed, open it and click on **Files** on the menu bar. A drop down menu will appear, from this menu click on **Image Mounting**.
+    > 
+    > ![](https://i1.wp.com/4.bp.blogspot.com/-QRNIWQB07QA/V7M08xbHx-I/AAAAAAAANIs/4Vj5USPeIfgIMWf9LPI_mgcHOj8uMfjBACLcB/s1600/3.png?w=687&ssl=1)
+    > 
+    > A dialogue box will open now. Give the path of RAW file in Image File option and click on **Mount button**.
+    > 
+    > ![](https://i1.wp.com/1.bp.blogspot.com/-65jXAGU8tAo/V7M087VDMEI/AAAAAAAANIo/FIA-zq4DbXUdA79vEG6Xxc_6brtK0YbkgCLcB/s1600/2.png?w=687&ssl=1)
+    > 
+    > Once you click on Mount button your image will be mounted and you can see result in Mapped images:
+    > 
+    > ![](https://i2.wp.com/1.bp.blogspot.com/-_LRnNH951rw/V7M09aC0XTI/AAAAAAAANIw/FlnyZZIUc6ALdlzOHRA6CLySR3h8LJwlgCLcB/s1600/4.png?w=687&ssl=1)
+    > 
+    > **OSFMount**
+    > 
+    > OSFMount (version -- 1.5.1015) is software by PassMark Software's. It helps you mount your image files even your hard disk image file in windows with a drive letter. You can then analyze the disk image files further. For your original files not to be altered, the image files are mounted as read only by default. Download this software from --> **<http://www.osforensics.com/tools/mount-disk-images.html>**
+    > 
+    > Open OSFMount after the instalation is completed open it:
+    > 
+    > ![](https://i2.wp.com/1.bp.blogspot.com/-2l7IZV4YpQw/V7M09a7h-GI/AAAAAAAANI0/k7a65eWdclIFw0mHIZvwxVPzlnlPY_c-wCLcB/s1600/5.png?w=687&ssl=1)
+    > 
+    > Go to File menu and select **Mount new virtual disk** option.
+    > 
+    > ![](https://i0.wp.com/2.bp.blogspot.com/-e7Ai0AI4IVE/V7M09ik-_PI/AAAAAAAANI4/fudQXgLWmRwRl4dzmpdSxbJ4H-4Vb3LowCLcB/s1600/6.png?w=687&ssl=1)
+    > 
+    > Dialogues will open; here give the path of your image file under the heading Image file and click on **OK**.
+    > 
+    > ![](https://i1.wp.com/2.bp.blogspot.com/-piBHZcyCaBY/V7M09_HGKOI/AAAAAAAANI8/lRRC_mzgUi4i9vbTbInZPEfEvxT_koAaQCLcB/s1600/7.png?w=687&ssl=1)
+    > 
+    > You can see in the following image that your RAW image will be mounted as a result:
+    > 
+    > ![](https://i0.wp.com/3.bp.blogspot.com/--QMejVsVO3Y/V7M09_HfNsI/AAAAAAAANJA/wVLr5VWlxvA2xAMwMtWUTX46_E4_JRzkACLcB/s1600/8.png?w=687&ssl=1)
+    > 
+    > **Mount Image Pro**
+    > 
+    > Get Data is a software development company that has launched Mount Image Pro (version -- 6). It is a computer forensic tool which enables us to mount an image for forensic purpose. You can download this software from **<http://www.mountimage.com/>**
+    > 
+    > Open the software after its installation.
+    > 
+    > ![](https://i2.wp.com/1.bp.blogspot.com/-0IldbOfFMbU/V7M0-Noi6NI/AAAAAAAANJE/shzG-Gs6XT4yQCprWpOAI7YL4qYa9h58ACLcB/s1600/9.png?w=687&ssl=1)
+    > 
+    > Go to **File menu** and click on **Mount Image File.**
+    > 
+    > ![](https://i2.wp.com/1.bp.blogspot.com/-iUahPG4BJlw/V7M07gjYgoI/AAAAAAAANIM/XxzOaGfSVcA7hukaJywhVluwykWVsNrMACLcB/s1600/10.png?w=687&ssl=1)
+    > 
+    > A dialogue box will open and select your image file from it.
+    > 
+    > ![](https://i1.wp.com/3.bp.blogspot.com/-XIqAPeW4HuY/V7M07qLousI/AAAAAAAANIU/r9tUGEQTFBwwHDvt9r0h1Q3-Isp82p_wQCLcB/s1600/11.png?w=687&ssl=1)
+    > 
+    > And then another dialogue box will open informing you with all the details. Click on OK.
+    > 
+    > ![](https://i1.wp.com/2.bp.blogspot.com/-Xs_yNahPXps/V7M08BH3aZI/AAAAAAAANIY/pAB9P1P_P6M5cEKkncbHxhG_gBtuw7jXgCLcB/s1600/12.png?w=687&ssl=1)
+    > 
+    > It will further show you the progress in another dialogue box.
+    > 
+    > ![](https://i1.wp.com/2.bp.blogspot.com/-MZHHfqt-fc4/V7M08NMOnWI/AAAAAAAANIc/Z4vYu4FdPUUXk82189wHUMe5955difzPgCLcB/s1600/13.png?w=687&ssl=1)
+    > 
+    > And as the outcome you can see that your image file will mount as shown in following image:
+    > 
+    > ![](https://i2.wp.com/2.bp.blogspot.com/-dsj_hWiERVQ/V7M08XMVB_I/AAAAAAAANIg/OUNf74vho18mcNDiiTdxmlR6jNwyJeszQCLcB/s1600/14.png?w=687&ssl=1)
+    > 
+    > Now, as i had asked you to check you're my computer before mounting the image, similarly, you can again check my computer and you will an extra drive as shown below:
+    > 
+    > ![](https://i1.wp.com/4.bp.blogspot.com/-bMGiI8Y-PXk/V7M08jn5V-I/AAAAAAAANIk/boAdLlk6FQMlQVIh5KBFllc7-yH9tEjKACLcB/s1600/15.png?w=687&ssl=1)
+    > 
+    > **Author**: **Yashika Dhir** is a passionate Researcher and Technical Writer at Hacking Articles. She is a hacking enthusiast. contact **[here](https://www.linkedin.com/in/yashika-dhir-b94722a3?trk=pulse-det-athr_prof-art_hdr)**
+    > 
+    > 
+
+
+
+- [How to mount raw HDD image on Windows? - Software Recommendations Stack Exchange](https://softwarerecs.stackexchange.com/questions/18966/how-to-mount-raw-hdd-image-on-windows?newreg=2d14ea277b3a41b0aec2f1e34e325f86)
+
+    > You can convert a raw image into a VHD basically it just needs some extra headers.
+    > 
+    > Microsoft created a tool called vhdtool.exe which can convert the raw image. A technet post here lists all the tools for hyper-v <http://social.technet.microsoft.com/wiki/contents/articles/121.hyper-v-tools.aspx>.
+    > 
+    > Please note as Microsoft has terminated technet things are getting hard to find.
+    > 
+    > As an alternative you can use [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and its VBoxManage tool to convert a raw disk dump into a VHD-file:
+    > 
+    > ```
+    > VBoxManage.exe convertdd disk.raw disk.vhd --format VHD
+    > 
+    > ```
+    > 
+    > You can then mount the VHD (windows 7 and above only though)
+    > 
+    > To do this:
+    > 
+    > -   Open Computer Management (In admin tools control panel)
+    > -   Click Disk Management
+    > -   Click Action -> Mount VHD (If greyed out click on the list of drives)
+    > 
+    > **EDIT**
+    > 
+    > **Make sure you work on a copy of the image file as the vhdtool.exe tool writes directly to the file specified!!**
+    > 
+    > **Also you will need to rename the file to .vhd manually after**
+    > 
+
+### VhdTool/VhdxTool
+
+- [VhdTool Is Dead, Long Live VhdxTool!](https://www.systola.com/blog/14.01.2015/VhdTool-Is-Dead-Long-Live-VhdxTool/)
+
+- [vhd修复工具vhdtool,资源比较难找 - CSDN博客](https://blog.csdn.net/gogcc/article/details/51144701)
+
+    > ### 1小时
+    > 
+    > 如果使用vhd中一不小心断电了,vhd就报错.
+    > 
+    > 提示无法装载,文件或目录损坏! 
+    > 
+    > gogo好久找到一个死链:
+    > 
+    >    <http://code.msdn.microsoft.com/vhdtool>
+    > 
+    > 受不了![大哭](http://static.blog.csdn.net/xheditor/xheditor_emot/default/wail.gif)
+    > 
+    > ### 2小时
+    > 
+    > 然后又找到了:vhdxtool
+    > 
+    >     http://systola.com/support/KB100005
+    > 
+    > 结果都没有修复功能.
+    > 
+    > ### 3小时
+    > 
+    > 又找到一个:
+    > 
+    >  https://web.archive.org/web/20130504064711/http://archive.msdn.microsoft.com/vhdtool/Release/ProjectReleases.aspx?ReleaseId=5344
+    > 
+    > 结果不能下载.
+    > 
+    > ### 4小时
+    > 
+    > 还找到了这个:
+    > 
+    > https://blog.workinghardinit.work/tag/vhd-tool/
+    > 
+    > 结果没有修复功能
+    > 
+    > 5小时:
+    > 
+    > 又上github
+    > 
+    > https://github.com/andreiw/vhdtool
+    > 
+    > 可惜根本不是我需要的哪个版本.只是同名而已
+    > 
+    > .
+    > 
+    > 6小时:
+    > 
+    > 最后终于找到了:
+    > 
+    > http://www.mediafire.com/download/f96bmsvjz4qdvbu/VhdTool.zip
+    > 
+    > 版本为2.0,大小为58K(gogo: vhdtool 2.0 )
+    > 
+    > ```
+    > Create: Creates a new fixed format VHD of size <Size>.
+    >         WARNING - this function is admin only and bypasses
+    >         file system security.  The resulting VHD file will
+    >         contain data which currently exists on the physical disk.
+    > Convert: Converts an existing file to a fixed-format VHD.
+    >          The existing file length, rounded up, will contain block data
+    >          A VHD footer is appended to the current end of file.
+    > Extend: Extends an existing fixed format VHD to a larger size <Size>.
+    >         WARNING - this function is admin only and bypasses
+    >         file system security.  The resulting VHD file will
+    >         contain data which currently exists on the physical disk.
+    > Repair: Repairs a broken Hyper-V snapshot chain where an administrator
+    >         has expanded the size of the root VHD.  The base VHD will be
+    >         returned to its original size. THIS MAY CAUSE DATA LOSS if the
+    >         contents of the base VHD were changed after expansion.
+    > ```
+    > 
+    > 然后 repair
+    > 
+    > 然后我还上传了百度盘,有需要的哪去,可惜没有找到源代码:
+    > 
+    > http://pan.baidu.com/s/1qY25NrQ
+    > 
+    > 由于我没有avhd(备份文件所以这个办法行不通)
+    > 
+    > 7 结果
+    > 
+    >     研究了好久,发现损坏的vhd可以用diskgenius打开,可以读出文件!  
+    > 
+    > 说明vhd只是ntfs系统不完整.
+    > 
+    > 其实只要chkdsk一下就可以了.但是chkdsk不支持虚拟磁盘!!![哭](http://static.blog.csdn.net/xheditor/xheditor_emot/default/cry.gif)
+    > 
+    > 猜想：
+    > 
+    > 还可以上终极大法! 
+    > 
+    > 安装virtualBox,把vhd文件当硬盘镜像!然后进入虚拟机chkdsk!  
+    > 
+    > 可惜它读取vhd不像虚拟光驱一样直接读取的,会报错.不能加载.
+    > 
+    > 还可以用hyper-v方式来处理,参考:
+    > 
+    > http://www.techieshelp.com/hyper-v-vhd-the-file-or-directory-is-corrupted-and-unreadable/
+    > 
+    > 8 另外的
+    > 
+    > 还有通过程序来解决
+    > 
+    > vb和C#/vbs都可以连接系统硬件挂载服务
+    > 
+    > 如下连接：
+    > 
+    > https://msdn.microsoft.com/zh-cn/library/cc136982(v=vs.85).aspx
+    > 
+    > 9 用脚本来解决
+    > 
+    > 比较方便的是用脚本来解决： （powsershell)
+    > ```
+    > $VHDName = "V:\serverx.vhd"
+    > #Get the MSVM_ImageManagementService
+    > $VHDService = get-wmiobject -class "Msvm_ImageManagementService" -namespace "root\virtualization" -computername "."
+    > #Now we mount the VHD
+    > $Result = $VHDService.Mount($VHDName)
+    > 
+    > chkdsk
+    > ```
+    > 
+    > 只能在windows server 2008上这样操作.(要安装 hyper-V管理工具:关闭或打开windows功能 )
+    > 
+    > 注：windows sever 2008以后 namespace有v2  (win10上成功, win7 没有hyper-v管理工具)
+    > 
+    > 相应的命令要改成： `Get-WmiObject -computername "." -namespace "root\virtualization\v2" -class "Msvm_ImageManagementService"`
+    > 
+    > 还是万能的stackoverflow强大.
+    > 
+    > http://stackoverflow.com/questions/tagged/vhd
+    > 
+    > 10 回到起点
+    > 
+    > windows系统支持虚拟硬盘. 所以" 虚拟硬盘软件工具"很少,不像虚拟光驱一大把.
+    > 
+    > https://social.technet.microsoft.com/Forums/windowsserver/en-US/a08ad18f-4b6a-46a0-bd1f-274fbbc5b737/attach-a-vhd-in-windows-7
+    > 
+    > 用diskpart  attach abc.vhd
+    > 
+    > 然后 chkdsk
+    > 
+    > 
+
+
+### Hyper-V .vhdx 格式磁盘镜像转换为VirtualBox可用的.vhd格式
+
+- [Hyper-V .vhdx 格式磁盘镜像转换为VirtualBox可用的.vhd格式](https://gist.github.com/WesleyBlancoYuan/1f3236bf006f97161a2df31bd1e97190)
+
+    > Hyper-V 默认创建 **.vhdx** 格式的虚拟磁盘。
+    > 
+    > 根据SuperUser上的这个问题：
+    > http://superuser.com/questions/723381/how-to-open-vhdx-files-in-virtualbox
+    > 
+    > 尽管第三个答案指出，
+    > 
+    > > VirtualBox since 4.2 changelog says support added for VHDX "Storage: added readonly support for VHDX images".
+    > 
+    > 但这种格式在VirtualBox中是不支持的，要使用它建立新的镜像，会出现错误。具体信息为：
+    > ```
+    > Could not open the medium 'D:\desarrollo\Hyper-V\Ubuntu2\Virtual Hard Disks\Ubuntu2.vhdx'.
+    > VD: error VERR_NOT_SUPPORTED opening image file 'D:\desarrollo\Hyper-V\Ubuntu2\Virtual Hard Disks\Ubuntu2.vhdx' (VERR_NOT_SUPPORTED).
+    > 
+    > 
+    > Código Resultado: 
+    > E_FAIL (0x80004005)
+    > Componente: 
+    > MediumWrap
+    > Interfaz: 
+    > IMedium {4afe423b-43e0-e9d0-82e8-ceb307940dda}
+    > Receptor: 
+    > IVirtualBox {0169423f-46b4-cde9-91af-1e9d5b6cd945}
+    > Receptor RC: 
+    > VBOX_E_OBJECT_NOT_FOUND (0x80BB0001)
+    > ```
+    > 
+    > 根据搜索之后的信息，可以在启用Hyper-V后，使用PowerShell把.vmhk镜像转换为Virtualbox支持的VHD镜像。详情见以下答案： 
+    > 
+    > http://superuser.com/questions/751954/how-to-convert-a-vhdx-file-to-vhd#answer-751957
+    > 
+    > 具体操作步骤为：
+    > 
+    >  - Windows + R打开“运行”对话框，键入cmd，在command窗口中键入PowerShell来使用PowerShell窗口。或者直接打开PowerShell。
+    >  - 在PS提示符后，使用以下命令：
+    >     ```
+    >     Convert-VHD –Path YOUR VHDX PATH –DestinationPath YOUR DESTINATION PATH
+    >     ```
+    >     例如：
+    >     ```
+    >     Convert-VHD -Path c:\myDisk\Ubuntu.vhdx -DestinationPath d:\Ubuntu_vhd.vhd
+    >     ```
+    >     注意两个路径都要带后缀。
+    > 
+    >  - 等待处理完成，用VirtualBox加载生成的镜像，完成。
+    >  
+    > 
+
+
+## btrfs for windows
+
+- [maharmstone/btrfs: WinBtrfs](https://github.com/maharmstone/btrfs)
+
+    > -   How do I format a partition as Btrfs?
+    > 
+    > Use the included command line program mkbtrfs.exe. We can't add Btrfs to Windows' own dialog box, unfortunately, as its list of filesystems has been hardcoded. You can also run `format /fs:btrfs`, if you don't need to set any Btrfs-specific options.
+
+
+### delete subvolume
+
+- [How to delete subvolume? · Issue #50 · maharmstone/btrfs](https://github.com/maharmstone/btrfs/issues/50)
+
+    > Unlike on Linux, you can delete subvolumes on Windows as if they were any other directory.
 

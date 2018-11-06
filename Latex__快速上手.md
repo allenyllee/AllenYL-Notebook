@@ -11,13 +11,25 @@
 
 
 ## Useful Tool
-* Math input
-    * [Latex Math Symbols](http://web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html)
-    * [Function Support in KaTeX](https://khan.github.io/KaTeX/function-support.html)
-    * [Symbols and Functions in KaTeX](https://utensil-site.github.io/available-in-katex/)
+
+### 希臘字母
+
+- [Ψ - Wikiwand](https://www.wikiwand.com/zh/%CE%A8)
+
+- [Greek and Coptic - Unicode® character table](https://unicode-table.com/en/blocks/greek-coptic/)
+
+
+
+### 數學符號
+
+- [Latex Math Symbols](http://web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html)
+
+- [Function Support in KaTeX](https://khan.github.io/KaTeX/function-support.html)
+
+- [Symbols and Functions in KaTeX](https://utensil-site.github.io/available-in-katex/)
 
 - [HackMD – LaTeX 語法與示範 - HackMD](https://hackmd.io/s/B1RwlM85Z#)
-- 
+
 
 ## Usage
 
@@ -162,6 +174,56 @@
     > 
 
 ## symbol
+
+### Brackets and Parentheses
+
+- [Brackets and Parentheses - ShareLaTeX, Editor de LaTeX online](https://es.sharelatex.com/learn/latex/Brackets_and_Parentheses)
+
+
+| LaTeX markup                                          | Renders as                                            |
+|-------------------------------------------------------|-------------------------------------------------------|
+| \big( \Big( \bigg( \Bigg(                             | $\big( \Big( \bigg( \Bigg($                       |
+| \big] \Big] \bigg] \Bigg]                             | $\big] \Big] \bigg] \Bigg]$                             |
+| \big\{ \Big\{ \bigg\{ \Bigg\{                         | $\big\{ \Big\{ \bigg\{ \Bigg\{$                         |
+| \big \langle \Big \langle \bigg \langle \Bigg \langle | $\big \langle \Big \langle \bigg \langle \Bigg \langle$ |
+| \big \rangle \Big \rangle \bigg \rangle \Bigg \rangle | $\big \rangle \Big \rangle \bigg \rangle \Bigg \rangle$ |
+
+
+### 上/下括號(underbrace/overbrace)
+
+- [math mode - How to have overlapping under-braces and over-braces - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/12963/how-to-have-overlapping-under-braces-and-over-braces)
+
+```
+$$
+a+b+\rlap{\overbrace{\phantom{c+d+e+f+g}}^x}c+d
+     +\underbrace{e+f+g+h+i}_y +k+l=e^2
+$$
+```
+
+$$
+a+b+\rlap{\overbrace{\phantom{c+d+e+f+g}}^x}c+d
+     +\underbrace{e+f+g+h+i}_y +k+l=e^2
+$$
+
+### Absolute
+
+- [math mode - Absolute Value Symbols - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/43008/absolute-value-symbols)
+
+| LaTeX markup | Renders as     |
+|--------------|----------------|
+| \lvert...\rvert | $\lvert...\rvert$ |
+| \lVert...\rVert | $\lVert...\rVert$ |
+
+### sqrt - square root sign
+
+- [LaTeX - Basic Code](http://www.malinc.se/math/latex/basiccodeen.php)
+
+
+| LaTeX markup | Renders as     |
+|--------------|----------------|
+| \sqrt{...}    | $\sqrt{...}$    |
+| \sqrt[n]{...} | $\sqrt[n]{...}$ |
+
 
 ### arrow
 - [LaTEX Arrow Symbols](http://garsia.math.yorku.ca/MPWP/LATEXmath/node9.html)

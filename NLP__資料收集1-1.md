@@ -4,57 +4,134 @@
 <!-- toc --> 
 
 
-## 資料集
+# 資料集
 
-### 康乃爾NLP
+## 康乃爾NLP
 
 - [Cornell NLP :: Data](http://nlp.cornell.edu/data/)
 
-### SemEval-2018 語意理解任務資料集
+## SemEval-2018 語意理解任務資料集
 
 - [Tasks < SemEval-2018](http://alt.qcri.org/semeval2018/index.php?id=tasks)
 
-### DART: a Dataset of Arguments and their Relations on Twitter
+## DART: a Dataset of Arguments and their Relations on Twitter
 
 - [DART: a Dataset of Arguments and their Relations on Twitter - Semantic Scholar](https://www.semanticscholar.org/paper/DART%3A-a-Dataset-of-Arguments-and-their-Relations-on-Bosc-Cabrio/9b71b307a2f99fb404c6f6159b146547a0dc1cbc)
 
 
 
-## Reference
+# Reference
 
 
 
 
-### 我爱自然语言处理
+## 我爱自然语言处理
 
 - [自然语言处理 | 我爱自然语言处理](http://www.52nlp.cn/category/nlp)
 
-### CS4650 and CS7650 ("Natural Language") at Georgia Tech
+## eisenstein nlp notes
 
 - [gt-nlp-class/notes at master · jacobeisenstein/gt-nlp-class](https://github.com/jacobeisenstein/gt-nlp-class/tree/master/notes)
 
 
-### Text Classification using Neural Networks
+## Text Classification using Neural Networks
 
 - [Text Classification using Neural Networks – Machine Learnings](https://machinelearnings.co/text-classification-using-neural-networks-f5cd7b8765c6)
 
-### Supervised Sequence Labelling
+## Supervised Sequence Labelling
 
 - [Supervised Sequence Labelling | SpringerLink](https://link.springer.com/chapter/10.1007/978-3-642-24797-2_2)
 
+## Deep Learning for Natural Language Processing
+
+- [Deep Learning For Natural Language Processing](https://machinelearningmastery.com/deep-learning-for-nlp/)
+
+## google word2vec 小遊戲 Semantris
+
+- [讓你看見 AI 自然語言處理多強大！Google 發表一款搜尋引擎和兩個文字遊戲 - INSIDE 硬塞的網路趨勢觀察](https://www.inside.com.tw/2018/04/16/google-introducing-semantic-experiences-with-talk-to-book)
+
+    - [Semantris](https://research.google.com/semantris/)
 
 
-## Course
+## How to get started in NLP – Towards Data Science
 
-### CS224N
+- [How to get started in NLP – Towards Data Science](https://towardsdatascience.com/how-to-get-started-in-nlp-6a62aa4eaeff)
 
-- [CS224n: Natural Language Processing with Deep Learning](http://web.stanford.edu/class/cs224n/)
+## 如何学习自然语言处理：一本书和一门课 | 我爱自然语言处理
 
-    - [Lecture 1 | Natural Language Processing with Deep Learning - YouTube](https://www.youtube.com/watch?v=OQQ-W_63UgQ&list=PLqdrfNEc5QnuV9RwUAhoJcoQvu4Q46Lja)
+- [如何学习自然语言处理：一本书和一门课 | 我爱自然语言处理](http://www.52nlp.cn/%e5%a6%82%e4%bd%95%e5%ad%a6%e4%b9%a0%e8%87%aa%e7%84%b6%e8%af%ad%e8%a8%80%e5%a4%84%e7%90%86%e4%b8%80%e6%9c%ac%e4%b9%a6%e5%92%8c%e4%b8%80%e9%97%a8%e8%af%be/comment-page-1#comment-280074)
 
-## Tools
+## NLP應該如何學、如何教？斯坦福大學大牛Dan Jurafsky教授專訪
 
-### NLPIR
+- [NLP應該如何學、如何教？斯坦福大學大牛Dan Jurafsky教授專訪 - 幫趣](http://bangqu.com/9J773U.html)
+
+    - [NLP Pedagogy Interview: Dan Jurafsky (Stanford) – David Jurgens – Medium](https://medium.com/@jurgens_24580/nlp-pedagogy-interview-dan-jurafsky-stanford-c0075a16d877)
+
+
+
+
+# Course
+
+## NLP 入門路線
+
+參考修課順序
+
+- [CS 124 - Edusalsa: From Languages to Information (LINGUIST 180, LINGUIST 280)](https://edusalsa.com/course?c=CS%20124)
+
+
+
+
+
+### CS124 - From Languages to Information (Winter 2017)
+
+- [CS124 - From Languages to Information (Winter 2017)](http://web.stanford.edu/class/cs124/) (no video)
+
+    #### Or
+
+- [[Coursera] Natural Language Processing (Stanford University) (nlp) - Academic Torrents](http://academictorrents.com/details/d2c8f8f1651740520b7dfab23438d89bc8c0c0ab) (video and slide)
+
+    ##### next --> 
+
+### CS224n: Natural Language Processing with Deep Learning
+
+- [CS224n: Natural Language Processing with Deep Learning](http://web.stanford.edu/class/cs224n/index.html) 
+
+- *video* [CS224N - YouTube](https://www.youtube.com/playlist?list=PLqdrfNEc5QnuV9RwUAhoJcoQvu4Q46Lja)
+
+### CS224U: Natural Language Understanding - Spring 2018
+
+- [CS224U: Natural Language Understanding - Spring 2018](http://web.stanford.edu/class/cs224u/)
+
+- *video* [CS224u - YouTube](https://www.youtube.com/playlist?list=PLfmUaIBTH8exY7fZnJss508Bp8k1R8ASG)
+
+### CS224S / LINGUIST285 - Spoken Language Processing (Spring 2017)
+
+- [CS224S / LINGUIST285 - Spoken Language Processing (Spring 2017)](http://web.stanford.edu/class/cs224s/)
+
+### CS 276: Information Retrieval and Web Search
+
+- [CS 276: Information Retrieval and Web Search](http://web.stanford.edu/class/cs276/)
+
+
+
+
+## Textbook
+
+### Dan Jurafsky and James H. Martin, Speech and Language Processing
+- [Speech and Language Processing](https://web.stanford.edu/~jurafsky/slp3/)
+
+
+
+# Tutorial
+
+## CNN也能用于NLP任务，一文简述文本分类任务的7个模型
+
+- [CNN也能用于NLP任务，一文简述文本分类任务的7个模型](https://zhuanlan.zhihu.com/p/39054002)
+
+
+# Tools
+
+## NLPIR
 
 - [推荐NLPIR大数据语义智能分析平台 | 我爱自然语言处理](http://www.52nlp.cn/%e6%8e%a8%e8%8d%90nlpir%e5%a4%a7%e6%95%b0%e6%8d%ae%e8%af%ad%e4%b9%89%e6%99%ba%e8%83%bd%e5%88%86%e6%9e%90%e5%b9%b3%e5%8f%b0)
 
@@ -87,48 +164,88 @@
     > 13、编码转换：自动识别内容的编码，并把编码统一转换为其他编码。
     > 
 
+## CytonMT: an Efficient Neural Machine Translation Open-source Toolkit Implemented in C++
 
-## NLP 入門練習
+- [arthurxlw/cytonMt: CytonMT: an Efficient Neural Machine Translation Open-source Toolkit Implemented in C++](https://github.com/arthurxlw/cytonMt)
 
-- [CNN也能用于NLP任务，一文简述文本分类任务的7个模型](https://zhuanlan.zhihu.com/p/39054002)
+- [[1802.07170] CytonMT: an Efficient Neural Machine Translation Open-source Toolkit Implemented in C++](https://arxiv.org/abs/1802.07170)
+
+    > This paper presents an open-source neural machine translation toolkit named CytonMT (this https URL). The toolkit is built from scratch only using C++ and NVIDIA's GPU-accelerated libraries. The toolkit features training efficiency, code simplicity and translation quality. Benchmarks show that CytonMT accelerates the training speed by 64.5% to 110.8% on neural networks of various sizes, and achieves competitive translation quality. 
+
+# 相關新聞
+
+## 寫稿機器人
+
+- [百度AI开放平台-全球领先的人工智能服务平台](https://ai.baidu.com/support/news?action=detail&id=140)
+
+- [只好跟著抄了！PTT 創世神的 AI Labs 為「記者快抄」打造寫稿機器人 | TechNews 科技新報](http://technews.tw/2017/08/09/ai-labs-is-using-ai-to-cover-ptt-news/)
+
+## 語音助理
+
+- [個人語音助理時代已經來臨！ - EE Times Taiwan 電子工程專輯網](https://www.eettaiwan.com/news/article/20180416NT31-season-voice-based-personal-assistants?utm_source=EETT%20Article%20Alert&utm_medium=Email&utm_campaign=2018-04-17)
+
+    > 過程和原理
+    > 
+    > 作為一名開發者和設計師，要充份使用這項技術，重要的是瞭解如下的完整命令互動過程：
+    > 
+    > * 虛擬助理使用一個觸發詞(如‘Ok Google’、‘Hey Siri’)來「喚醒」，以確保它只在命令下達時才執行。
+    > * 音訊被記錄在設備上，經過壓縮並透過Wi-Fi傳輸到雲端。通常會採用降噪演算法來記錄音訊，以便雲端「大腦」更容易理解用戶的命令。
+    > * 使用專有的「語音轉文本」(voice-to-text)平台將音訊轉換成文本命令。透過指定的頻率對類比訊號進行採樣，將類比聲波轉換為數位資料。分析數位資料以確定英語音素(‘bb’、‘oo’、‘sh’等)的出現位置。 一旦辨識別出音素，就使用統計建模演算法(如Hidden Markhov模型)來確定特定單詞的可能性。
+    > * 使用自然語言處理技術來處理文本以確定所需的操作。 該演算法首先使用詞性標註來確定哪些詞是形容詞、動詞和名詞等，然後將這種標記與統計機器學習模型相結合起來，推斷句子的含義。
+    > * 如果命令操作需要進一步的搜尋，系統將立即進行搜尋。例如，「嘿！Siri，什麼是Snapdragon行動平台？」將觸發網際網路搜尋，並返回所得到的資訊。如果該命令類似於「Ok Google，傳簡訊給媽媽」，那麼命令資料(操作：發送簡訊；收件人：媽媽)就會被直接傳送到虛擬助理。
+    > 
+    > 
 
 
 
-## 信息熵(Entropy)
+
+# NLP 理論
 
 
-### 最大熵模型
+## 最大熵原理
 
-- [最大熵模型 (MaxEnt) 實踐短字詞分類 – PyLadies Taiwan – Medium](https://medium.com/pyladies-taiwan/%E6%9C%80%E5%A4%A7%E7%86%B5%E6%A8%A1%E5%9E%8B-maxent-%E5%AF%A6%E8%B8%90%E7%9F%AD%E5%AD%97%E8%A9%9E%E5%88%86%E9%A1%9E-b925665d9082)
+- [A Maximum Entropy Approach to Natural Language Processing Adam ... www.cs.cornell.edu/courses/cs5740/2016sp/resources/maxent.pdf](http://www.cs.cornell.edu/courses/cs5740/2016sp/resources/maxent.pdf)
 
-    > > 我們要找的是其中最有可能的一種劃分，在這裡就是找出一種熵最大的劃分。
+- [關於最大熵原理的一些想法 – Allenyl Lee – Medium](https://medium.com/@allenyllee/%E9%80%99%E8%A3%A1%E7%9C%8B%E4%BA%86%E5%BE%88%E4%B9%85-%E5%9B%A0%E7%82%BA%E6%88%91%E6%83%B3-%E7%86%B5%E4%B8%8D%E6%98%AF%E4%BB%A3%E8%A1%A8%E4%B8%8D%E7%A2%BA%E5%AE%9A%E6%80%A7%E5%97%8E-%E9%82%A3%E7%82%BA%E4%BB%80%E9%BA%BC%E6%98%AF%E6%89%BE%E6%9C%80%E5%A4%A7-%E8%80%8C%E4%B8%8D%E6%98%AF%E6%9C%80%E5%B0%8F-%E7%9C%8B%E5%88%B0%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E9%80%99%E6%A8%A3%E5%AF%AB-e59db689490b)
+
+    > - [我們要找的是其中最有可能的一種劃分，在這裡就是找出一種熵最大的劃分](https://medium.com/pyladies-taiwan/%E6%9C%80%E5%A4%A7%E7%86%B5%E6%A8%A1%E5%9E%8B-maxent-%E5%AF%A6%E8%B8%90%E7%9F%AD%E5%AD%97%E8%A9%9E%E5%88%86%E9%A1%9E-b925665d9082#dfd9)
+    > 
+    > 關於最大熵原理的一些想法
+    > ============
     > 
     > 這裡看了很久，因為我想，熵不是代表不確定性嗎？那為什麼是找最大，而不是最小？看到一篇文章這樣寫：
     > 
-    > > 有一句俗话说的是“不要把鸡蛋都放到一个篮子里”，这是因为如果这个篮子出了问题，那么所有鸡蛋都没了。也就是当我们在作考虑的时候，不要人为的人为哪件事出现的概率会高一点，一句话，不要添加任何人为因素，要使不确定性最大。这就是最大熵原理，在一篇文章上这样说到：
-    > > 
+    > * * * * *
+    > 
+    > > 有一句俗话说的是"不要把鸡蛋都放到一个篮子里"，这是因为如果这个篮子出了问题，那么所有鸡蛋都没了。也就是当我们在作考虑的时候，不要人为的人为哪件事出现的概率会高一点，一句话，不要添加任何人为因素，要使不确定性最大。这就是最大熵原理，在一篇文章上这样说到：
+    > 
     > > Information theory provides a constructive criterion for setting up probability distributions on the basis of partial knowledge, and leads to a type of statistical inference which is called the maximum entropy estimate. It is least biased estimate possible on the given information; i.e., it is maximally noncommittal with regard to missing information.
     > > 
-    > > 科学网 — 最大熵模型（MaxEnt） — 何孝松的博文
-    > > http://blog.sciencenet.cn/blog-802219-667105.html
+    > > [Phys. Rev. 106, 620 (1957) - Information Theory and Statistical Mechanics](https://journals.aps.org/pr/abstract/10.1103/PhysRev.106.620)
     > 
-    > 就短語分類的例子來說好了，我的想法是，未分類前的不確定性是最大的，因此具有最大的熵；然而分類後，由於必須滿足一定的約束條件，不確定性必然減少，因此熵會比未分類時來的小。顯然，若約束條件越多，不確定性就越小，最後結果的熵也會越小。
+    > > 科学网 --- 最大熵模型（MaxEnt） --- 何孝松的博文\
+    > > <http://blog.sciencenet.cn/blog-802219-667105.html>
     > 
-    > 現在假設我們人為設計幾條分類規則，而這些規則其實可視為另外的約束條件，讓最後結果的熵變得更小。因此，若要避免不小心引入人為的規則，就要盡可能在原始約束條件上最大化熵，這樣就可確定分類結果僅僅是受到原始約束條件的限制，模型沒有"學到"其他規則(Overfitting 正好相反，是模型學到太多規則)。
+    > * * * * *
     > 
-    > 這樣看來，最大熵模型其實也是避免Overfitting的模型，不過前提是，我們要先知道什麼是"原始"的約束條件。在NLP任務中，我們有大量語料統計出來的詞頻作為原始約束條件，但在其他類data上，似乎很難做這件事。想想做貓狗辨識的圖片分類問題，到底什麼才是他的原始約束條件呢？我想可能就是CNN 學到的那些features吧？是否neural network 內建了最大熵原理呢？盡可能做最少的假設來達成任務，也就是說，用最少的features 來達成任務，而非最多，聽起來也滿合理的。畢竟，feature 數量幾乎無限多種，沒有最多，只有更多。neural network 受限於參數量，顯然無法窮舉出所有features，只能被迫擠出幾種最有效的features(但是當資料太簡單時，就有可能窮舉出所有features，造成overfitting)。
+    > 就短語分類的例子來說好了，我的想法是，未分類前的不確定性是最大的，因此具有最大的熵；然而分類後，由於必須滿足一定的約束條件，不確定性必然減少，因此熵會比未分類時來的小。
+    > 
+    > 現在假設我們人為設計幾條分類規則，而這些規則其實就是額外的約束條件，讓最後結果的熵變得更小。因此，可以知道當規則越多，最後結果的熵就愈小。
+    > 
+    > 如果我們希望在規則盡可能少的情況下完成我們的分類任務，就要盡可能在原始約束條件上最大化熵，這樣就可確定分類結果僅僅是受到原始約束條件的限制，模型沒有"學到"其他規則(Overfitting 正好相反，是模型學到太多完成任務不必要的規則)。在NLP任務中，原始約束條件可能來自大量語料統計出來的詞頻，以及有標註過的data。
+    > 
+    > 這樣看來，最大熵模型其實就是避免Overfitting的模型。現在想想貓狗辨識之類的圖片分類問題，什麼是他的原始約束條件呢？我們只給了有標註的data，這些標註以及data本身的統計特性，就成為這個任務的約束條件。
+    > 
+    > 而模型的功能，就是從data中取出盡可能少的feature 來完成指定的任務。為了滿足最大熵原理，模型本身不能對data做太多假設，但是也應該避免模型使用太多參數來"窮舉"出所有可能的feature，反而違反最大熵原則，造成overfitting的狀況。這也就是為什麼CNN 模型對圖片分類特別有效，因為它對圖片做了一些簡單假設，能夠有效避免模型為了達成任務而"窮舉"許多feature，而導致overfitting的情況。
+    > 
+    > 從另個角度來看，這也或許就是為何neural network 的深度比寬度來的重要的原因。因為寬度代表的是對前一層取feature的能力，寬度越寬，就越容易學到更多feature。假設有一個訓練完的單層寬度為M的網路，現在增加寬度到2M，等於在同一層中新增M個neural，由於這M個neural 跟前面M個是獨立的，而梯度下降會強迫它取出feature，因此它取出的feature 也是獨立於前面M個的，其中可能就有許多是達成任務不必要的feature(不必要的約束條件，也許只是某種圖片特有的pattern，但與解決任務無關)，因此違反了最大熵的原則，泛化性能反而較低；而深度則代表如何利用前幾層有限的feature 組合出能解決任務的feature。假設訓練網路時，都是先訓練完前面的N-1層，再加上第N層，那麼對第N層來說，它的約束條件就是第N-1層，透過梯度下降法找到最有效的組合，並沒有引入額外的約束條件，因此整個過程符合最大熵原則，泛化性能較高。
+    > 
+    > 一般來說，當Neural network 受限於參數量，寬度有限時，顯然無法窮舉出所有features，只能被迫擠出幾種最有效的features；但是當資料太簡單時，就有可能窮舉出所有features，造成overfitting。(所謂太簡單，就是data 在除了任務相關的feature上，相似度太高，例如來源太單一，造成某些只有該來源才有的feature 也被當成任務相關。通常在資料量少的情況下，容易找出出這種相似性；當資料來源多，資料量大時，就越難建立起這種相似性。因此，在最大熵原則下，我們希望data 在任務以外的features 越不像越好，表示我們沒有在蒐集data程中，引入額外的約束條件。)
     > [name=Ya-Lun Li]
     > 
 
 
 
-## DEMO
-
-### word2vec 小遊戲
-
-- [讓你看見 AI 自然語言處理多強大！Google 發表一款搜尋引擎和兩個文字遊戲 - INSIDE 硬塞的網路趨勢觀察](https://www.inside.com.tw/2018/04/16/google-introducing-semantic-experiences-with-talk-to-book)
-
-    - [Semantris](https://research.google.com/semantris/)
 
 
 
@@ -142,71 +259,6 @@
 
 
 
-## gensim
-
-
-Parameters:	
-
-- __sg (int {1, 0})__ – Defines the training algorithm. If 1, skip-gram is employed; otherwise, CBOW is used.
-- __size (int)__ – Dimensionality of the feature vectors.
-- __window (int)__ – The maximum distance between the current and predicted word within a sentence.
-- __alpha (float)__ – The initial learning rate.
-- __min_alpha (float)__ – Learning rate will linearly drop to min_alpha as training progresses.
-- __seed (int)__ – Seed for the random number generator. Initial vectors for each word are seeded with a hash of the concatenation of word + str(seed). Note that for a fully deterministically-reproducible run, you must also limit the model to a single worker thread (workers=1), to eliminate ordering jitter from OS thread scheduling. (In Python 3, reproducibility between interpreter launches also requires use of the PYTHONHASHSEED environment variable to control hash randomization).
-- __min_count (int)__ – Ignores all words with total frequency lower than this.
-- __max_vocab_size (int)__ – Limits the RAM during vocabulary building; if there are more unique words than this, then prune the infrequent ones. Every 10 million word types need about 1GB of RAM. Set to None for no limit.
-- __sample (float)__ – The threshold for configuring which higher-frequency words are randomly downsampled, useful range is (0, 1e-5).
-- __workers (int)__ – Use these many worker threads to train the model (=faster training with multicore machines).
-- __hs (int {1,0})__ – If 1, hierarchical softmax will be used for model training. If set to 0, and negative is non-zero, negative sampling will be used.
-- __negative (int)__ – If > 0, negative sampling will be used, the int for negative specifies how many “noise words” should be drawn (usually between 5-20). If set to 0, no negative sampling is used.
-- __cbow_mean (int {1,0})__ – If 0, use the sum of the context word vectors. If 1, use the mean, only applies when cbow is used.
-- __hashfxn (function)__ – Hash function to use to randomly initialize weights, for increased training reproducibility.
-- __iter (int)__ – Number of iterations (epochs) over the corpus.
-- __trim_rule (function)__ – Vocabulary trimming rule, specifies whether certain words should remain in the vocabulary, be trimmed away, or handled using the default (discard if word count < min_count). Can be None (min_count will be used, look to keep_vocab_item()), or a callable that accepts parameters (word, count, min_count) and returns either gensim.utils.RULE_DISCARD, gensim.utils.RULE_KEEP or gensim.utils.RULE_DEFAULT. Note: The rule, if given, is only used to prune vocabulary during build_vocab() and is not stored as part of the model.
-- __sorted_vocab (int {1,0})__ – If 1, sort the vocabulary by descending frequency before assigning word indexes.
-- __batch_words (int)__ – Target size (in words) for batches of examples passed to worker threads (and thus cython routines).(Larger batches will be passed if individual texts are longer than 10000 words, but the standard cython code truncates to that maximum.)
-- __compute_loss (bool)__ – If True, computes and stores loss value which can be retrieved using model.get_latest_training_loss().
-- __callbacks__ – List of callbacks that need to be executed/run at specific stages during training.
-
-
-
-## char-rnn
-
-- [Tensorflow lyrics generation · Lei's Blog](http://leix.me/2016/11/28/tensorflow-lyrics-generation/)
-
-    - [leido/char-rnn-cn: 基于char-rnn和tensorflow生成周杰伦歌词](https://github.com/leido/char-rnn-cn)
-
-- [從字符級的語言建模開始，瞭解語言模型與序列建模的基本概念 - 幫趣](http://bangqu.com/24EJ36.html)
-
-## auto tagging
-
-- [memray/seq2seq-keyphrase](https://github.com/memray/seq2seq-keyphrase)
-
-- [udibr/headlines: Automatically generate headlines to short articles](https://github.com/udibr/headlines)
-
-- [fudannlp16/KeyPhrase-Extraction](https://github.com/fudannlp16/KeyPhrase-Extraction)
-
-- [Tensorflow：基于LSTM轻松生成各种古诗 - CSDN博客](https://blog.csdn.net/meyh0x5vdtk48p2/article/details/78987402)
-
-- [[代码]基于RNN的文本生成算法 - CSDN博客](https://blog.csdn.net/clayanddev/article/details/53955850)
-
-- [How can I use machine learning to propose tags for content? - Quora](https://www.quora.com/How-can-I-use-machine-learning-to-propose-tags-for-content)
-
-- [Deep Learning for Text Understanding from Scratch](https://www.kdnuggets.com/2015/03/deep-learning-text-understanding-from-scratch.html)
-
-- [neural network - Keyword/phrase extraction from Text using Deep Learning libraries - Data Science Stack Exchange](https://datascience.stackexchange.com/questions/10077/keyword-phrase-extraction-from-text-using-deep-learning-libraries)
-
-- [attardi/deepnl: Deep Learning for Natural Language Processing](https://github.com/attardi/deepnl)
-
-- [Intro to text classification with Keras: automatically tagging Stack Overflow posts | Google Cloud Big Data and Machine Learning Blog  |  Google Cloud](https://cloud.google.com/blog/big-data/2017/10/intro-to-text-classification-with-keras-automatically-tagging-stack-overflow-posts)
-
-- [snkim/AutomaticKeyphraseExtraction: Data for Automatic Keyphrase Extraction Task](https://github.com/snkim/AutomaticKeyphraseExtraction)
-
-- [lvsh/keywordfinder: Automatic keyword extraction - no alchemy required!](https://github.com/lvsh/keywordfinder)
-
-- [Natural Language Toolkit — NLTK 3.2.5 documentation](http://www.nltk.org/)
-
-- [nlp - How to auto-tag content, algorithms and suggestions needed - Stack Overflow](https://stackoverflow.com/questions/6039238/how-to-auto-tag-content-algorithms-and-suggestions-needed)
 
 
 
@@ -218,18 +270,11 @@ Parameters:
 
 
 
-## Models
-- [DeepMind丨深度學習最新生成記憶模型，遠超RNN的GTMM](http://www.bigdatafinance.tw/index.php/tech/557-deepmind-rnn-gtmm)
-
-### RNN+CNN
-
-- [Representing Language with Recurrent and Convolutional Layers: An Authorship Attribution Example](https://hergott.github.io/language-representation-rnn-cnn/)
 
 
+# 詞性標註（POS）/詞語組快分析（Chunking）/命名實體識別（NER）/語意角色標註（SRL）
 
-## 詞性標註（POS）/詞語組快分析（Chunking）/命名實體識別（NER）/語意角色標註（SRL）
-
-### Natural Language Processing (almost) from Scratch
+## Natural Language Processing (almost) from Scratch
 
 - [[1103.0398] Natural Language Processing (almost) from Scratch](https://arxiv.org/abs/1103.0398)
 
@@ -239,6 +284,59 @@ Parameters:
     > ==
     > 
     > 本文介绍了一个统一的神经网络架构用于解决自然语言处理各种的各种任务，主要是序列标注任务，包括词性标注（POS）、词语组块分析（Chunking）、命名实体识别（NER）以及语义角色标注（SRL）等。本文主要介绍如何构建这个统一的神经网络以及如何运用一些技巧去提高效果，结论是不需要特殊构建特征工程就可以得到State-of-art结果。
+
+- [Natural language understanding (almost) from scratch | the morning paper](https://blog.acolyer.org/2016/07/04/natural-language-understanding-almost-from-scratch/)
+
+    > ### Four foundational NLP tasks
+    > 
+    > **Part-of-speech** tagging (POS), labels each word with a tag that indicates its syntactic role in a sentence: for example, noun, verb, adverb and so on. We're pretty good at POS tagging, with the system of Shen et al. 2007 achieving 97.33% accuracy. The overall system built by the authors in this paper is called SENNA (Semantic/Syntactic Extraction using a Neural Network Architecture). SENNA ultimately achieves 97.29% accuracy, but does over the benchmark in 4s using 32MB of RAM, whereas Shen et al.'s system needs 833s and 2.2GB of RAM.
+    > 
+    > **Chunking** labels *phrases* or segments within a sentence with tags that indicate their syntactic role: for example, *noun phrase* (NP) or *verb phrase* (VP).
+    > 
+    > > Each word is assigned only one unique tag, often encoded as a begin-chunk (e.g. B-NP) or inside-chunk tag (e.g. I-NP)..
+    > 
+    > On the CoNLL benchmark, Shen and Sarkar (2005) achieved an "F1" score of 95.23% in 2005. SENNA achieves 94.32%.
+    > 
+    > **Named-entity Recognition** (NER) labels recognised entities within the sentence. For example, as a person, location, date, time, company and so on. "As in the chunking task, each word is assigned a tag prefixed by the beginning or inside of an entity." Ando and Zhang (2005) achieved an F1 score of 89.31%. SENNA achieves 89.59%.
+    > 
+    > **Semantic-role labeling** (SRL) "gives a semantic role to a syntactic constituent of a sentence."
+    > 
+    > > In the PropBank (Palmer et al., 2005) formalism one assigns roles ARG0-5 to words that are arguments of a verb (or more technically, a predicate) in the sentence, e.g. the following sentence might be tagged "[John]ARG0 [ate]REL [the apple]ARG1", where "ate" is the predicate. The precise arguments depend on a verb's frame and if there are multiple verbs in a sentence some words might have multiple tags. In addition to the ARG0-5 tags, there there are several modifier tags such as ARGM-LOC (locational) and ARGM-TMP (temporal) that operate in a similar way for all verbs.
+    > 
+    > A typical SRL system may involve several stages: producing a parse tree, identifying which parse tree nodes represent the arguments of a given verb, and then classifying them to compute the final labels. Koomen et al. (2005) achieved a 77.92% F1 score. SENNA achieves 75.49%, but 10x faster and using an order-of-magnitude less RAM.
+    > 
+    > POS is the simplest of these tasks, and SRL the most complex. The more complex the task, the more feature engineering has traditionally been required to perform well in it.
+    > 
+    > ### Doing away with hand-engineered features
+    > 
+    > > All the NLP tasks above can be seen as tasks assigning labels to words. The traditional NLP approach is: extract from the sentence a rich set of hand-designed features which are then fed to a standard classification algorithm, e.g. a Support Vector Machine (SVM), often with a linear kernel. The choice of features is a completely empirical process, mainly based first on linguistic intuition, and then trial and error, and the feature selection is task dependent, implying additional research for each new NLP task. Complex tasks like SRL then require a large number of possibly complex features (e.g., extracted from a parse tree) which can impact the computational cost which might be important for large-scale applications or applications requiring real-time response. *Instead, we advocate a radically different approach: as input we will try to pre-process our features as little as possible and then use a multilayer neural network (NN) architecture, trained in an end-to-end fashion*.
+    > 
+    > ---
+    > 
+    > ### Network Architecture
+    > 
+    > 
+    > The windowing approach assumes that the tag of a word depends mostly on the words surrounding it, and creates a combined feature vector by concatenating the feature vector of the target word and its *k* neighbours on each side. The overall network looks like this:
+    > 
+    > ![](https://adriancolyer.files.wordpress.com/2016/07/nlu-from-scratch-fig-1.png?w=303)
+    > 
+    > The final layer of the network has one node for each candidate tag, each output is interpreted as the score for the associated tag.
+    > 
+    > The windowing approach performs well for the first three tasks, but does not do so well for SRL. The issue here is that the correct tag for a word may depend on a verb in the sentence outside of the current window. The convolutional network architecture is introduced to try and address this:
+    > 
+    > > It successively takes the complete sentence, passes it through the lookup table layer (1), produces local features around each word of the sentence thanks to convolutional layers, combines these feature into a global feature vector which can then be fed to standard affine layers (4). In the semantic role labeling case, this operation is performed for each word in the sentence, and for each verb in the sentence. It is thus necessary to encode in the network architecture which verb we are considering in the sentence, and which word we want to tag.
+    > 
+    > (We'll see tomorrow an approach that uses LSTMs to provide the needed memory).
+    > 
+    > ![](https://adriancolyer.files.wordpress.com/2016/07/nlu-from-scratch-fig-2.png?w=434)
+    > 
+    > During training, we need a scoring function to tell the network how well it is doing. A simple approach (described in the paper as 'word-level log-likelihood') is just to look at the scores for each word independently. However...
+    > 
+    > > In tasks like chunking, NER or SRL we know that there are dependencies between word tags in a sentence: not only are tags organized in chunks, but some tags cannot follow other tags. Training using a word-level approach discards this kind of labeling information. We consider a training scheme which takes into account the sentence structure: given the predictions of all tags by our network for all words in a sentence, and given a score for going from one tag to another tag, we want to encourage valid paths of tags during training, while discouraging all other paths.
+    > 
+    > This scoring system is called 'sentence-level log-likelihood.'
+
+
 
 
 - [attardi/deepnl: Deep Learning for Natural Language Processing](https://github.com/attardi/deepnl)
@@ -251,7 +349,7 @@ Parameters:
     > 
     > It can also create *sentiment specific word embeddings* from a corpus of annotated Tweets.
 
-### Entity extraction: 實體抽取 
+## Entity extraction: 實體抽取 
 
 - [Entity extraction using Deep Learning – Towards Data Science](https://towardsdatascience.com/entity-extraction-using-deep-learning-8014acac6bb8)
 
@@ -263,7 +361,7 @@ Parameters:
 
 - [Introduction to Conditional Random Fields](http://blog.echen.me/2012/01/03/introduction-to-conditional-random-fields/)
 
-### Lattice LSTM: 中文實體識別
+## Lattice LSTM: 中文實體識別
 
 
 - [[1805.02023] Chinese NER Using Lattice LSTM](https://arxiv.org/abs/1805.02023)
@@ -276,9 +374,9 @@ Parameters:
 
 
 
-## 語句解析
+# 語法解析
 
-### Bi-LSTM-CRF
+## Bi-LSTM-CRF
 
 - [[1508.01991] Bidirectional LSTM-CRF Models for Sequence Tagging](https://arxiv.org/abs/1508.01991)
 
@@ -287,7 +385,7 @@ Parameters:
 
 
 
-### Stack-augmented Parser-Interpreter Neural Network (SPINN)
+## Stack-augmented Parser-Interpreter Neural Network (SPINN)
 
 - [[1603.06021] A Fast Unified Model for Parsing and Sentence Understanding](https://arxiv.org/abs/1603.06021)
 
@@ -340,7 +438,7 @@ Parameters:
     > ```
     > 
 
-### SLING
+## SLING
 
 - [google/sling: SLING - A natural language frame semantics parser](https://github.com/google/sling)
 
@@ -374,9 +472,9 @@ Parameters:
     > 
     > 目前，Google的研究團隊表示，SLING是研究語意剖析的實驗，Google已在Github將SLING開源釋出，提供開發人員預先訓練完成的語意剖析模型，可應用於知識萃取、解析複雜引用（Resolving complex references），以及對話理解等工作，未來，Google將會持續擴增SLING的功能。
 
-## 文法改錯
+# 文法改錯
 
-### DeepFix
+## DeepFix
 
 - [DeepFix: Fixing Common C Language Errors by Deep Learning - 13921](https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/download/14603/13921)
 
@@ -389,165 +487,6 @@ Parameters:
 
 
 
-## 新聞
-
-### 語音助理
-
-- [個人語音助理時代已經來臨！ - EE Times Taiwan 電子工程專輯網](https://www.eettaiwan.com/news/article/20180416NT31-season-voice-based-personal-assistants?utm_source=EETT%20Article%20Alert&utm_medium=Email&utm_campaign=2018-04-17)
-
-    > 過程和原理
-    > 
-    > 作為一名開發者和設計師，要充份使用這項技術，重要的是瞭解如下的完整命令互動過程：
-    > 
-    > * 虛擬助理使用一個觸發詞(如‘Ok Google’、‘Hey Siri’)來「喚醒」，以確保它只在命令下達時才執行。
-    > * 音訊被記錄在設備上，經過壓縮並透過Wi-Fi傳輸到雲端。通常會採用降噪演算法來記錄音訊，以便雲端「大腦」更容易理解用戶的命令。
-    > * 使用專有的「語音轉文本」(voice-to-text)平台將音訊轉換成文本命令。透過指定的頻率對類比訊號進行採樣，將類比聲波轉換為數位資料。分析數位資料以確定英語音素(‘bb’、‘oo’、‘sh’等)的出現位置。 一旦辨識別出音素，就使用統計建模演算法(如Hidden Markhov模型)來確定特定單詞的可能性。
-    > * 使用自然語言處理技術來處理文本以確定所需的操作。 該演算法首先使用詞性標註來確定哪些詞是形容詞、動詞和名詞等，然後將這種標記與統計機器學習模型相結合起來，推斷句子的含義。
-    > * 如果命令操作需要進一步的搜尋，系統將立即進行搜尋。例如，「嘿！Siri，什麼是Snapdragon行動平台？」將觸發網際網路搜尋，並返回所得到的資訊。如果該命令類似於「Ok Google，傳簡訊給媽媽」，那麼命令資料(操作：發送簡訊；收件人：媽媽)就會被直接傳送到虛擬助理。
-    > 
-    > 
-
-### 寫稿機器人
-
-- [百度AI开放平台-全球领先的人工智能服务平台](https://ai.baidu.com/support/news?action=detail&id=140)
-
-- [只好跟著抄了！PTT 創世神的 AI Labs 為「記者快抄」打造寫稿機器人 | TechNews 科技新報](http://technews.tw/2017/08/09/ai-labs-is-using-ai-to-cover-ptt-news/)
-
-
-## 機器翻譯
-
-### seq2seq
-
-- [从Encoder到Decoder实现Seq2Seq模型](https://zhuanlan.zhihu.com/p/27608348)
-
-- [Neural Machine Translation (seq2seq) Tutorial  |  TensorFlow](https://www.tensorflow.org/tutorials/seq2seq)
-
-- [深度学习笔记——Word2vec和Doc2vec训练实例以及参数解读 - CSDN博客](https://blog.csdn.net/mpk_no1/article/details/72510655)
-
-- [序列到序列的语言翻译模型代码(tensorflow)解析 - grt1st博客](https://www.grt1st.cn/posts/seq2seq-code/)
-
-- [用seq2seq with attention实现中文歌词生成](https://zhuanlan.zhihu.com/p/25280463)
-
-- [tensorflow代码全解析 -3- seq2seq 自动生成文本 - 简书](https://www.jianshu.com/p/9766b317ffa4)
-
-- [從零開始的 Sequence to Sequence | 雷德麥的藏書閣](https://zake7749.github.io/2017/09/28/Sequence-to-Sequence-tutorial/)
-
-- [教電腦寫作：AI球評——Seq2seq模型應用筆記(PyTorch + Python3) – Yi-Hsiang Kao – Medium](https://medium.com/@gau820827/%E6%95%99%E9%9B%BB%E8%85%A6%E5%AF%AB%E4%BD%9C-ai%E7%90%83%E8%A9%95-seq2seq%E6%A8%A1%E5%9E%8B%E6%87%89%E7%94%A8%E7%AD%86%E8%A8%98-pytorch-python3-31e853573dd0)
-
-### ByteNet
-
-- [《Neural Machine Translation in Linear Time》阅读笔记](https://zhuanlan.zhihu.com/p/23795111)
-
-    - [[1610.10099] Neural Machine Translation in Linear Time](https://arxiv.org/abs/1610.10099)
-    
-    > **问题：** 提出了新型的source--target网络结构ByteNet，并通过两个扩张卷积神经网络（Dilated Convolution）堆叠实现,完成了机器翻译任务，并且将时间复杂度控制在线性范围。
-    > 
-    > **相关工作：**
-    > 
-    > 1、扩张卷积神经网络
-    > 
-    > Dilated Convolution network最近很火，2016ICLR上才被提出，本身是用在图像分割领域，但立马被deepmind拿来应用到语音(WaveNet)和nlp领域，且均取得不错的效果。
-    > 
-    > Dilated Convolution的产生是为了解决全卷积网络（FCN）在图像分割领域的问题，图像分割需要输入和输出在像素的shape保持一致，但由于池化层的存在导致FCN需要通过上采样扩增size,但是上采样并不能将丢失的信息无损的找回所以存在不足。
-    > 
-    > Dilated Convolution想法很粗暴，既然池化的下采样操作会带来信息损失，那么就把池化层去掉。但是池化层去掉随之带来的是网络各层的感受野变小，这样会降低整个模型的预测精度。Dilated convolution的主要贡献就是，如何在去掉池化下采样操作的同时，而不降低网络的感受野。
-    > 
-    > ![](https://pic1.zhimg.com/80/v2-3cd4e5ebcae5fa15019c9f4df03bc734_hd.png)
-    > 
-    > 以![3\times 3](http://www.zhihu.com/equation?tex=3%5Ctimes+3)的卷积核为例，传统卷积核在做卷积操作时，是将卷积核与输入张量中"连续"的![3\times 3](http://www.zhihu.com/equation?tex=3%5Ctimes+3)的patch逐点相乘再求和（如上图a，红色圆点为卷积核对应的输入"像素"，绿色为其在原输入中的感知野）。而dilated convolution中的卷积核则是将输入张量的![3\times 3](http://www.zhihu.com/equation?tex=3%5Ctimes+3)patch隔一定的像素进行卷积运算。如上图b所示，在去掉一层池化层后，需要在去掉的池化层后将传统卷积层换做一个"dilation=2"的dilated convolution层，此时卷积核将输入张量每隔一个"像素"的位置作为输入patch进行卷积计算，可以发现这时对应到原输入的感知野已经扩大（dilate）为![7\times 7](http://www.zhihu.com/equation?tex=7%5Ctimes+7)；同理，如果再去掉一个池化层，就要将其之后的卷积层换成"dilation=4"的dilated convolution层，如上图c所示。这样一来，即使去掉池化层也能保证网络的感受野，从而确保图像语义分割的精度。
-    > 
-    > ![](https://pic3.zhimg.com/80/v2-d1b7575900e42c5189997de03059d126_hd.png)
-    > 
-    > 上图是WaveNet里的Dilated Convolution的示意图，理解起来更容易，卷积的的输入像素的间距由1-2-4-8，虽然没有池化层，但是随着层数越深覆盖的原始输入信息依旧在增加。
-    > 
-    > **主要内容：**
-    > 
-    > （1）网络结构ByteNet
-    > 
-    > ![](https://pic1.zhimg.com/80/v2-0d72713562d4015e420f159e703958a8_hd.png)
-    > 
-    > ByteNet的核心分别是蓝色网络为target network, 红色网络为source network,相比其他encode-decode网络的区别在于，不再仅仅通过一个encode vector或者attention vector连接两个网络，而是将source network每一个输出都作为target vector对应位置上的输入。
-    > 
-    > 上图示例是以Dilated Convolution实现，实际本文提出的ByteNet的两个部分target network和source network均可以用RNN实现。
-    > 
-    > ![](https://pic3.zhimg.com/80/v2-b6f86867a9721e9874a65c65772d54ee_hd.png)
-    > 
-    > 本文就一个公式，理解起来就是当前预测词的输出概率由已预测词和当前token的source network encode vector决定。
-    > 
-    > 以下为本文的几个关键知识点
-    > 
-    > （2）Dynamic Unfolding
-    > 
-    > ![](https://pic2.zhimg.com/80/v2-e79507690ba294fbd8324cdd0033fb75_hd.png)
-    > 
-    > target网络的结束标志是以生成结束符EOS为标志，但由网络结构可以看到，target network的当前token的source vector输入长度和source input length是一致，由于翻译任务的长度存在变化，所以EOS出现位置可能长于source input length，因此byteNet当超出source input length时，target network的输出只有已解码词决定。
-    > 
-    > （3）Masked One-dimensional Convolutions
-    > 
-    > 为了避免在解决的时候卷积过程引入为解码词信息，引入Masked One-dimensional Convolutions，即卷积核只与当前token之前的输入进行卷积操作。
-    > 
-    > （4）Residual Blocks
-    > 
-    > ![](https://pic2.zhimg.com/80/v2-6163436971c333afb27f7567807be145_hd.png)
-    > 
-    > 卷积网络使用残差卷积网络。残差卷积网络的特点就是卷积层的最终输出由卷积结果和输入相加而得，因而变相理解为每一层只拟合输入和输出的残差，因而得名残差网络
-    > 
-    > （5）Sub-Batch Normalization
-    > 
-    > batch normalization是为了保持隐层的输出分布不发生漂移，而进行正规化操作，比如限定输出分布服从正态分布。好处是防止过拟合，防止梯度弥散，加大搜索跳出局部最小，保证源控件和目标空间一致（官方）
-    > 
-    > 标准的batch normalization会平均所有token的隐层输出，这会导致在target网络中要将未来时间步的考虑进来操作,这不符合时序关系，所以作者对BN层进行了改进，提出了sub batch normalization，大致意思，batch normalization分为两步，在全部训练完之前只用batch个sample里当前token以前的结果，训练完后再用所有结果一起normalization操作。
-    > 
-    > （6）Bag of Character n-Grams
-    > 
-    > 为了提高模型的信息容量，输入的每个token的vector不再单独是单独的词向量，而是相邻的n-grams的词的词向量求和。考虑到没有RNN模型特征融合的那么好而做的弥补吧。
-    > 
-    > **实验结果：**
-    > 
-    > （1）模型性能对比
-    > 
-    > ![](https://pic2.zhimg.com/80/v2-e17c18d8a0f70fa5ac08e76eeb4a311d_hd.png)
-    > 
-    > 作者还实验了将target network和source network分别用RNN实现，在上图实验列表里名为Recurrent ByteNet，注意和seq2seq的区别，seq2seq是取encode 网络的最后一个hidden state的输出作为decode网络的输入，而ByteNet中target network解码每个词的输入是由对应位置的source network输出决定，对应到RNN即source network第n个timeStep的输出作为target network第n个timestep的输入。
-    > 
-    > resolution preserving表示需要开辟额外空间保存历史信息。
-    > 
-    > Time代表时间复杂度，RP代表resolution preserving，Paths代表source网络从输入到输出的路径长度，Patht代表target网络从输入到输出的路径长度。Path越短代表反向传播的层数越少，网络越容易收敛，因为网络越浅越不容易出现梯度扩散。
-    > 
-    > （2）语言模型实验
-    > 
-    > 1、任务：字符生成预测，数据集为Hutter Prize version of the Wikipedia dataset
-    > 
-    > ![](https://pic4.zhimg.com/80/v2-7942cb10517176e4d562045f98bb4f13_hd.png)
-    > 
-    > ByteNet Decoder采用RNN实现，在交叉熵的评价指标上取得了state of the art结果。
-    > 
-    > 2、任务：机器翻译。数据集为WMT English to German translation task
-    > 
-    > ![](https://pic1.zhimg.com/80/v2-e81bdedfc7c6e9c6641325d8a0fadfdc_hd.png)
-    > 
-    > **简评：**
-    > 
-    > 1、虽然Dilated Convolution在某些实验任务上取得了不错的实验结果，但不能否认带池化层的卷积网络的优势，池化层存在特征选择的意义保留了强特征，从下采样的角度出发它降低了卷积网络的计算复杂度，因为随着卷积层的增加，通道个数也是呈倍数增加，如果不对应降低feature map的size,随着层数越深计算量就会变得相当大。
-    > 
-    > 2、但是没有池化层的Dilated Convolution使得卷积网络更适用于语音和文本，因为池化层的ave或者max操作要从全局出发，使得模型必须fix输入的规模。对于输入长度存在波动的语音和文本非常不方便。但是去掉池化层后使得前馈操作变得更灵活。
-    > 
-    > 3、本文的网络结构相比传统的seq2seq模型，优势在于训练时source network和target network均可并行计算，在预测时source network可并行计算。另外它在长输入问题上的优势应该更大。该网络可能将目前局限于两三句输入的自动摘要任务扩展到一个文档的输入。
-    > 
-
-### attention model
-
-- [tensorflow/nmt: TensorFlow Neural Machine Translation Tutorial](https://github.com/tensorflow/nmt)
-
-- [Attention Is All You Need：基於注意力機制的機器翻譯模型 – Youngmi huang – Medium](https://medium.com/@cyeninesky3/attention-is-all-you-need-%E5%9F%BA%E6%96%BC%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A9%9F%E5%88%B6%E7%9A%84%E6%A9%9F%E5%99%A8%E7%BF%BB%E8%AD%AF%E6%A8%A1%E5%9E%8B-dcc12d251449)
-
-- [[1706.03762] Attention Is All You Need](https://arxiv.org/abs/1706.03762)
-
-- [Kyubyong/transformer: A TensorFlow Implementation of the Transformer: Attention Is All You Need](https://github.com/Kyubyong/transformer)
-
-- [(4 封私信 / 23 条消息)如何理解谷歌团队的机器翻译新作《Attention is all you need》？ - 知乎](https://www.zhihu.com/question/61077555)
-
-- [《Attention is All You Need》浅读（简介+代码） - 科学空间|Scientific Spaces](https://kexue.fm/archives/4765)
 
 
 
@@ -555,74 +494,9 @@ Parameters:
 
 
 
+# 閱讀理解
 
-### UNSUPERVISED MACHINE TRANSLATION 
-
-- [《UNSUPERVISED MACHINE TRANSLATION USING MONOLINGUAL CORPORA ONLY》阅读笔记](https://zhuanlan.zhihu.com/p/32375955)
-
-- [【Science】無監督式機器翻譯，不需要人類干預和平行文本 - 壹讀](https://read01.com/Rnzx84N.html)
-
-    > 這兩篇使用非常相似的方法的新論文也可以在句子層面進行翻譯。它們都使用兩種訓練策略，稱為反向翻譯和去噪（Back translation and Denoising）。在反向翻譯中，先把一種語言的句子大致翻譯成另一種語言，然後再翻譯回原來的語言。如果翻譯後的句子與最初的句子不一致，則調整神經網絡再次翻譯，直到變得越來越接近。
-    > 
-    > 去噪與反向翻譯類似，但不是從一種語言到另一種語言然後再回來，而是從一種語言（通過重新排列或刪除單詞）中添加噪聲，並嘗試將其翻譯回最開始的語言。這些方法的組合，能夠教給網絡更深層次的語言結構。
-    > 
-    > 但是兩種技術之間還是有著細微的差異。 UPV的系統在訓練期間更頻繁地進行反向翻譯。由位於賓夕法尼亞州匹茲堡的 Facebook 計算機科學家Guillaume Lample和合作者創建的另一個系統在翻譯過程中則增加了一個額外的步驟。在將一個語言解碼為另一種語言之前，這兩個系統都將其從一種語言編碼為更抽象的表示，但Facebook系統的研究員認為，其系統的「中間語言」是真正抽象的。 Artetxe和Lample都表示，他們可以通過應用對方論文的技巧來改善結果。
-    > 
-    > 兩篇論文之間唯一可以直接比較的結果是從以包含了3000萬句子的英法文本資料庫中進行的翻譯，兩個系統都在雙語評估替補評分（用來衡量翻譯的準確性）上的得分都在15分左右 。這個數字還比不上谷歌翻譯。谷歌翻譯使用有監督的方法，在同類測試上的得分是40多左右，人類水平是50分左右。但是，這些方法都比詞對詞的翻譯要好。
-
-
-### Phrase-Based & Neural Unsupervised Machine Translation
-
-- [[1804.07755] Phrase-Based & Neural Unsupervised Machine Translation](https://arxiv.org/abs/1804.07755)
-
-    - [facebookresearch/UnsupervisedMT: Phrase-Based & Neural Unsupervised Machine Translation](https://github.com/facebookresearch/UnsupervisedMT)
-
-
-- [FAIR新一代无监督机器翻译：模型更简洁，性能更优 | 机器之心](https://www.jiqizhixin.com/articles/Phrase-Based-Neural-Unsupervised-Machine-Translation)
-
-    > ![](https://image.jiqizhixin.com/uploads/editor/84b75cea-df8a-4e0f-b315-8580b97e2703/1524896803075.jpg)
-    > 
-    > *图 1：无监督 MT 三原则的图示。*
-    > 
-    > A）两个单语数据集。标记对应于句子（详细信息请参见图例）。B）原则一：初始化。比如，这两个分布通过使用推断的双语词典执行逐词翻译而大致对齐。C）原则二：语言建模。在每个域中独立地学习语言模型，以推断数据中的结构（下面的连续曲线）；它在对句子进行去噪/纠正之前充当数据驱动（如图所示，借助弹簧将曲线外的句子拉回）。D）原则三：回译。从观察到的源语句（红色实心圆）开始，我们使用当前的源语→目标语模型进行翻译（虚线箭头），从而产生可能不正确的翻译（空心圆附近的蓝色十字）。从这次（反向）翻译开始，我们使用目标语→源语模型（连续箭头）来重建初始语言中的句子。重建结果与初始语句的差异为训练目标语→源语模型参数提供了误差信号。在相反的方向上应用相同的步骤来训练源语→目标语模型。
-    > 
-    > 
-
-
-
-### CipherGAN
-
-- [无平行文本照样破解密码，CipherGAN有望提升机器翻译水平](https://zhuanlan.zhihu.com/p/33672256)
-
-    > 针对CipherGAN可以使用非平行文本作输入的特点，Gomez在接受Newsweek外媒采访的时候，也提到了，“密码破译的模型思路也能迁移到非监督学习的翻译上。”
-    > 
-    > 因为语言翻译常面临的难题是，缺乏足够的平行语料。
-    > 
-    > 正好和非配对明文密文的密码破译过程很相似。
-    > 
-    > 
-
-
-## 情意分析
-
-### CNN-SVM 諷刺偵測
-
-- [[1610.08815] A Deeper Look into Sarcastic Tweets Using Deep Convolutional Neural Networks](https://arxiv.org/abs/1610.08815)
-
-- [Detecting Sarcasm with Deep Convolutional Neural Networks](https://www.kdnuggets.com/2018/06/detecting-sarcasm-deep-convolutional-neural-networks.html#.Wyu7yLVD5OQ.linkedin)
-
-    - [Detecting Sarcasm with Deep Convolutional Neural Networks](https://medium.com/dair-ai/detecting-sarcasm-with-deep-convolutional-neural-networks-4a0657f79e80)
-
-    > ![](https://cdn-images-1.medium.com/max/1200/0*GVbW_tOQMN1F1lcw.)
-    > 
-    > To obtain the other features — sentiment (S), emotion (E), and personality (P) — CNN models are pre-trained and used to extract features from the sarcasm datasets. Different training datasets were used to train each model. (Refer to paper for more details)
-
-
-
-
-## 閱讀理解
-
-### SQuAD
+## SQuAD
 
 - [机器这次击败人之后，争论一直没平息 | SQuAD风云](https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247493419&idx=1&sn=73425fec04482f14f6b9b7316e425e63&chksm=e8d05059dfa7d94fc1457a36d4f62cb1b8a057ce18388fbad448aa6b53f4dbb1299cfd697724&scene=21#wechat_redirect)
 
@@ -668,11 +542,11 @@ Parameters:
     > 
 
 
-## 論證推理 Argument Reasoning
+# 論證推理 Argument Reasoning
 
 
 
-### SemEval-2018 Task 12
+## SemEval-2018 Task 12
 
 - [[1708.01425] The Argument Reasoning Comprehension Task: Identification and Reconstruction of Implicit Warrants](https://arxiv.org/abs/1708.01425)
 
@@ -684,10 +558,10 @@ Parameters:
 
 
 
-## 論述挖掘、事實抽取、來源分類
+# 論述挖掘、事實抽取、來源分類
 
 
-### Argument Mining on Twitter
+## Argument Mining on Twitter
 
 - [Argument Mining on Twitter: Arguments, Facts and Sources - D17-1245](http://aclweb.org/anthology/D17-1245)
 
@@ -695,9 +569,9 @@ Parameters:
 
 
 
-## 空間關係
+# 空間關係
 
-### SLIM 空間語言編碼
+## SLIM 空間語言編碼
 
 - [[1807.01670] Encoding Spatial Relations from Natural Language](https://arxiv.org/abs/1807.01670)
 
@@ -722,10 +596,10 @@ Parameters:
 
 
 
-## 文章分類器
+# 文章分類
 
 
-### 垃圾郵件偵測
+## 垃圾郵件偵測
 
 - [How To Build a Simple Spam-Detecting Machine Learning Classifier](https://hackernoon.com/how-to-build-a-simple-spam-detecting-machine-learning-classifier-4471fe6b816e)
 
@@ -738,7 +612,7 @@ Parameters:
 
 
 
-#### dataset
+### 垃圾郵件 dataset
 
 - [UCI Machine Learning Repository: Spambase Data Set](https://archive.ics.uci.edu/ml/datasets/Spambase)
 
@@ -748,25 +622,151 @@ Parameters:
 
 
 
-## 機器摘要
+# 情意分析
+
+## CNN-SVM 諷刺偵測
+
+- [[1610.08815] A Deeper Look into Sarcastic Tweets Using Deep Convolutional Neural Networks](https://arxiv.org/abs/1610.08815)
+
+- [Detecting Sarcasm with Deep Convolutional Neural Networks](https://www.kdnuggets.com/2018/06/detecting-sarcasm-deep-convolutional-neural-networks.html#.Wyu7yLVD5OQ.linkedin)
+
+    - [Detecting Sarcasm with Deep Convolutional Neural Networks](https://medium.com/dair-ai/detecting-sarcasm-with-deep-convolutional-neural-networks-4a0657f79e80)
+
+    > ![](https://cdn-images-1.medium.com/max/1200/0*GVbW_tOQMN1F1lcw.)
+    > 
+    > To obtain the other features — sentiment (S), emotion (E), and personality (P) — CNN models are pre-trained and used to extract features from the sarcasm datasets. Different training datasets were used to train each model. (Refer to paper for more details)
 
 
-### deep reinforced summarization
+## Differences between Polarity and Topic-based Sentiment Analysis
+
+- [Differences between Polarity and Topic-based Sentiment Analysis](https://blog.bitext.com/polarity-topic-sentiment-analysis)
 
 
-- [Salesforce research](https://einstein.ai/research/your-tldr-by-an-ai-a-deep-reinforced-model-for-abstractive-summarization)
+    > From a business perspective, there is huge difference between plain polarity and topic-based sentiment analysis (also known as aspect-based sentiment analysis)
+    > 
+    > ##### Why is polarity analysis by itself not enough?
+    > 
+    > Polarity analysis takes into account the amount of positive or negative terms that appear in a given sentence. It is useful to some extent, since it does a good job of structuring data sets.
+    > 
+    > Let say I have 1000 reviews on my product that I want to analyze. By using polarity I can identify that 30% are negative, 20% are neutral and 50% are positive -- and that's good for segmentation. But I am left with three chunks of 300, 200 and 500 reviews to go through if I want to get more meaningful insights, rather than just a nice looking pie chart.
+    > 
+    > And imagine if we have 10 times that data, and in multiple languages! Then we are dealing with some really expensive (and not very delighted) employees that have to spend all day reading through reviews.
+    > 
+    > Let's have a look at how comments are treated when using polarity analysis by itself.
+    > 
+    > "The weather is amazing, and I love my XYZ phone."\
+    > Clearly positive as we have expressions like *amazing* and love
+    > 
+    > "The weather is gloomy and sad, and I hate my XYZ phone."\
+    > Clearly negative as *gloomy*, sad and hate are objectively negative expressions
+    > 
+    > "The weather is gloomy and sad, and I love my XYZ phone."\
+    > Neutral. Some expressions are good others bad.\
+    > As we add them all together we end up with something in between.
+    > 
+    > It is here, with the neutral cases, that the limitations of a polarity-based approach become clear.
+    > 
+    > And this is where topic-based sentiment analysis really shines, and why it is becoming a standard in the Text Analytics Industry.
+    > 
+    > Going back to our example about the weather and the phone, when we can identify exactly what the opinion is about, then the true expressed opinion is not lost in a misleading overall score. And what is even more useful is that XYZ company can filter out the already analyzed data to zoom in on the opinions specifically about their phones. The rest of the noise like comments about the weather, are filtered out.
+    > 
+    > ##### How does topic-based sentiment analysis work?
+    > 
+    > To be able to match expressions that bear sentiment with their relevant topic, we need to rely on linguistic knowledge. The industry counts on many methods to do this, such as POS tagging and parsing, and other techniques like n-grams and neural networks models.
+    > 
+    > Linguistics uncovers the structure of the sentence (known as phrase structure). This is what makes the difference in topic-based analysis. Knowledge of parts of speech and grammar are used to detect the sentiment topic that the expressed opinion is related to:
+    > 
+    > -   I like this camera (with "like" the topic normally is the direct object)
+    > -   This lens is great (with "be" the topic normally is the subject)
+    > 
+    > ##### Well this is all very interesting, but does it really produce measurable results?
+    > 
+    > You'd be surprised.
+    > 
+    > In academic conferences on topic-based sentiment analysis ([SemEval](https://en.wikipedia.org/wiki/SemEval), for example), sentiment analysis platforms are tested against human hand tagging and precision, recall, and F-score performed by contestants.
+    > 
+    > It's quite amazing to see how sentiment analysis platforms measure up against humans!
 
-    - [[1705.04304] A Deep Reinforced Model for Abstractive Summarization](https://arxiv.org/abs/1705.04304)
 
-    - [An Algorithm Summarizes Lengthy Text Surprisingly Well - MIT Technology Review](https://www.technologyreview.com/s/607828/an-algorithm-summarizes-lengthy-text-surprisingly-well/)
+## What is the difference between Polarity and Subjectivity
+
+- [What is the difference between Polarity and Subjectivity? - Quora](https://www.quora.com/What-is-the-difference-between-Polarity-and-Subjectivity)
+
+    > In the realm of Sentiment analysis, the main goal would be to classify the **polarity** of a given text at different levels ---whether the expressed opinion in a document, a sentence or an entity feature/aspect is **positive**, **negative**, or **neutral**.
+    > 
+    > For achieving this goal (polarity classification), you can see the whole process as a pipeline including different stages that can contribute to the accuracy of ending results. **Subjectivity/objectivity identification** can be seen as one of those stages that is commonly defined as classifying a given text (usually a sentence) into one of two classes: **objective** or **subjective**. For example, some researches showed that removing objective sentences from a document before classifying its polarity helped improve performance.
+    > 
+    > Note that there are unique challenges for subjectivity detection: The **subjectivity** of words and phrases may depend on their context and an objective document may contain subjective sentences (e.g., a news article quoting people's opinions).
+    > 
+    > ---
+    > 
+    > **Polarity**
+    > 
+    > It simply means emotions expressed in a sentence.
+    > 
+    > Emotions are closely related to sentiments. The strength of a sentiment or opinion is typically linked to the intensity of certain emotions, e.g., joy and anger.
+    > 
+    > Opinions in sentiment analysis are mostly evaluations(although not always).
+    > 
+    > According to consumer behavior research, evaluations can be broadly categorized into two types:\
+    > **1\. Rational evaluations\
+    > 2\. Emotional evaluations**.
+    > 
+    > **Rational evaluation**: Such evaluations are from rational reasoning, tangible
+    > 
+    > beliefs, and utilitarian attitudes. For example, the following sentences
+    > 
+    > **Express rational evaluations:** "The voice of this phone is clear," "This car is worth the price," and "I am happy with this car."
+    > 
+    > **Emotional evaluation:** Such evaluations are from non-tangible and emotional responses to entities which go deep into people's state of mind.
+    > 
+    > For example, the following sentences express emotional evaluations: "I love iPhone," "I am so angry with their service people" and "This is the best car ever built."
+    > 
+    > To make use of these two types of evaluations in practice, we can design 5 sentiment ratings, emotional negative (-2), rational negative (-1), neutral (0), rational positive (+1), and emotional positive (+2). In practice, neutral often means no opinion or sentiment expressed.
+    > 
+    > **Subjectivity**
+    > 
+    > Subjective sentence expresses some personal feelings, views, or beliefs.
+    > 
+    > **An example**
+    > 
+    > subjective sentence is "I like iPhone." Subjective expressions come in many forms, e.g., opinions, allegations, desires, beliefs, suspicions, and speculations.
+    > 
+    > A subjective sentence may not express any sentiment.\
+    > **For example**, "I think that he went home" and "I want a camera that can take good photos" are a subjective sentences, but does not express any sentiment.
+    > 
+    > **(Source: Bing Liu. Sentiment Analysis and Opinion Mining, Morgan & Claypool Publishers, May 2012)**
+    > 
+    > ---
+    > 
+    > Abtin has already captured it in his response.
+    > 
+    > -   A sentence could be stating a fact( *objective*) or expressing an opinion( *subjective*). Determining this is a classification of a sentence as being objective or subjective
+    > -   For sentences tagged as subjective in the classification step above, one could further classify those sentences as expressing a positive or negative sentiment - weeding out objective statements may help improve the performance of sentiment classification into positive and negative sentiment.
+    > -   So in essence given a sentence - one could first use a classifier to label a sentence as subjective or objective and then do another classification to further classify subjective sentences as either positive or negative.
+    > 
+    > **Reference**
+    > 
+    > [Sentiment analysis and subjectivity](https://www.cs.uic.edu/~liub/FBS/NLP-handbook-sentiment-analysis.pdf)
 
 
 
-## 文字生成
+
+
+# 文字生成
 
 - [Neural text generation – Phrasee – Medium](https://medium.com/phrasee/neural-text-generation-generating-text-using-conditional-language-models-a37b69c7cd4b)
 
-### google smart compose
+## char-rnn
+
+- [Tensorflow lyrics generation · Lei's Blog](http://leix.me/2016/11/28/tensorflow-lyrics-generation/)
+
+    - [leido/char-rnn-cn: 基于char-rnn和tensorflow生成周杰伦歌词](https://github.com/leido/char-rnn-cn)
+
+- [從字符級的語言建模開始，瞭解語言模型與序列建模的基本概念 - 幫趣](http://bangqu.com/24EJ36.html)
+
+
+## google smart compose
 
 - [未來Email將預測你的心思自動寫完？Google大腦首席工程師在官方部落格詳細介紹了原理 - INSIDE 硬塞的網路趨勢觀察](https://www.inside.com.tw/2018/06/20/smart-compose)
 
@@ -782,10 +782,42 @@ Parameters:
     > ![](https://i0.wp.com/www.inside.com.tw/wp-content/uploads/2018/06/model3.png?resize=640%2C236)
     > 
 
+# 自動標籤(auto tagging)
 
-## 機器問答
+- [memray/seq2seq-keyphrase](https://github.com/memray/seq2seq-keyphrase)
 
-### NTM+CGNN
+- [udibr/headlines: Automatically generate headlines to short articles](https://github.com/udibr/headlines)
+
+- [fudannlp16/KeyPhrase-Extraction](https://github.com/fudannlp16/KeyPhrase-Extraction)
+
+- [Tensorflow：基于LSTM轻松生成各种古诗 - CSDN博客](https://blog.csdn.net/meyh0x5vdtk48p2/article/details/78987402)
+
+- [[代码]基于RNN的文本生成算法 - CSDN博客](https://blog.csdn.net/clayanddev/article/details/53955850)
+
+- [How can I use machine learning to propose tags for content? - Quora](https://www.quora.com/How-can-I-use-machine-learning-to-propose-tags-for-content)
+
+- [Deep Learning for Text Understanding from Scratch](https://www.kdnuggets.com/2015/03/deep-learning-text-understanding-from-scratch.html)
+
+- [neural network - Keyword/phrase extraction from Text using Deep Learning libraries - Data Science Stack Exchange](https://datascience.stackexchange.com/questions/10077/keyword-phrase-extraction-from-text-using-deep-learning-libraries)
+
+- [attardi/deepnl: Deep Learning for Natural Language Processing](https://github.com/attardi/deepnl)
+
+- [Intro to text classification with Keras: automatically tagging Stack Overflow posts | Google Cloud Big Data and Machine Learning Blog  |  Google Cloud](https://cloud.google.com/blog/big-data/2017/10/intro-to-text-classification-with-keras-automatically-tagging-stack-overflow-posts)
+
+- [snkim/AutomaticKeyphraseExtraction: Data for Automatic Keyphrase Extraction Task](https://github.com/snkim/AutomaticKeyphraseExtraction)
+
+- [lvsh/keywordfinder: Automatic keyword extraction - no alchemy required!](https://github.com/lvsh/keywordfinder)
+
+- [Natural Language Toolkit — NLTK 3.2.5 documentation](http://www.nltk.org/)
+
+- [nlp - How to auto-tag content, algorithms and suggestions needed - Stack Overflow](https://stackoverflow.com/questions/6039238/how-to-auto-tag-content-algorithms-and-suggestions-needed)
+
+
+
+
+# 機器問答
+
+## NTM+CGNN
 
 - [[1806.09105] One-shot Learning for Question-Answering in Gaokao History Challenge](https://arxiv.org/abs/1806.09105)
 
@@ -794,12 +826,378 @@ Parameters:
 
 
 
-## 語音生成
 
-### WaveNet
 
-- [WaveNet: A Generative Model for Raw Audio | DeepMind](https://deepmind.com/blog/wavenet-generative-model-raw-audio/)
-    - [[1609.03499] WaveNet: A Generative Model for Raw Audio](https://arxiv.org/abs/1609.03499)
-    
-    ![](https://storage.googleapis.com/deepmind-live-cms/documents/BlogPost-Fig2-Anim-160908-r01.gif)
+
+
+# 深度好奇
+
+- [深度好奇 (DeeplyCurious.AI) - 让机器善解人意](http://deeplycurious.ai/#/)
+
+
+
+- [神經符號系統: 讓機器善解人意 - 幫趣](http://bangqu.com/eDroC7.html)
+
+    > 按：本文原作者爲深度好奇研究組，原發表於公衆號 **「深度好奇AI」（deeplycurious）** 。
+    > 
+    > ### 1\. 通往語言理解之路
+    > 
+    > **什麼是理解**
+    > 
+    > 自然語言理解是人工智能的核心課題之一，也被廣泛認爲是最困難和最具標誌性的任務。最經典的兩個人工智能思想實驗------圖靈測試和中文房間，都是圍繞自然語言理解來構建的。自然語言理解在人工智能技術體系中的重要性不言而喻，它一方面承載着機器和人的交流，另一方面直達知識和邏輯。自然語言理解也是人工智能學者孜孜以求的聖盃，機器學習的巨擘Michael I. Jordan就曾經在Reddit上的AMA（Ask Me Anything）欄目中暢想用十億美元建立一個專門用於自然語言理解的實驗室。
+    > 
+    > 那麼究竟什麼是自然語言理解呢？我們可以認爲，理解是從自然語言到語義的映射，但是這個定義只是把問題轉移到了「語義」的定義上，而關於語義，一直缺乏在形式和功能上都普遍適用的定義。事實上，語義往往需要被放在特定領域和特定語境下去考量，比如一句「你開心就好」，可以在不同的場景下傳達鄙視和祝願等多種意思。關於理解或者語義，我們不得不採取了下面兩種耍賴式的定義來刻畫它們的不同側面：
+    > 
+    > -   語義是特定語境下的語用，也就是說一句話的功效纔是對它含義的最終表徵；
+    > 
+    > -   理解一個語言對象（如一段話），等價於可以回答關於這個對象的所有問題。
+    > 
+    > 不幸的是，這兩個定義都不具有完全的可操作性，也就是說，很難用這個定義來自動化地衡量對語義的映射是否準確，或者理解是否恰當。從某種意義上，語義理解在定義上就有點「難以捉摸」和不確定。
+    > 
+    > 這種不確定也導致了人工智能中語義相關的系統在形式和功能上的多樣性。比如說，在神經網絡機器翻譯（NMT）中，所有的語義表示都是通過固定長度的實數值向量來完成。在第一代NMT系統中用一個很長的向量來表示和總結待翻譯的句子（確切地說是混合了語法和語義的信息），這個向量雖然不可解釋，但確實是一個形式和功能上都完整的表示（關於用向量表示語義一直有很多爭論，正面的比如G. Hinton的thought vector, 反面的比如R. Mooney的著名論斷）。而在第二代的基於注意力機制的NMT系統中，這種表示完整語義的設計已被淘汰，取而代之的是一個實數向量序列來表述多個片段的語義，從而在取得翻譯效果的大幅度進步的同時，也在語義表示層面上後撤了一大步。同時我們注意到，連續的不可解釋的語義表示在另一些需要和有清晰的語義規範對象互動的時候則非常彆扭，當我們去做基於知識庫的問答或者基於罪行的描述做審判預測時，需要將語義表示和知識庫或者規則系統做對接。這種時候，我們會選擇符號化的語義表示，如邏輯表達式、圖或者其他離散的數據結構。在本文接下來的討論中，我們會假定我們期望的語義表示中至少包含可解釋的離散結構。
+    > 
+    > **理解之難**
+    > 
+    > 自然語言理解的困難也是有目共睹，所以當前自然語言理解通常是粗粒度、淺層或者是局部的。在常見的和理解相關的例子中，情感分析往往只是判斷感情是正面還是負面，而命名實體識別等只是標出實體（比如人、組織、地名等）的名稱，但即使是這樣，準確率也往往在達到一定水平之後裹足不前。相比而言，機器翻譯的快速發展反而是因爲它對理解的繞道而行，採取了一種「不懂裝懂」（pretend to understand）的模式。
+    > 
+    > 那麼自然語言理解爲什麼如此困難呢？ 我們認爲，主要有以下四個原因：
+    > 
+    > **1.自然語言中含有複雜靈活的表達方式**
+    > 
+    > 我們經常用不同的語句表達同一個意思，這些不同體現在風格、語態、對缺省的選擇等衆多方面。比如，下面意思非常接近的兩句話就採用了不同的語序和風格。
+    > 
+    > A：這裏和購物中心的距離大約是兩公里，如果坐出租車的話，路上不堵的情況下大概十分鐘就到了
+    > 
+    > B：這兒離購物中心不遠，打車也就十分鐘，不堵車的話，其實也就兩公里吧
+    > 
+    > **2.長距離的邏輯關聯**
+    > 
+    > 自然語言形成的文本中，常常有長距離的邏輯關聯。這種邏輯關聯既包含來自語言結構的依存關係，也包含語義層面上的邏輯關係，而且二者互相滲透。以下面的句子爲例，它包含了一個語義信息「這裏距離購物中心兩公里」，但是要做出這個判斷，需要跨越句頭和句尾中間的距離，依靠語義上的連續性來發現前後的邏輯關聯。這種邏輯關聯，往往很難靠類似循環神經網絡（RNN）這樣的簡單序列處理模型來發現和利用。
+    > 
+    > ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a57c6c699.png)
+    > 
+    > **3.對知識（包含常識的）的大量依賴**
+    > 
+    > 在文本的理解中，我們往往需要依賴大量的知識，這些知識既包括領域知識和常識這種長期知識，也包括在前文中建立的短期知識。我們通常說的「語境」也可以被認爲是短期知識的一種。
+    > 
+    > A：張三偷了一臺iPhone X，一臺iPhone 6S和一臺P20，其中兩臺蘋果手機都已經轉手
+    > 
+    > B：車庫裏有一輛17年的雅閣和一輛09年的凱美瑞，結果反而是舊車被偷了
+    > 
+    > 在例A中，在理解「兩臺蘋果手機都已經轉手」中的具體指代時，我們需要利用以下的知識：
+    > 
+    > -   iPhone X是蘋果手機
+    > 
+    > -   iPhone 6S是蘋果手機
+    > 
+    > -   P20是華爲手機。
+    > 
+    > 而在例B中，在理解「舊車被偷了」時，我們不僅需要使用前半句中建立的
+    > 
+    > -   雅閣是17年的
+    > 
+    > -   凱美瑞是09年的
+    > 
+    > 這兩條知識，我們同時需要使用「09年的車比17年的車更舊」這一常識。準確利用這些知識則需要對知識進行有效的獲取、表示和調用。
+    > 
+    > **4.語義表示形式設計的困難**
+    > 
+    > 語義表示的形式一直以來是語義解析這個問題上爭論的核心之一。簡單來說，「完備的」語義表示需要能夠包含精確知識（如「張三殺了李四」），也需要承載語言中的模糊性、不確定性、程度和情感的極性等問題。同時我們期望語義的表示能夠和其他知識（如語境）進行完美的對接以完成聯合的表示和推理，比如一句「這水挺燙的」，在水的用途是飲用、泡麪、泡腳等不同場景下就可能導致不同的語義（如極性和程度等）。同時，語義表示也需要考慮到實際的用途和技術邊界，這種平衡本身就是非常困難和持續變化的。
+    > 
+    > 我們可以看到，上述困難中有些是深度學習所擅長的，比如神經網絡的方法就可以利用其向量式的「模糊表示」來處理複雜靈活的表達方式；有些是符號邏輯所擅長的，比如長距離的邏輯關聯；而有些顯然是需要二者合力的，比如對知識的依賴，就既需要神經網絡的參數來記住和運用各種瑣細靈活的知識，又需要把一些可以被明晰表達的知識用符號性的方式來存儲和調用。據此，我們認爲，神經網絡和符號智能的深度結合纔是解決上述困難唯一正確的道路。對此我們將會在本文餘下的部分做詳盡的闡釋。
+    > 
+    > ### 2.神經+符號
+    > 
+    > **爲什麼神經+符號是正確的道路**
+    > 
+    > 正如上文中所闡釋的，人類語言理解的過程、機制和形態，充滿了符號性和連續性的雙重特性，而在人工智能的實踐中，我們也發現了二者各自的優勢。在人工智能的歷史上，這就是符號主義（Symbolism）和聯結主義（Connectionism）之爭。我們先來解釋下神經和符號的概念，以及各自的特點、優勢和劣勢。這些討論將會在以下三個層面上展開：
+    > 
+    > -   表示層  : 語言對象的語義表示，如詞、句子乃至長文本的語義表示，也包含系統中和語義相關的中間狀態
+    > 
+    > -   運算層 ：對不同類型和尺度的語言對象的操作和轉化，如生成、映射、轉換、分類、預測、查詢、更新等
+    > 
+    > -   知識層 ：包括語言學知識、領域知識和常識這類的「長期知識」，也包括在理解過程中對文本建立的「短期知識」。
+    > 
+    > 總體來說，
+    > 
+    > -   神經網絡用來處理連續的表示、操作以及知識，具有模糊、可學習、不確定、靈活、無需設計、不可解釋的特性，不擅於處理圖結構、變量、遞歸和指代等；
+    > 
+    > -   符號系統用來處理離散的、結構性的表示、操作以及知識（包括圖結構、變量、遞歸和指代等），具有清晰、精確、高執行效率、可解釋的優點。
+    > 
+    > 從系統設計的角度，神經網絡正因爲犧牲了微觀和主動意義上的可解釋性（如設定某個節點或者某個參數的含義），轉向架構和機制上的設計， 從而獲得了系統描述能力（expressiveness）上的靈活性。從數學的角度，神經網絡可以認爲是用大量參數近似地描述了大量可能符號模式的分佈，從而可以用基於梯度的方法(gradient-based methods) 來訓練，但是也失去了對特定符號模式的清晰刻畫的能力。我們可以用圖1來形象地說明神經網絡和符號系統是如何去近似解決同一個真實的任務的。
+    > 
+    > ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a57327bbe.png)
+    > 
+    > 圖1：神經網絡和符號智能任務處理上的比較
+    > 
+    > 我們用下表來總結神經網絡和符號智能在表示、運算和知識三個層面上的區別。
+    > 
+    > ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a57d4b4f2.png)
+    > 
+    > **神經符號主義的歷史**
+    > 
+    > 人工智能領域長期有兩種思想佔據主流地位：符號主義和聯結主義。符號主義使用基於規則的符號做推理，致力於用計算機的符號操作來模擬邏輯思維和認知過程，實現人工智能。聯結主義強調智能起源於高度互聯的簡單機制，其偏向於模仿腦結構的研究，更側重神經網絡中的聯結機制與學習算法。規則系統具有可解釋性強和精確度高的特點，而神經網絡靈活性高、泛化能力強、魯棒性好，因此人工智能之父馬文-明斯基（Marvin Minsky）總結到：「符號知識和聯結主義各有優缺點，我們需要一個系統能夠將它們的優點集成起來」  [1]。自1980年，很多有遠見的人工智能學者就試圖將神經網絡和符號智能結合，這個包含了無數不同嘗試的方向被稱爲神經符號主義（Neural-symbolism）。
+    > 
+    > 一些先驅者對神經符號主義進行了初步的探索。早在1990年，Towell等人便提出了KBANN（基於知識的人工神經網絡）[2]，採用已有的經驗知識去構建人工神經網絡的結構和網絡中的連接權重。Garcez等人在1999年提出了CILP系統[3]，他們將背景知識轉化爲命題邏輯，並基於此構建前向人工神經網絡，並從例子中歸納新的知識去更新已有的知識。Garcez等人在2001年提出了一種在訓練好的神經網絡中抽取邏輯知識的方法[4]，可以增強神經網絡的可解釋性。Richardson等人在2006年對一階符號邏輯和概率圖模型結合的方式進行了探索，提出了馬爾科夫邏輯網絡[5]，該網絡是一個一階符號邏輯的知識庫，其中每一個公式都有對應的權重。受限於當時機器學習技術和自然語言處理技術的制約，這些探索並不能充分利用神經網絡的優勢，因而沒有取得更近一步的成功。
+    > 
+    > 隨着層數更深、更多樣、表達能力更強的深度神經網絡的崛起，越來越多的學者加入了對神經網絡和符號智能進行結合的探索中。Jaeger提出了一種用「Conceptors」控制循環神經網絡的方式[6]，使得整個網絡具有幾何特性，並且可以和布爾邏輯進行有效結合。Graves等人提出了神經圖靈機（Neural Turing Machines）[7]，Sukhbaatar等人提出了記憶網絡[8]，他們都引入了記憶機制來解決對推理過程中間結果的存儲問題。上述方法對神經符號系統進行了進一步的探索，賦予了神經網絡符號化的結構，對後續的研究有着重要的啓發意義。
+    > 
+    > 近年來，一些研究者致力於藉助神經網絡來實現符號推理。Neelakantan等人提出了「Neural Programmer」[9]，基於自然語言理解實現數據庫查詢。Liang等人進一步引入了符號化的記憶機制[10]，幫助神經網絡更好地完成複雜推理。Mou等人用神經網絡和符號操作共同決策，提出瞭解決自然語言推理查詢的新途徑[11]。
+    > 
+    > 還有一些工作希望能用符號邏輯幫助神經網絡訓練、學習和推理。Hu等人提出了Teacher-Student網絡[12]，讓神經網絡（Student）擬合符號規則（Teacher）的結果，使得神經網絡在規則的指導下訓練學習。Goyal等人採用先驗知識改進了字符級的循環神經網絡用於自然語言生成問題（NLG）[13]。Luo等人探索了在不同層面上，正則表達式規則和神經網絡的結合手段，希望用正則表達式規則提供的豐富信息提升神經網絡的表現[14]。這些方法本質上是用符號知識給神經網絡提供更多的信息，神經網絡和符號智能的結合較爲粗糙。同時，這些將神經網絡和符號智能結合的嘗試往往只是針對某個非常限定的任務，而且往往只有空間上對某個層面的處理。
+    > 
+    > ### 3\. 我們的想法和嘗試
+    > 
+    > **通向神經系統和符號智能的融合**
+    > 
+    > 我們認爲神經網絡和符號智能融合的理想形態，應該遵循以下的原則/方向：
+    > 
+    > -   原則-I：形成神經和符號的連接
+    > 
+    > 簡言之，我們需要建立神經和符號交流的界面、路徑和機制。二者的交流主要有兩種，1）互相控制和調用，2）互爲輸入和輸出。對於1），一個例子是Neural Programmer [9],  它用連續信號來調用和驅動符號運算，而二者的界面就是符號預算的向量索引。 對於2），我們期望神經運算的輸出可以成爲符號運算的輸入，而同時符號運算的輸出（在「嵌入」之後）也可以成爲神經運算的輸入（如圖2），這形成了表示層-運算層的神經-符號閉環。舉例說明，對於下面的例句
+    > 
+    >       三郎仁真與澤旺、洛爾伊在大學旁邊的快捷酒店住了三個晚上
+    > 
+    > 神經網絡利用當前的狀態（向量表示）預測「三郎仁真」 是人名，這個符號化的信息可以作爲下面一條規則
+    > 
+    > **RULE-9527: **在同一個list中的語言對象應該有同樣的類型
+    > 
+    > 的輸入，從而預測「澤旺」也是人名。而這個來自符號運算的輸出，在嵌入之後，會和其他的原始輸入一起，再次進入神經網絡，而其進入的形式可以是作爲建議（從而需要神經網絡的進一步綜合判定），也可以是作爲確定的結論。
+    > 
+    > ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a572e7d20.png)
+    > 
+    > 圖2：神經（連續）信號和符號信號的閉環
+    > 
+    > -   原則-II：形成神經和符號間的並列和對應
+    > 
+    > 神經符號系統可以在表示、運算、知識三個層面上，形成神經和符號間的並列和對應。這裏，並列是指同時存在功能重合的神經和符號兩種狀態，這形成了某種程度的冗餘，可以被系統擇優使用或者同時使用（見原則-III）；而對應則意味着神經和符號兩種狀態之間存在設計的信息交互，這種交互可以幫助一種形態轉換成另一種形態，也可以同時促進兩種形態的共同訓練（co-training）（這裏的co-training是從multi-view learning的角度來鼓勵兩個或更多通路的一致性，而非強調在其半監督學習場景下的應用）。 這三個層面上的並列和對應可以有多種方式，下面僅舉兩例。我們在2017年提出的神經-符號雙通路的問題解析模型 [11]（見圖3-a）：對一個問題（如「北京奧運會是哪一年舉行的？」），系統會有包含解析和運算的神經通路，也會有一個近乎對稱的符號通路。兩條通路殊途同歸，同時會有密集的信息交換。神經通路可以高效地利用後向傳播算法學習，而符號通路則通過符號化的總結而具有高執行效率和很好的泛化性能。通過在訓練中鼓勵兩條通路的一致性，我們可以獲得比單一通路更好的學習效率、執行效率以及泛化性能。我們最新的一項技術（見下文中的Nerual Rule Engine），則可以部分地完成知識層上的轉換（見圖3-b），從而利用神經網絡天然的泛化能力克服規則系統的脆弱性。圖3-b也描述了上述轉換的逆過程，即神經網絡中的參數知識被總結成爲規則，這個過程通常被稱爲規則抽取（rule extraction）。
+    > 
+    >  ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a57291f97.png)
+    > 
+    > 圖3：神經和符號間的並列和對應
+    > 
+    > -   原則-III：完備的中央調控機制去選擇、控制和規劃
+    > 
+    > 爲了有效地訓練和執行，神經符號系統需要一箇中央控制系統在表示、運算、知識三個層面上做選擇、控制和規劃（見圖4）。如果存在表示、運算甚至知識層面上的並列（見原則-II），那麼在執行階段，中控系統會在某個特定時刻根據情況在這三個層面上選擇使用神經、符號還是它們的組合。比如說，在閱讀和理解某個句子的過程中，中控系統在某時刻決定探測句子餘下的部分是否含有並列結構。這個探測的決定本身是符號性的，但是這個探測的行爲本身可以是由一個神經網絡模塊來完成的。同樣，分管訓練的更長期的中控系統會規劃神經通路和符號通路的交流的具體節奏，控制轉換和促進的機制等。接着用上面的例子，這個探測並列結構的神經網絡模塊可能原先來源於一個簡單的規則，但是在使用過程中不斷地吸收來自任務的監督信號，最終被中控系統確定取代對應的規則。很顯然，原則-III的意義來源於原則-I和II帶來的神經和符號複雜交融的可能，而原則-III的實現也需要以原則-I和II爲基礎。
+    > 
+    > ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a5747aa27.png)
+    > 
+    > 圖4：對神經網絡系統的調控
+    > 
+    > 這三個方向上的融合，既相對獨立，又有很強的關聯，同時可以以多種方式嵌套使用，給出了無限的架構和機制設計上的可能性。可以認爲，一個相對「完備」的神經符號系統應該綜合了這三個方向，從而可以將神經系統和符號系統各自的優點做深層次融合，使得文本理解達到前所未有的深度。雖然在特定任務的神經符號系統上，我們往往只會實現神經符號系統的特定方面，這些可以從深度好奇最近的工作爲例來說明。
+    > 
+
+    > **深度好奇的工作**
+    > 
+    > 深度好奇正是遵循以上的融合神經網絡和符號智能的原則，針對不同類型的自然語言理解任務，設計了一系列的模型。我們介紹下面三個工作，1）神經規則引擎，2）變焦神經網絡，和 3）神經實體推理,  來作爲其中的代表。
+    > 
+    > -   **神經規則引擎（Neural Rule Engine）**
+    > 
+    > 規則作爲人類知識的具體體現，是一種簡單但是極爲可靠的快速構建工業應用的手段，也是符號性知識的通用形式。規則雖然極其精確，但是其僵硬脆弱的特點又經常被詬病，比如規則可以查找「騎自行車上班」，但是語義相似的「騎小黃車上班」卻無法匹配，傳統的規則需要大量擴充才能涵蓋這些在語義上相近的表達。我們提出的神經規則引擎（NRE），將符號性的規則知識轉化爲神經網絡的知識形式，並輔以對應的運算。NRE吸收了神經網絡靈活性高、泛化能力強、魯棒性好的優勢，同時也維持了規則的精確性和可解釋性。它可以從規則中學習知識，同時又通過神經網絡來泛化知識，與人類學習知識的方式有異曲同工之妙。神經規則引擎由基礎的操作和解析器來表示規則。操作和解析器根據需求既可以選用神經網絡也採取符號算法來實現。具體來說，神經規則引擎先對規則用解析器進行解析，生成層級操作序列，之後依照順序來組裝模塊，最後將組裝好的規則應用於具體的事例，判斷是否符合規則（圖5給出了一個簡略的示意圖）。實驗表明，藉助神經網絡的優勢，神經規則引擎對符號知識進行了學習和擴展，可以大幅提升規則的召回率，同時還能維持較高的精確率使規則本身的特性得以保留。神經規則引擎不僅是一種新的神經符號學習範式，同時也爲現有的工業應用帶來了一種高效的改進，它可以被用來對已有的規則系統進行升級，或者在訓練數據不大的情況下快速開發出神經規則系統  (論文見 arxiv.org/abs/1808.10326)。
+    > 
+    > ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a577901b0.png)圖5：神經規則引擎的示意圖
+    > 
+    > -   **變焦神經網絡（Zooming-Net）**
+    > 
+    > 段落、列表等文本結構蘊涵着信息輸出者的表達策略，對於準確抓取、理解文本內容有着重要的意義。這種文本結構有符號化的骨架，但是又需要和局部的語義有深度的耦合。我們提出了變焦神經網絡（Zooming-Net）來完成這種偏符號性的文本結構和神經性的局部語義表示的結合。Zooming-Net可以利用Policy-Net靈活地選擇在特定文本粒度（字、句、段）上執行讀取、更新、跳轉、預測等一系列操作，這種獨特的變焦處理方式高度類似人類閱讀過程，利用文本結構，其在信息稀疏部分進行泛讀，確保不引入過多噪聲，在信息密集部分進行精讀，確保有用信息不被丟失。我們引入了符號化推理模塊對模型的輸出加以解釋，並進行定向的干預。變焦神經網絡由層次化編碼器、變焦控制器和符號化推理模塊三個部分完成對文本的處理並以序列標註的形式找出文本中的關鍵片段（圖6給出了一個簡略的示意圖）。具體地說，在每個時刻，層次化編碼器配合變焦控制器有策略地選擇建立層次化特徵，讀取特定層級的信息，結合符號化推理模塊給出的臨時性離散信息預測出一定長度的標籤序列。在讀取整篇文本之後，將各時刻輸出的標籤序列進行組裝，並取出對應的關鍵信息片段。實驗表明，藉助句段結構信息，變焦神經網絡很好地結合了泛讀與精讀過程，其可以更好地對長時依賴特徵進行建模，並引入大跨度動作提高效率，在關鍵信息的抽取任務上，f1值較經典序列標註模型（biLSTM+CRF）有10%以上的提升，預測行爲頻次減少50%以上。變焦神經網絡非常適合應用在各類長文本處理任務當中，其使用的編解碼方式也可結合其他技術推廣到各類自然語言處理任務過程中 (論文見 arxiv.org/abs/1810.02114 )。
+    > 
+    > ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a5769b233.png)
+    > 
+    > 圖6：變焦神經網絡的基本原理
+    > 
+    > -   **神經實體推理（Neural Entity Reasoner）**
+    > 
+    > 命名實體識別（Named Entity Recognition）被認爲文本理解的基礎和底層任務，因爲它的職能就是發現和標識文本中的人名、地名等。傳統的NER方法依賴局部和底層的語言特徵，但是當出現有歧義的說法或者少見的人名時，這類方法往往會遇到困難。而人在這種情況下，往往可以通過縱覽全文，打通和融合局部的知識，來擺脫這種困境。我們正是受到人的思維模型的啓發，爲NER這個看似低級的任務引入了高級的「推理」機制，將符號化的命名實體信息「取之於網絡，用之於網絡」，從而可以在深度學習的框架內融合同一文本中的命名實體的決策。命名實體神經推理機（NE-Reasoner）整體上是一個多層的架構，每一層都獨立完成一次NER（圖7給出了一個簡略的示意圖）。每層的NER結果，會通過一個符號化的「緩存」存儲起來，作爲下一層NER的參考：這種參考是通過一個交互式的池化神經網絡來實現，本質上是一個基於多個事實的推理模型。由於這樣的設計，在做每個局部的決策時，模型都可以「看見」並參考別處相關決策，從而做出更加明智的決定。實驗表明，通過在神經網絡的推理過程中，引入符號化的緩存記憶，以及在緩存基礎上的多事實全局推理，可以顯著提高命名實體識別的準確率，尤其是在傳統方法容易犯錯的歧義和少見人名上有更好的表現。命名實體神經推理機作爲神經符號推理機在NER任務上應用的一個實例，不僅打開了之前神經網絡推理決策的黑箱，使得推理過程中的關鍵步驟對人類可見和可理解，而且給予了人工進一步干預推理過程的可能性及有效的接口 (論文見 arxiv.org/abs/1810.00347)。
+    > 
+    > ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a578dbc88.png)
+    > 
+    > 圖7：神經實體推理（NE-Reasoner）工作原理圖
+    > 
+    > ### 4\. 新的框架: 面向對象的神經規劃（OONP）
+    > 
+    > 不同於之前介紹的三項相對專門的技術，面向對象的神經規劃（Object-oriented Neural Programing,  OONP）是一個用於複雜語言對象理解的新框架。作爲神經符號系統的實例，OONP不但有大量神經符號主義的具體實現，而且也爲神經網絡和符號的更多和更充分的融合留下充分的空間。
+    > 
+    > OONP借用面向對象編程（OOP）的思想，利用解析出來的實體組成對象和對象間關係（如圖8），構成結構清晰的本體圖。每個對象（object）都是一個類（class）的實例化，類的概念規定了其具有的內部屬性、外部關係和可執行的操作，以及與其他對象的關係類型。
+    > 
+    > ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a57689f70.png)
+    > 
+    > 圖8：OONP的解析示意圖，左側的每一個小框代表了一個對象（object），框的顏色標識了類（class）
+    > 
+    > 如圖9所示，OONP由三部分組成，分別是主控模塊閱讀器（Reader）、表徵文檔的行間記憶（Inline Memory）模塊、以及總結對之前文本的理解的攜帶記憶（Carry-on Memory）模塊。而攜帶記憶（Carry-on Memory）模塊又可分爲表徵圖結構的對象記憶（Object Memory）、存儲連續狀態的矩陣記憶 (Matrix Memory) 和記錄離散動作的動作歷史 (Action History) 三部分。
+    > 
+    > ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a5797ecbf.png)
+    > 
+    > 圖9：OONP的整體架構
+    > 
+    > 在解析文本時，OONP模仿了人理解文本時一邊閱讀一邊理解的方式。OONP框架將解析過程轉化爲決策序列：OONP閱讀器按照文本順序讀文檔，同時不斷豐富本體圖結構來增進對文檔的理解，該圖結構被決策過程的操作序列創建和更新，並在解析的結尾作爲最終的文本語義表示。對於某個待解析的文檔，OONP首先將預處理之後的文檔放入行間記憶模塊，閱讀器順序讀取行間記憶中的符號表示和連續表示，結合攜帶記憶，產生各種操作來增加和豐富本體圖，更新攜帶記憶模塊。這些操作包含可微分操作（作用於對象記憶的連續部分和矩陣記憶）和離散操作（作用於對象記憶和行間記憶的符號部分）。這些連續和離散操作互相依賴，構成了彼此的輸入，共同形成了圖10中複雜而靈活的信息流。
+    > 
+    > ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a57a226d6.png)
+    > 
+    > 圖10：閱讀器（Reader）的架構細節以及信息流
+    > 
+    > 在OONP框架內，連續和離散的表示、運算、知識相互緊密結合，形成信息閉環。這使得OONP可以靈活地將各種先驗知識用不同形式加入到行間記憶和策略網絡。具體來說：
+    > 
+    > -   整體來說，OONP解析的決策過程本身就是從神經網絡到離散結構（本體圖）映射的過程，而這個離散結構又成爲神經網絡控制的決策過程的輸入，從而形成了大的神經-符號的信息閉環。而在OONP的具體模塊上，這種閉環還大量存在；
+    > 
+    > -   在行間記憶和對象記憶裏，存在大量離散和連續並列的表示，比如說，對象記憶中的圖狀離散結構上會附有不同類型的連續向量表示。同時在OONP的運算層，每個動作的決定都需要融合來自規則引擎以及神經網絡的輸出。比如會有獨立的規則引擎來分析動作歷史，發掘大範圍的動作的模式，從而給出下一步的決策建議，而這些建議會和其他來自神經運算的結果一起匯入策略網絡的輸入；
+    > 
+    > -   在OONP的框架內，允許符號知識（如規則）轉換成爲功能接近的神經模塊，而這些神經模塊可以作爲OONP組件進行聯合訓練。
+    > 
+    > ### 5\. 從技術到產品
+    > 
+    > 以神經符號系統爲核心技術思想，深度好奇構建了以OONP爲核心技術框架的包括多個技術模塊的自然語言理解技術平臺。以此爲基礎，我們設計製造了公安案情結構化、智能視頻審覈、法律文書解析、語音視頻調度等一系列產品（見圖11）。
+    > 
+    > ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a5780451f.png)
+    > 
+    > 圖11：深度好奇的技術架構
+    > 
+    > 這裏我們以公安案情結構化和智能視頻審覈爲例：
+    > 
+    > -   **公安案情結構化：**這個系統對公安偵破過程中的文本信息進行解析，構建關於案情的人-事-物-時-地的知識圖譜（見圖12），讓機器「懂」案情，從而爲刑偵人員提供串併案、犯罪預測、信息比對及融合等決策輔助。公安案情結構化是OONP的一個成功應用，充分發揮了神經符號系統在解析複雜文本上的優勢。公安案情結構化任務的複雜性體現在多個方面，其相關文本形式多樣，敘述邏輯繁複曲折，而且最終的知識表示是包含多事件、多實體、多標籤以及時空關係的龐雜圖譜。爲了將文本中特定的敘述習慣等知識作爲規則嵌入OONP並獲得泛化能力，我們利用了Neural Rule Engine來處理理解過程中的特定子任務，取得了較小數據量下的顯著效果。
+    > 
+    > ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a57b474e0.png)
+    > 
+    > 圖12：公安案情結構化示意圖
+    > 
+    > -   **智能視頻審覈：**該場景是對借款人進行視頻面試，從而基於交互過程進行信息審覈和欺詐檢測（見圖13）。深度好奇的智能視頻審覈系統依靠對語音對話的理解來構建對話系統，在溝通過程中根據用戶信息判定高欺詐風險的信息點，並進行主動的問詢。例如，當借款人提供的職業信息是「養生會所的工作人員」時，該系統就會追問「你們公司的客流量有多大」 、「你們公司的主要設備是什麼」 這類的問題。完整的對話過程將會被用來評估及判定借款人騙貸和逃貸等風險。
+    > 
+    >     ![神經符號系統: 讓機器善解人意](http://i2.bangqu.com/lf1/news/20181017/5bc6a57a2df96.png)
+    > 
+    > 圖13：智能視頻審覈示意圖
+
+### 神經規則引擎（Neural Rule Engine）
+
+- [[1808.10326] Generalize Symbolic Knowledge With Neural Rule Engine](https://arxiv.org/abs/1808.10326)
+
+- [神經規則引擎：讓符號規則學會變通 - 幫趣](http://bangqu.com/9Xns9a.html)
+
+    > 按：本文原作者爲深度好奇研究組，原發表於公衆號「深度好奇AI」（deeplycurious）。
+    > 
+    > 論文題目：Generalize Symbolic Knowledge With Neural Rule Engine
+    > 
+    > 論文地址：[（請戳此處）](https://arxiv.org/abs/1808.10326)
+    > 
+    > 目前的自然語言處理任務中，神經網絡模型在學術界佔據了絕對的優勢，然而，基於符號知識的規則系統仍然在工業界大有用武之地。人類語言是一種非常複雜的現象，爲了更好地構建語言智能系統，可以將神經網絡和符號知識融合使用，集成二者的優勢。
+    > 
+    > 近兩年來，神經符號學習（Neural Symbolic Learning）成爲一個非常熱門的方向，不少優秀的科研工作把符號知識引入神經網絡模型，增強了模型的學習能力和可解釋性，在一些經典的NLP任務上都取得了不錯的效果。與這種融合方式相反，近日，深度好奇的研究者們提出了一種全新的融合策略------利用NN模型來改進規則的效果。NN模型的優點是靈活性高、泛化能力強、魯棒性好，如果將NN模型的這些優勢賦予規則系統，會產生出怎樣的火花呢？
+    > 
+    > 本文介紹了一種神經規則引擎（Neural Rule Engine，NRE），NRE可以從規則中學習知識，同時又通過神經網絡來泛化知識，這與人類學習知識的方式有異曲同工之妙。
+    > 
+    > 具體來說，NRE由神經模塊網絡（Neural Module Networks）構成，其中的每一個模塊代表了規則中的一種操作，而模塊的實現形式既可以是神經網絡，也可以是符號算法。並且，給定少量的標註樣本，可以使用強化學習來微調（Finetune）學習效果。實驗證明，NRE可以大幅提升規則的召回率（Recall），同時還能將精確率（Precision）維持在較高的水準。
+    > 
+    > 舉個具體的規則例子，對於一個判斷案件類型的分類任務來說，案件內容如下：
+    > 
+    > 「2003年12月21日中午12時，東浦村張某與王某某二人到臨西縣遊玩，被三名男子跟蹤，後用刀威逼，搶走手機一隻。」
+    > 
+    > 根據經驗來看，如果案件表述中有「跟在.*後面|跟蹤」，一般屬於「尾隨作案」，但是如果其中有「事主.*跟隨」的話就不是。所以，針對「尾隨作案」類別，可以寫一條規則：
+    > 
+    > 「跟在.*後面|跟蹤@@事主.*跟隨」
+    > 
+    > 其中「@@」左邊藍色的是**正規則**，也就是句子中必須匹配上的內容，「@@」右邊紅色的是**負規則**，也就是句子中不能包含的內容。
+    > 
+    > 由於正則表達式是有限狀態機的一種，所以可以定義一些操作（Action）來解析正則表達式規則，比如：
+    > 
+    > ![神經規則引擎：讓符號規則學會變通](http://i2.bangqu.com/lf1/news/20181018/5bc844a3a7789.png)
+    > 
+    > 用預先定義好的操作來表示規則，如下圖所示：
+    > 
+    > ![神經規則引擎：讓符號規則學會變通](http://i2.bangqu.com/lf1/news/20181018/5bc82cca00efc.png)
+    > 
+    > 每一條規則都可以被拆解成樹狀結構，拆解的過程依賴於**Rule Parser**。由於整個系統的設計既考慮了符號性又考慮了神經網絡的特性，所以對於規則的拆解上既可以用符號算法來實現也可以用Neural Rule Parser來實現。由於樹狀結構可以轉變成逆波蘭表達式（Reversed Polish Notation）的形式（如下圖）：
+    > 
+    > ![神經規則引擎：讓符號規則學會變通](http://i2.bangqu.com/lf1/news/20181018/5bc82cce369e2.png)
+    > 
+    > 因此可以採用一個Seq2Seq的神經網絡模型來實現對規則的拆解。具體如下：
+    > 
+    > ![神經規則引擎：讓符號規則學會變通](http://i2.bangqu.com/lf1/news/20181018/5bc82cccd906f.png)
+    > 
+    > 給定一條規則，鑑於同時預測模塊和模塊所需參數較爲困難，所以可以採取分步的方式來預測。第一步先預測操作序列，第二步根據規則和已經預測出來的操作來預測每個操作所對應的參數。爲了讓預測的結果更加可靠，在訓練階段，我們加入了微調（Finetune）過程，對於預測出來的操作序列根據在真實事例上的表現用強化學習來進行模型的調整。
+    > 
+    > 得到rule parsing的結果後，即可對模塊進行組裝。在本文中，Find模塊和And_Ordered模塊都採用了神經網絡的設計。
+    > 
+    > ### **Find**模塊
+    > 
+    > Find(x)模塊是用來查找句子中匹配x部分的內容，可以用正則表達式的匹配來實現，也可以用神經網絡來實現。神經網絡的Find模塊如下：
+    > 
+    > ![神經規則引擎：讓符號規則學會變通](http://i2.bangqu.com/lf1/news/20181018/5bc82cc86e419.png)
+    > 
+    > 對於每一個句子來說，Find(x)操作就是在句子中找到x，x可以是一個字、一個詞或者是一個N-gram。無論用神經網絡實現還是用正則表達式的match(x)來實現，任務都可以看作是對句子做序列標註，也就是對句子中的每一個單位都標註「是否匹配」的標籤。具體來說，對於句子中的每一個單位，先獲取到它滑動窗口的上下文，並令上下文和要查找的x都通過相同的編碼器（Encoder），之後用評價函數來對二者的相似程度進行打分，最後根據每個位置的所有分數來判斷當前位置的標籤。
+    > 
+    > ### **And_Ordered**模塊
+    > 
+    > And_Ordered模塊可以採取如下設計：
+    > 
+    > ![神經規則引擎：讓符號規則學會變通](http://i2.bangqu.com/lf1/news/20181018/5bc82cc84327b.png)
+    > 
+    > And_Ordered操作是用來判斷兩個輸入之間是否滿足一定的距離關係。通常來說，輸入就是子節點給出的標記結果，如r0和r1。爲了讓神經網絡更容易判斷輸入之間的距離，我們可以引入距離標記d0和d1。結合句子原文，And_Ordered模塊可以判斷出兩個子節點的輸入是否滿足距離關係。
+    > 
+    > ### 模型訓練
+    > 
+    > 在訓練過程中，模塊和Neural Rule Parser都採取了預訓練+微調的策略。在訓練時，先對數據和規則進行訓練集/驗證集/測試集的劃分，爲了避免數據泄漏，各部分之間不能混用。訓練模塊的時候，先根據數據隨機生成各個模塊的訓練樣本，在訓練到一定程度時，把訓練集中的規則真實應用於訓練集中的數據，按照數據的真實標籤採用強化學習的方式對模塊進行微調。對於Neural Rule Parser也按照類似策略，依前文方式進行訓練。
+    > 
+    > ### **Neural Rule Engine (NRE)**
+    > 
+    > NRE集合了上述的組件：NN/算法實現的模塊，NN/算法實現的Rule Parser。NRE的整體架構如下圖所示：
+    > 
+    > ![神經規則引擎：讓符號規則學會變通](http://i2.bangqu.com/lf1/news/20181018/5bc82ccca0785.png)
+    > 
+    > 對於給定的一條事例和一條規則，NRE先將規則拆解成由模塊組成的樹狀結構，之後根據樹狀結構將規則應用於具體的語句上，從而給出匹配後的結果。
+    > 
+    > ### 實驗
+    > 
+    > 論文在中文案情分類（Chinese crime case classification）任務和SemEval-2010 relation classification任務上進行了實驗。實驗結果如下：
+    > 
+    > ![神經規則引擎：讓符號規則學會變通](http://i2.bangqu.com/lf1/news/20181018/5bc844a4383cf.png)
+    > 
+    > NRE在中文案情分類數據集上的結果
+    > 
+    > ![神經規則引擎：讓符號規則學會變通](http://i2.bangqu.com/lf1/news/20181018/5bc844a40b6d0.png)
+    > 
+    > NRE在關係分類數據集上的結果
+    > 
+    > 上面的結果顯示，RE的Precision很高，但是Recall相對較低。而第二組Baseline是傳統意義上的序列模型，並不能處理好正則表達式，特別是正則表達式除了局部的匹配還需要考慮有層級關係的全局匹配，傳統的序列模型很難處理好這些情況。NRE則能帶來Recall接近翻倍的效果，同時Precision仍維持在較高的水平。需要關注的是，微調（Finetune）對NRE來說是至關重要的，因爲NRE在預訓練階段是單純地在訓練各個模塊，而微調是讓規則在真實場景中調整的關鍵。
+    > 
+    > 同時，由於NRE可以充分利用神經網絡和符號二者的優勢，爲了探究規則的泛化性從何處而來，我們還進行了額外的實驗。我們通過對不同部分分別採用神經網絡和符號算法，從而得到了混合的模型（見下表）。隨着神經網絡的介入，NRE整體的Recall表現會更好，而Precision在合理的範圍內有所下降。實際上，這是因爲神經網絡的靈活性所帶來的優勢，彌補了規則匹配的僵硬。
+    > 
+    > ![神經規則引擎：讓符號規則學會變通](http://i2.bangqu.com/lf1/news/20181018/5bc844a484ff0.png)
+    > 
+    > 神經網絡和符號算法的不同組合，其中「_」左邊是神經網絡的實現，右邊是算法實現，「P」是「Find_Positive」，「N」是「Find_Negative」，「A」是「And_Ordered」，「S」是「Rule Parser」。
+    > 
+    > 另一方面，研究模型給出的結果可以發現，Find模塊帶來了巨大的泛化能力。傳統的正則表達式是對樣式進行匹配，而NRE在一定程度上是對語義進行匹配。如下述兩圖的中英文案例所示，查找「pushed into」會合理地找到「put inside」，而像「進入室內」被「入室」整體匹配上更能說明NRE對詞語的查找會超越樣式本身。
+    > 
+    > ![神經規則引擎：讓符號規則學會變通](http://i2.bangqu.com/lf1/news/20181018/5bc844a46cfd2.png)
+    > 
+    > ![神經規則引擎：讓符號規則學會變通](http://i2.bangqu.com/lf1/news/20181018/5bc844a5663cd.png)
+    > 
+    > 與此同時，用Neural Rule Parser對規則進行拆解也是對規則本身進行修正。比如下圖中的「落水管」和「不鏽鋼管」被合併成爲了「管」，而且「打牆洞」中的「洞」被刪去。
+    > 
+    > ![神經規則引擎：讓符號規則學會變通](http://i2.bangqu.com/lf1/news/20181018/5bc844a64e0f1.png)
+    > 
+    > ### 總結
+    > 
+    > 我們提出了一種全新的學習策略來對符號規則進行改進，神經規則引擎（Neural Rule Engine）使得規則獲得了神經網絡帶來的靈活性、魯棒性和泛化能力，同時又保持了規則的精確性和可解釋性。
+    > 
+    > NRE包含了Rule Parser和一系列操作模塊，它們既可以是定製化的神經網絡，又可以是符號算法。對於一條給定的規則，NRE先對規則進行拆解，使其成爲操作序列，之後根據操作序列來裝配模塊，最終給出預測結果。此外，我們還提出了分步的訓練方法使得構建NRE成爲可能，即先對模塊和Rule Parser隨機生成數據進行預訓練，之後根據真實的樣本標註用強化學習進行微調，從而得到具有泛化能力的規則表示。
+    > 
+    > 實驗表明NRE可以大幅提升規則的Recall，同時還能維持較高的Precision。NRE不僅是一種新的神經符號學習範式，同時也爲現有的工業應用帶來了一種高效的改進，它可以被用來對已有的規則系統進行升級，或者在訓練數據不大的情況下快速開發出神經規則系統。
+
+
+
+### 變焦神經網絡（Zooming-Net）
+
+- [[1810.02114] Zooming Network](https://arxiv.org/abs/1810.02114)
+
+### 神經實體推理（Neural Entity Reasoner）
+
+- [[1810.00347] Neural Entity Reasoner for Global Consistency in NER](https://arxiv.org/abs/1810.00347)
+
+### 面向對象的神經規劃（OONP）
+
+- [[1709.08853] Object-oriented Neural Programming (OONP) for Document Understanding](https://arxiv.org/abs/1709.08853)
+
+
+
+
+
+
 

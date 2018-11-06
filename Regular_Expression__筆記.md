@@ -3,22 +3,29 @@
 [toc]
 <!-- toc --> 
 
+# Tutorial
 
-## Tools
+## RegexOne
 
-### Regex tester
+- [RegexOne - Learn Regular Expressions - Lesson 1: An Introduction, and the ABCs](https://regexone.com/)
+
+
+
+# Tools
+
+## Regex101
 - [Online regex tester and debugger: PHP, PCRE, Python, Golang and JavaScript](https://regex101.com/)
 
-### Generate Regex from Examples
+## Generate Regex from Examples
 - [Automatic Generation of Text Extraction Patterns from Examples](http://regex.inginf.units.it/)
 
-### Unicode table
+## Unicode table
 
 - [CJK Unified Ideographs - Unicode® character table](https://unicode-table.com/en/blocks/cjk-unified-ideographs/)
 
-## Usage
+# Usage
 
-### 數字、字母、空白
+## 數字、字母、空白
 
 ```
 \d 數字 [0-9] 
@@ -29,7 +36,7 @@
 \S 非空白字元 [^ \r\t\n\f]
 ```
 
-### 中日韓、全形符號、全形數字
+## 中日韓、全形符號、全形數字
 
 - [Get Unicode by Regular Expression @ 程式設計 - JAVA :: 隨意窩 Xuite日誌](http://blog.xuite.net/chocopie0226/programerJava/224245060-Get+Unicode+by+Regular+Expression)
     > 
@@ -67,7 +74,32 @@
     > If that is only a Chinese issue, you can use the approach I suggested. Also, here is [a nice resource on Chinese numbers](http://www.mandarintools.com/numbers.html). Acc. to that page, the Chinese numbers can be matched with `[\\p{N}零一二三四五六七八九十百千萬億万亿壹貳叄肆伍陸柒捌玖拾佰仟贰叁陆]`. -- [Wiktor Stribiżew](https://stackoverflow.com/users/3832970/wiktor-stribi%c5%bcew "282,165 reputation") [Sep 11 '15 at 13:39](https://stackoverflow.com/questions/32523130/regex-for-matching-multilingual-numbers-not-detecting-chinese-numbers#comment52907493_32523130)
 
 
-### Greedy and non-Greedy
+## 金錢數額
+
+- [https://regex101.com/r/VIfBwt/6/](https://regex101.com/r/VIfBwt/6/)
+    > 
+    > (?!多元)((([\d,\.零一二三四五六七八九十百千萬壹貳參叄肆伍陸柒捌玖拾佰仟多幾數~、元]+至?)?[\d,\.零一二三四五六七八九十百千萬壹貳參叄肆伍陸柒捌玖拾佰仟多幾~、]+)(?=餘|萬|元)([萬元整]|餘萬?元)+([\d,]+)?)+(([【（(]?計算方?式[：:（]+([\D]*)|[（(]+((?![^計])|(?:[\d])))([\d,月]*[\.\-－+＋÷*Xx×=＝\/又千萬元（年）個月][\d,人戶元）)】]*)*([，【]*[\D]+四捨五入[】]*）)?([\D]*[】])?)?
+    > 
+
+## 法律條文
+
+- [https://regex101.com/r/XuJpyr/16](https://regex101.com/r/XuJpyr/16)
+
+    > ((家事事件法|民事訴訟法|民法(親屬編)?|臺灣地區與大陸地區人民關係條例|刑法|家庭暴力防治法|非訟事件法|涉外民事法律適用法|兒童及少年福利與權益保障法|公司法|毒品危害防制條例|家事非訟事件暫時處分類型及方法辦法|其中|準用|或[依有]|[該同前](法?條|法))((於[\d零一二三四五六七八九十百千]*年修正後，於)?(第?[\d零一二三四五六七八九十百千、至-]*(之[\d零一二三四五六七八九十百千]*)?[編章節條項第])(規定[\d]+)?(之[\d零一二三四五六七八九十百千]+)?(增列)?((第?[\d零一二三四五六七八九十百千]*款)?((?=[\u4e00-\u9fa5]*罪)(([^及]*罪)))?([及至或]?[前段]?[、]?(準用)?(但書)?))+)+)|(家事事件法|民事訴訟法|民法(親屬編)?|臺灣地區與大陸地區人民關係條例|刑法|家庭暴力防治法|非訟事件法|涉外民事法律適用法|兒童及少年福利與權益保障法|公司法|毒品危害防制條例|家事非訟事件暫時處分類型及方法辦法)
+
+## 時間日期
+
+- https://regex101.com/r/oKjLmZ/13/
+
+## 案件編號
+
+- https://regex101.com/r/VZPIu4/7
+
+
+
+
+
+## Greedy and non-Greedy
 
 - [.net - RegEx: Smallest possible match or nongreedy match - Stack Overflow](https://stackoverflow.com/questions/1919982/regex-smallest-possible-match-or-nongreedy-match)
 
@@ -100,7 +132,7 @@
     > @BreakingBenjamin: no ?? is not equivalent to ?, when it has a choice to either return 0 or 1 occurrence, it will pick the 0 (lazy) alternative. To see the difference, compare `re.match('(f)?(.*)', 'food').groups()` to `re.match('(f)??(.*)', 'food').groups()`. In the latter, `(f)??` will not match the leading 'f' even though it could. Hence the 'f' will get matched by the second '.*' capture group. I'm sure you can construct an example with '{n}?' too. Admittedly these two are very-rarely-used. -- [smci](https://stackoverflow.com/users/202229/smci "13,632 reputation") [Nov 16 '17 at 0:42](https://stackoverflow.com/questions/2301285/what-do-lazy-and-greedy-mean-in-the-context-of-regular-expressions#comment81590562_34806154)
     > 
 
-### h3
+## h3
 
 
 - [regex - Regular Expression "Matching" vs "Capturing" - Stack Overflow](https://stackoverflow.com/questions/21200514/regular-expression-matching-vs-capturing)
@@ -191,7 +223,134 @@
     > See also [section about limitations of look-behind assertions](http://www.regular-expressions.info/lookaround.html#limitbehind) on [Regular-Expressions.info](http://www.regular-expressions.info/).
 
 
-## negate (unsolved)
+## Repetition with Star and Plus(* + {0,N})
+
+- [Regex Tutorial - Repetition with Star and Plus](https://www.regular-expressions.info/repeat.html)
+
+### catch groups within repetition pattern (need 2 step)
+
+- [python - Regular expression with pattern repetition within pattern - Stack Overflow](https://stackoverflow.com/questions/40823165/regular-expression-with-pattern-repetition-within-pattern)
+
+    > Use [PyPi regex module](https://pypi.python.org/pypi/regex/2016.11.18) and use the same regex you are using as is shown below:
+    > 
+    > ```
+    > import regex
+    > s = 'These are my variables -abc $def -geh $ijk for case1'
+    > rx = regex.compile(r'These\s+are\s+my\s+variables(?:\s*-(\w+)\s+\$(\w+))*\s+for\s+(case\d)')
+    > print([x.captures(1) for x in rx.finditer(s)])
+    > # => [abc, geh]
+    > print([x.captures(2) for x in rx.finditer(s)])
+    > # => [def, ijk]
+    > ```
+    > 
+    > Else, capture all the options with
+    > 
+    > ```
+    > These\s+are\s+my\s+variables((?:\s*-\w+\s+\$\w+)*)\s+for\s+(case\d)
+    > ```
+    > 
+    > (see [demo](https://regex101.com/r/lDuy09/1)), and get the separate values as Step 2.
+    > 
+    > ```
+    > import re
+    > r = r"These\s+are\s+my\s+variables((?:\s*-\w+\s+\$\w+)*)\s+for\s+(case\d)"
+    > s = "These are my variables -abc $def -geh $ijk for case1"
+    > m = re.search(r, s)
+    > if m:
+    >     print(re.findall(r'-(\w+)', m.group(1)))
+    >     print(re.findall(r'\$(\w+)', m.group(1)))
+    >     print(m.group(2))
+    > ```
+    > 
+    > See the [Python demo](http://ideone.com/Jqa0O6)
+
+
+## Alternation with The Vertical Bar(|)
+
+- [Regex Tutorial - Alternation with The Vertical Bar](https://www.regular-expressions.info/alternation.html)
+
+### match one thing or another, or both
+
+- [javascript - In a regular expression, match one thing or another, or both - Stack Overflow](https://stackoverflow.com/questions/13351990/in-a-regular-expression-match-one-thing-or-another-or-both)
+
+    > The fully general method, given regexes `/^A$/` and `/^B$/` is:
+    > 
+    > ```
+    > /^(A|B|AB)$/
+    > ```
+    > 
+    > i.e.
+    > 
+    > ```
+    > /^([0-9]+|\.[0-9]+|[0-9]+\.[0-9]+)$/
+    > ```
+    > 
+    > Note the others have used the structure of your example to make a simplification. Specifically, they (implicitly) factorised it, to pull out the common `[0-9]*` and `[0-9]+` factors on the left and right.
+    > 
+    > The working for this is:
+    > 
+    > -   all the elements of the alternation end in `[0-9]+`, so pull that out: `/^(|\.|[0-9]+\.)[0-9]+$/`
+    > -   Now we have the possibility of the empty string in the alternation, so rewrite it using `?` (i.e. use the equivalence `(|a|b) = (a|b)?`): `/^(\.|[0-9]+\.)?[0-9]+$/`
+    > -   Again, an alternation with a common suffix (`\.` this time): `/^((|[0-9]+)\.)?[0-9]+$/`
+    > -   the pattern `(|a+)` is the same as `a*`, so, finally: `/^([0-9]*\.)?[0-9]+$/`
+    > 
+    > ---
+    > 
+    > or `/^[0-9]*\.?[0-9]+$/` -- [allenyllee](https://stackoverflow.com/users/1851492/allenyllee "111 reputation")
+
+## Capture Group
+
+### `\number` (\1, \2,...)
+
+- [regex - python regular expression "\1" - Stack Overflow](https://stackoverflow.com/questions/20802056/python-regular-expression-1)
+
+    > From the [python docs for the re module](http://docs.python.org/2/library/re.html):
+    > 
+    > > `\number`
+    > >
+    > > Matches the contents of the group of the same number. Groups are numbered starting from 1. For example, `(.+) \1` matches `'the the'` or `'55 55'`, but not `'thethe'` (note the space after the group). This special sequence can only be used to match one of the first 99 groups. If the first digit of number is 0, or number is 3 octal digits long, it will not be interpreted as a group match, but as the character with octal value number. Inside the `'['` and `']'` of a character class, all numeric escapes are treated as characters.
+    > 
+    > Your example is basically the same as what is explained in the docs.
+    > 
+
+## Catastrophic Backtracking(災難性回溯)
+
+- [Runaway Regular Expressions: Catastrophic Backtracking](https://www.regular-expressions.info/catastrophic.html)
+
+    > 假設有個表達式為`(x+x+)+y`，遇到xxxxxxxxxxy時。首先，第一個`x+`會吃掉所有10個x，因此第二個`x+`就fail了；這時第一個`x+`就回溯到前一個狀態，只有吃掉9個x的狀態，第二個`x+`就吃掉1個x，此時整個group `(x+x+)+` match一次；當group想要再往下match時，就會fail在第一個`x+`，由於group只要重複一次即可，所以接下來match `y`就結束了。
+    > 
+    > 然而，如果整個字串裡根本沒有出現y，那麼當`y` match fail時，就會回溯到前一個狀態，group match。這時候，就會不斷嘗試所有可能的x分群，如(6,4)或(6,2)(1,1)...等等，直到所有可能性都試過以後，才會回傳fail。
+    > 
+    > 解決辦法：使用[possessive quantifier](https://www.regular-expressions.info/possessive.html)`(x+x+)++y` 或 [atomic group](https://www.regular-expressions.info/atomic.html)`(?>(x+x+)+)y`
+    > 
+
+### possessive quantifier
+
+- [Regex Tutorial - Possessive Quantifiers](https://www.regular-expressions.info/possessive.html)
+
+    > Technically, possessive quantifiers are a notational convenience to place an atomic group around a single quantifier. All regex flavors that support possessive quantifiers also support atomic grouping. But not all regex flavors that support atomic grouping support possessive quantifiers. With those flavors, you can achieve the exact same results using an atomic group.
+    > 
+
+    > Basically, instead of `X*+`, write `(?>X*)`.
+    > 
+    > `(?:a|b)*+` is equivalent to `(?>(?:a|b)*)` but not to `(?>a|b)*`.
+
+### atomic group
+
+- [Regex Tutorial - Atomic Grouping](https://www.regular-expressions.info/atomic.html)
+
+    > An atomic group is a group that, when the regex engine exits from it, automatically throws away all backtracking positions remembered by any tokens inside the group. Atomic groups are non-capturing. The syntax is `(?>group)`. 
+
+- [Do Python regular expressions have an equivalent to Ruby's atomic grouping? - Stack Overflow](https://stackoverflow.com/questions/13577372/do-python-regular-expressions-have-an-equivalent-to-rubys-atomic-grouping)
+
+    > Python does not directly support this feature, but you can emulate it by using a zero-width lookahead assert (`(?=RE)`), which matches from the current point with the same semantics you want, putting a named group (`(?P<name>RE)`) inside the lookahead, and then using a named backreference (`(?P=name)`) to match exactly whatever the zero-width assertion matched.
+
+    > 
+    > `(?=(?P<tmp>RE))(?P=tmp)`
+    > `(?=(?P<tmp>[A-Za-z]*))(?P=tmp)`
+    > 
+
+# negate (unsolved)
 
 - [How to negate the whole regex? - Stack Overflow](https://stackoverflow.com/questions/2637675/how-to-negate-the-whole-regex)
 
@@ -226,7 +385,7 @@
     > I'm looking for a general solution that would work for any regx without re-writing the whole regex.
 
 
-## What does '\K' mean
+# What does '\K' mean
 
 - [bash - What does '\K' mean in this regex? - Stack Overflow](https://stackoverflow.com/questions/33573920/what-does-k-mean-in-this-regex)
 
@@ -251,7 +410,7 @@
 
 
 
-## 練習解說
+# 練習解說
 
 - https://regex101.com/r/oK6iB8/17
 
