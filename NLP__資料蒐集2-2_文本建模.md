@@ -127,7 +127,7 @@
 
     > Doc2Vec explores the above observation by adding additional input nodes representing documents as additional context. Each additional node can be thought of just as an id for each input document.
     > 
-    > ![](https://qph.ec.quoracdn.net/main-qimg-3449ced3d53f653ebfd9b73db1065056)
+    > ![](https://i.imgur.com/gXTwNOU.jpg)
     > 
     > D represent the features representing the document context and W
     > 
@@ -145,7 +145,7 @@
     > 
     > Great! We got document embeddings for input corpus but what about new unseen documents that appear in the test set. The idea is to learn their representation at test time by solving an optimization problem for inference.
     > 
-    > ![](https://qph.ec.quoracdn.net/main-qimg-0112c98875541c958abee17d10fccdaa)
+    > ![](https://i.imgur.com/WUCU8W5.jpg)
     > 
     > The optimization problem is not any different from the training problem. max∑∀(tar,con)logP
     > 
