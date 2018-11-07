@@ -335,7 +335,7 @@ Natthawut Kertkeidkachorn, Ryutaro Ichise](https://aaai.org/ocs/index.php/WS/AAA
     > 
     > After a network is mapped, you should can examine its *centrality* and *clustering* metrics.
     > 
-    > ![](https://qph.ec.quoracdn.net/main-qimg-8a2f661e43586c128dc258bc3477421d)
+    > ![](https://i.imgur.com/yFSYG4Z.jpg)
     > 
     > These will help you to discover and use the intelligence embedded in your knowledge graph. Read more about [analyzing data networks.](https://medium.com/graph-commons/analyzing-data-networks-f4480a28fb4b)
     > 
@@ -423,9 +423,9 @@ Natthawut Kertkeidkachorn, Ryutaro Ichise](https://aaai.org/ocs/index.php/WS/AAA
     > *Proof-of-concepts. Search for genes interactions and genes associated to diseases. TargetValidation database (GlaxoSmithKlein).\
     > Below: Cartographic layout experience designed to simplify "hair-balls" (highly dense networks).*
     > 
-    > ![](https://qph.ec.quoracdn.net/main-qimg-52f684394b10a9d065b44a334ff00db5)
+    > ![](https://i.imgur.com/0aSWMCA.jpg)
     > 
-    > ![](https://qph.ec.quoracdn.net/main-qimg-483d1fa27bc75e530a316bb225806f39)
+    > ![](https://i.imgur.com/FOyu467.jpg)
     > 
 
 - [Build Knowledge Graph from unstructured corpus using Machine Learning | LinkedIn](https://www.linkedin.com/pulse/build-knowledge-graph-from-unstructured-corpus-using-machine-anish/)
