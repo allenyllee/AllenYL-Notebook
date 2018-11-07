@@ -1117,7 +1117,7 @@
 
 - [FAIR新一代无监督机器翻译：模型更简洁，性能更优 | 机器之心](https://www.jiqizhixin.com/articles/Phrase-Based-Neural-Unsupervised-Machine-Translation)
 
-    > ![](https://image.jiqizhixin.com/uploads/editor/84b75cea-df8a-4e0f-b315-8580b97e2703/1524896803075.jpg)
+    > ![](https://i.imgur.com/7YbRGrW.jpg)
     > 
     > *图 1：无监督 MT 三原则的图示。*
     > 
