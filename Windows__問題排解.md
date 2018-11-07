@@ -576,7 +576,7 @@
     > 
     >    <http://code.msdn.microsoft.com/vhdtool>
     > 
-    > 受不了![大哭](http://static.blog.csdn.net/xheditor/xheditor_emot/default/wail.gif)
+    > 受不了大哭
     > 
     > ### 2小时
     > 
@@ -652,7 +652,7 @@
     > 
     > 说明vhd只是ntfs系统不完整.
     > 
-    > 其实只要chkdsk一下就可以了.但是chkdsk不支持虚拟磁盘!!![哭](http://static.blog.csdn.net/xheditor/xheditor_emot/default/cry.gif)
+    > 其实只要chkdsk一下就可以了.但是chkdsk不支持虚拟磁盘!!!哭
     > 
     > 猜想：
     > 
