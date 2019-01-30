@@ -894,7 +894,24 @@
     > 
 
 
+## Physics in Deep learning
 
+### The Extraordinary Link Between Deep Neural Networks and the Nature of the Universe
+
+- [The Extraordinary Link Between Deep Neural Networks and the Nature of the Universe - MIT Technology Review](https://www.technologyreview.com/s/602344/the-extraordinary-link-between-deep-neural-networks-and-the-nature-of-the-universe/?utm_source=facebook.com&utm_medium=social&utm_campaign=owned_social#comments)
+
+    > Now Lin and Tegmark say they've worked out why. The answer is that the universe is governed by a tiny subset of all possible functions. In other words, when the laws of physics are written down mathematically, they can all be described by functions that have a remarkable set of simple properties.
+    > 
+    > So deep neural networks don't have to approximate any possible mathematical function, only a tiny subset of them.
+    > 
+    > To put this in perspective, consider the order of a polynomial function, which is the size of its highest exponent. So a quadratic equation like y=x^2^ has order 2, the equation y=x^24^ has order 24, and so on.
+    > 
+    > Obviously, the number of orders is infinite and yet only a tiny subset of polynomials appear in the laws of physics. "For reasons that are still not fully understood, our universe can be accurately described by polynomial Hamiltonians of low order," say Lin and Tegmark. Typically, the polynomials that describe laws of physics have orders ranging from 2 to 4.
+    > 
+
+### [1410.3831] An exact mapping between the Variational Renormalization Group and Deep Learning
+
+- [[1410.3831] An exact mapping between the Variational Renormalization Group and Deep Learning](https://arxiv.org/abs/1410.3831)
 
 
 

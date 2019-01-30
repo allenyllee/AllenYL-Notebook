@@ -3,6 +3,17 @@
 [toc]
 <!-- toc --> 
 
+## ascii code table
+
+- [Ascii Table - ASCII character codes and html, octal, hex and decimal chart conversion](http://www.asciitable.com/)
+
+    > ![Ascii Table](http://www.asciitable.com/index/asciifull.gif)
+    > 
+    > Extended ASCII Codes
+    > ====================
+    > 
+    > ![EBCDIC and IBM Scan Codes](http://www.asciitable.com/index/extend.gif)
+    > 
 
 ## bash
 
@@ -46,56 +57,6 @@
 
 
 
-### du
-
-- [【系統】使用 du 來看磁碟的使用空間 @ My Life :: 隨意窩 Xuite日誌](http://blog.xuite.net/chingwei/blog/32566618-%E3%80%90%E7%B3%BB%E7%B5%B1%E3%80%91%E4%BD%BF%E7%94%A8+du+%E4%BE%86%E7%9C%8B%E7%A3%81%E7%A2%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E7%A9%BA%E9%96%93)
-
-    > 下圖是直接執行 du ，資料很多，而且子目錄下的所有檔案都會列出來，看得很累~~不好用
-    > 
-    > **du**\
-    > ![](http://3.blog.xuite.net/3/8/3/1/11851958/blog_1028365/txt/32566618/1.png)
-    > 
-    > 所以我們設定，最多只顯示一層，清楚多了。但 Size 預設是 K ，有點小
-    > 
-    > **du --max-depth=1**\
-    > ![](http://3.blog.xuite.net/3/8/3/1/11851958/blog_1028365/txt/32566618/2.png)
-    > 
-    > 加上 -B M ，表示使用 MB來顯示，如果是加 G ，就是  GB 了。
-    > 
-    > **du --max-depth=1 -B M**\
-    > ![](http://3.blog.xuite.net/3/8/3/1/11851958/blog_1028365/txt/32566618/3.png)
-    > 
-    > 但如果很多，我還要特地看是那個檔占最多空間，麻煩，加上 sort -g 來排序
-    > 
-    > **du --max-depth=1 -B M | sort -g**\
-    > ![](http://3.blog.xuite.net/3/8/3/1/11851958/blog_1028365/txt/32566618/4.png)
-    > 
-    > 上面就可以看的很清楚，那個東西占最多的空間了。
-    > 如果要針對某個目錄的話。就直接加在後面就好了。
-    > 
-    > **du --max-depth=1 -B M php-5.2.5/ | sort -g**\
-    > ![](http://3.blog.xuite.net/3/8/3/1/11851958/blog_1028365/txt/32566618/0.png)
-    > 
-    > 總結：就是使用 **du --max-depth=1 -B M | sort -g** 就對了啦
-    > 
-
-- [Linux du command help and examples](https://www.computerhope.com/unix/udu.htm)
-
-    > -s: summarize
-    > 
-    > ```
-    > $ du -s /usr/
-    > 
-    > 6533388	/usr/
-    > ```
-    > 
-    > -h: Print sizes in human readable format, rounding values and using abbreviations. For example, "1K", "234M", "2G", etc.
-    > 
-    > ```
-    > $ du -sh /usr/
-    > 
-    > 6.3G	/usr/
-    > ```
 
 ### lsof
 
@@ -160,27 +121,6 @@
     > ```
 
 
-### tee
-
-- [How to append tee to a file in Bash? - Ask Ubuntu](https://askubuntu.com/questions/808539/how-to-append-tee-to-a-file-in-bash)
-
-    > ```
-    > echo -e "First Line" | tee ~/output.log
-    > echo -e "Second Line" | tee -a ~/output.log
-    >                             ^^
-    > ```
-    > 
-    > From [man tee](http://man7.org/linux/man-pages/man1/tee.1.html):
-    > 
-    > ```
-    >    Copy standard input to each FILE, and also to standard output.
-    > 
-    >    -a, --append
-    >           append to the given FILEs, do not overwrite
-    > ```
-    > 
-    > Note: Using `-a` still creates the file mentioned.
-    > 
 
 
 
@@ -358,7 +298,7 @@
     > I have been trying to get the unique values in each column of a tab delimited file in bash. So, I used the following command.
     > 
     > ```shell
-    > cut -f <column_number> <filename> | sort | uniq -c
+    > cut -f <column_number> < filename> | sort | uniq -c
     > ```
     > 
     > It works fine and I can get the unique values in a column and its count like
@@ -383,7 +323,7 @@
     > Use:
     > 
     > ```shell
-    > cut -f <col_num> <filename>
+    > cut -f <col_num> < filename>
     >     | sort 
     >     | uniq -c
     >     | sort -r -k1 -n
@@ -400,6 +340,40 @@
     > Linux        105
     > MacOS         55
     > ```
+
+
+## more/less
+
+### bash commands that don't fit on one page - make output scrollable
+
+- [linux - bash commands that don't fit on one page - make output scrollable - Super User](https://superuser.com/questions/775941/bash-commands-that-dont-fit-on-one-page-make-output-scrollable)
+
+    > The normal method is to pipe the output to "less".
+    > 
+    > ```
+    > ls -R / | less
+    > ```
+    > 
+    > `q` is the key to quit, just like a man page.
+    > 
+    > If the command may produce errors or other output to stderr you may want to direct that to the pipe as well.
+    > 
+    > ```
+    > ls -R 2>&1 | less
+    > ```
+    > 
+    > ---
+    > 
+    > Pipe the output to 'more'
+    > 
+    > ```
+    > output | more -d
+    > 
+    > Enter - > Scroll by line
+    > Space - > Scroll by Page
+    > q     - > Quit
+    > ```
+    > 
 
 
 ## if else not
@@ -908,6 +882,7 @@
     > ```shell
     > wc fileA
     > ```
+    > 
     > 2.計算fileA的列數
     > ```shell
     > wc -l fileA
@@ -1994,7 +1969,29 @@
     > Say hurrah to bert: \0/
     > ```
 
-## tar
+
+### escaping single quote in sed by using ascii code (\x27)
+
+- [escaping - How to escape single quote in sed? - Stack Overflow](https://stackoverflow.com/questions/24509214/how-to-escape-single-quote-in-sed)
+
+    > Quote `sed` codes with double quotes:
+    > 
+    > ```shell
+    >     $ sed "s/ones/one's/"<<<"ones thing"
+    >     one's thing
+    > 
+    > ```
+    > 
+    > I don't like escaping codes with hundreds of backslashes -- hurts my eyes. Usually I do in this way:
+    > 
+    > ```shell
+    >     $ sed 's/ones/one\x27s/'<<<"ones thing"
+    >     one's thing
+    > 
+    > ```
+
+
+# zip, rar, 7z, tar...
 
 - [How to create and extract zip, tar, tar.gz and tar.bz2 files in Linux](https://www.simplehelp.net/2008/12/15/how-to-create-and-extract-zip-tar-targz-and-tarbz2-files-in-linux/)
 
@@ -2033,28 +2030,286 @@
     > -   *-P* 使用絕對路徑
     > -   *-f* 指定 tar 檔案的檔案名稱。此參數的後面要接檔案名稱，因此要注意參數的順序 (通常是把 f 參數寫在最後一個，或者是與其它參數拆開使用)
 
-- [How can I build a tar from stdin? - Stack Overflow](https://stackoverflow.com/questions/2597875/how-can-i-build-a-tar-from-stdin)
 
-    > Extending [geekosaur answer](https://stackoverflow.com/a/5200173/471376):
+
+
+- [GNU / Linux 各種壓縮與解壓縮指令 | 凍仁的筆記](http://note.drx.tw/2008/04/command.html)
+
+
+    > ### .gz
     > 
-    > ```
-    > find /directory | tar -cf archive.tar -T -
+    > -   套件名稱：[gzip](apt://gzip "使用 AptURL 安裝。")。
+    > -   壓縮  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ gzip FileName
+    >     ```
+    > -   解壓縮 1：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ gunzip FileName.gz
+    >     ```
+    > -   解壓縮 2：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ gzip -d FileName.gz
+    >     ```
     > 
-    > ```
+    >   
     > 
-    > You can use stdin with the `-T` option.
+    > ### .tar.gz = .tgz = .tar.tgz
     > 
-    > Note that if you filter files using some condition (e.g. `-name` option) in general you need to **exclude directories** in the pipe, otherwise tar will process all their content, that is not what you want. So, use:
+    > -   套件名稱：[gzip](apt://gzip "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar zcvf FileName.tar.gz DirName
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar zxvf FileName.tar.gz
+    >     ```
     > 
-    > ```
-    > find /directory -type f -name "mypattern" | tar -cf archive.tar -T -
+    >   
     > 
-    > ```
+    > ### bz
     > 
-    > If you don't use `-type`, all the content of directories matching `"mypattern"` will be added !
+    > -   壓縮：unkown。
+    > -   解壓縮 1：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ bzip2 -d FileName.bz
+    >     ```
+    > -   解壓縮 2：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ bunzip2 FileName.bz
+    >     ```
+    > 
+    >   
+    > 
+    > ### .tar.bz
+    > 
+    > -   壓縮：unkown。
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar jxvf FileName.tar.bz
+    >     ```
+    > 
+    >   
+    > 
+    > ### .bz2
+    > 
+    > -   套件名稱：[bzip2](apt://bzip2 "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ bzip2 -z FileName
+    >     ```
+    > -   解壓縮 1：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ bzip2 -d FileName.bz2
+    >     ```
+    > -   解壓縮 2：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ bunzip2 FileName.bz2
+    >     ```
+    > 
+    >   
+    > 
+    > ### .tar.bz2
+    > 
+    > -   套件名稱：[bzip2](apt://bzip2 "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar jcvf FileName.tar.bz2 DirName
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar jxvf FileName.tar.bz2
+    >     ```
+    > 
+    >   
+    > 
+    > ### .xz
+    > 
+    > -   套件名稱：[xz-utils](apt://xz-utils,xz-lzma "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ xz -z FileName
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ xz -d FileName.xz
+    >     ```
+    > 
+    >   
+    > 
+    > ### .tar.xz
+    > 
+    > -   套件名稱：[xz-utils](apt://xz-utils,xz-lzma "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar Jcvf FileName.tar.xz DirName
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar Jxvf FileName.tar.xz
+    >     ```
+    > 
+    >   
+    > 
+    > ### .Z
+    > 
+    > -   壓縮：compress _FileName_
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ uncompress FileName.Z
+    >     ```
+    > 
+    >   
+    > 
+    > ### .tar.Z
+    > 
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar Zcvf FileName.tar.Z DirName
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ tar Zxvf FileName.tar.Z
+    >     ```
+    > 
+    >   
+    > 
+    > 
+    > ### .7z
+    > 
+    > -   套件名稱：[p7zip-full](apt://p7zip-full "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ 7z a FileName.7z FileName
+    >     ```
+    > -   使用密碼 (PASSWORD) 壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ 7z a FileName.7z FileName -pPASSWORD
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ 7z x FileName.7z
+    >     ```
+    > 
+    >   
+    > 
+    > ### .zip
+    > 
+    > -   套件名稱：[zip](apt://zip "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ zip FileName.zip DirName
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ unzip FileName.zip
+    >     ```
+    > 
+    >   
+    > 
+    > ### .rar
+    > 
+    > -   套件名稱：[rar](apt://rar "使用 AptURL 安裝。"), [unrar](apt://unrar "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ rar a FileName.rar DirName
+    >     ```
+    > -   解壓縮 1：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ rar e FileName.rar
+    >     ```
+    > -   解壓縮 2：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ unrar e FileName.rar
+    >     ```
+    > -   解壓縮 3：在指定目錄內解壓縮。  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ rar x FileName.rar DirName
+    >     ```
+    > -   解壓縮 4：解壓縮完整路徑
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ unrar x FileName.rar
+    >     ```
+    >   
+    > 
+    > ### .lha
+    > 
+    > -   套件名稱：[lha](apt://lha "使用 AptURL 安裝。")。
+    > -   壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ lha -a FileName.lha FileName
+    >     ```
+    > -   解壓縮：  
+    >     ```shell
+    >     > [ jonny@linux ~ ]  
+    >     > $ lha -e FileName.lha
+    >     ```
     > 
 
-### create backup from symbolic links
+
+
+## tar destination folder
+
+- [How to extract files to another directory using 'tar' command? - Ask Ubuntu](https://askubuntu.com/questions/45349/how-to-extract-files-to-another-directory-using-tar-command)
+
+    > To extract an archive to a directory different from the current, use the `-C`, or `--directory`, tar option, as in
+    > 
+    > ```shell
+    > tar -xf archive.tar -C /target/directory
+    > 
+    > ```
+    > 
+    > Note that the target directory has to exist before running that command (it can be created by `mkdir /target/directory`).
+
+
+
+## 7zip destination folder
+
+- [zip - 7zip destination folder -o - Ask Ubuntu](https://askubuntu.com/questions/615874/7zip-destination-folder-o)
+
+    > From `man 7z`:
+    > 
+    > ```
+    >    -o{Directory}
+    >           Set Output directory
+    > 
+    > ```
+    > 
+    > It is basically the destination directory for extracting the archive. All the extracted files will be saved in the given directory. This option won't be used in case of creating the archive.
+
+## create backup from symbolic links
 
 - [tar - How to create backup from symbolic links? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/32633/how-to-create-backup-from-symbolic-links)
 
@@ -2077,6 +2332,90 @@
     > 
     > 
 
+## How can I unzip a .tar.gz in one step (using 7-Zip)
+
+- [windows xp - How can I unzip a .tar.gz in one step (using 7-Zip)? - Super User](https://superuser.com/questions/80019/how-can-i-unzip-a-tar-gz-in-one-step-using-7-zip)
+
+    > Not really. A .tar.gz or .tgz file really is two formats: `.tar` is the archive, and `.gz` is the compression. So the first step decompresses, and the second step extracts the archive.
+    > 
+    > To do it all in one step, you need the `tar` program. [Cygwin](http://www.cygwin.com/) includes this.
+    > 
+    > ---
+    > 
+    > Old question, but I was struggling with it today so here's my 2c. The 7zip commandline tool "7z.exe" (I have v9.22 installed) can write to stdout and read from stdin so you can do without the intermediate tar file by using a pipe:
+    > 
+    > ```
+    > 7z x "somename.tar.gz" -so | 7z x -aoa -si -ttar -o"somename"
+    > 
+    > ```
+    > 
+    > Where:
+    > 
+    > ```
+    > x     = Extract with full paths command
+    > -so   = write to stdout switch
+    > -si   = read from stdin switch
+    > -aoa  = Overwrite all existing files without prompt.
+    > -ttar = Treat the stdin byte stream as a TAR file
+    > -o    = output directory
+    > 
+    > ```
+    > 
+    > See the help file (7-zip.chm) in the install directory for more info on the command line commands and switches.
+    > 
+    > You can create a context menu entry for .tar.gz/.tgz files that calls the above command using regedit or a 3rd party tool like [stexbar](http://tools.tortoisesvn.net/StExBar.html).
+    > 
+
+
+
+## build a tar from stdin
+- [How can I build a tar from stdin? - Stack Overflow](https://stackoverflow.com/questions/2597875/how-can-i-build-a-tar-from-stdin)
+
+    > Extending [geekosaur answer](https://stackoverflow.com/a/5200173/471376):
+    > 
+    > ```
+    > find /directory | tar -cf archive.tar -T -
+    > 
+    > ```
+    > 
+    > You can use stdin with the `-T` option.
+    > 
+    > Note that if you filter files using some condition (e.g. `-name` option) in general you need to **exclude directories** in the pipe, otherwise tar will process all their content, that is not what you want. So, use:
+    > 
+    > ```
+    > find /directory -type f -name "mypattern" | tar -cf archive.tar -T -
+    > 
+    > ```
+    > 
+    > If you don't use `-type`, all the content of directories matching `"mypattern"` will be added !
+    > 
+
+### tar with pv
+
+- [如何使用“pv”命令监视（复制/备份/压缩）数据的进度](https://www.howtoing.com/monitor-copy-backup-tar-progress-in-linux-using-pv-command)
+
+    > 4.进行监控创建备份文件的进度tar实用程序 。
+    > ```shell
+    > # tar -czf - ./Downloads/ | (pv -p --timer --rate --bytes > backup.tgz)
+    > ```
+    > 
+    > ---
+    > 
+    > 5.使用pv和对话基于终端的工具一起按如下方式创建一个对话框进度条。
+    > ```shell
+    > # tar -czf - ./Documents/ | (pv -n > backup.tgz) 2>&1 | dialog --gauge "Progress" 10 70
+    > ```
+
+
+### 7z with pv
+
+- [7z如何显示： 压缩、解压缩的进度信息？ - Ubuntu中文论坛](https://forum.ubuntu.com.cn/viewtopic.php?f=39&t=476279)
+
+    > ```shell
+    > tar cf - $x | pv --size $(du -sb $x | cut -f1) | 7z a -si $x.7z
+    > ```
+
+
 
 ### copy files faster and safer than cp
 
@@ -2093,317 +2432,10 @@
     > ```
 
 
-### zip, rar, 7z, tar...
-
-- [GNU / Linux 各種壓縮與解壓縮指令 | 凍仁的筆記](http://note.drx.tw/2008/04/command.html)
-
-    > ### .tar (僅打包，無壓縮)
-    > 
-    > -   套件名稱：[tar](apt://tar "使用 AptURL 安裝。")。
-    > -   打包：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar cvf _FileName.tar DirName_
-    >     ```
-    > -   解包：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar xvf _FileName.tar_
-    >     ```
-    > 
-    >   
-    > 
-    > ### .gz
-    > 
-    > -   套件名稱：[gzip](apt://gzip "使用 AptURL 安裝。")。
-    > -   壓縮  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ gzip _FileName_
-    >     ```
-    > -   解壓縮 1：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ gunzip _FileName.gz_
-    >     ```
-    > -   解壓縮 2：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ gzip -d _FileName.gz_
-    >     ```
-    > 
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### .tar.gz
-    > 
-    > -   套件名稱：[gzip](apt://gzip "使用 AptURL 安裝。")。
-    > -   壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar zcvf _FileName.tar.gz DirName_
-    >     ```
-    > -   解壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar zxvf _FileName.tar.gz_
-    >     ```
-    > 
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### bz
-    > 
-    > -   壓縮：unkown。
-    > -   解壓縮 1：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ bzip2 -d _FileName.bz_
-    >     ```
-    > -   解壓縮 2：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ bunzip2 _FileName.bz_
-    >     ```
-    > 
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### .tar.bz
-    > 
-    > -   壓縮：unkown。
-    > -   解壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar jxvf _FileName.tar.bz_
-    >     ```
-    > 
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### .bz2
-    > 
-    > -   套件名稱：[bzip2](apt://bzip2 "使用 AptURL 安裝。")。
-    > -   壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ bzip2 -z _FileName_
-    >     ```
-    > -   解壓縮 1：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ bzip2 -d _FileName.bz2_
-    >     ```
-    > -   解壓縮 2：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ bunzip2 _FileName.bz2_
-    >     ```
-    > 
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### .tar.bz2
-    > 
-    > -   套件名稱：[bzip2](apt://bzip2 "使用 AptURL 安裝。")。
-    > -   壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar jcvf _FileName.tar.bz2 DirName_
-    >     ```
-    > -   解壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar jxvf _FileName.tar.bz2_
-    >     ```
-    > 
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### .xz
-    > 
-    > -   套件名稱：[xz-utils](apt://xz-utils,xz-lzma "使用 AptURL 安裝。")。
-    > -   壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ xz -z _FileName_
-    >     ```
-    > -   解壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ xz -d _FileName.xz_
-    >     ```
-    > 
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### .tar.xz
-    > 
-    > -   套件名稱：[xz-utils](apt://xz-utils,xz-lzma "使用 AptURL 安裝。")。
-    > -   壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar Jcvf _FileName.tar.xz DirName_
-    >     ```
-    > -   解壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar Jxvf _FileName.tar.xz_
-    >     ```
-    > 
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### .Z
-    > 
-    > -   壓縮：compress _FileName_
-    > -   解壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ uncompress _FileName.Z_
-    >     ```
-    > 
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### .tar.Z
-    > 
-    > -   壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar Zcvf _FileName.tar.Z DirName_
-    >     ```
-    > -   解壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar Zxvf _FileName.tar.Z_
-    >     ```
-    > 
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### .tgz
-    > 
-    > -   套件名稱：[gzip](apt://gzip "使用 AptURL 安裝。")。
-    > -   壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar zcvf _FileName.tgz FileName_
-    >     ```
-    > -   解壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar zxvf _FileName.tgz_
-    >     ```
-    > 
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### .tar.tgz
-    > 
-    > -   套件名稱：[gzip](apt://gzip "使用 AptURL 安裝。")。
-    > -   壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar zcvf _FileName.tar.tgz FileName_
-    >     ```
-    > -   解壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ tar zxvf _FileName.tar.tgz_
-    >     ```
-    > 
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### .7z
-    > 
-    > -   套件名稱：[p7zip-full](apt://p7zip-full "使用 AptURL 安裝。")。
-    > -   壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ 7z a _FileName.7z FileName_
-    >     ```
-    > -   使用密碼 (PASSWORD) 壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ 7z a _FileName.7z FileName_ -p_PASSWORD_
-    >     ```
-    > -   解壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ 7z x _FileName.7z_
-    >     ```
-    > 
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### .zip
-    > 
-    > -   套件名稱：[zip](apt://zip "使用 AptURL 安裝。")。
-    > -   壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ zip _FileName.zip DirName_
-    >     ```
-    > -   解壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ unzip _FileName.zip_
-    >     ```
-    > 
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### .rar
-    > 
-    > -   套件名稱：[rar](apt://rar "使用 AptURL 安裝。"), [unrar](apt://unrar "使用 AptURL 安裝。")。
-    > -   壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ rar a _FileName.rar DirName_
-    >     ```
-    > -   解壓縮 1：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ rar e _FileName.rar_
-    >     ```
-    > -   解壓縮 2：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ unrar e _FileName.rar_
-    >     ```
-    > -   解壓縮 3：在指定目錄內解壓縮。  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ rar x _FileName.rar DirName_
-    >     ```
-    > -   解壓縮 4：解壓縮完整路徑
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ unrar x _FileName.rar
-    >     ```
-    >   
-    > [](http://note.drx.tw/2008/04/command.html)  
-    > 
-    > ### .lha
-    > 
-    > -   套件名稱：[lha](apt://lha "使用 AptURL 安裝。")。
-    > -   壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ lha -a _FileName.lha FileName_
-    >     ```
-    > -   解壓縮：  
-    >     ```shell
-    >     > [ jonny@linux ~ ]  
-    >     > $ lha -e _FileName.lha_
-    >     ```
-    > 
 
 
 
-## pv (pipe viewer)
+# pv (pipe viewer)
 
 - [pv 指令顯示 Linux 程式執行進度，管線 Pipe 資料監看指令 - G. T. Wang](https://blog.gtwang.org/linux/pv-pipe-viewer-progress-monitor-linux-command/)
 
@@ -2566,7 +2598,7 @@
     > ```
 
 
-### show the transfer progress and speed when copying files
+## show the transfer progress and speed when copying files
 
 - [command line - How to show the transfer progress and speed when copying files with cp? - Ask Ubuntu](https://askubuntu.com/questions/17275/how-to-show-the-transfer-progress-and-speed-when-copying-files-with-cp)
 
@@ -2593,7 +2625,7 @@
     > 
     > Like `cat`, `pv` is not a good tool for copying sparse files since [it will expand them by filling in any gaps with zero-bytes](http://unix.stackexchange.com/a/30382/48446). This means that the new file can take up considerably more disk space despite having the same content as the original. -- [ali_m](https://askubuntu.com/users/185188/ali-m "165 reputation") [Nov 18 '15 at 15:26](https://askubuntu.com/questions/17275/how-to-show-the-transfer-progress-and-speed-when-copying-files-with-cp#comment1025319_17279)
 
-### cp vs. cat to copy a file
+## cp vs. cat to copy a file
 
 - [bash - cp vs. cat to copy a file - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/30295/cp-vs-cat-to-copy-a-file/30382#30382)
 
@@ -2640,9 +2672,32 @@
     > 
     > 6.  don't forget to clean up.
 
-## tee
+# tee
 
-### redirect output to a location I don't have permission to write to
+## append to a file
+
+- [How to append tee to a file in Bash? - Ask Ubuntu](https://askubuntu.com/questions/808539/how-to-append-tee-to-a-file-in-bash)
+
+    > ```
+    > echo -e "First Line" | tee ~/output.log
+    > echo -e "Second Line" | tee -a ~/output.log
+    >                             ^^
+    > ```
+    > 
+    > From [man tee](http://man7.org/linux/man-pages/man1/tee.1.html):
+    > 
+    > ```
+    >    Copy standard input to each FILE, and also to standard output.
+    > 
+    >    -a, --append
+    >           append to the given FILEs, do not overwrite
+    > ```
+    > 
+    > Note: Using `-a` still creates the file mentioned.
+    > 
+
+
+## redirect output to a location I don't have permission to write to
 
 - [linux - How do I use sudo to redirect output to a location I don't have permission to write to? - Stack Overflow](https://stackoverflow.com/questions/82256/how-do-i-use-sudo-to-redirect-output-to-a-location-i-dont-have-permission-to-wr)
 
@@ -2688,11 +2743,11 @@
     
 
 
-## vi
+# vi
 
 - [Basic vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html)
 
-### Searching Text
+## Searching Text
 
 > A common occurrence in text editing is to replace one word or phase by another. To locate instances of particular sets of characters (or strings), use the following commands.
 > 

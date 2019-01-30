@@ -1,4 +1,4 @@
-# NLP__資料收集3-2_斷詞工具
+# NLP__資料收集4-2_斷詞工具
 
 [toc]
 <!-- toc --> 
@@ -852,7 +852,7 @@ for SMT on Large-scale Corpora](https://pdfs.semanticscholar.org/b253/a5bf513a2d
 - [A New Unsupervised Approach to
 Word Segmentation](https://www.mitpressjournals.org/doi/pdf/10.1162/COLI_a_00058)
 
-## 未知詞擷取作法
+## 中研院CKIP 未知詞擷取作法
 
 - [未知詞擷取作法](http://ckipsvr.iis.sinica.edu.tw/uwe.htm)
 

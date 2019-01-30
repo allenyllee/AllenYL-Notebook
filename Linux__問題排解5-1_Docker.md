@@ -26,11 +26,124 @@
 -   docker container rm \[container_name\] #刪除容器
     
 
+### see the file size of your containers
+
+- [linux - Docker - How to analyze a container's disk usage? - Stack Overflow](https://stackoverflow.com/questions/26753087/docker-how-to-analyze-a-containers-disk-usage)
+
+    > To see the file size of your containers, you can use the `-s` argument of `docker ps`:
+    > 
+    > ```
+    > docker ps -s
+    > 
+    > ```
+    > 
+    > ---
+    > 
+    > After **1.13.0, Docker** includes a new command `docker system df` to show docker disk usage.
+    > 
+    > ```
+    > $ docker system df
+    > TYPE            TOTAL        ACTIVE     SIZE        RECLAIMABLE
+    > Images          5            1          2.777 GB    2.647 GB (95%)
+    > Containers      1            1          0 B         0B
+    > Local Volumes   4            1          3.207 GB    2.261 (70%)
+    > 
+    > ```
+    > 
+    > To show more detailed information on space usage
+    > 
+    > ```
+    > $ docker system df -v
+    > 
+    > ```
+
+
+
 ## 進入容器
 
 ```shell
 docker exec -ti [container_id] bash #進入容器
 ```
+### Exploring Docker container's file system
+
+- [linux - Exploring Docker container's file system - Stack Overflow](https://stackoverflow.com/questions/20813486/exploring-docker-containers-file-system)
+
+    > **Method 1: snapshoting**
+    > 
+    > You can evaluate container filesystem this way:
+    > 
+    > ```
+    > # find ID of your running container:
+    > docker ps
+    > 
+    > # create image (snapshot) from container filesystem
+    > docker commit 12345678904b5 mysnapshot
+    > 
+    > # explore this filesystem using bash (for example)
+    > docker run -t -i mysnapshot /bin/bash
+    > 
+    > ```
+    > 
+    > This way, you can evaluate filesystem of the running container in the precise time moment. Container is still running, no future changes are included.
+    > 
+    > You can later delete snapshot using (filesystem of the running container is not affected!):
+    > 
+    > ```
+    > docker rmi mysnapshot
+    > 
+    > ```
+    > 
+    > **Method 2: ssh**
+    > 
+    > If you need continuous access, you can install sshd to your container and run the sshd daemon:
+    > 
+    > ```
+    >  docker run -d -p 22 mysnapshot /usr/sbin/sshd -D
+    > 
+    >  # you need to find out which port to connect:
+    >  docker ps
+    > 
+    > ```
+    > 
+    > This way, you can run your app using ssh (connect and execute what you want).
+    > 
+    > **UPDATE - Method 3: nsenter**
+    > 
+    > Use `nsenter`, see <http://blog.docker.com/2014/06/why-you-dont-need-to-run-sshd-in-docker/>
+    > 
+    > > *The short version is: with nsenter, you can get a shell into an existing container, even if that container doesn't run SSH or any kind of special-purpose daemon*
+    > 
+    > **UPDATE - Method 4: docker exec**
+    > 
+    > Docker version 1.3 (latest, you might need to use docker apt repo to install latest version as of Nov 2014) supports new command `exec` that behave similar to `nsenter`. This command can run new process in already running container (container must have PID 1 process running already). You can run `/bin/bash` to explore container state:
+    > 
+    > ```
+    > docker exec -t -i mycontainer /bin/bash
+    > 
+    > ```
+    > 
+    > see [Docker command line documentation](https://docs.docker.com/v1.3/reference/commandline/cli/#exec)
+    > 
+    > 
+    > ---
+    > 
+    > The most voted answer is good except if your container isn't an actual Linux system.
+    > 
+    > Many containers (especially the go based ones) don't have any standard binary (no /bin/bash, /bin/sh). In that case, you will need to access the actual containers file directly:
+    > 
+    > Works like a charm:
+    > 
+    > ```
+    > name=< name>
+    > dockerId=$(docker inspect -f {{.Id}} $name)
+    > mountId=$(cat /var/lib/docker/image/aufs/layerdb/mounts/$dockerId/mount-id)
+    > cd /var/lib/docker/aufs/mnt/$mountId
+    > 
+    > ```
+    > 
+    > Note: You need to run it as root.
+    > 
+
 
 
 ## 操作鏡像
@@ -120,8 +233,58 @@ docker exec -ti [container_id] bash #進入容器
     > 
     > 
 
+### limit Docker container logs size
 
+- [logging - Docker container logs taking all my disk space - Stack Overflow](https://stackoverflow.com/questions/31829587/docker-container-logs-taking-all-my-disk-space#_=_)
 
+    > CAUTION: This is for docker-compose version 2 only
+    > 
+    > Example:
+    > 
+    > ```
+    > version: '2'
+    > services:
+    >   db:
+    >     container_name: db
+    >     image: mysql:5.7
+    >     ports:
+    >       - 3306:3306
+    >     logging:
+    >       options:
+    >         max-size: 50m
+    > 
+    > ```
+
+### clear the logs properly for a Docker container
+
+- [How to clear the logs properly for a Docker container? - Stack Overflow](https://stackoverflow.com/questions/42510002/how-to-clear-the-logs-properly-for-a-docker-container)
+
+    > From [this question](https://serverfault.com/q/637996/351549) there's a one-liner that you can run:
+    > 
+    > ```
+    > echo "" > $(docker inspect --format='{{.LogPath}}' <container_name_or_id>)
+    > 
+    > ```
+    > 
+    > I'm not a big fan of modifying Docker's files directly. You can have Docker automatically rotate the logs for you. This is done with additional flags to dockerd if you are using the default [JSON logging driver](https://docs.docker.com/config/containers/logging/json-file/):
+    > 
+    > ```
+    > dockerd ... --log-opt max-size=10m --log-opt max-file=3
+    > 
+    > ```
+    > 
+    > You can also set this as part of your [daemon.json](https://docs.docker.com/engine/reference/commandline/dockerd/#on-linux) file instead of modifying your startup scripts:
+    > 
+    > ```
+    > {
+    >   "log-driver": "json-file",
+    >   "log-opts": {"max-size": "10m", "max-file": "3"}
+    > }
+    > 
+    > ```
+    > 
+    > Make sure to run a `systemctl reload docker` after changing this file to have the settings applied.
+    > 
 
 ## nvidia docker OpenGL support
 
@@ -268,7 +431,7 @@ docker exec -ti [container_id] bash #進入容器
     > 
     > ```sh
     > mkdir -p /etc/systemd/system/docker.service.d/
-    > cat <<EOF > /etc/systemd/system/docker.service.d/clear_mount_propagation_flags.conf
+    > cat << EOF > /etc/systemd/system/docker.service.d/clear_mount_propagation_flags.conf
     > [Service]
     > MountFlags=shared
     > EOF

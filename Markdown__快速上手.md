@@ -42,10 +42,17 @@
 
 ### 修改文字顏色
 
+
+
 - [如何修改 Markdown 文字顏色 | Niauwu鳥烏](https://niauwu.github.io/2014/06/16/fontColor/)
 
 ```html
-<font color="white">要反白的文字<font>
+<font color="white">要反白的文字</font>
+```
+- [How to apply Color in markdown - Stack Overflow](https://stackoverflow.com/questions/35465557/how-to-apply-color-in-markdown)
+
+```html
+<span style="color:red">要反白的文字</span>
 ```
 
 ### 可折疊選單 Collapsible contents (code block)
@@ -181,6 +188,14 @@
     > ### 万能
     > 
     > 对于有些音乐、视频找不到『转帖』按钮的，可以查看源代码，找到相应的代码块贴在文中。若找不到，说明该文件的确不能放在自己文中了。
+
+### 上下標(~a~,^a^)
+
+- [strikethrough does not work with single tilde · Issue #446 · markdown-it/markdown-it](https://github.com/markdown-it/markdown-it/issues/446)
+
+    > Hmm... i suspect it worked different when been implemented.
+    > 
+    > Problem is that existing GFM spec for strikethrough will conflict with [subscript extension](https://markdown-it.github.io/#md3=%7B%22source%22%3A%22H~2~O%22%2C%22defaults%22%3A%7B%22html%22%3Afalse%2C%22xhtmlOut%22%3Afalse%2C%22breaks%22%3Afalse%2C%22langPrefix%22%3A%22language-%22%2C%22linkify%22%3Atrue%2C%22typographer%22%3Atrue%2C%22_highlight%22%3Atrue%2C%22_strict%22%3Afalse%2C%22_view%22%3A%22html%22%7D%7D) of pandoc. Need acceptable resolution before change.
 
 
 

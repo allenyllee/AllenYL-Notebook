@@ -67,6 +67,10 @@
 
     - [NLP Pedagogy Interview: Dan Jurafsky (Stanford) – David Jurgens – Medium](https://medium.com/@jurgens_24580/nlp-pedagogy-interview-dan-jurafsky-stanford-c0075a16d877)
 
+## ML Resources
+
+- [ML Resources](https://sgfin.github.io/learning-resources/?fbclid=IwAR2IDjRWme3pbZCsFN6uQ2lM67XCK5_SvX4G6JdMZiDROf978zkvWUmMQvU)
+
 
 
 
@@ -171,6 +175,28 @@
 - [[1802.07170] CytonMT: an Efficient Neural Machine Translation Open-source Toolkit Implemented in C++](https://arxiv.org/abs/1802.07170)
 
     > This paper presents an open-source neural machine translation toolkit named CytonMT (this https URL). The toolkit is built from scratch only using C++ and NVIDIA's GPU-accelerated libraries. The toolkit features training efficiency, code simplicity and translation quality. Benchmarks show that CytonMT accelerates the training speed by 64.5% to 110.8% on neural networks of various sizes, and achieves competitive translation quality. 
+
+## AllenNLP - Demo
+
+- [AllenNLP - Demo](https://demo.allennlp.org/machine-comprehension)
+
+## Stanford corenlp
+
+- [Stanford corenlp](http://corenlp.run/)
+
+## Stanford parser
+
+- [Stanford Parser](http://nlp.stanford.edu:8080/parser/index.jsp)
+
+## 哈工大 LTP
+
+- [语言技术平台（ Language Technology Plantform | LTP ）](http://ltp.ai/demo.html)
+
+- [HIT-SCIR/ltp: Language Technology Platform](https://github.com/HIT-SCIR/ltp)
+
+
+
+
 
 # 相關新聞
 
@@ -622,135 +648,6 @@
 
 
 
-# 情意分析
-
-## CNN-SVM 諷刺偵測
-
-- [[1610.08815] A Deeper Look into Sarcastic Tweets Using Deep Convolutional Neural Networks](https://arxiv.org/abs/1610.08815)
-
-- [Detecting Sarcasm with Deep Convolutional Neural Networks](https://www.kdnuggets.com/2018/06/detecting-sarcasm-deep-convolutional-neural-networks.html#.Wyu7yLVD5OQ.linkedin)
-
-    - [Detecting Sarcasm with Deep Convolutional Neural Networks](https://medium.com/dair-ai/detecting-sarcasm-with-deep-convolutional-neural-networks-4a0657f79e80)
-
-    > ![](https://cdn-images-1.medium.com/max/1200/0*GVbW_tOQMN1F1lcw.)
-    > 
-    > To obtain the other features — sentiment (S), emotion (E), and personality (P) — CNN models are pre-trained and used to extract features from the sarcasm datasets. Different training datasets were used to train each model. (Refer to paper for more details)
-
-
-## Differences between Polarity and Topic-based Sentiment Analysis
-
-- [Differences between Polarity and Topic-based Sentiment Analysis](https://blog.bitext.com/polarity-topic-sentiment-analysis)
-
-
-    > From a business perspective, there is huge difference between plain polarity and topic-based sentiment analysis (also known as aspect-based sentiment analysis)
-    > 
-    > ##### Why is polarity analysis by itself not enough?
-    > 
-    > Polarity analysis takes into account the amount of positive or negative terms that appear in a given sentence. It is useful to some extent, since it does a good job of structuring data sets.
-    > 
-    > Let say I have 1000 reviews on my product that I want to analyze. By using polarity I can identify that 30% are negative, 20% are neutral and 50% are positive -- and that's good for segmentation. But I am left with three chunks of 300, 200 and 500 reviews to go through if I want to get more meaningful insights, rather than just a nice looking pie chart.
-    > 
-    > And imagine if we have 10 times that data, and in multiple languages! Then we are dealing with some really expensive (and not very delighted) employees that have to spend all day reading through reviews.
-    > 
-    > Let's have a look at how comments are treated when using polarity analysis by itself.
-    > 
-    > "The weather is amazing, and I love my XYZ phone."\
-    > Clearly positive as we have expressions like *amazing* and love
-    > 
-    > "The weather is gloomy and sad, and I hate my XYZ phone."\
-    > Clearly negative as *gloomy*, sad and hate are objectively negative expressions
-    > 
-    > "The weather is gloomy and sad, and I love my XYZ phone."\
-    > Neutral. Some expressions are good others bad.\
-    > As we add them all together we end up with something in between.
-    > 
-    > It is here, with the neutral cases, that the limitations of a polarity-based approach become clear.
-    > 
-    > And this is where topic-based sentiment analysis really shines, and why it is becoming a standard in the Text Analytics Industry.
-    > 
-    > Going back to our example about the weather and the phone, when we can identify exactly what the opinion is about, then the true expressed opinion is not lost in a misleading overall score. And what is even more useful is that XYZ company can filter out the already analyzed data to zoom in on the opinions specifically about their phones. The rest of the noise like comments about the weather, are filtered out.
-    > 
-    > ##### How does topic-based sentiment analysis work?
-    > 
-    > To be able to match expressions that bear sentiment with their relevant topic, we need to rely on linguistic knowledge. The industry counts on many methods to do this, such as POS tagging and parsing, and other techniques like n-grams and neural networks models.
-    > 
-    > Linguistics uncovers the structure of the sentence (known as phrase structure). This is what makes the difference in topic-based analysis. Knowledge of parts of speech and grammar are used to detect the sentiment topic that the expressed opinion is related to:
-    > 
-    > -   I like this camera (with "like" the topic normally is the direct object)
-    > -   This lens is great (with "be" the topic normally is the subject)
-    > 
-    > ##### Well this is all very interesting, but does it really produce measurable results?
-    > 
-    > You'd be surprised.
-    > 
-    > In academic conferences on topic-based sentiment analysis ([SemEval](https://en.wikipedia.org/wiki/SemEval), for example), sentiment analysis platforms are tested against human hand tagging and precision, recall, and F-score performed by contestants.
-    > 
-    > It's quite amazing to see how sentiment analysis platforms measure up against humans!
-
-
-## What is the difference between Polarity and Subjectivity
-
-- [What is the difference between Polarity and Subjectivity? - Quora](https://www.quora.com/What-is-the-difference-between-Polarity-and-Subjectivity)
-
-    > In the realm of Sentiment analysis, the main goal would be to classify the **polarity** of a given text at different levels ---whether the expressed opinion in a document, a sentence or an entity feature/aspect is **positive**, **negative**, or **neutral**.
-    > 
-    > For achieving this goal (polarity classification), you can see the whole process as a pipeline including different stages that can contribute to the accuracy of ending results. **Subjectivity/objectivity identification** can be seen as one of those stages that is commonly defined as classifying a given text (usually a sentence) into one of two classes: **objective** or **subjective**. For example, some researches showed that removing objective sentences from a document before classifying its polarity helped improve performance.
-    > 
-    > Note that there are unique challenges for subjectivity detection: The **subjectivity** of words and phrases may depend on their context and an objective document may contain subjective sentences (e.g., a news article quoting people's opinions).
-    > 
-    > ---
-    > 
-    > **Polarity**
-    > 
-    > It simply means emotions expressed in a sentence.
-    > 
-    > Emotions are closely related to sentiments. The strength of a sentiment or opinion is typically linked to the intensity of certain emotions, e.g., joy and anger.
-    > 
-    > Opinions in sentiment analysis are mostly evaluations(although not always).
-    > 
-    > According to consumer behavior research, evaluations can be broadly categorized into two types:\
-    > **1\. Rational evaluations\
-    > 2\. Emotional evaluations**.
-    > 
-    > **Rational evaluation**: Such evaluations are from rational reasoning, tangible
-    > 
-    > beliefs, and utilitarian attitudes. For example, the following sentences
-    > 
-    > **Express rational evaluations:** "The voice of this phone is clear," "This car is worth the price," and "I am happy with this car."
-    > 
-    > **Emotional evaluation:** Such evaluations are from non-tangible and emotional responses to entities which go deep into people's state of mind.
-    > 
-    > For example, the following sentences express emotional evaluations: "I love iPhone," "I am so angry with their service people" and "This is the best car ever built."
-    > 
-    > To make use of these two types of evaluations in practice, we can design 5 sentiment ratings, emotional negative (-2), rational negative (-1), neutral (0), rational positive (+1), and emotional positive (+2). In practice, neutral often means no opinion or sentiment expressed.
-    > 
-    > **Subjectivity**
-    > 
-    > Subjective sentence expresses some personal feelings, views, or beliefs.
-    > 
-    > **An example**
-    > 
-    > subjective sentence is "I like iPhone." Subjective expressions come in many forms, e.g., opinions, allegations, desires, beliefs, suspicions, and speculations.
-    > 
-    > A subjective sentence may not express any sentiment.\
-    > **For example**, "I think that he went home" and "I want a camera that can take good photos" are a subjective sentences, but does not express any sentiment.
-    > 
-    > **(Source: Bing Liu. Sentiment Analysis and Opinion Mining, Morgan & Claypool Publishers, May 2012)**
-    > 
-    > ---
-    > 
-    > Abtin has already captured it in his response.
-    > 
-    > -   A sentence could be stating a fact( *objective*) or expressing an opinion( *subjective*). Determining this is a classification of a sentence as being objective or subjective
-    > -   For sentences tagged as subjective in the classification step above, one could further classify those sentences as expressing a positive or negative sentiment - weeding out objective statements may help improve the performance of sentiment classification into positive and negative sentiment.
-    > -   So in essence given a sentence - one could first use a classifier to label a sentence as subjective or objective and then do another classification to further classify subjective sentences as either positive or negative.
-    > 
-    > **Reference**
-    > 
-    > [Sentiment analysis and subjectivity](https://www.cs.uic.edu/~liub/FBS/NLP-handbook-sentiment-analysis.pdf)
-
-
-
 
 
 # 文字生成
@@ -1065,7 +962,7 @@
     > 
     > 圖13：智能視頻審覈示意圖
 
-### 神經規則引擎（Neural Rule Engine）
+## 神經規則引擎（Neural Rule Engine）
 
 - [[1808.10326] Generalize Symbolic Knowledge With Neural Rule Engine](https://arxiv.org/abs/1808.10326)
 
@@ -1183,21 +1080,252 @@
 
 
 
-### 變焦神經網絡（Zooming-Net）
+## 變焦神經網絡（Zooming-Net）
 
 - [[1810.02114] Zooming Network](https://arxiv.org/abs/1810.02114)
 
-### 神經實體推理（Neural Entity Reasoner）
+- [深度好奇AI](https://mp.weixin.qq.com/s?__biz=MzIzODg2MTU3Mg==&mid=2247483854&idx=1&sn=19464fedd33d7b1ff5f68432fd1a00af&chksm=e933ada5de4424b3167de2469277946d7e4e262f5b8f075246d8da95823067d81ccfafb982de&mpshare=1&scene=24&srcid=1112NnN9kGol8K66vXq0CMHb#rd)
+
+    > **设计动机**
+    > 
+    > 神经网络模型之所以能够在人工智能的各个领域大放异彩，除了凭借强大的拟合能力和各类梯度下降方法之外，还要依靠网络结构基于数据信息分布特征的针对性设计。比如，多层全连接网络虽然在理论上可以拟合任何函数，实际应用中的效果却往往差强人意；而另一方面，多层卷积神经网络由于采用了类似大脑初级视觉皮层信息处理方法的卷积操作与参数共享方法，对图像信息进行高效的特征提取（充分利用了图像中的平移不变性、局部信息连续性），可以使用少得多的参数在图像处理任务上取得非常好的效果。
+    > 
+    > 我们认为自然语言处理领域尚无一种类似卷积网络的在图像处理领域具有奠基作用的模型。究其原因，是我们尚未充分利用自然语言数据和任务天然具有的特征进行模型结构的改进。自然语言天然地具有如下特征：1）自然语言（文本）是由一些基本语言单元（如单词、字、词）构成的序列；2）语言单元具有层级特征，低级语言单元可以构成高级语言单元（如多个字可以组成一句或一段文本）；3）语言单元的划分不是随机的，而是包含着语者或作者的信息表达策略；4）不同于图像数据，基本语言单元不具有像素一样的局部连续性，而是高度信息符号化的。
+    > 
+    > 为了更好地利用上述文本特征，我们提出了变焦网络（Zooming Network）的概念。整体上看，变焦网络由三个主要部分组成：层次化编码模块、变焦控制器模块、符号推理模块，分别完成针对语言单元特点的编码过程、解码过程，以及针对自然语言符号化的推理辅助解码。我们将该网络设计应用到长文本序列标注任务上，取得了非常好的效果（f1 score超过bi-LSTM-crf模型10%以上）。
+    > 
+    > ![](https://mmbiz.qpic.cn/mmbiz_png/micYOAOvzMGtX1NasPmY8PSBbLNsws2Ubktg3jrVujzNfB4k83J4FmHZuibn48SliaOp3KFbZ0HfVtQNEibLsDrX7g/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    > 
+    > **层次化编码（Hierarchical Encoder）**
+    > 
+    > 人在阅读文本时既按照时间顺序累积信息，又伴随着不同级别的信息抽象。这对应着人类语言文字共有的两个重要特征：时序化和分级化。我们对与编码模块的设计就是利用了这两个特征：使用双向长短时记忆层（bi-LSTM）对单一语言单元层级进行顺序地读取、编码；使用最大池化操作（max-pooling）模仿人脑由低级语言单元抽象高级语言单元信息的过程。通过层次化编码，我们赋予每一级每一个语言单元一个向量表示（hierarchical distributed memory），并保留其句段划分的分界信息。
+    > 
+    > **变焦控制解码（Zooming controller）**
+    > 
+    > 变焦控制器本质上是一个序列决策模型。不同于经典的循环神经网络（RNN）模型：1）变焦控制器每次不是接收单个基本语言单元的信息，而是接收当前位置上的字、句、段三级信息，这样可以使模型同时掌握细节特征（detailed local feature）和整体特征（global feature），以更好地进行状态更新。2）在每个解码标签序列的时刻，变焦控制器可以选择当前解码长度，可以选择输出任意层级语言单元对应的标签，而不仅限于基本语言单元（字/字符）。3）在预测标签之后，读取位置会自动跳转到与解码层级一致的下一语言单元的开头，而不是直接跳转到下一个基本语言单元。这种解码过程使得变焦控制器对文本表征的阅读方式更加灵活，在信息分布稀疏的部分可以快速略读（Zoom out），在信息分布集中的部分可以逐字精读（Zoom in）。
+    > 
+    > **符号推理（Symbolic reasoning）**
+    > 
+    > 在解码过程中，我们可以通过自然语言文本的一些"写作习惯"特征和已经预测出的标签序列，对下文标签规则推理出一些建议标签。例如，在大量的垂直领域文本中，常常出现一些有序列举过程："1. ...... 2. ...... 3. ......"。这些有序符号往往成组出现，而且对应内容是等位并列关系，一般具有相同标签（或者相同结构标签）。在实际使用过程中，我们会综合上个序号内容的处理方式，给出下个序号内容处理的最佳路径并以稀疏向量的形式输入到变焦控制器内，使其可以更加高效地处理数据。  
+    > 
+    > ![](https://mmbiz.qpic.cn/mmbiz_png/micYOAOvzMGtX1NasPmY8PSBbLNsws2UbCcQatypLicZic3Tz6tsppDLDBgOicX9gV02QlLmJicWQnzIHs71e7IYMmQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    > 
+    > **实验情况**
+    > 
+    > 我们将该模型应用到两组数据的序列标注上：
+    > 
+    > 1）集中式的重点信息抽取：在刑事案件的裁判文书中，对犯罪事件的具体描述提供了整个案件的判决依据，有很重要的分析价值。这些描述往往集中出现，但是由于整个裁判文书的长度多变，案件复杂程度不一，对这些描述的高效抽取既需要快速地略过无关信息，又需要在信息出现的段落进行精细的分析。下图示例中红色及蓝色的文字表示被Zooming Network抽取出来的部分，不同的颜色则代表不同的犯罪事件标签。
+    > 
+    > > 被告人张三，男，1978年3月17日出生，现因涉嫌犯盗窃罪，于2005年9月21日被羁押，同年10月28日被逮捕，现羁押在北京市海淀区看守所。
+    > > 
+    > > 
+    > > 北京市海淀区人民检察院指控被告人张三犯盗窃罪，于2006年6月9日向本院提起公诉。本院依法组成合议庭，公开开庭审理了本案。北京市海淀区人民检察院指派检察员武军出庭支持公诉，被告人李忠士到庭参加诉讼。现已审理终结。
+    > > 
+    > > 经审理查明：
+    > > 
+    > > <font color="red">被告人张三于2001年4月1日，在本市海淀区车道沟10号院东99丙号楼3单元地下室，撬门入室窃取被害人A的现金人民币1 700元，窃取被害人B的诺基亚5110型手机1部、爱立信398型手机1部，共计折合人民币2 667元。赃款、赃物均未起获。</font>
+    > > 
+    > > <font color="blue">被告人张三于2001年8月13日，在本市海淀区万寿路甄家坟集体宿舍，翻窗入室窃取被害人C的现金人民币7 300元、纯金戒指1枚，共计折合人民币8 400元。现赃款、赃物均未起获。</font>
+    > > 
+    > > 综上，被告人张三共盗窃作案2次。
+    > > 
+    > > ---
+    > > 
+    > > The defendant Zhang San, male, born on March 17, 1978, was detained on September 21, 2005 for suspicion of theft and was arrested on October 28 of the same year. He is now detained at the Haidian District Detention Center in Beijing.
+    > > 
+    > > Haidian District People's Procuratorate accused the defendant Zhang San guilty of theft, on June 9, 2006 prosecution to this court. Our court formed a collegiate bench and heard the case openly. Beijing Haidian District People's Procuratorate appointed inspector Wu to appear in court to support the prosecution, the defendant Li Zhongshi to attend the proceedings. Now trial ended.
+    > > 
+    > > After trial found:
+    > > 
+    > > <font color="red">On April 1, 2001, defendant Zhang San stole the victim's cash of RMB 1,700 in the basement of Unit 3, Building 99, Lane 10, Lane 10, Lane, Haidian, Haidian, to steal the victim's Nokia 5110 A mobile phone, Ericsson 398 mobile phone 1, a total of 2 667 yuan equivalent. Stolen money, stolen goods have not played.</font>
+    > > 
+    > > <font color="blue">On August 13, 2001, the defendant, Zhang San, stole the victim's C for 7,300 yuan in cash and 1 piece for the pure gold ring in a rented apartment in Zhenjiafen, Wanshou Road, Haidian District, on August 13, 2001. The total amount was equivalent to 8,400 yuan . Now stolen money, have not been stolen goods.</font>
+    > > 
+    > > To sum up, the defendant Zhang three commoner theft 2 times.
+    > 
+    > 2）分散式的重点信息抽取：在知识产权纠纷案件的裁判文书中，案件的核心是原被告双方争议的焦点。这些信息随着对纠纷的描述不定位置地出现，出现形式也复杂多变，进一步要求模型对处理路径的灵活选择。下图示例中红色及蓝色的文字表示被Zooming Network抽取出来的部分，不同的颜色则代表不同的争议焦点标签。
+    > 
+    > > 本院认为，原告张三是涉案发明专利的专利权人，该专利至今在有效期限内，法律状态稳定，应受法律保护。任何单位或者个人未经专利权人许可不得实施该专利，否则应承担相应法律责任。
+    > > 
+    > > 综合本案当事人的诉辩意见，本案争议焦点主要在于以下两个方面：<font color="red">1.被控侵权产品是否落入涉案专利权利要求1的保护范围；</font><font color="blue">2.被告的侵权责任应如何承担。</font>
+    > > 
+    > > ---
+    > > 
+    > > The court held that the plaintiff Zhang San was the patentee of the invention patent involved in the patent so far, and the patent so far has a stable legal status and should be protected by law. Any unit or individual may not implement the patent without the permission of the patentee, or shall bear the corresponding legal responsibility.
+    > > 
+    > > Based on the opinions of the parties involved in this case, the focus of the dispute in this case lies mainly in the following two aspects: <font color="red">1\. Whether the accused infringing product falls into the protection scope of Claim 1 of the patent involved;</font> <font color="blue">2\. How the defendant's tort liability should be borne.</font>
+    > 
+    > 我们使用序列标注经典最优模型bi-LSTM-crf作为baseline model来比较模型的处理性能，实验结果如下（模型参数数量为同一量级）：
+    > 
+    > ![](https://mmbiz.qpic.cn/mmbiz_png/micYOAOvzMGtX1NasPmY8PSBbLNsws2UbgBpH9dkVtf1yQlxeHAf3z67C3wSFT3b4slnHFAO47oVicecLw1rjPuw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    > 
+    > 其中，WA指word-level的整体准确率，wlar指模型使用的逐字读取行为占全部处理行为的数量比例。可以看出，变焦网络的性能远超基线模型，而且具有很高的处理效率（大量地使用句、段级别的标签预测行为）。这个过程的具体示例如下：
+    > 
+    > > <font color="blue">
+    > > 被告人张三，男，1978年3月17日出生，现因涉嫌犯盗窃罪，于2005年9月21日被羁押，同年10月28日被逮捕，现羁押在北京市海淀区看守所。
+    > > 
+    > > 北京市海淀区人民检察院指控被告人张三犯盗窃罪，于2006年6月9日向本院提起公诉。本院依法组成合议庭，公开开庭审理了本案。北京市海淀区人民检察院指派检察员武军出庭支持公诉，被告人李忠士到庭参加诉讼。现已审理终结。
+    > > 
+    > > <font color="red">经审理查明：
+    > > 
+    > > 被告人张三于2001年4月1日，在本市海淀区车道沟10号院东99丙号楼3单元地下室，撬门入室窃取被害人A的现金人民币1 700元，窃取被害人B的诺基亚5110型手机1部、爱立信398型手机1部，共计折合人民币2667元。</font>赃款、赃物均未起获。
+    > > 
+    > > <font color="red">被告人张三于2001年8月13日，在本市海淀区万寿路甄家坟集体宿舍，翻窗入室窃取被害人C的现金人民币7 300元、纯金戒指1枚，共计折合人民币8400元。</font>现赃款、赃物均未起获。
+    > > 
+    > > 综上，被告人张三共盗窃作案2次。
+    > > 
+    > > 上述事实，被告人张三在开庭审理过程中亦无异议，且有物证涉案物品价格鉴定（认证）结论书，被告人的供述等证据证实，足以认定。
+    > > 
+    > > 本院认为，被告人张三以非法占有为目的，多次秘密窃取他人财物，数额较大，其行为已构成盗窃罪。公诉机关指控的事实、罪名成立，本院予以确认。据此，为保护公私财产权利不受侵犯，惩罚犯罪，依照《中华人民共和国刑法》，判决如下：
+    > > 
+    > > 被告人张三犯盗窃罪，判处有期徒刑一年。
+    > > 
+    > > 审判长  张某某
+    > > 
+    > > 人民陪审员  曲某某
+    > > 
+    > > 人民陪审员  杨某某
+    > > </font>
+    > 
+    > 其中，蓝色部分表示模型使用了句级、段级的预测，红色部分表示模型使用了字级的预测。可以看出，在信息意义不大的部分，模型选择了略读，而在关键信息出现的地方，模型采用了精读的方式处理。另外一个有意思的现象是，模型对于"经审理查明"等带有指示功能的语句一样采用了精读方式处理。
+    > 
+    > **总结**
+    > 
+    > 借助句段结构信息，变焦神经网络很好地结合了泛读与精读过程，可以更好地对长时依赖特征进行建模，引入大跨度动作提高效率，尤其在篇幅很长的文本处理中表现得更为明显，在关键信息的抽取任务上，f1值较经典序列标注模型（biLSTM+CRF）有10%以上的提升。在此基础上引入神经符号化推理模块后，其处理效率又有了一个显著提升。变焦神经网络非常适合应用于各类长文本处理任务当中，其使用的编解码方式也可结合其他技术推广到各类自然语言处理任务中，产生新的火花。
+    > 
+
+
+
+## 神經實體推理（Neural Entity Reasoner）
 
 - [[1810.00347] Neural Entity Reasoner for Global Consistency in NER](https://arxiv.org/abs/1810.00347)
 
-### 面向對象的神經規劃（OONP）
+- [成果 | 用神经推理来帮助命名实体识别](https://mp.weixin.qq.com/s?__biz=MzIzODg2MTU3Mg==&mid=2247483858&idx=1&sn=3fc1d01481993ca44a1066e93d3b3210&chksm=e933adb9de4424afb0490dc2123b7f62affe14abce34b3cf50307ec9b11555606dc8746136d9&mpshare=1&scene=24&srcid=1110DBsIPiJ9JuCe1kFC7yco#rd)
+
+    > 命名实体识别（Named Entity Recognition）被认为是文本理解的基础和底层任务，因为它的职能就是发现和标识文本中的人名、地名等。传统的NER方法依赖局部和底层的语言特征，近年来神经网络结构对局部语言特征的掌握取得令人瞩目的效果，以至于NER很多时候被当成"已解决"的任务。但现有的方法与研究往往局限于底层的分析和计算，忽视实体本身对文本理解过程的影响，引入CRF进行解码的成功也正是因为如此。
+    > 
+    > 当出现有歧义的说法或者少见的人名时，现有方法往往会遇到困难。而人在这种情况下，往往可以通过纵览全文，打通和融合局部的知识，来摆脱这种困境。所以，NER任务本质是模型对抽取实体进行理解的任务。本文正是受到人的思维模型的启发，为NER这个看似低级的任务引入了高级的"推理"机制，将符号化的命名实体信息"**取之于网络，用之于网络**"，从而可以在深度学习的框架内融合同一文本中的命名实体的决策。
+    > 
+    > 命名实体神经推理机（NE-Reasoner）从实体对象这一更高层次的角度出发，分析实体识别的运算过程，引入可人工设计的推理框架，通过以下三点完成实体的理解和推理：1）在现有方法的基础上，得到对于实体的完整表示；2）引入符号化缓存记忆，对实体信息进行存储；3）通过符号化的操作和推理模型，避免复杂化的处理，以端到端的形式轻松完成训练。
+    > 
+    > **概述**
+    > 
+    > NE-Reasoner整体上是一个多层的架构，每一层都由三部分组成，编码器对输入文本进行编码以捕捉语义等信息，推理单元通过编码信息和缓存记忆，得到实体间的推理信息，解码器综合这两部分信息得出最后的结果。在编码器与解码器保持不变的情况下，缓存记忆在层之间根据识别出的实体动态的变化，通过推理单元达到逐步推理的效果。
+    > 
+    > ![](https://mmbiz.qpic.cn/mmbiz_png/micYOAOvzMGtX1NasPmY8PSBbLNsws2Ub43o93FyeNQxxsC3LsTOeLgcvwNoD3ZuPmNNOBdRG72Xo9XPKSYY5NQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    > 
+    > 图1 NE-Reasoner整体多层架构
+    > 
+    > 具体来讲，每一层都独立完成一次NER；每层的NER结果，会通过一个符号化的"缓存"存储起来，作为下一层NER的参考；这种参考是通过一个交互式的池化神经网络来实现，它其实是一个基于多个事实的推理模型。通过这样的设计，在做每个局部的决策时，模型都可以"看见"目前识别出的所有实体信息并参考别处相关决策，从而做出更加明智的决定。
+    > 
+    > **实体的表示**
+    > 
+    > 探究实体的预测过程，首先要清楚实体出现的语言模式。每一个实体的确定，都存在决定性的标识，这种标识来自两方面，一个是字词本身的信息，比如"张某某"这种词汇，没有任何上下文的情况下，会优先将它作为人名处理；另外一方面是前后文的模式，比如"我和XX是好朋友"，我们可以推断XX处为人名。从这两方面信息，我们可以对实体模式进行如下的解构：
+    > 
+    > 前文信息-实体-后文信息
+    > 
+    > 这样一种结构可以完整地描述一个实体。在神经网络中，现有的方法也是通过这些局部的语言特征进行识别，所以可以轻易地从编码信息中找到实体的表示。
+    > 
+    > 对于本文使用的Bi-LSTM编码器，分别从前后两个方向对一个字进行上下文的编码，而解码器通过这些信息得到对于实体的决定性信息。所以，在实体的第一个字，前向的LSTM的编码信息一定包含实体的前文信息，最后一个字的后向LSTM编码信息一定包含实体的后向信息，而另外两部分都包含完整的实体字符信息。对于每一个实体，我们都可以将它的编码信息做这样的分解，以得到这样四个不同维度对实体的表示：
+    > 
+    > 前文信息-前向实体信息-后向实体信息-后文信息
+    > 
+    > 这也刚好符合前面对实体模式的分析。通过每一层最终的预测结果，可以利用这样的符号化信息定位到实体位置，将每一个实体都从这四个方面进行完整的表示，然后存入缓存记忆中。
+    > 
+    > ![](https://mmbiz.qpic.cn/mmbiz_png/micYOAOvzMGtX1NasPmY8PSBbLNsws2UbW53mpNDqL3B5VPK92oDLyUbZQhRWKlRgicumbHKHOYS2ACFPvn50G7g/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    > 
+    > 图2 利用上下文和前后向信息表示实体
+    > 
+    > **推理单元**
+    > 
+    > 通过上面的操作，每一层都可以得到上一层识别出的实体的表示，除此之外，层与层之间没有其他必然的联系。将每一层单独来看，我们相当于得到了该文本中都有哪些是实体以及它们为什么是实体这类非常重要的先验知识。
+    > 
+    > 不同于以往方法对记忆模块的使用，这里的缓存记忆实际上是由符号化信息指导产生的堆放实体信息的列表，作为外部信息，不需要进行梯度的传导。由于每个实体也都是独立的，所以缓存记忆在这里可以看作由多个事实组成，而推理单元的作用就是从这些事实中得到全局的推理信息。
+    > 
+    > 解码时，字符的编码信息与每一个实体的表示进行运算以获得与每一个实体的关系，再通过池化操作从中挑选出最具有代表性的关系作为最终的参考。具体到本文的任务来讲，我们通过语义之间的相似性来进行推断，如果存在实体模式与当前所读到的字段相似，那么相似字段在文本中所扮演的角色也应该是相似的，所以可以使用向量距离（如余弦距离）等运算来代表字符编码信息与实体之间的关系，本文使用的是向量内积。
+    > 
+    > ![](https://mmbiz.qpic.cn/mmbiz_png/micYOAOvzMGtX1NasPmY8PSBbLNsws2Ub13FMjIUibxXkDqe2eYTJfZyRQCLrtZicYXtic8zF9FA9wbFgnqAnpnZ6w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    > 
+    > 图3 利用记忆模块进行实体推理
+    > 
+    > 之后，每一个实体的四个维度都可以得到一个运算结果，表示在这四个方面的相似度。在实体的推理中，最重要的是是否存在一个实体信息与当前字段信息很相似，而具体哪一个或者有几个这样的信息是不重要的；所以，在四个维度上进行max-pooling可以得到四个值，作为最终的参考信息。将这部分信息与编码信息一起输入到解码器，从而得到这一层的输出。
+    > 
+    > **训练**
+    > 
+    > 由于每一层都相对独立且具有单独的输出结果，层与层之间不需要梯度的传导但却通过预测结果进行影响，所以可以有多种训练方式，比如预训练第一层、每一层联合训练或仅利用最后一层输出结果进行训练。本文中所使用的模型的每一层都共享参数，实际上层间的区别只有缓存记忆的实体信息的不同，因此直接对最后一层进行训练就可以在整体上得到好的结果。
+    > 
+    > **实验**
+    > 
+    > 本文在英文和中文两个数据集上进行了实验，均取得了明显的提升。由于本方法是一个通用的框架，理论上可以叠加到任意编码-解码形式的网络模型中；并且由于是逐层的输出，可以从不同层之间输出结果的变化看到真实的推理效果，不仅提升了效果，而且符合对推理的预期，有极强的可解释性。
+    > 
+    > ![](https://mmbiz.qpic.cn/mmbiz_png/micYOAOvzMGtX1NasPmY8PSBbLNsws2UbyedCBj53eTtJUiaBdJYsecHopnttfBbkZPTOP5qQH3Ez0gAoyEXibibzQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    > 
+    > 图4 NE-Reasoner修正前后典型结果对比
+    > 
+    > **总结**
+    > 
+    > 通过在神经网络的推理过程中引入符号化的缓存记忆，以及在缓存基础上的多事实全局推理，可以显著提高命名实体识别的准确率，尤其是在传统方法容易犯错的歧义和少见人名上有更好的表现。命名实体神经推理机作为神经符号推理机在NER任务上应用的一个实例，不仅打开了之前神经网络推理决策的黑箱，使得推理过程中的关键步骤对人类可见和可理解，还给予了人工进一步干预推理过程的可能性以及可用的接口。
+
+
+
+## 面向對象的神經規劃（OONP）
 
 - [[1709.08853] Object-oriented Neural Programming (OONP) for Document Understanding](https://arxiv.org/abs/1709.08853)
 
 
+## 成果 | 强化学习新模型Jumper，让神经网络学习在阅读中何时做决定 
 
+- [[1807.02314] JUMPER: Learning When to Make Classification Decisions in Reading](https://arxiv.org/abs/1807.02314)
 
+- [深度好奇AI](https://mp.weixin.qq.com/s?__biz=MzIzODg2MTU3Mg==&mid=2247483855&idx=1&sn=a6c573571fd61d8ecf42c9b495a477dc&chksm=e933ada4de4424b2dcb6d4ef6734c427f247d1bc89a5425e5608007941f09dc5782c124b2a80&mpshare=1&scene=24&srcid=1110oCByPQnK5IoonooUjgS2#rd)
+
+    > 文本理解是自然语言处理领域的一个核心目标，最近取得了一系列的进展，包括机器翻译、问答等。不过之前的工作大多数是关心最终的效果，而人们对于模型何时做出决定（或做决定的原因）却知之甚少，这是一个对于理论研究和实际应用都非常重要的课题。深度好奇（DeeplyCurious.AI） 最近在IJCAI-2018上展示了一个学习何时做分类决策的强化学习模型：Jumper， 该论文将文本分类问题建模成离散的决策过程，并通过强化学习来优化，符号化表征模型的决策过程具有很好的可解释性，同时分类效果也达到最高水平。
+    > 
+    > 本文提供了一种新的框架，将文本理解建模为一个离散的决策过程。通常在阅读过程中，人们寻找线索、进行推理，并从文本中获取信息；受到人类认知过程的启发，我们通过将句子逐个地递送到神经网络来模仿这个过程。在每个句子中，网络基于输入做出决策（也称为动作），并且在该过程结束时，该决策序列可以视为是对文本有了一些"理解"。
+    > 
+    > 特别一提的是，我们专注于几个预定义子任务的文本分类问题。当我们的神经网络读取一个段落时，每个子任务在开始时具有默认值"无"（None）。 在每个决策步骤中，段落的句子按顺序被递送到神经网络；之后，网络来决定是否有足够的信心"跳转"到非默认值作为特定时间的预测。我们施加约束，即每次跳转都是最终决定，它不可以在后面的阅读中被更改。如图1所示，给定一段话，有多个预先定义好的问题等待回答；模型按句子阅读，在阅读过程中，问题的答案陆续被找到。模型从默认决策到非默认决策都是一个"跳转"的过程，正因此我们称模型为Jumper。在人类阅读的过程中，人们通常会获得一致的阅读理解的结果，但是阅读理解过程中的很多环节却经常是微妙和难以捉摸的。同样，我们也假设我们的训练标签仅包含最终结果，并且没有给出关于模型应该做出决定的步骤的监督信号。也就是说，我们通过强化学习在弱监督信号情况下训练Jumper模型。
+    > 
+    > ![](https://mmbiz.qpic.cn/mmbiz_png/micYOAOvzMGtX1NasPmY8PSBbLNsws2Ubg6AwWGrZn5d0INLAhygLtyNkhkoX01nfQyIFr6P2AjgroSbn8hL24w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    > 
+    > 图1 Jumper模型在阅读段落的决策过程
+    > 
+    > Jumper模型主要由编码层、控制器、符号输出层构成。编码层将句子编码成定长的向量，控制器根据历史和当前输入产生当前的决定，符号输出层使模型的输出满足跳转约束，即每个决策过程最多只能有一次跳转。
+    > 
+    > ![](https://mmbiz.qpic.cn/mmbiz_png/micYOAOvzMGtX1NasPmY8PSBbLNsws2UbT2wWvGkU9YM2rddusgHXND6BPgkNMicFwjmibR80nZpkjPlO6Q9DGP3Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    > 
+    > 图2 Jumper模型的基本框架
+    > 
+    > 跳转约束的作用在于使模型更加慎重地决定何时跳转。因此，Jumper模型的优化目标有两个，第一个是尽可能早地"跳转"，第二个是尽可能预测准。假设t* 是最佳的跳转时间，那么如果模型在t* 时刻之前跳转，则模型还没有看到真正的pattern，那么得到的答案等同于随机猜；如果模型在t* 时刻之后跳转，而t* +1句话可能不存在，因此没有机会跳转从而预测错误。
+    > 
+    > 通过上述建模，论文把文本分类问题转化为离散的决策过程，训练好的Jumper输出的离散决策过程就可以表达模型对文本的理解过程；而决策过程本身并没有标签，因此我们用policy gradient强化学习算法来训练，如果最终的决定和分类标签一致，就奖励整个决策动作，如果不一致，则惩罚。
+    > 
+    > 我们对三个任务评估了Jumper，包括两个基准数据集和一个实际工业应用。我们首先分析了Jumper的分类准确性，并与几个基线进行了比较。表1显示Jumper在所有这些任务上实现了相当或更好的性能，这表明将文本分类建模为顺序决策过程不仅不会损害、甚至提高了分类准确性。
+    > 
+    > ![](https://mmbiz.qpic.cn/mmbiz_png/micYOAOvzMGtX1NasPmY8PSBbLNsws2UbSrZUN0tqyrknjNDkl1OSt5FwmNUzSJdw93CIDOExjCve9wPXVrK21g/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    > 
+    > 表1 在电影评论数据集（MR）、新闻数据集（AG）和工伤数据集（OI）的测试集上的准确率
+    > 
+    > 我们想指出，"准确性"并不是我们关注的唯一表现。更重要的是，提出的模型能够减少阅读过程，或者找到文本分类的关键支撑句。只要在阅读过程中基于"跳转约束"限制而看到足够的证据，Jumper就能做出决定，并且在预测之后不需要再阅读之后的句子。在表2中可以看到，我们的模型与强基线相比达到了相似或更高的性能，与此同时，它还将文本读取的长度缩减了30-40％，从而加速了推断预测。
+    > 
+    > ![](https://mmbiz.qpic.cn/mmbiz_png/micYOAOvzMGtX1NasPmY8PSBbLNsws2Ub4fyMLlG6pjqQbffkibxoHgeYaTga62oTpCtldtytFdkZ2FUPUpU7kRQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    > 
+    > 表2
+    > 
+    > 除了准确率高和推断速度快以外，我们更好奇Jumper是否能够在信息提取式任务（例如工伤级别分类任务）中找到正确的位置做出决策。我们在400个数据点中标注关键支撑句（即最佳跳转位置）作为测试基础。需要注意的是，在这个实验中我们仍然没有跳转位置的训练标签。我们将Jumper与使用相同神经网络的层级CNN-GRU模型进行比较，但在训练方法方面有所不同；层级CNN-GRU在训练时，用段落末尾的交叉熵作为损失函数。在测试期间，我们将预测器应用于每个步骤并找到它做出预测的第一个位置。我们还列出了一个经典CNN的结果作为基线模型，并使用了最大池化操作（max-pooling）选择的单词最多的那些句子来作为测试数据。我们使用了跳转动作的准确率来评测Jumper。通过表3可知，Jumper准确地找到了测试集中所有关键支撑句的位置，说明我们的单跳约束迫使模型更仔细地思考何时做出决策，也验证了强化学习是学习决策正确位置的有效方法。
+    > 
+    > ![](https://mmbiz.qpic.cn/mmbiz_png/micYOAOvzMGtX1NasPmY8PSBbLNsws2UbGsvNRWJO2zIDRldL6YA3Tzz5P6NwicHyVjIibUpkr3ZibzEsNZAM0TTBA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    > 
+    > 表3 各模型在工伤等级分类任务（OI-Level）上寻找关键支撑句的效果统计。该任务的关键支撑句在文本中通常聚集于一处，不存在歧义，便于衡量各模型效果。CA：分类准确率，JA：跳跃准确率，OA：在分类准确条件下的跳跃准确率
+    > 
+    > 图3则显示了Jumper在阅读时做出决策的过程。其中，Jumper在前六个句子中保持默认决策（不做跳转），而在到达关键支撑句时突然跳转，这体现了Jumper可以识别关键支撑句，从而找到最佳跳跃位置。因此，在这类关键支撑语句集中出现时，Jumper可以在完成分类任务的同时找到关键支撑句，因此具有较强的可解释性。
+    > 
+    > ![](https://mmbiz.qpic.cn/mmbiz_png/micYOAOvzMGtX1NasPmY8PSBbLNsws2UbTADPZjwvgx6dwNP17cvv6MtMdOuCZy029xa7MBdicqKOyXDMNVsk0Wg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
+    > 
+    > 图3 Jumper决策序列展示
+    > 
+    > **总结**
+    > 
+    > 我们提出了一种新的模型Jumper，它在阅读段落时将文本分类建模为逐个句子的顺序决策过程。我们通过强化学习训练带有跳转约束的Jumper，实验表明：1) Jumper的性能与基线相当或更高；2) 它在很大程度上减少了文本阅读量；3) 如果所需信息在文中的分布是局域性的 ，它可以找到关键的支撑句子，具有很好的可解释性。
 
 
 

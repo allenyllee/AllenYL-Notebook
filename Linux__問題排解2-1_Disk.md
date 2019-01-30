@@ -1596,4 +1596,62 @@
     > Running `sudo updatedb` then reduced it to 1.6MB (and saves a huge amount of time indexing all of those files).
 
 
+## Check folder size(du)
+
+- [shell - Check folder size in Bash - Stack Overflow](https://stackoverflow.com/questions/16661982/check-folder-size-in-bash)
+
+    > To check the size of all of the directories within a directory, you can use:
+    > 
+    > `du -h --max-depth=1`
+    > 
+
+
+- [【系統】使用 du 來看磁碟的使用空間 @ My Life :: 隨意窩 Xuite日誌](http://blog.xuite.net/chingwei/blog/32566618-%E3%80%90%E7%B3%BB%E7%B5%B1%E3%80%91%E4%BD%BF%E7%94%A8+du+%E4%BE%86%E7%9C%8B%E7%A3%81%E7%A2%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E7%A9%BA%E9%96%93)
+
+    > 下圖是直接執行 du ，資料很多，而且子目錄下的所有檔案都會列出來，看得很累~~不好用
+    > 
+    > **du**\
+    > ![](http://3.blog.xuite.net/3/8/3/1/11851958/blog_1028365/txt/32566618/1.png)
+    > 
+    > 所以我們設定，最多只顯示一層，清楚多了。但 Size 預設是 K ，有點小
+    > 
+    > **du --max-depth=1**\
+    > ![](http://3.blog.xuite.net/3/8/3/1/11851958/blog_1028365/txt/32566618/2.png)
+    > 
+    > 加上 -B M ，表示使用 MB來顯示，如果是加 G ，就是  GB 了。
+    > 
+    > **du --max-depth=1 -B M**\
+    > ![](http://3.blog.xuite.net/3/8/3/1/11851958/blog_1028365/txt/32566618/3.png)
+    > 
+    > 但如果很多，我還要特地看是那個檔占最多空間，麻煩，加上 sort -g 來排序
+    > 
+    > **du --max-depth=1 -B M | sort -g**\
+    > ![](http://3.blog.xuite.net/3/8/3/1/11851958/blog_1028365/txt/32566618/4.png)
+    > 
+    > 上面就可以看的很清楚，那個東西占最多的空間了。
+    > 如果要針對某個目錄的話。就直接加在後面就好了。
+    > 
+    > **du --max-depth=1 -B M php-5.2.5/ | sort -g**\
+    > ![](http://3.blog.xuite.net/3/8/3/1/11851958/blog_1028365/txt/32566618/0.png)
+    > 
+    > 總結：就是使用 **du --max-depth=1 -B M | sort -g** 就對了啦
+    > 
+
+- [Linux du command help and examples](https://www.computerhope.com/unix/udu.htm)
+
+    > -s: summarize
+    > 
+    > ```
+    > $ du -s /usr/
+    > 
+    > 6533388	/usr/
+    > ```
+    > 
+    > -h: Print sizes in human readable format, rounding values and using abbreviations. For example, "1K", "234M", "2G", etc.
+    > 
+    > ```
+    > $ du -sh /usr/
+    > 
+    > 6.3G	/usr/
+    > ```
 

@@ -79,7 +79,213 @@
     > 
 
 
-## create an empty array/matrix
+## array operation
+
+### concate (np.concatenate())
+
+
+- [numpy.concatenate — NumPy v1.15 Manual](https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.concatenate.html)
+
+    > Join a sequence of arrays along an existing axis.
+
+    > ```
+    > np.concatenate((a, b), axis=0)
+    > ```
+
+### reshape array(np.reshape)
+
+- [numpy.reshape — NumPy v1.15 Manual](https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.reshape.html)
+
+- [python - Converting a List of Tuples to numpy array results in single dimension - Stack Overflow](https://stackoverflow.com/questions/40596672/converting-a-list-of-tuples-to-numpy-array-results-in-single-dimension)
+
+    > If I understand your desired output correctly, you can use [`numpy.reshape`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.reshape.html)
+    > 
+    > ```
+    > >>> spp = np.asarray(splist, dt)
+    > >>> spp
+    > array([(2002, 10.502535211267606),
+    >        (2003, 10.214794520547946),
+    >        (2004, 9.811578947368423),
+    >        (2015, 9.093658536585366),
+    >        (2016, 9.244272537935139)],
+    >       dtype=[('f0', '<i4'), ('f1', '<f8')])
+    > 
+    > >>> np.reshape(spp, (spp.size, 1))
+    > array([[(2002, 10.502535211267606)],
+    >        [(2003, 10.214794520547946)],
+    >        [(2004, 9.811578947368423)],
+    >        [(2015, 9.093658536585366)],
+    >        [(2016, 9.244272537935139)]],
+    >       dtype=[('f0', '<i4'), ('f1', '<f8')])
+    > ```
+
+
+### Make Read-only array writable
+
+- [python - Replace values of a numpy index array with values of a list - Stack Overflow](https://stackoverflow.com/questions/13572448/replace-values-of-a-numpy-index-array-with-values-of-a-list)
+
+    > Read-only array in numpy can be made writable:
+    > 
+    > ```
+    > nArray.flags.writeable = True
+    > ```
+    > 
+    > This will then allow assignment operations like this one:
+    > 
+    > ```
+    > nArray[nArray == 10] = 9999 # replace all 10's with 9999's
+    > ```
+    > 
+    > The real problem was not assignment itself but the writable flag.
+    > 
+
+
+### one-hot encode
+
+- [python - How to convert 2d numpy array into binary indicator matrix for max value - Stack Overflow](https://stackoverflow.com/questions/36153638/how-to-convert-2d-numpy-array-into-binary-indicator-matrix-for-max-value)
+
+    > Here's one way:
+    > 
+    > ```
+    > In [112]: a
+    > Out[112]: 
+    > array([[ 0.2,  0.3,  0.5],
+    >        [ 0.7,  0.1,  0.1]])
+    > 
+    > In [113]: a == a.max(axis=1, keepdims=True)
+    > Out[113]: 
+    > array([[False, False,  True],
+    >        [ True, False, False]], dtype=bool)
+    > 
+    > In [114]: (a == a.max(axis=1, keepdims=True)).astype(int)
+    > Out[114]: 
+    > array([[0, 0, 1],
+    >        [1, 0, 0]])
+    > ```
+    > 
+    > (But this will give a True value for _each_ occurrence of the maximum in a row. See Divakar's answer for a nice way to select just the first occurrence of the maximum.)
+
+    > In case of ties (two or more elements being the highest one in a row), where you want to select only one, here's one approach to do so with [`np.argmax`](http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.argmax.html) and [`broadcasting`](http://docs.scipy.org/doc/numpy-1.10.1/user/basics.broadcasting.html) -
+    > 
+    > ```
+    > (A.argmax(1)[:,None] == np.arange(A.shape[1])).astype(int)
+    > ```
+    > 
+    > Sample run -
+    > 
+    > ```
+    > In [296]: A
+    > Out[296]: 
+    > array([[ 0.2,  0.3,  0.5],
+    >        [ 0.5,  0.5,  0. ]])
+    > 
+    > In [297]: (A.argmax(1)[:,None] == np.arange(A.shape[1])).astype(int)
+    > Out[297]: 
+    > array([[0, 0, 1],
+    >        [1, 0, 0]])
+    > ```
+    > [name=Divakar]
+
+### remap value to array( np.digitize )
+
+- [python - Replace values of a numpy index array with values of a list - Stack Overflow](https://stackoverflow.com/questions/13572448/replace-values-of-a-numpy-index-array-with-values-of-a-list)
+
+    > Instead of replacing the values one by one, it is possible to remap the entire array like this:
+    > 
+    > ```python
+    > import numpy as np
+    > a = np.array([1,2,2,1]).reshape(2,2)
+    > # palette must be given in sorted order
+    > palette = [1, 2]
+    > # key gives the new values you wish palette to be mapped to.
+    > key = np.array([0, 10])
+    > index = np.digitize(a.ravel(), palette, right=True)
+    > print(key[index].reshape(a.shape))
+    > ```
+    > 
+    > yields
+    > 
+    > ```
+    > [[ 0 10]
+    >  [10  0]]
+    > ```
+
+
+
+## initialize np array
+
+### numpy.zeros() / numpy.ones() / numpy.empty() / numpy.full()
+
+- [python - initialize a numpy array - Stack Overflow](https://stackoverflow.com/questions/4535374/initialize-a-numpy-array)
+
+    > > [`numpy.zeros`](http://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html)
+    > >
+    > > Return a new array of given shape and type, filled with zeros.
+    > 
+    > or
+    > 
+    > > [`numpy.ones`](http://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html)
+    > >
+    > > Return a new array of given shape and type, filled with ones.
+    > 
+    > or
+    > 
+    > > [`numpy.empty`](http://docs.scipy.org/doc/numpy/reference/generated/numpy.empty.html#numpy.empty)
+    > >
+    > > Return a new array of given shape and type, without initializing entries.
+    > > 
+    > 
+    > ---
+    > 
+    > Introduced in numpy 1.8:
+    > 
+    > > [`numpy.full`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.full.html)
+    > >
+    > > Return a new array of given shape and type, filled with fill_value.
+    > 
+    > Examples:
+    > 
+    > ```python
+    > >>> import numpy as np
+    > >>> np.full((2, 2), np.inf)
+    > array([[ inf,  inf],
+    >        [ inf,  inf]])
+    > >>> np.full((2, 2), 10)
+    > array([[10, 10],
+    >        [10, 10]])
+    > ```
+    > 
+    > ---
+    > 
+    > 
+    > Whenever you are in the following situation:
+    > 
+    > ```python
+    > a = []
+    > for i in range(5):
+    >     a.append(i)
+    > ```
+    > 
+    > and you want something similar in numpy, several previous answers have pointed out ways to do it, but as @katrielalex pointed out these methods are not efficient. The efficient way to do this is to build a long list and then reshape it the way you want after you have a long list. For example, let's say I am reading some lines from a file and each row has a list of numbers and I want to build a numpy array of shape (number of lines read, length of vector in each row). Here is how I would do it more efficiently:
+    > 
+    > ```python
+    > long_list = []
+    > counter = 0
+    > with open('filename', 'r') as f:
+    >     for row in f:
+    >         row_list = row.split()
+    >         long_list.extend(row_list)
+    >         counter++
+    > #  now we have a long list and we are ready to reshape
+    > result = np.array(long_list).reshape(counter, len(row_list)) #  desired numpy array
+    > ```
+    > 
+    > 
+
+
+### create an empty array/matrix(np.zeros())
+
+- [numpy.zeros — NumPy v1.15 Manual](https://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html)
 
 - [python - How do I create an empty array/matrix in NumPy? - Stack Overflow](https://stackoverflow.com/questions/568962/how-do-i-create-an-empty-array-matrix-in-numpy)
 
@@ -105,7 +311,7 @@
     > ```
 
 
-## Resize an existing array and fill with zeros
+### Resize an existing array and fill with zeros(np.resize())
 
 - [Python: Resize an existing array and fill with zeros - Stack Overflow](https://stackoverflow.com/questions/9251635/python-resize-an-existing-array-and-fill-with-zeros)
 
@@ -158,7 +364,7 @@
     > ```
     > 
 
-## Zero pad numpy array
+### Zero pad numpy array
 
 - [python - Zero pad numpy array - Stack Overflow](https://stackoverflow.com/questions/38191855/zero-pad-numpy-array)
 
@@ -188,32 +394,8 @@
     > ```
     > 
 
-## reshape array(np.reshape)
 
-- [python - Converting a List of Tuples to numpy array results in single dimension - Stack Overflow](https://stackoverflow.com/questions/40596672/converting-a-list-of-tuples-to-numpy-array-results-in-single-dimension)
-
-    > If I understand your desired output correctly, you can use [`numpy.reshape`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.reshape.html)
-    > 
-    > ```
-    > >>> spp = np.asarray(splist, dt)
-    > >>> spp
-    > array([(2002, 10.502535211267606),
-    >        (2003, 10.214794520547946),
-    >        (2004, 9.811578947368423),
-    >        (2015, 9.093658536585366),
-    >        (2016, 9.244272537935139)],
-    >       dtype=[('f0', '<i4'), ('f1', '<f8')])
-    > 
-    > >>> np.reshape(spp, (spp.size, 1))
-    > array([[(2002, 10.502535211267606)],
-    >        [(2003, 10.214794520547946)],
-    >        [(2004, 9.811578947368423)],
-    >        [(2015, 9.093658536585366)],
-    >        [(2016, 9.244272537935139)]],
-    >       dtype=[('f0', '<i4'), ('f1', '<f8')])
-    > ```
-
-## convert list of tuples to structured numpy array(np.dtype)
+### convert list of tuples to structured numpy array(np.dtype)
 
 - [python - convert list of tuples to structured numpy array - Stack Overflow](https://stackoverflow.com/questions/28176949/convert-list-of-tuples-to-structured-numpy-array)
 
@@ -249,9 +431,58 @@
     >       dtype=[('name1', '<i4'), ('name2', '<f8')])
     > ```
 
+## indexing & slicing
+
+- [Numpy 笔记(二): 多维数组的切片(slicing)和索引(indexing) · ZMonster's Blog](http://www.zmonster.me/2016/03/09/numpy-slicing-and-indexing.html)
+
+    > 切片和索引的同异
+    > 
+    > 切片和索引都是访问多维数组中元素的方法，这是两者的共同点，不同之处有:
+    > 
+    >     切片得到的是原多维数组的一个 视图(view) ，修改切片中的内容会导致原多维数组的内容也发生变化
+    >     切片得到在多维数组中连续(或按特定步长连续)排列的值，而索引可以得到任意位置的值，自由度更大一些
+    > 
+    > 不考虑第一点的话，切片的操作是可以用索引操作来实现的，不过这没有必要就是了。
+    > 
+    > 对于第一点，见下面的实验:
+    > 
+    > ```python
+    > import numpy as np
+    > 
+    > arr = np.arange(12).reshape(2, 6)
+    > print 'array is:'
+    > print arr
+    > 
+    > slc = arr[:, 2:5]
+    > print 'slice is:'
+    > print slc
+    > 
+    > slc[1, 2] = 10000
+    > print 'modified slice is:'
+    > print slc
+    > print 'array is now:'
+    > print arr
+    > ```
+    > 
+    > ```python
+    > array is:
+    > [[ 0  1  2  3  4  5]
+    >  [ 6  7  8  9 10 11]]
+    > slice is:
+    > [[ 2  3  4]
+    >  [ 8  9 10]]
+    > modified slice is:
+    > [[    2     3     4]
+    >  [    8     9 10000]]
+    > array is now:
+    > [[    0     1     2     3     4     5]
+    >  [    6     7     8     9 10000    11]]
+    > ```
+    > 
 
 
-## get indices of max argument
+
+### get indices of max argument(np.argmax)
 
 - [numpy.arange — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.arange.html#numpy.arange)
     Return evenly spaced values within a given interval.
@@ -305,22 +536,7 @@
     Return evenly spaced numbers over a specified interval.
 
 
-- [Random sampling (numpy.random) — NumPy v1.14 Manual](https://docs.scipy.org/doc/numpy/reference/routines.random.html)
 
-    - [numpy.random.seed — NumPy v1.14 Manual](https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.seed.html#numpy.random.seed)
-    Seed the generator.
-
-
-    - [numpy.matlib.rand — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.matlib.rand.html#numpy.matlib.rand)
-    Return a matrix of random values with given shape.
-
-    - [numpy.matlib.randn — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.matlib.randn.html#numpy.matlib.randn)
-    Return a random matrix with data from the “standard normal” distribution.
-
-- [numpy.clip — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.clip.html#numpy.clip)
-    Clip (limit) the values in an array.
-    
-    Given an interval, values outside the interval are clipped to the interval edges. For example, if an interval of \[0, 1\] is specified, values smaller than 0 become 0, and values larger than 1 become 1.
 
 - [numpy.argsort — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.argsort.html#numpy.argsort)
     Returns the indices that would sort an array.
@@ -509,43 +725,7 @@ array([[0, 0, 0],
             > P.S. Also see this great answer: [newaxis vs reshape to add dimensions](https://stackoverflow.com/a/28385957)
             > 
 
-## Sorting
-
-- [python - Efficiently sorting a numpy array in descending order? - Stack Overflow](https://stackoverflow.com/questions/26984414/efficiently-sorting-a-numpy-array-in-descending-order)
-    
-    > `temp[::-1].sort()` sorts the array in place, `np.sort(temp)[::-1]` create a new array.
-    > 
-    > ```
-    > In [25]: temp = np.random.randint(1,10, 10)
-    > 
-    > In [26]: temp
-    > Out[26]: array([5, 2, 7, 4, 4, 2, 8, 6, 4, 4])
-    > 
-    > In [27]: id(temp)
-    > Out[27]: 139962713524944
-    > 
-    > In [28]: temp[::-1].sort()
-    > 
-    > In [29]: temp
-    > Out[29]: array([8, 7, 6, 5, 4, 4, 4, 4, 2, 2])
-    > 
-    > In [30]: id(temp)
-    > Out[30]: 139962713524944
-    > ```
-
-    > For short arrays I suggest using `np.argsort()` by finding the indices of the sorted negatived array, which is slightly faster than reversing the sorted array:
-    > 
-    > ```
-    > In [37]: temp = np.random.randint(1,10, 10)
-    > 
-    > In [38]: %timeit np.sort(temp)[::-1]
-    > 100000 loops, best of 3: 4.65 µs per loop
-    > 
-    > In [39]: %timeit temp[np.argsort(-temp)]
-    > 100000 loops, best of 3: 3.91 µs per loop
-    > ```
-
-## get index of element
+### get index of element
 
 - [python - Index of element in NumPy array - Stack Overflow](https://stackoverflow.com/questions/18079029/index-of-element-in-numpy-array)
 
@@ -585,7 +765,8 @@ array([[0, 0, 0],
     > #(array([ 3,  4,  5,  8,  9, 10]),)
     > ```
 
-## Indexing a numpy array with a list of tuples [(idx1,score1),(idx2,score2),...,(idxN,scoreN)]
+
+### Indexing a numpy array with a list of tuples [(idx1,score1),(idx2,score2),...,(idxN,scoreN)]
 
 - [Indexing a numpy array with a list of tuples - Stack Overflow](https://stackoverflow.com/questions/28491230/indexing-a-numpy-array-with-a-list-of-tuples)
     > 
@@ -602,145 +783,133 @@ array([[0, 0, 0],
     > ```
     > [name=Ya-Lun Li]
 
-## use np.digitize to remap value to array
 
-- [python - Replace values of a numpy index array with values of a list - Stack Overflow](https://stackoverflow.com/questions/13572448/replace-values-of-a-numpy-index-array-with-values-of-a-list)
+## Random
 
-    > Instead of replacing the values one by one, it is possible to remap the entire array like this:
+- [Random sampling (numpy.random) — NumPy v1.14 Manual](https://docs.scipy.org/doc/numpy/reference/routines.random.html)
+
+- [numpy.random.seed — NumPy v1.14 Manual](https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.seed.html#numpy.random.seed)
+    > Seed the generator.
+
+
+- [numpy.matlib.rand — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.matlib.rand.html#numpy.matlib.rand)
+    > Return a matrix of random values with given shape.
+
+- [numpy.matlib.randn — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.matlib.randn.html#numpy.matlib.randn)
+    > Return a random matrix with data from the “standard normal” distribution.
+
+
+- [numpy.random.randint — NumPy v1.14 Manual](https://docs.scipy.org/doc/numpy-1.14.1/reference/generated/numpy.random.randint.html#numpy.random.randint)
+    > Return random integers from the "discrete uniform" distribution of the specified dtype in the "half-open" interval [*low*, *high*). If *high* is None (the default), then results are from [0, *low*).
+
+
+- [numpy.random.random_integers — NumPy v1.14 Manual](https://docs.scipy.org/doc/numpy-1.14.1/reference/generated/numpy.random.random_integers.html)
+
+    > similar to [`randint`](https://docs.scipy.org/doc/numpy-1.14.1/reference/generated/numpy.random.randint.html#numpy.random.randint "numpy.random.randint"), only for the closed interval [*low*, *high*], and 1 is the lowest value if *high* is omitted. In particular, this other one is the one to use to generate uniformly distributed discrete non-integers.
+
+
+### Generate random numbers with a given (numerical) distribution
+
+- [python - Generate random numbers with a given (numerical) distribution - Stack Overflow](https://stackoverflow.com/questions/4265988/generate-random-numbers-with-a-given-numerical-distribution)
+
+    > [`scipy.stats.rv_discrete`](http://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_discrete.html) might be what you want. You can supply your probabilities via the `values` parameter. You can then use the `rvs()` method of the distribution object to generate random numbers.
+    > 
+    > As pointed out by Eugene Pakhomov in the comments, you can also pass a `p` keyword parameter to [`numpy.random.choice()`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.choice.html), e.g.
     > 
     > ```python
-    > import numpy as np
-    > a = np.array([1,2,2,1]).reshape(2,2)
-    > # palette must be given in sorted order
-    > palette = [1, 2]
-    > # key gives the new values you wish palette to be mapped to.
-    > key = np.array([0, 10])
-    > index = np.digitize(a.ravel(), palette, right=True)
-    > print(key[index].reshape(a.shape))
+    > numpy.random.choice(numpy.arange(1, 7), p=[0.1, 0.05, 0.05, 0.2, 0.4, 0.2])
     > ```
     > 
-    > yields
+    > If you are using Python 3.6 or above, you can use `random.choices()` from the standard library -- see the [answer by Mark Dickinson](https://stackoverflow.com/a/41852266/5987).
     > 
-    > ```
-    > [[ 0 10]
-    >  [10  0]]
-    > ```
-
-## indexing & slicing
-
-- [Numpy 笔记(二): 多维数组的切片(slicing)和索引(indexing) · ZMonster's Blog](http://www.zmonster.me/2016/03/09/numpy-slicing-and-indexing.html)
-
-    > 切片和索引的同异
     > 
-    > 切片和索引都是访问多维数组中元素的方法，这是两者的共同点，不同之处有:
+    > ---
     > 
-    >     切片得到的是原多维数组的一个 视图(view) ，修改切片中的内容会导致原多维数组的内容也发生变化
-    >     切片得到在多维数组中连续(或按特定步长连续)排列的值，而索引可以得到任意位置的值，自由度更大一些
     > 
-    > 不考虑第一点的话，切片的操作是可以用索引操作来实现的，不过这没有必要就是了。
+    > An advantage to generating the list using CDF is that you can use binary search. While you need O(n) time and space for preprocessing, you can get k numbers in O(k log n). Since normal Python lists are inefficient, you can use `array` module.
     > 
-    > 对于第一点，见下面的实验:
+    > If you insist on constant space, you can do the following; O(n) time, O(1) space.
     > 
     > ```python
-    > import numpy as np
-    > 
-    > arr = np.arange(12).reshape(2, 6)
-    > print 'array is:'
-    > print arr
-    > 
-    > slc = arr[:, 2:5]
-    > print 'slice is:'
-    > print slc
-    > 
-    > slc[1, 2] = 10000
-    > print 'modified slice is:'
-    > print slc
-    > print 'array is now:'
-    > print arr
+    > def random_distr(l):
+    >     r = random.uniform(0, 1)
+    >     s = 0
+    >     for item, prob in l:
+    >         s += prob
+    >         if s >= r:
+    >             return item
+    >     return item  # Might occur because of floating point inaccuracies
     > ```
+    > 
+    > ---
+    > 
+    > (OK, I know you are asking for shrink-wrap, but maybe those home-grown solutions just weren't succinct enough for your liking. :-)
     > 
     > ```python
-    > array is:
-    > [[ 0  1  2  3  4  5]
-    >  [ 6  7  8  9 10 11]]
-    > slice is:
-    > [[ 2  3  4]
-    >  [ 8  9 10]]
-    > modified slice is:
-    > [[    2     3     4]
-    >  [    8     9 10000]]
-    > array is now:
-    > [[    0     1     2     3     4     5]
-    >  [    6     7     8     9 10000    11]]
+    > pdf = [(1, 0.1), (2, 0.05), (3, 0.05), (4, 0.2), (5, 0.4), (6, 0.2)]
+    > cdf = [(i, sum(p for j,p in pdf if j < i)) for i,_ in pdf]
+    > R = max(i for r in [random.random()] for i,c in cdf if c <= r)
+    > ```
+    > 
+    > I pseudo-confirmed that this works by eyeballing the output of this expression:
+    > 
+    > ```python
+    > sorted(max(i for r in [random.random()] for i,c in cdf if c <= r)
+    >        for _ in range(1000))
     > ```
     > 
 
+### numpy.clip()
 
-## one-hot encode
-
-- [python - How to convert 2d numpy array into binary indicator matrix for max value - Stack Overflow](https://stackoverflow.com/questions/36153638/how-to-convert-2d-numpy-array-into-binary-indicator-matrix-for-max-value)
-
-    > Here's one way:
-    > 
-    > ```
-    > In [112]: a
-    > Out[112]: 
-    > array([[ 0.2,  0.3,  0.5],
-    >        [ 0.7,  0.1,  0.1]])
-    > 
-    > In [113]: a == a.max(axis=1, keepdims=True)
-    > Out[113]: 
-    > array([[False, False,  True],
-    >        [ True, False, False]], dtype=bool)
-    > 
-    > In [114]: (a == a.max(axis=1, keepdims=True)).astype(int)
-    > Out[114]: 
-    > array([[0, 0, 1],
-    >        [1, 0, 0]])
-    > ```
-    > 
-    > (But this will give a True value for _each_ occurrence of the maximum in a row. See Divakar's answer for a nice way to select just the first occurrence of the maximum.)
-
-    > In case of ties (two or more elements being the highest one in a row), where you want to select only one, here's one approach to do so with [`np.argmax`](http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.argmax.html) and [`broadcasting`](http://docs.scipy.org/doc/numpy-1.10.1/user/basics.broadcasting.html) -
-    > 
-    > ```
-    > (A.argmax(1)[:,None] == np.arange(A.shape[1])).astype(int)
-    > ```
-    > 
-    > Sample run -
-    > 
-    > ```
-    > In [296]: A
-    > Out[296]: 
-    > array([[ 0.2,  0.3,  0.5],
-    >        [ 0.5,  0.5,  0. ]])
-    > 
-    > In [297]: (A.argmax(1)[:,None] == np.arange(A.shape[1])).astype(int)
-    > Out[297]: 
-    > array([[0, 0, 1],
-    >        [1, 0, 0]])
-    > ```
-    > [name=Divakar]
+- [numpy.clip — NumPy v1.12 Manual](https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.clip.html#numpy.clip)
+    Clip (limit) the values in an array.
+    
+    Given an interval, values outside the interval are clipped to the interval edges. For example, if an interval of \[0, 1\] is specified, values smaller than 0 become 0, and values larger than 1 become 1.
 
 
-## Make Read-only array writable
 
-- [python - Replace values of a numpy index array with values of a list - Stack Overflow](https://stackoverflow.com/questions/13572448/replace-values-of-a-numpy-index-array-with-values-of-a-list)
+## Sorting
 
-    > Read-only array in numpy can be made writable:
+- [python - Efficiently sorting a numpy array in descending order? - Stack Overflow](https://stackoverflow.com/questions/26984414/efficiently-sorting-a-numpy-array-in-descending-order)
+    
+    > `temp[::-1].sort()` sorts the array in place, `np.sort(temp)[::-1]` create a new array.
     > 
     > ```
-    > nArray.flags.writeable = True
+    > In [25]: temp = np.random.randint(1,10, 10)
+    > 
+    > In [26]: temp
+    > Out[26]: array([5, 2, 7, 4, 4, 2, 8, 6, 4, 4])
+    > 
+    > In [27]: id(temp)
+    > Out[27]: 139962713524944
+    > 
+    > In [28]: temp[::-1].sort()
+    > 
+    > In [29]: temp
+    > Out[29]: array([8, 7, 6, 5, 4, 4, 4, 4, 2, 2])
+    > 
+    > In [30]: id(temp)
+    > Out[30]: 139962713524944
     > ```
-    > 
-    > This will then allow assignment operations like this one:
+
+    > For short arrays I suggest using `np.argsort()` by finding the indices of the sorted negatived array, which is slightly faster than reversing the sorted array:
     > 
     > ```
-    > nArray[nArray == 10] = 9999 # replace all 10's with 9999's
+    > In [37]: temp = np.random.randint(1,10, 10)
+    > 
+    > In [38]: %timeit np.sort(temp)[::-1]
+    > 100000 loops, best of 3: 4.65 µs per loop
+    > 
+    > In [39]: %timeit temp[np.argsort(-temp)]
+    > 100000 loops, best of 3: 3.91 µs per loop
     > ```
-    > 
-    > The real problem was not assignment itself but the writable flag.
-    > 
+
+
+
+
+
+
+
 
 
 ## Einstein Summation
@@ -913,6 +1082,221 @@ array([[0, 0, 0],
 
 # scikit-learn
 
+## data preprocessing
+
+### StandardScaler()/MinMaxScaler()/normalize()
+
+- [sklearn.preprocessing.StandardScaler — scikit-learn 0.20.2 documentation](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)
+
+- [【原】关于使用sklearn进行数据预处理 —— 归一化/标准化/正则化 - ChaoSimple - 博客园](https://www.cnblogs.com/chaosimple/p/4153167.html)
+
+    > 一、标准化（Z-Score），或者去除均值和方差缩放
+    > --------------------------
+    > 
+    > 公式为：(X-mean)/std  计算时对每个属性/每列分别进行。
+    > 
+    > 将数据按期属性（按列进行）减去其均值，并处以其方差。得到的结果是，对于每个属性/每列来说所有数据都聚集在0附近，方差为1。
+    > 
+    > 实现时，有两种不同的方式：
+    > 
+    > -   使用sklearn.preprocessing.scale()函数，可以直接将给定数据进行标准化。
+    > 
+    >     ```python
+    >     >>> from sklearn import preprocessing
+    >     >>> import numpy as np
+    >     >>> X = np.array([[ 1., -1.,  2.],
+    >     ...               [ 2.,  0.,  0.],
+    >     ...               [ 0.,  1., -1.]])
+    >     >>> X_scaled = preprocessing.scale(X)
+    >      
+    >     >>> X_scaled                                         
+    >     array([[ 0.  ..., -1.22...,  1.33...],
+    >            [ 1.22...,  0.  ..., -0.26...],
+    >            [-1.22...,  1.22..., -1.06...]])
+    >      
+    >     >>>#处理后数据的均值和方差
+    >     >>> X_scaled.mean(axis=0)
+    >     array([ 0.,  0.,  0.])
+    >      
+    >     >>> X_scaled.std(axis=0)
+    >     array([ 1.,  1.,  1.])
+    >     ```
+    > 
+    > -   使用sklearn.preprocessing.StandardScaler类，使用该类的好处在于可以保存训练集中的参数（均值、方差）直接使用其对象转换测试集数据。
+    > 
+    >     ```python
+    >     >>> scaler = preprocessing.StandardScaler().fit(X)
+    >     >>> scaler
+    >     StandardScaler(copy=True, with_mean=True, with_std=True)
+    >      
+    >     >>> scaler.mean_                                      
+    >     array([ 1. ...,  0. ...,  0.33...])
+    >      
+    >     >>> scaler.std_                                       
+    >     array([ 0.81...,  0.81...,  1.24...])
+    >      
+    >     >>> scaler.transform(X)                               
+    >     array([[ 0.  ..., -1.22...,  1.33...],
+    >            [ 1.22...,  0.  ..., -0.26...],
+    >            [-1.22...,  1.22..., -1.06...]])
+    >      
+    >      
+    >     >>>#可以直接使用训练集对测试集数据进行转换
+    >     >>> scaler.transform([[-1.,  1., 0.]])                
+    >     array([[-2.44...,  1.22..., -0.26...]])
+    >     ```
+    > 
+    > 二、将属性缩放到一个指定范围
+    > --------------
+    > 
+    > 除了上述介绍的方法之外，另一种常用的方法是将属性缩放到一个指定的最大和最小值（通常是1-0）之间，这可以通过preprocessing.MinMaxScaler类实现。
+    > 
+    > 使用这种方法的目的包括：
+    > 
+    > 1、对于方差非常小的属性可以增强其稳定性。
+    > 
+    > 2、维持稀疏矩阵中为0的条目。
+    > 
+    > ```python
+    > >>> X_train = np.array([[ 1., -1.,  2.],
+    > ...                     [ 2.,  0.,  0.],
+    > ...                     [ 0.,  1., -1.]])
+    > ...
+    > >>> min_max_scaler = preprocessing.MinMaxScaler()
+    > >>> X_train_minmax = min_max_scaler.fit_transform(X_train)
+    > >>> X_train_minmax
+    > array([[ 0.5       ,  0.        ,  1.        ],
+    >        [ 1.        ,  0.5       ,  0.33333333],
+    >        [ 0.        ,  1.        ,  0.        ]])
+    >  
+    > >>> #将相同的缩放应用到测试集数据中
+    > >>> X_test = np.array([[ -3., -1.,  4.]])
+    > >>> X_test_minmax = min_max_scaler.transform(X_test)
+    > >>> X_test_minmax
+    > array([[-1.5       ,  0.        ,  1.66666667]])
+    >  
+    >  
+    > >>> #缩放因子等属性
+    > >>> min_max_scaler.scale_                             
+    > array([ 0.5       ,  0.5       ,  0.33...])
+    >  
+    > >>> min_max_scaler.min_                               
+    > array([ 0.        ,  0.5       ,  0.33...])
+    > ```
+    > 
+    > 当然，在构造类对象的时候也可以直接指定最大最小值的范围：feature_range=(min, max)，此时应用的公式变为：
+    > 
+    > X_std=(X-X.min(axis=0))/(X.max(axis=0)-X.min(axis=0))
+    > 
+    > X_scaled=X_std/(max-min)+min
+    > 
+    > 三、正则化（Normalization）
+    > --------------------
+    > 
+    > 正则化的过程是将每个样本缩放到单位范数（每个样本的范数为1），如果后面要使用如二次型（点积）或者其它核方法计算两个样本之间的相似性这个方法会很有用。
+    > 
+    > Normalization主要思想是对每个样本计算其p-范数，然后对该样本中每个元素除以该范数，这样处理的结果是使得每个处理后样本的p-范数（l1-norm,l2-norm）等于1。
+    > 
+    >     p-范数的计算公式：||X||p=(|x1|^p+|x2|^p+...+|xn|^p)^1/p
+    > 
+    > 该方法主要应用于文本分类和聚类中。例如，对于两个TF-IDF向量的l2-norm进行点积，就可以得到这两个向量的余弦相似性。
+    > 
+    > 1、可以使用preprocessing.normalize()函数对指定数据进行转换：
+    > 
+    > ```python
+    > >>> X = [[ 1., -1.,  2.],
+    > ...      [ 2.,  0.,  0.],
+    > ...      [ 0.,  1., -1.]]
+    > >>> X_normalized = preprocessing.normalize(X, norm='l2')
+    >  
+    > >>> X_normalized                                      
+    > array([[ 0.40..., -0.40...,  0.81...],
+    >        [ 1.  ...,  0.  ...,  0.  ...],
+    >        [ 0.  ...,  0.70..., -0.70...]])
+    > ```
+    > 
+    > 2、可以使用processing.Normalizer()类实现对训练集和测试集的拟合和转换：
+    > 
+    > ```python
+    > >>> normalizer = preprocessing.Normalizer().fit(X)  # fit does nothing
+    > >>> normalizer
+    > Normalizer(copy=True, norm='l2')
+    >  
+    > >>>
+    > >>> normalizer.transform(X)                            
+    > array([[ 0.40..., -0.40...,  0.81...],
+    >        [ 1.  ...,  0.  ...,  0.  ...],
+    >        [ 0.  ...,  0.70..., -0.70...]])
+    >  
+    > >>> normalizer.transform([[-1.,  1., 0.]])             
+    > array([[-0.70...,  0.70...,  0.  ...]])
+    > ```
+    > 
+    > 补充：
+    > 
+    > ![](https://i.imgur.com/num1bpB.png)
+    > 
+
+- [python - Can anyone explain me StandardScaler? - Stack Overflow](https://stackoverflow.com/questions/40758562/can-anyone-explain-me-standardscaler)
+
+    > The main idea is to normalize/standardize your features before applying machine learning techniques.
+    > ----------------------------------------------------------------------------------------------------
+    > 
+    > One important thing that you should keep in mind is that most (if not all) `scikit-learn` models/classes/functions, expect as input a matrix `X` with dimensions/shape `[number_of_samples, number_of_features]`. This is very important. Some other libraries expect as input the inverse.
+    > 
+    > `StandardScaler()` will normalize the features (each column of X) so that each column/feature/variable will have `mean = 0` and `standard deviation = 1`.
+    > 
+    > * * * * *
+    > 
+    > **Example:**
+    > 
+    > ```python
+    > from sklearn.preprocessing import StandardScaler
+    > import numpy as np
+    > 
+    > data = np.array([[0, 0], [0, 0], [1, 1], [1, 1]])
+    > scaler = StandardScaler()
+    > scaled_data = scaler.fit_transform(data)
+    > 
+    > print(data)
+    > [[0 0]
+    >  [0 0]
+    >  [1 1]
+    >  [1 1]]
+    > 
+    > print(scaled_data)
+    > [[-1. -1.]
+    >  [-1. -1.]
+    >  [ 1.  1.]
+    >  [ 1.  1.]]
+    > ```
+    > 
+    > Verify that the mean of each feature (column) is 0:
+    > 
+    > ```python
+    > scaled_data.mean(axis = 0)
+    > array([0., 0.])
+    > ```
+    > 
+    > Verify that the std of each feature (column) is 1:
+    > 
+    > ```python
+    > scaled_data.std(axis = 0)
+    > array([1., 1.])
+    > ```
+    > 
+    > ---
+    > 
+    > How to calculate it:
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/Z7ATR.png)](https://i.stack.imgur.com/Z7ATR.png)
+    > 
+    > You can read more here:
+    > 
+    > -   <http://sebastianraschka.com/Articles/2014_about_feature_scaling.html#standardization-and-min-max-scaling>
+
+
+
 ## one-hot encode
 
 - [sklearn.preprocessing.OneHotEncoder — scikit-learn 0.19.2 documentation](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html)
@@ -949,7 +1333,40 @@ array([[0, 0, 0],
     > array([[ 1.,  0.,  0.,  1.,  0.,  0.,  1.,  0.,  0.]])
     > ```
 
+## shuffle
 
+- [sklearn.utils.shuffle — scikit-learn 0.20.0 documentation](https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle)
+
+    > ```python
+    > from sklearn.utils import shuffle
+    > X, X_sparse, y = shuffle(X, X_sparse, y, random_state=0)
+    > ```
+
+# imbalanced-learn 
+
+## over-sampling algorithms
+
+- [Comparison of the different over-sampling algorithms — imbalanced-learn 0.4.3 documentation](http://imbalanced-learn.org/en/stable/auto_examples/over-sampling/plot_comparison_over_sampling.html#sphx-glr-auto-examples-over-sampling-plot-comparison-over-sampling-py)
+
+### RandomOverSampler
+
+- [imblearn.over_sampling.RandomOverSampler — imbalanced-learn 0.4.3 documentation](http://imbalanced-learn.org/en/stable/generated/imblearn.over_sampling.RandomOverSampler.html#imblearn.over_sampling.RandomOverSampler)
+
+### ADASYN
+
+- [imblearn.over_sampling.ADASYN — imbalanced-learn 0.4.3 documentation](http://imbalanced-learn.org/en/stable/generated/imblearn.over_sampling.ADASYN.html#imblearn.over_sampling.ADASYN)
+
+### SMOTE
+
+- [imblearn.over_sampling.SMOTE — imbalanced-learn 0.4.3 documentation](http://imbalanced-learn.org/en/stable/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE)
+
+## under-sampling algorithms
+
+- [Comparison of the different under-sampling algorithms — imbalanced-learn 0.4.3 documentation](http://imbalanced-learn.org/en/stable/auto_examples/under-sampling/plot_comparison_under_sampling.html#sphx-glr-auto-examples-under-sampling-plot-comparison-under-sampling-py)
+
+- [Imbalanced-learn: A Python Toolbox to Tackle the Curse of Imbalanced Datasets in Machine Learning](http://www.jmlr.org//papers/v18/16-365.html)
+
+    > ![1100×544 | f83823fa-7596-4812-9e63-9cab13a2124c.png (100%)](https://screenshotscdn.firefoxusercontent.com/images/f83823fa-7596-4812-9e63-9cab13a2124c.png)
 
 # Pandas
 
@@ -1018,31 +1435,6 @@ array([[0, 0, 0],
 
     ![](https://shanelynnwebsite-mid9n9g1q9y8tt.netdna-ssl.com/wp-content/uploads/2016/10/Pandas-selections-and-indexing-1024x731.png)
 
-
-## remove column
-
-- [Delete column from pandas DataFrame using python del - Stack Overflow](https://stackoverflow.com/questions/13411544/delete-column-from-pandas-dataframe-using-python-del)
-
-    > The best way to do this in pandas is to use [`drop`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop.html):
-    > 
-    > ```
-    > df = df.drop('column_name', 1)
-    > ```
-    > 
-    > where `1` is the _axis_ number (`0` for rows and `1` for columns.)
-    > 
-    > To delete the column without having to reassign `df` you can do:
-    > 
-    > ```
-    > df.drop('column_name', axis=1, inplace=True)
-    > ```
-    > 
-    > Finally, to drop by column _number_ instead of by column _label_, try this to delete, e.g. the 1st, 2nd and 4th columns:
-    > 
-    > ```
-    > df.drop(df.columns[[0, 1, 3]], axis=1)  # df.columns is zero-based pd.Index 
-    > ```
-    > 
 
 
 ## correlation
@@ -1120,61 +1512,98 @@ array([[0, 0, 0],
     > dtype: object
     > ```
 
-## column assignment
 
-- [Adding new column to existing DataFrame in Python pandas - Stack Overflow](https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas)
 
-    > A pandas dataframe is implemented as an ordered dict of columns.
+## NaN & None
+
+- [Python 中 NaN 和 None 的详细比较 - Python - 伯乐在线](http://python.jobbole.com/87266/)
+
+    > __None vs NaN要点总结__
     > 
-    > This means that the `__getitem__` `[]` can not only be used to get a certain column, but `__setitem__` `[] =` can be used to assign a new column.
+    > 1. 在pandas中， 如果其他的数据都是数值类型， pandas会把None自动替换成NaN, 甚至能将s[s.isnull()]= None,和s.replace(NaN, None)操作的效果无效化。 这时需要用where函数才能进行替换。
     > 
-    > For example, this dataframe can have a column added to it by simply using the `[]` accessor
+    > 2. None能够直接被导入数据库作为空值处理， 包含NaN的数据导入时会报错。
     > 
-    > ```
-    >     size      name color
-    > 0    big      rose   red
-    > 1  small    violet  blue
-    > 2  small     tulip   red
-    > 3  small  harebell  blue
+    > 3. numpy和pandas的很多函数能处理NaN，但是如果遇到None就会报错。
     > 
-    > df['protected'] = ['no', 'no', 'no', 'yes']
+    > 4. None和NaN都不能被pandas的groupby函数处理，包含None或者NaN的组都会被忽略。
     > 
-    >     size      name color protected
-    > 0    big      rose   red        no
-    > 1  small    violet  blue        no
-    > 2  small     tulip   red        no
-    > 3  small  harebell  blue       yes
-    > ```
+    > 等值性比较的总结:（True表示被判定为相等）
     > 
-    > Note that this works even if the index of the dataframe is off.
+    > ||None对None |	NaN对NaN |	None对NaN|
+    > |--|--|--|--|--|
+    > |单值 |	True |	False |	False|
+    > |tuple(整体) |	True |	True |	False|
+    > |np.array(逐个) |	True |	False |	False|
+    > |Series(逐个) |	False |	False |	False|
+    > |assert_equals| 	True |	True |	False|
+    > |Series.equals |	True |	True |	True|
+    > |merge |	True |	True |	True|
     > 
-    > ```
-    > df.index = [3,2,1,0]
-    > df['protected'] = ['no', 'no', 'no', 'yes']
-    >     size      name color protected
-    > 3    big      rose   red        no
-    > 2  small    violet  blue        no
-    > 1  small     tulip   red        no
-    > 0  small  harebell  blue       yes
-    > ```
+    > 由于等值性比较方面，None和NaN在各场景下表现不太一致，相对来说None表现的更稳定。
     > 
-    > ### \[\]= is the way to go, but watch out!
+    > 为了不给自己惹不必要的麻烦和额外的记忆负担。 实践中，建议遵循以下三个原则即可
     > 
-    > However, if you have a `pd.Series` and try to assign it to a dataframe where the indexes are off, you will run in to trouble. See example:
+    > - 在用pandas和numpy处理数据阶段将None,NaN统一处理成NaN,以便支持更多的函数。
     > 
-    > ```
-    > df['protected'] = pd.Series(['no', 'no', 'no', 'yes'])
-    >     size      name color protected
-    > 3    big      rose   red       yes
-    > 2  small    violet  blue        no
-    > 1  small     tulip   red        no
-    > 0  small  harebell  blue        no
-    > ```
+    > - 如果要判断Series,numpy.array整体的等值性，用专门的Series.equals,numpy.array函数去处理，不要自己用==判断 *
     > 
-    > This is because a `pd.Series` by default has an index enumerated from 0 to n. And the pandas `[] =` method **tries** _to be "smart"_
+    > - 如果要将数据导入数据库，将NaN替换成None
     > 
 
-## adding rows
+- [null object in Python? - Stack Overflow](https://stackoverflow.com/questions/3289601/null-object-in-python)
+
+
+    > In Python, the 'null' object is the singleton None.
+    > 
+    > The best way to check things for "Noneness" is to use the identity operator, is:
+    > ```python
+    > if foo is None:
+    >     ...
+    > ```
+    > 
+
+
+## print pandas DataFrame without index
+
+- [python - How to print pandas DataFrame without index - Stack Overflow](https://stackoverflow.com/questions/24644656/how-to-print-pandas-dataframe-without-index)
+
+    > ```py
+    > print df.to_string(index=False)
+    > ```
+
+
+
+## batch process all the values of Dataframe
+
+- [python - pandas how to batch process all the values - Stack Overflow](https://stackoverflow.com/questions/32840905/pandas-how-to-batch-process-all-the-values)
+
+    > You can call [`apply`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html#pandas.DataFrame.apply) with a lambda that calls the vectorise [`str`](http://pandas.pydata.org/pandas-docs/stable/api.html#string-handling) methods to slice your strings:
+    > 
+    > ```python
+    > In [136]:
+    > df = pd.DataFrame({'a':['asdas','asdasdsadas','123124'],'b':['554653645','546456453634','uyiyasdhnfjnas']})
+    > df
+    > 
+    > Out[136]:
+    >              a               b
+    > 0        asdas       554653645
+    > 1  asdasdsadas    546456453634
+    > 2       123124  uyiyasdhnfjnas
+    > 
+    > In [138]:
+    > df.apply(lambda x: x.str[:4])
+    > 
+    > Out[138]:
+    >       a     b
+    > 0  asda  5546
+    > 1  asda  5464
+    > 2  1231  uyiy
+    > ```
+
+## row operation
+
+### adding rows
 
 - [python - add one row in a pandas.DataFrame - Stack Overflow](https://stackoverflow.com/questions/10715965/add-one-row-in-a-pandas-dataframe)
 
@@ -1186,7 +1615,7 @@ array([[0, 0, 0],
         df.loc[len(df)] = row
     ```
 
-## selecting rows
+### selecting rows
 
 - [python - Select rows from a DataFrame based on values in a column in pandas - Stack Overflow](https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas)
 
@@ -1347,68 +1776,7 @@ array([[0, 0, 0],
     > ```
     > 
 
-
-
-## NaN & None
-
-- [Python 中 NaN 和 None 的详细比较 - Python - 伯乐在线](http://python.jobbole.com/87266/)
-
-    > __None vs NaN要点总结__
-    > 
-    > 1. 在pandas中， 如果其他的数据都是数值类型， pandas会把None自动替换成NaN, 甚至能将s[s.isnull()]= None,和s.replace(NaN, None)操作的效果无效化。 这时需要用where函数才能进行替换。
-    > 
-    > 2. None能够直接被导入数据库作为空值处理， 包含NaN的数据导入时会报错。
-    > 
-    > 3. numpy和pandas的很多函数能处理NaN，但是如果遇到None就会报错。
-    > 
-    > 4. None和NaN都不能被pandas的groupby函数处理，包含None或者NaN的组都会被忽略。
-    > 
-    > 等值性比较的总结:（True表示被判定为相等）
-    > 
-    > ||None对None |	NaN对NaN |	None对NaN|
-    > |--|--|--|--|--|
-    > |单值 |	True |	False |	False|
-    > |tuple(整体) |	True |	True |	False|
-    > |np.array(逐个) |	True |	False |	False|
-    > |Series(逐个) |	False |	False |	False|
-    > |assert_equals| 	True |	True |	False|
-    > |Series.equals |	True |	True |	True|
-    > |merge |	True |	True |	True|
-    > 
-    > 由于等值性比较方面，None和NaN在各场景下表现不太一致，相对来说None表现的更稳定。
-    > 
-    > 为了不给自己惹不必要的麻烦和额外的记忆负担。 实践中，建议遵循以下三个原则即可
-    > 
-    > - 在用pandas和numpy处理数据阶段将None,NaN统一处理成NaN,以便支持更多的函数。
-    > 
-    > - 如果要判断Series,numpy.array整体的等值性，用专门的Series.equals,numpy.array函数去处理，不要自己用==判断 *
-    > 
-    > - 如果要将数据导入数据库，将NaN替换成None
-    > 
-
-- [null object in Python? - Stack Overflow](https://stackoverflow.com/questions/3289601/null-object-in-python)
-
-
-    > In Python, the 'null' object is the singleton None.
-    > 
-    > The best way to check things for "Noneness" is to use the identity operator, is:
-    > ```python
-    > if foo is None:
-    >     ...
-    > ```
-    > 
-
-
-## print pandas DataFrame without index
-
-- [python - How to print pandas DataFrame without index - Stack Overflow](https://stackoverflow.com/questions/24644656/how-to-print-pandas-dataframe-without-index)
-
-    > ```py
-    > print df.to_string(index=False)
-    > ```
-
-
-## Remove name of Row Index
+### Remove name of Row Index
 
 - [python - Remove Row Index dataframe pandas - Stack Overflow](https://stackoverflow.com/questions/43716402/remove-row-index-dataframe-pandas)
 
@@ -1444,32 +1812,155 @@ array([[0, 0, 0],
     > ```
     > 
 
-## batch process all the values of Dataframe
+### Remove Row Index
 
-- [python - pandas how to batch process all the values - Stack Overflow](https://stackoverflow.com/questions/32840905/pandas-how-to-batch-process-all-the-values)
+- [pandas.DataFrame.reset_index — pandas 0.23.4 documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.reset_index.html)
 
-    > You can call [`apply`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html#pandas.DataFrame.apply) with a lambda that calls the vectorise [`str`](http://pandas.pydata.org/pandas-docs/stable/api.html#string-handling) methods to slice your strings:
+- [python - Remove Row Index dataframe pandas - Stack Overflow](https://stackoverflow.com/questions/43716402/remove-row-index-dataframe-pandas)
+
+    > Try using:
     > 
     > ```python
-    > In [136]:
-    > df = pd.DataFrame({'a':['asdas','asdasdsadas','123124'],'b':['554653645','546456453634','uyiyasdhnfjnas']})
-    > df
-    > 
-    > Out[136]:
-    >              a               b
-    > 0        asdas       554653645
-    > 1  asdasdsadas    546456453634
-    > 2       123124  uyiyasdhnfjnas
-    > 
-    > In [138]:
-    > df.apply(lambda x: x.str[:4])
-    > 
-    > Out[138]:
-    >       a     b
-    > 0  asda  5546
-    > 1  asda  5464
-    > 2  1231  uyiy
+    > df1.reset_index(drop=True)
     > ```
+    > 
+    > This resets the index to the default integer index and removes the original one. If you want to assign this change to original `dataframe` it is easier to use:
+    > 
+    > ```python
+    > df1.reset_index(drop=True, inplace=True)
+    > ```
+    > 
+    > As it will edit the `df1` dataframe without making a copy of it.
+
+
+## column operation
+
+### remove column
+
+- [Delete column from pandas DataFrame using python del - Stack Overflow](https://stackoverflow.com/questions/13411544/delete-column-from-pandas-dataframe-using-python-del)
+
+    > The best way to do this in pandas is to use [`drop`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop.html):
+    > 
+    > ```
+    > df = df.drop('column_name', 1)
+    > ```
+    > 
+    > where `1` is the _axis_ number (`0` for rows and `1` for columns.)
+    > 
+    > To delete the column without having to reassign `df` you can do:
+    > 
+    > ```
+    > df.drop('column_name', axis=1, inplace=True)
+    > ```
+    > 
+    > Finally, to drop by column _number_ instead of by column _label_, try this to delete, e.g. the 1st, 2nd and 4th columns:
+    > 
+    > ```
+    > df.drop(df.columns[[0, 1, 3]], axis=1)  # df.columns is zero-based pd.Index 
+    > ```
+    > 
+
+
+### column assignment
+
+- [Adding new column to existing DataFrame in Python pandas - Stack Overflow](https://stackoverflow.com/questions/12555323/adding-new-column-to-existing-dataframe-in-python-pandas)
+
+    > A pandas dataframe is implemented as an ordered dict of columns.
+    > 
+    > This means that the `__getitem__` `[]` can not only be used to get a certain column, but `__setitem__` `[] =` can be used to assign a new column.
+    > 
+    > For example, this dataframe can have a column added to it by simply using the `[]` accessor
+    > 
+    > ```
+    >     size      name color
+    > 0    big      rose   red
+    > 1  small    violet  blue
+    > 2  small     tulip   red
+    > 3  small  harebell  blue
+    > 
+    > df['protected'] = ['no', 'no', 'no', 'yes']
+    > 
+    >     size      name color protected
+    > 0    big      rose   red        no
+    > 1  small    violet  blue        no
+    > 2  small     tulip   red        no
+    > 3  small  harebell  blue       yes
+    > ```
+    > 
+    > Note that this works even if the index of the dataframe is off.
+    > 
+    > ```
+    > df.index = [3,2,1,0]
+    > df['protected'] = ['no', 'no', 'no', 'yes']
+    >     size      name color protected
+    > 3    big      rose   red        no
+    > 2  small    violet  blue        no
+    > 1  small     tulip   red        no
+    > 0  small  harebell  blue       yes
+    > ```
+    > 
+    > ### \[\]= is the way to go, but watch out!
+    > 
+    > However, if you have a `pd.Series` and try to assign it to a dataframe where the indexes are off, you will run in to trouble. See example:
+    > 
+    > ```
+    > df['protected'] = pd.Series(['no', 'no', 'no', 'yes'])
+    >     size      name color protected
+    > 3    big      rose   red       yes
+    > 2  small    violet  blue        no
+    > 1  small     tulip   red        no
+    > 0  small  harebell  blue        no
+    > ```
+    > 
+    > This is because a `pd.Series` by default has an index enumerated from 0 to n. And the pandas `[] =` method **tries** _to be "smart"_
+    > 
+
+### select DataFrame columns based on partial matching
+
+- [python - How to select DataFrame columns based on partial matching? - Stack Overflow](https://stackoverflow.com/questions/31551412/how-to-select-dataframe-columns-based-on-partial-matching)
+
+    > Your solution using `map` is very good. If you really want to use str.contains, it is possible to convert Index objects to Series (which have the `str.contains` method):
+    > 
+    > ```python
+    > In [1]: df
+    > Out[1]:
+    >    x  y  z
+    > 0  0  0  0
+    > 1  1  1  1
+    > 2  2  2  2
+    > 3  3  3  3
+    > 4  4  4  4
+    > 5  5  5  5
+    > 6  6  6  6
+    > 7  7  7  7
+    > 8  8  8  8
+    > 9  9  9  9
+    > 
+    > In [2]: df.columns.to_series().str.contains('x')
+    > Out[2]:
+    > x     True
+    > y    False
+    > z    False
+    > dtype: bool
+    > 
+    > In [3]: df[df.columns[df.columns.to_series().str.contains('x')]]
+    > Out[3]:
+    >    x
+    > 0  0
+    > 1  1
+    > 2  2
+    > 3  3
+    > 4  4
+    > 5  5
+    > 6  6
+    > 7  7
+    > 8  8
+    > 9  9
+    > ```
+    > 
+    > **UPDATE** I just read your last paragraph. From the [documentation](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.str.contains.html), `str.contains` allows you to pass a regex by default (`str.contains('^myregex')`)
+    > 
+
 
 ## dataframe operation
 

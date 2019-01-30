@@ -1,33 +1,46 @@
-# Web__開發
+# Web__開發1_前後端
 
 [toc]
 <!-- toc --> 
 
+# Tools
 
-## 前後端 tutorial
+## Online tools provides md2, md5, sha1, sha2, sha512, bas64, html, url encode / decode functions 
+
+- [Online Tools](https://emn178.github.io/online-tools/index.html)
+
+
+# 前後端 tutorial
 
 
 - [Half-Stack Developer 養成計畫 系列文章列表 - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天](https://ithelp.ithome.com.tw/users/20091346/ironman/1150?page=1)
 
-### 簡單留言板(無資料庫)
+## 簡單留言板(無資料庫)
 
 - [想～簡簡單單愛：超簡單留言板 - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天](https://ithelp.ithome.com.tw/articles/10187442)
 
-### 一般留言板(有資料庫)
+## 一般留言板(有資料庫)
 
 - [沒那麼簡單～的留言板 - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天](https://ithelp.ithome.com.tw/articles/10187673)
 
 
 
-## utf8 解編碼
+# utf8 解編碼
 
 - [URL編碼 | URL解碼](https://www.ifreesite.com/urldecoderencoder.htm)
 
 
 
-## Content Management Framework
+# Content Management Framework
 
 - [Strapi - Node.js REST API Framework with extensible Admin Panel.](https://strapi.io/)
+
+
+# node.js
+
+## antonmedv/fx: Command-line JSON viewer
+
+- [antonmedv/fx: Command-line JSON viewer 🔥](https://github.com/antonmedv/fx?fbclid=IwAR1o74dLZnUztJknc-7bL3eM703LAyNZbwWqzM8mG3rf9-2plGVJ-0Upw4k)
 
 
 # 前端

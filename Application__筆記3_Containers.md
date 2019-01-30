@@ -1,4 +1,4 @@
-# Application__筆記3
+# Application__筆記3_Containers
 
 [toc]
 <!-- toc --> 
@@ -243,6 +243,53 @@ winetricks wininet
     > 
     > then restart the application you've been using.
     > 
+
+### Dropbox: move to ext4
+
+- [mount - Dropbox: ext4 isn't ext4 - Ask Ubuntu](https://askubuntu.com/questions/1066045/dropbox-ext4-isnt-ext4/1087376#1087376)
+
+    > There are *three* things in total that Dropbox requires to continue working on Linux, and only one is properly documented. What I'm summarising here worked for Dropbox 59.4.93 on Ubuntu 18.04.1 (amd64).
+    > 
+    > You've already cleared the first hurdle:
+    > 
+    > -   The base file system needs to be `ext4`, and specifically *not* `ecryptfs`. i.e. if your home folder is encrypted, you need to put the Dropbox folder someplace else, eg. a separate `ext4` partition.
+    > 
+    > The other things to check are these:
+    > 
+    > -   The `ext4` file system needs to be formatted with `ext_attr` on. This is the default behavior, but you can confirm by running `debugfs -R features /dev/sda1` (or whatever your device file is called -- if you're using LVM it might be something like `/dev/mapper/computername--vg-partitionname`)
+    > -   The `ext4` partition needs to be mounted with the `user_xattr` option set (You can check for and add the option in GNOME disks or edit `/etc/fstab` directly)
+    > -   The target folder (or Dropbox sync folder) needs to be at least *two* levels beneath the mountpoint, as described in [this post](https://www.dropboxforum.com/t5/Error-messages/Ubuntu-16-04-Error-moving-files-to-new-ext4-location/m-p/304937/highlight/true#M18302 "this post"). This is obviously a facepalm-worthy bug.
+    > 
+    > Once I fixed all these things, Dropbox finally allowed me to move the target folder and the error messages about "unsupported file system" disappeared.
+
+    > ---
+    > 
+    > My Lubuntu 18.10 installation laptop started complaining about the Dropbox some time back, but it wasn't until last week that I found that it did not have the package **attr** installed. Once I had installed that, Dropbox appears to be happy...
+    > 
+    > I had happened upon the article at <https://unix.stackexchange.com/a/475253> and attempted to check the file attributes within the Dropbox directory on the laptop. I was surprised to discover that the `getfattr` command wasn't available, that led me to installing the package.
+    > 
+    > This might be a way forward for you, or it could be a completely different problem, but I hope it's worth flagging up.
+
+
+### Hack to make Dropbox work on non-ext4 filesystems
+
+- [dimaryaz/dropbox_ext4: Hack to make Dropbox work on non-ext4 filesystems](https://github.com/dimaryaz/dropbox_ext4)
+
+- [dark/dropbox-filesystem-fix: Fix the filesystem detection in the Linux Dropbox client](https://github.com/dark/dropbox-filesystem-fix)
+
+- [Force Dropbox to use ext4 by elliottpost · Pull Request #1 · elliottpost/docker-dropbox](https://github.com/elliottpost/docker-dropbox/pull/1)
+
+### h3
+
+- [Solved: Re: Ubuntu 16.04: Error moving files to new ext4 l... - Dropbox Community - 303818](https://www.dropboxforum.com/t5/Error-messages/Ubuntu-16-04-Error-moving-files-to-new-ext4-location/m-p/304087#M17994)
+
+    > **Update** **/ Work-around:**
+    > 
+    > So after a bit of testing, I found a work-around that may help you. While Dropbox did not like me re-using the same location in the root of the partition (/mnt/data), even if the directory privileges were set very generously, I was able to move it to a *sub-directory* there-in.
+    > 
+    > So "/mnt/data/d" was an acceptable location to move Dropbox to, while "/mnt/data" was not.
+
+
 
 
 ## OneDrive

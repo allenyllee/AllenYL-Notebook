@@ -5,7 +5,9 @@
 
 
 
-## 如何將別人的 git 倉庫複製回來再推送到自己的 gitlab
+## 將別人的 git 倉庫複製回來再推送到自己的 gitlab
+
+### 複製倉庫 git clone
 
 - 到別人的 git 倉庫 (git repositry) 把位址複製下來，記得選HTTPS
     ![](https://screenshotscdn.firefoxusercontent.com/images/47e74335-71f0-41a3-817d-fcba2fc05ac5.png)
@@ -21,6 +23,8 @@
 - 輸入 `ls -l` 會發現新增的資料夾，`cd` 到該資料夾
     
     ![](https://screenshotscdn.firefoxusercontent.com/images/180e74ee-0b58-49d8-a84f-7fc4390bb12d.png)
+
+### 上傳倉庫 git push
 
 - 到你自己的 gitlab 網頁新增一個 project
 ![](https://screenshotscdn.firefoxusercontent.com/images/4020ac49-4d35-4147-8cca-b0c3805032bd.png)
@@ -45,9 +49,13 @@
 
 ## 如何將修改過的檔案推送到自己的 gitlab
 
+### 檢查檔案狀態 git status
+
 - 假設你修改了一些檔案，又新增了一些檔案，然後輸入 `git status`，就會發現用紅字顯示修改過的檔案及新增的未追蹤檔案
     
     ![](https://screenshotscdn.firefoxusercontent.com/images/8c016b6e-64a3-48c4-9f3b-c14fad59236e.png)
+
+### 加入暫存 git add
 
 - 假設你想要將某檔案或某路徑排除，有可能是一些自動產生的暫存檔案之類的，輸入 `echo "path/want/to/exclude" >> .gitignore` 將路徑加到 `.gitignore` 排除清單，之後再輸入一次 `git status` ，此時排除的檔案就會消失，並新增一個 `.gitignore` 檔案
 
@@ -61,6 +69,9 @@
     - 如果想一次加入相同副檔名的檔案，可以輸入`git add *.bar`
 
     - 這一步若不小心加錯檔案了，可以下 `git reset HEAD` 回復成紅字狀態
+
+
+### 送出提交 git commit
 
 - 輸入 `git commit -m "some messages..."` 將剛剛加入暫存的檔案提交出去，並附上一段訊息，輸入 `git log` 可以查看提交訊息
     
@@ -76,6 +87,9 @@
     - 這一步如果不小心做錯了，可以下 `git reset HEAD^` ( 注意多了一個帽子hat`^` )，就會回到上一步紅字狀態
     - 如果想退回前兩版，就下 `git reset HEAD^^` (加兩個帽子 `^^`)
     - 如果想退回前三版，下 `git reset HEAD~3` (接數字3)，前N版就接數字N，依此類推
+
+
+### 推送至倉庫 git push
 
 - 輸入 `git push myremote` 即可將資料傳到你自己的 gitlab 上
 
@@ -106,8 +120,13 @@
 
 ## 如何拉取遠端的更新
 
+
+### 從遠端抓取更新 git fetch
+
 - 先從所有的遠端抓取更新 `git fetch --all`
     - 如果只想抓某個遠端的更新，可下 `git fetch myremote` myremote 換成你指定的遠端名，預設的遠端名稱是 origin，就是你複製的源頭
+
+### 匯入新的提交 git pull
 
 - 輸入 `git pull origin master` 就會從最開始複製的遠端位址的 master 分支抓取更新；同理，輸入 `git pull myremote master` 就會從自己的 gitlab 的 master 分支抓取更新
 
@@ -228,7 +247,9 @@
 
 ## 如何清除目錄中的 untracked file
 
-- 有時目錄中會出現未加入版本控管的檔案，下 `git status` 會以紅字表示。出於某些因素，例如想要合併的分支會改到這些檔案，因而造成衝突，此時如果確定這些檔案都是不要的，想把目錄清乾淨，可以先下 `git clean -n` 顯示那些檔案將移除，再下 `git clean -f` 確定將檔案移除。
+### git clean
+
+- 有時目錄中會出現未加入版本控管的檔案，下 `git status` 會以紅字表示。出於某些因素，例如想要合併的分支會改到這些檔案，因而造成衝突，此時如果確定這些檔案都是不要的，想把目錄清乾淨，可以先下 `git clean -n` 顯示哪些檔案將移除，再下 `git clean -f` 確定將檔案移除。
 
     ![](https://screenshotscdn.firefoxusercontent.com/images/e9958f21-4fe1-4599-932f-d6281ac87b75.png)
     - [branch - How to remove local (untracked) files from the current Git working tree? - Stack Overflow](https://stackoverflow.com/questions/61212/how-to-remove-local-untracked-files-from-the-current-git-working-tree)
@@ -291,8 +312,8 @@
     > ```shell
     > $ git config credential.helper store
     > $ git push http://example.com/repo.git
-    > Username: <type your username>
-    > Password: <type your password>
+    > Username: < type your username>
+    > Password: < type your password>
     > 
     > [several days later]
     > $ git push http://example.com/repo.git
@@ -548,7 +569,7 @@
     > 
     > 有些项目有一条规则，即存储库中的每个提交都必须处于可工作状态 - 也就是说，在每次提交时，代码应该是可编译的，或运行测试套件应该不会失败的。当你在某分支上工作时间长时，但如果你最终因为某种原因需要rebase时，那么跳过每个变基后的提交以确保你没有意外引入一个中断是有些冗长乏味的。
     > 
-    > 幸运的是，git rebase已经支持了-x或--exec选项。git rebase -x <cmd>将在每次提交应用到rebase后运行该命令。因此，例如，如果你有一个项目，其中npm run tests会运行你的测试套件，那么在rebase期间应用每次提交后，git rebase -x npm run tests将会运行测试套件。这使你可以查看测试套件是否在任何变基后的提交中有失败情况，因此你可以确保测试套件在每次提交时仍能通过。 
+    > 幸运的是，git rebase已经支持了-x或--exec选项。git rebase -x < cmd>将在每次提交应用到rebase后运行该命令。因此，例如，如果你有一个项目，其中npm run tests会运行你的测试套件，那么在rebase期间应用每次提交后，git rebase -x npm run tests将会运行测试套件。这使你可以查看测试套件是否在任何变基后的提交中有失败情况，因此你可以确保测试套件在每次提交时仍能通过。 
     > 
     > ---
     > 
@@ -556,7 +577,7 @@
     > 
     > 你是不是试过在 rebase 时干掉过某次提交，后来又发现你需要保留这次提交的一些东西？你可能觉得这些提交的东西已经永远找不回来了，只能从头再来了。其实不然，但如果你在本地工作副本中提交了，提交就会进入到 "引用日志" ，你仍然可以访问到。
     > 
-    > 运行 git reflog 将在本地工作副本中显示当前分支的所有活动的列表，并为您提供每个提交的 SHA1 值。一旦发现你 rebase 时放弃的那个提交，你可以运行 git checkout <SHA1> 来检出该次提交，复制好你需要的信息，然后再运行 git checkout HEAD 返回到分支最新的提交去。 
+    > 运行 git reflog 将在本地工作副本中显示当前分支的所有活动的列表，并为您提供每个提交的 SHA1 值。一旦发现你 rebase 时放弃的那个提交，你可以运行 git checkout < SHA1> 来检出该次提交，复制好你需要的信息，然后再运行 git checkout HEAD 返回到分支最新的提交去。 
     > 
 
 ### 顯示git版本
@@ -629,7 +650,7 @@
     > $ git status -uall
     > ...
     > Untracked files:
-    >   (use "git add <file>..." to include in what will be committed)
+    >   (use "git add < file>..." to include in what will be committed)
     > 
     >     weeble/file1
     >     weeble/file2
@@ -729,3 +750,93 @@
 
 - [MichaelMure/git-bug: Distributed bug tracker embedded in Git](https://github.com/MichaelMure/git-bug)
 
+# github
+
+## make a pull request
+
+- [Fixes #2155: using viz.line() instead of viz.updatetrace() by allenyllee · Pull Request #2252 · RaRe-Technologies/gensim](https://github.com/RaRe-Technologies/gensim/pull/2252)
+
+    > (1) Merge `develop` to your branch from current repo, for this you need
+    > 
+    > -   Add remote to your fork: <https://help.github.com/articles/configuring-a-remote-for-a-fork/>
+    > -   Merge `develop` (from original gensim repo) to your branch
+    > 
+
+
+- [Configuring a remote for a fork - User Documentation](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
+
+    > You must configure a remote that points to the upstream repository in Git to [sync changes you make in a fork](https://help.github.com/articles/syncing-a-fork) with the original repository. This also allows you to sync changes made in the original repository with the fork.
+    > 
+    > 1.  Open Git Bash.
+    > 
+    > 2.  List the current configured remote repository for your fork.
+    >     ```sh
+    >     git remote -v
+    >     origin  https://github.com/*YOUR_USERNAME*/*YOUR_FORK*.git (fetch)
+    >     origin  https://github.com/*YOUR_USERNAME*/*YOUR_FORK*.git (push)
+    >     ```
+    >     
+    > 3.  Specify a new remote *upstream* repository that will be synced with the fork.
+    >     ```sh
+    >     git remote add upstream https://github.com/*ORIGINAL_OWNER*/*ORIGINAL_REPOSITORY*.git
+    >     ```
+    > 4.  Verify the new upstream repository you've specified for your fork.
+    >     ```sh
+    >     git remote -v
+    >     origin    https://github.com/*YOUR_USERNAME*/*YOUR_FORK*.git (fetch)
+    >     origin    https://github.com/*YOUR_USERNAME*/*YOUR_FORK*.git (push)
+    >     upstream  https://github.com/*ORIGINAL_OWNER*/*ORIGINAL_REPOSITORY*.git (fetch)
+    >     upstream  https://github.com/*ORIGINAL_OWNER*/*ORIGINAL_REPOSITORY*.git (push)
+    >     ```
+    >     
+
+- [Syncing a fork - User Documentation](https://help.github.com/articles/syncing-a-fork/)
+
+    > Sync a fork of a repository to keep it up-to-date with the upstream repository.
+    > 
+    > Before you can sync your fork with an upstream repository, you must [configure a remote that points to the upstream repository](https://help.github.com/articles/configuring-a-remote-for-a-fork) in Git.
+    > 
+    > 1.  Open Git Bash.
+    > 
+    > 2.  Change the current working directory to your local project.
+    > 
+    > 3.  Fetch the branches and their respective commits from the upstream repository. Commits to `master` will be stored in a local branch, `upstream/master`.
+    >     ```sh
+    >     git fetch upstream
+    >     remote: Counting objects: 75, done.
+    >     remote: Compressing objects: 100% (53/53), done.
+    >     remote: Total 62 (delta 27), reused 44 (delta 9)
+    >     Unpacking objects: 100% (62/62), done.
+    >     From https://github.com/*ORIGINAL_OWNER*/*ORIGINAL_REPOSITORY*
+    >      * [new branch]      master     -> upstream/master
+    >     ```
+    >     
+    > 4.  Check out your fork's local `master` branch.
+    >     ```sh
+    >     git checkout master
+    >     Switched to branch 'master'
+    >     ```
+    >     
+    > 5.  Merge the changes from `upstream/master` into your local `master` branch. This brings your fork's `master` branch into sync with the upstream repository, without losing your local changes.
+    >     ```sh
+    >     git merge upstream/master
+    >     Updating a422352..5fdff0f
+    >     Fast-forward
+    >      README                    |    9 -------
+    >      README.md                 |    7 ++++++
+    >      2 files changed, 7 insertions(+), 9 deletions(-)
+    >      delete mode 100644 README
+    >      create mode 100644 README.md
+    >     ```
+    >     
+    >     If your local branch didn't have any unique commits, Git will instead perform a "fast-forward":
+    >     ```sh
+    >     git merge upstream/master
+    >     Updating 34e91da..16c56ad
+    >     Fast-forward
+    >      README.md                 |    5 +++--
+    >      1 file changed, 3 insertions(+), 2 deletions(-)
+    >      ```
+    >      
+
+     

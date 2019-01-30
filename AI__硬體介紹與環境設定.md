@@ -653,15 +653,9 @@
 
 # Environment Setup
 
-## Linux or Windows?
+## Linux
 
-## Nvidia Driver install
-
-## Jupyter Notebook/Lab setup
-
-### for Linux
-
-#### system information
+### system information
 
 - cpu info
     - [8 commands to check cpu information on Linux – BinaryTides](https://www.binarytides.com/linux-cpu-information/)
@@ -680,21 +674,341 @@
     - watch nvidia-smi
 
 
+### CUDA 
 
-### for Windows
+- [Installation Guide Linux :: CUDA Toolkit Documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
+    ```
+    cuda_9.0.176_384.81_linux-run --override --silent --toolkit --samples
+    ```
+
+- [How can I install CUDA 9 on Ubuntu 17.10 - Ask Ubuntu](https://askubuntu.com/questions/967332/how-can-i-install-cuda-9-on-ubuntu-17-10)
+
+
+    > **Installation of NVIDIA driver 384**
+    > 
+    > First we install a fresh Ubuntu 17.10 on a computer with an NVIDIA GPU and select "Install third-party software" during the process. Alternatively, we can add the graphics drivers repository manually:
+    > 
+    > ```
+    > sudo add-apt-repository ppa:graphics-drivers/ppa
+    > sudo apt update
+    > 
+    > ```
+    > 
+    > Then we install the most recent NVIDIA driver using apt:
+    > 
+    > ```
+    > sudo apt install nvidia-384 nvidia-384-dev
+    > 
+    > ```
+    > 
+    > We verify the installation by running:
+    > 
+    > ```
+    > nvidia-smi
+    > 
+    > ```
+    > 
+    > We should see an output which lists the NVIDIA 384 driver and our discrete NVIDIA GPU - similar to summarized table below:
+    > 
+    > ```
+    > +-----------------------------------------------------------------------------+
+    > | NVIDIA-SMI 384.90                 Driver Version: 384.90                    |
+    > |                                                                             |
+    > |-------------------------------+----------------------+----------------------+
+    > |   0  Quadro M500M        Off  | 00000000:06:00.0 Off |                  N/A |
+    > | N/A   48C    P0    N/A /  N/A |    943MiB /  2002MiB |     26%      Default |
+    > +-------------------------------+----------------------+----------------------+
+    > 
+    > ```
+    > 
+    > **Preparation for installing of CUDA 9 + SDK**
+    > 
+    > We install a number of build/dev packages which we require later:
+    > 
+    > ```
+    > sudo apt-get install g++ freeglut3-dev build-essential libx11-dev libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev
+    > 
+    > ```
+    > 
+    > We notice that the default gcc/g++ version on 17.10 is `7.2.0 (Ubuntu 7.2.0-8ubuntu3)` :
+    > 
+    > ```
+    > gcc -v
+    > 
+    > ```
+    > 
+    > CUDA 9 requires gcc 6. Thus, we install it:
+    > 
+    > ```
+    > sudo apt install gcc-6
+    > sudo apt install g++-6
+    > 
+    > ```
+    > 
+    > Note that the default gcc version is still `7.2`; can be checked by running `gcc -v` again.
+    > 
+    > **Installation of CUDA 9 + SDK**
+    > 
+    > From the [CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive), select one of the "runfile (local)" installation packages to download a version of CUDA 9, such as
+    > 
+    > ```
+    > wget https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda_9.0.176_384.81_linux-run
+    > 
+    > ```
+    > 
+    > Make the downloaded file executable and run it using sudo:
+    > 
+    > ```
+    > chmod +x cuda_9.0.176_384.81_linux-run
+    > sudo ./cuda_9.0.176_384.81_linux-run --override
+    > 
+    > ```
+    > 
+    > We install CUDA with the following configurations:
+    > 
+    > ```
+    > You are attempting to install on an unsupported configuration. Do you wish to continue?
+    > y
+    > Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 384.81?
+    > n
+    > Install the CUDA 9.0 Toolkit?
+    > y
+    > Enter Toolkit Location
+    > [default location]
+    > Do you want to install a symbolic link at /usr/local/cuda?
+    > y
+    > Install the CUDA 9.0 Samples?
+    > y
+    > Enter CUDA Samples Location
+    > [default location]
+    > 
+    > ```
+    > 
+    > Set up symlinks for gcc/g++:
+    > 
+    > ```
+    > sudo ln -s /usr/bin/gcc-6 /usr/local/cuda/bin/gcc
+    > sudo ln -s /usr/bin/g++-6 /usr/local/cuda/bin/g++
+    > 
+    > ```
+    > 
+    > **Test the CUDA 9 installation using the SDK**
+    > 
+    > Build your favorite CUDA sample and run it:
+    > 
+    > ```
+    > cd ~/NVIDIA_CUDA-9.0_Samples/5_Simulations/smokeParticles
+    > make
+    > ../../bin/x86_64/linux/release/smokeParticles
+    > 
+    > ```
+    > 
+    > You may like to set up gcc/g++ symlinks after the cuda install.
+
+
+### cuDNN
+
+- [The easy way: Install Nvidia drivers, CUDA, CUDNN and Tensorflow GPU on Ubuntu 18.04 - Ask Ubuntu](https://askubuntu.com/questions/1033489/the-easy-way-install-nvidia-drivers-cuda-cudnn-and-tensorflow-gpu-on-ubuntu-1)
+
+    > register at nvidia developers <https://developer.nvidia.com/cudnn> Download 9.1 runtime & developer library for 16.04 (Files cuDNN v7.1.3 Runtime Library for Ubuntu16.04 (Deb) & cuDNN v7.1.3 Developer Library for Ubuntu16.04 (Deb)) Open the files with software manager and install them. 
+    > ```
+    > dpkg -i libcudnn7_7.4.1.5-1%2Bcuda9.0_amd64.deb libcudnn7-dev_7.4.1.5-1%2Bcuda9.0_amd64.deb
+    > ```
+    > Check with:
+    > 
+    > ```
+    > cat /usr/include/x86_64-linux-gnu/cudnn_v*.h | grep CUDNN_MAJOR -A 2
+    > 
+    > ```
+    > 
+    > Install libraries and tensorflow:
+    > 
+    > ```
+    > sudo apt-get install libcupti-dev
+    > pip3 install tensorflow-gpu
+    > 
+    > ```
+    > 
+    > Check:
+    > 
+    > ```
+    > in tensorflow check for GPU support
+    > sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+    > 
+    > ```
+    > 
+    > Note: Start tensorflow or your development environment from terminal, otherwise for me it does not load the PATH variables.
+    > 
+
+- [nvidia - How can I install CuDNN on Ubuntu 16.04? - Ask Ubuntu](https://askubuntu.com/questions/767269/how-can-i-install-cudnn-on-ubuntu-16-04/767270#767270)
+
+    > From 5.1 onwards you can't install according to what @Martin mentioned. Download `libcudnn6_6.0.21-1+cuda8.0_amd64.deb, libcudnn6-dev_6.0.21-1+cuda8.0_amd64.deb, libcudnn6-doc_6.0.21-1+cuda8.0_amd64.deb` from [nvidia site](https://developer.nvidia.com/rdp/cudnn-download) and install one by one follwing way.
+    > 
+    > ```
+    >  sudo dpkg -i <library_name>.deb
+    > ```
+    > 
+    > ---
+    > 
+    > When compiling Tensorflow from source it is good to know that the cuDNN library installation path is `/usr/lib/x86_64-linux-gnu/` -- [Visionscaper](https://askubuntu.com/users/686661/visionscaper "101 reputation") [Dec 11 '17 at 11:59](https://askubuntu.com/questions/767269/how-can-i-install-cudnn-on-ubuntu-16-04/767270#comment1585546_916667)
+
+
+### tensorflow
+
+- [Installing Tensorflow GPU on Ubuntu 18.04 LTS – Taylor Denouden – Medium](https://medium.com/@taylordenouden/installing-tensorflow-gpu-on-ubuntu-18-04-89a142325138)
+
+    > ### Do the CUDA post-install actions
+    > 
+    > So Tensorflow can find your CUDA installation and use it properly, you need to add these lines to the end of you `~/.bashrc` or `~/.zshrc`.
+    > ```
+    > export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+    > export LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+    > ```
+    > 
+    > Restart your terminal before proceeding to the next step.
+    > 
+    > ---
+    > 
+    > You can now test everything worked by opening a new python interpreter with `python` and running the following commands:
+    > 
+    > ```
+    > python << EOF
+    > from tensorflow.python.client import device_lib 
+    > device_lib.list_local_devices()
+    > EOF
+    > ```
+    > 
+    > If everything worked fine, you'll see your GPU listed as part of the output like so:
+    > ```
+    > [{\
+    >     name: "/device:CPU:0",\
+    >     device_type: "CPU",\
+    >     memory_limit: 268435456,\
+    >     locality {},\
+    >     incarnation: 12584189039274141042\
+    > },{\
+    >     name: "/device:GPU:0",\
+    >     device_type: "GPU",\
+    >     memory_limit: 3252486144,\
+    >     locality {\
+    >       bus_id: 1,\
+    >       links {}\
+    >     },\
+    >     incarnation: 16344452236433767630,\
+    >     physical_device_desc: "device: 0, name: GeForce GTX 1050, pci bus id: 0000:01:00.0, compute capability: 6.1"\
+    > ]
+    > ```
+    > That's it! Good luck!
+
+- [ImportError: libcublas.so.9.0: cannot open shared object file: No such file or directory · Issue #17629 · tensorflow/tensorflow](https://github.com/tensorflow/tensorflow/issues/17629)
+
+    > testing:
+    > 
+    > ```python
+    > import tensorflow as tf
+    > hello = tf.constant('Hello, TensorFlow!')
+    > sess = tf.Session()
+    > print(sess.run(hello))
+    > 
+    > ```
+    > 
+    > print **Hello, TensorFlow!**
+    > 
+
+
+- [导入tensorflow：ImportError: libcublas.so.9.0: cannot open shared object file: No such file or director - ZeroZone零域的博客 - CSDN博客](https://blog.csdn.net/ksws0292756/article/details/80034086)
+
+    > 对于tensorflow 1.7版本，只接受cuda 9.0（9.1也不可以！），和cudnn 7.0，所以如果你安装了cuda9.1和cudnn7.1或以上版本，那么你需要重新安装9.0和7.0版本。
+    > 
+    > 安装完正确的版本后，确认你在你的~/.bashrc（或者~/.zshrc）文件中加入了下面环境变量
+    > 
+    > ```sh
+    > export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64
+    > export PATH=$PATH:/usr/local/cuda-9.0/bin
+    > export CUDA_HOME=$CUDA_HOME:/usr/local/cuda-9.0
+    > ```
+
+- [ImportError: libcublas.so.8.0: cannot open shared object file: No such file or directory · Issue #14622 · tensorflow/tensorflow](https://github.com/tensorflow/tensorflow/issues/14622)
+
+    > If you want to work in anaconda and the error persists , try :
+    > 
+    > ```sh
+    > $jupyter notebook --generate-config
+    > 
+    > ```
+    > 
+    > then you can find the name of the directory where you have your config file (Ill call it
+    > 
+    > ) and open /jupyter_notebook_config.py and add at the top :
+    > 
+    > ```sh
+    > import os
+    > c = get_config()
+    > os.environ['LD_LIBRARY_PATH'] = '/usr/local/cuda-8.0/lib64:usr/local/cuda-8.0/lib64/libcudart.so.8.0'
+    > c.Spawner.env.update('LD_LIBRARY_PATH')
+    > 
+    > ```
+
+- [ImportError: libcublas.so.9.0: cannot open shared object file: No such file or directory · Issue #15604 · tensorflow/tensorflow](https://github.com/tensorflow/tensorflow/issues/15604)
+
+    > I encounter this problem as well when I use **PyCharm** to debug my code at remote server(aws deep learning ami). The cuda version is 9.0 and the cudnn is 7.1.4 and tensorflow is 1.10.0(for gpu). I can import tensorflow normally by terminal connected to my server but fail to import tensorflow in the python console of PyCharm. The problem occurs at this time. Therefore, I cannot debug with PyCharm...\
+    > **My solution is**: input this line in terminal after connecting to your server
+    > 
+    > ```
+    > sudo ldconfig /usr/local/cuda/lib64
+    > ```
+    > 
+    > And I referenced [thisLink](https://www.cnblogs.com/xiaojianliu/p/9312098.html#_label2)
+    > 
+
+#### install Tensorflow + CUDA 9.1 into Ubuntu 18.04
+
+- [How to install Tensorflow + CUDA 9.1 into Ubuntu 18.04](https://medium.com/@asmello/how-to-install-tensorflow-cuda-9-1-into-ubuntu-18-04-b645e769f01d)
+
+### Pytorch
+
+- [Pytorch GPU @ Ubuntu 18.04 安裝教學](https://mark-down-now.blogspot.com/2018/05/pytorch-gpu-ubuntu-1804.html)
+
+    > PyTorch安裝
+    > ---------
+    > 
+    > 安裝步驟比想像中簡單
+    > 
+    > 到[Pytorch官網](https://pytorch.org/)，選擇你的OS和版本，他會告訴你安裝指令是甚麼，我們這邊是：
+    > 
+    > `conda install pytorch torchvision cuda91 -c pytorch`
+    > 
+    > ![](https://d2mxuefqeaa7sj.cloudfront.net/s_D4444D1E05C7FB524D4301316A2DE65D4490358395D6F016DF11C1CE872770C6_1525542159106_file.png)
+    > 
+    > 簡單測試
+    > ----
+    > 
+    > 在命令列(PowerShell/cmd)中輸入 python進入python指令列，輸入
+    > 
+    > -   import torch
+    > 
+    > -   torch.cuda.is_available()
+    > 
+    > 若為True則有正確載入
+    > 
+
+
+## Windows
+
+### Install Tensorflow-GPU version with Jupyter
 
 - [How to Install Tensorflow-GPU version with Jupyter (Windows 10) in 8 easy steps.](https://medium.com/@viveksingh.heritage/how-to-install-tensorflow-gpu-version-with-jupyter-windows-10-in-8-easy-steps-8797547028a4)
 
 
 
 
-#### Library
+### Library
 - [Unofficial Windows Binaries for Python Extension Packages](https://www.lfd.uci.edu/~gohlke/pythonlibs/)
 
 - [aleju/imgaug: Image augmentation for machine learning experiments.](https://github.com/aleju/imgaug)
 
 
-#### Troubleshooting
+### Troubleshooting
 
 - [python - DLL load failed error when importing cv2 - Stack Overflow](https://stackoverflow.com/questions/43184887/dll-load-failed-error-when-importing-cv2)
 
@@ -759,6 +1073,79 @@
     > ```
     > 
     > It should work like a charm.
+
+
+## anaconda
+
+### set LD_LIBRARY_PATH
+
+- [python - Conda set LD_LIBRARY_PATH for env only - Stack Overflow](https://stackoverflow.com/questions/46826497/conda-set-ld-library-path-for-env-only)
+
+    > You can set environment variables when an environment is activated by editing the `activate.d/env_vars.sh` script. See here: <https://conda.io/docs/user-guide/tasks/manage-environments.html#macos-and-linux>
+    > 
+    > The key portions from that link are:
+    > 
+    > > 1.  Locate the directory for the conda environment in your Terminal window, such as `/home/jsmith/anaconda3/envs/analytics`.
+    > >
+    > >
+    > > 2.  Enter that directory and create these subdirectories and files:
+    > >
+    > >
+    > >
+    > >     ```sh
+    > >     cd /home/jsmith/anaconda3/envs/analytics
+    > >     mkdir -p ./etc/conda/activate.d
+    > >     mkdir -p ./etc/conda/deactivate.d
+    > >     touch ./etc/conda/activate.d/env_vars.sh
+    > >     touch ./etc/conda/deactivate.d/env_vars.sh
+    > >     ```
+    > >
+    > >
+    > > 3.  Edit `./etc/conda/activate.d/env_vars.sh` as follows:
+    > >
+    > >
+    > >
+    > >     ```sh
+    > >     #!/bin/sh
+    > >
+    > >     export MY_KEY='secret-key-value'
+    > >     export MY_FILE=/path/to/my/file/
+    > >     ```
+    > >
+    > >
+    > > 4.  Edit `./etc/conda/deactivate.d/env_vars.sh` as follows::
+    > >
+    > >
+    > >
+    > >     ```sh
+    > >     #!/bin/sh
+    > >
+    > >     unset MY_KEY
+    > >     unset MY_FILE
+    > >     ```
+    > >
+    > >
+    > >
+    > > When you run `source activate analytics`, the environment variables MY_KEY and MY_FILE are set to the values you wrote into the file. When you run `source deactivate`, those variables are erased.
+    > > 
+    > 
+    > ---
+    > 
+    > I just wanted to add that you could declare 2 variables in the activate.d/env_vars.sh like, it makes it easier to reset the variable to the pre-activation state:
+    > 
+    > ```sh
+    > export OLD_LD_LIBRARY_PATH=${LD_LIBRARY_PATH}
+    > export LD_LIBRARY_PATH=/your/path:${LD_LIBRARY_PATH}
+    > ```
+    > 
+    > and then in deactivate.d/env_vars.sh:
+    > 
+    > ```sh
+    > export LD_LIBRARY_PATH=${OLD_LD_LIBRARY_PATH}
+    > unset OLD_LD_LIBRARY_PATH
+    > ```
+    > 
+
 
 ### Removing Conda environment
 
@@ -851,6 +1238,13 @@
 
 
 ## Microsoft Azure
+
+
+## Google Cloud Platform(GCP)
+
+- [在 Google Cloud Platform 上使用 GPU 和安裝深度學習相關套件 – Kai-Shen Tseng – Medium](https://medium.com/@kstseng/%E5%9C%A8-google-cloud-platform-%E4%B8%8A%E4%BD%BF%E7%94%A8-gpu-%E5%92%8C%E5%AE%89%E8%A3%9D%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E7%9B%B8%E9%97%9C%E5%A5%97%E4%BB%B6-1b118e291015)
+
+
 
 ## Google Colaboratory
 

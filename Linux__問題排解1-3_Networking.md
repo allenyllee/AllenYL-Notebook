@@ -124,14 +124,14 @@
     > **Ubuntu >= 15**
     > 
     > ```sh
-    > nmcli device show <interfacename> | grep IP4.DNS
+    > nmcli device show < interfacename> | grep IP4.DNS
     > 
     > ```
     > 
     > **Ubuntu <= 14**
     > 
     > ```sh
-    > nmcli dev list iface <interfacename> | grep IP4
+    > nmcli dev list iface < interfacename> | grep IP4
     > 
     > ```
     > 
@@ -177,7 +177,7 @@
     > here is the syntax to modify an existing connection.
     > 
     > ```sh
-    > nmcli con mod <connectionName> ipv4.dns "8.8.8.8 8.8.4.4"
+    > nmcli con mod < connectionName> ipv4.dns "8.8.8.8 8.8.4.4"
     > 
     > ```
     > 
@@ -219,6 +219,111 @@
 
 
 # samba
+
+## Mount a samba network drive from terminal
+
+- [networking - Mount a samba network drive from terminal without hardcoding a password - Ask Ubuntu](https://askubuntu.com/questions/725440/mount-a-samba-network-drive-from-terminal-without-hardcoding-a-password)
+
+    > Use the `mount.cifs` command instead, as it allows to specify a credentials file or prompts for a password if none given.
+    > 
+    > **Installation**
+    > 
+    > First of all, check you have the needed packages installed by issuing the following command:
+    > 
+    > ```
+    > sudo apt-get install cifs-utils
+    > 
+    > ```
+    > 
+    > **METHOD 1 - USING A CREDENTIALS FILE**
+    > 
+    > According to the manual <http://manpages.ubuntu.com/manpages/raring/man8/mount.cifs.8.html> :
+    > 
+    > > OPTIONS\
+    > > [...]\
+    > > credentials=filename specifies a file that contains a username and/or password and optionally the name of the workgroup. The format of the file is:
+    > >
+    > > username=value\
+    > > password=value\
+    > > domain=value
+    > 
+    > Usage:
+    > 
+    > ```
+    > mount.cifs //<hostname_or_ip>/<cifs_share> <local_mountpoint> -o user=<user_to_connect_as>,rw,credentials=<path_to_the_credentials_file>
+    > 
+    > ```
+    > 
+    > Example:
+    > 
+    > ```
+    > sudo mount.cifs //domain.com/share /mnt/domain_com -o user=admin,rw,credentials=/root/.credentials
+    > 
+    > ```
+    > 
+    > It's important to note that the "name_of_the_user_to_connnect_as" can contain also the domain or the workgroup:
+    > 
+    > ```
+    > user=workgroup/user
+    > user=domain/user
+    > 
+    > ```
+    > 
+    > (Depending on you environment, you will need more or less options)
+    > 
+    > Regarding security, it should be enough to store the credentials file in the /root directory, but if you want to store it elsewhere, just
+    > 
+    > -   set the root user as its owner with `sudo chown root <file>`
+    > -   set owner-only permissions with `sudo chmod 600
+    > 
+    > **METHOD 2 - PASSWORD PROMPT**
+    > 
+    > If as stated, you don't want your password to be visible at all, then just don't provide the "password" option in your `mount.cifs` command.
+    > 
+    > From the manpage at <http://manpages.ubuntu.com/manpages/hardy/man8/mount.cifs.8.html>
+    > 
+    > > password=arg
+    > >
+    > > ```
+    > >       specifies  the  CIFS  password. If this option is not given then the
+    > >       environment  variable  PASSWD  is  used.  If  the  password  is  not
+    > >       specified directly or indirectly via an argument to mount mount.cifs
+    > >       will prompt for a password, unless the guest option is specified.
+    > >
+    > >       Note that a password which contains the delimiter character (i.e.  a
+    > >       comma  ',')  will  fail  to be parsed correctly on the command line.
+    > >       However,  the  same  password  defined  in  the  PASSWD  environment
+    > >       variable  or  via  a  credentials file (see below) or entered at the
+    > >       password prompt will be read correctly.
+    > >
+    > > ```
+    > 
+    > Accordingly, the following command should prompt for a password:
+    > 
+    > ```
+    > mount.cifs //<hostname_or_ip>/<cifs_share> <local_mountpoint> -o user=<user_to_connect_as>,rw
+    > 
+    > ```
+    > 
+    > Tested and working as expected:
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/zW2x3.png)](https://i.stack.imgur.com/zW2x3.png)
+    > 
+
+### cannot create regular file
+
+- [[ubuntu] smbmount - cannot create regular file](https://ubuntuforums.org/showthread.php?t=1127809)
+
+    > Try something like this instead.
+    > 
+    > ```shell
+    > //smbserver/myshare /home/tux/mnt/myshare cifs rw,username=andreas,uid=1000,gid=1000,nounix,rsize=16384,wsize=57344 0 0
+    > ```
+    > 
+    > See man mount and man mount.cifs for more information.
+    > 
+    > The problem is that you need to disable unix style permissions handling over CIFS because CIFS can't pass them correctly (remember, this is Windows file sharing, not Linux).
+
 
 ## unable to connect to Windows 10 share
 

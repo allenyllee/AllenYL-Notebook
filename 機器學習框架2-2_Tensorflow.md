@@ -1,319 +1,16 @@
-# 深度學習框架1-2_Tensorflow
+# 機器學習框架2-2_Tensorflow
 
 [toc]
 <!-- toc --> 
 
-
-## API Reference
-
-- [All symbols in TensorFlow  |  TensorFlow](https://www.tensorflow.org/api_docs/python/)
-
-- [tf.placeholder  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/placeholder)
-
-- [tf.matmul  |  TensorFlow](https://www.tensorflow.org/versions/master/api_docs/python/tf/matmul)
-    Multiplies matrix `a` by matrix `b`, producing `a` \* `b`.
-
-- [tf.multiply  |  TensorFlow](https://www.tensorflow.org/versions/master/api_docs/python/tf/multiply)
-    Returns x * y element-wise.
-
-- [tf.trainable_variables  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/trainable_variables)
-    Returns all variables created with `trainable=True`.
-
-- [tf.Session.close()  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/Session#close)
-    Closes this session.
-    Calling this method frees all resources associated with the session.
-
-- [tf.Dimension.value  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/Dimension#value)
-    The value of this dimension, or None if it is unknown.
-
-- [tf.argmax  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/argmax)
-    Returns the index with the largest value across axes of a tensor. (deprecated arguments)
-
-- [tf.truncated_normal  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/truncated_normal)
-    Outputs random values from a truncated normal distribution.
-
-- [tf.identity  |  TensorFlow](https://www.tensorflow.org/versions/r1.2/api_docs/python/tf/identity)
-    Return a tensor with the same shape and contents as the input tensor or value.
-    
-- [tf.nn.dropout  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/nn/dropout)
-    Computes dropout.
-    With probability `keep_prob`, outputs the input element scaled up by `1 / keep_prob`, otherwise outputs `0`. The scaling is so that the expected sum is unchanged.
-
-    
-
-- [tf.Session  |  TensorFlow](https://www.tensorflow.org/versions/r1.1/api_docs/python/tf/Session#run)
-    - __run__
-        Runs operations and evaluates tensors in `fetches`.
-
-### Variable
-
-- [tf.get_variable  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/get_variable)
-
-    >Gets an existing variable with these parameters or create a new one.
-
-- [python - List of tensor names in graph in Tensorflow - Stack Overflow](https://stackoverflow.com/questions/35336648/list-of-tensor-names-in-graph-in-tensorflow/35337827)
-
-    > To answer your first question, `sess.graph.get_operations()` gives you a list of operations. For an op, `op.name` gives you the name and `op.values()` gives you a list of tensors it produces (in the inception-v3 model, all tensor names are the op name with a ":0" appended to it, so `pool_3:0` is the tensor produced by the final pooling op.)
-    > 
-
-- [python - In Tensorflow, get the names of all the Tensors in a graph - Stack Overflow](https://stackoverflow.com/questions/36883949/in-tensorflow-get-the-names-of-all-the-tensors-in-a-graph)
-
-    > You can do
-    > 
-    > ```
-    > [n.name for n in tf.get_default_graph().as_graph_def().node]
-    > ```
-    > 
-    > Also, if you are prototyping in an IPython notebook, you can show the graph directly in notebook, see `show_graph` function in Alexander's Deep Dream [notebook](http://nbviewer.jupyter.org/github/tensorflow/tensorflow/blob/master/tensorflow/examples/tutorials/deepdream/deepdream.ipynb)
-
-
-- [DeepDreaming with TensorFlow](https://nbviewer.jupyter.org/github/tensorflow/tensorflow/blob/master/tensorflow/examples/tutorials/deepdream/deepdream.ipynb#deepdream)
-
-    {% raw %}
-    ```python
-    from IPython.display import display, HTML
-
-    def show_graph(graph_def, max_const_size=32):
-        """Visualize TensorFlow graph."""
-        if hasattr(graph_def, 'as_graph_def'):
-            graph_def = graph_def.as_graph_def()
-        strip_def = strip_consts(graph_def, max_const_size=max_const_size)
-        code = """
-            <script>
-              function load() {{
-                document.getElementById("{id}").pbtxt = {data};
-              }}
-            </script>
-            <link rel="import" href="https://tensorboard.appspot.com/tf-graph-basic.build.html" onload=load()>
-            <div style="height:600px">
-              <tf-graph-basic id="{id}"></tf-graph-basic>
-            </div>
-        """.format(data=repr(str(strip_def)), id='graph'+str(np.random.rand()))
-
-        iframe = """
-            <iframe seamless style="width:800px;height:620px;border:0" srcdoc="{}"></iframe>
-        """.format(code.replace('"', '&quot;'))
-        display(HTML(iframe))
-
-
-    # Visualizing the network graph. Be sure expand the "mixed" nodes to see their 
-    # internal structure. We are going to visualize "Conv2D" nodes.
-    tmp_def = rename_nodes(graph_def, lambda s:"/".join(s.split('_',1)))
-    show_graph(tmp_def)
-    ```
-    {% endraw %}
-
-- [python - How to print the value of a Tensor object in TensorFlow? - Stack Overflow](https://stackoverflow.com/questions/33633370/how-to-print-the-value-of-a-tensor-object-in-tensorflow)
-
-    > While other answers are correct that you cannot print the value until you evaluate the graph, they do not talk about one easy way of actually printing a value inside the graph, once you evaluate it.
-    > 
-    > The easiest way to see a value of a tensor whenever the graph is evaluated (using `run` or `eval`) is to use the [`Print`](https://www.tensorflow.org/versions/master/api_docs/python/control_flow_ops.html#Print) operation as in this example:
-    > 
-    > ```python
-    > # Initialize session
-    > import tensorflow as tf
-    > sess = tf.InteractiveSession()
-    > 
-    > # Some tensor we want to print the value of
-    > a = tf.constant([1.0, 3.0])
-    > 
-    > # Add print operation
-    > a = tf.Print(a, [a], message="This is a: ")
-    > 
-    > # Add more elements of the graph using a
-    > b = tf.add(a, a)
-    > ```
-    > 
-    > Now, whenever we evaluate the whole graph, e.g. using `b.eval()`, we get:
-    > 
-    > ```python
-    > I tensorflow/core/kernels/logging_ops.cc:79] This is a: [1 3]
-    > ```
-    > 
-
-
-
-### Layers
-
-- [Module: tf.layers  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers)
-    - [tf.layers.conv2d  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers/conv2d)
-    - [tf.layers.max_pooling2d  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers/max_pooling2d)
-    - [tf.layers.flatten  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers/flatten)
-    - [tf.layers.dense  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/layers/dense)
-
-
-### Optimizer
-
-- [tf.train.RMSPropOptimizer  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/train/RMSPropOptimizer)
-    - __minimize__
-      Add operations to minimize `loss` by updating `var_list`.
-
-
-
-
-
-### RNN
-
-- [tf.contrib.rnn.BasicRNNCell  |  TensorFlow](https://www.tensorflow.org/versions/r1.0/api_docs/python/tf/contrib/rnn/BasicRNNCell)
-    - zero_state(batch_size, dtype)
-        Return zero-filled state tensor(s).
-
-- [tf.truncated_normal  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/truncated_normal)
-    Outputs random values from a truncated normal distribution.
-
-    The generated values follow a normal distribution with specified mean and standard deviation, except that values whose magnitude is more than 2 standard deviations from the mean are dropped and re-picked.
-    
-- [tf.gradients  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/gradients)
-    Constructs symbolic derivatives of sum of `ys` w.r.t. x in `xs`.
-
-- [tf.trainable_variables  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/trainable_variables)
-    Returns all variables created with `trainable=True`.
-
-    When passed `trainable=True`, the `Variable()` constructor automatically adds new variables to the graph collection `GraphKeys.TRAINABLE_VARIABLES`. This convenience function returns the contents of that collection.
-
-- [tf.clip_by_global_norm  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/clip_by_global_norm)
-    Clips values of multiple tensors by the ratio of the sum of their norms.
-
-    To perform the clipping, the values `t_list[i]` are set to:
-
-    `t_list[i]   * clip_norm / max(global_norm, clip_norm)  
-    `
-
-    where:
-
-    `global_norm = sqrt(sum([l2norm(t)**2   for t in t_list]))  
-    `
-
-- [tf.train.GradientDescentOptimizer  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/train/GradientDescentOptimizer)
-    - apply_gradients
-        Apply gradients to variables.
-
-- [tf.nn.dynamic_rnn  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/nn/dynamic_rnn)
-    Creates a recurrent neural network specified by RNNCell `cell`.
-
-    Performs fully dynamic unrolling of `inputs`.
-
-    - [Analysis of the output from tf.nn.dynamic_rnn tensorflow function - Stack Overflow](https://stackoverflow.com/questions/44162432/analysis-of-the-output-from-tf-nn-dynamic-rnn-tensorflow-function)
-
-        > [`tf.dynamic_rnn`](https://www.tensorflow.org/api_docs/python/tf/nn/dynamic_rnn) provides two outputs, `outputs` and `state`.
-        > 
-        > -   `outputs` contains the output of the RNN cell at every time instant. Assuming the default `time_major == False`, let's say you have an input composed of 10 examples with 7 time steps each and a feature vector of size 5 for every time step. Then your input would be 10x7x5 (`batch_size`x`max_time`x`features`). Now you give this as an input to a RNN cell with output size 15. Conceptually, each time step of each example is input to the RNN, and you would get a 15-long vector for each of those. So that is what `outputs` contains, a tensor in this case of size 10x7x15 (`batch_size`x`max_time`x`cell.output_size`) with the output of the RNN cell at each time step. If you are only interested in the last output of the cell, you can just slice the time dimension to pick just the last element (e.g. `outputs[:, -1, :]`).
-        > -   `state` contains the state of the RNN after processing all the inputs. Note that, unlike `outputs`, this doesn't contain information about every time step, but only about the last one (that is, the state _after_ the last one). Depending on your case, the state may or may not be useful. For example, if you have very long sequences, you may not want/be able to processes them in a single batch, and you may need to split them into several subsequences. If you ignore the `state`, then whenever you give a new subsequence it will be as if you are beginning a new one; if you remember the state, however (e.g. outputting it or storing it in a variable), you can feed it back later (through the `initial_state` parameter of `tf.nn.dynamic_rnn`) in order to correctly keep track of the state of the RNN, and only reset it to the initial state (generally all zeros) after you have completed the whole sequences. The shape of `state` can vary depending on the RNN cell that you are using, but, in general, you have some state for each of the examples (one or more tensors with size `batch_size`x`state_size`, where `state_size` depends on the cell type and size).
-
-
-
-- [tf.nn.embedding_lookup  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/nn/embedding_lookup)
-    Looks up `ids` in a list of embedding tensors.
-
-
-
-
-### logit
-
-- [neural network - What is the meaning of the word logits in TensorFlow? - Stack Overflow](https://stackoverflow.com/questions/41455101/what-is-the-meaning-of-the-word-logits-in-tensorflow)
-
-    > **Logit** is a function that maps probabilities `[0, 1]` to `[-inf, +inf]`.
-    > 
-    > **Softmax** is a function that maps `[-inf, +inf]` to `[0, 1]` similar as Sigmoid. But Softmax also normalizes the sum of the values(output vector) to be 1.
-    > 
-    > **Tensorflow "with logit"**: It means that you are applying a softmax function to logit numbers to normalize it. The input_vector/logit is not normalized and can scale from \[-inf, inf\].
-    > 
-    > This normalization is used for multiclass classification problems. And for multilabel classification problems sigmoid normalization is used i.e. `tf.nn.sigmoid_cross_entropy_with_logits`
-
-
-    > [Logit](https://en.wikipedia.org/wiki/Logit) is a function that maps probabilities (`[0, 1]`) to R (`(-inf, inf)`)
-    > 
-    > [![enter image description here](https://i.stack.imgur.com/zto5q.png)](https://i.stack.imgur.com/zto5q.png)
-    > 
-    > Probability of 0.5 corresponds to a logit of 0. Negative logit correspond to probabilities less than 0.5, positive to > 0.5.
-    > 
-
-
-- [python - What's the difference between softmax and softmax_cross_entropy_with_logits? - Stack Overflow](https://stackoverflow.com/questions/34240703/whats-the-difference-between-softmax-and-softmax-cross-entropy-with-logits)
-
-    > Logits simply means that the function operates on the unscaled output of earlier layers and that the relative scale to understand the units is linear. It means, in particular, the sum of the inputs may not equal 1, that the values are _not_ probabilities (you might have an input of 5).
-    > 
-    > `tf.nn.softmax` produces just the result of applying the [softmax function](https://en.wikipedia.org/wiki/Softmax_function) to an input tensor. The softmax "squishes" the inputs so that sum(input) = 1; it's a way of normalizing. The shape of output of a softmax is the same as the input - it just normalizes the values. The outputs of softmax _can_ be interpreted as probabilities.
-    > 
-    > ```
-    > a = tf.constant(np.array([[.1, .3, .5, .9]]))
-    > print s.run(tf.nn.softmax(a))
-    > [[ 0.16838508  0.205666    0.25120102  0.37474789]]
-    > ```
-    > 
-    > In contrast, `tf.nn.softmax_cross_entropy_with_logits` computes the cross entropy of the result after applying the softmax function (but it does it all together in a more mathematically careful way). It's similar to the result of:
-    > 
-    > ```
-    > sm = tf.nn.softmax(x)
-    > ce = cross_entropy(sm)
-    > ```
-    > 
-    > If you want to do optimization to minimize the cross entropy, AND you're softmaxing after your last layer, you should use `tf.nn.softmax_cross_entropy_with_logits` instead of doing it yourself, because it covers numerically unstable corner cases in the mathematically right way. Otherwise, you'll end up hacking it by adding little epsilons here and there.
-
-### Graph
-
-- [tf.GraphKeys  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/GraphKeys)
-
-    > Standard names to use for graph collections.
-    > 
-    > The standard library uses various well-known names to collect and retrieve values associated with a graph. For example, the `tf.Optimizer` subclasses default to optimizing the variables collected under `tf.GraphKeys.TRAINABLE_VARIABLES` if none is specified, but it is also possible to pass an explicit list of variables.
-
-- [tf.control_dependencies  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/control_dependencies)
-
-    > Returns:
-    > 
-    > A context manager that specifies control dependencies for all operations constructed within the context.
-
-- [python - TensorFlow saving into/loading a graph from a file - Stack Overflow](https://stackoverflow.com/questions/38947658/tensorflow-saving-into-loading-a-graph-from-a-file)
-
-    > There are many ways to approach the problem of saving a model in TensorFlow, which can make it a bit confusing. Taking each of your sub-questions in turn:
-    > 
-    > 1.  The checkpoint files (produced e.g. by calling [`saver.save()`](https://www.tensorflow.org/versions/r0.10/api_docs/python/state_ops.html#Saver.save) on a [`tf.train.Saver`](https://www.tensorflow.org/versions/r0.10/api_docs/python/state_ops.html#Saver) object) contain only the weights, and any other variables defined in the same program. To use them in another program, you must re-create the associated graph structure (e.g. by running code to build it again, or calling [`tf.import_graph_def()`](https://www.tensorflow.org/versions/r0.10/api_docs/python/framework.html#import_graph_def)), which tells TensorFlow what to do with those weights. Note that calling `saver.save()` also produces a file containing a [`MetaGraphDef`](https://www.tensorflow.org/versions/r0.10/how_tos/meta_graph/index.html), which contains a graph and details of how to associate the weights from a checkpoint with that graph. See [the tutorial](https://www.tensorflow.org/versions/r0.10/how_tos/meta_graph/index.html) for more details.
-    >     
-    > 2.  [`tf.train.write_graph()`](https://www.tensorflow.org/versions/r0.10/api_docs/python/train.html#write_graph) only writes the graph structure; not the weights.
-    >     
-    > 3.  Bazel is unrelated to reading or writing TensorFlow graphs. (Perhaps I misunderstand your question: feel free to clarify it in a comment.)
-    >     
-    > 4.  A frozen graph can be loaded using [`tf.import_graph_def()`](https://www.tensorflow.org/versions/r0.10/api_docs/python/framework.html#import_graph_def). In this case, the weights are (typically) embedded in the graph, so you don't need to load a separate checkpoint.
-    >     
-    > 5.  The main change would be to update the names of the tensor(s) that are fed into the model, and the names of the tensor(s) that are fetched from the model. In the TensorFlow Android demo, this would correspond to the `inputName` and `outputName` strings that are passed to [`TensorFlowClassifier.initializeTensorFlow()`](https://github.com/tensorflow/tensorflow/blob/d67ce6c449fabb3bebccd85815d9d291f114e6e4/tensorflow/examples/android/src/org/tensorflow/demo/TensorFlowClassifier.java#L34).
-    >     
-    > 6.  The `GraphDef` is the program structure, which typically does not change through the training process. The checkpoint is a snapshot of the state of a training process, which typically changes at every step of the training process. As a result, TensorFlow uses different storage formats for these types of data, and the low-level API provides different ways to save and load them. Higher-level libraries, such as the [`MetaGraphDef`](https://www.tensorflow.org/versions/r0.10/how_tos/meta_graph/index.html) libraries, [Keras](https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model), and [skflow](https://github.com/tensorflow/skflow#saving--restoring-models) build on these mechanisms to provide more convenient ways to save and restore an entire model.
-    > 
-
-
-
-
-### CNN
-
-- [tf.nn.conv2d  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/nn/conv2d)
-
-    > Computes a 2-D convolution given 4-D `input` and `filter` tensors.
-
-
-- [tf.nn.conv2d_transpose  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/nn/conv2d_transpose)
-
-    > The transpose of `conv2d`.
-    > 
-    > This operation is sometimes called "deconvolution" after [Deconvolutional Networks](http://www.matthewzeiler.com/pubs/cvpr2010/cvpr2010.pdf), but is actually the transpose (gradient) of `conv2d` rather than an actual deconvolution.
-
-
-## Tools
-
-### TensorEditor
-
-- [TensorEditor ：一個小白都能快速玩轉的神經網絡搭建工具 - 幫趣](http://bangqu.com/l53yr4.html#utm_source=Facebook_PicSee&utm_medium=Social)
-
-
-
-## Tutorial
+# Tutorial
 
 - [Tensorflow学习笔记2：About Session, Graph, Operation and Tensor - lienhua34 - 博客园](https://www.cnblogs.com/lienhua34/p/5998853.html)
 
     > 简介
     > ==
     > 
-    > 上一篇笔记：[Tensorflow学习笔记1：Get Started](http://www.cnblogs.com/lienhua34/p/5998375.html) 我们谈到Tensorflow是基于图（Graph）的计算系统。而图的节点则是由操作（Operation）来构成的，而图的各个节点之间则是由张量（Tensor）作为边来连接在一起的。所以Tensorflow的计算过程就是一个Tensor流图。Tensorflow的图则是必须在一个Session中来计算。这篇笔记来大致介绍一下Session、Graph、Operation和Tensor。
+    > 上一篇笔记：[Tensorflow学习笔记1：Get Started](http://www.cnblogs.com/lienhua34/p/5998375.html) 我们谈到Tensorflow是基于图（Graph）的计算系统。而图的节点则是由操作（Operation）来构成的，而图的各个节点之间则是由张量（Tensor）作为边来连接在一起的。所以Tensorflow的计算过程就是一个Tensor流图。Tensorflow的图则是必须在一个Session中来计算。这篇笔记来大致介绍一下Session、Graph、Operation和Tensor。
     > 
     > Session
     > =======
@@ -356,11 +53,11 @@
     > 
     > 执行Operation或者求值Tensor有两种方式：
     > 
-    > 1.  调用Session.run()方法： 该方法的定义如下所示，参数fetches便是一个或者多个Operation或者Tensor。
+    > 1.  调用Session.run()方法： 该方法的定义如下所示，参数fetches便是一个或者多个Operation或者Tensor。
     >     
     >     > tf.Session.run(fetches, feed_dict=None)
     >     
-    > 2.  调用Operation.run()或则Tensor.eval()方法： 这两个方法都接收参数session，用于指定在哪个session中计算。但该参数是可选的，默认为None，此时表示在进程默认session中计算。
+    > 2.  调用Operation.run()或则Tensor.eval()方法： 这两个方法都接收参数session，用于指定在哪个session中计算。但该参数是可选的，默认为None，此时表示在进程默认session中计算。
     >     
     > 
     > 那如何设置一个Session为默认的Session呢？有两种方式：
@@ -458,7 +155,7 @@
     > 
     > 上面的代码构成的Graph如下图所示，
     > 
-    >  [![graph_compute_flow](https://github.com/lienhua34/notes/raw/master/tensorflow/asserts/graph_compute_flow.jpg)](https://github.com/lienhua34/notes/blob/master/tensorflow/asserts/graph_compute_flow.jpg)
+    >  [![graph_compute_flow](https://github.com/lienhua34/notes/raw/master/tensorflow/asserts/graph_compute_flow.jpg)](https://github.com/lienhua34/notes/blob/master/tensorflow/asserts/graph_compute_flow.jpg)
     > 
     > 当Session加载Graph的时候，Graph里面的计算节点都不会被触发执行。当运行sess.run(output)的时候，会沿着指定的Tensor output来进图路径往回触发相对应的节点进行计算（图中红色线表示的那部分）。当我们需要output的值时，触发Operation tf.add(add1, mul1)被执行，而该节点则需要Tensor add1和Tensor mul1的值，则往回触发Operation tf.add(a, b)和Operation tf.mul(b, c)。以此类推。
     > 
@@ -467,19 +164,175 @@
     > (done)
 
     
-## Solve Math problem
+# Solve Math problem
 
 - [一个利用Tensorflow求解几何问题的例子 - naughty的个人页面](https://my.oschina.net/taogang/blog/1627590?from=20180304)
 
 
+## Solve PDE
 
-## DNN
+- [Partial Differential Equations  |  TensorFlow](https://www.tensorflow.org/tutorials/non-ml/pdes)
 
-### Before everything start, just remember ...
+
+
+
+
+# Machine Learning Impelementation
+
+## Machine Learning with TensorFlow Latest APIs
+
+- [aymericdamien/TensorFlow-Examples: TensorFlow Tutorial and Examples for Beginners with Latest APIs](https://github.com/aymericdamien/TensorFlow-Examples)
+
+
+## TensorFlow Research Models
+- [models/research at master · tensorflow/models](https://github.com/tensorflow/models/tree/master/research)
+
+## Sequence-to-Sequence with Attention Model for Text Summarization.
+
+- [models/research/textsum at master · tensorflow/models](https://github.com/tensorflow/models/tree/master/research/textsum)
+
+
+
+## k-means in Tensorflow
+
+- [k-means in Tensorflow](https://gist.github.com/dave-andersen/265e68a5e879b5540ebc)
+
+
+- [How would I implement k-means with TensorFlow? - Stack Overflow](https://stackoverflow.com/questions/33621643/how-would-i-implement-k-means-with-tensorflow)
+
+    > Most of the answers I have seen so far focuses just on the 2d version (when you need to cluster points in 2 dimensions). Here is my implementation of the clustering in arbitrary dimensions.
+    > 
+    > * * * * *
+    > 
+    > Basic idea of [k-means algorithm](https://en.wikipedia.org/wiki/K-means_clustering) in n dims:
+    > 
+    > -   generate random k starting points
+    > -   do this till you exceed the patience or the cluster assignment does not change:
+    >     -   assign each point to the closest starting point
+    >     -   recalculate the location of each starting point by taking the average among it's cluster
+    > 
+    > * * * * *
+    > 
+    > To be able to somehow validate the results I will attempt to cluster MNIST images.
+    > 
+    > ```python
+    > import numpy as np
+    > import tensorflow as tf
+    > from random import randint
+    > from collections import Counter
+    > from tensorflow.examples.tutorials.mnist import input_data
+    > 
+    > mnist = input_data.read_data_sets("MNIST_data/")
+    > X, y, k = mnist.test.images, mnist.test.labels, 10
+    > ```
+    > 
+    > So here **X** is my data to cluster `(10000, 784)`, **y** is the real number, and **k** is the number of cluster (which is the same as the number of digits. Now the actual algorithm:
+    > 
+    > ```python
+    > # select random points as a starting position. You can do better by randomly selecting k points.
+    > start_pos = tf.Variable(X[np.random.randint(X.shape[0], size=k),:], dtype=tf.float32)
+    > centroids = tf.Variable(start_pos.initialized_value(), 'S', dtype=tf.float32)
+    > 
+    > # populate points
+    > points           = tf.Variable(X, 'X', dtype=tf.float32)
+    > ones_like        = tf.ones((points.get_shape()[0], 1))
+    > prev_assignments = tf.Variable(tf.zeros((points.get_shape()[0], ), dtype=tf.int64))
+    > 
+    > # find the distance between all points: http://stackoverflow.com/a/43839605/1090562
+    > p1 = tf.matmul(
+    >     tf.expand_dims(tf.reduce_sum(tf.square(points), 1), 1),
+    >     tf.ones(shape=(1, k))
+    > )
+    > p2 = tf.transpose(tf.matmul(
+    >     tf.reshape(tf.reduce_sum(tf.square(centroids), 1), shape=[-1, 1]),
+    >     ones_like,
+    >     transpose_b=True
+    > ))
+    > distance = tf.sqrt(tf.add(p1, p2) - 2 * tf.matmul(points, centroids, transpose_b=True))
+    > 
+    > # assign each point to a closest centroid
+    > point_to_centroid_assignment = tf.argmin(distance, axis=1)
+    > 
+    > # recalculate the centers
+    > total = tf.unsorted_segment_sum(points, point_to_centroid_assignment, k)
+    > count = tf.unsorted_segment_sum(ones_like, point_to_centroid_assignment, k)
+    > means = total / count
+    > 
+    > # continue if there is any difference between the current and previous assignment
+    > is_continue = tf.reduce_any(tf.not_equal(point_to_centroid_assignment, prev_assignments))
+    > 
+    > with tf.control_dependencies([is_continue]):
+    >     loop = tf.group(centroids.assign(means), prev_assignments.assign(point_to_centroid_assignment))
+    > 
+    > sess = tf.Session()
+    > sess.run(tf.global_variables_initializer())
+    > 
+    > # do many iterations. Hopefully you will stop because of has_changed is False
+    > has_changed, cnt = True, 0
+    > while has_changed and cnt < 300:
+    >     cnt += 1
+    >     has_changed, _ = sess.run([is_continue, loop])
+    > 
+    > # see how the data is assigned
+    > res = sess.run(point_to_centroid_assignment)
+    > ```
+    > 
+    > Now it is time check how good are our clusters. To do this we will group all the real numbers that appeared in the cluster together. After that we will see the most popular choices in that cluster. In a case of the perfect clustering we will have the just one value in each group. In case of random cluster each value will be approximately equally represented in the group.
+    > 
+    > ```python
+    > nums_in_clusters = [[] for i in xrange(10)]
+    > for cluster, real_num in zip(list(res), list(y)):
+    >     nums_in_clusters[cluster].append(real_num)
+    > 
+    > for i in xrange(10):
+    >     print Counter(nums_in_clusters[i]).most_common(3)
+    > ```
+    > 
+    > This gives me something like this:
+    > 
+    > ```
+    > [(0, 738), (6, 18), (2, 11)]
+    > [(1, 641), (3, 53), (2, 51)]
+    > [(1, 488), (2, 115), (7, 56)]
+    > [(4, 550), (9, 533), (7, 280)]
+    > [(7, 634), (9, 400), (4, 302)]
+    > [(6, 649), (4, 27), (0, 14)]
+    > [(5, 269), (6, 244), (0, 161)]
+    > [(8, 646), (5, 164), (3, 125)]
+    > [(2, 698), (3, 34), (7, 14)]
+    > [(3, 712), (5, 290), (8, 110)]
+    > 
+    > ```
+    > 
+    > This is pretty good because majority of the counts is in the first group. You see that clustering confuses 7 and 9, 4 and 5. But 0 is clustered pretty nicely.
+    > 
+    > **A few approaches how to improve this:**
+    > 
+    > -   run the algorithm a few times and select the best one (based on the distance to clusters)
+    > -   handling cases when nothing is assigned to a cluster. In my case you will get Nan in `means` variable because `count` is 0.
+    > -   random points initialization.
+    > 
+
+
+
+
+
+## Word2Vec/Doc2Vec in Tensorflow
+
+- [tensorflow_cookbook/06_using_word2vec.ipynb at master · nfmcclure/tensorflow_cookbook](https://github.com/nfmcclure/tensorflow_cookbook/blob/master/07_Natural_Language_Processing/06_Using_Word2Vec_Embeddings/06_using_word2vec.ipynb)
+
+- [tensorflow_cookbook/07_sentiment_with_doc2vec.ipynb at master · nfmcclure/tensorflow_cookbook](https://github.com/nfmcclure/tensorflow_cookbook/blob/master/07_Natural_Language_Processing/07_Sentiment_Analysis_With_Doc2Vec/07_sentiment_with_doc2vec.ipynb)
+
+
+
+
+# DNN
+
+## Before everything start, just remember ...
 1. graph = container
 2. sess = liquid
 
-### Constant, Placeholder, and Variables
+## Constant, Placeholder, and Variables
 1. constant: fixed item. the value cannot be changed during training
 2. placeholder: we can pass item to the graph interactively. (common used for input, ground truth label, and other flags)
 3. variable: dynamic item. the value can be changed during training. (need to be initialized for each session)
@@ -521,7 +374,7 @@
     ```
 
 
-### Basic Math
+## Basic Math
 
 - tf.matmul
 - tf.multiply
@@ -590,7 +443,7 @@ for _ in np.arange(10):
     print(sess.run(index_counter))
 ```
 
-#### A linear regression example
+### A linear regression example
 
 ```python
 # 將先前的 graph 清除
@@ -642,10 +495,10 @@ plt.show()
 sess.close()
 ```
 
-### General writing flow
+## General writing flow
 
 
-#### Import required libries and set some parameters
+### Import required libries and set some parameters
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -677,7 +530,7 @@ import tensorflow as tf
 ```
 
 
-#### Load data and do some pre-processing
+### Load data and do some pre-processing
 
 
 - We use MNIST HERE (with sklearn 8x8 version rather than use tensorflow 28x28 version)
@@ -695,7 +548,7 @@ import tensorflow as tf
     y_one_hot[np.arange(len(y_)), y_] = 1
     ```
 
-#### split your data into training and validation sets
+### split your data into training and validation sets
 
 - use train_test_split
 
@@ -751,7 +604,7 @@ import tensorflow as tf
 
 
 
-#### build the network
+### build the network
 
 - step 1: define placeholder
 
@@ -966,7 +819,7 @@ import tensorflow as tf
         train_step = tf.train.AdamOptimizer(learning_rate=FLAGS.lr).minimize(loss)
     ```
 
-#### run session
+### run session
 
 - step 1: run global variables initialization
 
@@ -1099,7 +952,7 @@ plt.legend(loc = 4)
 plt.show()
 ```
 
-#### plot model training result
+### plot model training result
 
 ```python
 plt.figure(1)
@@ -1114,7 +967,7 @@ plt.title('Accuracy')
 
 
 
-#### Save Model
+### Save Model
 
 - save model to disk
 
@@ -1139,7 +992,7 @@ plt.title('Accuracy')
     tf.global_variables()
     ```
 
-#### Load Model
+### Load Model
 
 - load model 之前要先回到前面重建Graph，建好之後再call restore
 
@@ -1166,9 +1019,9 @@ plt.title('Accuracy')
             }))
     ```
         
-### DNN 訓練建議
+## DNN 訓練建議
 
-#### 選擇 Loss Function
+### 選擇 Loss Function
 
 - Classification 常用 cross-entropy 當作 loss function
 
@@ -1176,7 +1029,7 @@ plt.title('Accuracy')
 
 - 一般不會用 classification error 來做 loss function , 因為他沒辦法有效衡量模型的好壞
 
-#### 如何選擇 Activation Function
+### 如何選擇 Activation Function
 
 - Sigmoid, Tanh, Softsign
     - Vanishing gradient problem
@@ -1206,13 +1059,13 @@ plt.title('Accuracy')
     - Classification 
         Output layer 常用 softmax
 
-#### 選擇 Learning Rate
+### 選擇 Learning Rate
 
 - 大多要試試看才知道，通常不會大於 0.1
 - 一次調一個數量級 
     0.1 ➔ 0.01 ➔ 0.001
 
-#### 選擇 Optimizers
+### 選擇 Optimizers
 
 - SGD - tf.train.GradientDescentOptimizer  
 - Momentum - tf.train.MomentumOptimizer  
@@ -1220,9 +1073,9 @@ plt.title('Accuracy')
 - RMSprop - tf.train.RMSPropOptimizer  
 - Adam - tf.train.AdamOptimizer
 
-### 避免 Overfitting
+## 避免 Overfitting
 
-#### Regularization
+### Regularization
 
 - 限制 weights 的大小讓 output 曲線比較平滑
 
@@ -1237,14 +1090,14 @@ plt.title('Accuracy')
     L2 norm 
         - Root mean square of absolute values
 
-#### Early Stopping
+### Early Stopping
 
 - 假如能早點停下來就好了
 
     ![](https://screenshotscdn.firefoxusercontent.com/images/a69f1a06-09f4-4c8c-bb37-d70e7683241a.png)
 
         
-#### Dropout
+### Dropout
 
 - What is Dropout?  
     - 原本為 neurons 跟 neurons 之間為 fully connected  
@@ -1262,12 +1115,12 @@ plt.title('Accuracy')
 ![](https://screenshotscdn.firefoxusercontent.com/images/be407fed-ace8-49d5-8997-8f2351a31d90.png)
         
         
-## CNN
+# CNN
 
 影像問題，優先考慮 CNN
 
 
-### CNN in tensorflow
+## CNN in tensorflow
 
 - normalize for data
 
@@ -1415,7 +1268,7 @@ plt.title('Accuracy')
     print('Testing Accuracy: {}\n'.format(test_batch_acc_total/test_batch_count))
     ```
 
-### CNN in Karas
+## CNN in Karas
 
 - load data
 
@@ -1596,7 +1449,7 @@ plt.title('Accuracy')
     plt.show()
     ```
 
-### CNN 架構建議
+## CNN 架構建議
 
 - 建議使用 3x3 的 filters size
 - filters 數量應該要越來越多 64 > 128 > 256
@@ -1606,12 +1459,160 @@ plt.title('Accuracy')
 - 若嚴重 Overfitting 可嘗試 dropout, L2 regularization
 
 
-## Callback function
+# Tools
+
+## TensorEditor
+
+- [TensorEditor ：一個小白都能快速玩轉的神經網絡搭建工具 - 幫趣](http://bangqu.com/l53yr4.html#utm_source=Facebook_PicSee&utm_medium=Social)
+
+## TensorBoard
+
+- [tf.summary.merge_all  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/summary/merge_all)
+
+- [tf.summary.image  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/summary/image)
+
+- [tf.summary.FileWriter  |  TensorFlow](https://www.tensorflow.org/api_docs/python/tf/summary/FileWriter)
+
+- [How do you plot training and validation loss on the same graph using TensorFlow’s TensorBoard? - Quora](https://www.quora.com/How-do-you-plot-training-and-validation-loss-on-the-same-graph-using-TensorFlow%E2%80%99s-TensorBoard)
+
+    > In Machine Learning it makes sense to plot your loss or accuracy for both your training and validation set over time. Together it tells a powerful story - a must have in the toolbox of every Machine Learning practitioner.
+    > 
+    > Not having an intuitive easy way to plot two scalars on the same graph seem to be an oversight on the part of the Tensorflow team. Fortunately there is a work-around.
+    > 
+    > ![](https://qph.fs.quoracdn.net/main-qimg-56c7e4c0612df18cd24bd22cc528d7cf)
+    > 
+    > By using two *FileWriters* with a single *tf.summary.scalar* you can plot two scalars on a single graph.
+    > ```python
+    > import tensorflow as tf
+    > from numpy import random
+    > 
+    > """
+    > Plotting multiple scalars on the same graph
+    > """
+    > 
+    > writer_val = tf.summary.FileWriter('./logs/plot_val')
+    > writer_train = tf.summary.FileWriter('./logs/plot_train')
+    > loss_var = tf.Variable(0.0)
+    > tf.summary.scalar("loss", loss_var)
+    > write_op = tf.summary.merge_all()
+    > session = tf.InteractiveSession()
+    > session.run(tf.global_variables_initializer())
+    > for i in range(100):
+    >     # loss validation
+    >     summary = session.run(write_op,  {loss_var: random.rand()})
+    >     writer_val.add_summary(summary, i)
+    >     writer_val.flush()
+    >     # loss train
+    >     summary = session.run(write_op,  {loss_var: random.rand()})
+    >     writer_train.add_summary(summary, i)
+    >     writer_train.flush()
+    > ```
+    > Reference:
+    > 
+    > [chasingbob/using-tensorboard](https://github.com/chasingbob/using-tensorboard)
+    > 
+
+### Embedding projector
+
+- [Embedding projector - visualization of high-dimensional data](https://projector.tensorflow.org/)
+
+
+- [decentralion/tf-dev-summit-tensorboard-tutorial: Code that accompanies my talk at TF Dev Summit 2016](https://github.com/decentralion/tf-dev-summit-tensorboard-tutorial)
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/eBbEDRsCmv4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+- [How to use tensorboard Embedding Projector? - Stack Overflow](https://stackoverflow.com/questions/40849116/how-to-use-tensorboard-embedding-projector)
+
+    > As far as I am aware [this](https://www.tensorflow.org/how_tos/embedding_viz/) is the only documentation about embedding visualization on the TensorFlow website. Though the code snippet might not be very instructive for the first time users, so here is an example usage:
+    > 
+    > ```python
+    > import os
+    > import tensorflow as tf
+    > from tensorflow.examples.tutorials.mnist import input_data
+    > 
+    > LOG_DIR = 'logs'
+    > 
+    > mnist = input_data.read_data_sets('MNIST_data')
+    > images = tf.Variable(mnist.test.images, name='images')
+    > 
+    > with tf.Session() as sess:
+    >     saver = tf.train.Saver([images])
+    > 
+    >     sess.run(images.initializer)
+    >     saver.save(sess, os.path.join(LOG_DIR, 'images.ckpt'))
+    > ```
+    > 
+    > Here first we create a TensoFlow variable (`images`) and then save it using `tf.train.Saver`. After executing the code we can launch TensorBoard by issuing `tensorboard --logdir=logs` command and opening `localhost:6006` in a browser.
+    > 
+    > [![PCA Visualization](https://i.stack.imgur.com/8Rb1g.jpg)](https://i.stack.imgur.com/8Rb1g.jpg) However this visualisation is not very helpful because we do not see different classes to which each data point belongs. In order to distinguish each class from another one should provider some metadata:
+    > 
+    > ```python
+    > import os
+    > import tensorflow as tf
+    > from tensorflow.examples.tutorials.mnist import input_data
+    > from tensorflow.contrib.tensorboard.plugins import projector
+    > 
+    > LOG_DIR = 'logs'
+    > metadata = os.path.join(LOG_DIR, 'metadata.tsv')
+    > 
+    > mnist = input_data.read_data_sets('MNIST_data')
+    > images = tf.Variable(mnist.test.images, name='images')
+    > 
+    > with open(metadata, 'w') as metadata_file:
+    >     for row in mnist.test.labels:
+    >         metadata_file.write('%d\n' % row)
+    > 
+    > with tf.Session() as sess:
+    >     saver = tf.train.Saver([images])
+    > 
+    >     sess.run(images.initializer)
+    >     saver.save(sess, os.path.join(LOG_DIR, 'images.ckpt'))
+    > 
+    >     config = projector.ProjectorConfig()
+    >     # One can add multiple embeddings.
+    >     embedding = config.embeddings.add()
+    >     embedding.tensor_name = images.name
+    >     # Link this tensor to its metadata file (e.g. labels).
+    >     embedding.metadata_path = metadata
+    >     # Saves a config file that TensorBoard will read during startup.
+    >     projector.visualize_embeddings(tf.summary.FileWriter(LOG_DIR), config)
+    > ```
+    > 
+    > Which gives us:
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/OnASd.jpg)](https://i.stack.imgur.com/OnASd.jpg)
+    > 
+
+
+### How to Use t-SNE Effectively
+
+- [How to Use t-SNE Effectively](https://distill.pub/2016/misread-tsne/)
+
+### How to "reset" tensorboard data
+
+- [How to "reset" tensorboard data after killing tensorflow instance - Stack Overflow](https://stackoverflow.com/questions/34454721/how-to-reset-tensorboard-data-after-killing-tensorflow-instance)
+
+    > Yes, I believe ultimately this aspect is positive.
+    > As an example, in my script I automate new run logs via `datetime`:
+    > 
+    > ```python
+    > from datetime import datetime
+    > now = datetime.now()
+    > logdir = "tf_logs/.../" + now.strftime("%Y%m%d-%H%M%S") + "/"
+    > ```
+    > 
+    > Then when running TensorBoard you can click the different runs on and off provided you ran TensorBoard in the parent directory.
+    > 
+    > If you **know** you don't care about a previous run and want it out of your life, then yes, you need to remove the event files and endure the unusually long process of killing and restarting TensorBoard.
+    > 
+
+
+# Callback function
 
 - [deep-learning-experiments/cat_dog_tf_v4_AddCallBacks.ipynb at master · vashineyu/deep-learning-experiments](https://github.com/vashineyu/deep-learning-experiments/blob/master/Tut_cats-dogs/cat_dog_tf_v4_AddCallBacks.ipynb)
 - 
 
-## Visualizing TensorFlow
+# Visualizing TensorFlow
 
 - [Visualizing TensorFlow Graphs in Jupyter Notebooks](https://blog.jakuba.net/2017/05/30/tensorflow-visualization.html)
 
@@ -1624,7 +1625,7 @@ plt.title('Accuracy')
 
 
 
-## Object Detection
+# Object Detection
 
 - [Tensorflow Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection)
 
@@ -1637,7 +1638,7 @@ plt.title('Accuracy')
 
 - [Object Detection Demo](https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb)
 
-### Oxford-IIIT Pets Dataset
+## Oxford-IIIT Pets Dataset
 
 - [Quick Start: Distributed Training on the Oxford-IIIT Pets Dataset on Google Cloud](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md)
 
@@ -1646,11 +1647,9 @@ plt.title('Accuracy')
     > [![](https://github.com/tensorflow/models/raw/master/research/object_detection/g3doc/img/oxford_pet.png)](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/img/oxford_pet.png)
 
 
+# Troubleshooting
 
-
-## Troubleshooting
-
-### General
+## General
 - [tensorflow - what does x = tf.placeholder(tf.float32, [None, 784]) means? - Stack Overflow](https://stackoverflow.com/questions/39305174/what-does-x-tf-placeholdertf-float32-none-784-means)
 
     From the tutorial: [Deep MNIST for Experts](https://www.tensorflow.org/versions/r0.10/tutorials/mnist/pros/index.html)
@@ -1692,7 +1691,90 @@ plt.title('Accuracy')
     > `python train.py --logtostderr --train_dir=results/train --peline_config_path=weight/ssd_inception_v2_coco.config`
 
 
-### GPU Usage
+### ValueError: No gradients provided for any variable
+
+- [No gradients provided for any variable ? · Issue #1511 · tensorflow/tensorflow](https://github.com/tensorflow/tensorflow/issues/1511)
+
+    > I know this is closed, but I thought I might mention for the sake of Googler's: most non-linear operations (such as tf.cast) do not provide gradients. However, there might be a method to specify the gradient of a custom operation (e.g. piecewise linear trig function) . See here: [#1095](https://github.com/tensorflow/tensorflow/issues/1095) .
+    > 
+    > ---
+    > 
+    > I was also having a similar problem, and found out it was because I had a `tf.round()` in my cost function, which is not really differentiable I think.
+    > 
+    > ---
+    > 
+    > Your issue is at this line of code:
+    > 
+    > `prediction_depth = sess.run(prediction_depth)`
+    > 
+    > Basically, this makes `prediction_depth` become a number and it is no longer a tensor variable). It means you have just cut the connection between your `depth_loss` and every variables in your model.
+    > 
+    > You should remove that line and try running again.
+    > 
+
+### Attempting to use uninitialized value AUC/AUC/auc/false_positives
+
+- [python - Tensorflow Attempting to use uninitialized value AUC/AUC/auc/false_positives - Stack Overflow](https://stackoverflow.com/questions/44422508/tensorflow-attempting-to-use-uninitialized-value-auc-auc-auc-false-positives)
+
+    > try this:
+    > 
+    > ```python
+    > init = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
+    > sess.run(init)
+    > ```
+    > ---
+    > 
+    > @AndreasStorvikStrauman besides trainiable variables you create with `tf.Variable` or `tf.get_variable`, there are untrainable variables like global step which increase one after each train step, these variables all called local variables, if you want to calculate AUC, tensorflow implicitly create some local variables for it, so you also need to initialize it -- [Jie.Zhou](https://stackoverflow.com/users/6778091/jie-zhou "990 reputation") [Aug 8 '17 at 10:45](https://stackoverflow.com/questions/44422508/tensorflow-attempting-to-use-uninitialized-value-auc-auc-auc-false-positives#comment78091204_44429137)
+    > 
+
+### ValueError: setting an array element with a sequence
+
+- [python - ValueError: setting an array element with a sequence - Stack Overflow](https://stackoverflow.com/questions/4674473/valueerror-setting-an-array-element-with-a-sequence)
+
+    > In my case , I got this Error in Tensorflow , Reason was i was trying to feed a array with different length or sequences :
+    > 
+    > example :
+    > 
+    > ```python
+    > import tensorflow as tf
+    > 
+    > input_x = tf.placeholder(tf.int32,[None,None])
+    > 
+    > word_embedding = tf.get_variable('embeddin',shape=[len(vocab_),110],dtype=tf.float32,initializer=tf.random_uniform_initializer(-0.01,0.01))
+    > 
+    > embedding_look=tf.nn.embedding_lookup(word_embedding,input_x)
+    > 
+    > with tf.Session() as tt:
+    >     tt.run(tf.global_variables_initializer())
+    > 
+    >     a,b=tt.run([word_embedding,embedding_look],feed_dict={input_x:example_array})
+    >     print(b)
+    > ```
+    > 
+    > And if my array is :
+    > 
+    > ```python
+    > example_array = [[1,2,3],[1,2]]
+    > ```
+    > 
+    > Then i will get error :
+    > 
+    > ```python
+    > ValueError: setting an array element with a sequence.
+    > ```
+    > 
+    > but if i do padding then :
+    > 
+    > ```python
+    > example_array = [[1,2,3],[1,2,0]]
+    > ```
+    > 
+    > Now it's working.
+    > 
+    > 
+
+
+## GPU Usage
 
 - [Using GPUs  |  TensorFlow](https://www.tensorflow.org/programmers_guide/using_gpu#allowing_gpu_memory_growth)
 
@@ -1784,6 +1866,9 @@ plt.title('Accuracy')
     sess = tf.Session(config=config)
     ```
 
+
+    
+### InternalError: Blas GEMM launch failed
 - [InternalError: Blas GEMM launch failed · Issue #11812 · tensorflow/tensorflow](https://github.com/tensorflow/tensorflow/issues/11812)
 
     > Make sure you have no other processes using the GPU running. Run `nvidia-smi` to check this.
@@ -1797,28 +1882,9 @@ plt.title('Accuracy')
 
     > To be clear, tensorflow will try (by default) to consume all available GPUs. It cannot be run with other programs also active. Closing. Feel free to reopen if this is actually another problem.
     > [name=drpngx]
+    
 
-
-- [Jupyter notebook Tensorflow GPU Memory 釋放 - 掃文資訊](https://hk.saowen.com/a/744613901932b8b210f4841dbfafb7a505c102ca9d2dc1e693accfe9ad829a0a)
-
-    Jupyter notebook 每次運行完tensorflow的進程，佔着顯存不釋放。而又因為tensorflow是默認申請可使用的全部顯存，就會使得後續進程難以運行。暫時還沒有找到在jupyter notebook裏面自動釋放顯存的方法，但是我們可以做的是通過指定config為使用的顯存按需自動增長，這樣可以避免大多數的問題。代碼如下:
-
-    ```python
-    gpu_no = '0' # or '1'
-    os.environ["CUDA_VISIBLE_DEVICES"] = gpu_no
-
-    # 定義TensorFlow配置
-    config = tf.ConfigProto()
-
-    # 配置GPU內存分配方式，按需增長，很關鍵
-    config.gpu_options.allow_growth = True
-
-    # 配置可使用的顯存比例
-    config.gpu_options.per_process_gpu_memory_fraction = 0.1
-
-    # 在創建session的時候把config作為參數傳進去
-    sess = tf.InteractiveSession(config = config)
-    ```
+### 指定GPU memory 用量(tf.GPUOptions)
 
 - [TensorFlow 與 Keras 指定 NVIDIA GPU 顯示卡與記憶體用量教學 - G. T. Wang](https://blog.gtwang.org/programming/tensorflow-keras-specify-gpu-and-memory-tutorial/)
 
@@ -1915,11 +1981,33 @@ plt.title('Accuracy')
     > 參考資料：[Kevin Chan’s blog](https://applenob.github.io/tf_7.html)、[csdn](http://blog.csdn.net/sinat_26917383/article/details/75633754)、[StackOverflow](https://stackoverflow.com/questions/40690598/can-keras-with-tensorflow-backend-be-forced-to-use-cpu-or-gpu-at-will/42750563#42750563)
     > 
 
+### GPU memory 按需增(config.gpu_options.allow_growth=True)
+
+- [Jupyter notebook Tensorflow GPU Memory 釋放 - 掃文資訊](https://hk.saowen.com/a/744613901932b8b210f4841dbfafb7a505c102ca9d2dc1e693accfe9ad829a0a)
+
+    > Jupyter notebook 每次運行完tensorflow的進程，佔着顯存不釋放。而又因為tensorflow是默認申請可使用的全部顯存，就會使得後續進程難以運行。暫時還沒有找到在jupyter notebook裏面自動釋放顯存的方法，但是我們可以做的是通過指定config為使用的顯存按需自動增長，這樣可以避免大多數的問題。代碼如下:
+    > 
+    > ```python
+    > gpu_no = '0' # or '1'
+    > os.environ["CUDA_VISIBLE_DEVICES"] = gpu_no
+    > 
+    > # 定義TensorFlow配置
+    > config = tf.ConfigProto()
+    > 
+    > # 配置GPU內存分配方式，按需增長，很關鍵
+    > config.gpu_options.allow_growth = True
+    > 
+    > # 配置可使用的顯存比例
+    > config.gpu_options.per_process_gpu_memory_fraction = 0.1
+    > 
+    > # 在創建session的時候把config作為參數傳進去
+    > sess = tf.InteractiveSession(config = config)
+    > ```
+    
 
 
 
-
-### Debug Log
+## Debug Log
 
 - [Tensorflow documentation's example code on "Logging Device Placement" doesn't print out anything - Stack Overflow](https://stackoverflow.com/questions/39677168/tensorflow-documentations-example-code-on-logging-device-placement-doesnt-pr)
 
@@ -1967,3 +2055,7 @@ plt.title('Accuracy')
     > > If you would like TensorFlow to automatically choose an existing and supported device to run the operations in case the specified one doesn't exist, you can set `allow_soft_placement` to True in the configuration option when creating the session.
     > 
     > Which will help you if you accidentally manually specified the wrong device or a device which does not support a particular op. This is useful if you write a code which can be executed in environments you do not know. You still can provide useful defaults, but in the case of failure a graceful fallback.
+
+
+
+

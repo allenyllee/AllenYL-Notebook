@@ -35,8 +35,8 @@
 
 ### 統計與資料分析
 
-- [統計理論](統計理論.md)
-[//]: # ( - [統計理論](https://hackmd.io/IwUwZgLAHAnCEFooigdgRARgZgMZMxwRl1SgAY9UBWC1IA==?view)
+- [機率統計](機率統計.md)
+[//]: # ( - [機率統計](https://hackmd.io/IwUwZgLAHAnCEFooigdgRARgZgMZMxwRl1SgAY9UBWC1IA==?view)
 
 - [R__快速上手](R__快速上手.md)
 [//]: # ( - [R__快速上手](https://hackmd.io/GwMwhsAMCMCsCcBaEBjARgDkQFgEwUQzXmkVjWknwBMYUQ0g?view)
@@ -54,11 +54,11 @@
 [//]: # ( - [Python__筆記1-2](https://hackmd.io/fwyP8GXOTvyzJvQLewH-UQ?view)
 
 
-- [Python__筆記2](Python__筆記2.md)
-[//]: # ( - [Python__筆記2](https://hackmd.io/GatIi3u_TH-5ccVY-Vw8Kg?view)
+- [Python__筆記2_Jupyter_notebook](Python__筆記2_Jupyter_notebook.md)
+[//]: # ( - [Python__筆記2_Jupyter_notebook](https://hackmd.io/GatIi3u_TH-5ccVY-Vw8Kg?view)
 
-- [Python__筆記3](Python__筆記3.md)
-[//]: # ( - [Python__筆記3](https://hackmd.io/GYExwNgFhBOBaAjAdhAZnlRBDBAONEAY3hAAYi8QYRtKog==?view)
+- [Python__筆記3_Packages](Python__筆記3_Packages.md)
+[//]: # ( - [Python__筆記3_Packages](https://hackmd.io/GYExwNgFhBOBaAjAdhAZnlRBDBAONEAY3hAAYi8QYRtKog==?view)
 
 - [Python__機器學習1-1_資料處理](Python__機器學習1-1_資料處理.md)
 [//]: # ( - [Python__機器學習1-1_資料處理](https://hackmd.io/EYQwrAbBwIwEwFoDGSAmwEBZOoGYOAlwGYFiB2ADggAZi5UBTGgTkaA=?view)
@@ -73,17 +73,20 @@
 [//]: # ( - [Python__機器學習3-1_自然語言](https://hackmd.io/tVTRw5s6Twig2pSHGc5Mfg?view)
 
 
-- [深度學習框架1-1_Pytorch](深度學習框架1-1_Pytorch.md)
-[//]: # ( - [深度學習框架1-1_Pytorch](https://hackmd.io/3iCInJPWSluU0QsoUXe8uA?view)
+- [機器學習框架1-1_Pytorch](機器學習框架1-1_Pytorch.md)
+[//]: # ( - [機器學習框架1-1_Pytorch](https://hackmd.io/3iCInJPWSluU0QsoUXe8uA?view)
 
-- [深度學習框架1-2_Tensorflow](深度學習框架1-2_Tensorflow.md)
-[//]: # ( - [深度學習框架1-2_Tensorflow](https://hackmd.io/GwBg7AZiCmIMwFoAmIBMAOBAWYBWLC6AhgMZELRGolxinQkBGEQA?view)
+- [機器學習框架2-1_Tensorflow](機器學習框架2-1_Tensorflow.md)
+[//]: # ( - [機器學習框架2-1_Tensorflow](https://hackmd.io/GwBg7AZiCmIMwFoAmIBMAOBAWYBWLC6AhgMZELRGolxinQkBGEQA?view)
 
-- [深度學習框架1-3_Keras](深度學習框架1-3_Keras.md)
-[//]: # ( - [深度學習框架1-3_Keras](https://hackmd.io/gVMx4JeHRWSvNSIC1v3WUQ?view)
+- [機器學習框架2-2_Tensorflow](機器學習框架2-2_Tensorflow.md)
+[//]: # ( - [機器學習框架2-2_Tensorflow](https://hackmd.io/_59a3X85TZ2wiSNo1sYamw?view)
 
-- [深度學習框架1-4_其他](深度學習框架1-4_其他.md)
-[//]: # ( - [深度學習框架1-4_其他](https://hackmd.io/jW86HzUcRYuoy9IUqvbffw?view)
+- [機器學習框架3-1_Keras](機器學習框架3-1_Keras.md)
+[//]: # ( - [機器學習框架3-1_Keras](https://hackmd.io/gVMx4JeHRWSvNSIC1v3WUQ?view)
+
+- [機器學習框架4-1_其他](機器學習框架4-1_其他.md)
+[//]: # ( - [機器學習框架4-1_其他](https://hackmd.io/jW86HzUcRYuoy9IUqvbffw?view)
 
 
 - [Debug__經驗](Debug__經驗.md)
@@ -93,14 +96,17 @@
 
 ### 機器學習
 
-- [機器學習理論1-1_基礎知識](機器學習理論1-1_基礎知識.md)
-[//]: # ( - [機器學習理論1-1_基礎知識](https://hackmd.io/CYNgpgrALBBMsFoCcECMB2BV0DNgIEMCAOAYwWCjBFNnWGIGZYAjIA==?view)
+- [機器學習理論1-1_基礎知識1](機器學習理論1-1_基礎知識1.md)
+[//]: # ( - [機器學習理論1-1_基礎知識1](https://hackmd.io/CYNgpgrALBBMsFoCcECMB2BV0DNgIEMCAOAYwWCjBFNnWGIGZYAjIA==?view)
 
-- [機器學習理論1-2_傳統算法](機器學習理論1-2_傳統算法.md)
-[//]: # ( - [機器學習理論1-2_傳統算法](https://hackmd.io/h_Jh86ILTo6HtSZ1LZqWDw?view)
+- [機器學習理論1-2_基礎知識2](機器學習理論1-2_基礎知識2.md)
+[//]: # ( - [機器學習理論1-2_基礎知識2](https://hackmd.io/aMp7mOAVTZKLu2-se1YSUA?view)
 
-- [機器學習理論2-1_深度學習](機器學習理論2-1_深度學習.md)
-[//]: # ( - [機器學習理論2-1_深度學習](https://hackmd.io/CwTgrAJgjGBmYFozAMwocApsAhgkADBCEgEYTABsOKAxrVMAUA==?view)
+- [機器學習理論2-1_傳統算法](機器學習理論2-1_傳統算法.md)
+[//]: # ( - [機器學習理論2-1_傳統算法](https://hackmd.io/h_Jh86ILTo6HtSZ1LZqWDw?view)
+
+- [機器學習理論3-1_深度學習](機器學習理論3-1_深度學習.md)
+[//]: # ( - [機器學習理論3-1_深度學習](https://hackmd.io/CwTgrAJgjGBmYFozAMwocApsAhgkADBCEgEYTABsOKAxrVMAUA==?view)
 
 
 - [機器學習題庫1](機器學習題庫1.md)
@@ -118,14 +124,14 @@
 
 
 
-- [深度學習算法1-1](深度學習算法1-1.md)
-[//]: # ( - [深度學習算法1-1](https://hackmd.io/WsJRhO7LSCqdeq-FCSN4TQ?view)
+- [深度學習算法1-1_電腦視覺](深度學習算法1-1_電腦視覺.md)
+[//]: # ( - [深度學習算法1-1_電腦視覺](https://hackmd.io/WsJRhO7LSCqdeq-FCSN4TQ?view)
 
 - [深度學習算法1-2_強化學習](深度學習算法1-2_強化學習.md)
 [//]: # ( - [深度學習算法1-2_強化學習](https://hackmd.io/YpG38UDDRX2aKcOJG-35oQ?view)
 
-- [深度學習算法1-3](深度學習算法1-3.md)
-[//]: # ( - [深度學習算法1-3](https://hackmd.io/96pmv8CfQqWV2KqIxHhBNg?view)
+- [深度學習算法1-3_其他](深度學習算法1-3_其他.md)
+[//]: # ( - [深度學習算法1-3_其他](https://hackmd.io/96pmv8CfQqWV2KqIxHhBNg?view)
 
 - [深度學習算法1-4](深度學習算法1-4.md)
 [//]: # ( - [深度學習算法1-4](https://hackmd.io/g-dTzu57RY6rjydgIgCJUg?view)
@@ -141,8 +147,7 @@
 [//]: # ( - [深度學習算法1-7_模型優化](https://hackmd.io/Jj4_HqLOTw-QnEMwb5sMyA?view)
 
 
-- [深度學習算法1-8_LDA](深度學習算法1-8_LDA.md)
-[//]: # ( - [深度學習算法1-8_LDA](https://hackmd.io/_59a3X85TZ2wiSNo1sYamw?view)
+
 
 
 
@@ -170,29 +175,39 @@
 - [NLP__資料收集1-3_機器摘要](NLP__資料收集1-3_機器摘要.md)
 [//]: # ( - [NLP__資料收集1-3_機器摘要](https://hackmd.io/wGTFAMq1QtOs-A4sRm7R3Q?view)
 
-- [NLP__資料蒐集2-1_單詞建模](NLP__資料蒐集2-1_單詞建模.md)
-[//]: # ( - [NLP__資料蒐集2-1_單詞建模](https://hackmd.io/NMmd6y0FSRur32rpqgV4jA?view)
+- [NLP__資料收集1-4_情意分析](NLP__資料收集1-4_情意分析.md)
+[//]: # ( - [NLP__資料收集1-4_情意分析](https://hackmd.io/elOLtkNMRCiSWSUHzL2N2w?view)
 
-- [NLP__資料蒐集2-2_文本建模](NLP__資料蒐集2-2_文本建模.md)
-[//]: # ( - [NLP__資料蒐集2-2_文本建模](https://hackmd.io/-kazl0ccS6atUV0QHFCQDw?view)
+- [NLP__資料收集2-1_單詞建模](NLP__資料收集2-1_單詞建模.md)
+[//]: # ( - [NLP__資料收集2-1_單詞建模1](https://hackmd.io/NMmd6y0FSRur32rpqgV4jA?view)
 
-- [NLP__資料蒐集2-3_字串匹配](NLP__資料蒐集2-3_字串匹配.md)
-[//]: # ( - [NLP__資料蒐集2-3_字串匹配](https://hackmd.io/2c28zelDRyuN42IZ5jj64Q?view)
+- [NLP__資料收集2-2_單詞建模2](NLP__資料收集2-2_單詞建模2.md)
+[//]: # ( - [NLP__資料收集2-2_單詞建模2](https://hackmd.io/xfHXajXJScGvgSDLMNSaMw?view)
 
-- [NLP__資料收集3-1_中文處理](NLP__資料收集3-1_中文處理.md)
-[//]: # ( - [NLP__資料收集3-1_中文處理](https://hackmd.io/rSBDm4ELRoS6pghAo3m_lQ?view)
+- [NLP__資料收集3-1_文本建模](NLP__資料收集3-1_文本建模.md)
+[//]: # ( - [NLP__資料收集3-1_文本建模1](https://hackmd.io/-kazl0ccS6atUV0QHFCQDw?view)
 
-- [NLP__資料收集3-2_斷詞工具](NLP__資料收集3-2_斷詞工具.md)
-[//]: # ( - [NLP__資料收集3-2_斷詞工具](https://hackmd.io/Rue29GttQeWqe3RbJkKOJw?view)
+- [NLP__資料收集3-2_文本建模2](NLP__資料收集3-2_文本建模2.md)
+[//]: # ( - [NLP__資料收集3-2_文本建模2](https://hackmd.io/1XJ8b4zoTh6T2pScSjWDZQ?view)
 
-- [NLP__資料收集4-1_資訊檢索](NLP__資料收集4-1_資訊檢索.md)
-[//]: # ( - [NLP__資料收集4-1_資訊檢索](https://hackmd.io/ZXz_vEcRRbSbu-AxTQhqdA?view)
 
-- [NLP__資料收集5-1_自然語音](NLP__資料收集5-1_自然語音.md)
-[//]: # ( - [NLP__資料收集5-1_自然語音](https://hackmd.io/BYxCUe7cQcuasPqg0vl6uA?view)
+- [NLP__資料收集4-1_中文處理](NLP__資料收集4-1_中文處理.md)
+[//]: # ( - [NLP__資料收集4-1_中文處理](https://hackmd.io/rSBDm4ELRoS6pghAo3m_lQ?view)
 
-- [NLP__資料收集5-2_文字辨識](NLP__資料收集5-2_文字辨識.md)
-[//]: # ( - [NLP__資料收集5-2_文字辨識](https://hackmd.io/ZRwA7MyzSZaqLFPWz3QokA?view)
+- [NLP__資料收集4-2_斷詞工具](NLP__資料收集4-2_斷詞工具.md)
+[//]: # ( - [NLP__資料收集4-2_斷詞工具](https://hackmd.io/Rue29GttQeWqe3RbJkKOJw?view)
+
+- [NLP__資料收集5-1_資訊檢索](NLP__資料收集5-1_資訊檢索.md)
+[//]: # ( - [NLP__資料收集5-1_資訊檢索](https://hackmd.io/ZXz_vEcRRbSbu-AxTQhqdA?view)
+
+- [NLP__資料收集5-2_字串匹配](NLP__資料收集5-2_字串匹配.md)
+[//]: # ( - [NLP__資料收集5-2_字串匹配](https://hackmd.io/2c28zelDRyuN42IZ5jj64Q?view)
+
+- [NLP__資料收集6-1_自然語音](NLP__資料收集6-1_自然語音.md)
+[//]: # ( - [NLP__資料收集6-1_自然語音](https://hackmd.io/BYxCUe7cQcuasPqg0vl6uA?view)
+
+- [NLP__資料收集6-2_文字辨識](NLP__資料收集6-2_文字辨識.md)
+[//]: # ( - [NLP__資料收集6-2_文字辨識](https://hackmd.io/ZRwA7MyzSZaqLFPWz3QokA?view)
 
 - [Regular_Expression__筆記](Regular_Expression__筆記.md)
 [//]: # ( - [Regular_Expression__筆記](https://hackmd.io/MtW4sdSZSqCLzocQ3yIfFQ?view)
@@ -203,29 +218,33 @@
 - [網頁爬蟲2](網頁爬蟲2.md)
 [//]: # ( - [網頁爬蟲2](https://hackmd.io/IYVgnAbATAxlDMBaAHMARgBkQFnjAjCgKYhqIwTREBm8wEajQA==?view)
 
-- [AI_in_法律_資料收集](AI_in_法律_資料收集.md)
-[//]: # ( - [AI_in_法律_資料收集](https://hackmd.io/I5yOrLhYRVq1zN24UB5G5w?view)
+- [AI_in_Law_資料收集](AI_in_Law_資料收集.md)
+[//]: # ( - [AI_in_Law_資料收集](https://hackmd.io/I5yOrLhYRVq1zN24UB5G5w?view)
 
 - [NLP_in_Bio__資料蒐集](NLP_in_Bio__資料蒐集.md)
 [//]: # ( - [NLP_in_Bio__資料蒐集](https://hackmd.io/XghRZFdCS5WyEurS_k0wJw?view)
 
 ## 網路應用
 
-- [DataBase__筆記](DataBase__筆記.md)
-[//]: # ( - [DataBase__筆記](https://hackmd.io/RfjJd6YKRC2zr49fR2nYsQ?view)
+- [Web__開發1_前後端](Web__開發1_前後端.md)
+[//]: # ( - [Web__開發1_前後端](https://hackmd.io/EwDgDAxmDMCcAmBaMBTAZhRAWe8uIENoxhEBWARngKwLLAHZ4AjBoA==?view)
 
-- [Web__開發](Web__開發.md)
-[//]: # ( - [Web__開發](https://hackmd.io/EwDgDAxmDMCcAmBaMBTAZhRAWe8uIENoxhEBWARngKwLLAHZ4AjBoA==?view)
+- [Web__開發2_DataBase](Web__開發2_DataBase.md)
+[//]: # ( - [Web__開發2_DataBase](https://hackmd.io/RfjJd6YKRC2zr49fR2nYsQ?view)
 
 
-- [Spark__快速上手](Spark__快速上手.md)
-[//]: # ( - [Spark__快速上手](https://hackmd.io/oA4qZ2JNSXyncAfd4LvHag?view)
+- [Web__開發3_Spark_Hadoop](Web__開發3_Spark_Hadoop.md)
+[//]: # ( - [Web__開發3_Spark_Hadoop](https://hackmd.io/oA4qZ2JNSXyncAfd4LvHag?view)
 
 - [Xpath__快速上手](Xpath__快速上手.md)
 [//]: # ( - [Xpath__快速上手](https://hackmd.io/HhNqaYU0RZOVoFdvCtkjog?view)
 
 - [Javascript__快速上手](Javascript__快速上手.md)
 [//]: # ( - [Javascript__快速上手](https://hackmd.io/MYFgTAJgnAZmwFoCsMCMAGBJUUwDgGZcEA2EAQxgCMBTAqMAgpIA?view)
+
+
+- [HTML__筆記](HTML__筆記.md)
+[//]: # ( - [HTML__筆記](https://hackmd.io/pfaq14ajSK2UF3pLDOtltQ?view)
 
 - [google_app_script__應用](google_app_script__應用.md)
 [//]: # ( - [google_app_script__應用](https://hackmd.io/xC_II_jmQNmv4PnBoMG-Gw?view)
@@ -351,8 +370,8 @@
 - [Application__筆記2](Application__筆記2.md)
 [//]: # ( - [Application__筆記2](https://hackmd.io/TK4ii1wyQkihlaXWRttseg?view)
 
-- [Application__筆記3](Application__筆記3.md)
-[//]: # ( - [Application__筆記3](https://hackmd.io/AJmwKqCmQOGIk_x7Z4WxWQ#)
+- [Application__筆記3_Containers](Application__筆記3_Containers.md)
+[//]: # ( - [Application__筆記3_Containers](https://hackmd.io/AJmwKqCmQOGIk_x7Z4WxWQ#)
 
 
 - [Windows__問題排解](Windows__問題排解.md)
@@ -374,8 +393,14 @@
 [//]: # ( - [Linux__問題排解2-2_filesystem](https://hackmd.io/IYrQ99-YSg22WypkTSW3tQ?view)
 
 - [Linux__問題排解2-3_filesystem](Linux__問題排解2-3_filesystem.md)
-[//]: # ( - [Linux__問題排解2-3_filesystem](https://hackmd.io/9KvRP7oWTWOamKABqpUATw?view)
+[//]: # ( - [Linux__問題排解2-3_filesystem](https://hackmd.io/BShB9yd3TnafnyBXkbHY6Q?view)
 
+
+- [Linux__問題排解2-4_filesystem](Linux__問題排解2-4_filesystem.md)
+[//]: # ( - [Linux__問題排解2-4_filesystem](https://hackmd.io/9KvRP7oWTWOamKABqpUATw?view)
+
+- [Linux__問題排解2-5_filesystem](Linux__問題排解2-5_filesystem.md)
+[//]: # ( - [Linux__問題排解2-5_filesystem](https://hackmd.io/MClkh4U0QOSYz70yNBzh2A?view)
 
 
 - [Linux__問題排解3-1_bash](Linux__問題排解3-1_bash.md)

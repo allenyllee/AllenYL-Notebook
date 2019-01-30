@@ -1,4 +1,4 @@
-# AI_in_法律_資料收集
+# AI_in_Law_資料收集
 
 [toc]
 <!-- toc --> 
@@ -12,6 +12,21 @@
 ### 開放式裁判書分析平台 - g0v Civic Tech Grant
 
 - [開放式裁判書分析平台 - g0v Civic Tech Grant](https://grants.g0v.tw/projects/5a61d1e3900e86001bf9f498)
+
+### 量刑趨勢建議系統
+
+- [​量刑趨勢建議系統](http://sen.judicial.gov.tw/pub_platform/sugg/index.html)
+
+### 成為家庭的維護者。專訪家事法庭法官 張以岳
+
+- [成為家庭的維護者。專訪家事法庭法官 張以岳 – 職人 SHOKUZiNE](https://www.shokuzine.com/2018/11/07/%E6%88%90%E7%82%BA%E5%AE%B6%E5%BA%AD%E7%9A%84%E7%B6%AD%E8%AD%B7%E8%80%85%E3%80%82%E5%B0%88%E8%A8%AA%E5%AE%B6%E4%BA%8B%E6%B3%95%E5%BA%AD%E6%B3%95%E5%AE%98-%E5%BC%B5%E4%BB%A5%E5%B2%B3/)
+
+### 人工智慧相關法律議題芻議
+
+- [人工智慧相關法律議題芻議-元照網路書店](http://www.angle.com.tw/Book.asp?BKID=10367&f=fb)
+
+
+
 
 ## 判決查詢
 
@@ -165,6 +180,66 @@
     > 接著，判決出爐，若民眾對一審判決結果不服，收到判決書20日內，也可向第一審法院提出上訴狀，由第二審法院判決上訴案件。目前我國採三級三審制，若要上訴到第三審，財產權案件利益須超過150萬，但若價額無法核定，即視為165萬，可以上訴第三審。另外，第三審為法律審，也就是僅對法律見解與適用法律進行審理，因此規定強制要有律師代理，以提供專業法律知識和技巧。
     > 
 
+### 「矧」、「惟」、「復」、「次」、「伊」、「渠」
+
+- [【司法黑話？「矧」、「惟」、「復」、「次」、「伊」、「渠」是什麼意思？】 @ 駱克刑法 :: 痞客邦 ::](http://roxincriminallaw.pixnet.net/blog/post/2829426-%E3%80%90%E5%8F%B8%E6%B3%95%E9%BB%91%E8%A9%B1%EF%BC%9F%E3%80%8C%E7%9F%A7%E3%80%8D%E3%80%81%E3%80%8C%E6%83%9F%E3%80%8D%E3%80%81%E3%80%8C%E5%BE%A9%E3%80%8D%E3%80%81%E3%80%8C%E6%AC%A1)
+
+    > 【司法黑話？「矧」、「惟」、「復」、「次」、「伊」、「渠」是什麼意思？】
+    > 
+    > 【簡要版】
+    > 
+    > 1、非白話用語可說是法律業行內人的黑話、切口，駱克考試也會用。
+    > 
+    > 2、「矧」、「惟」、「復」、「次」、「伊」、「渠」是什麼意思？
+    > 
+    > (1)「矧」：「況且」之意，用在加強語氣時。
+    > 
+    > (2)「惟」：「但是」之意，用在語氣轉折時。
+    > 
+    > (3)「復」、「次」：類似一二三四的功能，主要用在分點。
+    > 
+    > (4)「伊」、「渠」：指示代名詞的功能。
+    > 
+    > 【詳細版】
+    > 
+    > 1、非白話用語是法律業的黑話、切口：
+    > 
+    > 法院裁判書用語既不是白話文、也不是文言文，駱克也不知道是什麼文體，有點類似清末民初文言白話夾雜的文體，司法工作者使用的書狀（法院裁判書、檢察官（不）起訴書等、律師辯護狀等）也幾乎都使用這種文體，雖然對於非法律人而言覺得這些用詞很艱澀，但是這些用語其實可以算是這行的黑話、切口。駱克考試答題時，也有使用這些用語，相信改題者一看就知道是行內人（不過不要本末倒置，答題內容正確才是正解，用語只是點綴而已）。
+    > 
+    > 2、「矧」、「惟」、「復」、「次」、「伊」、「渠」是什麼意思？
+    > 
+    > 新聞中提到的「矧」、「惟」、「復」、「次」、「伊」、「渠」等詞彙，裁判書中確實很常用到，除了「矧」以外，「惟」、「復」、「次」、「伊」幾乎是每則裁判都會看到的用語，簡單說明意思：
+    > 
+    > 1、「矧」：「況且」之意，用在加強語氣使用，常見於法院駁斥被告辯詞時，先用A理由駁斥，之後又說「矧（況且）」依據B理由，被告辯詞還是不可採。
+    > 
+    > 2、「惟」：「但是」之意，用在語氣轉折時使用，常見於法院先引一段被告或證人說詞，接著說「惟（但是）」依據C證據、D理由，被告、證人的供述不可採，簡單來說，看到「惟」，就知道後續是要打臉人家的。
+    > 
+    > 3、「復」、「次」：古早時裁判書是不分段落的（現在的最高法院判決也整篇落落長卻不分段落），因此「復」、「次」的功能跟一二三四類似，主要用於分點。
+    > 
+    > 4、「伊」、「渠」：指示代名詞的功能，主要用於引用被告供述、證人證述時，被告、證人表示是自己的意思。例如：上訴人所辯：伊未與陳○○共同販賣甲基安非他命予林○○，扣案甲基安非他命並非伊寄送，陳○○所述不實云云。此段話是指上訴人辯稱說：「伊（指上訴人自己）」沒有跟陳○○共同販賣甲基安非他命予林○○，扣案的甲基安非他命並非「伊（指上訴人）」寄送，陳○○所說的不實在。
+    > 
+    > 新聞連結：http://www.appledaily.com.tw/realtimenews/article/new/20170514/1117606/
+    > 
+    > 
+
+- [【好難片】判決太艱澀　竟連法官都不會念 | 蘋果日報](https://tw.appledaily.com/new/realtime/20170514/1117606/)
+
+    > 一般民眾看不懂裁判書的艱澀詞句，不是新鮮事，但有些難到連法律人都看不下去甚至看不懂，記者找到十多年前司法官訓練所第45期的裁判書寫作講義，其中教到可用「矧」(因同審)字當作連接詞，意思是「況且」，但記者以這個字考考高院法官林孟皇，他直率回答：「判決裡常看到，但我不會念也不知意思。」
+    > 
+    > 司訓所第45期講義寫道「連接詞運用得當，可使判決起承轉合有致，一氣呵成、環環相扣，但若運用不當，適得其反」，並舉出「矧、惟、復、次」等字為例。記者到司法院的裁判書查詢系統輸入「矧」，光是最高法院就有多達1200件民、刑事判決書使用「矧」字，姑且不論運用是否得當，確是熱門難字。
+    > 
+    > 該期結業的桃園地院法官林蕙芳，日前曾針對法律白話文議題投書《蘋果》，她受訪說：「我沒用過『矧』，但我最反對判決書用『伊』字，被告辯稱伊......，伊到底是講誰，寫清楚你、我、他不就好了。」
+    > 
+    > 記者問林蕙芳自己寫判決曾用過哪個艱澀詞句，她笑笑說：「應非虛妄。」意指某當事人的供述應可採信，「直接寫『應可採信』就好」。林坦言，法律系讀4年加上法研所、司訓所以及觀摩法官前輩們的判決，「很難不被潛移默化」。
+    > 
+    > 曾任高院法官的律師陳恆寬認為，裁判書最常讓人費疑猜的是「多重否定造句」，例如「似難謂非無理由」，到底有理由還是沒理由，即使用「負負得正」原則去拆解，不一定奏效。
+    > 
+    > [法律白話文運動網站](http://bit.ly/2fBqMQr)站長楊貴智對此相當感冒，他認為弔詭之處在於斷句，如果拆成「似難謂+非無理由」，「非無」負負得正，是「有」的意思，那麼「似難謂有理由」就是「沒理由」嗎，恰好相反，「似難謂非無理由」得拆成「似難謂非+無理由」，意指「不能說沒理由」，結論是「有理由」。
+    > 
+    > 高院法官林孟皇表示，他最反對判決裡用「渠等」，一般人看不懂，司法院曾發函建議不要用，但不少法官還是用，有次同一庭的受命法官寫判決就用「渠等」，林在評議時建議改為「他們」或直接寫出哪些人，但受命堅持「渠等」比較優美，林只好在評議的「不同意見書」寫進反對「渠等」的理由。
+    > 
+    > 此外，「詎」(竟然)、「迺」(乃)這些文言文用字，也是受訪的幾位法律人認為應該捨棄的裁判書慣用難字。​(丁牧群／台北報導)
+    > 
 
 ## 法律NLP tools
 
@@ -308,6 +383,30 @@
     > ---
 
 
+## 標註原則
+
+### 一審二審差很多，該如何標註?
+
+> 案例一：
+> 
+> [約別人「喝豆漿」，會構成恐嚇嗎？ – FOLLAW](https://www.follaw.tw/f-comment/f02/15721/?fbclid=IwAR2i-J8R_WCuwnYM7uK21ymUQ5hc494_UA5KbLDNHSuJF_zjdkn0qlTZyts)
+> 
+> ![](https://i.imgur.com/Qe6B78W.jpg)
+> 
+> 應該說，雖然兩次判決結果跟理由差很大，但我們並沒有要叫AI 給出哪個判決是"對"的。我們的目標應該是：「在每一次判決的語境中，成功預測出該次的結果。」
+> 
+> 以上述例子為例，我們希望AI能夠在看到台中地院的判決書文字內容後，告訴我們一審結果；而在看到台中高分院認定後，告訴我們二審結果。這兩篇判決對AI來說是各自獨立的，AI 只需要考慮該次法官採用的理由，並依據這個理由給出判決結果。
+> 
+> 我們的終極目標不是叫AI判斷一審二審誰比較對，而是叫AI在長篇的上下文語境中，找出跟結果最有相關的關鍵事實及理由，並推論出判決結果。
+> 
+> 因此，我們的標註任務應該圍繞在這個目的上，找出跟結果最有相關的正反面理由。以親權案件來說，我們應該要標出支持聲請人主張之正反面理由，與支持相對人主張之正反面理由。
+> 
+> 以我們現在的標註方式就是「對雙方有利不利」欄位，只不過我覺得更精確一點，應該要改成「對雙方主張有利不利」。這樣或許可以解決一些標註上的困難，比方說：聲請人是小孩自己或其他人，他主張小孩要給OO撫養，相對人則主張要給XX撫養。
+> 
+> 由於法官給出的正反理由應該是針對雙方主張，所以在更一般的案件標註中，應該要把雙方主張也標出來。
+> 
+> [name=Ya-Lun Li]
+
 
 
 ## 判決預測
@@ -357,3 +456,83 @@
     > 
 
 
+## AI 在法律與道德的爭議性用途
+
+### github 專案介紹 – 可怕的人工智慧
+
+- [github 專案介紹 – 可怕的人工智慧 – Soft & Share](https://softnshare.com/2018/11/06/github-awfulai/)
+
+
+    > *以下簡介翻譯自 github 專案介紹*
+    > 
+    > [Awful AI ](https://github.com/daviddao/awful-ai)是一個精選的列表，用於追踪當前人工智慧的可怕用法 -- 希望提高認識
+    > 
+    > 當前的人工智慧是[不公平](https://github.com/rockita/criticalML)的，很容易[受到攻擊](http://www.cleverhans.io/security/privacy/ml/2016/12/15/breaking-things-is-easy.html)。 然而，越來越多關於人工智能技術的使用正在野狂野地出現。 這個列表目的在追蹤所有這些應用。 希望 [Awful AI ](https://github.com/daviddao/awful-ai)可以成為一個平臺，激發人們討論如何發展可能的競爭技術(反擊!) .
+    > 
+    > ### 歧視
+    > 
+    > [Hirevue](https://www.hirevue.com/)-應用程式掃描你的臉部，告訴公司你是否值得聘僱[[摘要](https://www.theladders.com/career-advice/ai-screen-candidates-hirevue)]
+    > 
+    > [AI-based Gaydar](https://osf.io/zn79k/) -- 根據一項新的研究表明，人工智慧可以基於人的臉部照片準確地猜測人們是否是同性戀或是異性戀，這表明機器可以比人類有更好的"同志雷達 gaydar" [ [摘要](https://www.theguardian.com/technology/2017/sep/07/new-artificial-intelligence-can-tell-whether-youre-gay-or-straight-from-a-photograph) ]
+    > 
+    > [Racist Chat Bots](https://github.com/daviddao/awful-ai/blob/master) --  微軟的聊天機器人------被稱為 Tay 的微軟聊天機器人花了一天時間從 Twitter 上學習，並開始宣揚反猶太主義的訊息[[摘要](https://www.theguardian.com/technology/2016/mar/24/tay-microsofts-ai-chatbot-gets-a-crash-course-in-racism-from-twitter)]
+    > 
+    > [Racist Auto Tag](https://github.com/daviddao/awful-ai/blob/master) -- Google 影像辨識程式將幾個黑人的面孔標記為大猩猩 [ [摘要](https://www.theguardian.com/technology/2015/jul/01/google-sorry-racist-auto-tag-photo-app) ]
+    > 
+    > [PredPol](http://www.predpol.com/) -- 是一個專案為警察部門預測未來犯罪可能發生的熱點，可能會陷入過度監管多數黑人和棕色膚色社群的回饋迴路[[摘要](https://www.themarshallproject.org/2016/02/03/policing-the-future?ref=hp-2-111#.UyhBLnmlj)]
+    > 
+    > [COMPAS](http://www.equivant.com/challenges/supervision-and-compliance-monitoring) -- 是一種風險評估演算法，在法庭上被威斯康辛州用來預測累犯的風險。 它的製造商拒絕披露專有演算法，只知道最終風險評估得分。 該演算法對黑人有偏見(甚至比人類更糟)[[摘要](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing)][[紐約時報評論](https://www.nytimes.com/2017/10/26/opinion/algorithm-compas-sentencing-bias.html)]
+    > 
+    > [Infer Criminality From Your Face](https://arxiv.org/abs/1611.04135)  -- 從你的臉上推斷犯罪行為------一個根據你的面部特徵判斷你是否是罪犯的程式  [[摘要](https://www.technologyreview.com/s/602955/neural-network-learns-to-identify-criminals-by-their-faces/)]
+    > 
+    > [iBorderCtrl](https://ec.europa.eu/research/infocentre/article_en.cfm?artid=49726) -- 測謊器測試進入歐洲聯盟的旅行者(試驗階段)。 考慮到每天有多少人跨越歐盟邊界，可能會出現大量的誤報。 此外，面部識別演算法容易產生種族偏見。 [[摘要](https://gizmodo.com/an-ai-lie-detector-is-going-to-start-questioning-travel-1830126881)]
+    > 
+    > ### 影響力、虛假資訊和偽造
+    > 
+    > [Cambridge Analytica](https://cambridgeanalytica.org/)  -- 劍橋分析使用 Facebook 的資料來改變觀眾的政治和商業行為[[衛報文章](https://www.theguardian.com/news/2018/mar/26/the-cambridge-analytica-files-the-story-so-far)]
+    > 
+    > [Deep Fakes](https://www.deepfakes.club/) -- 深度贗品是一種基於人工智慧的人體影象合成技術。 它被用來將現有的影象和視訊結合在一起，疊加到來源圖片或視訊中。 深度贗品可能被用來製作假名人色情視訊或者復仇色情片。 [[人工智慧協助假的色情](https://www.vice.com/en_us/article/bj5and/ai-assisted-fake-porn-is-here-and-were-all-fucked)]
+    > 
+    > [Fake News Bots](https://github.com/daviddao/awful-ai/blob/master) -- 假新聞機器人自動化賬戶被程式設計來傳播假新聞。 近年來，假新聞被用來操縱股票市場，使人們選擇危險的醫療選擇，操縱選舉，包括去年的美國總統選舉[[摘要](https://www.wired.com/story/internet-freedom-2017/)][[機器人的角色](https://www.technologyreview.com/s/608561/first-evidence-that-social-bots-play-a-major-role-in-spreading-fake-news/)]
+    > 
+    > [Attention Engineering](https://github.com/daviddao/awful-ai/blob/master) -- 注意力工程，從 Facebook 的通知到 Snapstreaks 到 YouTube 的自動播放，他們都在爭奪一樣東西: 你的注意力。 公司利用人類心理學為自己謀利[ [TED 演講](https://www.ted.com/talks/tristan_harris_the_manipulative_tricks_tech_companies_use_to_capture_your_attention)]
+    > 
+    > ### 社會信用系統
+    > 
+    > [Social Credit System](https://en.wikipedia.org/wiki/Social_Credit_System) -- 社會信用系統使用一種祕密的演算法，Sesame 的評分從350到950不等，其評分依據的因素包括"人際關係"和消費習慣的考慮因素 [ [摘要](https://www.theguardian.com/commentisfree/2018/mar/05/algorithms-rate-credit-scores-finances-data) ][[Foreign Correspondent (video)](https://www.youtube.com/watch?v=eViswN602_k)][[travel ban](https://www.telegraph.co.uk/news/2018/03/24/chinas-social-credit-system-bans-millions-travelling/)]
+    > 
+    > [Vitality](https://www.vitality.co.uk/media/vitality-extends-active-rewards-with-apple-watch-series-3/)  -- 生命健康保險公司提供基於從健康跟蹤器獲取資料的交易[[摘要](https://www.theguardian.com/commentisfree/2018/mar/05/algorithms-rate-credit-scores-finances-data)]
+    > 
+    > ### 監視
+    > 
+    > [Gait Analysis](https://royalsociety.org/~/media/about-us/programmes/science-and-law/royal-society-forensic-gait-analysis-primer-for-courts.pdf) -- 步態分析0在這個閉路電視的時代，你的步態是非常複雜的，非常獨特和艱難的，如果可能的話，你的步態只需要記錄一次，並與你的身份相關聯，以便即時跟蹤你。 在中國，這種監視已經展開。 此外，許多人因為在西部步履蹣跚而被定罪。 我們再也不能在公共場合保持謙遜的匿名。
+    > 
+    > [SenseTime](https://www.sensetime.com/intelligentVideo/84) & [Megvii](https://megvii.com/)基於深度學習演算法的人臉識別技術，SenseFace 和 Megvii 提供了智慧視訊分析的綜合解決方案，其功能包括目標監視、軌跡分析、人口管理[[摘要](https://www.reuters.com/article/us-china-facialrecognition-analysis/backing-big-brother-chinese-facial-recognition-firms-appeal-to-funds-idUSKBN1DD00A)][forbes](https://www.forbes.com/sites/shuchingjeanchen/2018/03/07/the-faces-behind-chinas-omniscient-video-surveillance-technology/#54401e4f4afc)[《[經濟學人》(視訊)](https://www.youtube.com/watch?v=lH2gMNrUuEY)]
+    > 
+    > [Uber God View](https://www.forbes.com/sites/kashmirhill/2014/10/03/god-view-uber-allegedly-stalked-users-for-party-goers-viewing-pleasure/#70a9f7a43141) Uber 的"上帝的視角"讓 Uber 的員工可以看到城市裡所有的 Uber 使用者，以及等待 Uber 使用者標記------包括名字([榮譽乘坐](https://rideofglory.wordpress.com/))
+    > 
+    > [Palantir](http://www.palantir.com/) -- 一家價值十億美元的新創企業，重點關注預測政策、情報和人工智慧軍事防禦系統[[摘要](https://www.theverge.com/2018/3/10/17104878/palantir-us-army-contract-peter-thiel-data-intelligence-distributed-common-ground-system-tech)]
+    > 
+    > ### 比賽研究
+    > 
+    > 研究創造一個不那麼可怕和更保護隱私的人工智慧
+    > 
+    > [Differential Privacy](https://blog.cryptographyengineering.com/2016/06/15/what-is-differential-privacy/)  一個正式的隱私定義，允許我們對資料洩露做出理論上的保證。 人工智慧演算法可以被訓練成不同的隱私[[原始論文](http://people.csail.mit.edu/asmith/PS/sensitivity-tcc-final.pdf)]
+    > 
+    > [Privacy-Preservation using Trusted Hardware](https://tvm.ai/2018/10/09/ml-in-tees.html)使用可信的硬體-AI 演算法保護隱私，這種演算法可以在可信的硬體飛地內執行(或者建立在它之上的私有區塊鏈) ，並且可以在沒有任何利益關係人訪問私人資料的情況下進行訓練
+    > 
+    > [Fair Machine Learning & Algorithm Bias](https://thegradient.pub/ai-bias/) AI中的一個子領域，用於研究不同的公平性標準和演算法偏差。最近的一篇[最佳論文（ICLR18](https://bair.berkeley.edu/blog/2018/05/17/delayed-impact/)），例如 表明實施特定標準可能會對公平性產生延遲影響。
+    > 
+    > ### 競爭性技術專案
+    > 
+    > 這些開源專案試圖刺激討論，為可怕的人工智慧提供保護或是警覺
+    > 
+    > [Data Selfie](https://dataselfie.it/#/)-資料自拍是一個瀏覽器擴充套件，它可以跟蹤你在 Facebook 上的情況，向你展示你自己的資料跟蹤，並根據這些資料揭示機器學習演算法可以預測你的個性[[程式碼](https://github.com/d4t4x/data-selfie)]
+    > 
+    > [AdNauseam](https://adnauseam.io/) -- AdNauseam 是一個輕量級的瀏覽器擴充套件，用來抵抗廣告網路的追蹤。 它的工作原理就像一個廣告攔截器(它是建立在 uBlock-Origin 之上) ，默默地模擬每一個被遮蔽的廣告的點選，混淆了追蹤者對於一個人真正的興趣[[程式碼](https://github.com/dhowe/AdNauseam)]
+    > 
+    > [B.S Detector](http://bsdetector.tech/) -- B.S. 探測器是一個瀏覽器擴充套件，它搜尋給定網頁上的所有連結，以查詢不可靠的來源，檢查手工編譯的網域名列表。 然後，它提供視覺警告，說明是否存在可疑的連結或瀏覽可疑網站[[程式碼](https://github.com/bs-detector/bs-detector)]
+    > 
+    > [Snopes.com](https://www.snopes.com/) -- Snopes.com 網站是由 David Mikkelson 建立的，該專案始於1994年，現已發展成為網際網路上最古老、規模最大的事實核查網站，被記者、民俗學家和普通人視為世界上最重要的資源之一
+    > 
+    > [Facebook Container](https://addons.mozilla.org/de/firefox/addon/facebook-container/)-- Facebook 容器將你的 Facebook 活動與其他的網路活動隔離開來，以防止 Facebook 通過第三方 cookies (程式碼)在 Facebook 網站之外追蹤你

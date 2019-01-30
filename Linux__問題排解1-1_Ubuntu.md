@@ -401,6 +401,45 @@
 > 
 
 
+### .desktop file with .bashrc environment
+
+- [.desktop file with .bashrc environment - Ask Ubuntu](https://askubuntu.com/questions/542152/desktop-file-with-bashrc-environment)
+
+    > When running from a launcher, the idea.sh script is started using a non-iteractive shell. In your `.bashrc` make sure the environment variables are exported before
+    > 
+    > ```shell
+    > # If not running interactively, don't do anything
+    > case $- in
+    >     *i*) ;;
+    >       *) return;;
+    > esac
+    > 
+    > ```
+    > 
+    > Or alternatively place the environment variable exports in `~/.bash_profile`
+    > 
+    > ---
+    > 
+    > @IARI did you relogin? Also note that Ubuntu uses ~/.profile instead of ~/.bash_profile – Lesswire Feb 1 at 16:50
+    > 
+    > ---
+    > 
+    > Moving the environment variables to `.profile` didn't work for me. Instead, I removed the code that @oliman suggests from my `.bashrc` and then I changed the my IntelliJ IDEA's launcher from this:
+    > 
+    > ```shell
+    > "/opt/idea-IU-163.12024.16/bin/idea.sh" %f
+    > 
+    > ```
+    > 
+    > to this:
+    > 
+    > ```shell
+    > bash -c "source ~/.bashrc && /opt/idea-IU-163.12024.16/bin/idea.sh %f"
+    > 
+    > ```
+
+
+
 ## package management
 
 ### search for available packages

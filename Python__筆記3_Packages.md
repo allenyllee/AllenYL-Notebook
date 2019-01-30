@@ -1,4 +1,4 @@
-# Python__筆記3
+# Python__筆記3_Packages
 
 [toc]
 <!-- toc --> 
@@ -284,6 +284,263 @@
     > 這代表要讓 watchman 監控 testpy 目錄中任何檔案的變動
     > 
     > 這時候只要你在 testpy 目錄中修改的任何程式碼，然後只要輸入 pyre 就會幫你做型別使用錯誤檢查，而且是使用 incremental mode ，會比使用 pyre check 快很多
+
+
+# Solve Differential Equations
+
+- [Programming for Engineers Main/Solve Differential Equations in Python](http://apmonitor.com/che263/index.php/Main/PythonDynamicSim)
+
+## ODEINT
+
+- [Solve Differential Equations with ODEINT](https://apmonitor.com/pdc/index.php/Main/SolveDifferentialEquations)
+
+## GEKKO
+
+- [Solve Differential Equations with GEKKO](https://apmonitor.com/pdc/index.php/Main/PythonDifferentialEquations)
+
+
+## PyDSTool
+
+- [pydstool/forced_spring.py at master · robclewley/pydstool](https://github.com/robclewley/pydstool/blob/master/examples/forced_spring.py)
+
+- [Differential Equations in Python - Stack Overflow](https://stackoverflow.com/questions/5847201/differential-equations-in-python)
+
+    > If you need to solve large nonlinear systems (especially stiff ones), the scipy tools will be slow and awkward. The [PyDSTool](http://pydstool.sourceforge.net/ "PyDSTool") package is now quite commonly used in this situation. It lets your equations be automatically converted into C code and integrates them with good solvers. It's especially good if you want to define state-defined events such as threshold crossings, add external input signals from arrays, or have other analyses done (such as bifurcation analysis, as the package includes an interface to AUTO).
+    > 
+
+## symPy (symbolic solve)
+
+- [20-ordinary-differential-equations](https://www.sympy.org/scipy-2017-codegen-tutorial/notebooks/20-ordinary-differential-equations.html)
+
+
+## Differential Equations for TensorFlow
+
+- [Differential Equations for TensorFlow](https://dwd31415.github.io/tensorflow-diff-eq/)
+
+- [dwd31415/tensorflow-diff-eq: Simulate differential equations using TensorFlow](https://github.com/dwd31415/tensorflow-diff-eq/tree/master)
+
+
+## Euler method
+
+- [20-ordinary-differential-equations](https://www.sympy.org/scipy-2017-codegen-tutorial/notebooks/20-ordinary-differential-equations.html)
+
+    > ### Explicit methods[¶](https://www.sympy.org/scipy-2017-codegen-tutorial/notebooks/20-ordinary-differential-equations.html#Explicit-methods)
+    > 
+    > For each step taken we would update 
+    > 
+    > $y$ by multiplying the derivative with the step size (assuming that the derivate is approximately constant on the scale of the step-size), formally this method is known as "forward Euler":
+    > 
+    > $$y_{n+1} = y_n + y'(t_n)\cdot \Delta h$$
+    > 
+    > this is known as an _explicit_ method, i.e. the derivative at the current time step is used to calculate the next step _forward_.
+    > 
+    > ---
+    > 
+    > ### Implicit methods[¶](https://www.sympy.org/scipy-2017-codegen-tutorial/notebooks/20-ordinary-differential-equations.html#Implicit-methods)
+    > 
+    > For a large class of problems we need to base the step not on the derivative at the current time point, but rather at the next one (giving rise to an implicit expression). The simplest implicit stepper is "backward euler":
+    > 
+    > $$y_{n+1} = y_n + y'(t_{n+1})\cdot \Delta h$$
+    > 
+    > Problems requiring this type of steppers are known as "stiff". We will not go into the details of this (LSODA actually uses something more refined and switches between explicit and implicit steppers).
+    > 
+
+
+## Runge–Kutta method
+
+- [Runge–Kutta methods - Wikiwand](https://www.wikiwand.com/en/Runge%E2%80%93Kutta_methods)
+
+
+    > ![](https://upload.wikimedia.org/wikipedia/commons/7/7e/Runge-Kutta_slopes.svg)
+    > 
+    > The most widely known member of the Runge--Kutta family is generally referred to as "**RK4**", "**classical Runge--Kutta method**" or simply as "***the* Runge--Kutta method**".
+    > 
+    > Let an [initial value problem](https://www.wikiwand.com/en/Initial_value_problem) be specified as follows:
+    > 
+    > ![{\dot {y))=f(t,y),\quad y(t_{0})=y_{0}.](https://wikimedia.org/api/rest_v1/media/math/render/svg/25f03454fd25957cc63be11ec534efdce349c52f)
+    > 
+    > Here *y* is an unknown function (scalar or vector) of time *t*, which we would like to approximate; we are told that ![{\dot {y))](https://wikimedia.org/api/rest_v1/media/math/render/svg/ea068ce646833369cccf19795f23613159b5f89f), the rate at which *y* changes, is a function of *t* and of *y* itself. At the initial time ![t_{0}](https://wikimedia.org/api/rest_v1/media/math/render/svg/02d3006c4190b1939b04d9b9bb21006fb4e6fa4a) the corresponding *y* value is ![y_{0}](https://wikimedia.org/api/rest_v1/media/math/render/svg/6d943dbbb0b56ca750c4d62c5b54b4ae29a773da). The function *f* and the data ![t_{0}](https://wikimedia.org/api/rest_v1/media/math/render/svg/02d3006c4190b1939b04d9b9bb21006fb4e6fa4a), ![y_{0}](https://wikimedia.org/api/rest_v1/media/math/render/svg/6d943dbbb0b56ca750c4d62c5b54b4ae29a773da) are given.
+    > 
+    > Now pick a step-size *h* > 0 and define
+    > 
+    > ![{\displaystyle {\begin{aligned}y_{n+1}&=y_{n}+{\tfrac {1}{6))\left(k_{1}+2k_{2}+2k_{3}+k_{4}\right),\\t_{n+1}&=t_{n}+h\\\end{aligned))}](https://wikimedia.org/api/rest_v1/media/math/render/svg/95bdbb2e3aa83735085c0aadd577162c69e4056a)
+    > 
+    > for *n* = 0, 1, 2, 3, ..., using^[[2]](https://www.wikiwand.com/en/Runge%E2%80%93Kutta_methods#citenote2)^
+    > 
+    > ![{\displaystyle {\begin{aligned}k_{1}&=h\ f(t_{n},y_{n}),\\k_{2}&=h\ f\left(t_{n}+{\frac {h}{2)),y_{n}+{\frac {k_{1)){2))\right),\\k_{3}&=h\ f\left(t_{n}+{\frac {h}{2)),y_{n}+{\frac {k_{2)){2))\right),\\k_{4}&=h\ f\left(t_{n}+h,y_{n}+k_{3}\right).\end{aligned))}](https://wikimedia.org/api/rest_v1/media/math/render/svg/81398071e8f180ac143bfdf4598ff47bf79eb689)
+    > 
+    > *(Note: the above equations have different but equivalent definitions in different texts).*^[[3]](https://www.wikiwand.com/en/Runge%E2%80%93Kutta_methods#citenotenotation3)^
+    > 
+    > Here ![y_{n+1}](https://wikimedia.org/api/rest_v1/media/math/render/svg/6477fbeae2962cc55973c2298b8653cfd4f5e5d1) is the RK4 approximation of ![y(t_{n+1})](https://wikimedia.org/api/rest_v1/media/math/render/svg/133012f12e18d14d5b42375210936b3224fc9758), and the next value (![y_{n+1}](https://wikimedia.org/api/rest_v1/media/math/render/svg/6477fbeae2962cc55973c2298b8653cfd4f5e5d1)) is determined by the present value (![y_{n}](https://wikimedia.org/api/rest_v1/media/math/render/svg/2c5fbb0c89590b028eba7239a8803fd0cd2e698e)) plus the [weighted average](https://www.wikiwand.com/en/Weighted_average "Weighted average") of four increments, where each increment is the product of the size of the interval, *h*, and an estimated slope specified by function *f* on the right-hand side of the differential equation.
+    > 
+    > -   ![k_{1}](https://wikimedia.org/api/rest_v1/media/math/render/svg/376315fd4983f01dada5ec2f7bebc48455b14a66) is the increment based on the slope at the beginning of the interval, using ![y](https://wikimedia.org/api/rest_v1/media/math/render/svg/b8a6208ec717213d4317e666f1ae872e00620a0d) ([Euler's method](https://www.wikiwand.com/en/Euler%27s_method "Euler's method"));
+    > -   ![k_{2}](https://wikimedia.org/api/rest_v1/media/math/render/svg/c51b4ba57ee596d8435fc4ed76703ca3a2fc444a) is the increment based on the slope at the midpoint of the interval, using ![y](https://wikimedia.org/api/rest_v1/media/math/render/svg/b8a6208ec717213d4317e666f1ae872e00620a0d) and ![k_{1}](https://wikimedia.org/api/rest_v1/media/math/render/svg/376315fd4983f01dada5ec2f7bebc48455b14a66);
+    > -   ![k_{3}](https://wikimedia.org/api/rest_v1/media/math/render/svg/40d32e1c66b85257bfd6ad8be93186742d71a804) is again the increment based on the slope at the midpoint, but now using ![y](https://wikimedia.org/api/rest_v1/media/math/render/svg/b8a6208ec717213d4317e666f1ae872e00620a0d) and ![k_{2}](https://wikimedia.org/api/rest_v1/media/math/render/svg/c51b4ba57ee596d8435fc4ed76703ca3a2fc444a);
+    > -   ![k_{4}](https://wikimedia.org/api/rest_v1/media/math/render/svg/cc27eb9313ff47331edc6b7c20b35e138eaa2ef8) is the increment based on the slope at the end of the interval, using ![y](https://wikimedia.org/api/rest_v1/media/math/render/svg/b8a6208ec717213d4317e666f1ae872e00620a0d) and ![k_{3}](https://wikimedia.org/api/rest_v1/media/math/render/svg/40d32e1c66b85257bfd6ad8be93186742d71a804).
+    > 
+    > In averaging the four increments, greater weight is given to the increments at the midpoint. If ![f](https://wikimedia.org/api/rest_v1/media/math/render/svg/132e57acb643253e7810ee9702d9581f159a1c61) is independent of ![y](https://wikimedia.org/api/rest_v1/media/math/render/svg/b8a6208ec717213d4317e666f1ae872e00620a0d), so that the differential equation is equivalent to a simple integral, then RK4 is [Simpson's rule](https://www.wikiwand.com/en/Simpson%27s_rule "Simpson's rule").^[[4]](https://www.wikiwand.com/en/Runge%E2%80%93Kutta_methods#citenoteSli20033284)^
+    > 
+    > The RK4 method is a fourth-order method, meaning that the [local truncation error](https://www.wikiwand.com/en/Truncation_error_(numerical_integration)) is [on the order of](https://www.wikiwand.com/en/Big_O_notation "Big O notation") ![O(h^{5})](https://wikimedia.org/api/rest_v1/media/math/render/svg/f4f84b0c10beca633d2f744701aa5fdbe05576d3), while the [total accumulated error](https://www.wikiwand.com/en/Truncation_error_(numerical_integration) "Truncation error (numerical integration)") is on the order of ![O(h^{4})](https://wikimedia.org/api/rest_v1/media/math/render/svg/02f1837b7abfa7284a6f1f45ae38fa1795f1a3d2).
+    > 
+    > In many practical applications the function ![f](https://wikimedia.org/api/rest_v1/media/math/render/svg/132e57acb643253e7810ee9702d9581f159a1c61) is independent of ![t](https://wikimedia.org/api/rest_v1/media/math/render/svg/65658b7b223af9e1acc877d848888ecdb4466560) (so called [autonomous system](https://www.wikiwand.com/en/Autonomous_system_(mathematics) "Autonomous system (mathematics)"), or time-invariant system, especially in physics), and their increments are not computed at all and not passed to function ![f](https://wikimedia.org/api/rest_v1/media/math/render/svg/132e57acb643253e7810ee9702d9581f159a1c61), with only the final formula for ![t_{n+1}](https://wikimedia.org/api/rest_v1/media/math/render/svg/9eee8b33262d27347fd5fe66aebe13305038a71a) used.
+    > 
+
+### RK4 in python
+
+- [allenyllee/runge-kutta: An implementation of the Runge-Kutta-methods for solving systems of ODEs with Python.](https://github.com/allenyllee/runge-kutta)
+
+    > ```python
+    >     def _solve(self, y, t, h):
+    > 
+    >         functions = self.f
+    > 
+    >         k1 = []
+    >         for f in functions:
+    >             k1.append(h * f(t, *y))
+    > 
+    >         k2 = []
+    >         for f in functions:
+    >             k2.append(h * f(t + .5*h, *[y[i] + .5*h*k1[i] for i in xrange(0, len(y))]))
+    > 
+    >         k3 = []
+    >         for f in functions:
+    >             k3.append(h * f(t + .5*h, *[y[i] + .5*h*k2[i] for i in xrange(0, len(y))]))
+    > 
+    >         k4 = []
+    >         for f in functions:
+    >             k4.append(h * f(t + h, *[y[i] + h*k3[i] for i in xrange(0, len(y))]))
+    > 
+    >         return [y[i] + (k1[i] + 2*k2[i] + 2*k3[i] + k4[i]) / 6.0 for i in xrange(0, len(y))]
+    > ```
+
+- [Fourth Order Runge-Kutta Method in Python - CodeProject](https://www.codeproject.com/Tips/792927/Fourth-Order-Runge-Kutta-Method-in-Python)
+
+    > ```python
+    > def rKN(x, fx, n, hs):
+    >     k1 = []
+    >     k2 = []
+    >     k3 = []
+    >     k4 = []
+    >     xk = []
+    >     for i in range(n):
+    >         k1.append(fx[i](x)*hs)
+    >     for i in range(n):
+    >         xk.append(x[i] + k1[i]*0.5)
+    >     for i in range(n):
+    >         k2.append(fx[i](xk)*hs)
+    >     for i in range(n):
+    >         xk[i] = x[i] + k2[i]*0.5
+    >     for i in range(n):
+    >         k3.append(fx[i](xk)*hs)
+    >     for i in range(n):
+    >         xk[i] = x[i] + k3[i]
+    >     for i in range(n):
+    >         k4.append(fx[i](xk)*hs)
+    >     for i in range(n):
+    >         x[i] = x[i] + (k1[i] + 2*(k2[i] + k3[i]) + k4[i])/6
+    >     return x
+    > ```
+
+
+- [Runge-Kutta 4th Order Method to Solve Differential Equation - GeeksforGeeks](https://www.geeksforgeeks.org/runge-kutta-4th-order-method-solve-differential-equation/)
+
+    > ```python
+    > 
+    > # Python program to implement Runge Kutta method 
+    > # A sample differential equation "dy / dx = (x - y)/2" 
+    > def dydx(x, y): 
+    >     return ((x - y)/2) 
+    >   
+    > # Finds value of y for a given x using step size h 
+    > # and initial value y0 at x0. 
+    > def rungeKutta(x0, y0, x, h): 
+    >     # Count number of iterations using step size or 
+    >     # step height h 
+    >     n = (int)((x - x0)/h)  
+    >     # Iterate for number of iterations 
+    >     y = y0 
+    >     for i in range(1, n + 1): 
+    >         "Apply Runge Kutta Formulas to find next value of y"
+    >         k1 = h * dydx(x0, y) 
+    >         k2 = h * dydx(x0 + 0.5 * h, y + 0.5 * k1) 
+    >         k3 = h * dydx(x0 + 0.5 * h, y + 0.5 * k2) 
+    >         k4 = h * dydx(x0 + h, y + k3) 
+    >   
+    >         # Update next value of y 
+    >         y = y + (1.0 / 6.0)*(k1 + 2 * k2 + 2 * k3 + k4) 
+    >   
+    >         # Update next value of x 
+    >         x0 = x0 + h 
+    >     return y 
+    >   
+    > # Driver method 
+    > x0 = 0
+    > y = 1
+    > x = 2
+    > h = 0.2
+    > print 'The value of y at x is:', rungeKutta(x0, y, x, h) 
+    >   
+    > # This code is contributed by Prateek Bhindwar 
+    > 
+    > ```
+
+
+
+### RK4 for Stochastic Differential Equations(SED) in tensorflow
+
+- [Using Deep Learning Libraries to Solve Stochastic Differential Equations](http://www.martinholub.com/eth/code/2018/05/01/TheanoTensorflowSDE.html)
+
+- [demos-blogs-examples/sde_tflow.py at master · allenyllee/demos-blogs-examples](https://github.com/allenyllee/demos-blogs-examples/blob/master/dl-bio/sde_tflow.py)
+
+    > ```python
+    >     def rk4_sde(self, x, rv_n):
+    >         """Runge-Kutta 4th order method for SDE
+    >         @reference http://people.sc.fsu.edu/~jburkardt/c_src/stochastic_rk/stochastic_rk.html
+    >         @reference `https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_method_(SDE)`
+    >         """
+    >         a21 =   2.71644396264860
+    >         a31 = - 6.95653259006152
+    >         a32 =   0.78313689457981
+    >         a41 =   0.0
+    >         a42 =   0.48257353309214
+    >         a43 =   0.26171080165848
+    >         a51 =   0.47012396888046
+    >         a52 =   0.36597075368373
+    >         a53 =   0.08906615686702
+    >         a54 =   0.07483912056879
+    > 
+    >         q1 =    2.12709852335625
+    >         q2 =    2.73245878238737
+    >         q3 =   11.22760917474960
+    >         q4 =   13.36199560336697
+    > 
+    >         n = self.mp.params[0]; k = self.mp.params[1];
+    >         gamma = self.mp.params[2]; dt = self.mp.params[3];
+    > 
+    >         if x.get_shape()[1] > 1:
+    >             evolve_fun = self.evolve_system
+    >         else:
+    >             evolve_fun = self.evolve
+    > 
+    >         x1 = x
+    >         k1 = dt * evolve_fun(x1, n, k, gamma) + tf.sqrt(dt) * x * rv_n
+    > 
+    >         x2 = x1 + a21 * k1
+    >         k2 = dt * evolve_fun(x2, n, k, gamma) + tf.sqrt(dt) * x * rv_n
+    > 
+    >         x3 = x1 + a31 * k1 + a32 * k2
+    >         k3 = dt * evolve_fun(x3, n, k, gamma) + tf.sqrt(dt) * x * rv_n
+    > 
+    >         x4 = x1 + a41 * k1 + a42 * k2
+    >         k4 = dt * evolve_fun(x4, n, k, gamma) + tf.sqrt(dt) * x * rv_n
+    > 
+    >         x_new = x1 + a51 * k1 + a52 * k2 + a53 * k3 + a54 * k4
+    > 
+    >         return tf.cast(x_new, tf.float32)
+    > ```
+
+
+
 
 
 

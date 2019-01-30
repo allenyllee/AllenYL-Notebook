@@ -86,24 +86,6 @@
     > Unfortunately, this implementation is simply not suited to work with sparse data intelligently, and you you turn your (probably) massive sparse matrix of 500k and probably a few thousand columns, you run out of RAM.
     > 
 
-### GridSearchCV
-
-- [sklearn.model_selection.GridSearchCV — scikit-learn 0.20.0 documentation](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
-
-    > **return_train_score** : boolean, optional
-    > 
-    > If `False`, the `cv_results_` attribute will not include training scores.
-
-- [python - Tabulate accuracy and mean for each fold in GridSearchCV from scikit-learn - Stack Overflow](https://stackoverflow.com/questions/40284613/tabulate-accuracy-and-mean-for-each-fold-in-gridsearchcv-from-scikit-learn)
-    > 
-    > First, you should not use `grid_scores_` anymore since it was deprecated in version **0.18** in favor of `cv_results_` attribute. The `grid_scores_` attribute will not be available from version **0.20**.
-    > 
-    > * * * * *
-    > 
-    > **Q°** : *Did I understand correctly, that the score.mean() is the mean of the accuracies?*
-    > 
-    > **A** : The attribute `cv_results_` actually returns a dictionnary of all the metrics you are looking for. Check this out : [`cv_result_`](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html).
-
 
 ### sklearn.cross_validation deprecated in favor of the model_selection module
 
@@ -121,6 +103,50 @@
 
 ## score matrics
 
+- [API Reference — scikit-learn 0.20.2 documentation](https://scikit-learn.org/stable/modules/classes.html#sklearn-metrics-metrics)
+
+### list of scoring function
+
+- [3.3. Model evaluation: quantifying the quality of predictions — scikit-learn 0.20.0 documentation](https://scikit-learn.org/stable/modules/model_evaluation.html#scoring-parameter)
+
+| Scoring                        | Function                             | Comment                        |
+|--------------------------------|--------------------------------------|--------------------------------|
+| Classification                 |                                      |                                |
+| ‘accuracy’                     | metrics.accuracy_score               |                                |
+| ‘balanced_accuracy’            | metrics.balanced_accuracy_score      | for binary targets             |
+| ‘average_precision’            | metrics.average_precision_score      |                                |
+| ‘brier_score_loss’             | metrics.brier_score_loss             |                                |
+| ‘f1’                           | metrics.f1_score                     | for binary targets             |
+| ‘f1_micro’                     | metrics.f1_score                     | micro-averaged                 |
+| ‘f1_macro’                     | metrics.f1_score                     | macro-averaged                 |
+| ‘f1_weighted’                  | metrics.f1_score                     | weighted average               |
+| ‘f1_samples’                   | metrics.f1_score                     | by multilabel sample           |
+| ‘neg_log_loss’                 | metrics.log_loss                     | requires predict_proba support |
+| ‘precision’ etc.               | metrics.precision_score              | suffixes apply as with ‘f1’    |
+| ‘recall’ etc.                  | metrics.recall_score                 | suffixes apply as with ‘f1’    |
+| ‘roc_auc’                      | metrics.roc_auc_score                |                                |
+
+| Clustering                     |                                      |   |
+|--------------------------------|--------------------------------------|---|
+| ‘adjusted_mutual_info_score’   | metrics.adjusted_mutual_info_score   |   |
+| ‘adjusted_rand_score’          | metrics.adjusted_rand_score          |   |
+| ‘completeness_score’           | metrics.completeness_score           |   |
+| ‘fowlkes_mallows_score’        | metrics.fowlkes_mallows_score        |   |
+| ‘homogeneity_score’            | metrics.homogeneity_score            |   |
+| ‘mutual_info_score’            | metrics.mutual_info_score            |   |
+| ‘normalized_mutual_info_score’ | metrics.normalized_mutual_info_score |   |
+| ‘v_measure_score’              | metrics.v_measure_score              |   |
+
+| Regression                   |                                  |   |
+|------------------------------|----------------------------------|---|
+| ‘explained_variance’         | metrics.explained_variance_score |   |
+| ‘neg_mean_absolute_error’    | metrics.mean_absolute_error      |   |
+| ‘neg_mean_squared_error’     | metrics.mean_squared_error       |   |
+| ‘neg_mean_squared_log_error’ | metrics.mean_squared_log_error   |   |
+| ‘neg_median_absolute_error’  | metrics.median_absolute_error    |   |
+| ‘r2’                         | metrics.r2_score                 |   |
+
+
 ### accuracy_score
 
 - [sklearn.metrics中的评估方法介绍（accuracy_score, recall_score, roc_curve, roc_auc_score, confusion_matrix） - Cherzhoucheer的博客 - CSDN博客](https://blog.csdn.net/CherDW/article/details/55813071)
@@ -129,14 +155,14 @@
     > 分类准确率分数是指所有分类正确的百分比。分类准确率这一衡量分类器的标准比较容易理解，但是它不能告诉你响应值的潜在分布，并且它也不能告诉你分类器犯错的类型。
     > 
     > 形式：
-    > ```
+    > ```python
     > sklearn.metrics.accuracy_score(y_true, y_pred, normalize=True, sample_weight=None)
     > 
     > normalize：默认值为True，返回正确分类的比例；如果为False，返回正确分类的样本数
     > ```
     > 
     > 示例：
-    > ```
+    > ```python
     > >>>import numpy as np
     > >>>from sklearn.metrics import accuracy_score
     > >>>y_pred = [0, 2, 1, 3]
@@ -147,6 +173,34 @@
     > 2
     > ```
 
+### precision
+
+- [sklearn.metrics.precision_score — scikit-learn 0.20.0 documentation](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)
+
+    > **Average** : string, [None, 'binary' (default), 'micro', 'macro', 'samples', 'weighted']
+    > 
+    > This parameter is required for multiclass/multilabel targets. If `None`, the scores for each class are returned. Otherwise, this determines the type of averaging performed on the data:
+    > 
+    > `'binary'`:
+    > 
+    > Only report results for the class specified by `pos_label`. This is applicable only if targets (`y_{true,pred}`) are binary.
+    > 
+    > `'micro'`:
+    > 
+    > Calculate metrics globally by counting the total true positives, false negatives and false positives.
+    > 
+    > `'macro'`:
+    > 
+    > Calculate metrics for each label, and find their unweighted mean. This does not take label imbalance into account.
+    > 
+    > `'weighted'`:
+    > 
+    > Calculate metrics for each label, and find their average weighted by support (the number of true instances for each label). This alters 'macro' to account for label imbalance; it can result in an F-score that is not between precision and recall.
+    > 
+    > `'samples'`:
+    > 
+    > Calculate metrics for each instance, and find their average (only meaningful for multilabel classification where this differs from [`accuracy_score`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score "sklearn.metrics.accuracy_score")).
+    > 
 
 ### recall_score
 
@@ -190,6 +244,78 @@
     > array([1.,  0., 0.])
     > ```
     > 
+
+
+### F1 score
+
+- [sklearn.metrics.f1_score — scikit-learn 0.20.0 documentation](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)
+
+    > **labels** : list, optional
+    > 
+    > The set of labels to include when `average != 'binary'`, and their order if `average is None`. Labels present in the data can be excluded, for example to calculate a multiclass average ignoring a majority negative class, while labels not present in the data will result in 0 components in a macro average. For multilabel targets, labels are column indices. By default, all labels in `y_true` and `y_pred` are used in sorted order.
+    > 
+    > Changed in version 0.17: parameter *labels* improved for multiclass problem.
+    > 
+    > **pos_label** : str or int, 1 by default
+    > 
+    > The class to report if `average='binary'` and the data is binary. If the data are multiclass or multilabel, this will be ignored; setting `labels=[pos_label]` and `average != 'binary'` will report scores for that label only.
+    > 
+    > **average** : string, [None, 'binary' (default), 'micro', 'macro', 'samples', 'weighted']
+    > 
+    > This parameter is required for multiclass/multilabel targets. If `None`, the scores for each class are returned. Otherwise, this determines the type of averaging performed on the data:
+    > 
+    > `'binary'`:
+    > 
+    > Only report results for the class specified by `pos_label`. This is applicable only if targets (`y_{true,pred}`) are binary.
+    > 
+    > `'micro'`:
+    > 
+    > Calculate metrics globally by counting the total true positives, false negatives and false positives.
+    > 
+    > `'macro'`:
+    > 
+    > Calculate metrics for each label, and find their unweighted mean. This does not take label imbalance into account.
+    > 
+    > `'weighted'`:
+    > 
+    > Calculate metrics for each label, and find their average weighted by support (the number of true instances for each label). This alters 'macro' to account for label imbalance; it can result in an F-score that is not between precision and recall.
+    > 
+    > `'samples'`:
+    > 
+    > Calculate metrics for each instance, and find their average (only meaningful for multilabel classification where this differs from [`accuracy_score`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score "sklearn.metrics.accuracy_score")).
+    > 
+
+- [python - UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples - Stack Overflow](https://stackoverflow.com/questions/43162506/undefinedmetricwarning-f-score-is-ill-defined-and-being-set-to-0-0-in-labels-wi)
+
+    > As mentioned in the comments, some labels in y_true don't appear in y_pred. Specifically in this case, label '2' is never predicted:
+    > 
+    > ```python
+    > >>> set(y_test) - set(y_pred)
+    > {2}
+    > ```
+    > 
+    > This means that there is no F-score to calculate for this label, and thus the F-score for this case is considered to be 0.0. Since you requested an average of the score, you must take into account that a score of 0 was included in the calculation, and this is why scikit-learn is showing you that warning.
+    > 
+    > This brings me to you not seeing the error a second time. As I mentioned, this is a *warning*, which is treated differently from an error in python. The default behavior in most environments is to show a specific warning only once. This behavior can be changed:
+    > 
+    > ```python
+    > import warnings
+    > warnings.filterwarnings('always')  # "error", "ignore", "always", "default", "module" or "once"
+    > ```
+    > 
+    > If you set this before importing the other modules, you will see the warning every time you run the code.
+    > 
+    > There is no way to avoid seeing this warning the first time, aside for setting `warnings.filterwarnings('ignore')`. What you *can* do, is decide that you are not interested in the scores of labels that were not predicted, and then explicitly specify the labels you *are* interested in (which are labels that were predicted at least once):
+    > 
+    > ```python
+    > >>> metrics.f1_score(y_test, y_pred, average='weighted', labels=np.unique(y_pred))
+    > 0.91076923076923078
+    > ```
+    > 
+    > The warning is not shown in this case.
+    > 
+
+
 
 ### roc_curve
 
@@ -246,6 +372,100 @@
     > 
 
 
+### ROC for multiclass classification
+
+- [python - Sklearn: ROC for multiclass classification - Stack Overflow](https://stackoverflow.com/questions/45332410/sklearn-roc-for-multiclass-classification)
+
+    > As people mentioned in comments you have to convert your problem into binary by using OneVsAll approach, so you'll have n_class number of ROC curves. A simple example:
+    > 
+    > ```python
+    > from sklearn.metrics import roc_curve, auc
+    > from sklearn import datasets
+    > from sklearn.multiclass import OneVsRestClassifier
+    > from sklearn.svm import LinearSVC
+    > from sklearn.preprocessing import label_binarize
+    > from sklearn.cross_validation import train_test_split
+    > import matplotlib.pyplot as plt
+    > 
+    > iris = datasets.load_iris()
+    > X, y = iris.data, iris.target
+    > 
+    > y = label_binarize(y, classes=[0,1,2])
+    > n_classes = 3
+    > 
+    > # shuffle and split training and test sets
+    > X_train, X_test, y_train, y_test =\
+    >     train_test_split(X, y, test_size=0.33, random_state=0)
+    > 
+    > # classifier
+    > clf = OneVsRestClassifier(LinearSVC(random_state=0))
+    > y_score = clf.fit(X_train, y_train).decision_function(X_test)
+    > 
+    > # Compute ROC curve and ROC area for each class
+    > fpr = dict()
+    > tpr = dict()
+    > roc_auc = dict()
+    > for i in range(n_classes):
+    >     fpr[i], tpr[i], _ = roc_curve(y_test[:, i], y_score[:, i])
+    >     roc_auc[i] = auc(fpr[i], tpr[i])
+    > 
+    > # Plot of a ROC curve for a specific class
+    > for i in range(n_classes):
+    >     plt.figure()
+    >     plt.plot(fpr[i], tpr[i], label='ROC curve (area = %0.2f)' % roc_auc[i])
+    >     plt.plot([0, 1], [0, 1], 'k--')
+    >     plt.xlim([0.0, 1.0])
+    >     plt.ylim([0.0, 1.05])
+    >     plt.xlabel('False Positive Rate')
+    >     plt.ylabel('True Positive Rate')
+    >     plt.title('Receiver operating characteristic example')
+    >     plt.legend(loc="lower right")
+    >     plt.show()
+    > ```
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/ByrqW.png)](https://i.stack.imgur.com/ByrqW.png)[![enter image description here](https://i.stack.imgur.com/pqC8U.png)](https://i.stack.imgur.com/pqC8U.png)[![enter image description here](https://i.stack.imgur.com/ydVNu.png)](https://i.stack.imgur.com/ydVNu.png)
+    > 
+
+
+
+### Multiclass and multilabel algorithms(OneVsRestClassifier)
+
+- [1.12. Multiclass and multilabel algorithms — scikit-learn 0.20.2 documentation](https://scikit-learn.org/stable/modules/multiclass.html#one-vs-the-rest)
+
+    > 1.12.2. One-Vs-The-Rest
+    > -----------------------
+    > 
+    > This strategy, also known as **one-vs-all**, is implemented in [`OneVsRestClassifier`](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html#sklearn.multiclass.OneVsRestClassifier "sklearn.multiclass.OneVsRestClassifier"). The strategy consists in fitting one classifier per class. For each classifier, the class is fitted against all the other classes. In addition to its computational efficiency (only *n_classes* classifiers are needed), one advantage of this approach is its interpretability. Since each class is represented by one and only one classifier, it is possible to gain knowledge about the class by inspecting its corresponding classifier. This is the most commonly used strategy and is a fair default choice.
+    > 
+    > ### 1.12.2.1. Multiclass learning
+    > 
+    > Below is an example of multiclass learning using OvR:
+    > ```python
+    > >>> from sklearn import datasets
+    > >>> from sklearn.multiclass import OneVsRestClassifier
+    > >>> from sklearn.svm import LinearSVC
+    > >>> iris = datasets.load_iris()
+    > >>> X, y = iris.data, iris.target
+    > >>> OneVsRestClassifier(LinearSVC(random_state=0)).fit(X, y).predict(X)
+    > array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    >  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    >  0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    >  1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1,
+    >  1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+    >  2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2,
+    >  2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
+    > ```
+    > ### 1.12.2.2. Multilabel learning
+    > 
+    > [`OneVsRestClassifier`](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html#sklearn.multiclass.OneVsRestClassifier "sklearn.multiclass.OneVsRestClassifier") also supports multilabel classification. To use this feature, feed the classifier an indicator matrix, in which cell [i, j] indicates the presence of label j in sample i.
+    > 
+    > [![../_images/sphx_glr_plot_multilabel_0011.png](https://scikit-learn.org/stable/_images/sphx_glr_plot_multilabel_0011.png)](https://scikit-learn.org/stable/auto_examples/plot_multilabel.html)
+    > 
+    > Examples:
+    > 
+    > -   [Multilabel classification](https://scikit-learn.org/stable/auto_examples/plot_multilabel.html#sphx-glr-auto-examples-plot-multilabel-py)
+    > 
+
 ### roc_auc_score
 
 - [sklearn.metrics.roc_auc_score — scikit-learn 0.19.1 documentation](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score)
@@ -272,8 +492,56 @@
     > 0.75
     > ```
 
+- [python - Different result with roc_auc_score() and auc() - Stack Overflow](https://stackoverflow.com/questions/31159157/different-result-with-roc-auc-score-and-auc)
+
+    > `predict` returns only one class or the other. Then you compute a ROC with the results of `predict` on a classifier, there are only three thresholds (trial all one class, trivial all the other class, and in between). Your ROC curve looks like this:
+    > 
+    > ```
+    >       ..............................
+    >       |
+    >       |
+    >       |
+    > ......|
+    > |
+    > |
+    > |
+    > |
+    > |
+    > |
+    > |
+    > |
+    > |
+    > |
+    > |
+    > ```
+    > 
+    > Meanwhile, `predict_proba()` returns an entire range of probabilities, so now you can put more than three thresholds on your data.
+    > 
+    > ```
+    >              .......................
+    >              |
+    >              |
+    >              |
+    >           ...|
+    >           |
+    >           |
+    >      .....|
+    >      |
+    >      |
+    >  ....|
+    > .|
+    > |
+    > |
+    > |
+    > |
+    > ```
+    > 
+    > Hence different areas.
+
 
 ### confusion_matrix
+
+- [sklearn.metrics.confusion_matrix — scikit-learn 0.20.0 documentation](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html)
 
 - [sklearn.metrics中的评估方法介绍（accuracy_score, recall_score, roc_curve, roc_auc_score, confusion_matrix） - Cherzhoucheer的博客 - CSDN博客](https://blog.csdn.net/CherDW/article/details/55813071)
 
@@ -316,6 +584,30 @@
     > 
 
 
+### Multilabel confusion matrix
+
+- [python - Multilabel-indicator is not supported for confusion matrix - Stack Overflow](https://stackoverflow.com/questions/46953967/multilabel-indicator-is-not-supported-for-confusion-matrix)
+
+    > No, your input to [`confusion_matrix`](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html) must be a list of predictions, not OHEs (one hot encodings). Call `argmax` on your `y_test` and `y_pred`, and you should get what you expect.
+    > 
+    > ```python
+    > confusion_matrix(
+    >     y_test.values.argmax(axis=1), predictions.argmax(axis=1))
+    > 
+    > array([[1, 0],
+    >        [0, 2]])
+    > ```
+    > 
+
+### log loss(cross-entropy loss)
+
+- [sklearn.metrics.log_loss — scikit-learn 0.20.0 documentation](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html#sklearn.metrics.log_loss)
+
+    > Log loss, aka logistic loss or cross-entropy loss.
+
+    > This is the loss function used in (multinomial) logistic regression and extensions of it such as neural networks, defined as the negative log-likelihood of the true labels given a probabilistic classifier's predictions. The log loss is only defined for two or more labels. For a single sample with true label yt in {0,1} and estimated probability yp that yt = 1, the log loss is
+    > 
+    > > -log P(yt|yp) = -(yt log(yp) + (1 - yt) log(1 - yp))
 
 ## Model select/Cross Validation
 
@@ -340,9 +632,67 @@
     > 
     > ```
 
-## Model Tuning
+### PredefinedSplit
 
-### Grid search
+- [sklearn.model_selection.PredefinedSplit — scikit-learn 0.20.0 documentation](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.PredefinedSplit.html#sklearn.model_selection.PredefinedSplit)
+
+    > **test_fold** : array-like, shape (n_samples,)
+    > 
+    > The entry `test_fold[i]` represents the index of the test set that sample `i` belongs to. It is possible to exclude sample `i` from any test set (i.e. include sample `i` in every training set) by setting `test_fold[i]` equal to -1.
+
+- [3.1. Cross-validation: evaluating estimator performance — scikit-learn 0.20.0 documentation](https://scikit-learn.org/stable/modules/cross_validation.html#predefined-fold-splits-validation-sets)
+
+    > For example, when using a validation set, set the test_fold to 0 for all samples that are part of the validation set, and to -1 for all other samples.
+
+
+### split balanced dataset into training set and testing set without unbalanced (StratifiedShuffleSplit)
+
+- [machine learning - How to split data on balanced training set and test set on sklearn - Stack Overflow](https://stackoverflow.com/questions/35472712/how-to-split-data-on-balanced-training-set-and-test-set-on-sklearn)
+
+    > I am using sklearn for multi-classification task. I need to split alldata into train_set and test_set. I want to take randomly the same sample number from each class. Actually, I amusing this function
+    > 
+    > ```python
+    > X_train, X_test, y_train, y_test = cross_validation.train_test_split(Data, Target, test_size=0.3, random_state=0)
+    > 
+    > ```
+    > 
+    > but it gives unbalanced dataset! Any suggestion.
+    > 
+    > 
+    > ---
+    > 
+    > You can use [StratifiedShuffleSplit](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedShuffleSplit.html) to create datasets featuring the same percentage of classes as the original one:
+    > 
+    > ```python
+    > import numpy as np
+    > from sklearn.cross_validation import StratifiedShuffleSplit
+    > X = np.array([[1, 3], [3, 7], [2, 4], [4, 8]])
+    > y = np.array([0, 1, 0, 1])
+    > stratSplit = StratifiedShuffleSplit(y, 1, test_size=0.5,random_state=42)
+    > StratifiedShuffleSplit(y, n_iter=1, test_size=0.5)
+    > for train_idx,test_idx in stratSplit:
+    >     X_train=X[train_idx]
+    >     y_train=y[train_idx]
+    > print(X_train)
+    > print(y_train)
+    > //[[3 7]
+    > // [2 4]]
+    > //[1 0]
+    > 
+    > ```
+
+### Parameter "stratify"(train_test_split)
+
+- [split - Parameter "stratify" from method "train_test_split" (scikit Learn) - Stack Overflow](https://stackoverflow.com/questions/34842405/parameter-stratify-from-method-train-test-split-scikit-learn)
+
+    > This `stratify` parameter makes a split so that the proportion of values in the sample produced will be the same as the proportion of values provided to parameter `stratify`.
+    > 
+    > For example, if variable `y` is a binary categorical variable with values `0` and `1` and there are 25% of zeros and 75% of ones, `stratify=y` will make sure that your random split has 25% of `0`'s and 75% of `1`'s.
+    > 
+
+## Model tuning
+
+### Scanning hyperspace: how to tune machine learning models
 
 - [Scanning hyperspace: how to tune machine learning models | Cambridge Coding Academy](https://cambridgecoding.wordpress.com/2016/04/03/scanning-hyperspace-how-to-tune-machine-learning-models/)
 
@@ -484,6 +834,217 @@
     > Note that grid search with k-fold CV simply returns the best HP values out of the available options, and is therefore not guaranteed to return a global optimum. It makes sense to choose a diverse collection of possible values that is somewhat centred around an empirically sensible default.
     > 
 
+### GridSearchCV
+
+- [sklearn.model_selection.GridSearchCV — scikit-learn 0.20.0 documentation](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html)
+
+    > **return_train_score** : boolean, optional
+    > 
+    > If `False`, the `cv_results_` attribute will not include training scores.
+    > 
+    > ---
+    > 
+    > **scoring** : string, callable, list/tuple, dict or None, default: None
+    > 
+    > A single string (see [The scoring parameter: defining model evaluation rules](https://scikit-learn.org/stable/modules/model_evaluation.html#scoring-parameter)) or a callable (see [Defining your scoring strategy from metric functions](https://scikit-learn.org/stable/modules/model_evaluation.html#scoring)) to evaluate the predictions on the test set.
+    > 
+    > For evaluating multiple metrics, either give a list of (unique) strings or a dict with names as keys and callables as values.
+    > 
+    > NOTE that when using custom scorers, each scorer should return a single value. Metric functions returning a list/array of values can be wrapped into multiple scorers that return one value each.
+    > 
+    > See [Specifying multiple metrics for evaluation](https://scikit-learn.org/stable/modules/grid_search.html#multimetric-grid-search) for an example.
+    > 
+    > If None, the estimator's default scorer (if available) is used.
+    > 
+    > ---
+    > 
+    > **cv** : int, cross-validation generator or an iterable, optional
+    > 
+    > Determines the cross-validation splitting strategy. Possible inputs for cv are:
+    > 
+    > -   None, to use the default 3-fold cross validation,
+    > -   integer, to specify the number of folds in a *(Stratified)KFold*,
+    > -   An object to be used as a cross-validation generator.
+    > -   An iterable yielding train, test splits.
+    > 
+    > ---
+    > 
+    > **refit** : boolean, or string, default=True
+    > 
+    > Refit an estimator using the best found parameters on the whole dataset.
+    > 
+    > For multiple metric evaluation, this needs to be a string denoting the scorer is used to find the best parameters for refitting the estimator at the end.
+    > 
+
+
+- [python - Tabulate accuracy and mean for each fold in GridSearchCV from scikit-learn - Stack Overflow](https://stackoverflow.com/questions/40284613/tabulate-accuracy-and-mean-for-each-fold-in-gridsearchcv-from-scikit-learn)
+    > 
+    > First, you should not use `grid_scores_` anymore since it was deprecated in version **0.18** in favor of `cv_results_` attribute. The `grid_scores_` attribute will not be available from version **0.20**.
+    > 
+    > * * * * *
+    > 
+    > **Q°** : *Did I understand correctly, that the score.mean() is the mean of the accuracies?*
+    > 
+    > **A** : The attribute `cv_results_` actually returns a dictionnary of all the metrics you are looking for. Check this out : [`cv_result_`](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html).
+
+
+- [python - Using explict (predefined) validation set for grid search with sklearn - Stack Overflow](https://stackoverflow.com/questions/31948879/using-explict-predefined-validation-set-for-grid-search-with-sklearn)
+
+    > Use [`PredefinedSplit`](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.PredefinedSplit.html#sklearn.model_selection.PredefinedSplit)
+    > 
+    > ```
+    > ps = PredefinedSplit(test_fold=your_test_fold)
+    > ```
+    > 
+    > then set `cv=ps` in `GridSearchCV`
+    > 
+    > > test_fold : "array-like, shape (n_samples,)
+    > >
+    > > test_fold[i] gives the test set fold of sample i. A value of -1 indicates that the corresponding sample is not part of any test set folds, but will instead always be put into the training fold.
+    > 
+    > Also see [here](http://scikit-learn.org/stable/modules/cross_validation.html#predefined-fold-splits-validation-sets)
+    > 
+    > > when using a validation set, set the test_fold to 0 for all samples that are part of the validation set, and to -1 for all other samples.
+    > > 
+
+- [python - What is the meaning of 'mean_test_score' in cv_result? - Stack Overflow](https://stackoverflow.com/questions/44947574/what-is-the-meaning-of-mean-test-score-in-cv-result)
+
+    > The test and train scores of the folds are: (taken from the results you posted in your question)
+    > 
+    > ```
+    > test_scores = [0.74821666,0.80089016,0.92876979,0.95540287,0.89083901,0.90926355,0.82520379]
+    > train_scores = [0.97564995,0.95361201,0.93935856,0.94718634,0.94787374,0.94829775,0.94971417]
+    > ```
+    > 
+    > The amount of training samples in those folds are: (taken from the output of `print([(len(train), len(test)) for train, test in gkf.split(X, groups=patients)])`)
+    > 
+    > ```
+    > train_len = [41835, 56229, 56581, 58759, 60893, 60919, 62056]
+    > test_len = [24377, 9983, 9631, 7453, 5319, 5293, 4156]
+    > ```
+    > 
+    > Then the test- and train-means with the amount of training samples per fold as weight is:
+    > 
+    > ```
+    > train_avg = np.average(train_scores, weights=train_len)
+    > -> 0.95064898361714389
+    > test_avg = np.average(test_scores, weights=test_len)
+    > -> 0.83490628649308296
+    > ```
+    > 
+    > So this is exactly the value sklearn gives you. It is also the correct mean accuracy of your classification. The mean of the folds is incorrect in that it depends on the somewhat arbitrary splits/folds you chose.
+    > 
+
+- [用 Grid Search 对 SVM 进行调参 - 简书](https://www.jianshu.com/p/7701eab3bbc9)
+
+    > 以支持向量机分类器 SVC 为例，用 GridSearchCV 进行调参：
+    > 
+    > ```python
+    > from sklearn import datasets
+    > from sklearn.model_selection import train_test_split
+    > from sklearn.model_selection import GridSearchCV
+    > from sklearn.metrics import classification_report
+    > from sklearn.svm import SVC
+    > 
+    > ```
+    > 
+    > **1\. 导入数据集，分成 train 和 test 集：**
+    > 
+    > ```python
+    > digits = datasets.load_digits()
+    > 
+    > n_samples = len(digits.images)
+    > X = digits.images.reshape((n_samples, -1))
+    > y = digits.target
+    > 
+    > X_train, X_test, y_train, y_test = train_test_split(
+    >     X, y, test_size=0.5, random_state=0)
+    > 
+    > ```
+    > 
+    > **2\. 备选的参数搭配有下面两组，并分别设定一定的候选值：**
+    > 例如我们用下面两个 grids：
+    > kernel＝'rbf', gamma, 'C'
+    > kernel＝'linear', 'C'
+    > 
+    > ```python
+    > tuned_parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4],
+    >                      'C': [1, 10, 100, 1000]},
+    >                     {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
+    > 
+    > ```
+    > 
+    > **3\. 定义评分方法为：**
+    > 
+    > ```python
+    > scores = ['precision', 'recall']
+    > 
+    > ```
+    > 
+    > **4\. 调用 GridSearchCV**，
+    > 
+    > 将 `SVC(), tuned_parameters, cv=5`, 还有 scoring 传递进去，
+    > 用训练集训练这个学习器 clf，
+    > 再调用 `clf.best_params_` 就能直接得到**最好的参数**搭配结果，
+    > 
+    > 例如，在 precision 下，
+    > 返回最好的参数设置是：`{'C': 10, 'gamma': 0.001, 'kernel': 'rbf'}`
+    > 
+    > 还可以通过 `clf.cv_results_` 的 'params'，'mean_test_score'，看一下具体的参数间不同数值的组合后**得到的分数**是多少：
+    > 结果中可以看到最佳的组合的分数为：0.988 (+/-0.017)
+    > 
+    > ![](//upload-images.jianshu.io/upload_images/1667471-79d0278a287c3d5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/554)
+    > 
+    > 还可以通过 `classification_report` 打印在**测试集上的预测结果** `clf.predict(X_test)` 与真实值 `y_test` 的分数：
+    > 
+    > ![](//upload-images.jianshu.io/upload_images/1667471-3fa04971f2606d72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/465)
+    > 
+    > ```python
+    > for score in scores:
+    >     print("# Tuning hyper-parameters for %s" % score)
+    >     print()
+    > 
+    >      # 调用 GridSearchCV，将 SVC(), tuned_parameters, cv=5, 还有 scoring 传递进去，
+    >     clf = GridSearchCV(SVC(), tuned_parameters, cv=5,
+    >                        scoring='%s_macro' % score)
+    >     # 用训练集训练这个学习器 clf
+    >     clf.fit(X_train, y_train)
+    > 
+    >     print("Best parameters set found on development set:")
+    >     print()
+    > 
+    >     # 再调用 clf.best_params_ 就能直接得到最好的参数搭配结果
+    >     print(clf.best_params_)
+    > 
+    >     print()
+    >     print("Grid scores on development set:")
+    >     print()
+    >     means = clf.cv_results_['mean_test_score']
+    >     stds = clf.cv_results_['std_test_score']
+    > 
+    >     # 看一下具体的参数间不同数值的组合后得到的分数是多少
+    >     for mean, std, params in zip(means, stds, clf.cv_results_['params']):
+    >         print("%0.3f (+/-%0.03f) for %r"
+    >               % (mean, std * 2, params))
+    > 
+    >     print()
+    > 
+    >     print("Detailed classification report:")
+    >     print()
+    >     print("The model is trained on the full development set.")
+    >     print("The scores are computed on the full evaluation set.")
+    >     print()
+    >     y_true, y_pred = y_test, clf.predict(X_test)
+    > 
+    >     # 打印在测试集上的预测结果与真实值的分数
+    >     print(classification_report(y_true, y_pred))
+    > 
+    >     print()
+    > 
+    > ```
+
+
+
 
 ## Models
 
@@ -609,8 +1170,15 @@
 
     > Predictions are made by summing up the corresponding leaf values of each tree. Additionally, you need to transform those values depending on the objective you have choosen. For instance: If you trained your xgb with binary:logistic, the sum of the leaf values will be the logit score. So you need to apply the logistic function to get the wanted probabilities.
 
+## plot
 
-## How to Visualize Gradient Boosting Decision Trees With XGBoost in Python
+### plot API (plot_importance)
+
+- [Python API Reference — xgboost 0.81 documentation](https://xgboost.readthedocs.io/en/latest/python/python_api.html)
+
+
+
+### How to Visualize Gradient Boosting Decision Trees With XGBoost in Python
 
 - [How to Visualize Gradient Boosting Decision Trees With XGBoost in Python](https://machinelearningmastery.com/visualize-gradient-boosting-decision-trees-xgboost-python/)
 
@@ -647,7 +1215,7 @@
     > ![XGBoost Plot of Single Decision Tree Left-To-Right](https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2016/07/XGBoost-Plot-of-Single-Decision-Tree-Left-To-Right.png)
     > 
 
-## Evaluate XGBoost Models With Learning Curves
+### Evaluate XGBoost Models With Learning Curves
 
 - [Avoid Overfitting By Early Stopping With XGBoost In Python](https://machinelearningmastery.com/avoid-overfitting-by-early-stopping-with-xgboost-in-python/)
 
@@ -876,3 +1444,22 @@
 ## API
 
 - [Comparing Python Clustering Algorithms — hdbscan 0.8.1 documentation](https://hdbscan.readthedocs.io/en/latest/comparing_clustering_algorithms.html)
+
+
+
+# Nevergrad
+
+- [facebookresearch/nevergrad: A Python toolbox for performing gradient-free optimization](https://github.com/facebookresearch/nevergrad)
+
+- [Nevergrad: An open source tool for derivative-free optimization - Facebook Code](https://code.fb.com/ai-research/nevergrad/)
+
+    > The library includes a wide range of optimizers, such as:
+    > 
+    >     Differential evolution.
+    >     Sequential quadratic programming.
+    >     FastGA.
+    >     Covariance matrix adaptation.
+    >     Population control methods for noise management.
+    >     Particle swarm optimization.
+    > 
+

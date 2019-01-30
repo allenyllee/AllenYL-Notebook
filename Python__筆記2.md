@@ -129,6 +129,59 @@
     > The slowest run took 46.45 times longer than the fastest. This could mean that an intermediate result is being cached.
     > 100000 loops, best of 3: 6.26 µs per loop
 
+### enable Intellisense
+
+- [Jupyter Notebook - how to enable Intellisense - Part 1 (2017) - Deep Learning Course Forums](https://forums.fast.ai/t/jupyter-notebook-how-to-enable-intellisense/8636)
+
+    > At the top of your note book add this line
+    > ```
+    > %config IPCompleter.greedy=True
+    > ```
+    > Then when you have an object, for example numpy (np) do this
+    > 
+    > np.
+    > 
+    > After the . press [TAB] and it will show you all the methods available.
+    > 
+    > ![image](https://forums.fast.ai/uploads/default/original/2X/7/74dcf4e1ed201c145dfa3abf8ec869f9d14ac7f5.png)
+    > 
+    > Another useful thing is method parameters. Juypter will show you these if you press [SHIFT] and [TAB] from within the method parentheses. Eg.
+    > 
+    > ![image](https://forums.fast.ai/uploads/default/optimized/2X/6/6f004d312808decc4b3e8abfe12a03f667becd92_1_690x125.png)
+    > 
+    > Cheers
+    > Rich
+    > 
+
+### Enable code autocompletion menu for every keypress
+
+- [python - iPython Code Completion / Intellisense on Dot Possible? - Stack Overflow](https://stackoverflow.com/questions/33700112/ipython-code-completion-intellisense-on-dot-possible)
+
+    > **Answer**: Install [nbextensions](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/index.html) and enable the Hinterland extension.
+    > 
+    > > Enable code autocompletion menu for every keypress in a code cell, instead of only calling it with tab.
+    > 
+    > Here's what you do:
+    > 
+    > 1.  `pip install jupyter_contrib_nbextensions`
+    > 2.  `jupyter contrib nbextension install --user`
+    > 3.  Start `jupyter notebook` (browser launches)
+    > 4.  One of the **tabs** should now show "**Nbextensions**"
+    > 5.  There, you will find "**Hinterland**". Check the box to enable.
+    > 
+    > Hinterland has some adjustable options like:
+    > 
+    > -   **hinterland.hint_delay**: delay in milliseconds between keypress & hint request.
+    > -   **hinterland.enable_at_start**: Whether to enable hinterland's continuous hinting when notebook is first opened, or if false, only when selected from the help-menu item.
+    > -   **hinterland.hint_inside_comments**: Whether to request hints while typing code comments. Defaults to false.
+    > -   **Other regex options**: hinterland.exclude_regexp, hinterland.include_regexp, hinterland.tooltip_regexp
+    > 
+    > * * * * *
+    > 
+    > [![enter image description here](https://i.stack.imgur.com/cDHlC.png)](https://i.stack.imgur.com/cDHlC.png)
+    > 
+
+
 
 ## Tutorial
 
@@ -315,6 +368,59 @@
 - [Remote Kernels: "'_xsrf' argument missing from POST" when token is empty string · Issue #922 · nteract/hydrogen](https://github.com/nteract/hydrogen/issues/922)
 
     > This can be solved by changing `#c.NotebookApp.disable_check_xsrf = False` to `c.NotebookApp.disable_check_xsrf = True` in jupyter_notebook_config.py.
+
+
+### set env variable in Jupyter notebook
+
+- [python - How to set env variable in Jupyter notebook - Stack Overflow](https://stackoverflow.com/questions/37890898/how-to-set-env-variable-in-jupyter-notebook)
+
+    > You can setup environment variables in your code as follows:
+    > 
+    > ```python
+    > import sys,os,os.path
+    > sys.path.append(os.path.expanduser('~/code/eol_hsrl_python'))
+    > os.environ['HSRL_INSTRUMENT']='gvhsrl'
+    > os.environ['HSRL_CONFIG']=os.path.expanduser('~/hsrl_config')
+    > ```
+    > 
+    > This if of course a temporary fix, to get a permanent one, you probably need to export the variables into your `~.profile`, more information can be found [here](https://support.enthought.com/hc/en-us/articles/204469160-How-do-I-set-PYTHONPATH-and-other-environment-variables-for-Canopy-)
+    > 
+    > ---
+    > 
+    > To set an env variable in a jupyter notebook, just use a `%` magic commands, either `%env` or `%set_env`, e.g., `%env MY_VAR=MY_VALUE` or `%env MY_VAR MY_VALUE`. (Use `%env` by itself to print out current environmental variables.)
+    > 
+    > See: <http://ipython.readthedocs.io/en/stable/interactive/magics.html>
+
+
+
+- [library path not work in notebook · Issue #1290 · jupyter/notebook](https://github.com/jupyter/notebook/issues/1290)
+
+    > Ok, i found solution, but still think that it's some problem with notebook: it's not take system variables and not using the ones that i load in code.\
+    > Solution:\
+    > Generate config file:\
+    > `jupyter notebook --generate-config`\
+    > It will be stored i:\
+    > `jupyter --config-dir`\
+    > Add this code at start:
+    > 
+    > ```python
+    > import os
+    > c = get_config()
+    > os.environ['LD_LIBRARY_PATH'] = '/usr/local/cuda-7.5/lib64:usr/local/cuda-7.5/lib64/libcudart.so.7.5'
+    > c.Spawner.env.update('LD_LIBRARY_PATH')
+    > 
+    > ```
+    > 
+    > And everything work
+    > 
+
+### launching from a GUI launcher with environments variables set in `.bashrc`
+
+- [Unable to import tensorflow in jupyter (yet able to import tensorflow in python and ipython) · Issue #2120 · jupyter/notebook](https://github.com/jupyter/notebook/issues/2120)
+
+    > Are you launching the Jupyter applications from a GUI launcher? If so, they won't pick up environment variables set in `.bashrc` or `.bash_profile`. A simple workaround is to launch them from a terminal.
+    > 
+    > On Linux, you can set environment variables in `.profile`, which is run when you log in. I don't know how to do the same on OSX.
 
 
 ## jupyter notebook with git workflow
@@ -631,6 +737,190 @@
     > 
     > That's the simple version for exporting files to scripts on save. It's more efficient but more complex to avoid instantiating an nbconvert process by using an Exporter locally.
 
+## debugging in jupyter notebook
+
+### Python Debugger Cheatsheet
+
+- For complete list of available commands: <https://appletree.or.kr/quick_reference_cards/Python/Python%20Debugger%20Cheatsheet.pdf>
+
+### pdb/ipdb
+- [Jupyter Notebook Debugging | The Mouse Vs. The Python](https://www.blog.pythonlibrary.org/2018/10/17/jupyter-notebook-debugging/)
+
+    > ### Using pdb
+    > 
+    > The pdb module is Python's debugger module. Just as C++ has gdb, Python has pdb.
+    > 
+    > Let's start by opening up a new Notebook and adding a cell with the following code in it:
+    > ```python
+    > def bad_function(var):
+    > 	return var + 0
+    > 
+    > bad_function("Mike")
+    > ```
+    > 
+    > If you run this code, you should end up with some output that looks like this:
+    > ```python
+    > ---------------------------------------------------------------------------
+    > TypeError                                 Traceback (most recent call last)
+    > <ipython-input-1-2f23ed1cac1e> in <module>()
+    >       2         return var + 0
+    >       3
+    > ----> 4 bad_function("Mike")
+    > 
+    > <ipython-input-1-2f23ed1cac1e> in bad_function(var)
+    >       1 def bad_function(var):
+    > ----> 2         return var + 0
+    >       3
+    >       4 bad_function("Mike")
+    > 
+    > TypeError: cannot concatenate 'str' and 'int' objects
+    > ```
+    > 
+    > What this means is that you cannot concatenate a string and an integer. This is a pretty common problem if you don't know what types a function accepts. You will find that this is especially true when working with complex functions and classes, unless they happen to be using type hinting. One way to figure out what is going on is by adding a breakpoint using pdb's **set_trace()** function:
+    > ```python
+    > def bad_function(var):
+    >     import pdb
+    >     pdb.set_trace()
+    >     return var + 0
+    > 
+    > bad_function("Mike")
+    > ```
+    > 
+    > Now when you run the cell, you will get a prompt in the output which you can use to inspect the variables and basically run code live. If you happen to have **Python 3.7**, then you can simplify the example above by using the new **breakpoint** built-in, like this:
+    > ```python
+    > def bad_function(var):
+    >     breakpoint()
+    >     return var + 0
+    > 
+    > bad_function("Mike")
+    > ```
+    > 
+    > This code is functionally equivalent to the previous example but uses the new **breakpoint** function instead. When you run this code, it should act the same way as the code in the previous section did.
+    > 
+    > You can read more about how to use pdb [here](https://docs.python.org/3/library/pdb.html).
+    > 
+    > You can use any of pdb's command right inside of your Jupyter Notebook. Here are some examples:
+    > 
+    > -   w(here) -- Print the stack trace
+    > -   d(own) -- Move the current frame X number of levels down. Defaults to one.
+    > -   u(p) -- Move the current frame X number of levels up. Defaults to one.
+    > -   b(reak) -- With a *lineno* argument, set a break point at that line number in the current file / context
+    > -   s(tep) -- Execute the current line and stop at the next possible line
+    > -   c(ontinue) -- Continue execution
+    > 
+    > Note that these are single-letter commands: w, d, u and b are the commands. You can use these commands to interactively debug your code in your Notebook along with the other commands listed in the documentation listed above.
+    > 
+    > * * * * *
+    > 
+    > ### ipdb
+    > 
+    > IPython also has a debugger called **ipdb**. However it does not work with Jupyter Notebook directly. You would need to connect to the kernel using something like **Jupyter console** and run it from there to use it. If you would like to go that route, you can read more about using Jupyter console [here](https://jupyter-console.readthedocs.io/en/latest/).
+    > 
+    > However there is an IPython debugger that we can use called **IPython.core.debugger.set_trace**. Let's create a cell with the following code:
+    > ```python
+    > from IPython.core.debugger import set_trace
+    > 
+    > def bad_function(var):
+    >     set_trace()
+    >     return var + 0
+    > 
+    > bad_function("Mike")
+    > ```
+    > 
+    > Now you can run this cell and get the ipdb debugger. Here is what the output looked like on my machine:
+    > 
+    > ![](http://www.blog.pythonlibrary.org/wp-content/uploads/2018/10/ipython_debugger-1024x491.png)
+    > 
+    > The IPython debugger uses the same commands as the Python debugger does. The main difference is that it provides syntax highlighting and was originally designed to work in the IPython console.
+    > 
+    > There is one other way to open up the **ipdb** debugger and that is by using the **%pdb** magic. Here is some sample code you can try in a Notebook cell:
+    > ```python
+    > %pdb
+    > 
+    > def bad_function(var):
+    >     return var + 0
+    > 
+    > bad_function("Mike")
+    > ```
+    > 
+    > When you run this code, you should end up seeing the `TypeError` traceback and then the ipdb prompt will appear in the output, which you can then use as before.
+    > 
+    > * * * * *
+    > 
+    > ### What about %%debug?
+    > 
+    > There is yet another way that you can open up a debugger in your Notebook. You can use `%%debug` to debug the entire cell like this:
+    > ```python
+    > %%debug
+    > 
+    > def bad_function(var):
+    >     return var + 0
+    > 
+    > bad_function("Mike")
+    > ```
+    > 
+    > This will start the debugging session immediately when you run the cell. What that means is that you would want to use some of the commands that pdb supports to step into the code and examine the function or variables as needed.
+    > 
+    > Note that you could also use `%debug` if you want to debug a single line.
+    > 
+    > * * * * *
+    > 
+    > ### Wrapping Up
+    > 
+    > In this chapter we learned of several different methods that you can use to debug the code in your Jupyter Notebook. I personally prefer to use Python's pdb module, but you can use the IPython.core.debugger to get the same functionality and it could be better if you prefer to have syntax highlighting.
+    > 
+    > There is also a newer "visual debugger" package called the PixieDebugger from the [pixiedust](https://github.com/pixiedust/pixiedust) package:
+    > 
+    > I haven't used it myself. Some reviewers say it is amazing and others have said it is pretty buggy. I will leave that one up to you to determine if it is something you want to add to your toolset.
+    > 
+    > As far as I am concerned, I think using pdb or IPython's debugger work quite well and should work for you too.
+    > 
+
+
+- [python - What is the right way to debug in iPython notebook? - Stack Overflow](https://stackoverflow.com/questions/32409629/what-is-the-right-way-to-debug-in-ipython-notebook)
+
+    > Use **ipdb**
+    > 
+    > Install it via
+    > 
+    > ```
+    > pip install ipdb
+    > ```
+    > 
+    > Usage:
+    > 
+    > ```python
+    > In[1]: def fun1(a):
+    >    def fun2(a):
+    >        import ipdb; ipdb.set_trace() # debugging starts here
+    >        return do_some_thing_about(b)
+    >    return fun2(a)
+    > In[2]: fun1(1)
+    > ```
+    > 
+    > For executing line by line use `n` and for step into a function use `s` and to exit from debugging prompt use `c`.
+    > 
+    > For complete list of available commands: <https://appletree.or.kr/quick_reference_cards/Python/Python%20Debugger%20Cheatsheet.pdf>
+    > 
+
+
+
+
+### PixieDebugger
+
+- [Install PixieDust — PixieDust Documentation](https://pixiedust.github.io/pixiedust/install.html)
+
+
+
+
+- [The Visual Python Debugger for Jupyter Notebooks You’ve Always Wanted](https://medium.com/ibm-watson-data-lab/the-visual-python-debugger-for-jupyter-notebooks-youve-always-wanted-761713babc62)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z-tPeEkVqjk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+
+
 
 # JupyterHub
 
@@ -643,25 +933,10 @@
 
 # IPython
 
-- [python - How to set env variable in Jupyter notebook - Stack Overflow](https://stackoverflow.com/questions/37890898/how-to-set-env-variable-in-jupyter-notebook)
 
-    > You can setup environment variables in your code as follows:
-    > 
-    > ```
-    > import sys,os,os.path
-    > sys.path.append(os.path.expanduser('~/code/eol_hsrl_python'))
-    > os.environ['HSRL_INSTRUMENT']='gvhsrl'
-    > os.environ['HSRL_CONFIG']=os.path.expanduser('~/hsrl_config')
-    > ```
-    > 
-    > This if of course a temporary fix, to get a permanent one, you probably need to export the variables into your `~.profile`, more information can be found [here](https://support.enthought.com/hc/en-us/articles/204469160-How-do-I-set-PYTHONPATH-and-other-environment-variables-for-Canopy-)
-    > 
-    > ---
-    > 
-    > To set an env variable in a jupyter notebook, just use a `%` magic commands, either `%env` or `%set_env`, e.g., `%env MY_VAR=MY_VALUE` or `%env MY_VAR MY_VALUE`. (Use `%env` by itself to print out current environmental variables.)
-    > 
-    > See: <http://ipython.readthedocs.io/en/stable/interactive/magics.html>
+## shell command in IPython
 
+- [Built-in magic commands — IPython 7.2.0 documentation](https://ipython.readthedocs.io/en/stable/interactive/magics.html)
 
 - [Using Shell Commands Effectively from IPython - Safari Blog](https://archive.is/GOF3A)
 
@@ -824,4 +1099,51 @@
     > nbx [--inplace] <notebook>
     > ```
 
+## run from ipython with glob style expansion
 
+- [run from ipython with glob style expansion? - Stack Overflow](https://stackoverflow.com/questions/8227705/run-from-ipython-with-glob-style-expansion)
+
+    > The return of `filenames = !ls *.sbet` is a special list, with a few extra attributes:
+    > 
+    > -   `filenames.l` - the list
+    > -   `filenames.s` - a whitespace-separated string
+    > -   `filenames.n` - a newline-separated string
+    > 
+    > do `filenames?` in IPython for more info.
+    > 
+    > So to pass the args to run, you want `filenames.s`:
+    > 
+    > ```
+    > filenames = !ls *.sbet
+    > run sbet.py $filenames.s
+    > 
+    > ```
+    > 
+    > If you have a regular list, then you will need to turn it into a string yourself, before passing to run:
+    > 
+    > ```
+    > filenames = glob.glob('*.sbet')
+    > filenames_str = ' '.join(filenames) # you will need to add quotes if you allow spaces in filenames
+    > run sbet.py $filenames_str
+    > 
+    > ```
+
+## clear cell output in code
+
+- [python - ipython notebook clear cell output in code - Stack Overflow](https://stackoverflow.com/questions/24816237/ipython-notebook-clear-cell-output-in-code)
+
+
+    > You can use [`IPython.display.clear_output`](http://ipython.org/ipython-doc/dev/api/generated/IPython.display.html#IPython.display.clear_output) to clear the output of a cell.
+    > 
+    > ```python
+    > from IPython.display import clear_output
+    > 
+    > for i in range(10):
+    >     clear_output()
+    >     print("Hello World!")
+    > ```
+    > 
+    > ---
+    > 
+    > Using the `clear_output(wait=True)` will generally make the result nicer if you have `clear_output` inside a loop. -- [Toke Faurby](https://stackoverflow.com/users/3747801/toke-faurby "1,356 reputation") [Jun 8 '17 at 23:49](https://stackoverflow.com/questions/24816237/ipython-notebook-clear-cell-output-in-code#comment75891759_24818304)
+    > 

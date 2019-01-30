@@ -5,7 +5,158 @@
 
 ## gcc g++ 
 
-### version
+### Check glibc version
+
+- [c - Check glibc version for a particular gcc compiler - Stack Overflow](https://stackoverflow.com/questions/9705660/check-glibc-version-for-a-particular-gcc-compiler)
+
+    > use ldd --version
+    > 
+    > This should return the glibc version being used i.e.
+    > 
+    > ```
+    > $ ldd --version
+    > 
+    > ldd (GNU libc) 2.17
+    > Copyright (C) 2012 Free Software Foundation, Inc.
+    > This is free software; see the source for copying conditions.  There is NO
+    > ```
+    > 
+    > 
+    > which is the same result as running my libc library
+    > 
+    > ```
+    > $ /lib/libc.so.6
+    > 
+    > GNU C Library (GNU libc) stable release version 2.17, by Roland McGrath et al.
+    > Copyright (C) 2012 Free Software Foundation, Inc.
+    > This is free software; see the source for copying conditions.
+    > ```
+    > 
+    > ---
+    > 
+    > Use `-print-file-name` `gcc` option:
+    > 
+    > ```
+    > $ gcc -print-file-name=libc.so
+    > /usr/lib/gcc/x86_64-redhat-linux/4.5.1/../../../../lib64/libc.so
+    > ```
+    > 
+    > That gives the path. Now:
+    > 
+    > ```
+    > $ file /usr/lib/gcc/x86_64-redhat-linux/4.5.1/../../../../lib64/libc.so
+    > /usr/lib/gcc/x86_64-redhat-linux/4.5.1/../../../../lib64/libc.so: ASCII C program text
+    > 
+    > $ cat /usr/lib/gcc/x86_64-redhat-linux/4.5.1/../../../../lib64/libc.so
+    > /* GNU ld script
+    >    Use the shared library, but some functions are only in
+    >    the static library, so try that secondarily.  */
+    > OUTPUT_FORMAT(elf64-x86-64)
+    > GROUP ( /lib64/libc.so.6 /usr/lib64/libc_nonshared.a  AS_NEEDED ( /lib64/ld-linux-x86-64.so.2 ) )
+    > ```
+    > 
+    > Looks like a linker script. `libc` is special on Linux in that it can be executed:
+    > 
+    > ```
+    > $ /lib64/libc.so.6
+    > GNU C Library stable release version 2.13, by Roland McGrath et al.
+    > Copyright (C) 2011 Free Software Foundation, Inc.
+    > This is free software; see the source for copying conditions.
+    > There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+    > PARTICULAR PURPOSE.
+    > Compiled by GNU CC version 4.5.1 20100924 (Red Hat 4.5.1-4).
+    > Compiled on a Linux 2.6.35 system on 2011-08-05.
+    > Available extensions:
+    >     Support for some architectures added on, not maintained in glibc core.
+    >     The C stubs add-on version 2.1.2.
+    >     crypt add-on version 2.1 by Michael Glad and others
+    >     GNU Libidn by Simon Josefsson
+    >     Native POSIX Threads Library by Ulrich Drepper et al
+    >     BIND-8.2.3-T5B
+    >     RT using linux kernel aio
+    > libc ABIs: UNIQUE IFUNC
+    > For bug reporting instructions, please see:
+    > <http://www.gnu.org/software/libc/bugs.html>.
+    > ```
+    > 
+    > ---
+    > 
+    > Write a test program (name it for example `glibc-version.c`):
+    > 
+    > ```
+    > #include <stdio.h>
+    > #include <stdlib.h>
+    > #include <gnu/libc-version.h>
+    > 
+    > int main(int argc, char *argv[]) {
+    >   printf("GNU libc version: %s\n", gnu_get_libc_version());
+    >   exit(EXIT_SUCCESS);
+    > }
+    > ```
+    > 
+    > and compile it with the gcc-4.4 compiler:
+    > 
+    > ```
+    > gcc-4.4 glibc-version.c -o glibc-version
+    > ```
+    > 
+    > When you execute `./glibc-version` the used glibc version is shown.
+    > 
+    > ---
+    > 
+    > `gnu_get_libc_version` identifies the *runtime* version of the GNU C Library.
+    > 
+    > If what you care about is the *compile-time* version (that is, the version that provided the headers in `/usr/include`), you should look at the macros `__GLIBC__` and `__GLIBC_MINOR__`. These expand to positive integers, and will be defined as a side-effect of including *any* header file provided by the GNU C Library; this means you can include a standard header, and then use `#ifdef __GLIBC__` to decide whether you can include a nonstandard header like `gnu/libc-version.h`.
+    > 
+    > Expanding the test program from the accepted answer:
+    > 
+    > ```
+    > #include <stdio.h>
+    > #ifdef __GLIBC__
+    > #include <gnu/libc-version.h>
+    > #endif
+    > 
+    > int
+    > main(void)
+    > {
+    > #ifdef __GLIBC__
+    >   printf("GNU libc compile-time version: %u.%u\n", __GLIBC__, __GLIBC_MINOR__);
+    >   printf("GNU libc runtime version:      %s\n", gnu_get_libc_version());
+    >   return 0;
+    > #else
+    >   puts("Not the GNU C Library");
+    >   return 1;
+    > #endif
+    > }
+    > ```
+    > 
+    > When I compile and run this program on the computer I'm typing this answer on (which is a Mac) it prints
+    > 
+    > ```
+    > Not the GNU C Library
+    > ```
+    > 
+    > but when compiled and run on a nearby Linux box it prints
+    > 
+    > ```
+    > GNU libc compile-time version: 2.24
+    > GNU libc runtime version:      2.24
+    > ```
+    > 
+    > Under normal circumstances, the "runtime" version could be bigger than the "compile-time" version, but never smaller. The major version number is unlikely ever to change again (the last time it changed was the "libc6 transition" in 1997).
+    > 
+    > If you would prefer a shell 'one-liner' to dump these macros, use:
+    > 
+    > ```
+    > echo '#include <errno.h>' | gcc -xc - -E -dM |
+    >     grep -E '^#define __GLIBC(|_MINOR)__ ' | sort
+    > ```
+    > 
+    > The `grep` pattern is chosen to match only the two macros that are relevant, because there are dozens of internal macros named `__GLIBC_somethingorother` that you don't want to have to read through.
+
+
+
+### libstdc++.so.6: version `GLIBCXX_3.4.20' not found
 
 - [ubuntu 16.04 - libstdc++.so.6: version `GLIBCXX_3.4.20' not found - Stack Overflow](https://stackoverflow.com/questions/44773296/libstdc-so-6-version-glibcxx-3-4-20-not-found)
 
@@ -42,7 +193,7 @@
     > ```
 
 
-### install
+### install latest gcc on Ubuntu
 
 - [How to install latest gcc on Ubuntu LTS (12.04, 14.04, 16.04)](https://gist.github.com/application2000/73fd6f4bf1be6600a2cf9f56315a2d91)
 

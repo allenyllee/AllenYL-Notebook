@@ -511,6 +511,45 @@
     > ```
     > 
 
+
+### `${parameter:-word}`, `${parameter:+word}`
+
+- [Bash Reference Manual](https://www.gnu.org/software/bash/manual/bashref.html#Shell-Parameter-Expansion)
+
+    > `${parameter:-word}`
+    > 
+    > If parameter is unset or null, the expansion of word is substituted. Otherwise, the value of parameter is substituted.
+    >     
+    > `${parameter:+word}`
+    > 
+    > If *parameter* is null or unset, nothing is substituted, otherwise the expansion of *word* is substituted.
+
+- [bash - how to smart append LD_LIBRARY_PATH in shell when nounset - Stack Overflow](https://stackoverflow.com/questions/9631228/how-to-smart-append-ld-library-path-in-shell-when-nounset)
+
+
+    > You could use this construct:
+    > 
+    > ```shell
+    > export LD_LIBRARY_PATH=/mypath${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+    > ```
+    > 
+    > Explanation:
+    > 
+    > -   If `LD_LIBRARY_PATH` is not set, then `${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}` expands to nothing without evaluating `$LD_LIBRARY_PATH`, thus the result is equivalent to `export LD_LIBRARY_PATH=/mypath` and no error is raised.
+    > 
+    > -   If `LD_LIBRARY_PATH` is already set, then `${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}` expands to `:$LD_LIBRARY_PATH`, thus the result is equivalent to `export LD_LIBRARY_PATH=/mypath:$LD_LIBRARY_PATH`.
+    > 
+    > See the [Bash Reference Manual / 3.5.3 Shell Parameter Expansion](http://www.gnu.org/software/bash/manual/bashref.html#Shell-Parameter-Expansion) for more information on these expansions.
+    > 
+    > This is an important security practice as two adjacent colons or a trailing/leading colon count as adding the **current directory** to `$PATH` or `$LD_LIBRARY_PATH`. See also:
+    > 
+    > -   [What corner cases must we consider when parsing path on linux](https://stackoverflow.com/questions/7121753/what-corner-cases-must-we-consider-when-parsing-path-on-linux)
+    > -   [bash: $PATH ending in colon puts working directory in PATH](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=775704)
+    > -   [How Torch broke ls](https://joshumax.github.io/general/2017/06/08/how-torch-broke-ls.html)
+    > 
+
+
+
 ### ${array[*]} versus ${array[@]}
 
 - [A confusion about ${array[*]} versus ${array[@]} in the context of a Bash completion - Stack Overflow](https://stackoverflow.com/questions/3348443/a-confusion-about-array-versus-array-in-the-context-of-a-bash-comple)

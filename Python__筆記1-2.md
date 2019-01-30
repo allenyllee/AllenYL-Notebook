@@ -3,13 +3,236 @@
 [toc]
 <!-- toc --> 
 
-# functions/passing varibles/return/yield/Generator
 
-- [Python switch case - LeetCode Playground](https://leetcode.com/playground/Vx2sL4cZ)
+# Exception Handling
 
-    <iframe src="https://leetcode.com/playground/Vx2sL4cZ/shared" frameBorder="0" width="400" height="300"></iframe>
+## print Exception
 
-### how to passed by reference
+- [How to print an error in Python? - Stack Overflow](https://stackoverflow.com/questions/1483429/how-to-print-an-error-in-python)
+
+    > For Python 2.6 and later and Python 3.x:
+    > 
+    > ```python
+    > except Exception as e: print(e)
+    > ```
+    > 
+    > For Python 2.5 and earlier, use:
+    > 
+    > ```python
+    > except Exception,e: print str(e)
+    > ```
+
+## Built-in Exceptions
+
+- [Built-in Exceptions — Python 3.7.1 documentation](https://docs.python.org/3/library/exceptions.html#bltin-exceptions)
+
+    > ```
+    > BaseException
+    >  +-- SystemExit
+    >  +-- KeyboardInterrupt
+    >  +-- GeneratorExit
+    >  +-- Exception
+    >       +-- StopIteration
+    >       +-- StopAsyncIteration
+    >       +-- ArithmeticError
+    >       |    +-- FloatingPointError
+    >       |    +-- OverflowError
+    >       |    +-- ZeroDivisionError
+    >       +-- AssertionError
+    >       +-- AttributeError
+    >       +-- BufferError
+    >       +-- EOFError
+    >       +-- ImportError
+    >       |    +-- ModuleNotFoundError
+    >       +-- LookupError
+    >       |    +-- IndexError
+    >       |    +-- KeyError
+    >       +-- MemoryError
+    >       +-- NameError
+    >       |    +-- UnboundLocalError
+    >       +-- OSError
+    >       |    +-- BlockingIOError
+    >       |    +-- ChildProcessError
+    >       |    +-- ConnectionError
+    >       |    |    +-- BrokenPipeError
+    >       |    |    +-- ConnectionAbortedError
+    >       |    |    +-- ConnectionRefusedError
+    >       |    |    +-- ConnectionResetError
+    >       |    +-- FileExistsError
+    >       |    +-- FileNotFoundError
+    >       |    +-- InterruptedError
+    >       |    +-- IsADirectoryError
+    >       |    +-- NotADirectoryError
+    >       |    +-- PermissionError
+    >       |    +-- ProcessLookupError
+    >       |    +-- TimeoutError
+    >       +-- ReferenceError
+    >       +-- RuntimeError
+    >       |    +-- NotImplementedError
+    >       |    +-- RecursionError
+    >       +-- SyntaxError
+    >       |    +-- IndentationError
+    >       |         +-- TabError
+    >       +-- SystemError
+    >       +-- TypeError
+    >       +-- ValueError
+    >       |    +-- UnicodeError
+    >       |         +-- UnicodeDecodeError
+    >       |         +-- UnicodeEncodeError
+    >       |         +-- UnicodeTranslateError
+    >       +-- Warning
+    >            +-- DeprecationWarning
+    >            +-- PendingDeprecationWarning
+    >            +-- RuntimeWarning
+    >            +-- SyntaxWarning
+    >            +-- UserWarning
+    >            +-- FutureWarning
+    >            +-- ImportWarning
+    >            +-- UnicodeWarning
+    >            +-- BytesWarning
+    >            +-- ResourceWarning
+    > ```
+
+### KeyError
+
+- [Python Exception Handling - KeyError](https://airbrake.io/blog/python-exception-handling/python-keyerror)
+
+    > the **KeyError**, which is the close sibling of the [`IndexError`](https://airbrake.io/blog/python-exception-handling/python-indexerror) we looked at last week. Whereas the [`IndexError`](https://airbrake.io/blog/python-exception-handling/python-indexerror) is raised when trying to access an invalid `index` within a `list`, the `KeyError` is raised when accessing an invalid `key` within a `dict`.
+
+
+- [Catch KeyError in Python - Stack Overflow](https://stackoverflow.com/questions/16154032/catch-keyerror-in-python)
+
+
+    > I am using Python 3.6 and using a comma between Exception and e does not work. I need to use the following syntax (just for anyone wondering)
+    > 
+    > ```python
+    > try:
+    >     connection = manager.connect("I2Cx")
+    > except KeyError as e:
+    >     print(e.message)
+    > ```
+    > 
+
+### ZeroDivisionError
+
+- [Python Exception Handling - ZeroDivisionError](https://airbrake.io/blog/python-exception-handling/zerodivisionerror-2)
+
+    > the **ZeroDivisionError**. As you may suspect, the `ZeroDivisionError` in Python indicates that the second argument used in a division (or modulo) operation was zero.
+
+- [python - Make division by zero equal to zero - Stack Overflow](https://stackoverflow.com/questions/27317517/make-division-by-zero-equal-to-zero)
+
+    > You can use a `try`/`except` block for this.
+    > 
+    > ```python
+    > def foo(x,y):
+    >     try:
+    >         return x/y
+    >     except ZeroDivisionError:
+    >         return 0
+    > ```
+    > 
+
+
+# Regular Expresion(re)
+
+- [6.2. re — Regular expression operations — Python 3.3.7 documentation](https://docs.python.org/3.3/library/re.html?highlight=re#re.compile)
+    - __re.compile(_pattern_, _flags=0_)[](https://docs.python.org/3.3/library/re.html?highlight=re#re.compile "Permalink to this definition")__
+        Compile a regular expression pattern into a regular expression object, which can be used for matching using its [match()](https://docs.python.org/3.3/library/re.html?highlight=re#re.match "re.match") and [search()](https://docs.python.org/3.3/library/re.html?highlight=re#re.search "re.search") methods, described below.
+
+
+- [[Python] 正規表示法 Regular Expression](https://zwindr.blogspot.com/2016/01/python-regular-expression.html)
+
+    > **re.split(pattern, string, maxsplit=0, flags=0)**
+    > ```py
+    > import re
+    > # >> ['ab', 'cd', 'd']
+    > match = re.split(r'\d',  'ab2cd5d')
+    > ```
+
+
+## line continuation with a long regex
+
+- [Python: How do I do line continuation with a long regex? - Stack Overflow](https://stackoverflow.com/questions/33211404/python-how-do-i-do-line-continuation-with-a-long-regex)
+
+    > If you use the `re.VERBOSE` flag, you can split your regular expression up as much as you like to make it more readable:
+    > 
+    > ```py
+    > pattern = r"""
+    >     \d\s+
+    >     \d+\s+
+    >     ([A-Z0-9-]+)\s+
+    >     ([0-9]+.\d\(\d\)[A-Z0-9]+)\s+
+    >     ([a-zA-Z\d-]+)"""
+    > 
+    > REGEX = re.compile(pattern, re.VERBOSE)
+    > ```
+    > 
+    > This approach is explained in [Dive Into Python - Verbose Regular Expressions](http://www.diveintopython.net/regular_expressions/verbose.html).
+
+## re.compile
+
+- [re — Regular expression operations — Python 3.7.1 documentation](https://docs.python.org/3/library/re.html#re.compile)
+
+    > Compile a regular expression pattern into a [regular expression object](https://docs.python.org/3/library/re.html#re-objects), which can be used for matching using its [`match()`](https://docs.python.org/3/library/re.html#re.Pattern.match "re.Pattern.match"), [`search()`](https://docs.python.org/3/library/re.html#re.Pattern.search "re.Pattern.search") and other methods, described below.
+    > 
+    > The expression's behaviour can be modified by specifying a *flags* value. Values can be any of the following variables, combined using bitwise OR (the `|` operator).
+    > 
+    > The sequence
+    > ```
+    > prog = re.compile(pattern)
+    > result = prog.match(string)
+    > ```
+    > is equivalent to
+    > ```
+    > result = re.match(pattern, string)
+    > ```
+    > but using [`re.compile()`](https://docs.python.org/3/library/re.html#re.compile "re.compile") and saving the resulting regular expression object for reuse is more efficient when the expression will be used several times in a single program.
+    > 
+    > Note
+    > 
+    > The compiled versions of the most recent patterns passed to [`re.compile()`](https://docs.python.org/3/library/re.html#re.compile "re.compile") and the module-level matching functions are cached, so programs that use only a few regular expressions at a time needn't worry about compiling regular expressions.
+
+## search() vs. match()
+
+- [re — Regular expression operations — Python 3.7.1 documentation](https://docs.python.org/3/library/re.html#search-vs-match)
+
+    > Python offers two different primitive operations based on regular expressions: [`re.match()`](https://docs.python.org/3/library/re.html#re.match "re.match") checks for a match only at the beginning of the string, while [`re.search()`](https://docs.python.org/3/library/re.html#re.search "re.search") checks for a match anywhere in the string (this is what Perl does by default).
+    > 
+    > For example:
+    > 
+    > 
+    > ```
+    > >>> re.match("c", "abcdef")    # No match
+    > >>> re.search("c", "abcdef")   # Match
+    > <re.Match object; span=(2, 3), match='c'>
+    > ```
+    > Regular expressions beginning with `'^'` can be used with [`search()`](https://docs.python.org/3/library/re.html#re.search "re.search") to restrict the match at the beginning of the string:
+    > 
+    > 
+    > ```
+    > >>> re.match("c", "abcdef")    # No match
+    > >>> re.search("^c", "abcdef")  # No match
+    > >>> re.search("^a", "abcdef")  # Match
+    > <re.Match object; span=(0, 1), match='a'>
+    > ```
+    > Note however that in [`MULTILINE`](https://docs.python.org/3/library/re.html#re.MULTILINE "re.MULTILINE") mode [`match()`](https://docs.python.org/3/library/re.html#re.match "re.match") only matches at the beginning of the string, whereas using [`search()`](https://docs.python.org/3/library/re.html#re.search "re.search") with a regular expression beginning with `'^'` will match at the beginning of each line.
+    > 
+    > 
+    > ```
+    > >>> re.match('X', 'A\nB\nX', re.MULTILINE)  # No match
+    > >>> re.search('^X', 'A\nB\nX', re.MULTILINE)  # Match
+    > <re.Match object; span=(4, 5), match='X'>
+    > ```
+
+
+
+
+
+# functions/passing varibles/return/yield/Generator/lambda
+
+
+
+## how to passed by reference
 
 - [python - How do I pass a variable by reference? - Stack Overflow](https://stackoverflow.com/questions/986006/how-do-i-pass-a-variable-by-reference)
 
@@ -55,7 +278,7 @@
     > ```
 
 
-### yield & Generator
+## yield & Generator
 
 - [python yield 語法與 generator 物件介紹 - 程式的窩](http://blog.blackwhite.tw/2013/05/python-yield-generator.html)
 
@@ -394,15 +617,627 @@
     > More about it in this article about [how does the for loop work](http://effbot.org/zone/python-for-statement.htm).
     > 
 
+## yield, next(), iter()
+
+- [生成器(Generators) · Python进阶](https://eastlakeside.gitbooks.io/interpy-zh/content/Generators/Generators.html)
+
+    > 下面是一个计算斐波那契数列的生成器：
+    > 
+    > ```python
+    > # generator version
+    > def fibon(n):
+    >     a = b = 1
+    >     for i in range(n):
+    >         yield a
+    >         a, b = b, a + b
+    > 
+    > ```
+    > 
+    > 函数使用方法如下：
+    > 
+    > ```python
+    > for x in fibon(1000000):
+    >     print(x)
+    > 
+    > ```
+    > 
+    > 用这种方式，我们可以不用担心它会使用大量资源。然而，之前如果我们这样来实现的话：
+    > 
+    > ```python
+    > def fibon(n):
+    >     a = b = 1
+    >     result = []
+    >     for i in range(n):
+    >         result.append(a)
+    >         a, b = b, a + b
+    >     return result
+    > 
+    > ```
+    > 
+    > 这也许会在计算很大的输入参数时，用尽所有的资源。我们已经讨论过生成器使用一次迭代，但我们并没有测试过。在测试前你需要再知道一个Python内置函数：`next()`。它允许我们获取一个序列的下一个元素。那我们来验证下我们的理解：
+    > 
+    > ```python
+    > def generator_function():
+    >     for i in range(3):
+    >         yield i
+    > 
+    > gen = generator_function()
+    > print(next(gen))
+    > # Output: 0
+    > print(next(gen))
+    > # Output: 1
+    > print(next(gen))
+    > # Output: 2
+    > print(next(gen))
+    > # Output: Traceback (most recent call last):
+    > #            File "<stdin>", line 1, in <module>
+    > #         StopIteration
+    > 
+    > ```
+    > 
+    > 我们可以看到，在`yield`掉所有的值后，`next()`触发了一个`StopIteration`的异常。基本上这个异常告诉我们，所有的值都已经被`yield`完了。你也许会奇怪，为什么我们在使用`for`循环时没有这个异常呢？啊哈，答案很简单。`for`循环会自动捕捉到这个异常并停止调用`next()`。你知不知道Python中一些内置数据类型也支持迭代哦？我们这就去看看：
+    > 
+    > ```python
+    > my_string = "Yasoob"
+    > next(my_string)
+    > # Output: Traceback (most recent call last):
+    > #      File "<stdin>", line 1, in <module>
+    > #    TypeError: str object is not an iterator
+    > 
+    > ```
+    > 
+    > 好吧，这不是我们预期的。这个异常说那个`str`对象不是一个迭代器。对，就是这样！它是一个可迭代对象，而不是一个迭代器。这意味着它支持迭代，但我们不能直接对其进行迭代操作。那我们怎样才能对它实施迭代呢？是时候学习下另一个内置函数，`iter`。它将根据一个可迭代对象返回一个迭代器对象。这里是我们如何使用它：
+    > 
+    > ```python
+    > my_string = "Yasoob"
+    > my_iter = iter(my_string)
+    > next(my_iter)
+    > # Output: 'Y'
+    > 
+    > ```
+    > 
+    > 现在好多啦。我肯定你已经爱上了学习生成器。一定要记住，想要完全掌握这个概念，你只有使用它。确保你按照这个模式，并在生成器对你有意义的任何时候都使用它。你绝对不会失望的！
+
+
+## get one value from a generator
+
+- [How to get one value from a generator in Python? - Stack Overflow](https://stackoverflow.com/questions/2419770/how-to-get-one-value-from-a-generator-in-python)
+
+    > In Python <= 2.5, use `gen.next()`. This will work for all Python 2.x versions, but not Python 3.x
+    > 
+    > In Python >= 2.6, use `next(gen)`. This is a built in function, and is clearer. It will also work in Python 3.
+    > 
+    > Both of these end up calling a specially named function, `next()`, which can be overridden by subclassing. In Python 3, however, this function has been renamed to `__next__()`, to be consistent with other special functions.
+
+
+
+## Passing a function into another function
+
+- [Python - Passing a function into another function - Stack Overflow](https://stackoverflow.com/questions/1349332/python-passing-a-function-into-another-function)
+
+    > Just pass it in like any other parameter:
+    > 
+    > ```python
+    > def a(x):
+    >     return "a(%s)" % (x,)
+    > 
+    > def b(f,x):
+    >     return f(x)
+    > 
+    > print b(a,10)
+    > ```
+    > 
+
+## pass a default argument value of an instance member(self.xxx) to a method (def abc(self, format=self.xxx))
+
+- [python - How to pass a default argument value of an instance member to a method? - Stack Overflow](https://stackoverflow.com/questions/8131942/how-to-pass-a-default-argument-value-of-an-instance-member-to-a-method/8131960)
+
+    > You can't really define this as the default value, since the default value is evaluated when the method is defined which is before any instances exist. An easy work-around is to do something like this:
+    > 
+    > ```python
+    > class C:
+    >     def __init__(self, format):
+    >         self.format = format
+    > 
+    >     def process(self, formatting=None):
+    >         formatting = formatting if formatting is not None else self.format
+    >         print(formatting)
+    > ```
+    > 
+    > `self.format` will only be used if `formatting` is `None`.
+    > 
+    > * * * * *
+    > 
+    > To demonstrate the point of how default values work, see this example:
+    > 
+    > ```python
+    > def mk_default():
+    >     print("mk_default has been called!")
+    > 
+    > def myfun(foo=mk_default()):
+    >     print("myfun has been called.")
+    > 
+    > print("about to test functions")
+    > myfun("testing")
+    > myfun("testing again")
+    > ```
+    > 
+    > And the output here:
+    > 
+    > ```python
+    > mk_default has been called!
+    > about to test functions
+    > myfun has been called.
+    > myfun has been called.
+    > ```
+    > 
+    > Notice how `mk_default` was called only once, and that happened before the function was ever called!
+    > 
+    > ---
+    > 
+    > In Python, the name `self` is **not** special. It's just a convention for the parameter name, which is why there is a `self` parameter in `__init__`. (Actually, `__init__` is not very special either, and in particular it does **not** actually create the object... that's a longer story)
+    > 
+    > `C("abc").process()` creates a `C` instance, looks up the `process` method in the `C` class, and calls that method with the `C` instance as the first parameter. So it will end up in the `self` parameter if you provided it.
+    > 
+    > Even if you had that parameter, though, you would not be allowed to write something like `def process(self, formatting = self.formatting)`, because `self` is not in scope yet at the point where you set the default value. In Python, the default value for a parameter is calculated when the function is compiled, and "stuck" to the function. (This is the same reason why, if you use a default like `[]`, that list will remember changes between calls to the function.)
+    > 
+    > > How could I make this work?
+    > 
+    > The traditional way is to use `None` as a default, and check for that value and replace it inside the function. You may find it is a little safer to make a special value for the purpose (an `object` instance is all you need, as long as you hide it so that the calling code does not use the same instance) instead of `None`. Either way, you should check for this value with `is`, not `==`.
+    > 
+
+## pass self to referenced function (functools.partial)
+
+- [python pass self to referenced function - Stack Overflow](https://stackoverflow.com/questions/32319027/python-pass-self-to-referenced-function)
+
+
+    > The problem is that you assigned myFoo to an unbound function and are calling it as though it were bound. If you want to be able to use `self.myFoo()` you will need to curry the object into the first arg yourself.
+    > 
+    > ```python
+    > from functools import partial
+    > 
+    > def foo(self):
+    >     print(self.toString())
+    > 
+    > class Node:
+    >     def __init__(self, myFoo):
+    >         self.myFoo = partial(myFoo, self)
+    > 
+    >     def run(self):
+    >         self.myFoo()
+    > 
+    >     def toString(self):
+    >         return "Hello World"
+    > 
+    > n = Node(foo)
+    > n.run()
+    > ```
+    > 
+    > Alternatively you could use
+    > 
+    > ```python
+    > self.myFoo = types.MethodType(myFoo, self)
+    > ```
+    > 
+    > in your `__init__(self, myFoo)` method, but using partial is more commonly done, and more versatile since you can use it to curry arguments for any sort of function, not just methods.
+    > 
+
+- [partial 函数 · Python 之旅](http://funhacks.net/explore-python/Functional/partial.html)
+
+    > Python 提供了一个 functools 的模块，该模块为高阶函数提供支持，partial 就是其中的一个函数，该函数的形式如下：
+    > 
+    > ```python
+    > functools.partial(func[,*args][, **kwargs])
+    > 
+    > ```
+    > 
+    > 这里先举个例子，看看它是怎么用的。
+    > 
+    > 假设有如下函数：
+    > 
+    > ```python
+    > def multiply(x, y):
+    >     return x * y
+    > 
+    > ```
+    > 
+    > 现在，我们想返回某个数的双倍，即：
+    > 
+    > ```python
+    > >>> multiply(3, y=2)
+    > 6
+    > >>> multiply(4, y=2)
+    > 8
+    > >>> multiply(5, y=2)
+    > 10
+    > 
+    > ```
+    > 
+    > 上面的调用有点繁琐，每次都要传入 `y=2`，我们想到可以定义一个新的函数，把 `y=2` 作为默认值，即：
+    > 
+    > ```python
+    > def double(x, y=2):
+    >     return multiply(x, y)
+    > 
+    > ```
+    > 
+    > 现在，我们可以这样调用了：
+    > 
+    > ```python
+    > >>> double(3)
+    > 6
+    > >>> double(4)
+    > 8
+    > >>> double(5)
+    > 10
+    > 
+    > ```
+    > 
+    > 事实上，我们可以不用自己定义 `double`，利用 `partial`，我们可以这样：
+    > 
+    > ```python
+    > from functools import partial
+    > 
+    > double = partial(multiply, y=2)
+    > 
+    > ```
+    > 
+    > `partial` 接收函数 `multiply` 作为参数，固定 `multiply` 的参数 `y=2`，并返回一个新的函数给 `double`，这跟我们自己定义 `double` 函数的效果是一样的。
+    > 
+    > 所以，简单而言，`partial` 函数的功能就是：把一个函数的某些参数给固定住，返回一个新的函数。
+    > 
+    > 需要注意的是，我们上面是固定了 `multiply` 的关键字参数 `y=2`，如果直接使用：
+    > 
+    > ```python
+    > double = partial(multiply, 2)
+    > 
+    > ```
+    > 
+    > 则 `2` 是赋给了 `multiply` 最左边的参数 `x`，不信？我们可以验证一下：
+    > 
+    > ```python
+    > from functools import partial
+    > 
+    > def subtraction(x, y):
+    >     return x - y
+    > 
+    > f = partial(subtraction, 4)  # 4 赋给了 x
+    > >>> f(10)   # 4 - 10
+    > -6
+    > 
+    > ```
+    > 
+    > 小结
+    > ==
+    > 
+    > -   partial 的功能：固定函数参数，返回一个新的函数。
+    > -   当函数参数太多，需要固定某些参数时，可以使用 `functools.partial` 创建一个新的函数。
+    > 
+
+
+# lambda/filter/reduce/map
+
+- [4. Map, Filter and Reduce — Python Tips 0.1 documentation](http://book.pythontips.com/en/latest/map_filter.html)
+
+## lambda
+
+- [Is there a way to perform "if" in python's lambda - Stack Overflow](https://stackoverflow.com/questions/1585322/is-there-a-way-to-perform-if-in-pythons-lambda)
+
+    > The syntax you're looking for:
+    > 
+    > ```python
+    > lambda x: True if x % 2 == 0 else False
+    > ```
+
+## map()/reduce()
+
+- [map/reduce - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014317852443934a86aa5bb5ea47fbbd5f35282b331335000)
+
+    > Python内建了`map()`和`reduce()`函数。
+    > 
+    > 如果你读过Google的那篇大名鼎鼎的论文"[MapReduce: Simplified Data Processing on Large Clusters](http://research.google.com/archive/mapreduce.html)"，你就能大概明白map/reduce的概念。
+    > 
+    > 我们先看map。`map()`函数接收两个参数，一个是函数，一个是`Iterable`，`map`将传入的函数依次作用到序列的每个元素，并把结果作为新的`Iterator`返回。
+    > 
+    > 举例说明，比如我们有一个函数f(x)=x^2^，要把这个函数作用在一个list `[1, 2, 3, 4, 5, 6, 7, 8, 9]`上，就可以用`map()`实现如下：
+    > 
+    > ```
+    >             f(x) = x * x
+    > 
+    >                   │
+    >                   │
+    >   ┌───┬───┬───┬───┼───┬───┬───┬───┐
+    >   │   │   │   │   │   │   │   │   │
+    >   ▼   ▼   ▼   ▼   ▼   ▼   ▼   ▼   ▼
+    > 
+    > [ 1   2   3   4   5   6   7   8   9 ]
+    > 
+    >   │   │   │   │   │   │   │   │   │
+    >   │   │   │   │   │   │   │   │   │
+    >   ▼   ▼   ▼   ▼   ▼   ▼   ▼   ▼   ▼
+    > 
+    > [ 1   4   9  16  25  36  49  64  81 ]
+    > 
+    > ```
+    > 
+    > 现在，我们用Python代码实现：
+    > 
+    > ```python
+    > >>> def f(x):
+    > ...     return x * x
+    > ...
+    > >>> r = map(f, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+    > >>> list(r)
+    > [1, 4, 9, 16, 25, 36, 49, 64, 81]
+    > 
+    > ```
+    > 
+    > `map()`传入的第一个参数是`f`，即函数对象本身。由于结果`r`是一个`Iterator`，`Iterator`是惰性序列，因此通过`list()`函数让它把整个序列都计算出来并返回一个list。
+    > 
+    > 你可能会想，不需要`map()`函数，写一个循环，也可以计算出结果：
+    > 
+    > ```python
+    > L = []
+    > for n in [1, 2, 3, 4, 5, 6, 7, 8, 9]:
+    >     L.append(f(n))
+    > print(L)
+    > 
+    > ```
+    > 
+    > 的确可以，但是，从上面的循环代码，能一眼看明白"把f(x)作用在list的每一个元素并把结果生成一个新的list"吗？
+    > 
+    > 所以，`map()`作为高阶函数，事实上它把运算规则抽象了，因此，我们不但可以计算简单的f(x)=x^2^，还可以计算任意复杂的函数，比如，把这个list所有数字转为字符串：
+    > 
+    > ```python
+    > >>> list(map(str, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
+    > ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+    > 
+    > ```
+    > 
+    > 只需要一行代码。
+    > 
+    > 再看`reduce`的用法。`reduce`把一个函数作用在一个序列`[x1, x2, x3, ...]`上，这个函数必须接收两个参数，`reduce`把结果继续和序列的下一个元素做累积计算，其效果就是：
+    > 
+    > ```python
+    > reduce(f, [x1, x2, x3, x4]) = f(f(f(x1, x2), x3), x4)
+    > 
+    > ```
+    > 
+    > 比方说对一个序列求和，就可以用`reduce`实现：
+    > 
+    > ```python
+    > >>> from functools import reduce
+    > >>> def add(x, y):
+    > ...     return x + y
+    > ...
+    > >>> reduce(add, [1, 3, 5, 7, 9])
+    > 25
+    > 
+    > ```
+    > 
+    > 当然求和运算可以直接用Python内建函数`sum()`，没必要动用`reduce`。
+    > 
+    > 但是如果要把序列`[1, 3, 5, 7, 9]`变换成整数`13579`，`reduce`就可以派上用场：
+    > 
+    > ```python
+    > >>> from functools import reduce
+    > >>> def fn(x, y):
+    > ...     return x * 10 + y
+    > ...
+    > >>> reduce(fn, [1, 3, 5, 7, 9])
+    > 13579
+    > 
+    > ```
+    > 
+    > 这个例子本身没多大用处，但是，如果考虑到字符串`str`也是一个序列，对上面的例子稍加改动，配合`map()`，我们就可以写出把`str`转换为`int`的函数：
+    > 
+    > ```python
+    > >>> from functools import reduce
+    > >>> def fn(x, y):
+    > ...     return x * 10 + y
+    > ...
+    > >>> def char2num(s):
+    > ...     digits = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
+    > ...     return digits[s]
+    > ...
+    > >>> reduce(fn, map(char2num, '13579'))
+    > 13579
+    > 
+    > ```
+    > 
+    > 整理成一个`str2int`的函数就是：
+    > 
+    > ```python
+    > from functools import reduce
+    > 
+    > DIGITS = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
+    > 
+    > def str2int(s):
+    >     def fn(x, y):
+    >         return x * 10 + y
+    >     def char2num(s):
+    >         return DIGITS[s]
+    >     return reduce(fn, map(char2num, s))
+    > 
+    > ```
+    > 
+    > 还可以用lambda函数进一步简化成：
+    > 
+    > ```python
+    > from functools import reduce
+    > 
+    > DIGITS = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
+    > 
+    > def char2num(s):
+    >     return DIGITS[s]
+    > 
+    > def str2int(s):
+    >     return reduce(lambda x, y: x * 10 + y, map(char2num, s))
+    > 
+    > ```
+    > 
+    > 也就是说，假设Python没有提供`int()`函数，你完全可以自己写一个把字符串转化为整数的函数，而且只需要几行代码！
+    > 
+    > lambda函数的用法在后面介绍。
 
 
 
 
-# Python reserved attribute
+## reduce() 
+
+- [Python reduce() 函数 | 菜鸟教程](http://www.runoob.com/python/python-func-reduce.html)
+
+    > **reduce()** 函数会对参数序列中元素进行累积。
+    > 
+    > 函数将一个数据集合（链表，元组等）中的所有数据进行下列操作：用传给 reduce 中的函数 function（有两个参数）先对集合中的第 1、2 个元素进行操作，得到的结果再与第三个数据用 function 函数运算，最后得到一个结果。
+    > 
+    > ```python
+    > >>>def add(x, y) :            # 两数相加
+    > ...     return x + y
+    > ... 
+    > >>> reduce(add, [1,2,3,4,5])   # 计算列表和：1+2+3+4+5
+    > 15
+    > >>> reduce(lambda x, y: x+y, [1,2,3,4,5])  # 使用 lambda 匿名函数
+    > 15
+    > ```
+    > ---
+    > 
+    > 在 Python3 中，reduce() 函数已经被从全局名字空间里移除了，它现在被放置在 functools 模块里，如果想要使用它，则需要通过引入 functools 模块来调用 reduce() 函数：
+    > 
+    > 
+    > **实例：**
+    > ```python
+    > from functools import reduce
+    > 
+    > def add(x,y):
+    >     return x + y
+    > 
+    > print (reduce(add, range(1, 101)))
+    > ```
+
+## filter()
+
+- [4. Map, Filter and Reduce — Python Tips 0.1 documentation](http://book.pythontips.com/en/latest/map_filter.html)
+
+    > As the name suggests, `filter` creates a list of elements for which a function returns true. Here is a short and concise example:
+    > ```python
+    > number_list = range(-5, 5)
+    > less_than_zero = list(filter(lambda x: x < 0, number_list))
+    > print(less_than_zero)
+    > 
+    > # Output: [-5, -4, -3, -2, -1]
+    > ```
+    > The filter resembles a for loop but it is a builtin function and faster.
+
+
+
+# decorator
+
+## assign function wrapper (@)
+
+- [syntax - What does the "at" (@) symbol do in Python? - Stack Overflow](https://stackoverflow.com/questions/6392739/what-does-the-at-symbol-do-in-python)
+
+
+    > > What does the "at" (@) symbol do in Python?
+    > 
+    > @ symbol is a syntactic sugar python provides to utilize `decorator`,\
+    > to paraphrase the question, It's exactly about what does decorator do in Python?
+    > 
+    > Put it simple `decorator` allow you to modify a given function's definition without touch its innermost (it's closure).\
+    > It's the most case when you import wonderful package from third party. You can visualize it, you can use it, but you cannot touch its innermost and its heart.
+    > 
+    > Here is a quick example,\
+    > suppose I define a `read_a_book` function on Ipython
+    > 
+    > ```python
+    > In [9]: def read_a_book():
+    >    ...:     return "I am reading the book: "
+    >    ...:
+    > In [10]: read_a_book()
+    > Out[10]: 'I am reading the book: '
+    > ```
+    > 
+    > You see, I forgot to add a name to it.\
+    > How to solve such a problem? Of course, I could re-define the function as:
+    > 
+    > ```python
+    > def read_a_book():
+    >     return "I am reading the book: 'Python Cookbook'"
+    > ```
+    > 
+    > Nevertheless, what if I'm not allowed to manipulate the original function, or if there are thousands of such function to be handled.
+    > 
+    > Solve the problem by thinking different and define a new_function
+    > 
+    > ```python
+    > def add_a_book(func):
+    >     def wrapper():
+    >         return func() + "Python Cookbook"
+    >     return wrapper
+    > ```
+    > 
+    > Then employ it.
+    > 
+    > ```python
+    > In [14]: read_a_book = add_a_book(read_a_book)
+    > In [15]: read_a_book()
+    > Out[15]: 'I am reading the book: Python Cookbook'
+    > ```
+    > 
+    > Tada, you see, I amended `read_a_book` without touching it inner closure. Nothing stops me equipped with `decorator`.
+    > 
+    > What's about `@`
+    > 
+    > ```python
+    > @add_a_book
+    > def read_a_book():
+    >     return "I am reading the book: "
+    > In [17]: read_a_book()
+    > Out[17]: 'I am reading the book: Python Cookbook'
+    > ```
+    > 
+    > `@add_a_book` is a fancy and handy way to say `read_a_book = add_a_book(read_a_book)`, it's a syntactic sugar, there's nothing more fancier about it.
+    > 
+
+
+# attribute
 
 - [Python reserved attribute - LeetCode Playground](https://leetcode.com/playground/b76v2SoG)
 
     <iframe src="https://leetcode.com/playground/b76v2SoG/shared" frameBorder="0" width="400" height="300"></iframe>
+
+## List attributes of an object
+
+- [python - List attributes of an object - Stack Overflow](https://stackoverflow.com/questions/2675028/list-attributes-of-an-object)
+
+    > All previous answers are correct, you have three options for what you are asking
+    > 
+    > 1.[dir()](https://docs.python.org/3/library/functions.html#dir "dir()")
+    > 
+    > 2.[vars()](https://docs.python.org/3/library/functions.html#vars)
+    > 
+    > 3.[__dict__](https://docs.python.org/3/library/stdtypes.html#object.__dict__ "__dict__")
+    > 
+    > ```python
+    > >>> dir(a)
+    > ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'multi', 'str']
+    > >>> vars(a)
+    > {'multi': 4, 'str': '2'}
+    > >>> a.__dict__
+    > {'multi': 4, 'str': '2'}
+    > ```
+    > 
+    > ---
+    > 
+    > ```python
+    > >>> ', '.join(i for i in dir(a) if not i.startswith('__'))
+    > 'multi, str'
+    > ```
+    > 
+    > This of course will print any methods or attributes in the class definition. You can exclude "private" methods by changing `i.startwith('__')` to `i.startwith('_')`
+    > 
+
+
 
 ## dir()
 
@@ -900,6 +1735,320 @@
 
 # modules
 
+## Python 的 Import 陷阱 
+
+- [Python 的 Import 陷阱 – PyLadies Taiwan – Medium](https://medium.com/pyladies-taiwan/python-%E7%9A%84-import-%E9%99%B7%E9%98%B1-3538e74f57e3)
+
+
+    > ### Module與Package
+    > 
+    > 基本上一個檔案就是一個 module，裡頭可以定義 function，class，和 variable。\
+    > 把一個 module 想成一個檔案，那一個package就是一個目錄了。Package 可裝有 subpackage 和 module，讓你的專案更條理更組織化，最後一坨打包好還能分給別人使用。
+    > 
+    > 先看看 module。假設有一個 module `sample_module.py` 裡頭定義了一個 function `sample_func`：
+    > ```python
+    > def sample_func():
+    >     print('Hello!')
+    > ```
+    > 現在你在同一個目錄裡下有另一個 module `sample_module_import.py` 想要重複使用這個 function，這時可以直接從 `sample_module` import 拿取：
+    > ```python
+    > from sample_module import sample_func
+    > 
+    > if __name__ == '__main__':
+    >     sample_func()
+    > ```
+    > 跑 `python3 sample_module_import.py` 會得到：
+    > ```
+    > Hello!
+    > ```
+    > 再來是 package。我們把上面兩個檔案包在一個新的目錄 `sample_package` 底下：
+    > ```
+    > sample_package/
+    > ├── __init__.py
+    > ├── sample_module.py
+    > └── sample_module_import.py
+    > ```
+    > 很重要的是新增那個 `__init__.py` 檔。它是空的沒關係，但一定要有，有點宣稱自己是一個 package 的味道。
+    > 
+    > 這時候如果是進到 `sample_package` 裡面跑一樣的指令，那沒差。但既然都打包成 package 了，通常是在整個專案的其他地方需要用到的時候 import 它，這時候裡面的 import 就要稍微做因應。
+    > 
+    > 讓我們修正一下 `sample_package/sample_module_import.py` 。假設這時我們在跟 `sample_package` 同一個 folder 底下執行下面兩種指令：
+    > ```
+    > 1. python3 sample_package/sample_module_import.py
+    > 2. python3 -m sample_package.sample_module_import
+    > ```
+    > 以下幾種不同的 import 寫法，會各有什麼效果呢？
+    > ```
+    > # 不標準的 implicit relative import 寫法（Python 3 不支援）
+    > from sample_module import sample_func
+    > 1. 成功印出 Hello!
+    > 2. ModuleNotFoundError。因為 Python 3 不支援 implicit relative import （前面不加點的寫法），故會將之當作 absolute import，但第三個例子才是正確寫法。
+    > 
+    > # 標準的 explicit relative import 寫法
+    > from .sample_module import sample_func
+    > 1. 包含相對路徑的檔案不能直接執行，只能作為 module 被引用，所以失敗
+    > 2. 成功印出 Hello!
+    > 
+    > # 標準的 absolute import 寫法
+    > from sample_package.sample_module import sample_func
+    > 1. 如果此層目錄位置不在 python path 中，就會失敗
+    > 2. 成功印出 Hello!
+    > ```
+    > 這邊 absolute import 和 relative import 的詳細說明請稍候。
+    > 
+    > 執行指令中的 `[-m](https://docs.python.org/2/using/cmdline.html#cmdoption-m)`是為了讓 Python 預先 import 你要的 package 或 module 給你，然後再執行 script。所以這時 `sample_module_import` 在跑的時候，是以 `sample_package` 為環境的，這樣那些 import 才會合理。
+    > 
+    > 另外，[**python path**](https://docs.python.org/3/library/sys.html#sys.path) 是 Python 查找 module 時候使用的路徑，例如 standard module 所在的目錄位置。因此在第三種寫法中，Python 會因為在 python path 中找不到 `sample_package.sample_module`而噴 error。你可以選擇把當前目錄加到 `sys.path`，也就是 Python path（初始化自環境變數`PYTHONPATH`），來讓 Python 搜尋得到這個 module ，但這個方法很髒很難維護，最多用來debug，其他時候強烈不建議使用。
+    > 
+    > * * * * *
+    > 
+    > ### 基本 import 語法
+    > 
+    > 前面有看過了，這邊統整介紹一下。如果你想使用在其他 module 裡定義的 function、class、variable 等等，就需要在使用它們之前先進行 import。通常都會把需要 import 的 module 們列在整個檔案的最一開始，但不是必須。
+    > 
+    > **語法1：** **`import [module]`**
+    > ```python
+    > # Import 整個 `random` module
+    > import random
+    > 
+    > # 使用 `random` module 底下的 `randint` function
+    > print(random.randint(0, 5))
+    > ```
+    > **語法2：** **`from [module] import [name1, name2, ...]`**
+    > ```python
+    > # 從 `random` module 裡 import 其中一個 function `randint`
+    > from random import randint
+    > 
+    > # 不一樣的是，使用 `randint` 的時候就不需要先寫 `random` 了
+    > print(randint(0, 5))
+    > ```
+    > **語法3：** **`import [module] as [new_name]`**
+    > ```python
+    > # Import 整個 `random` module，
+    > # 但這個名字可能跟其他地方有衝突，因此改名成 `rd`
+    > import random as rd
+    > 
+    > # 使用 `rd` 這個名稱取代原本的 `random`
+    > print(rd.randint(0, 5))
+    > ```
+    > **語法4（不推薦）：** **`from [module] import *`**
+    > ```python
+    > # Import 所有 `random` module 底下的東西
+    > from random import *
+    > 
+    > # 使用 `randint` 的時候也不需要先寫 `random`
+    > print(randint(0, 5))
+    > ```
+    > 語法4不推薦原因是容易造成名稱衝突，降低可讀性和可維護性。
+    > 
+    > * * * * *
+    > 
+    > ### Absolute Import v.s. Relative Import
+    > 
+    > Python 有兩種 import 方法，**absolute import** 及 **relative import**。Absolute import 就是完整使用 module 路徑，relative import 則是使用以當前 package為參考的相對路徑。
+    > 
+    > Relative import 的需求在於，有時候在改變專案架構的時候，裡面的 package 和 module 會拉來拉去，這時候如果這些 package 裡面使用的是relative import 的話，他們的相對關係就不會改變，也就是不需要再一一進入 module 裡更改路徑。但因為 relative import 的路徑取決於當前 package，所以在哪裡執行就會造成不一樣的結果，一不小心又要噴一堆 error；這時absolute import 就會減少許多困擾。
+    > 
+    > 這邊參考[PEP328](https://www.python.org/dev/peps/pep-0328/#guido-s-decision)提供的範例。Package 架構如下：
+    > ```
+    > package
+    > ├── __init__.py
+    > ├── subpackage1
+    > │   ├── __init__.py
+    > │   ├── moduleX.py
+    > │   └── moduleY.py
+    > ├── subpackage2
+    > │   ├── __init__.py
+    > │   └── moduleZ.py
+    > └── moduleA.py
+    > ```
+    > 現在假設 `package/subpackage1/moduleX.py`想要從其他 module 裡 import 一些東西，則使用下列語法（`[A]`表 absolute import 範例；`[R]`表 relative import 範例）：
+    > ```
+    > # Import 同一個 package 底下的 sibling module `moduleY`
+    > [A] from package.subpackage1 import moduleY
+    > [R] from . import moduleY
+    > [Error] import .moduleY
+    > 
+    > # 從同一個 package 底下的 sibling module `moduleY` 中，
+    > # import `spam` 這個 function
+    > [A] from package.subpackage1.moduleY import spam
+    > [R] from .moduleY import spam
+    > 
+    > # 從隔壁 package 底下的 module `moduleZ` 中，
+    > # import `eggs` 這個 function
+    > [A] from package.subpackage2.moduleZ import eggs
+    > [R] from ..subpackage2.moduleZ import eggs
+    > 
+    > # Import parent package 底下的 module `moduleA`
+    > [A] from package import moduleA
+    > [R] from .. import moduleA 或 from ... package import moduleA
+    > ```
+    > 要點：
+    > 
+    > 1.  Relative import 裡，`..`代表上一層 ，多幾個`.`就代表多上幾層。
+    > 2.  Relative import 一律採用 `from ... import ...`語法，即使是從 `.` import也要寫 `from . import some_module` 而非 `import .some_module`。原因是`.some_module`這個名稱在 expression 裡無法出現。Absolute import 則無限制。
+    > 
+    > * * * * *
+    > 
+    > ### 常見 import 陷阱
+    > 
+    > #### Trap 1: Circular Import
+    > 
+    > 想像一個 module `A`在一開始要 import 另一個 module `B` 裡的東西，但在匯入 module `B` 的途中也必須得執行它，而很不巧的 module `B`也需要從 module `A` import 一些東西。但 module `A`還正在執行途中，自己都還沒定義好自己的 function 啊！於是你不讓我我不讓你，這種類似 deadlock 的情形正是常見的 **circular import（循環匯入）**。
+    > 
+    > 讓我們看看範例。現在在 `sample_package` 裡有 `A` 和 `B` 兩個 module 想互打招呼，程式碼如下：
+    > 
+    > `A.py`
+    > ```python
+    > from .B import B_greet_back
+    > def A_say_hello():
+    >     print('A says hello!')
+    >     B_greet_back()
+    > 
+    > def A_greet_back():
+    >     print('A says hello back!')
+    > if __name__ == '__main__':
+    >     A_say_hello()
+    > ```
+    > `B.py`
+    > ```python
+    > from .A import A_greet_back
+    > def B_say_hello():
+    >     print('B says hello!')
+    >     A_greet_back()
+    > 
+    > def B_greet_back():
+    >     print('B says hello back!')
+    > if __name__ == '__main__':
+    >     B_say_hello()
+    > ```
+    > 內容都一樣，只是`A/B`互換。`B` 很有禮貌想先打招呼。在與 `sample_package` 同目錄底下執行：
+    > ```
+    > $ python3 -m sample_package.B
+    > ```
+    > 會得到：
+    > ```
+    > Traceback (most recent call last):
+    >   File "/usr/local/Cellar/python3/3.6.2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    >  "__main__", mod_spec)
+    >  File "/usr/local/Cellar/python3/3.6.2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/runpy.py", line 85, in _run_code
+    >  exec(code, run_globals)
+    >  File "/path/to/sample_package/B.py", line 2, in < module>
+    >  from .A import A_greet_back
+    >  File "/path/to/sample_package/A.py", line 1, in < module>
+    >  from .B import B_greet_back
+    >  File "/path/to/sample_package/B.py", line 2, in < module>
+    >  from .A import A_greet_back
+    > ImportError: cannot import name 'A_greet_back'
+    > ```
+    > 觀察到了嗎？`B` 試圖 import `A_greet_back`，但途中先進到 `A` 執行，而因為 Python 是從頭開始一行一行執行下來的，於是在定義 `A_greet_back`之前會先碰到自己的 import statement，於是又進入 `B`，然後陷入死胡同。
+    > 
+    > 常見解決這種circular import的方法如下：
+    > 
+    > 1\.  **Import 整個 module 而非單一 attribute**
+    > 
+    > 把 `B.py` 更改成如下：
+    > ```python
+    > # from .A import A_greet_back
+    > from . import A
+    > def B_say_hello():
+    >     print('B says hello!')
+    >     # A_greet_back()
+    >     A.A_greet_back()
+    > 
+    > ...
+    > ```
+    > 就不會發生錯誤：
+    > ```
+    > B says hello!
+    > A says hello back!
+    > ```
+    > 理由是，原本執行 `from .A import A_greet_back` 時被迫要從 load 進來的 `A`module object 中找出 `A_greet_back` 的定義，但此時這個 module object 還是空的；而更新後的 `from . import A` 就只會檢查 `A` module object 存不存在，至於 `A_greet_back` 存不存在等到需要執行的時候再去找就行了。
+    > 
+    > 2\. **延遲 import**
+    > 
+    > 把 `B.py` 更改成如下：
+    > ```python
+    > # 前面全刪
+    > 
+    > def B_say_hello():
+    >     from .A import A_greet_back
+    > 
+    >     print('B says hello!')
+    >     A_greet_back()
+    > ...
+    > ```
+    > 也會成功跑出結果。跟前面類似，Python 在跑到這行時才會 import `A` module，這時因為 `B` module 都已經 load 完了，所以不會有 circular import 的問題。但這個方法比較 hacky 一點，大概只能在 hackathon 中使用，否則正式專案裡看到這種難維護的 code 可能會有生命危險。
+    > 
+    > 另一方面，把所有 import statement 擺到整個 module 最後面也是類似效果，但也會被打。
+    > 
+    > 3\. **好好釐清架構，避免circular import**
+    > 
+    > 是的，治本方法還是好好思考自己寫的 code 為什麼會陷入這種危機，然後重新 refactor 吧。
+    > 
+    > #### Trap 2: Relative Import above Top-level Package
+    > 
+    > 還不熟悉 relative import 的人常常會見到這個 error：
+    > ```
+    > ValueError: attempted relative import beyond top-level package
+    > ```
+    > 讓我們重現一下這個 error。把 `B.py` 前頭更改成如下：
+    > ```python
+    > # from . import A
+    > from ..sample_package import A
+    > ...
+    > ```
+    > 現在我們的路徑位置在與 `sample_package` 同目錄底下。跑：
+    > ```
+    > $ python3 -m sample_package.B
+    > ```
+    > 會得到：
+    > ```
+    > Traceback (most recent call last):
+    >   File "/usr/local/Cellar/python3/3.6.2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    >  "__main__", mod_spec)
+    >  File "/usr/local/Cellar/python3/3.6.2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/runpy.py", line 85, in _run_code
+    >  exec(code, run_globals)
+    >  File "/path/to/sample_package/B.py", line 5, in < module>
+    >  from ..sample_package import A
+    > ValueError: attempted relative import beyond top-level package
+    > ```
+    > 所謂的 `top-level package` 就是你所執行的 package 中最高的那一層，也就是 `sample_package`。超過這一層的 relative import 是不被允許的，指的就是`..sample_package` 這行嘗試跳一層上去而超過 `sample_package`了。
+    > 
+    > 可以試試更改當前目錄到上一層（`cd ..`），假設叫 `parent_folder` ，然後執行 `python3 -m parent_folder.sample_package.B`，就會發現 error 消失了，因為現在的 `top-level package` 已經變成 `parent_folder`了。
+    > 
+
+## import filename starts with a number (import_module)
+
+- [In python, how to import filename starts with a number - Stack Overflow](https://stackoverflow.com/questions/9090079/in-python-how-to-import-filename-starts-with-a-number)
+
+    > Error is:
+    > 
+    > ```
+    > >>> import 8puzzle
+    >   File "<input>", line 1
+    >     import 8puzzle
+    >            ^
+    > SyntaxError: invalid syntax
+    > >>>
+    > ```
+    > 
+    > ---
+    > 
+    > You could do
+    > 
+    > ```
+    > puzzle = __import__('8puzzle')
+    > ```
+    > 
+    > ---
+    > 
+    > The above answers are correct, but as for now, the recommended way is to use [`import_module`](https://docs.python.org/3/library/importlib.html#importlib.import_module) function:
+    > 
+    > **`importlib.import_module(name, package=None)`**
+    > 
+    > 
+
 ## reload
 
 - [Joe.Dev 的 freeloser 部落格: 筆記：Python: reload reload reload reload 大全](https://joe-dev.blogspot.com/2012/03/python-reload-reload-reload-reload.html)
@@ -926,6 +2075,259 @@
     > detect if a python module changes and then reload: [原文](http://stackoverflow.com/questions/6270395/detect-if-a-python-module-changes-and-then-reload)  [程式碼](https://gist.github.com/1013122)
     > 
 
+- [How do I unload (reload) a Python module? - Stack Overflow](https://stackoverflow.com/questions/437589/how-do-i-unload-reload-a-python-module)
+
+    > You can reload a module when it has already been imported by using the [`reload`](https://docs.python.org/2.7/library/functions.html#reload) builtin function:
+    > 
+    > ```python
+    > from importlib import reload  # Python 3.4+ only.
+    > import foo
+    > 
+    > while True:
+    >     # Do some things.
+    >     if is_changed(foo):
+    >         foo = reload(foo)
+    > ```
+    > 
+
+
+# process operation
+
+- [subprocess — Subprocess management — Python 3.7.2rc1 documentation](https://docs.python.org/3/library/subprocess.html#subprocess.TimeoutExpired)
+
+## Executing command line programs(subprocess)
+
+- [Executing command line programs from within python - Stack Overflow](https://stackoverflow.com/questions/450285/executing-command-line-programs-from-within-python)
+
+    > The [`subprocess`](http://docs.python.org/library/subprocess.html) module is the preferred way of running other programs from Python -- much more flexible and nicer to use than `os.system`.
+    > 
+    > ```python
+    > import subprocess
+    > #subprocess.check_output(['ls','-l']) #all that is technically needed...
+    > print subprocess.check_output(['ls','-l'])
+    > ```
+
+### AttributeError: 'module' object has no attribute 'TimeoutExpired'
+
+- [How do I set the TimeoutExpired? · Issue #24 · nst/JSONTestSuite](https://github.com/nst/JSONTestSuite/issues/24)
+
+    > ```
+    > AttributeError: 'module' object has no attribute 'TimeoutExpired'
+    > ```
+    > 
+    > python2 subprocess don't have TimeoutExpired, use time.sleep() instead.[name=Ya-Lun Li]
+    > 
+
+
+
+## terminate a python subprocess launched with shell=True
+
+- [linux - How to terminate a python subprocess launched with shell=True - Stack Overflow](https://stackoverflow.com/questions/4789837/how-to-terminate-a-python-subprocess-launched-with-shell-true)
+
+    > If you can use [psutil](https://pypi.python.org/pypi/psutil/), then this works perfectly:
+    > 
+    > ```python
+    > import subprocess
+    > 
+    > import psutil
+    > 
+    > def kill(proc_pid):
+    >     process = psutil.Process(proc_pid)
+    >     for proc in process.children(recursive=True):
+    >         proc.kill()
+    >     process.kill()
+    > 
+    > proc = subprocess.Popen(["infinite_app", "param"], shell=True)
+    > try:
+    >     proc.wait(timeout=3)
+    > except subprocess.TimeoutExpired:
+    >     kill(proc.pid)
+    > ```
+
+
+# argparse
+
+## SystemExit: 2 error when calling parse_args()
+
+- [python - SystemExit: 2 error when calling parse_args() - Stack Overflow](https://stackoverflow.com/questions/42249982/systemexit-2-error-when-calling-parse-args)
+
+    > `parse_args` method, when it's called without arguments, attempts to parse content of `sys.argv`. Your interpreter process had filled `sys.argv` with values that does not match with arguments supported by your `parser` instance, that's why parsing fails.
+    > 
+    > Try printing `sys.argv` to check what arguments was passed to your interpreter process.
+    > 
+    > Try calling `parser.parse_args(['my', 'list', 'of', 'strings'])` to see how parser will work for interpreter launched with different cmdline arguments.
+
+- [python - Argparse - SystemExit:2 - Stack Overflow](https://stackoverflow.com/questions/49419672/argparse-systemexit2?rq=1)
+
+    > In an `ipython` session:
+    > 
+    > ```python
+    > In [36]: import argparse
+    > In [37]: # construct the argument parse and parse the arguments
+    >     ...: ap = argparse.ArgumentParser()
+    >     ...: ap.add_argument("-i", "--image", required=True,
+    >     ...:     help="path to input image")
+    >     ...: ap.add_argument("-p", "--prototxt", required=True,
+    >     ...:     help="path to Caffe 'deploy' prototxt file")
+    >     ...: ap.add_argument("-m", "--model", required=True,
+    >     ...:     help="path to Caffe pre-trained model")
+    >     ...: ap.add_argument("-c", "--confidence", type=float, default=0.5,
+    >     ...:     help="minimum probability to filter weak detections")
+    >     ...: args = vars(ap.parse_args())
+    >     ...:
+    > usage: ipython3 [-h] -i IMAGE -p PROTOTXT -m MODEL [-c CONFIDENCE]
+    > ipython3: error: the following arguments are required: -i/--image, -p/--prototxt, -m/--model
+    > An exception has occurred, use %tb to see the full traceback.
+    > 
+    > SystemExit: 2
+    > 
+    > /usr/local/lib/python3.6/dist-packages/IPython/core/interactiveshell.py:2918: UserWarning: To exit: use 'exit', 'quit', or Ctrl-D.
+    >   warn("To exit: use 'exit', 'quit', or Ctrl-D.", stacklevel=1)
+    > ```
+    > 
+    > I can run this parser by modifying `sys.argv`:
+    > 
+    > ```python
+    > In [39]: import sys
+    > In [40]: sys.argv[1:]
+    > Out[40]:
+    > ['--pylab',
+    >  '--nosep',
+    >  '--term-title',
+    >  '--InteractiveShellApp.pylab_import_all=False']
+    > In [41]: sys.argv[1:] = '-i image -p proto -m amodel'.split()
+    > In [42]: args = ap.parse_args()
+    > In [43]: args
+    > Out[43]: Namespace(confidence=0.5, image='image', model='amodel', prototxt='proto')
+    > ```
+    > 
+    > or with
+    > 
+    > ```python
+    > In [45]: ap.parse_args('-i image -p proto -m amodel'.split())
+    > Out[45]: Namespace(confidence=0.5, image='image', model='amodel', prototxt='proto')
+    > ```
+    > 
+    > I often use this method to test a parser.
+    > 
+    > If this parser was in a script, and I ran it from command line without the arguments, it would print the `usage` and then exit. That exit is what `ipython` is catching and displaying as `SystemExit: 2`.
+    > 
+    > 
+
+- [jupyter notebook：使用argparse包存在的问题及解决 - xixihaha的博客 - CSDN博客](https://blog.csdn.net/u012869752/article/details/72513141)
+
+    > ### 问题分析
+    > 
+    > 由于在jupyter notebook中，args不为空，可以查看系统环境变量，大概是下面形式
+    > 
+    > ```python
+    > import sys
+    > sys.argv
+    > ```
+    > 
+    > ```python
+    > ['/home/liu/anaconda2/lib/python2.7/site-packages/ipykernel/__main__.py',
+    >  '-f',
+    >  '/run/user/1006/jupyter/kernel-ce6cfb61-acb9-40bf-a59b-ff6e1c1eacae.json']
+    > 
+    > ```
+    > 
+    > 可以看出，错误中的-f /...来自这里，可以查看parse_args()函数源码\
+    > 以及和其调用的函数parse_known_args()源码\
+    > 虽然args默认参数为None，但是实质为args = _sys.argv[1:]\
+    > 所以在jupyter中，可以查看自己需要的系统环境变量，然后以list的数据形式传参给args则可以了
+    > 
+    > ---
+    > 
+    > ### 问题解决
+    > 
+    > ```python
+    > parser = argparse.ArgumentParser()
+    > parser.add_argument("--verbosity", help="increase output verbosity")
+    > args = parser.parse_args(args=[])
+    > print(args)
+    > ```
+    > 
+    > ```
+    > Namespace(verbosity=None)
+    > ```
+
+
+# easydict
+
+## use easydict instead of argparse
+
+- [python - How to fix ipykernel_launcher.py: error: unrecognized arguments in jupyter? - Stack Overflow](https://stackoverflow.com/questions/48796169/how-to-fix-ipykernel-launcher-py-error-unrecognized-arguments-in-jupyter)
+
+    > or a dictionary using the library [`easydict`](https://pypi.python.org/pypi/easydict/) in this way:
+    > 
+    > ```
+    > args = easydict.EasyDict({
+    >     "batch_size": 100,
+    >     "train_steps": 1000
+    > })
+    > ```
+    > 
+    > With `easydict` we can access dict values as attributes for the arguments.
+    > 
+
+## access dict keys as object attributes
+
+- [(1 封私信 / 83 条消息)python中EasyDict是干嘛用的？ - 知乎](https://www.zhihu.com/question/64834166)
+
+    > EasyDict可以让你像访问属性一样访问dict里的变量。如：
+    > 
+    > ```python
+    > >>> from easydict import EasyDict as edict
+    > >>> d = edict({'foo':3, 'bar':{'x':1, 'y':2}})
+    > >>> d.foo
+    > 3
+    > >>> d.bar.x
+    > 1
+    > 
+    > >>> d = edict(foo=3)
+    > >>> d.foo
+    > 3
+    > ```
+
+
+
+# unittest
+
+## example
+
+- [unittest — Unit testing framework — Python 3.7.2rc1 documentation](https://docs.python.org/3/library/unittest.html#unittest.TestCase.assertRaises)
+
+    > Basic example
+    > -------------
+    > 
+    > The [`unittest`](https://docs.python.org/3/library/unittest.html#module-unittest "unittest: Unit testing framework for Python.") module provides a rich set of tools for constructing and running tests. This section demonstrates that a small subset of the tools suffice to meet the needs of most users.
+    > 
+    > Here is a short script to test three string methods:
+    > 
+    > ```python
+    > import unittest
+    > 
+    > class TestStringMethods(unittest.TestCase):
+    > 
+    >     def test_upper(self):
+    >         self.assertEqual('foo'.upper(), 'FOO')
+    > 
+    >     def test_isupper(self):
+    >         self.assertTrue('FOO'.isupper())
+    >         self.assertFalse('Foo'.isupper())
+    > 
+    >     def test_split(self):
+    >         s = 'hello world'
+    >         self.assertEqual(s.split(), ['hello', 'world'])
+    >         # check that s.split fails when the separator is not a string
+    >         with self.assertRaises(TypeError):
+    >             s.split(2)
+    > 
+    > if __name__ == '__main__':
+    >     unittest.main()
+    > ```
+    > 
 
 
 # Anaconda

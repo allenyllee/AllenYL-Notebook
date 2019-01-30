@@ -165,6 +165,14 @@
     > 
     > 
 
+
+### test.test_doc2vec.ConcatenatedDoc2Vec
+
+- [test.test_doc2vec — gensim 3.2.0 documentation](https://www.pydoc.io/pypi/gensim-3.2.0/autoapi/test/test_doc2vec/index.html#test.test_doc2vec.ConcatenatedDoc2Vec)
+
+
+
+
 ## filter out words with low tf-idf in a corpus
 
 - [python - How to filter out words with low tf-idf in a corpus with gensim? - Stack Overflow](https://stackoverflow.com/questions/24688116/how-to-filter-out-words-with-low-tf-idf-in-a-corpus-with-gensim)
@@ -218,3 +226,185 @@
     > 
     >     return bow_doc
     > ```
+
+## LDA
+
+### model
+
+- [gensim: models.ldamodel – Latent Dirichlet Allocation](https://radimrehurek.com/gensim/models/ldamodel.html#gensim.models.ldamodel.LdaModel.update)
+
+    > id2word ({dict of (int, str), gensim.corpora.dictionary.Dictionary}) – Mapping from word IDs to words. It is used to determine the vocabulary size, as well as for debugging and topic printing.
+
+
+
+### update with unseen words (hash trick)
+
+- [gensim lda model - calling update on a corpus with unseen words - Stack Overflow](https://stackoverflow.com/questions/22196248/gensim-lda-model-calling-update-on-a-corpus-with-unseen-words)
+
+    > No, you must use the same dictionary (mapping between words and their integer ids) for both training, updates and inference.
+    > 
+    > Which means you can update the model with new documents, but not with new word types.
+    > 
+    > Check out the [HashDictionary](http://radimrehurek.com/gensim/corpora/hashdictionary.html) class which uses the "hashing trick" to work around this limitation (but the hashing trick comes with its own caveats).
+
+
+
+- [gensim: corpora.hashdictionary – Construct word<->id mappings](https://radimrehurek.com/gensim/corpora/hashdictionary.html)
+
+    > **debug** (*bool**,* *optional*) -- Store which tokens have mapped to a given id? **Will use a lot of RAM**. If you find yourself running out of memory (or not sure that you really need raw tokens), keep *debug=False*.
+    > 
+
+- [corpora.hashdictionary — gensim 3.2.0 documentation](https://www.pydoc.io/pypi/gensim-3.2.0/autoapi/corpora/hashdictionary/index.html)
+
+    > `restricted_hash`(*token*)
+    > 
+    > Calculate id of the given token. Also keep track of what words were mapped to what ids, for debugging reasons.
+
+- [gensim: corpora.dictionary – Construct word<->id mappings](https://radimrehurek.com/gensim/corpora/dictionary.html#gensim.corpora.dictionary.Dictionary)
+
+    > `token2id`
+    > 
+    > *dict of (str, int)* -- token -> tokenId.
+    > 
+    > `id2token`
+    > 
+    > *dict of (int, str)* -- Reverse mapping for token2id, initialized in a lazy manner to save memory (not created until needed).
+    > 
+
+### update with unseen words (filter out vocabulary by VocabTransform)
+
+- [update LdaMulticore/lda model with new document - Google 網上論壇](https://groups.google.com/forum/#!msg/gensim/2KzJNYQSJxA/QiLYdfnGCgAJ)
+
+    > You can update the model by calling `lda_model.update`. Please note that once the model is trained there is no way to increase the vocabulary, so you need to filter out the new out-of-vocabulary(OOV) words using [VocabTransform](https://www.google.com/url?q=https%3A%2F%2Fgithub.com%2FRaRe-Technologies%2Fgensim%2Fwiki%2FRecipes-%26-FAQ%23q8-how-can-i-filter-a-saved-corpus-and-its-corresponding-dictionary&sa=D&sntz=1&usg=AFQjCNGIGWhUaZLyPFJ1KrmUF5GG5m3AjA).
+    > 
+
+
+- [Recipes & FAQ · RaRe-Technologies/gensim Wiki](https://github.com/RaRe-Technologies/gensim/wiki/Recipes-&-FAQ#q8-how-can-i-filter-a-saved-corpus-and-its-corresponding-dictionary)
+
+    > ### Q8: How can I filter a saved corpus and its corresponding dictionary?
+    > 
+    > **Answer:** (by [Yaser Martinez](https://github.com/elyase))
+    > 
+    > The function `dictionary.filter_extremes` changes the original IDs so we need to reread and (optionally) rewrite the old corpus using a transformation:
+    > 
+    > ```source-python
+    > import copy
+    > from gensim.models import VocabTransform
+    > 
+    > # filter the dictionary
+    > old_dict = corpora.Dictionary.load('old.dict')
+    > new_dict = copy.deepcopy(old_dict)
+    > new_dict.filter_extremes(keep_n=100000)
+    > new_dict.save('filtered.dict')
+    > 
+    > # now transform the corpus
+    > corpus = corpora.MmCorpus('corpus.mm')
+    > old2new = {old_dict.token2id[token]:new_id for new_id, token in new_dict.iteritems()}
+    > vt = VocabTransform(old2new)
+    > corpora.MmCorpus.serialize('filtered_corpus.mm', vt[corpus], id2word=new_dict)
+    > 
+    > ```
+    > 
+    > 
+
+## Troubleshooting
+
+### AttributeError: 'Doc2Vec' object has no attribute 'syn1'
+
+- [Doc2Vec.infer_vector: AttributeError: 'Doc2Vec' object has no attribute 'syn1' · Issue #483 · RaRe-Technologies/gensim](https://github.com/RaRe-Technologies/gensim/issues/483)
+
+    > I think it's clear now. `model.infer_vectors` trains the new documents with the neural weights of the actual model (<https://github.com/piskvorky/gensim/blob/develop/gensim/models/doc2vec.py#L684>).
+    > As `model.init_sims(replace=True)` is deleting them for memory save reasons, the method `model.infer_vectors` can not work. It's the same reason why `model.train` is not working after `model.init_sims(replace=True)`.
+
+### infer most similar vector from ConcatenatedDocvecs
+
+- [python - Doc2Vec: infer most similar vector from ConcatenatedDocvecs - Stack Overflow](https://stackoverflow.com/questions/54186233/doc2vec-infer-most-similar-vector-from-concatenateddocvecs)
+
+    > The `ConcatenatedDocvecs` is a simple utility wrapper class that lets you access the concatenation of a tag's vectors in multiple underlying `Doc2Vec` models. It exists to make it a little easier to reproduce some of the analysis in the original 'ParagraphVector' paper.
+    > 
+    > It doesn't reproduce all the functionality of a `Doc2Vec` model (or set of keyed-vectors), so can't directly hep you with the `most_similar()` you want to perform.
+    > 
+    > You could instead do a most-similar operation within each of the constituent models, then combine the two similarity measures (per neighbor) -- such as by averaging them -- to get a usable similarity-like value for the combined model (and then re-sort on that). I suspect, but am not sure, such a value from the two 100d models would behave very much like a a true cosine-similarity from the concatenated 200d model.
+    > 
+    > Alternatively, instead of using `ConcatenatedDoc2Vec` wrapper class (which only creates and returns the concatenated 200d vectors when requested), you could look at the various `KeyedVectors` class in gensim, and use (or adapt) one to be filled with all the concatenated 200d vectors from the two constituent models. Then, its `most_similar()` would work.
+    > 
+
+# pytext
+
+- [PyText | Deep Learning Framework | Facebook AI](https://facebook.ai/developers/tools/pytext?fbclid=IwAR0PBLPOf5jZ8xvEIerFMWZbdkDFAp5DOoJ5Fwqfwp-p1B20NnBllANqMlo)
+
+- [PyText Documentation — PyText documentation](https://pytext-pytext.readthedocs-hosted.com/en/latest/)
+
+    > **Core PyText Features:**
+    > 
+    > -   Production ready models for various NLP/NLU tasks:
+    >     -   Text classifiers
+    >         -   [Yoon Kim (2014): Convolutional Neural Networks for Sentence Classification](https://arxiv.org/abs/1408.5882)
+    >         -   [Lin et al. (2017): A Structured Self-attentive Sentence Embedding](https://arxiv.org/abs/1703.03130)
+    >     -   Sequence taggers
+    >         -   [Lample et al. (2016): Neural Architectures for Named Entity Recognition](https://www.aclweb.org/anthology/N16-1030)
+    >     -   Joint intent-slot model
+    >         -   [Zhang et al. (2016): A Joint Model of Intent Determination and Slot Filling for Spoken Language Understanding](https://www.ijcai.org/Proceedings/16/Papers/425.pdf)
+    >     -   Contextual intent-slot models
+    > -   Extensible components that allow easy creation of new models and tasks
+    > -   Ensemble training support
+    > -   Distributed-training support (using the new C10d backend in PyTorch 1.0)
+    > -   Reference implementation and a pre-trained model for the paper: [Gupta et al. (2018): Semantic Parsing for Task Oriented Dialog using Hierarchical Representations](http://aclweb.org/anthology/D18-1300)
+    > 
+- [Pytext: A natural language modeling framework based on PyTorch | Hacker News](https://news.ycombinator.com/item?id=18682627)
+
+    > Could you guys elaborate on the relationship between PyText, torchtext, and AllenNLP? I've briefly used the latter two, but with how quickly things are moving it'd be nice to have a quick answer from the devs themselves.
+    > 
+    > 
+    > [ahhegazy77](https://news.ycombinator.com/user?id=ahhegazy77 "User profile") ![](moz-extension://669356ce-356f-4477-af7f-b5e5ef151d5a/images/tag.svg "Tag user")    [5 days ago](https://news.ycombinator.com/item?id=18687690)
+    > 
+    > PyText dev here, Torchtext provides a set of data-abstractions that helps reading and processing raw text data into PyTorch tensors, at the moment we use Torchtext in PyText for training-time data reading and preprocessing.
+    > 
+    > AllenNLP is a great NLP modeling library that is aimed at providing reference implementations and prebuilt state-of-the-art models, and make it easy to iterate on and research with models for different NLP tasks.
+    > 
+    > We've built PyText to be a rich NLP modeling library (along the lines of AllenNLP) but with production capabilities baked in the design from day 1.
+    > 
+    > Examples are: - We provide interfaces to make sure data preprocessing can be consistent between training and runtime - The model interfaces are compatible with ONNX and torch.jit - A core goal for us in the next few month is to be able to run models trained in PyText on mobile.
+    > 
+    > Among other differences like supporting distributed training and multi-task learning.
+    > 
+    > That being said, so far our library of models has been mostly influenced by our current production use-cases, we are actively working on enriching this library with more models and tasks while keeping production capabilities and inference speed in mind.
+    > 
+    > ---
+    > 
+    > 
+    > [bethebunny](https://news.ycombinator.com/user?id=bethebunny "User profile") ![](moz-extension://669356ce-356f-4477-af7f-b5e5ef151d5a/images/tag.svg "Tag user")    [6 days ago](https://news.ycombinator.com/item?id=18683506)
+    > 
+    > AllenNLP is great, and influenced the design of PyText in several ways. There are some central design decisions of AllenNLP that make it incompatible with PyTorch's jit tracing and so make productionizing models require much more manual work. It also generally leaves preprocessing up to the user, so preprocessing consistently between training and inference is outside the scope of what AllenNLP does.
+    > 
+
+# AllenNLP
+
+- [AllenNLP](https://allennlp.org/)
+
+    > AllenNLP makes it easy to design and evaluate new deep learning models for nearly any NLP problem, along with the infrastructure to easily run them in the cloud or on your laptop.
+    > 
+
+
+
+
+## Building a fancy model for text classification
+
+- [Deep Learning for text made easy with AllenNLP – The Startup – Medium](https://medium.com/swlh/deep-learning-for-text-made-easy-with-allennlp-62bc79d41f31)
+
+    - [都说AllenNLP好用，我们跑一遍看看究竟多好用 | 雷锋网](https://www.leiphone.com/news/201804/i7qpRI9oYHVMfGCm.html)
+
+
+## Training a Sentiment Analyzer using AllenNLP
+
+- [Training a Sentiment Analyzer using AllenNLP (in less than 100 lines of Python code) – Real-World Natural Language Processing](http://www.realworldnlpbook.com/blog/training-sentiment-analyzer-using-allennlp.html)
+
+## ELMo: Deep contextualized word representations
+
+- [ELMo: Deep contextualized word representations](https://allennlp.org/elmo)
+
+    > ELMo representations are:
+    > 
+    > -   *Contextual*: The representation for each word depends on the entire context in which it is used.
+    > -   *Deep*: The word representations combine all layers of a deep pre-trained neural network.
+    > -   *Character based*: ELMo representations are purely character based, allowing the network to use morphological clues to form robust representations for out-of-vocabulary tokens unseen in training.

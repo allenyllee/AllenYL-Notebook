@@ -31,3 +31,17 @@
     > <https://www.zhihu.com/question/67317040>
     > 
 
+## pylint: Unable to import 'protorpc'
+
+- [python - Visual Studio Code pylint: Unable to import 'protorpc' - Stack Overflow](https://stackoverflow.com/questions/43574995/visual-studio-code-pylint-unable-to-import-protorpc)
+
+    > I was facing same issue (VS Code).Resolved by below method
+    > 
+    > 1) Select Interpreter command from the Command Palette (Ctrl+Shift+P)
+    > 
+    > 2) Search for "Select Interpreter"
+    > 
+    > 3) Select the installed python directory
+    > 
+    > Ref:- <https://code.visualstudio.com/docs/python/environments#_select-an-environment>
+    > 

@@ -3,74 +3,210 @@
 [toc]
 <!-- toc --> 
 
-# API
 
-- [The Python Standard Library — Python 3.3.7 documentation](https://docs.python.org/3.3/library/index.html)
 
 # Tutorial
 - [Python Tutorial](https://www.tutorialspoint.com/python/index.htm)
 
 - [Python Example](https://www.programcreek.com/python/)
 
-## Recursive Functions
+## 必學項目
 
-- [Python Tutorial: Recursive Functions](https://www.python-course.eu/python3_recursive_functions.php)
 
-## Passing Arguments
-
-- [Python Tutorial: Passing Arguments](https://www.python-course.eu/python3_passing_arguments.php)
-
-## Output with Print
-
-- [Python Tutorial: Output with Print](https://www.python-course.eu/python3_print.php)
-
-## Object Oriented Programming
-
-- [Python Tutorial: Object Oriented Programming](https://www.python-course.eu/python3_object_oriented_programming.php)
-
-## File Management
-
-- [Python Tutorial: File Management](https://www.python-course.eu/python3_file_management.php)
-
-## Properties vs. getters and setters
-
-- [Python Tutorial: Properties vs. getters and setters](https://www.python-course.eu/python3_properties.php)
-
-## Modular Programming and Modules
-
-- [Python Tutorial: Modular Programming and Modules](https://www.python-course.eu/python3_modules_and_modular_programming.php)
-
-## Generators
-
-- [Python Tutorial: Generators](https://www.python-course.eu/python3_generators.php)
-
-## Functions
-
+### Functions
 - [Python Tutorial: Functions](https://www.python-course.eu/python3_functions.php)
 
-## Iterators and Iterables
+### Recursive Functions
+- [Python Tutorial: Recursive Functions](https://www.python-course.eu/python3_recursive_functions.php)
 
-- [Python Tutorial: A Tutorial](https://www.python-course.eu/python3_iterable_iterator.php)
+### Passing Arguments
+- [Python Tutorial: Passing Arguments](https://www.python-course.eu/python3_passing_arguments.php)
+
+### File Management
+- [Python Tutorial: File Management](https://www.python-course.eu/python3_file_management.php)
+
+### Exception Handling
+- [Python Tutorial: Exception Handling](https://www.python-course.eu/python3_exception_handling.php)
+
+### Regular Expression
+- [Python Tutorial: Regular Expression](https://www.python-course.eu/python3_re.php)
+
+### Object Oriented Programming
+- [Python Tutorial: Object Oriented Programming](https://www.python-course.eu/python3_object_oriented_programming.php)
+
+### Class vs. Instance Attributes
+- [Python Tutorial: Class vs. Instance Attributes](https://www.python-course.eu/python3_class_and_instance_attributes.php)
+
+## 變數與資料結構
+
+### Data Types and Variables
+
+- [Python Tutorial: Data Types and Variables](https://www.python-course.eu/python3_variables.php)
+
+### Sequential Data Types
+
+- [Python Tutorial: Sequential Data Types](https://www.python-course.eu/python3_sequential_data_types.php)
+
+### Lists
+
+- [Python Tutorial: Lists](https://www.python-course.eu/python3_list_manipulation.php)
+
+### Dictionaries
+
+- [Python Tutorial: Dictionaries](https://www.python-course.eu/python3_dictionaries.php)
+
+### Sets and Frozen Sets
+
+- [Python Tutorial: Sets and Frozen Sets](https://www.python-course.eu/python3_sets_frozensets.php)
 
 
-## Modular programming
 
+
+## 進階項目
+
+### Shallow and Deep Copy
+- [Python Tutorial: Shallow and Deep Copy](https://www.python-course.eu/python3_deep_copy.php)
+
+
+### List Comprehension
+
+- [Python Tutorial: List Comprehension](https://www.python-course.eu/python3_list_comprehension.php)
+
+### Lambda Operator, filter, reduce and map
+
+- [Python Tutorial: Lambda Operator, filter, reduce and map](https://www.python-course.eu/python3_lambda.php)
+
+
+### Iterators and Iterables
+- [Python Tutorial: Iterators and Iterables](https://www.python-course.eu/python3_iterable_iterator.php)
+
+### Generators
+- [Python Tutorial: Generators](https://www.python-course.eu/python3_generators.php)
+
+
+### Advanced Regular Expressions
+
+- [Python Tutorial: Regular Expression for Advanced Users](https://www.python-course.eu/python3_re_advanced.php)
+
+
+
+### Modular Programming and Modules
 - [Python Tutorial: Modular Programming and Modules](https://www.python-course.eu/python3_modules_and_modular_programming.php)
 
 
+### Properties vs. getters and setters
+- [Python Tutorial: Properties vs. getters and setters](https://www.python-course.eu/python3_properties.php)
 
 
-# Style Guide for Python Code
+### Slots
 
-- [PEP 8 -- Style Guide for Python Code | Python.org](https://www.python.org/dev/peps/pep-0008/#function-names)
+- [Python Tutorial: Slots, Avoiding Dynamically Created Attributes](https://www.python-course.eu/python3_slots.php)
 
 
+### Multiple Inheritance
+- [Python Tutorial: Multiple Inheritance](https://www.python-course.eu/python3_multiple_inheritance.php)
 
+    > The case in which m will be overridden only in one of the classes B or C, e.g. in C:
+    > ```python
+    > class A:
+    >     def m(self):
+    >         print("m of A called")
+    > 
+    > class B(A):
+    >     pass
+    > 
+    > class C(A):
+    >     def m(self):
+    >         print("m of C called")
+    > 
+    > class D(B,C):
+    >     pass
+    > 
+    > x = D()
+    > x.m()
+    > ```
+    > Principially, two possibilities are imaginable: "m of C" or "m of A" could be used
+    > 
+    > We call this script with Python2.7 (python) and with Python3 (python3) to see what's happening:
+    > ```shell
+    > $ python diamond1.py
+    > m of A called
+    > $ python3 diamond1.py
+    > m of C called
+    > ```
+    > Only for those who are interested in Python version2:
+    > To have the same inheritance behaviour in Python2 as in Python3, every class has to inherit from the class "object". Our class A doesn't inherit from object, so we get a so-called old-style class, if we call the script with python2. Multiple inheritance with old-style classes is governed by two rules: depth-first and then left-to-right. If you change the header line of A into "class A(object):", we will have the same behaviour in both Python versions.
+    > 
+    > ---
+    > 
+    > The super function is often used when instances are initialized with the __init__ method:
+    > ```python
+    > class A:
+    >     def __init__(self):
+    >         print("A.__init__")
+    > 
+    > class B(A):
+    >     def __init__(self):
+    >         print("B.__init__")
+    >         super().__init__()
+    > 
+    > class C(A):
+    >     def __init__(self):
+    >         print("C.__init__")
+    >         super().__init__()
+    > 
+    > class D(B,C):
+    >     def __init__(self):
+    >         print("D.__init__")
+    >         super().__init__()
+    > ```
+    > 
+    > We demonstrate the way of working in the following interactive session:
+    > ```python
+    > >>> from super_init import A,B,C,D
+    > >>> d = D()
+    > D.__init__
+    > B.__init__
+    > C.__init__
+    > A.__init__
+    > >>> c = C()
+    > C.__init__
+    > A.__init__
+    > >>> b = B()
+    > B.__init__
+    > A.__init__
+    > >>> a = A()
+    > A.__init__
+    > ```
+    > 
+    > The question arises how the super functions makes its decision. How does it decide which class has to be used? As we have already mentioned, it uses the so-called method resolution order(MRO). It is based on the "C3 superclass linearisation" algorithm. This is called a linearisation, because the tree structure is broken down into a linear order. The mro method can be used to create this list:
+    > ```python
+    > >>> from super_init import A,B,C,D
+    > >>> D.mro()
+    > [<class 'super_init.D'>, <class 'super_init.B'>, <class 'super_init.C'>, <class 'super_init.A'>, <class 'object'>]
+    > >>> B.mro()
+    > [<class 'super_init.B'>, <class 'super_init.A'>, <class 'object'>]
+    > >>> A.mro()
+    > [<class 'super_init.A'>, <class 'object'>]
+    > ```
+    > 
+
+
+### Abstract Classes
+
+- [Python Tutorial: 'The ABC' of Abstract Base Classes](https://www.python-course.eu/python3_abstract_classes.php)
 
 
 
 # General Usage
 
+## API
+
+- [The Python Standard Library — Python 3.3.7 documentation](https://docs.python.org/3.3/library/index.html)
+
+## Style Guide for Python Code
+
+- [PEP 8 -- Style Guide for Python Code | Python.org](https://www.python.org/dev/peps/pep-0008/#function-names)
 
 ## Pretty Print
 
@@ -118,6 +254,61 @@
     > $ 2to3 -w example.py
     > ```
 
+## Writing Python 2-3 compatible code
+
+- [Cheat Sheet: Writing Python 2-3 compatible code — Python-Future documentation](http://python-future.org/compatible_idioms.html)
+
+    > ### print
+    > 
+    > #### Python 2 only:
+    > ```python
+    > print 'Hello'
+    > ```
+    > 
+    > #### Python 2 and 3:
+    > ```python
+    > print('Hello')
+    > ```
+    > 
+    > To print multiple strings, import `print_function` to prevent Py2 from interpreting it as a tuple:
+    > 
+    > #### Python 2 only:
+    > ```python
+    > print 'Hello', 'Guido'
+    > ```
+    > 
+    > #### Python 2 and 3:
+    > ```python
+    > from __future__ import print_function    # (at top of module)
+    > 
+    > print('Hello', 'Guido')
+    > ```
+    > 
+    > #### Python 2 only:
+    > ```python
+    > print >> sys.stderr, 'Hello'
+    > ```
+    > 
+    > #### Python 2 and 3:
+    > ```python
+    > from __future__ import print_function
+    > 
+    > print('Hello', file=sys.stderr)
+    > ```
+    > 
+    > #### Python 2 only:
+    > ```python
+    > print 'Hello',
+    > ```
+    > 
+    > #### Python 2 and 3:
+    > ```python
+    > from __future__ import print_function
+    > 
+    > print('Hello', end='')
+    > ```
+    > 
+
 ## inline comments(no inline comment in python)
 
 - [How to write an an inline-comment in python - Stack Overflow](https://stackoverflow.com/questions/24872745/how-to-write-an-an-inline-comment-in-python)
@@ -129,8 +320,37 @@
     > > A comment starts with a hash character (`#`) that is not part of a string literal, **and ends at the end of the physical line**. A comment signifies the end of the logical line unless the implicit line joining rules are invoked. Comments are ignored by the syntax; they are not tokens.
     > > 
 
+## precedence of "=" (assign statement)
+
+- [What is the operator precedence of "=" in Python? - Stack Overflow](https://stackoverflow.com/questions/38389391/what-is-the-operator-precedence-of-in-python)
+
+    > `=` is not an operator. `=` is an [assignment **statement**](https://docs.python.org/3/reference/simple_stmts.html#assignment-statements).
+    > 
+    > Because it is a statement, it can't be part of an expression (expressions are instead part of certain statements, and never the other way around), so ordering is irrelevant. The expression is always executed to serve a statement.
+    > 
+    > For assignments, the grammar specifies that specific types of expressions are permitted after the `=` symbol:
+    > 
+    > ```
+    > assignment_stmt ::=  (target_list "=")+ (starred_expression | yield_expression)
+    > ```
+    > 
+    > and the documentation for that statement details what order things are executed in:
+    > 
+    > > An assignment statement evaluates the expression list (remember that this can be a single expression or a comma-separated list, the latter yielding a tuple) and assigns the single resulting object to each of the target lists, from left to right.
 
 # math function
+
+## Round UP a number(ceil)
+
+- [floating point - How do you round UP a number in Python? - Stack Overflow](https://stackoverflow.com/questions/2356501/how-do-you-round-up-a-number-in-python)
+
+    > The [ceil](https://docs.python.org/2/library/math.html#math.ceil) (ceiling) function:
+    > 
+    > ```python
+    > import math
+    > print(math.ceil(4.2))
+    > ```
+
 
 ## exponential
 
@@ -254,6 +474,83 @@
     > which is nicely explicit. If you need this idiom frequently, wrap it in a function `shuffled` (see `sorted`) that returns `new_x`.
     > 
     > 
+
+## Permutation/Combination/Cartesian product
+
+- [algorithm - How to generate all permutations of a list in Python - Stack Overflow](https://stackoverflow.com/questions/104420/how-to-generate-all-permutations-of-a-list-in-python)
+
+    > *The following code with Python 2.6 and above ONLY*
+    > 
+    > First, import `itertools`:
+    > 
+    > ```
+    > import itertools
+    > ```
+    > 
+    > ### Permutation (order matters):
+    > 
+    > ```
+    > print list(itertools.permutations([1,2,3,4], 2))
+    > [(1, 2), (1, 3), (1, 4),
+    > (2, 1), (2, 3), (2, 4),
+    > (3, 1), (3, 2), (3, 4),
+    > (4, 1), (4, 2), (4, 3)]
+    > ```
+    > 
+    > ### Combination (order does NOT matter):
+    > 
+    > ```
+    > print list(itertools.combinations('123', 2))
+    > [('1', '2'), ('1', '3'), ('2', '3')]
+    > ```
+    > 
+    > ### Cartesian product (with several iterables):
+    > 
+    > ```
+    > print list(itertools.product([1,2,3], [4,5,6]))
+    > [(1, 4), (1, 5), (1, 6),
+    > (2, 4), (2, 5), (2, 6),
+    > (3, 4), (3, 5), (3, 6)]
+    > ```
+    > 
+    > ### Cartesian product (with one iterable and itself):
+    > 
+    > ```
+    > print list(itertools.product([1,2], repeat=3))
+    > [(1, 1, 1), (1, 1, 2), (1, 2, 1), (1, 2, 2),
+    > (2, 1, 1), (2, 1, 2), (2, 2, 1), (2, 2, 2)]
+    > ```
+    > 
+### Permutations with repetitions
+
+- [generating permutations with repetitions in python - Stack Overflow](https://stackoverflow.com/questions/3099987/generating-permutations-with-repetitions-in-python)
+
+    > You are looking for the [Cartesian Product](http://en.wikipedia.org/wiki/Cartesian_product).
+    > 
+    > > In mathematics, a Cartesian product (or product set) is the direct product of two sets.
+    > 
+    > In your case, this would be `{1, 2, 3, 4, 5, 6}` x `{1, 2, 3, 4, 5, 6}`. [`itertools`](http://docs.python.org/library/itertools.html) can help you there:
+    > 
+    > ```python
+    > import itertools
+    > x = [1, 2, 3, 4, 5, 6]
+    > [p for p in itertools.product(x, repeat=2)]
+    > [(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (2, 1), (2, 2), (2, 3),
+    >  (2, 4), (2, 5), (2, 6), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6),
+    >  (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (5, 1), (5, 2), (5, 3),
+    >  (5, 4), (5, 5), (5, 6), (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6)]
+    > ```
+    > 
+    > To get a random dice roll (in a totally inefficient way):
+    > 
+    > ```python
+    > import random
+    > random.choice([p for p in itertools.product(x, repeat=2)])
+    > (6, 3)
+    > ```
+
+
+
 
 # if/or/not/switch case/for/any
 
@@ -455,6 +752,15 @@
     doubled = [thing for thing in list_of_things]
     ```
 
+## enumerate in for loop
+
+- [Python 慣用語 - 6 善用 enumerate « Python Life](http://seanlin.logdown.com/posts/210856-python-idioms-6-enumerate)
+
+    > ```python
+    > names = ['Alice', 'Bob', 'Cindy']
+    > for index, element in enumerate(names):
+    >     print '%d %s' % (index, element)
+    > ```
 
 
 ## use dict as switch
@@ -525,6 +831,10 @@
     > 
 
 
+- [Python switch case - LeetCode Playground](https://leetcode.com/playground/Vx2sL4cZ)
+
+    <iframe src="https://leetcode.com/playground/Vx2sL4cZ/shared" frameBorder="0" width="400" height="300"></iframe>
+
 
 # string operation
 
@@ -546,6 +856,25 @@
     > thwas was string example....wow!!! thwas was really string 
     > thwas was string example....wow!!! thwas is really string
     > ```
+
+### delete a character from a string
+
+- [How to delete a character from a string using Python - Stack Overflow](https://stackoverflow.com/questions/3559559/how-to-delete-a-character-from-a-string-using-python)
+
+    > In Python, strings are immutable, so you have to create a new string. You have a few options of how to create the new string. If you want to remove the 'M' wherever it appears:
+    > 
+    > ```
+    > newstr = oldstr.replace("M", "")
+    > ```
+    > 
+    > If you want to remove the central character:
+    > 
+    > ```
+    > midlen = len(oldstr)/2
+    > newstr = oldstr[:midlen] + oldstr[midlen+1:]
+    > ```
+    > 
+    > You asked if strings end with a special character. No, you are thinking like a C programmer. In Python, strings are stored with their length, so any byte value, including `\0`, can appear in a string.
 
 ## strip()(移除頭尾字元)
 
@@ -647,7 +976,7 @@
     > 
     > However, if you want *leading* zeros (as opposed to trailing), I'd use the [`str.zfill()` method](https://docs.python.org/3/library/stdtypes.html#str.zfill) as that takes any `-` or `+` prefix into account.
 
-## Split() srting into tokens
+## Split()
 
 - [Python split()方法 | 菜鸟教程](http://www.runoob.com/python/att-string-split.html)
 
@@ -679,11 +1008,15 @@
     > 
     > 以下实例展示了split()函数的使用方法：
     > ```shell
-    > #!/usr/bin/python str =   "Line1-abcdef \nLine2-abc \nLine4-abcd";   print str.split(   );   print str.split(' ',   1   );
+    > #!/usr/bin/python 
+    > str =   "Line1-abcdef \nLine2-abc \nLine4-abcd";   
+    > print str.split(   );   
+    > print str.split(' ',   1   );
     > ```
     > 以上实例输出结果如下：
     > ```python
-    > ['Line1-abcdef',   'Line2-abc',   'Line4-abcd']   ['Line1-abcdef',   '\nLine2-abc \nLine4-abcd']
+    > ['Line1-abcdef',   'Line2-abc',   'Line4-abcd']   
+    > ['Line1-abcdef',   '\nLine2-abc \nLine4-abcd']
     > ```
     > 
 
@@ -703,6 +1036,35 @@
     > 'abcde'
     > ```
 
+
+## find()
+
+- [Python find()方法 | 菜鸟教程](http://www.runoob.com/python/att-string-find.html)
+
+```python
+>>>info = 'abca'
+>>> print info.find('a')    # 从下标0开始，查找在字符串里第一个出现的子串，返回结果：0
+0
+>>> print info.find('a',1)  # 从下标1开始，查找在字符串里第一个出现的子串：返回结果3
+3
+>>> print info.find('3')    # 查找不到返回-1
+-1
+>>>
+```
+
+## character to a integer/integer to a character (ord()/chr())
+
+- [How can I convert a character to a integer in Python, and viceversa? - Stack Overflow](https://stackoverflow.com/questions/704152/how-can-i-convert-a-character-to-a-integer-in-python-and-viceversa)
+
+    > Use [`chr()`](http://docs.python.org/library/functions.html#chr) and [`ord()`](http://docs.python.org/library/functions.html#ord):
+    > 
+    > ```python
+    > >>> chr(97)
+    > 'a'
+    > >>> ord('a')
+    > 97
+    > ```
+    > 
 
 # time
 
@@ -752,6 +1114,121 @@
     > -   %X 本地相应的时间表示
     > -   %Z 当前时区的名称
     > -   %% %号本身
+
+## speed test wrapper function
+
+- [How can I do a comparison of two lists in Python with each value? - Quora](https://www.quora.com/How-can-I-do-a-comparison-of-two-lists-in-Python-with-each-value)
+
+    > ```python
+    > import time
+    > 
+    > def speed_test(func):
+    >     def wrapper(*args, **kwargs):
+    >         t1 = time.time()
+    >         for x in xrange(5000):
+    >             results = func(*args, **kwargs)
+    >         t2 = time.time()
+    >         print '%s took %0.3f ms' % (func.func_name, (t2-t1)*1000.0)
+    >         return results
+    >     return wrapper
+    > 
+    > @speed_test
+    > def compare_bitwise(x, y):
+    >     set_x = frozenset(x)
+    >     set_y = frozenset(y)
+    >     return set_x & set_y
+    > 
+    > @speed_test
+    > def compare_listcomp(x, y):
+    >     return [i for i, j in zip(x, y) if i == j]
+    > 
+    > @speed_test
+    > def compare_intersect(x, y):
+    >     return frozenset(x).intersection(y)
+    > 
+    > # Comparing short lists
+    > a = [1, 2, 3, 4, 5]
+    > b = [9, 8, 7, 6, 5]
+    > compare_bitwise(a, b)
+    > compare_listcomp(a, b)
+    > compare_intersect(a, b)
+    > 
+    > # Comparing longer lists
+    > import random
+    > a = random.sample(xrange(100000), 10000)
+    > b = random.sample(xrange(100000), 10000)
+    > compare_bitwise(a, b)
+    > compare_listcomp(a, b)
+    > compare_intersect(a, b)
+    > ```
+
+## make a time delay 
+
+- [How can I make a time delay in Python? - Stack Overflow](https://stackoverflow.com/questions/510348/how-can-i-make-a-time-delay-in-python)
+
+
+    > There are 5 methods which I know: `time.sleep()`, `pygame.time.wait()`, matplotlib's `pyplot.pause()`, `.after()`, and `driver.implicitly_wait()`.
+    > 
+    > * * * * *
+    > 
+    > `time.sleep()` example (do not use if using Tkinter):
+    > 
+    > ```python
+    > import time
+    > print('Hello')
+    > time.sleep(5) #number of seconds
+    > print('Bye')
+    > ```
+    > 
+    > * * * * *
+    > 
+    > `pygame.time.wait()` example (not recommended if you are not using the pygame window, but you could exit the window instantly):
+    > 
+    > ```python
+    > import pygame
+    > #If you are going to use the time module
+    > #don't do "from pygame import *"
+    > pygame.init()
+    > print('Hello')
+    > pygame.time.wait(5000)#milliseconds
+    > print('Bye')
+    > ```
+    > 
+    > * * * * *
+    > 
+    > matplotlib's function `pyplot.pause()` example (not recommended if you are not using the graph, but you could exit the graph instantly):
+    > 
+    > ```python
+    > import matplotlib
+    > print('Hello')
+    > matplotlib.pyplot.pause(5)#seconds
+    > print('Bye')
+    > ```
+    > 
+    > * * * * *
+    > 
+    > The `.after()` method (best with Tkinter):
+    > 
+    > ```python
+    > import tkinter as tk #Tkinter for python 2
+    > root = tk.Tk()
+    > print('Hello')
+    > def ohhi():
+    >  print('Oh, hi!')
+    > root.after(5000, ohhi)#milliseconds and then a function
+    > print('Bye')
+    > ```
+    > 
+    > * * * * *
+    > 
+    > Finally, the `driver.implicitly_wait()` method (selenium):
+    > 
+    > ```python
+    > driver.implicitly_wait(5)#waits 5 seconds
+    > enter code here
+    > ```
+    > 
+
 
 # list, dict, range, sort, zip, tuple, unpack
 
@@ -909,6 +1386,16 @@
     > ```
     > 
 
+### reverse list
+
+- [How can I reverse a list in Python? - Stack Overflow](https://stackoverflow.com/questions/3940128/how-can-i-reverse-a-list-in-python)
+
+    > ```python
+    > >>> L = [0,10,20,40]
+    > >>> L[::-1]
+    > [40, 20, 10, 0]
+    > ```
+
 ## turn range() to list
 
 - [Python 3 turn range to a list - Stack Overflow](https://stackoverflow.com/questions/11480042/python-3-turn-range-to-a-list)
@@ -973,6 +1460,85 @@
     > [1, 2, 3, 4, 5, 6]
     > ```
     > 
+
+## Finding the index of an item 
+
+- [Finding the index of an item given a list containing it in Python - Stack Overflow](https://stackoverflow.com/questions/176918/finding-the-index-of-an-item-given-a-list-containing-it-in-python)
+
+    > ```python
+    > >>> ["foo", "bar", "baz"].index("bar")
+    > 1
+    > ```
+    > ---
+    > 
+    > The majority of answers explain how to find **a single index**, but their methods do not return multiple indexes if the item is in the list multiple times. Use [`enumerate()`](https://docs.python.org/3.6/library/functions.html#enumerate):
+    > 
+    > ```python
+    > for i, j in enumerate(['foo', 'bar', 'baz']):
+    >     if j == 'bar':
+    >         print(i)
+    > ```
+    > 
+    > The `index()` function only returns the first occurrence, while `enumerate()` returns all occurrences.
+    > 
+    > As a list comprehension:
+    > 
+    > ```python
+    > [i for i, j in enumerate(['foo', 'bar', 'baz']) if j == 'bar']
+    > ```
+    > 
+    > * * * * *
+    > 
+    > Here's also another small solution with [`itertools.count()`](http://docs.python.org/2/library/itertools.html#itertools.count) (which is pretty much the same approach as enumerate):
+    > 
+    > ```python
+    > from itertools import izip as zip, count # izip for maximum efficiency
+    > [i for i, j in zip(count(), ['foo', 'bar', 'baz']) if j == 'bar']
+    > ```
+    > 
+    > This is more efficient for larger lists than using `enumerate()`:
+    > 
+    > ```shell
+    > $ python -m timeit -s "from itertools import izip as zip, count" "[i for i, j in zip(count(), ['foo', 'bar', 'baz']*500) if j == 'bar']"
+    > 10000 loops, best of 3: 174 usec per loop
+    > $ python -m timeit "[i for i, j in enumerate(['foo', 'bar', 'baz']*500) if j == 'bar']"
+    > 10000 loops, best of 3: 196 usec per loop
+    > ```
+
+## compare each item in a list with the rest
+
+- [python - How to compare each item in a list with the rest, only once? - Stack Overflow](https://stackoverflow.com/questions/16603282/how-to-compare-each-item-in-a-list-with-the-rest-only-once)
+
+
+    > Of course this will generate each pair twice as each `for` loop will go through every item of the list.
+    > 
+    > You could use some [itertools](http://docs.python.org/3/library/itertools.html) magic here to generate all possible combinations:
+    > 
+    > ```
+    > import itertools
+    > for a, b in itertools.combinations(mylist, 2):
+    >     compare(a, b)
+    > ```
+    > 
+    > [`itertools.combinations`](http://docs.python.org/3/library/itertools.html#itertools.combinations) will pair each element with each other element in the iterable, but only once.
+    > 
+    > * * * * *
+    > 
+    > You could still write this using index-based item access, equivalent to what you are used to, using nested `for` loops:
+    > 
+    > ```
+    > for i in range(len(mylist)):
+    >     for j in range(i + 1, len(mylist)):
+    >         compare(mylist[i], mylist[j])
+    > ```
+    > 
+    > Of course this may not look as nice and pythonic but sometimes this is still the easiest and most comprehensible solution, so you should not shy away from solving problems like that.
+    > 
+    > ---
+    > 
+    > If you want index, just add `index=range(len(mylist))` and `for a, b in itertools.combinations(index, 2):` then `compare(mylist[a], mylist[b])`. Now you can use the index to get the element from `mylist`. -- [allenyllee](https://stackoverflow.com/users/1851492/allenyllee "121 reputation") [just now](https://stackoverflow.com/questions/16603282/how-to-compare-each-item-in-a-list-with-the-rest-only-once#comment94547146_16603357)
+    > 
+
 
 ## remove items from a list while iterating (loop backward: range(N-1,-1,-1))
 
@@ -1138,6 +1704,170 @@
     > ```
 
 
+## convert list to string (join())
+
+- [python - How to convert list to string - Stack Overflow](https://stackoverflow.com/questions/5618878/how-to-convert-list-to-string)
+
+    > By using `''.join`
+    > 
+    > ```python
+    > list1 = ['1', '2', '3']
+    > str1 = ''.join(list1)
+    > ```
+    > 
+    > Or if the list is of integers, convert the elements before joining them.
+    > 
+    > ```pyton
+    > list1 = [1, 2, 3]
+    > str1 = ''.join(str(e) for e in list1)
+    > ```
+
+# set
+
+## compare two lists( set().intersection() )
+
+- [How can I compare two lists in python and return matches - Stack Overflow](https://stackoverflow.com/questions/1388818/how-can-i-compare-two-lists-in-python-and-return-matches)
+
+    > Not the most efficient one, but by far the most obvious way to do it is:
+    > 
+    > ```python
+    > >>> a = [1, 2, 3, 4, 5]
+    > >>> b = [9, 8, 7, 6, 5]
+    > >>> set(a) & set(b)
+    > {5}
+    > ```
+    > 
+    > if order is significant you can do it with list comprehensions like this:
+    > 
+    > ```python
+    > >>> [i for i, j in zip(a, b) if i == j]
+    > [5]
+    > ```
+    > 
+    > (only works for equal-sized lists, which order-significance implies).
+    > 
+    > ---
+    > 
+    > 
+    > Use [set.intersection()](http://docs.python.org/library/stdtypes.html#set.intersection), it's fast and readable.
+    > 
+    > ```python
+    > >>> set(a).intersection(b)
+    > set([5])
+    > ```
+    > 
+    > ---
+    > 
+    > This answer has good algorithmic performance, as only one of the lists (shorter should be preferred) is turned into a set for quick lookup, and the other list is traversed looking up its items in the set. -- [u0b34a0f6ae](https://stackoverflow.com/users/137317/u0b34a0f6ae "31,600 reputation") [Sep 7 '09 at 12:08](https://stackoverflow.com/questions/1388818/how-can-i-compare-two-lists-in-python-and-return-matches#comment1229439_1388842)
+    > 
+    > ---
+    > 
+    > `bool(set(a).intersection(b))` for `True` or `False` -- [Akshay](https://stackoverflow.com/users/3782963/akshay "745 reputation") [Oct 20 '17 at 3:20](https://stackoverflow.com/questions/1388818/how-can-i-compare-two-lists-in-python-and-return-matches#comment80631587_1388842)
+    > 
+
+
+
+# enumerations
+
+- [enum — Support for enumerations — Python 3.7.1 documentation](https://docs.python.org/3/library/enum.html)
+
+    > The [`Enum`](https://docs.python.org/3/library/enum.html#enum.Enum "enum.Enum") class is callable, providing the following functional API:
+    > ```python
+    > >>> Animal = Enum('Animal', 'ANT BEE CAT DOG')
+    > >>> Animal
+    > <enum 'Animal'>
+    > >>> Animal.ANT
+    > <Animal.ANT: 1>
+    > >>> Animal.ANT.value
+    > 1
+    > >>> list(Animal)
+    > [<Animal.ANT: 1>, <Animal.BEE: 2>, <Animal.CAT: 3>, <Animal.DOG: 4>]
+    > ```
+    > 
+    > ---
+    > 
+    > The complete signature is:
+    > 
+    > ```
+    > Enum(value='NewEnumName', names=<...>, *, module='...', qualname='...', type=<mixed-in class>, start=1)
+    > ```
+    > 
+    > | value:    | What the new Enum class will record as its name.                                                                                                                                                                                                                                                                                                                                                  |
+    > |-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    > | names:    | The Enum members.  This can be a whitespace or comma separated string (values will start at 1 unless otherwise specified):  
+    > ||'RED GREEN BLUE' \| 'RED,GREEN,BLUE' \| 'RED, GREEN, BLUE'  
+    > ||or an iterator of names:  
+    > ||['RED', 'GREEN', 'BLUE']  
+    > ||or an iterator of (name, value) pairs:  
+    > ||[('CYAN', 4), ('MAGENTA', 5), ('YELLOW', 6)]  
+    > ||or a mapping:  
+    > ||{'CHARTREUSE': 7, 'SEA_GREEN': 11, 'ROSEMARY': 42} |
+    > | module:   | name of module where new Enum class can be found.                                                                                                                                                                                                                                                                                                                                                 |
+    > | qualname: | where in module new Enum class can be found.                                                                                                                                                                                                                                                                                                                                                      |
+    > | type:     | type to mix in to new Enum class.                                                                                                                                                                                                                                                                                                                                                                 |
+    > | start:    | number to start counting at if only names are passed in.                                                                                                                                                                                                                                                                                                                                          |
+    > 
+
+
+## enumerate()
+
+- [Python enumerate() 函数 | 菜鸟教程](http://www.runoob.com/python/python-func-enumerate.html)
+
+    > enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。
+    > 
+    > Python 2.3. 以上版本可用，2.6 添加 start 参数。
+    > 
+    > ---
+    > 
+    > 以下展示了使用 enumerate() 方法的实例：
+    > ```python
+    > >>> seasons = ['Spring', 'Summer', 'Fall', 'Winter'] 
+    > >>> list(enumerate(seasons))  
+    > [(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')] 
+    > >>> list(enumerate(seasons, start=1))  # 下标从 1 开始  
+    > [(1, 'Spring'), (2, 'Summer'), (3, 'Fall'), (4, 'Winter')]
+    > ```
+    > 
+    > ---
+    > 
+    > for 循环使用 enumerate
+    > ------------------
+    > ```python
+    > >>> seq = ['one', 'two', 'three'] 
+    > >>> for  i, element  in  enumerate(seq): 
+    > ... print  i, element 
+    > ... 
+    > >>> 0  one  
+    > >>> 1  two  
+    > >>> 2  three
+    > ```
+
+### How to enumerate a range of numbers starting at 1
+
+- [python - How to enumerate a range of numbers starting at 1 - Stack Overflow](https://stackoverflow.com/questions/3303608/how-to-enumerate-a-range-of-numbers-starting-at-1)
+
+    > As you already mentioned, this is straightforward to do in Python 2.6 or newer:
+    > 
+    > ```
+    > enumerate(range(2000, 2005), 1)
+    > ```
+    > 
+    > Python 2.5 and older do not support the `start` parameter so instead you could create two range objects and zip them:
+    > 
+    > ```
+    > r = xrange(2000, 2005)
+    > r2 = xrange(1, len(r) + 1)
+    > h = zip(r2, r)
+    > print h
+    > ```
+    > 
+    > Result:
+    > 
+    > [(1, 2000), (2, 2001), (3, 2002), (4, 2003), (5, 2004)]
+    > 
+    > If you want to create a generator instead of a list then you can use [izip](http://docs.python.org/library/itertools.html#itertools.izip) instead.
+
+
 # os operation
 
 ## get Kernel path
@@ -1186,136 +1916,234 @@
     > ```
 
 
-
-
-# file operation
-
+# with...as...
 
 ## open file with...as...
 
 - [icodding愛程式: python 研究-with as 用法](https://icodding.blogspot.tw/2016/05/python-with-as.html)
 
-    有一些任務，可能事先需要設置，事後做清理工作。對於這種場景，Python的with語句提供了一種非常方便的處理方式。一個很好的例子是文件處理，你需要獲取一個文件句柄，從文件中讀取資料，然後關閉文件句柄。  
-
-    如果不用with語句，程式碼如下：  
-
-    ```python=
-        file = open("/tmp/foo.txt")  
-        data = file.read()  
-        file.close()  
-    ```
-    
-    這裡有兩個問題:  
-
-        一是可能忘記關閉文件句柄；  
-        二是文件讀取資料發生異常，沒有進行任何處理。  
-
-    下面是處理異常的加強版本：  
-
-    ```python=
-        try:  
-            f = open('xxx')  
-        except:  
-            print 'fail to open'  
-            exit(-1)  
-        try:  
-            do something  
-        except:  
-            do something  
-        finally:  
-             f.close()  
-    ```
-                    
-    雖然這段程式碼執行良好，但是太冗長了。  
-
-    這時候就是with一展身手的時候了。除了有更優雅的語法，with還可以很好的處理上下文環境產生的異常。  
-
-    下面是with版本的程式碼：  
-
-    ```python=
-        with open("/tmp/foo.txt") as file:  
-            data = file.read()  
-    ```
-    
-    with如何工作?  
-
-        緊跟with後面的語句被求值後，返回物件的 \_\_enter\_\_() 方法被呼叫，這個方法的返回值將被賦值給as後面的變數。  
-        當with後面的程式碼塊全部被執行完之後，將呼叫前面返回物件的 \_\_exit\_\_()方法。  
-
-    下面例子可以具體說明with如何工作：  
-
-    ```python=
-        #!/usr/bin/env python  
-        # with_example01.py  
-        class Sample:  
-            def \_\_enter\_\_(self):  
-                print "In \_\_enter\_\_()"  
-                return "Foo"  
-            def \_\_exit\_\_(self, type, value, trace):  
-                print "In \_\_exit\_\_()"  
-        def get_sample():  
-            return Sample()  
-        with get_sample() as sample:  
-            print "sample:", sample  
-    ```
-            
-    執行程式碼，輸出如下  
-
-    ```shell=
-        bash-3.2$ ./with_example01.py  
-        In \_\_enter\_\_()  
-        sample: Foo  
-        In \_\_exit\_\_()  
-    ```
-    
-    正如你看到的: 1\. \_\_enter\_\_()方法被執行 2. \_\_enter\_\_()方法返回的值 - 這個例子中是」Foo」，賦值給變數』sample' 3. 執行程式碼塊，列印變數」sample」的值為 「Foo」 4. \_\_exit\_\_()方法被呼叫 with真正強大之處是它可以處理異常。
-
-    上文說了 \_\_exit\_\_ 函數可以進行部分異常的處理，如果我們不在這個函數中處理異常，他會正常拋出，這時候我們可以這樣寫（python 2.7及以上版本，之前的版本參考使用contextlib.nested這個庫函數）：  
-
-    ```python=
-        try:  
-            with open( "a.txt" ) as f :  
-                do something  
-        except xxxError:  
-            do something about exception  
-    ```
-    
-    總之，with-as表達式極大的簡化了每次寫finally的工作，這對保持程式碼的優雅性是有極大幫助的。  
-
-    如果有多個項，我們可以這麼寫：  
-    
-    ```python=
-        with open("x.txt") as f1, open('xxx.txt') as f2:  
-            do something with f1,f2
-    ```
+    > 有一些任務，可能事先需要設置，事後做清理工作。對於這種場景，Python的with語句提供了一種非常方便的處理方式。一個很好的例子是文件處理，你需要獲取一個文件句柄，從文件中讀取資料，然後關閉文件句柄。  
+    > 
+    > 如果不用with語句，程式碼如下：  
+    > 
+    > ```python=
+    > file = open("/tmp/foo.txt")  
+    > data = file.read()  
+    > file.close()  
+    > ```
+    > 
+    > 這裡有兩個問題:  
+    > 
+    > 一是可能忘記關閉文件句柄；  
+    > 二是文件讀取資料發生異常，沒有進行任何處理。  
+    > 
+    > 下面是處理異常的加強版本：  
+    > 
+    > ```python=
+    > try:  
+    >     f = open('xxx')  
+    > except:  
+    >     print 'fail to open'  
+    >     exit(-1)  
+    > try:  
+    >     do something  
+    > except:  
+    >     do something  
+    > finally:  
+    >     f.close()  
+    > ```
+    > 
+    > 雖然這段程式碼執行良好，但是太冗長了。  
+    > 
+    > 這時候就是with一展身手的時候了。除了有更優雅的語法，with還可以很好的處理上下文環境產生的異常。  
+    > 
+    > 下面是with版本的程式碼：  
+    > 
+    > ```python=
+    > with open("/tmp/foo.txt") as file:  
+    >     data = file.read()  
+    > ```
+    > 
+    > with如何工作?  
+    > 
+    > 緊跟with後面的語句被求值後，返回物件的 \_\_enter\_\_() 方法被呼叫，這個方法的返回值將被賦值給as後面的變數。  
+    > 當with後面的程式碼塊全部被執行完之後，將呼叫前面返回物件的 \_\_exit\_\_()方法。  
+    > 
+    > 下面例子可以具體說明with如何工作：  
+    > 
+    > ```python=
+    > #!/usr/bin/env python  
+    > # with_example01.py  
+    > class Sample:  
+    >     def __enter__(self):  
+    >         print "In __enter__()"  
+    >         return "Foo"  
+    >     def __exit__(self, type, value, trace):  
+    >         print "In __exit__()"  
+    >         
+    > def get_sample():  
+    >     return Sample()  
+    > with get_sample() as sample:  
+    >     print "sample:", sample  
+    > ```
+    > 
+    > 執行程式碼，輸出如下  
+    > 
+    > ```shell=
+    > bash-3.2$ ./with_example01.py  
+    > In __enter__()  
+    > sample: Foo  
+    > In __exit__()  
+    > ```
+    > 
+    > 正如你看到的: 1\. \_\_enter\_\_()方法被執行 2. \_\_enter\_\_()方法返回的值 - 這個例子中是」Foo」，賦值給變數』sample' 3. 執行程式碼塊，列印變數」sample」的值為 「Foo」 4. \_\_exit\_\_()方法被呼叫 with真正強大之處是它可以處理異常。
+    > 
+    > ---
+    > 
+    > 可能你已經注意到Sample類的 \_\_exit\_\_ 方法有三個參數 val, type 和 trace。 這些參數在異常處理中相當有用。我們來改一下程式碼，看看具體如何工作的。
+    > ```python=
+    > #!/usr/bin/env python
+    > # with_example02.py
+    > class Sample:
+    >     def __enter__(self):
+    >         return self
+    >     def __exit__(self, type, value, trace):
+    >         print "type:", type
+    >         print "value:", value
+    >         print "trace:", trace
+    >     def do_something(self):
+    >         bar = 1/0
+    >         return bar + 10
+    > with Sample() as sample:
+    >     sample.do_something()
+    > ```
+    > 
+    > 這個例子中，with後面的get_sample()變成了Sample()。這沒有任何關係，只要緊跟with後面的語句所返回的物件有 \_\_enter\_\_() 和 \_\_exit\_\_() 方法即可。此例中，Sample()的 \_\_enter\_\_() 方法返回新新增的Sample物件，並賦值給變數sample。
+    > 
+    > 程式碼執行後：
+    > ```shell=
+    > bash-3.2$ ./with_example02.py
+    > type: <type 'exceptions.ZeroDivisionError'>
+    > value: integer division or modulo by zero
+    > trace: <traceback object at 0x1004a8128>
+    > Traceback (most recent call last):
+    >   File "./with_example02.py", line 19, in <module>
+    >     sample.do_something()
+    >   File "./with_example02.py", line 15, in do_something
+    >     bar = 1/0
+    > ZeroDivisionError: integer division or modulo by zero
+    > ```
+    > 實際上，在with後面的程式碼塊拋出任何異常時，\_\_exit\_\_() 方法被執行。正如例子所示，異常拋出時，與之關聯的type，value和stack trace傳給 \_\_exit\_\_() 方法，因此拋出的ZeroDivisionError異常被列印出來了。開發庫時，清理資源，關閉文件等等操作，都可以放在 \_\_exit\_\_ 方法當中。
+    > 
+    > 另外，\_\_exit\_\_ 除了用於tear things down，還可以進行異常的監控和處理，注意後幾個參數。要跳過一個異常，只需要返回該函數True即可。
+    > 
+    > 下面的樣例程式碼跳過了所有的TypeError，而讓其他異常正常拋出。
+    > ```python
+    > def __exit__(self, type, value, traceback):
+    >     return isinstance(value, TypeError)
+    > ```
+    > 
+    > ---
+    > 
+    > 上文說了 \_\_exit\_\_ 函數可以進行部分異常的處理，如果我們不在這個函數中處理異常，他會正常拋出，這時候我們可以這樣寫（python 2.7及以上版本，之前的版本參考使用contextlib.nested這個庫函數）：  
+    > 
+    > ```python=
+    > try:  
+    >     with open( "a.txt" ) as f :  
+    >         do something  
+    > except xxxError:  
+    >     do something about exception  
+    > ```
+    > 
+    > 總之，with-as表達式極大的簡化了每次寫finally的工作，這對保持程式碼的優雅性是有極大幫助的。  
+    > 
+    > 如果有多個項，我們可以這麼寫：  
+    > 
+    > ```python=
+    > with open("x.txt") as f1, open('xxx.txt') as f2:  
+    >     do something with f1,f2
+    > ```
 
 - [What is the python keyword "with" used for? - Stack Overflow](https://stackoverflow.com/questions/1369526/what-is-the-python-keyword-with-used-for)
 
-    The `with` statement is a control-flow structure whose basic structure is:
-
-    ```python=
-    with expression [as variable]:
-        with-block
-    ```
-
-    The expression is evaluated, and it should result in an object that supports the context management protocol (that is, has `__enter__()` and `__exit__()` methods).
-
-
-### print Exception
-
-- [How to print an error in Python? - Stack Overflow](https://stackoverflow.com/questions/1483429/how-to-print-an-error-in-python)
-
-    > For Python 2.6 and later and Python 3.x:
+    > The `with` statement is a control-flow structure whose basic structure is:
     > 
-    > ```python
-    > except Exception as e: print(e)
+    > ```python=
+    > with expression [as variable]:
+    >     with-block
     > ```
     > 
-    > For Python 2.5 and earlier, use:
+    > The expression is evaluated, and it should result in an object that supports the context management protocol (that is, has `__enter__()` and `__exit__()` methods).
+
+
+## AttributeError: \_\_exit\_\_
+
+- [How to troubleshoot an "AttributeError: \_\_exit\_\_" in multiproccesing in Python? - Stack Overflow](https://stackoverflow.com/questions/7447284/how-to-troubleshoot-an-attributeerror-exit-in-multiproccesing-in-python)
+
+    > The problem is in this line:
     > 
     > ```python
-    > except Exception,e: print str(e)
+    > with pattern.findall(row) as f:
     > ```
+    > 
+    > You are using the `with` statement. It requires an object with `__enter__` and `__exit__` methods. But `pattern.findall` returns a `list`, `with` tries to store the `__exit__` method, but it can't find it, and raises an error. Just use
+    > 
+    > ```python
+    > f = pattern.findall(row)
+    > ```
+    > 
+    > instead.
+
+
+# file operation
+
+## open()
+
+### open(): TypeError: an integer is required (got type str)
+
+- [Python对文件的读取问题_百度知道](https://zhidao.baidu.com/question/304077298629576884.html)
+
+    > ```
+    > open(...)
+    >     open(name[, mode[, buffering]]) -> file object
+    >      
+    >     Open a file using the file() type, returns a file object.  This is the
+    >     preferred way to open a file.  See file.__doc__ for further information.
+    > ```
+    > open这个函数的第三个参数不是用来接收编码方式的，而是传入一个buffering的值，你传入了'utf-8'字符串所以系统让你传一个整型
+    > TypeError: an integer is required (got type str)
+    > 
+    > ---
+    > 
+    > 改用 `encoding='utf8'` 即可[name=Ya-Lun Li]
+
+
+### reading from a file and saving to utf-8
+
+- [Python reading from a file and saving to utf-8 - Stack Overflow](https://stackoverflow.com/questions/19591458/python-reading-from-a-file-and-saving-to-utf-8)
+
+    > Process text to and from Unicode at the I/O boundaries of your program using the `codecs` module:
+    > 
+    > ```python
+    > import codecs
+    > with codecs.open(filename,'r',encoding='utf8') as f:
+    >     text = f.read()
+    > # process Unicode text
+    > with codecs.open(filename,'w',encoding='utf8') as f:
+    >     f.write(text)
+    > ```
+    > 
+    > **Edit:** The `io` module is now recommended instead of codecs and is compatible with Python 3's `open` syntax:
+    > 
+    > ```python
+    > import io
+    > with io.open(filename,'r',encoding='utf8') as f:
+    >     text = f.read()
+    > # process Unicode text
+    > with io.open(filename,'w',encoding='utf8') as f:
+    >     f.write(text)
+    > ```
+
 
 ## read file(read()/readline()/readlines())
 
@@ -1563,7 +2391,7 @@
 
 
 
-## list directory
+## list directory(glob, os.walk)
 
 - [filesystems - Directory listing in Python - Stack Overflow](https://stackoverflow.com/questions/120656/directory-listing-in-python)
 
@@ -1640,6 +2468,45 @@
     > Personally, I prefer `.extend()`
     > 
 
+### using windows path in glob
+
+- [windows - Getting Every File in a Directory, Python - Stack Overflow](https://stackoverflow.com/questions/5629242/getting-every-file-in-a-directory-python)
+
+    > All of the answers here don't address the fact that if you pass `glob.glob()` a Windows path (for example, `C:\what\okay\i_guess\`), it does not run as expected. Instead, you need to use `pathlib`:
+    > 
+    > ```python
+    > from pathlib import Path
+    > 
+    > glob_path = Path(r"C:\what\okay\i_guess")
+    > file_list = [str(pp) for pp in glob_path.glob("**/*.txt")]
+    > ```
+
+### "u" and "r" string flags
+
+- [python - What exactly do "u" and "r" string flags do, and what are raw string literals? - Stack Overflow](https://stackoverflow.com/questions/2081640/what-exactly-do-u-and-r-string-flags-do-and-what-are-raw-string-literals)
+
+    > A "u" prefix denotes the value has type `unicode` rather than `str`.
+    > 
+    > Raw string literals, with an "r" prefix, escape any escape sequences within them, so `len(r"\n")` is 2. Because they escape escape sequences, you cannot end a string literal with a single backslash: that's not a valid escape sequence (e.g. `r"\"`).
+    > 
+    > "Raw" is not part of the type, it's merely one way to represent the value. For example, `"\\n"` and `r"\n"` are identical values, just like `32`, `0x20`, and `0b100000` are identical.
+    > 
+
+
+### using pathlib, getting error: TypeError: invalid file: PosixPath('example.txt')
+
+- [python - When using pathlib, getting error: TypeError: invalid file: PosixPath('example.txt') - Stack Overflow](https://stackoverflow.com/questions/42694112/when-using-pathlib-getting-error-typeerror-invalid-file-posixpathexample-t)
+
+    > [`pathlib`](https://docs.python.org/3/library/pathlib.html) integrates seemlessly with `open` only in Python 3.6 and later. From [Python 3.6's release notes](https://docs.python.org/3/whatsnew/3.6.html):
+    > 
+    > > The built-in `open()` function has been updated to accept `os.PathLike` objects, as have all relevant functions in the `os` and `os.path` modules, and most other functions and classes in the standard library.
+    > 
+    > To get it to work in Python 3.5 and Python 3.6, just convert the object to a string:
+    > 
+    > ```python
+    > contents = open(str(filename), "r").read()
+    > ```
+
 ## path tilde expansion
 
 - [Python's os.makedirs doesn't understand "~" in my path - Stack Overflow](https://stackoverflow.com/questions/2057045/pythons-os-makedirs-doesnt-understand-in-my-path)
@@ -1715,7 +2582,7 @@
     >     return hash_md5.hexdigest()
     > ```
 
-## Search for a file using a wildcard
+## Search for a file using a wildcard(glob)
 
 - [python - Search for a file using a wildcard - Stack Overflow](https://stackoverflow.com/questions/3348753/search-for-a-file-using-a-wildcard)
 
@@ -1732,6 +2599,55 @@
     > ```
     > 
     > This comes straight from here: <http://docs.python.org/library/glob.html>
+
+## exclude pattern in glob
+
+- [python - glob exclude pattern - Stack Overflow](https://stackoverflow.com/questions/20638040/glob-exclude-pattern)
+
+    > The pattern rules for glob are not regular expressions. Instead, they follow standard Unix path expansion rules. There are only a few special characters: two different wild-cards, and character ranges are supported [from [glob](https://pymotw.com/2/glob/)].
+    > 
+    > So you can exclude some files with patterns.\
+    > For example to exclude manifests files (files starting with `_`) with glob, you can use:
+    > 
+    > ```python
+    > files = glob.glob('files_path/[!_]*')
+    > ```
+    > 
+    > ---
+    > 
+    > You can deduct sets:
+    > 
+    > ```python
+    > set(glob("*")) - set(glob("eph"))
+    > ```
+    > 
+    > ---
+    > Just as a side note, glob returns lists and not sets, but this kind of operation only works on sets, hence why [neutrinus](https://stackoverflow.com/users/1216074/neutrinus) cast it. If you need it to remain a list, simply wrap the entire operation in a cast: `list(set(glob("*")) - set(glob("eph")))` -- [Nathan Smith](https://stackoverflow.com/users/6332918/nathan-smith "533 reputation") [Aug 10 '17 at 21:48](https://stackoverflow.com/questions/20638040/glob-exclude-pattern#comment78207512_21502564)
+    > 
+    > ---
+    > 
+    > Late to the game but you could alternatively just apply a python `filter` to the result of a `glob`:
+    > 
+    > ```python
+    > files = glob.iglob('your_path_here')
+    > files_i_care_about = filter(lambda x: not x.startswith("eph"), files)
+    > ```
+    > 
+    > or replacing the lambda with an appropriate regex search, etc...
+    > 
+    > EDIT: I just realized that if you're using full paths the `startswith` won't work, so you'd need a regex
+    > 
+    > ```python
+    > In [10]: a
+    > Out[10]: ['/some/path/foo', 'some/path/bar', 'some/path/eph_thing']
+    > 
+    > In [11]: filter(lambda x: not re.search('/eph', x), a)
+    > Out[11]: ['/some/path/foo', 'some/path/bar']
+    > ```
+    > 
+
+
+
 
 ## Find files with content matching regex
 
@@ -1883,96 +2799,6 @@
     > 
     > ```
 
-# Regular Expresion(re)
-
-- [6.2. re — Regular expression operations — Python 3.3.7 documentation](https://docs.python.org/3.3/library/re.html?highlight=re#re.compile)
-    - __re.compile(_pattern_, _flags=0_)[](https://docs.python.org/3.3/library/re.html?highlight=re#re.compile "Permalink to this definition")__
-        Compile a regular expression pattern into a regular expression object, which can be used for matching using its [match()](https://docs.python.org/3.3/library/re.html?highlight=re#re.match "re.match") and [search()](https://docs.python.org/3.3/library/re.html?highlight=re#re.search "re.search") methods, described below.
-
-
-- [[Python] 正規表示法 Regular Expression](https://zwindr.blogspot.com/2016/01/python-regular-expression.html)
-
-    > **re.split(pattern, string, maxsplit=0, flags=0)**
-    > ```py
-    > import re
-    > # >> ['ab', 'cd', 'd']
-    > match = re.split(r'\d',  'ab2cd5d')
-    > ```
-
-
-## line continuation with a long regex
-
-- [Python: How do I do line continuation with a long regex? - Stack Overflow](https://stackoverflow.com/questions/33211404/python-how-do-i-do-line-continuation-with-a-long-regex)
-
-    > If you use the `re.VERBOSE` flag, you can split your regular expression up as much as you like to make it more readable:
-    > 
-    > ```py
-    > pattern = r"""
-    >     \d\s+
-    >     \d+\s+
-    >     ([A-Z0-9-]+)\s+
-    >     ([0-9]+.\d\(\d\)[A-Z0-9]+)\s+
-    >     ([a-zA-Z\d-]+)"""
-    > 
-    > REGEX = re.compile(pattern, re.VERBOSE)
-    > ```
-    > 
-    > This approach is explained in [Dive Into Python - Verbose Regular Expressions](http://www.diveintopython.net/regular_expressions/verbose.html).
-
-## re.compile
-
-- [re — Regular expression operations — Python 3.7.1 documentation](https://docs.python.org/3/library/re.html#re.compile)
-
-    > Compile a regular expression pattern into a [regular expression object](https://docs.python.org/3/library/re.html#re-objects), which can be used for matching using its [`match()`](https://docs.python.org/3/library/re.html#re.Pattern.match "re.Pattern.match"), [`search()`](https://docs.python.org/3/library/re.html#re.Pattern.search "re.Pattern.search") and other methods, described below.
-    > 
-    > The expression's behaviour can be modified by specifying a *flags* value. Values can be any of the following variables, combined using bitwise OR (the `|` operator).
-    > 
-    > The sequence
-    > ```
-    > prog = re.compile(pattern)
-    > result = prog.match(string)
-    > ```
-    > is equivalent to
-    > ```
-    > result = re.match(pattern, string)
-    > ```
-    > but using [`re.compile()`](https://docs.python.org/3/library/re.html#re.compile "re.compile") and saving the resulting regular expression object for reuse is more efficient when the expression will be used several times in a single program.
-    > 
-    > Note
-    > 
-    > The compiled versions of the most recent patterns passed to [`re.compile()`](https://docs.python.org/3/library/re.html#re.compile "re.compile") and the module-level matching functions are cached, so programs that use only a few regular expressions at a time needn't worry about compiling regular expressions.
-
-## search() vs. match()
-
-- [re — Regular expression operations — Python 3.7.1 documentation](https://docs.python.org/3/library/re.html#search-vs-match)
-
-    > Python offers two different primitive operations based on regular expressions: [`re.match()`](https://docs.python.org/3/library/re.html#re.match "re.match") checks for a match only at the beginning of the string, while [`re.search()`](https://docs.python.org/3/library/re.html#re.search "re.search") checks for a match anywhere in the string (this is what Perl does by default).
-    > 
-    > For example:
-    > 
-    > 
-    > ```
-    > >>> re.match("c", "abcdef")    # No match
-    > >>> re.search("c", "abcdef")   # Match
-    > <re.Match object; span=(2, 3), match='c'>
-    > ```
-    > Regular expressions beginning with `'^'` can be used with [`search()`](https://docs.python.org/3/library/re.html#re.search "re.search") to restrict the match at the beginning of the string:
-    > 
-    > 
-    > ```
-    > >>> re.match("c", "abcdef")    # No match
-    > >>> re.search("^c", "abcdef")  # No match
-    > >>> re.search("^a", "abcdef")  # Match
-    > <re.Match object; span=(0, 1), match='a'>
-    > ```
-    > Note however that in [`MULTILINE`](https://docs.python.org/3/library/re.html#re.MULTILINE "re.MULTILINE") mode [`match()`](https://docs.python.org/3/library/re.html#re.match "re.match") only matches at the beginning of the string, whereas using [`search()`](https://docs.python.org/3/library/re.html#re.search "re.search") with a regular expression beginning with `'^'` will match at the beginning of each line.
-    > 
-    > 
-    > ```
-    > >>> re.match('X', 'A\nB\nX', re.MULTILINE)  # No match
-    > >>> re.search('^X', 'A\nB\nX', re.MULTILINE)  # Match
-    > <re.Match object; span=(4, 5), match='X'>
-    > ```
 
 
 

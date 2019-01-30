@@ -10,6 +10,9 @@
 
 - [PLAsTiCC Astronomical Classification | Kaggle](https://www.kaggle.com/c/PLAsTiCC-2018)
 
+- [Kaggle 光度測定 LSST 天文時間序列分類挑戰賽冠軍出爐，看他提高分數的祕訣 - 幫趣](http://bangqu.com/21V213.html)
+
+
 
 ## 其他
 

@@ -1,4 +1,4 @@
-# NLP__資料收集5-1_自然語音
+# NLP__資料收集6-1_自然語音
 
 [toc]
 <!-- toc --> 
@@ -23,4 +23,17 @@
 ## 詞錯率2.97%：雲從科技刷新語音識別世界紀錄
 
 - [詞錯率2.97%：雲從科技刷新語音識別世界紀錄 - 幫趣](http://bangqu.com/4EwUk2.html?fbclid=IwAR26v7SevdKbnrR56uoc5zonR6L7SB8Js93oxzpWF3VGi_PtPdToBal7gNY)
+
+## Wav2letter++
+
+- [Wav2letter++, the fastest open source speech system, and flashlight](https://code.fb.com/ai-research/wav2letter/)
+
+- [facebookresearch/wav2letter: Facebook AI Research Automatic Speech Recognition Toolkit](https://github.com/facebookresearch/wav2letter)
+
+
+# 對話系統
+
+## RasaHQ/rasa-demo: Sara - the Rasa Demo Bot: An example of a contextual AI assistant built with the open source Rasa Stack
+
+- [RasaHQ/rasa-demo: Sara - the Rasa Demo Bot: An example of a contextual AI assistant built with the open source Rasa Stack](https://github.com/RasaHQ/rasa-demo)
 
