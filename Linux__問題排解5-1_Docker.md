@@ -260,12 +260,12 @@ docker exec -ti [container_id] bash #進入容器
 - [How to clear the logs properly for a Docker container? - Stack Overflow](https://stackoverflow.com/questions/42510002/how-to-clear-the-logs-properly-for-a-docker-container)
 
     > From [this question](https://serverfault.com/q/637996/351549) there's a one-liner that you can run:
-    > 
+    > {% raw %}
     > ```
     > echo "" > $(docker inspect --format='{{.LogPath}}' <container_name_or_id>)
     > 
     > ```
-    > 
+    > {% endraw %}
     > I'm not a big fan of modifying Docker's files directly. You can have Docker automatically rotate the logs for you. This is done with additional flags to dockerd if you are using the default [JSON logging driver](https://docs.docker.com/config/containers/logging/json-file/):
     > 
     > ```
@@ -274,7 +274,7 @@ docker exec -ti [container_id] bash #進入容器
     > ```
     > 
     > You can also set this as part of your [daemon.json](https://docs.docker.com/engine/reference/commandline/dockerd/#on-linux) file instead of modifying your startup scripts:
-    > 
+    > {% raw %}
     > ```
     > {
     >   "log-driver": "json-file",
@@ -282,7 +282,7 @@ docker exec -ti [container_id] bash #進入容器
     > }
     > 
     > ```
-    > 
+    > {% endraw %}
     > Make sure to run a `systemctl reload docker` after changing this file to have the settings applied.
     > 
 
