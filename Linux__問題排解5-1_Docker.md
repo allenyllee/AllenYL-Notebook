@@ -168,7 +168,7 @@ docker exec -ti [container_id] bash #進入容器
     > By default, the stages are not named, and you refer to them by their integer number, starting with 0 for the first `FROM` instruction. However, you can name your stages, by adding an `as <NAME>` to the `FROM` instruction. This example improves the previous one by naming the stages and using the name in the `COPY` instruction. This means that even if the instructions in your Dockerfile are re-ordered later, the `COPY` doesn't break.
     > 
     > ```sh
-    > FROM golang:1.7.3 as builder
+    > FROM golang:1.7.3 as builder 123
     > WORKDIR /go/src/github.com/alexellis/href-counter/
     > RUN go get -d -v golang.org/x/net/html
     > COPY app.go    .
