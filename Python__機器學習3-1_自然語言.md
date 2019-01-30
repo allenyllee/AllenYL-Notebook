@@ -356,7 +356,7 @@
     > Could you guys elaborate on the relationship between PyText, torchtext, and AllenNLP? I've briefly used the latter two, but with how quickly things are moving it'd be nice to have a quick answer from the devs themselves.
     > 
     > 
-    > [ahhegazy77](https://news.ycombinator.com/user?id=ahhegazy77 "User profile") ![](moz-extension://669356ce-356f-4477-af7f-b5e5ef151d5a/images/tag.svg "Tag user")    [5 days ago](https://news.ycombinator.com/item?id=18687690)
+    > [ahhegazy77](https://news.ycombinator.com/user?id=ahhegazy77 "User profile")  [5 days ago](https://news.ycombinator.com/item?id=18687690)
     > 
     > PyText dev here, Torchtext provides a set of data-abstractions that helps reading and processing raw text data into PyTorch tensors, at the moment we use Torchtext in PyText for training-time data reading and preprocessing.
     > 
@@ -373,7 +373,7 @@
     > ---
     > 
     > 
-    > [bethebunny](https://news.ycombinator.com/user?id=bethebunny "User profile") ![](moz-extension://669356ce-356f-4477-af7f-b5e5ef151d5a/images/tag.svg "Tag user")    [6 days ago](https://news.ycombinator.com/item?id=18683506)
+    > [bethebunny](https://news.ycombinator.com/user?id=bethebunny "User profile")    [6 days ago](https://news.ycombinator.com/item?id=18683506)
     > 
     > AllenNLP is great, and influenced the design of PyText in several ways. There are some central design decisions of AllenNLP that make it incompatible with PyTorch's jit tracing and so make productionizing models require much more manual work. It also generally leaves preprocessing up to the user, so preprocessing consistently between training and inference is outside the scope of what AllenNLP does.
     > 
